@@ -1,0 +1,11 @@
+<#@ template  hostSpecific="true" language="C#v3.5"  debug="true" #>
+<#@ output extension="txt" #>
+<#@ include file="T4Toolbox.tt" #>
+<#@ include file="CrudProcedureGenerator.tt" #>
+<#
+    CrudProcedureGenerator generator = new CrudProcedureGenerator();
+    generator.DatabaseName = "bigbang";
+	generator.CnnString = @"Data Source=katy\SQLEXPRESS;Initial Catalog=Northwind;Integrated Security=True";	
+    generator.Run();
+#>
+

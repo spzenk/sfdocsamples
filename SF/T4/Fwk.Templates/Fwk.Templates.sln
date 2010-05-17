@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fwk.Templates", "Fwk.Templates\Fwk.Templates.csproj", "{EA99897A-ADDB-4B36-A332-56FA244720CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{5B4514FA-4D37-4928-93D9-2545553CACB0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EA99897A-ADDB-4B36-A332-56FA244720CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA99897A-ADDB-4B36-A332-56FA244720CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA99897A-ADDB-4B36-A332-56FA244720CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA99897A-ADDB-4B36-A332-56FA244720CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B4514FA-4D37-4928-93D9-2545553CACB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B4514FA-4D37-4928-93D9-2545553CACB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B4514FA-4D37-4928-93D9-2545553CACB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B4514FA-4D37-4928-93D9-2545553CACB0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
