@@ -1,0 +1,22 @@
+<#@ output extension=".cs" #>
+<#@ template language="C#v3.5" #>
+
+
+<#
+   Write(GetData());
+#>
+
+
+<#+
+
+ public string GetData()
+	{
+	  return "Hola mundo";
+	}
+	
+	public string GetData2()
+	{
+	  return "Hola mundo2";
+	}
+   
+#>
