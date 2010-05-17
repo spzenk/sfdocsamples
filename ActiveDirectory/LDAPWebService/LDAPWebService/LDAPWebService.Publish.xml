@@ -1,0 +1,13 @@
+<publishData>
+  <publishTarget publishUrl="\\WEBAPP01\Websites\Prod\LDAPService\">
+    <file relUrl="bin/LDAPWebService.dll" publishTime="10/17/2008 10:10:16 AM" />
+    <file relUrl="User.asmx" publishTime="2/29/2008 9:29:26 AM" />
+    <file relUrl="bin/LDAPWebService.pdb" publishTime="10/17/2008 10:10:16 AM" />
+  </publishTarget>
+  <publishTarget publishUrl="C:\Sites\LDAPService\">
+    <file relUrl="bin/LDAPWebService.dll" publishTime="3/6/2008 11:03:47 AM" />
+    <file relUrl="User.asmx" publishTime="2/29/2008 9:29:26 AM" />
+    <file relUrl="bin/LDAPWebService.pdb" publishTime="3/6/2008 11:03:47 AM" />
+    <file relUrl="Web.config" publishTime="2/29/2008 9:18:27 AM" />
+  </publishTarget>
+</publishData>
