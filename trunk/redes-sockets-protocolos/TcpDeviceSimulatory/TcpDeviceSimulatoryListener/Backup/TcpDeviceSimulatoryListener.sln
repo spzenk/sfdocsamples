@@ -1,0 +1,29 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpDeviceSimulatoryListener", "TcpDeviceSimulatoryListener.csproj", "{517F5B1C-F3B4-4422-BD67-014D9F74AB68}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "..\TcpClient\TcpClient.csproj", "{709B12CC-1783-469D-9D31-5AFBA3B76385}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Debug.ActiveCfg = Debug|.NET
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Debug.Build.0 = Debug|.NET
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Release.ActiveCfg = Release|.NET
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Release.Build.0 = Release|.NET
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Debug.ActiveCfg = Debug|.NET
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Debug.Build.0 = Debug|.NET
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Release.ActiveCfg = Release|.NET
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
