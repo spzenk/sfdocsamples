@@ -1,0 +1,25 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpDeviceSimulatoryListener", "TcpDeviceSimulatoryListener.csproj", "{517F5B1C-F3B4-4422-BD67-014D9F74AB68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TcpClient", "..\TcpClient\TcpClient.csproj", "{709B12CC-1783-469D-9D31-5AFBA3B76385}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{517F5B1C-F3B4-4422-BD67-014D9F74AB68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{709B12CC-1783-469D-9D31-5AFBA3B76385}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
