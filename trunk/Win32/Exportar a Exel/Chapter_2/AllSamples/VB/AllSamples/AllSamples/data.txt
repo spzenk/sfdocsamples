@@ -1,0 +1,18 @@
+When a VSTO-based application starts up, and sometime after 
+the initialization event has occurred, the startup event for 
+the sheets object is fired. By placing code in the startup 
+event handler, the VSTO run-time guarantees that the sheet 
+object will be ready to service client requests. In the 
+code example in Listing 2-2, the method FileProcessor is 
+used to open a file on disk in read mode. 
+This piece of code is not expected to win any award for 
+elegance; however it does illustrate a few important concepts 
+that warrant further explanation. There is no exception 
+handling in the code. The code simply assumes that the file 
+exists and is readable. Such assumptions may easily be violated 
+in real-world software. The example is without this safety 
+net for illustrative purposes only. 
+Some of the code snippets in this book are intentionally 
+kept simple to illustrate the concepts clearly. Once you 
+have a basic understanding of the concepts, you should be 
+able to implement any requirement in code.
