@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<QuestionList>
+  
+
+  <Question>
+    <SurveyId>0</SurveyId>
+    <QuestionId>3</QuestionId>
+    <Order>1</Order>
+    <Text>Ud se contacto a través del CHAT con Servicios al cliente de Movistar en los últimos 15 días?</Text>
+    <AssemblyType>BigBang.FrontEnd.Survey.Common.QuestionMultipleChiose, BigBang.FrontEnd.Survey.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyType>
+    <Note />
+    <Optional>false</Optional>
+    <UseLettersToIdentifier>false</UseLettersToIdentifier>
+    <ParentConditionList />
+    <ItemQuestionList>
+      <ItemQuestion>
+        <ItemQuestionId>0</ItemQuestionId>
+        <QuestionId>0</QuestionId>
+        <Text>Si</Text>
+        <TextComment />
+      </ItemQuestion>
+      <ItemQuestion>
+        <ItemQuestionId>1</ItemQuestionId>
+        <QuestionId>0</QuestionId>
+        <Text>No ----</Text>
+        <TextComment />
+      </ItemQuestion>
+    </ItemQuestionList>
+    <Type>QuestionMultipleChiose</Type>
+    <TagValue>
+      <string>arg</string>
+      <string>braz</string>
+      <string>espa</string>
+    </TagValue>
+  </Question>
+  <Question>
+    <SurveyId>0</SurveyId>
+    <QuestionId>4</QuestionId>
+    <Order>4</Order>
+    <Text>Era la primera vez que se contactaba por ese motivo?</Text>
+    <AssemblyType>BigBang.FrontEnd.Survey.Common.QuestionMultipleChiose, BigBang.FrontEnd.Survey.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyType>
+    <Note />
+    <Optional>false</Optional>
+    <UseLettersToIdentifier>true</UseLettersToIdentifier>
+    <ParentConditionList />
+    <ItemQuestionList>
+      <ItemQuestion>
+        <ItemQuestionId>A</ItemQuestionId>
+        <QuestionId>0</QuestionId>
+        <Text>Si</Text>
+        <TextComment />
+      </ItemQuestion>
+      <ItemQuestion>
+        <ItemQuestionId>B</ItemQuestionId>
+        <QuestionId>0</QuestionId>
+        <Text>No</Text>
+        <TextComment />
+      </ItemQuestion>
+    </ItemQuestionList>
+    <Type>QuestionMultipleChiose</Type>
+    <TagValue>
+      <string>aaaaaaaa</string>
+      <string>bbbbbbbbbb</string>
+      <string>ccccccccc</string>
+      <string>99 	NS / NC</string>
+    </TagValue>
+  </Question>
+  <Question>
+    <SurveyId>0</SurveyId>
+    <QuestionId>5</QuestionId>
+    <Order>5</Order>
+    <Text>Considerando una escala de 1 a 10, donde 1 es Muy insatisfecho y 10 Muy satisfecho, como cliente de Movistar ¿cuál es su nivel de satisfacción general con </Text>
+    <AssemblyType>BigBang.FrontEnd.Survey.Common.QuestionComboValues, BigBang.FrontEnd.Survey.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyType>
+    <Note />
+    <Optional>false</Optional>
+    <UseLettersToIdentifier>true</UseLettersToIdentifier>
+    <ParentConditionList />
+    <ItemQuestionList>
+      <ItemQuestion>
+        <ItemQuestionId />
+        <QuestionId>0</QuestionId>
+        <Text />
+        <TextComment />
+      </ItemQuestion>
+    </ItemQuestionList>
+    <Type>QuestionComboValues</Type>
+    <TagValue>
+      <string>1</string>
+      <string>2</string>
+      <string>99 	NS / NC</string>
+    </TagValue>
+  </Question>
+</QuestionList>

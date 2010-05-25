@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="root" title=""  description="">
+      <siteMapNode url="" title="Fromularios nivel 1">
+        <siteMapNode url="~/Nivel1/WebForm1.aspx" title="Fromulario 1"  description="" />
+        <siteMapNode url="~/Nivel1/WebForm2.aspx" title="Formulario 2"  description="" />
+      </siteMapNode>
+      <siteMapNode url="" title="Fromularios nivel 2">
+        <siteMapNode url="~/Nivel2/WebForm3.aspx" title="Fromulario 1"  description="" />
+        <siteMapNode url="~/Nivel2/WebForm4.aspx" title="Formulario 2"  description="" />
+      </siteMapNode>
+    </siteMapNode>
+      
+</siteMap>

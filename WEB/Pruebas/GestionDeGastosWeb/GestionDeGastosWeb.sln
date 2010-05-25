@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GestionDeGastosWeb", ".", "{57FFF74D-9CD8-44D2-ADFE-993953886C07}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "3.5"
+		Debug.AspNetCompiler.VirtualPath = "/GestionDeGastosWeb"
+		Debug.AspNetCompiler.PhysicalPath = "..\GestionDeGastosWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\GestionDeGastosWeb\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/GestionDeGastosWeb"
+		Release.AspNetCompiler.PhysicalPath = "..\GestionDeGastosWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\GestionDeGastosWeb\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "49734"
+		VWDVirtualPath = "/GestionDeGastosWeb"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{57FFF74D-9CD8-44D2-ADFE-993953886C07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57FFF74D-9CD8-44D2-ADFE-993953886C07}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
