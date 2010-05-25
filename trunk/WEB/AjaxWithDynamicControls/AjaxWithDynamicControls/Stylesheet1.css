@@ -1,0 +1,37 @@
+﻿body
+{
+}
+#leftContent
+{
+	float: left;
+	width: 152px;
+	border-top: 10px solid #FFFFFF;
+	margin-right: -3px; /* IE 3px display bug fix (in conjunction with the rule following below)*/
+	background-color: #336699;
+	font-size: 0.9em;
+	font-family: 'Arial Rounded MT Bold';
+	border: thin ridge #FFFFFF;
+	color: #FFFFFF;
+}
+
+#rightContent
+{
+ float :right;
+	width:152px;
+	margin-left:-3px; /* IE 3px display bug fix (in conjunction with the rule following below)*/
+	background-color:#F7DE8A;
+	font-size:0.9em;
+}
+#footer
+{
+	border-style: outset;
+	margin: 2px;
+	padding: 0.5em;
+	font-size: smaller;
+	bottom: auto;
+	text-indent: 4px;
+	white-space: normal;
+	visibility: visible;
+}
+
+#footer a {padding:0 0.5em;}

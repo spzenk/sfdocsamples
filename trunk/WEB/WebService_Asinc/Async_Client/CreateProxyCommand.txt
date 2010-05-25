@@ -1,0 +1,1 @@
+﻿wsdl /language:cs /namespace:SF.Proxy http://localhost:49243/Service1.asmx
