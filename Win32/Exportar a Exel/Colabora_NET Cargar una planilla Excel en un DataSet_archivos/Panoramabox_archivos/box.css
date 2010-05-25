@@ -1,0 +1,30 @@
+.Box {
+	FONT-SIZE: 10px; MARGIN-LEFT: 2px; FONT-FAMILY: Tahoma
+}
+.Title {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #003399; FONT-FAMILY: Verdana; TEXT-ALIGN: center
+}
+INPUT {
+	BORDER-RIGHT: #ff9900 1px solid; BORDER-TOP: #ff9900 1px solid; FONT-SIZE: 10px; BORDER-LEFT: #ff9900 1px solid; BORDER-BOTTOM: #ff9900 1px solid; FONT-FAMILY: Verdana
+}
+SELECT {
+	BORDER-RIGHT: #ff9900 1px solid; BORDER-TOP: #ff9900 1px solid; FONT-SIZE: 10px; BORDER-LEFT: #ff9900 1px solid; BORDER-BOTTOM: #ff9900 1px solid; FONT-FAMILY: tahoma
+}
+.Button {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; CURSOR: hand; COLOR: #003399
+}
+.Back {
+	BORDER-TOP: #ff9900 1px solid; PADDING-LEFT: 4px; BORDER-BOTTOM: #ff9900 1px solid; BACKGROUND-COLOR: #bdcae4
+}
+.Text {
+	FONT-WEIGHT: bolder; FONT-SIZE: 11px; COLOR: #666666; FONT-FAMILY: Verdana; TEXT-ALIGN: left; TEXT-DECORATION: none
+}
+A {
+	FONT-SIZE: 10px; COLOR: #003399; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+.UserData {
+	BEHAVIOR: url(#default#userData)
+}

@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BareBonesVB", "BareBonesVB\BareBonesVB.vbproj", "{4AC7D0CE-4B42-4711-B3C4-5D3367985236}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AC7D0CE-4B42-4711-B3C4-5D3367985236}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AC7D0CE-4B42-4711-B3C4-5D3367985236}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AC7D0CE-4B42-4711-B3C4-5D3367985236}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AC7D0CE-4B42-4711-B3C4-5D3367985236}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

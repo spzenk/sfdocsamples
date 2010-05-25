@@ -1,0 +1,432 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0082)http://www.elguille.info/colabora/NET2005/alvaritus_CargarPlanillaExcelDataSet.htm -->
+<HTML xmlns="http://www.w3.org/TR/REC-html40" xmlns:v = 
+"urn:schemas-microsoft-com:vml" xmlns:o = 
+"urn:schemas-microsoft-com:office:office" xmlns:w = 
+"urn:schemas-microsoft-com:office:word"><HEAD><TITLE>Colabora.NET: Cargar una planilla Excel en un DataSet</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Server</o:Author>
+  <o:LastAuthor>Server</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>29</o:TotalTime>
+  <o:Created>2004-10-16T15:30:00Z</o:Created>
+  <o:LastSaved>2004-10-16T15:30:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>302</o:Words>
+  <o:Characters>1661</o:Characters>
+  <o:Lines>13</o:Lines>
+  <o:Paragraphs>3</o:Paragraphs>
+  <o:CharactersWithSpaces>1960</o:CharactersWithSpaces>
+  <o:Version>11.6360</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>75</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<STYLE>@font-face {
+	font-family: Verdana;
+}
+@page Section1 {size: 595.3pt 841.9pt; margin: 70.85pt 3.0cm 70.85pt 3.0cm; mso-header-margin: 35.4pt; mso-footer-margin: 35.4pt; mso-paper-source: 0; }
+P.MsoNormal {
+	FONT-SIZE: 12pt; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+LI.MsoNormal {
+	FONT-SIZE: 12pt; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+DIV.MsoNormal {
+	FONT-SIZE: 12pt; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Times New Roman"; mso-style-parent: ""; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"
+}
+A:link {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+SPAN.MsoHyperlink {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+A:visited {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+SPAN.MsoHyperlinkFollowed {
+	COLOR: blue; TEXT-DECORATION: underline; text-underline: single
+}
+P {
+	FONT-SIZE: 12pt; MARGIN-LEFT: 0cm; MARGIN-RIGHT: 0cm; FONT-FAMILY: "Times New Roman"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; mso-margin-top-alt: auto; mso-margin-bottom-alt: auto
+}
+PRE {
+	FONT-SIZE: 10pt; MARGIN: 0cm 0cm 0pt; FONT-FAMILY: "Courier New"; mso-pagination: widow-orphan; mso-fareast-font-family: "Times New Roman"; tab-stops: 45.8pt 91.6pt 137.4pt 183.2pt 229.0pt 274.8pt 320.6pt 366.4pt 412.2pt 458.0pt 503.8pt 549.6pt 595.4pt 641.2pt 687.0pt 732.8pt
+}
+SPAN.SpellE {
+	mso-style-name: ""; mso-spl-e: yes
+}
+SPAN.GramE {
+	mso-style-name: ""; mso-gram-e: yes
+}
+DIV.Section1 {
+	page: Section1
+}
+</STYLE>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Tabla normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+<META http-equiv=Window-target content=_top>
+<META content=".NET; VB.NET;Excel;ADO.NET" name=keywords>
+<META content="Cargar una planilla Excel en un DataSet" name=description>
+<META content="MSHTML 6.00.2900.2963" name=GENERATOR></HEAD>
+<BODY vLink=#0000ff aLink=#ff0000 link=#0000ff bgColor=#ffffff 
+background="Colabora_NET Cargar una planilla Excel en un DataSet_archivos/cuadriculaGris30.gif">
+<SCRIPT language=JavaScript>
+var gsPath = "../../"
+function IrADeLista(){
+    var s1 = gsBanner.D1.selectedIndex;
+    var s2 = gsBanner.D1.options[s1].value;
+    if( s2 != "Selecciona" )
+        window.location = gsPath + s2;
+}
+</SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="Colabora_NET Cargar una planilla Excel en un DataSet_archivos/elGuille.js"></SCRIPT>
+
+<HR noShade SIZE=3>
+
+<P align=right><FONT face=Verdana><A 
+href="http://www.elguille.info/colabora/colaboraNET.htm"><IMG height=30 
+src="Colabora_NET Cargar una planilla Excel en un DataSet_archivos/colabora_guillepuntonet.jpg" 
+width=500 align=baseline border=0></A></FONT></P>
+<TABLE id=tablePanorama style="BORDER-COLLAPSE: collapse" cellPadding=0 
+width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left width="80%">
+      <P><FONT face=Verdana><STRONG><FONT size=7>Cargar una planilla Excel en un 
+      DataSet</FONT><FONT size=5><BR></FONT></STRONG></FONT></P>
+      <P><FONT face=Verdana size=2><STRONG>Fecha: 30/Abr/2005 
+      (14/04/2005)<BR>Autor: Alvaro Regalado; 
+      alvaritus@msn.com</STRONG></FONT></P>
+      <P>&nbsp;</P></TD>
+    <TD vAlign=top align=middle width="20%"><IFRAME 
+      src="Colabora_NET Cargar una planilla Excel en un DataSet_archivos/Panoramabox.htm" 
+      frameBorder=0 width=180 scrolling=no 
+height=240></IFRAME></TD></TR></TBODY></TABLE>
+<HR align=center width="90%" noShade SIZE=3>
+
+<BLOCKQUOTE>
+  <P><B><SPAN style="FONT-FAMILY: Verdana">Una función sencilla para importar 
+  una hoja de Excel en un DataSet. </SPAN></B></P>
+  <P><SPAN style="FONT-SIZE: 10pt; FONT-FAMILY: Verdana">Hace poco tiempo tuve 
+  que hacer una página ASP.NET que leyera los datos de una planilla Excel y los 
+  guardara en un DataSet. En mi caso en particular precisaba enlazar dichos 
+  datos en una ComboBox, que es lo que les voy a exponer en este caso.<BR 
+  style="mso-special-character: line-break"><![if !supportLineBreakNewLine]><BR 
+  style="mso-special-character: line-break"><![endif]></SPAN><A 
+  name=OLE_LINK2></A><A name=OLE_LINK1><SPAN 
+  style="mso-bookmark: OLE_LINK2"><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Verdana">1) Lo primero que debemos hacer 
+  es definir el path del archivo en el archivo Web.config (en el caso que 
+  estemos creando una aplicación Web)</SPAN></SPAN></A></P>
+  <P><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">&lt;</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: maroon; FONT-FAMILY: Courier New">appSettings</SPAN><SPAN 
+  lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">&gt;</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: blue">&lt;!</SPAN><SPAN 
+  style="COLOR: green">-- Path clientes --</SPAN><SPAN 
+  style="COLOR: blue">&gt;</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN style="COLOR: blue">&lt;</SPAN><SPAN 
+  style="COLOR: maroon">add</SPAN><SPAN style="COLOR: fuchsia"> </SPAN><SPAN 
+  style="COLOR: red">key</SPAN><SPAN 
+  style="COLOR: blue">="Path_Clientes"</SPAN><SPAN style="COLOR: fuchsia"> 
+  </SPAN><SPAN style="COLOR: red">value</SPAN><SPAN 
+  style="COLOR: blue">="C:\Inetpub\wwwroot\Solicitudes\Clientes.xls"/&gt;</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">&lt;/</SPAN><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: maroon; FONT-FAMILY: Courier New">appSettings</SPAN><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">&gt;</SPAN></P>
+  <P class=MsoNormal>&nbsp;</P>
+  <P><A name=OLE_LINK3></A><A name=OLE_LINK4><FONT size=2><SPAN 
+  style="FONT-FAMILY: Verdana">2</SPAN></FONT><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Verdana; mso-bookmark: OLE_LINK2">) 
+  Luego, en el evento Page_Load de la página, llamamos a la función 
+  CargarClientes() que es la que tiene el código necesario para cargar la hoja 
+  Excel.</SPAN></A><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Verdana; mso-bookmark: OLE_LINK2"> La 
+  función CargarServicios tiene la misma funcionalidad básica pero apunta a otro 
+  Objeto (Servicios) que no está implementada en este artículo.</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">Private</SPAN><SPAN 
+  lang=EN-US style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> <SPAN 
+  style="COLOR: blue">Sub</SPAN> Page_Load(<SPAN 
+  style="COLOR: blue">ByVal</SPAN> sender <SPAN style="COLOR: blue">As</SPAN> 
+  System.Object, <SPAN style="COLOR: blue">ByVal</SPAN> e <SPAN 
+  style="COLOR: blue">As</SPAN> System.EventArgs) <SPAN 
+  style="COLOR: blue">Handles</SPAN> <SPAN 
+  style="COLOR: blue">MyBase</SPAN>.Load</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">If</SPAN><SPAN 
+  lang=EN-US style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> <SPAN 
+  style="COLOR: blue">Not</SPAN> Page.IsPostBack <SPAN 
+  style="COLOR: blue">Then</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">If</SPAN> CargarClientes() <SPAN 
+  style="COLOR: blue">AndAlso</SPAN> CargarServicios() <SPAN 
+  style="COLOR: blue">then</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <SPAN 
+  style="COLOR: green">'Introducir aquí el código de usuario para inicializar la 
+  página</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Else</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  JavaMsgBox("No existen los archivos necesarios para cargar la página. 
+  </SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">Contacte al 
+  administrador")</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Return</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">End</SPAN> <SPAN 
+  style="COLOR: blue">If</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">End</SPAN> <SPAN 
+  style="COLOR: blue">If</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">End</SPAN><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> <SPAN 
+  style="COLOR: blue">Sub</SPAN></SPAN></P>
+  <P><A name=OLE_LINK5></A><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Verdana; mso-bookmark: OLE_LINK2"><A 
+  name=OLE_LINK6>3) Finalmente, definimos la función en cuestión. Como pre 
+  requisito, debemos tener creada en la página una ComboBox llamada CMBcliente 
+  en donde se cargaran los clientes</A></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">Function</SPAN><SPAN 
+  lang=EN-US style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> CargarClientes() 
+  <SPAN style="COLOR: blue">As</SPAN> <SPAN 
+  style="COLOR: blue">Boolean</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Try</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: green">'Leer el path del archivo Excel que tiene los datos 
+  del cliente</SPAN></SPAN></P>
+  <P class=MsoNormal style="MARGIN-LEFT: 72pt"><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">Dim</SPAN><SPAN 
+  lang=EN-US style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> path <SPAN 
+  style="COLOR: blue">As</SPAN> <SPAN style="COLOR: blue">String</SPAN> = 
+  ConfigurationSettings.AppSettings("Path_Clientes")</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: green">'Si el archivo existe...</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">If</SPAN> File.Exists(path) <SPAN 
+  style="COLOR: blue">Then</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: green; FONT-FAMILY: Courier New">'Dimensionar 
+  los elementos necesarios para leer y cargar los datos</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">Dim</SPAN><SPAN 
+  lang=EN-US style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> oConn <SPAN 
+  style="COLOR: blue">As</SPAN> <SPAN style="COLOR: blue">New</SPAN> 
+  OleDbConnection</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Dim</SPAN> oCmd <SPAN style="COLOR: blue">As</SPAN> 
+  <SPAN style="COLOR: blue">New</SPAN> OleDbCommand</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Dim</SPAN> oDa <SPAN style="COLOR: blue">As</SPAN> 
+  <SPAN style="COLOR: blue">New</SPAN> OleDbDataAdapter</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Dim</SPAN> oDs <SPAN style="COLOR: blue">As</SPAN> 
+  <SPAN style="COLOR: blue">New</SPAN> DataSet</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: green; FONT-FAMILY: Courier New">'Atención: 
+  Esta es la cadena de conexión. La misma lee el archivo especificado en el 
+  path</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">oConn.ConnectionString = 
+  "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" &amp; _</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SPAN><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">path &amp; "; Extended 
+  Properties= Excel 8.0;"</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: green">' Abrir la conexión, y leer [Hoja 1] del archivo 
+  Excel</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">oConn.Open()</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  oCmd.CommandText = "SELECT * FROM [Hoja1$]"</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  oCmd.Connection = oConn</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;oDa.SelectCommand = 
+  oCmd</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: green; FONT-FAMILY: Courier New">'Llenar el 
+  DataSet</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  oDa.Fill(oDs, "Clientes")</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: green">'Cargar la ComboBox Cliente con los 
+  datos</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">CMB_cliente.DataSource = 
+  oDs.Tables(0).DefaultView</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: green; FONT-FAMILY: Courier New">'Mostrar el 
+  Nombre de la Empresa</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  CMBcliente.DataTextField = "ClienteNombre"</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: green">'Asignar al valor de la combo el código del 
+  cliente</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">CMBcliente.DataValueField = 
+  "ClienteCodigo"</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  CMBcliente.DataBind()</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  oConn.Close()</SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Return</SPAN> <SPAN style="COLOR: blue">True</SPAN> 
+  <SPAN style="COLOR: green">'Enlazado exitoso!</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Else</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">Return</SPAN> <SPAN style="COLOR: blue">False</SPAN> 
+  <SPAN style="COLOR: green">'Enlazado fallido!</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">End</SPAN> <SPAN 
+  style="COLOR: blue">If</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN lang=EN-US 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  </SPAN><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">Catch</SPAN><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> ex <SPAN 
+  style="COLOR: blue">As</SPAN> Exception</SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: green">'Aqui va el código que controle la 
+  excepción</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  <SPAN style="COLOR: blue">End</SPAN> <SPAN 
+  style="COLOR: blue">Try</SPAN></SPAN></P>
+  <P class=MsoNormal><SPAN 
+  style="FONT-SIZE: 10pt; COLOR: blue; FONT-FAMILY: Courier New">End</SPAN><SPAN 
+  style="FONT-SIZE: 10pt; FONT-FAMILY: Courier New"> <SPAN 
+  style="COLOR: blue">Function</SPAN></SPAN></P>
+  <P><FONT face=Verdana><SPAN lang=en-us><B>NOTA:</B> La planilla de Excel debe 
+  tener para este ejemplo el siguiente formato: </SPAN></FONT></P>
+  <TABLE height=48 width=374 border=1>
+    <TBODY>
+    <TR>
+      <TD width=168 height=17><FONT face=Verdana><SPAN 
+        lang=en-us>ClienteNombre</SPAN></FONT></TD>
+      <TD width=190 height=17><FONT face=Verdana><SPAN 
+        lang=en-us>ClienteCodigo</SPAN></FONT></TD></TR>
+    <TR>
+      <TD width=168 height=17><FONT face=Verdana><SPAN lang=en-us>Juan 
+        Perez</SPAN></FONT></TD>
+      <TD width=190 height=17><FONT face=Verdana><SPAN 
+        lang=en-us>112244</SPAN></FONT></TD></TR>
+    <TR>
+      <TD width=168 height=21><FONT face=Verdana><SPAN lang=en-us>Claudia 
+        Sosa</SPAN></FONT></TD>
+      <TD width=190 height=21><FONT face=Verdana><SPAN 
+        lang=en-us>3355766</SPAN></FONT></TD></TR></TBODY></TABLE>
+  <P><FONT face=Verdana><SPAN lang=en-us></SPAN></FONT>&nbsp;</P>
+  <P><SPAN lang=en-us><FONT face=Verdana size=2>Espero que les haya gustado y 
+  que les sirva. Ésta pagina que hice envía por mail los resultados de la 
+  selección del usuario al administrador. Si les interesa, me escriben y les 
+  paso esa funcionalidad también.</FONT></SPAN></P>
+  <P><SPAN lang=en-us><FONT face=Verdana size=2>Un abrazo grande a todos desde 
+  Montevideo, Uruguay y en especial a "Guille" que va a visitarnos el 16/4. 
+  Hasta la próxima!!!</FONT></SPAN></P>
+  <P>&nbsp;</P></BLOCKQUOTE>
+<HR align=center width="90%" noShade SIZE=3>
+
+<P align=center><FONT face=Verdana size=2><A 
+href="http://www.elguille.info/default.aspx"><IMG height=50 alt="ir al índice" 
+src="Colabora_NET Cargar una planilla Excel en un DataSet_archivos/el_guille.jpg" 
+width=200 border=0></A></FONT></P></BODY></HTML>
