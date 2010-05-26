@@ -1,0 +1,3 @@
+﻿/ConfigurationFile/Groups/Group[@name='ValidationExceptionMessage']/Keys/Key[@name='MaxLenghtField']
+
+/ConfigurationFile/Groups/Group/Keys/Key[@encrypted='true']
