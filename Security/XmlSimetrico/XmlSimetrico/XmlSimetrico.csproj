@@ -85,8 +85,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConfigurationManager.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="bin\Debug\ConfigurationManager.xml" />
+    <Content Include="ConfigurationManager_Enc.xml" />
+    <Content Include="XPATHS.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
