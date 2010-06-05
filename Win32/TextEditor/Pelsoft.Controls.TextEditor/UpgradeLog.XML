@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="Pelsoft.Controls.TextCodeEditor">
+</Property><Property Name="Solution File" Value="D:\Projects\pruebas\TextEditor\Pelsoft.Controls.TextEditor\Pelsoft.Controls.TextCodeEditor.sln">
+</Property><Property Name="Date" Value="lunes, 22 de febrero de 2010">
+</Property><Property Name="Time" Value="8:30:03">
+</Property></Properties><Event ErrorLevel="2" Project="Pelsoft.Controls.TextCodeEditor" Source="Pelsoft.Controls.TextCodeEditor.csproj" Description="Error converting project user file.  Data at the root level is invalid. Line 1, position 1.">
+</Event><Event ErrorLevel="3" Project="Pelsoft.Controls.TextCodeEditor" Source="Pelsoft.Controls.TextCodeEditor.csproj" Description="Not Converted">
+</Event></UpgradeLog>
