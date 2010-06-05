@@ -1,0 +1,247 @@
+<VisualStudioProject>
+    <CSHARP
+        ProjectType = "Local"
+        ProductVersion = "7.10.3077"
+        SchemaVersion = "2.0"
+        ProjectGuid = "{857897EA-9793-4A8E-9B18-F0F8B11A2C1A}"
+    >
+        <Build>
+            <Settings
+                ApplicationIcon = ""
+                AssemblyKeyContainerName = ""
+                AssemblyName = "Pelsoft.Controls.TextCodeEditor"
+                AssemblyOriginatorKeyFile = ""
+                DefaultClientScript = "JScript"
+                DefaultHTMLPageLayout = "Grid"
+                DefaultTargetSchema = "IE50"
+                DelaySign = "false"
+                OutputType = "Library"
+                PreBuildEvent = ""
+                PostBuildEvent = 'del "$(SolutionDir)..\Librerias\$(ProjectName).*" >> nul&#xd;&#xa;xcopy "$(TargetDir)$(ProjectName).*"  "$(SolutionDir)..\Librerias\*.*" >> nul'
+                RootNamespace = "Pelsoft.Controls.TextCodeEditor"
+                RunPostBuildEvent = "OnBuildSuccess"
+                StartupObject = ""
+            >
+                <Config
+                    Name = "Debug"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "DEBUG;TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "true"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "false"
+                    OutputPath = "bin\Debug\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+                <Config
+                    Name = "Release"
+                    AllowUnsafeBlocks = "false"
+                    BaseAddress = "285212672"
+                    CheckForOverflowUnderflow = "false"
+                    ConfigurationOverrideFile = ""
+                    DefineConstants = "TRACE"
+                    DocumentationFile = ""
+                    DebugSymbols = "false"
+                    FileAlignment = "4096"
+                    IncrementalBuild = "false"
+                    NoStdLib = "false"
+                    NoWarn = ""
+                    Optimize = "true"
+                    OutputPath = "bin\Release\"
+                    RegisterForComInterop = "false"
+                    RemoveIntegerChecks = "false"
+                    TreatWarningsAsErrors = "false"
+                    WarningLevel = "4"
+                />
+            </Settings>
+            <References>
+                <Reference
+                    Name = "System"
+                    AssemblyName = "System"
+                    HintPath = "..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.dll"
+                />
+                <Reference
+                    Name = "System.Data"
+                    AssemblyName = "System.Data"
+                    HintPath = "..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
+                />
+                <Reference
+                    Name = "System.XML"
+                    AssemblyName = "System.Xml"
+                    HintPath = "..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
+                />
+                <Reference
+                    Name = "System.Drawing"
+                    AssemblyName = "System.Drawing"
+                    HintPath = "..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Drawing.dll"
+                />
+                <Reference
+                    Name = "System.Windows.Forms"
+                    AssemblyName = "System.Windows.Forms"
+                    HintPath = "..\..\..\..\WINNT\Microsoft.NET\Framework\v1.1.4322\System.Windows.Forms.dll"
+                />
+                <Reference
+                    Name = "CSharpBinding"
+                    AssemblyName = "CSharpBinding"
+                    HintPath = "..\Librerias\CSharpBinding.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "ICSharpCode.Core"
+                    AssemblyName = "ICSharpCode.Core"
+                    HintPath = "..\Librerias\ICSharpCode.Core.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "ICSharpCode.SharpRefactory"
+                    AssemblyName = "ICSharpCode.SharpRefactory"
+                    HintPath = "..\Librerias\ICSharpCode.SharpRefactory.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "ICSharpCode.XmlForms"
+                    AssemblyName = "ICSharpCode.XmlForms"
+                    HintPath = "..\Librerias\ICSharpCode.XmlForms.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "ICSharpCode.TextEditor"
+                    AssemblyName = "ICSharpCode.TextEditor"
+                    HintPath = "..\Librerias\ICSharpCode.TextEditor.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "ICSharpCode.SharpAssembly"
+                    AssemblyName = "ICSharpCode.SharpAssembly"
+                    HintPath = "..\Librerias\ICSharpCode.SharpAssembly.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "ICSharpCode.SharpRefactoryVB"
+                    AssemblyName = "ICSharpCode.SharpRefactoryVB"
+                    HintPath = "..\Librerias\ICSharpCode.SharpRefactoryVB.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "VBNetBinding"
+                    AssemblyName = "VBNetBinding"
+                    HintPath = "..\Librerias\VBNetBinding.dll"
+                    Private = "True"
+                />
+                <Reference
+                    Name = "CPPNetBinding"
+                    AssemblyName = "CPPNetBinding"
+                    HintPath = "..\Librerias\CPPNetBinding.dll"
+                />
+                <Reference
+                    Name = "JavaBinding"
+                    AssemblyName = "JavaBinding"
+                    HintPath = "..\Librerias\JavaBinding.dll"
+                />
+                <Reference
+                    Name = "Pelsoft.Libraries.Product.ProductConfiguration"
+                    AssemblyName = "Pelsoft.Libraries.Product.ProductConfiguration"
+                    HintPath = "..\Librerias\Pelsoft.Libraries.Product.ProductConfiguration.dll"
+                />
+            </References>
+        </Build>
+        <Files>
+            <Include>
+                <File
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TextCodeControlEventsArgs.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TextCodeEditor.cs"
+                    SubType = "UserControl"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "TextCodeEditor.resx"
+                    DependentUpon = "TextCodeEditor.cs"
+                    BuildAction = "EmbeddedResource"
+                />
+                <File
+                    RelPath = "data\modes\ASPX.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\BAT-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\C64CSharp.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\CPP-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\CSharp-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\CSharp-Mode-VSEnh.xshd.alternateMode"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\Default-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\HTML-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\Java-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\JavaScript-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\Mode.xsd"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "data\modes\PHP-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\Tex-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\VBNET-Mode.xshd"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\vssver.scc"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "data\modes\XML-Mode.xshd"
+                    BuildAction = "None"
+                />
+            </Include>
+        </Files>
+    </CSHARP>
+</VisualStudioProject>
+
