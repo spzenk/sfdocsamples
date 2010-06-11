@@ -28,15 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+           
+  
+         
+          
             // 
             // SysEventSvc
             // 
             this.CanHandlePowerEvent = true;
             this.CanHandleSessionChangeEvent = true;
             this.ServiceName = "SysEventService";
+         
 
         }
 
         #endregion
+
+        
     }
 }
