@@ -1,2 +1,2 @@
-net start RemotingDispatcherService
+net start SysEventService
 pause
