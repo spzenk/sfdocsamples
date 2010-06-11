@@ -2,66 +2,142 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Win32;
+using System.Management;
+using System.Diagnostics;
+using System.Threading;
+
 
 namespace EventXP_Detecter
 {
-    internal class EventChecker
+
+
+    public class Management
     {
-        private System.Diagnostics.EventLog eventLog1;
-        public EventChecker()
+        //Thread procedure, start this thread from within OnStart of from
+        //your own service thread procedure.
+        //Initialize an Eventlog event watcher to look for Security events
+        //with EventIdentifier = 528 (Logon events)
+        //Note that 528 is valid for W2K, XP, W2K3, this value is not valid
+        public void WatchLogonEvent(object stateObject)
         {
-           
-    
+            AutoResetEvent stopWatcher = stateObject as AutoResetEvent;
+            WqlEventQuery q = new WqlEventQuery();
+            q.EventClassName = "__InstanceCreationEvent";
+            q.WithinInterval = new TimeSpan(0, 0, 3);
+            q.Condition = @"TargetInstance ISA 'Win32_NtLogEvent' 
+                            and TargetInstance.LogFile='Security' 
+                            and TargetInstance.EventIdentifier=528";
 
+            try
+            {
+                using (ManagementEventWatcher watcher = new ManagementEventWatcher(q))
+                {
+                    watcher.EventArrived += new EventArrivedEventHandler(LogonEventArrived);
+                    watcher.Start();
+                    // wait for a stop event
+                    stopWatcher.WaitOne();
+                    watcher.Stop();
+                }
+            }
+            catch (Exception e)
+            {
+                // log the event and stop the thread in case of failure, ...here dump the exception to the debugger
+                Debug.WriteLine(e);
+            }
         }
-        internal void start()
+
+
+        // Handle the event, this sample eventhandler dumps all properties
+        //to the debugger
+        static void LogonEventArrived(object sender, EventArrivedEventArgs e)
         {
-            this.eventLog1 = new System.Diagnostics.EventLog();
-            this.eventLog1.EnableRaisingEvents = true;
-            this.eventLog1.Log = "Application";
-            this.eventLog1.Source = "EventChecker";
-            SystemEvents.UserPreferenceChanging += new        UserPreferenceChangingEventHandler(SystemEvents_UserPreferenceChanging);
-            SystemEvents.PaletteChanged += new EventHandler(SystemEvents_PaletteChanged);
-            SystemEvents.DisplaySettingsChanged += new EventHandler(SystemEvents_DisplaySettingsChanged);
-            SystemEvents.SessionEnded += new SessionEndedEventHandler(SystemEvents_SessionEnded);
-            SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
-            SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
+            foreach (PropertyData pd in e.NewEvent.Properties)
+            {
+                ManagementBaseObject mbo = null;
+                if ((mbo = pd.Value as ManagementBaseObject) != null)
+                {
+                    foreach (PropertyData prop in mbo.Properties)
+                    {
+                        string eventMessage = string.Format("{0} - {1}", prop.Name, prop.Value);
+                        // Parse the "InsertionString" property ... to filter what you need
+                        // For demo purposes dump the string to the debugger
+                        Debug.WriteLine(eventMessage);
+                    }
+                }
+            }
+        }
+
+
+
+        ManagementEventWatcher _watcher;
+        ManagementEventWatcher _watcher2;
+        public  void OnStart()
+        {
+            string query1 = "Win32_PowerManagementEvent";
+            string query2 = "Select * from Win32_PowerManagementEvent";
+            string query3 = "select * from __instanceCreationEvent within 10 where targetInstance isa \"win32_Process\"";
+
+            WqlEventQuery query = new WqlEventQuery(query2);
             
-        }
-        void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
-        {
-            eventLog1.WriteEntry(string.Concat(Environment.UserName, Environment.MachineName, "PowerModeChanged", e.Mode.ToString()));
-        }
-
-        void SystemEvents_SessionSwitch(object sender, SessionSwitchEventArgs e)
-        {
-            eventLog1.WriteEntry(string.Concat(Environment.UserName, Environment.MachineName, "SessionSwitch", e.Reason.ToString()));
-        }
-
-        void SystemEvents_SessionEnded(object sender, SessionEndedEventArgs e)
-        {
-            eventLog1.WriteEntry(string.Concat(Environment.UserName, Environment.MachineName, "SessionEnded", e.Reason.ToString()));
-        }
-
-        // This method is called when a user preference changes.
-        static void SystemEvents_UserPreferenceChanging(object sender, UserPreferenceChangingEventArgs e)
-        {
-           
+            //WqlEventQuery queryUsb =new WqlEventQuery(eventName,new TimeSpan(0, 0, 1),"TargetInstance isa \"Win32_USBControllerDevice\"");
             
+            
+          
+            _watcher = new ManagementEventWatcher(query);
+            _watcher.EventArrived += new EventArrivedEventHandler(watcher_EventArrived);
+            _watcher.Start();
+
+
+            _watcher2 = new ManagementEventWatcher(new WqlEventQuery(query3));
+            _watcher2.EventArrived += new EventArrivedEventHandler(_watcher2_EventArrived);
+            _watcher2.Start();
         }
 
-        // This method is called when the palette changes.
-        static void SystemEvents_PaletteChanged(object sender, EventArgs e)
+        void _watcher2_EventArrived(object sender, EventArrivedEventArgs e)
         {
-           
+            StringBuilder x = new StringBuilder();
+            foreach (PropertyData p in e.NewEvent.Properties)
+            {
+                x.Append(p.Name);
+
+            }
         }
 
-        // This method is called when the display settings change.
-        static void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e)
+        public void OnStop()
         {
-        
+            _watcher.Stop();
         }
+
+        void watcher_EventArrived(object sender, EventArrivedEventArgs e)
+        {
+            try
+            {
+                //int eventType = Convert.ToInt32(e.NewEvent.Properties["EventType"].Value);
+
+                StringBuilder x = new StringBuilder();
+                foreach (PropertyData p in e.NewEvent.Properties)
+                {
+                    x.Append(p.Name);
+
+                }
+                //switch (eventType)
+                //{
+                //    case 4:
+                        
+                //        break;
+                //    case 7:
+                        
+                //        break;
+                //}
+            }
+            catch (Exception ex)
+            {
+                //Log(ex.Message); 
+            }
+        } 
+ 
 
     }
 }
+    
+
