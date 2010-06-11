@@ -10,7 +10,8 @@ namespace SysEventDetecterService
     internal class EventChecker
     {
         private System.Diagnostics.EventLog eventLog1;
-       
+         private System.Diagnostics.EventLog eventLog_Security;
+         string LogedUserName;
         internal void Start()
         {
             this.eventLog1 = new System.Diagnostics.EventLog();
@@ -18,14 +19,26 @@ namespace SysEventDetecterService
             this.eventLog1.Log = "Application";
             this.eventLog1.Source = "SysEventChecker";
             this.eventLog1.EnableRaisingEvents = true;
-            //SystemEvents.UserPreferenceChanging += new        UserPreferenceChangingEventHandler(SystemEvents_UserPreferenceChanging);
-            //SystemEvents.PaletteChanged += new EventHandler(SystemEvents_PaletteChanged);
-            //SystemEvents.DisplaySettingsChanged += new EventHandler(SystemEvents_DisplaySettingsChanged);
             SystemEvents.SessionEnded += new SessionEndedEventHandler(SystemEvents_SessionEnded);
             SystemEvents.SessionSwitch += new SessionSwitchEventHandler(SystemEvents_SessionSwitch);
             SystemEvents.PowerModeChanged += new PowerModeChangedEventHandler(SystemEvents_PowerModeChanged);
             eventLog1.WriteEntry(WindowsIdentity.GetCurrent().Name,System.Diagnostics.EventLogEntryType.SuccessAudit);
-            
+
+
+            this.eventLog_Security = new System.Diagnostics.EventLog();
+            this.eventLog_Security.EnableRaisingEvents = true;
+            this.eventLog_Security.Log = "Security";
+            this.eventLog_Security.EntryWritten += new System.Diagnostics.EntryWrittenEventHandler(eventLog_Security_EntryWritten);
+
+        }
+
+        void eventLog_Security_EntryWritten(object sender, System.Diagnostics.EntryWrittenEventArgs e)
+        {
+            if (e.Entry.EventID == 528 || e.Entry.EventID == 529)
+            {
+                LogedUserName = e.Entry.Message;
+            }
+
         }
         internal void Stop()
         {

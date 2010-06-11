@@ -28,5 +28,7 @@ namespace SysEventDetecterService
         {
             chk.Stop();
         }
+
+       
     }
 }

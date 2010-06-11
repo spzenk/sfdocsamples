@@ -12,5 +12,10 @@ namespace SysEventDetecterService
         {
             InitializeComponent();
         }
+
+        private void eventLog1_EntryWritten(object sender, System.Diagnostics.EntryWrittenEventArgs e)
+        {
+            e.Entry.EventID 
+        }
     }
 }
