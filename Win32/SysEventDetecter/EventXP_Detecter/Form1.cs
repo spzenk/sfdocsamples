@@ -11,6 +11,7 @@ namespace EventXP_Detecter
 {
     public partial class Form1 : Form
     {
+        Management o;
         public Form1()
         {
             InitializeComponent();
@@ -18,7 +19,8 @@ namespace EventXP_Detecter
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+             o = new Management();
+            o.OnStart();
         }
 
         

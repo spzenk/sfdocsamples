@@ -21,7 +21,7 @@ namespace SysEventDetecterService
         {
             chk = new EventChecker();
             chk.Start();
-           
+          
         }
 
         protected override void OnStop()

@@ -1,2 +1,2 @@
-installutil Fwk.Remoting.Listener.exe
+installutil SysEventService.exe
 pause
