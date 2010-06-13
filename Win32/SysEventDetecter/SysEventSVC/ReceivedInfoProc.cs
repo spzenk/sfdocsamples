@@ -15,7 +15,7 @@ namespace SysEventSVC
         {
             String wStrMessage = Encoding.ASCII.GetString((Byte[])messageInBytes);
             SysEventMessage wSysEvent = (SysEventMessage)SysEvent.Common.Helpers.DeserializeFromXml(typeof(SysEventMessage), wStrMessage);
-
+            //Insert(wSysEvent);
 
         }
         /// <summary>
