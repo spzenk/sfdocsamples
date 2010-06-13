@@ -23,12 +23,12 @@ namespace SysEventSVC
             }
             catch (Exception ex)
             {
-                if ((bool)System.Configuration.ConfigurationManager.AppSettings["PerformLog"])
+                if (Convert.ToBoolean( System.Configuration.ConfigurationManager.AppSettings["PerformLog"]))
                 {
                     Event ev = new Event();
                     ev.AppId = "SystemEvent service";
                     ev.LogType = EventType.Error;
-                    ev.Message = ExceptionHelper.GetAllMessageException(ex);
+                    ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
                     ev.Source = "SystemEvent MSMQ deamon";
                     
                     StaticLogger.Log( Fwk.Logging.Targets.TargetType.WindowsEvent , ev,null,null);
