@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.IO;
 
-namespace SysEventDetecterService
+namespace SysEvent.Common
 {
 
     public  sealed class Helpers
@@ -32,40 +32,28 @@ namespace SysEventDetecterService
 
             return wStwSerializado.ToString().Replace("<?xml version=\"1.0\" encoding=\"utf-16\"?>", String.Empty);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pTipo"></param>
+        /// <param name="pXml"></param>
+        /// <returns></returns>
+        public static object DeserializeFromXml(Type pTipo, string pXml)
+        {
+            XmlSerializer wSerializer;
+            StringReader wStrSerializado = new StringReader(pXml);
+            XmlTextReader wXmlReader = new XmlTextReader(wStrSerializado);
+            //XmlSerializerNamespaces wNameSpaces = new XmlSerializerNamespaces();
+            object wResObj = null;
+
+            //wNameSpaces.Add(String.Empty, String.Empty);
+            wSerializer = new XmlSerializer(pTipo);
+            wResObj = wSerializer.Deserialize(wXmlReader);
+
+            return wResObj;
+        }
     }
-    public class SysEvent
-    {
-        string _UserName;
-
-        public string UserName
-        {
-            get { return _UserName; }
-            set { _UserName = value; }
-        }
-        string _MachineName;
-
-        public string MachineName
-        {
-            get { return _MachineName; }
-            set { _MachineName = value; }
-        }
-        EventTypeEnum _EventType;
-
-        internal EventTypeEnum EventType
-        {
-            get { return _EventType; }
-            set { _EventType = value; }
-        }
-
-        string _Message;
-
-        public string Message
-        {
-            get { return _Message; }
-            set { _Message = value; }
-        }
-
-    }
+    
     [Serializable]
     public enum EventTypeEnum
     {
