@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventXP_Detecter", "EventXP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEventDetecterService", "SysEventDetecterService\SysEventDetecterService.csproj", "{840F9D2B-1CCA-4596-B3EC-651B9B260DBB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEventSVC", "SysEventSVC\SysEventSVC.csproj", "{AAA80821-4015-4C0A-A796-D6F2B082B0A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEvent.Common", "SysEvent.Common\SysEvent.Common.csproj", "{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{840F9D2B-1CCA-4596-B3EC-651B9B260DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{840F9D2B-1CCA-4596-B3EC-651B9B260DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{840F9D2B-1CCA-4596-B3EC-651B9B260DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
