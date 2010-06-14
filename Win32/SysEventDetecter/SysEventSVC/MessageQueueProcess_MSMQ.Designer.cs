@@ -1,4 +1,4 @@
-﻿namespace SysEventSVC
+﻿namespace SysEvent.Deamon
 {
     partial class MessageQueueProcess_MSMQ
     {

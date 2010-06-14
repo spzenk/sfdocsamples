@@ -8,7 +8,8 @@ using System.Data.Common;
 using Fwk.Logging;
 using Fwk.Exceptions;
 using System.Data.SqlClient;
-namespace SysEventSVC
+
+namespace SysEvent.Deamon
 {
     internal static class ReceivedInfoProc
     {
@@ -19,6 +20,7 @@ namespace SysEventSVC
             //Insert(wSysEvent);
 
         }
+
         /// <summary>
         /// Insert
         /// </summary>
@@ -66,6 +68,7 @@ namespace SysEventSVC
 
 
         }
+
         internal static Boolean PingToSQL()
         {
             Database wDataBase = DatabaseFactory.CreateDatabase("syseventdata");
@@ -92,15 +95,29 @@ namespace SysEventSVC
 
         internal static void LogError(Exception ex)
         {
-            if (Convert.ToBoolean(SysEventSVC.Properties.Settings.Default.PerformLog))
+            if (Convert.ToBoolean(SysEvent.Deamon.Properties.Settings.Default.PerformLog))
             {
                 Event ev = new Event();
-                ev.AppId = SysEventSVC.Properties.Resource.Title;
+                ev.AppId = SysEvent.Deamon.Properties.Resource.Title;
                 ev.LogType = EventType.Error;
                 ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
-                ev.Source = SysEventSVC.Properties.Resource.Title;
+                ev.Source = SysEvent.Deamon.Properties.Resource.Title;
 
                 StaticLogger.Log(Fwk.Logging.Targets.TargetType.Database, ev, null, "logs");
+            }
+        }
+
+        internal static void LogError_WE(Exception ex)
+        {
+            if (Convert.ToBoolean(SysEvent.Deamon.Properties.Settings.Default.PerformLog))
+            {
+                Event ev = new Event();
+                ev.AppId = SysEvent.Deamon.Properties.Resource.Title;
+                ev.LogType = EventType.Error;
+                ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
+                ev.Source = SysEvent.Deamon.Properties.Resource.Title;
+
+                StaticLogger.Log(Fwk.Logging.Targets.TargetType.WindowsEvent, ev, null, null);
             }
         }
     }
