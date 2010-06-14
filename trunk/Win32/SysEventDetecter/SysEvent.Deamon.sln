@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEvent.Common", "SysEvent.Common\SysEvent.Common.csproj", "{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEvent.Deamon", "SysEvent.Deamon\SysEvent.Deamon.csproj", "{AAA80821-4015-4C0A-A796-D6F2B082B0A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication1", "ConsoleApplication1\ConsoleApplication1.csproj", "{245CA5D4-3DFD-43F3-8E9D-BD11BDBEDD58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA80821-4015-4C0A-A796-D6F2B082B0A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{245CA5D4-3DFD-43F3-8E9D-BD11BDBEDD58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{245CA5D4-3DFD-43F3-8E9D-BD11BDBEDD58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{245CA5D4-3DFD-43F3-8E9D-BD11BDBEDD58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{245CA5D4-3DFD-43F3-8E9D-BD11BDBEDD58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
