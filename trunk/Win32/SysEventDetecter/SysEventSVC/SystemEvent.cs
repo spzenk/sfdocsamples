@@ -7,7 +7,7 @@ using System.Text;
 using Fwk.Exceptions;
 using Fwk.Logging;
 
-namespace SysEventSVC
+namespace SysEvent.Deamon
 {
     /// <summary>
     /// Este servicio procesa la cola de MSMQ por lotes
@@ -29,16 +29,7 @@ namespace SysEventSVC
             }
             catch (Exception ex)
             {
-                if (Convert.ToBoolean( System.Configuration.ConfigurationManager.AppSettings["PerformLog"]))
-                {
-                    Event ev = new Event();
-                    ev.AppId = "SystemEvent service";
-                    ev.LogType = EventType.Error;
-                    ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
-                    ev.Source = "SystemEvent MSMQ deamon";
-                    
-                    StaticLogger.Log( Fwk.Logging.Targets.TargetType.WindowsEvent , ev,null,null);
-                }
+                ReceivedInfoProc.LogError(ex);
             }
         }
 

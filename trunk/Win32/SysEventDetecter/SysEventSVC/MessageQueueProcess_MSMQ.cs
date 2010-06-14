@@ -10,7 +10,7 @@ using System.Messaging;
 using System.Timers;
 using Fwk.Logging;
 
-namespace SysEventSVC
+namespace SysEvent.Deamon
 {
     //public delegate void MessageArriveHandler(ReceivedInfoBE msg);
     public partial class MessageQueueProcess_MSMQ : Component
@@ -64,8 +64,8 @@ namespace SysEventSVC
              
 
                 // Create the transacted MSMQ queue if necessary.
-                if (!MessageQueue.Exists(SysEventSVC.Properties.Settings.Default.QueuePath))
-                    MessageQueue.Create(SysEventSVC.Properties.Settings.Default.QueuePath, true);
+                if (!MessageQueue.Exists(SysEvent.Deamon.Properties.Settings.Default.QueuePath))
+                    MessageQueue.Create(SysEvent.Deamon.Properties.Settings.Default.QueuePath, true);
 
 
                 // Create a ServiceHost for the CDRService type.
@@ -94,10 +94,10 @@ namespace SysEventSVC
         {
 
             Event ev = new Event();
-            ev.AppId = SysEventSVC.Properties.Resource.Title;
+            ev.AppId = SysEvent.Deamon.Properties.Resource.Title;
             ev.LogType = EventType.Error;
-            ev.Message.Text = SysEventSVC.Properties.Resource.Title + " Faulted";
-            ev.Source = SysEventSVC.Properties.Resource.Title;
+            ev.Message.Text = SysEvent.Deamon.Properties.Resource.Title + " Faulted";
+            ev.Source = SysEvent.Deamon.Properties.Resource.Title;
 
             StaticLogger.Log(Fwk.Logging.Targets.TargetType.Database, ev, null, "logs");
         }
@@ -109,7 +109,7 @@ namespace SysEventSVC
               
                 //".\\Private$\\MyPrivateQueue";
                 //@".\private$\TarifadorQueue";
-                SysEventQueue.Path = SysEventSVC.Properties.Settings.Default.QueuePath;
+                SysEventQueue.Path = SysEvent.Deamon.Properties.Settings.Default.QueuePath;
                 CreateQueue(SysEventQueue.Path);
 
             }
