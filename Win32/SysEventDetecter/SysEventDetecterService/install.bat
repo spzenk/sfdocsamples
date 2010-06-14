@@ -1,2 +1,0 @@
-installutil SysEventService.exe
-pause
