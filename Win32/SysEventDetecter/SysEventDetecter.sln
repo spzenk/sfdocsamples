@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventXP_Detecter", "EventXP_Detecter\EventXP_Detecter.csproj", "{45027902-83C0-47BD-A7C4-522F35D62070}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEventDetecterService", "SysEventDetecterService\SysEventDetecterService.csproj", "{840F9D2B-1CCA-4596-B3EC-651B9B260DBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEvent.ClientService", "SysEvent.ClientService\SysEvent.ClientService.csproj", "{840F9D2B-1CCA-4596-B3EC-651B9B260DBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEventSVC", "SysEventSVC\SysEventSVC.csproj", "{AAA80821-4015-4C0A-A796-D6F2B082B0A5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEvent.Deamon", "SysEvent.Deamon\SysEvent.Deamon.csproj", "{AAA80821-4015-4C0A-A796-D6F2B082B0A5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysEvent.Common", "SysEvent.Common\SysEvent.Common.csproj", "{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClientListenerServices", "ClientListenerServices", "{CF13E049-AB3C-4B3B-83D1-1747AC96EAC8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WS_SysService", "WS_SysService\WS_SysService.csproj", "{C202855F-424F-4F5B-B79A-6B29177DF22D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysService.WS", "SysEvent.WS\SysService.WS.csproj", "{C202855F-424F-4F5B-B79A-6B29177DF22D}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
