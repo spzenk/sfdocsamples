@@ -9,7 +9,13 @@ using Fwk.Logging;
 
 namespace SysEventSVC
 {
-    
+    /// <summary>
+    /// Este servicio procesa la cola de MSMQ por lotes
+    /// Aqui van llegando lotes de mensages.-
+    /// </summary>
+    [ServiceBehavior(ReleaseServiceInstanceOnTransactionComplete = false,
+       TransactionIsolationLevel = System.Transactions.IsolationLevel.Serializable,
+       ConcurrencyMode = ConcurrencyMode.Multiple)]
     public class SystemEvent : ISystemEvent
     {
 

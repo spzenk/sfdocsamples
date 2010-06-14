@@ -7,6 +7,7 @@ using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 using Fwk.Logging;
 using Fwk.Exceptions;
+using System.Data.SqlClient;
 namespace SysEventSVC
 {
     internal static class ReceivedInfoProc
@@ -32,7 +33,7 @@ namespace SysEventSVC
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase("tarifador");
+                wDataBase = DatabaseFactory.CreateDatabase("syseventdata");
                 wCmd = wDataBase.GetStoredProcCommand("ReceivedInfo_i");
 
 
@@ -57,20 +58,50 @@ namespace SysEventSVC
 
             catch (Exception ex)
             {
-                if (Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["PerformLog"]))
-                {
-                    Event ev = new Event();
-                    ev.AppId = "SystemEvent service";
-                    ev.LogType = EventType.Error;
-                    ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
-                    ev.Source = "SystemEvent MSMQ deamon";
-
-                    StaticLogger.Log(Fwk.Logging.Targets.TargetType.Database, ev, null,"logs");
-                }
+                
+                    LogError(ex);
+                
             }
 
 
 
+        }
+        internal static Boolean PingToSQL()
+        {
+            Database wDataBase = DatabaseFactory.CreateDatabase("syseventdata");
+            string wConnectionString = wDataBase.CreateConnection().ConnectionString;
+
+            using (SqlConnection wCnn = new SqlConnection(wConnectionString))
+            {
+                try
+                {
+
+                    wCnn.Open();
+
+                    wCnn.Close();
+                    return true;
+
+                }
+                catch (Exception ex)
+                {
+                    LogError(ex);
+                    return false;
+                }
+            }
+        }
+
+        internal static void LogError(Exception ex)
+        {
+            if (Convert.ToBoolean(SysEventSVC.Properties.Settings.Default.PerformLog))
+            {
+                Event ev = new Event();
+                ev.AppId = SysEventSVC.Properties.Resource.Title;
+                ev.LogType = EventType.Error;
+                ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
+                ev.Source = SysEventSVC.Properties.Resource.Title;
+
+                StaticLogger.Log(Fwk.Logging.Targets.TargetType.Database, ev, null, "logs");
+            }
         }
     }
 }
