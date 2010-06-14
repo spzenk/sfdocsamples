@@ -66,13 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="orders.mdf">
-    </Content>
-    <Content Include="orders_log.ldf">
-      <DependentUpon>orders.mdf</DependentUpon>
-    </Content>
+    <None Include="orderdb.rar" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
