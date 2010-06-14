@@ -72,10 +72,6 @@
       <Project>{2944E60A-AFF9-4475-B51C-08D0DE1EB0DA}</Project>
       <Name>SysEvent.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SysEvent.Deamon\SysEvent.Deamon.csproj">
-      <Project>{AAA80821-4015-4C0A-A796-D6F2B082B0A5}</Project>
-      <Name>SysEvent.Deamon</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
