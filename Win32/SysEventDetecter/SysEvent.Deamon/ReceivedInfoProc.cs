@@ -102,6 +102,24 @@ namespace SysEvent.Deamon
                 ev.LogType = EventType.Error;
                 ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
                 ev.Source = SysEvent.Deamon.Properties.Resource.Title;
+                ev.LogDate = DateTime.Now;
+                ev.Machine = Environment.MachineName;
+                ev.User = Environment.UserName;
+                StaticLogger.Log(Fwk.Logging.Targets.TargetType.Database, ev, null, "syseventdata");
+            }
+        }
+        internal static void LogError(string msg)
+        {
+            if (Convert.ToBoolean(SysEvent.Deamon.Properties.Settings.Default.PerformLog))
+            {
+                Event ev = new Event();
+                ev.AppId = SysEvent.Deamon.Properties.Resource.Title;
+                ev.LogType = EventType.Error;
+                ev.Message.Text = msg;
+                ev.Source = SysEvent.Deamon.Properties.Resource.Title;
+                ev.LogDate = DateTime.Now;
+                ev.Machine = Environment.MachineName;
+                ev.User = Environment.UserName;
 
                 StaticLogger.Log(Fwk.Logging.Targets.TargetType.Database, ev, null, "syseventdata");
             }
@@ -116,7 +134,9 @@ namespace SysEvent.Deamon
                 ev.LogType = EventType.Error;
                 ev.Message.Text = ExceptionHelper.GetAllMessageException(ex);
                 ev.Source = SysEvent.Deamon.Properties.Resource.Title;
-
+                ev.LogDate = DateTime.Now;
+                ev.Machine = Environment.MachineName;
+                ev.User = Environment.UserName;
                 StaticLogger.Log(Fwk.Logging.Targets.TargetType.WindowsEvent, ev, null, null);
             }
         }
