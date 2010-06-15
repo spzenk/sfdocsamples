@@ -13,7 +13,7 @@ namespace SysEvent.Deamon
     {
         static void Main(string[] args)
         {
-          
+            ReceivedInfoProc.LogError("asasdsadsdasds");
             //using (ServiceHost serviceHost = new ServiceHost(typeof(SystemEvent)))
             //{
             //    serviceHost.Open();
