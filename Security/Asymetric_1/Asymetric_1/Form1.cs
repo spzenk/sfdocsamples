@@ -35,6 +35,13 @@ namespace Asymetric_1
             sw.Write(llave);
             sw.Close();
         }
+        private void CargarLlave(string archivo)
+        {
+            alg = new RSACryptoServiceProvider();
+            string xmlKeys = xmlKeys = Fwk.HelperFunctions.FileFunctions.OpenTextFile(archivo);
+            alg.FromXmlString(xmlKeys);
+
+        }
 
         private string Encriptar(string input)
         {
@@ -50,7 +57,7 @@ namespace Asymetric_1
 
         private byte[] Desencriptar(byte[] input)
         {
-            alg = CargarLlave("key.xml");
+            CargarLlave("key.xml");
             byte[] output = alg.Decrypt(input, false);
             return output;
         }
@@ -71,7 +78,7 @@ namespace Asymetric_1
 
         private void btnDEncrypt_Click(object sender, EventArgs e)
         {
-            Desencriptar(textValor.Text);
+            Desencriptar(textResultado.Text);
         }
     }
 }
