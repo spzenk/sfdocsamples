@@ -35,50 +35,65 @@ namespace Asymetric_1
             sw.Write(llave);
             sw.Close();
         }
+
         private void CargarLlave(string archivo)
         {
             alg = new RSACryptoServiceProvider();
-            string xmlKeys = xmlKeys = Fwk.HelperFunctions.FileFunctions.OpenTextFile(archivo);
+            string xmlKeys =  Fwk.HelperFunctions.FileFunctions.OpenTextFile(archivo);
             alg.FromXmlString(xmlKeys);
 
         }
-
-        private string Encriptar(string input)
-        {
-           return Convert.ToBase64String(Encriptar(System.Text.Encoding.UTF8.GetBytes(input)));
-        }
-        private byte[] Encriptar(byte[] input)
+    
+        private string Encriptar(string decryptedText)
         {
             CrearLlave("key.xml");
-            byte[] output = alg.Encrypt(input, false);
-            return output;
+            byte[] decryptedBin = Encoding.UTF8.GetBytes(decryptedText);
+            byte[]  output = alg.Encrypt(decryptedBin, false);
+            return Convert.ToBase64String(output); 
         }
+    
 
-
-        private byte[] Desencriptar(byte[] input)
+        private string Desencriptar(string cryptedText)
         {
             CargarLlave("key.xml");
-            byte[] output = alg.Decrypt(input, false);
-            return output;
+            byte[] cryptedBin = Convert.FromBase64String(cryptedText);
+            byte[] output = alg.Decrypt(cryptedBin, false);
+            return Encoding.UTF8.GetString(output);
+          
         }
-        private string Desencriptar(string  input)
-        {
-            return Convert.ToBase64String(Desencriptar(System.Text.Encoding.UTF8.GetBytes(input)));
-        }
+
+
+
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-          
-            Encriptar(textValor.Text);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            txtCifrado.Text = Encriptar(textValor.Text);
         }
 
         private void btnDEncrypt_Click(object sender, EventArgs e)
         {
-            Desencriptar(textResultado.Text);
+           txtNoCifrado.Text = Desencriptar(txtCifrado.Text);
         }
+
+        private void txtCifrado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNoCifrado_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        
     }
 }

@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.btnEncrypt = new System.Windows.Forms.Button();
-            this.textResultado = new System.Windows.Forms.TextBox();
+            this.txtCifrado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textValor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnDEncrypt = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNoCifrado = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -48,15 +48,16 @@
             this.btnEncrypt.UseVisualStyleBackColor = true;
             this.btnEncrypt.Click += new System.EventHandler(this.btnEncrypt_Click);
             // 
-            // textResultado
+            // txtCifrado
             // 
-            this.textResultado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtCifrado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textResultado.Location = new System.Drawing.Point(12, 104);
-            this.textResultado.Multiline = true;
-            this.textResultado.Name = "textResultado";
-            this.textResultado.Size = new System.Drawing.Size(421, 158);
-            this.textResultado.TabIndex = 1;
+            this.txtCifrado.Location = new System.Drawing.Point(12, 104);
+            this.txtCifrado.Multiline = true;
+            this.txtCifrado.Name = "txtCifrado";
+            this.txtCifrado.Size = new System.Drawing.Size(421, 158);
+            this.txtCifrado.TabIndex = 1;
+            this.txtCifrado.TextChanged += new System.EventHandler(this.txtCifrado_TextChanged);
             // 
             // label1
             // 
@@ -82,6 +83,7 @@
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Valor encriptado";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // btnDEncrypt
             // 
@@ -93,16 +95,17 @@
             this.btnDEncrypt.UseVisualStyleBackColor = true;
             this.btnDEncrypt.Click += new System.EventHandler(this.btnDEncrypt_Click);
             // 
-            // textBox1
+            // txtNoCifrado
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.txtNoCifrado.AcceptsReturn = true;
+            this.txtNoCifrado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(12, 293);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(421, 97);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtNoCifrado.Location = new System.Drawing.Point(12, 293);
+            this.txtNoCifrado.Multiline = true;
+            this.txtNoCifrado.Name = "txtNoCifrado";
+            this.txtNoCifrado.Size = new System.Drawing.Size(421, 97);
+            this.txtNoCifrado.TabIndex = 6;
+            this.txtNoCifrado.TextChanged += new System.EventHandler(this.txtNoCifrado_TextChanged);
             // 
             // label3
             // 
@@ -112,6 +115,7 @@
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Valor inicial";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // Form1
             // 
@@ -119,12 +123,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(502, 481);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNoCifrado);
             this.Controls.Add(this.btnDEncrypt);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textValor);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textResultado);
+            this.Controls.Add(this.txtCifrado);
             this.Controls.Add(this.btnEncrypt);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -136,12 +140,12 @@
         #endregion
 
         private System.Windows.Forms.Button btnEncrypt;
-        private System.Windows.Forms.TextBox textResultado;
+        private System.Windows.Forms.TextBox txtCifrado;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textValor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnDEncrypt;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNoCifrado;
         private System.Windows.Forms.Label label3;
     }
 }
