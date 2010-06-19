@@ -182,7 +182,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "Find dll";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            
             // 
             // numericThread
             // 
@@ -263,7 +263,7 @@
             this.btnStartTest.TabIndex = 0;
             this.btnStartTest.Text = "Start test";
             this.btnStartTest.UseVisualStyleBackColor = true;
-            this.btnStartTest.Click += new System.EventHandler(this.btnStart_Click);
+            
             // 
             // tabPage3
             // 
@@ -335,14 +335,9 @@
             this.tabPage5.TabIndex = 1;
             this.tabPage5.Text = "Multiple";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(back.Common.BE.Measures);
+            
             // 
             // measuresBindingSource
-            // 
-            this.measuresBindingSource.DataSource = typeof(back.Common.BE.Measures);
             // 
             // tabControl3
             // 
@@ -508,7 +503,7 @@
             this.btnSaveResult.TabIndex = 18;
             this.btnSaveResult.Text = "Save result";
             this.btnSaveResult.UseVisualStyleBackColor = true;
-            this.btnSaveResult.Click += new System.EventHandler(this.btnSaveResult_Click);
+            
             // 
             // dataGridView3
             // 
@@ -596,7 +591,7 @@
             this.btnStartSimpleTest.TabIndex = 15;
             this.btnStartSimpleTest.Text = "Start test";
             this.btnStartSimpleTest.UseVisualStyleBackColor = true;
-            this.btnStartSimpleTest.Click += new System.EventHandler(this.btnStartSimpleTest_Click_1);
+            
             // 
             // txtSimpleResult
             // 

@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Fwk.Caching;
-using back.Common.ISVC.SearchSalesOrderDetail;
+
 using System.Reflection;
-using back.Common.BE;
+
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -22,124 +22,23 @@ namespace TestServicePerformance
 
     public partial class frmTest : Form
     {
-        Measures _Sizes = new Measures();
-        ControllerTest _ControllerTest = new ControllerTest();
-        ControllerTest Ctrl;
+
+  
         RemotingWrapper _RemotingWrapper;
         RemotingWrapper_config _RemotingWrapper_config;
         StringBuilder strResult = new StringBuilder();
-        SearchSalesOrderDetailRes _SearchSalesOrderDetailRes;
+
 
         public frmTest()
         {
             InitializeComponent();
-            Ctrl = new ControllerTest();
+
 
         }
 
-        private void btnStart_Click(object sender, EventArgs e)
-        {
-            strResult = new StringBuilder();
+  
 
-            txtTestResult.Text = string.Empty;
-            if (_RemotingWrapper == null)
-            {
-                MessageBox.Show("Haga clic en el boton Init");
-                return;
-            }
-            btnStartTest.Enabled = false;
-            progressBar1.Visible = true;
-            progressBar1.Maximum = ControllerTest.Storage.StorageObject.Threads * ControllerTest.Storage.StorageObject.Calls;
-
-            try
-            {
-
-                _RemotingWrapper.MessageEvent += new CheckEven(_RemotingWrapper_MessageEvent);
-                _RemotingWrapper.FinalizeEvent += new FinalizeHandler(_RemotingWrapper_FinalizeEvent);
-                _RemotingWrapper.CallEvent += new CallHandler(_RemotingWrapper_CallEvent);
-                _RemotingWrapper.Start(txtXmlRequest.Text);
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                progressBar1.Visible = false;
-                btnStartTest.Enabled = true;
-            }
-
-        }
-
-        #region wrapper events
-        void _RemotingWrapper_CallEvent()
-        {
-            if (this.InvokeRequired)
-            {
-                CallHandler d = new CallHandler(_RemotingWrapper_CallEvent);
-                this.Invoke(d, new object[] { });
-            }
-            else
-            {
-                if (progressBar1.Value == progressBar1.Maximum) return;
-                progressBar1.Value++;
-            }
-        }
-
-        void _RemotingWrapper_FinalizeEvent(string msgError)
-        {
-
-            if (this.InvokeRequired)
-            {
-                FinalizeHandler d = new FinalizeHandler(_RemotingWrapper_FinalizeEvent);
-                this.Invoke(d, new object[] { msgError });
-            }
-            else
-            {
-
-                if (!string.IsNullOrEmpty(msgError))
-                {
-                    strResult.AppendLine(msgError);
-                    _RemotingWrapper.MessageEvent -= new CheckEven(_RemotingWrapper_MessageEvent);
-                    _RemotingWrapper.FinalizeEvent -= new FinalizeHandler(_RemotingWrapper_FinalizeEvent);
-                    _RemotingWrapper.CallEvent -= new CallHandler(_RemotingWrapper_CallEvent);
-                }
-                txtTestResult.Text = strResult.ToString();
-                progressBar1.Visible = false;
-                progressBar1.Value = progressBar1.Minimum;
-                tabControl1.TabIndex = 2;
-                btnStartTest.Enabled = true;
-
-
-
-            }
-
-        }
-
-        void _RemotingWrapper_MessageEvent(string msg, int threadNumber, double average, double totalTime)
-        {
-
-            if (this.InvokeRequired)
-            {
-                CheckEven d = new CheckEven(_RemotingWrapper_MessageEvent);
-                this.Invoke(d, new object[] { msg, threadNumber, average, totalTime });
-            }
-            else
-            {
-
-                string str = string.Concat(msg, threadNumber, average, totalTime);
-
-                strResult.Append(msg);
-                strResult.Append(threadNumber);
-                strResult.Append(string.Concat("   Date : ", System.DateTime.Now));
-                strResult.Append(string.Concat("   AVG time : ", average, " ms"));
-                strResult.Append(string.Concat("    Total time : ", totalTime, " ms"));
-                strResult.AppendLine(Environment.NewLine);
-
-
-            }
-        }
-
-        #endregion
+        
 
         private void btnPing_Click(object sender, EventArgs e)
         {
@@ -199,21 +98,6 @@ namespace TestServicePerformance
 
        
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            using (frmAssemblyExplorer f = new frmAssemblyExplorer())
-            {
-                if (f.ShowDialog() == DialogResult.OK)
-                {
-                    txtSvc.Text = f.SelectedServiceConfiguration.Name;
-                    ControllerTest.Storage.StorageObject.SelectedServiceConfiguration = f.SelectedServiceConfiguration;
-                    ControllerTest.Storage.Save();
-                    Fwk.Bases.IServiceContract isvcReq = (Fwk.Bases.IServiceContract)Fwk.HelperFunctions.ReflectionFunctions.CreateInstance(ControllerTest.Storage.StorageObject.SelectedServiceConfiguration.Request);
-                    this.txtXmlRequest.Text = isvcReq.GetBusinessDataXml();
-                }
-            }
-        }
-
         private void numericThread_ValueChanged(object sender, EventArgs e)
         {
             ControllerTest.Storage.StorageObject.Threads = (int)numericThread.Value;
@@ -270,78 +154,8 @@ namespace TestServicePerformance
             return (decimal)lSize;
         }
 
-        #region populate async 
-        void PopulateAsync()
-        {
-            Exception ex = null;
-            DelegateWithOutAndRefParameters s = new DelegateWithOutAndRefParameters(Populate);
-            s.BeginInvoke(out ex, new AsyncCallback(EndPopulate), null);
-        }
-
-        void EndPopulate(IAsyncResult res)
-        {
-            Exception ex;
-            if (this.InvokeRequired)
-            {
-                AsyncCallback d = new AsyncCallback(EndPopulate);
-                this.Invoke(d, new object[] { res });
-            }
-            else
-            {
-                AsyncResult result = (AsyncResult)res;
-                DelegateWithOutAndRefParameters del = (DelegateWithOutAndRefParameters)result.AsyncDelegate;
-                del.EndInvoke(out ex, res);
-
-                if (_SearchSalesOrderDetailRes.Error != null)
-                {
-                    txtSimpleResult.Text = _SearchSalesOrderDetailRes.Error.GetXml();
-                    return;
-                }
-                dataGridView2.DataSource = _SearchSalesOrderDetailRes.BusinessData.Times;
-
-                _Sizes = new Measures();
-                _Sizes.Add(new Measure("Result", GetSizeOfObject(_SearchSalesOrderDetailRes), false));
-                _Sizes.Add(new Measure("Entity SalesOrderDetailList", GetSizeOfObject(_SearchSalesOrderDetailRes.BusinessData.SalesOrderDetailList), false));
-                _Sizes.Add(new Measure("Test measures", GetSizeOfObject(_SearchSalesOrderDetailRes.BusinessData.Times), false));
-                _Sizes.Add(new Measure("Result contextInformation", GetSizeOfObject(_SearchSalesOrderDetailRes.ContextInformation), false));
-
-                dataGridView3.DataSource = _Sizes;
-
-                string info = Fwk.HelperFunctions.SerializationFunctions.SerializeToXml(_SearchSalesOrderDetailRes.ContextInformation);
-                txtSimpleResult.Text = string.Concat(info,Environment.NewLine,Environment.NewLine + "Bussiness data ",Environment.NewLine, _SearchSalesOrderDetailRes.BusinessData.SalesOrderDetailList.GetXml());
-
-            }
-
-        }
-
-        void Populate(out Exception ex)
-        {
-
-            ex = null;
-            _SearchSalesOrderDetailRes = _ControllerTest.SearchSalesOrderDetailRes();
-
-        }
-        #endregion
-
-        private void btnSaveResult_Click(object sender, EventArgs e)
-        {
-            if (_SearchSalesOrderDetailRes == null) return;
-
-            if(!Directory.Exists("Logs"))
-            {
-                Directory.CreateDirectory("Logs");
-            }
-            TestRes wTestRes = new TestRes();
-            wTestRes.Times = _SearchSalesOrderDetailRes.BusinessData.Times;
-            wTestRes.Sizes = _Sizes;
-            string name =string.Concat(@"Logs\R_",DateFunctions.Get_Year_Mont_Day_Hour_Min_Sec_String(_SearchSalesOrderDetailRes.ContextInformation.HostTime, '_'),".xml");
-
-           
-
-            Fwk.HelperFunctions.FileFunctions.SaveTextFile(name, wTestRes.GetXml(), false);
-
-            MessageBox.Show("Test saved successfully");
-        }
+       
+    
   
 
         private void btn_InitConfigFile_Click(object sender, EventArgs e)
@@ -354,7 +168,7 @@ namespace TestServicePerformance
                 _RemotingWrapper_config.Init();
                 dataGridView1.DataSource = null;
                 dataGridView1.Refresh();
-                dataGridView1.DataSource = _RemotingWrapper_config.RemoteObj.GetServicesList();
+                 _RemotingWrapper_config.RemoteObj.Metodo1("");
                 this.btn_InitConfigFile.Image = global::TestServicePerformance.Properties.Resources.Ball__Green_;
                 tabControl2.TabIndex = 0;
             }
@@ -366,10 +180,7 @@ namespace TestServicePerformance
 
         }
 
-        private void btnStartSimpleTest_Click_1(object sender, EventArgs e)
-        {
-            PopulateAsync();
-        }
+      
 
         bool ValidateInit()
         {

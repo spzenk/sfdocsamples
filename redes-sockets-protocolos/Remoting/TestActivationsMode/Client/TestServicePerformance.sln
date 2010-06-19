@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestServicePerformance", "TestServicePerformance.csproj", "{90018318-C658-4242-B83C-0233A09936B0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\RemotingDispatcher_Epec\Common\Common.csproj", "{FFBCF855-22BA-4B79-AFE2-6680E997231A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90018318-C658-4242-B83C-0233A09936B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90018318-C658-4242-B83C-0233A09936B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90018318-C658-4242-B83C-0233A09936B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90018318-C658-4242-B83C-0233A09936B0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFBCF855-22BA-4B79-AFE2-6680E997231A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFBCF855-22BA-4B79-AFE2-6680E997231A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFBCF855-22BA-4B79-AFE2-6680E997231A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFBCF855-22BA-4B79-AFE2-6680E997231A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
