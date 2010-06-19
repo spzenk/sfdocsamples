@@ -39,9 +39,9 @@ namespace Fwk.Remoting.Listener
             // 
             // serviceInstaller1
             // 
-            this.serviceInstaller1.Description = "Test Dispatcher Service 3.1";
-            this.serviceInstaller1.DisplayName = "Test Dispatcher Service 3.1";
-            this.serviceInstaller1.ServiceName = "TestDispatcher";
+            this.serviceInstaller1.Description = "Test Remoting 1.0";
+            this.serviceInstaller1.DisplayName = "Test Remoting 1.0";
+            this.serviceInstaller1.ServiceName = "TestRemoting_1";
             // 
             // ProjectInstaller
             // 
