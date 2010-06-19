@@ -23,10 +23,10 @@ namespace TestServicePerformance
         public event FinalizeHandler FinalizeEvent;
         public event CallHandler CallEvent;
         public ManualResetEvent[] doneEvents;
-        
-        FwkRemoteObject _RemoteObj;
 
-        internal Fwk.Remoting.FwkRemoteObject RemoteObj
+        FwkRemoteObjectTest _RemoteObj;
+
+        internal Fwk.Remoting.FwkRemoteObjectTest RemoteObj
         {
             get { return _RemoteObj; }
         }
@@ -48,11 +48,11 @@ namespace TestServicePerformance
         /// Crea en este caso SimpleFacaddeRemoteObject .-
         /// </summary>
         /// <returns>Instancia de SimpleFacaddeRemoteObject</returns>
-        FwkRemoteObject CreateRemoteObject()
+        FwkRemoteObjectTest CreateRemoteObject()
         {
             LoadRemotingConfigSettings();
             if (_RemoteObj == null)
-                _RemoteObj = new FwkRemoteObject();
+                _RemoteObj = new FwkRemoteObjectTest();
             return _RemoteObj;
         }
 
@@ -87,69 +87,8 @@ namespace TestServicePerformance
         #endregion
 
 
-        internal void Start(string xml)
-        {
-            stop = false;
-            isvcReq = (Fwk.Bases.IServiceContract)Fwk.HelperFunctions.ReflectionFunctions.CreateInstance(ControllerTest.Storage.StorageObject.SelectedServiceConfiguration.Request);
-            isvcRes = (Fwk.Bases.IServiceContract)Fwk.HelperFunctions.ReflectionFunctions.CreateInstance(ControllerTest.Storage.StorageObject.SelectedServiceConfiguration.Response);
-            isvcReq.SetBusinessDataXml(xml);
-            isvcReq.InitializeHostContextInformation();
-
-            doneEvents = new ManualResetEvent[ControllerTest.Storage.StorageObject.Threads];
-
-            for (int i = 0; i <= ControllerTest.Storage.StorageObject.Threads - 1; i++)
-            {
-                doneEvents[i] = new ManualResetEvent(false);
-                ThreadPool.QueueUserWorkItem(new WaitCallback(StartThread), i);
-                if (stop) break;
-            }
 
 
-        }
-
-
-        void StartThread(object threadNumber)
-        {
-
-            double sumTotalMilliseconds = 0;
-            for (int i = 0; i <= ControllerTest.Storage.StorageObject.Calls - 1; i++)
-            {
-                if (stop) break;
-                Stopwatch watch = new Stopwatch();
-                watch.Start();
-                isvcRes = _RemoteObj.ExecuteService(isvcReq);
-                //System.Threading.Thread.Sleep(300);
-                watch.Stop();
-
-                if (isvcRes.Error != null)//--->  error FIN
-                {
-                    if (FinalizeEvent != null)
-                        FinalizeEvent(isvcRes.Error.Message);
-                    lock (thisLock)//seccion critica
-                    {
-                        stop = true;
-                    }
-                }
-                if (CallEvent != null)// avisa que se ejecuto una llamada
-                    CallEvent();
-                sumTotalMilliseconds += watch.Elapsed.TotalMilliseconds;
-
-
-            }
-
-         
-            double AVERAGE = sumTotalMilliseconds / ControllerTest.Storage.StorageObject.Calls;
-
-            if (MessageEvent != null)
-                MessageEvent("Thread Nº", (int)threadNumber, AVERAGE, sumTotalMilliseconds);
-
-            doneEvents[(int)threadNumber].Set();
-
-            if ((int)threadNumber + 1 == doneEvents.Length)
-                if (FinalizeEvent != null)
-                    FinalizeEvent("");
-            
-        }
     }
 }
 
