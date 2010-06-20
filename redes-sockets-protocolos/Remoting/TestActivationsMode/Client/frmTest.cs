@@ -180,7 +180,7 @@ namespace TestServicePerformance
 
         private void btnActivator_Click(object sender, EventArgs e)
         {
-
+            txtTestResult.Text = string.Empty;
             this.btn_Activator.Image = global::TestServicePerformance.Properties.Resources.Ball__Red_;
             if (!ValidateInit()) return;
             _RemotingWrapper = new RemotingWrapper();
@@ -201,6 +201,8 @@ namespace TestServicePerformance
         private void button2_Click(object sender, EventArgs e)
         {
 
+            txtTestResult.Text = string.Empty;
+
             try
             {
                 if (ValidateInit())
@@ -217,6 +219,7 @@ namespace TestServicePerformance
 
         private void button1_Click(object sender, EventArgs e)
         {
+            txtTestResult.Text = string.Empty;
             try
             {
                 if (ValidateInit())
