@@ -12,6 +12,15 @@ namespace Fwk.Remoting
     /// </summary>
     public class FwkRemoteObjectTest : MarshalByRefObject
     {
+        public override object InitializeLifetimeService()
+        {
+            return base.InitializeLifetimeService();
+        }
+
+        public override System.Runtime.Remoting.ObjRef CreateObjRef(Type requestedType)
+        {
+            return base.CreateObjRef(requestedType);
+        }
         //public FwkRemoteObjectTest()
         //{
         //    _EnvironmentUserName = Environment.UserName;
@@ -34,6 +43,7 @@ namespace Fwk.Remoting
         }
         public void SetValue_1(int value)
         {
+            //((System.Runtime.Remoting.Identity)(((System.MarshalByRefObject)(this)).Identity))._lease.CurrentLeaseTime.Seconds
             _Value1 = value;
         }
 
