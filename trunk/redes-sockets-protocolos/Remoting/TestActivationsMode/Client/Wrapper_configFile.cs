@@ -74,7 +74,7 @@ namespace TestServicePerformance
 
             foreach (WellKnownClientTypeEntry wEntry in RemotingConfiguration.GetRegisteredWellKnownClientTypes())
             {
-                if (wEntry.TypeName == typeof(FwkRemoteObject).FullName)
+                if (wEntry.TypeName == typeof(FwkRemoteObjectTest).FullName)
                 {
                     wResult = true;
                     break;
