@@ -4,6 +4,7 @@ using System.Text;
 using Fwk.BusinessFacades;
 using Fwk.Bases;
 using System.Diagnostics;
+using System.Runtime.Remoting.Lifetime;
 
 namespace Fwk.Remoting
 {
@@ -12,11 +13,29 @@ namespace Fwk.Remoting
     /// </summary>
     public class FwkRemoteObjectTest : MarshalByRefObject
     {
+        List<string> clientList = new List<string>();
+
+        private int _Value1 = 0;
+        private string _CurrentClientName;
+        private static int _StaticValue1 = 0;
+
         public override object InitializeLifetimeService()
         {
-            return base.InitializeLifetimeService();
-        }
+            ILease lease = (ILease)base.InitializeLifetimeService();
+            if (lease.CurrentState == LeaseState.Initial)
+            {
+                //lease.InitialLeaseTime = TimeSpan.FromMinutes(1);
+                //lease.SponsorshipTimeout = TimeSpan.FromMinutes(2);
+                //lease.RenewOnCallTime = TimeSpan.FromSeconds(2);
+                lease.InitialLeaseTime = TimeSpan.FromSeconds(5);
+                lease.SponsorshipTimeout = TimeSpan.FromSeconds(10);
+                lease.RenewOnCallTime = TimeSpan.FromSeconds(2);
 
+            }
+            return lease;
+            //return base.InitializeLifetimeService();
+        }
+        
         public override System.Runtime.Remoting.ObjRef CreateObjRef(Type requestedType)
         {
             return base.CreateObjRef(requestedType);
@@ -25,11 +44,7 @@ namespace Fwk.Remoting
         //{
         //    _EnvironmentUserName = Environment.UserName;
         //}
-        List<string> clientList = new List<string>();
-        
-        private int _Value1 = 0;
-        private string _CurrentClientName;
-
+      
 
         public void Metodo1(string clientName)
         {
@@ -43,8 +58,8 @@ namespace Fwk.Remoting
         }
         public void SetValue_1(int value)
         {
-            //((System.Runtime.Remoting.Identity)(((System.MarshalByRefObject)(this)).Identity))._lease.CurrentLeaseTime.Seconds
             _Value1 = value;
+            FwkRemoteObjectTest._StaticValue1 = value;
         }
 
         public Dictionary<string, string> GetStatus()
@@ -58,6 +73,7 @@ namespace Fwk.Remoting
             _Status.Add("EnvironmentUserName:   ", Environment.UserName);
             _Status.Add("CurrentClient:         ", _CurrentClientName);
             _Status.Add("Value1:                ", _Value1.ToString());
+            _Status.Add("Static Value1:                ", _StaticValue1.ToString());
             _Status.Add("Client List", str.ToString());
 
             return _Status;
