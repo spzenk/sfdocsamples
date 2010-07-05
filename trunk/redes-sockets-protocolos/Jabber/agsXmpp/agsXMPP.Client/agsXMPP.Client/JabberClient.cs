@@ -7,7 +7,7 @@ using agsXMPP.Xml.Dom;
 namespace agsXMPP.Client
 {
     [Serializable]
-    public class JabberClient:Element
+    public class JabberClient
     {
         string password;
 

@@ -218,8 +218,8 @@
             // txtTo
             // 
             this.txtTo.Location = new System.Drawing.Point(12, 436);
+            this.txtTo.Multiline = true;
             this.txtTo.Name = "txtTo";
-            this.txtTo.PasswordChar = '*';
             this.txtTo.Size = new System.Drawing.Size(168, 20);
             this.txtTo.TabIndex = 30;
             // 
@@ -231,6 +231,7 @@
             this.txtSenMessage.Size = new System.Drawing.Size(88, 24);
             this.txtSenMessage.TabIndex = 31;
             this.txtSenMessage.Text = "Send";
+            this.txtSenMessage.Click += new System.EventHandler(this.txtSenMessage_Click);
             // 
             // rosterControl
             // 
