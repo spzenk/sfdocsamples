@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<DomainList>
+	<Domain>
+		<Name>Cuenta</Name>
+	<ID>0</ID>
+	<ParentID>0</ParentID>
+</Domain>
+	<Domain>
+		<Name>Cuenta</Name>
+		<ID>1</ID>
+		<ParentID>0</ParentID>
+	</Domain>
+	<Domain>
+		<Name>Cuenta</Name>
+		<ID>2</ID>
+		<ParentID>0</ParentID>
+	</Domain>
+	<Domain>
+		<Name>Cuenta</Name>
+		<ID>3</ID>
+		<ParentID>0</ParentID>
+	</Domain>
+</DomainList>
