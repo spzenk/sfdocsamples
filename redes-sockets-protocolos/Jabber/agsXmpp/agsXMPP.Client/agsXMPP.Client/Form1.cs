@@ -358,7 +358,7 @@ namespace agsXMPP.Client
             }
 
             txtSenMessage.Text = msg.Body;
-            AddLog("XmppCon_OnMessage");
+            AddLog(string.Concat("XmppCon_OnMessage from: ", msg.From));
         }
 
         void XmppCon_OnLogin(object sender)
@@ -530,8 +530,12 @@ namespace agsXMPP.Client
             storage.Load();
             txtJid.Text = storage.StorageObject.User;
             txtPassword.Text = storage.StorageObject.Password;
-            txtServer.Text = storage.StorageObject.Server;
-            txtPort.Text = storage.StorageObject.Port;
+
+            if (!string.IsNullOrEmpty(storage.StorageObject.Server))
+                txtServer.Text = storage.StorageObject.Server;
+
+            if (!string.IsNullOrEmpty(storage.StorageObject.Port))
+                txtPort.Text = storage.StorageObject.Port;
 
 
         }
@@ -615,8 +619,10 @@ namespace agsXMPP.Client
 
         private void txtSenMessage_Click(object sender, EventArgs e)
         {
+            RosterNode roster = rosterControl.SelectedItem();
 
-            Jid rtfSend = new Jid(txtTo.Text, txtServer.Text, txtResource.Text);
+
+            Jid rtfSend = new Jid(roster.Name, txtServer.Text, txtResource.Text);
 
             agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
 
@@ -629,9 +635,11 @@ namespace agsXMPP.Client
             XmppCon.Send(msg);
         }
 
-        private void rosterControl_Load(object sender, EventArgs e)
+       
+        private void rosterControl_SelectionChanged(object sender, EventArgs e)
         {
-
+            RosterNode roster = rosterControl.SelectedItem();
+            txtTo.Text = roster.Text;
         }
     }
 }

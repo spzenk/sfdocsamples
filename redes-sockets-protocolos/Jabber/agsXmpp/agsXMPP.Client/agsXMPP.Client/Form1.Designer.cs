@@ -196,6 +196,7 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(168, 20);
             this.txtServer.TabIndex = 2;
+            this.txtServer.Text = "santana";
             // 
             // label7
             // 
@@ -245,7 +246,9 @@
             this.rosterControl.Name = "rosterControl";
             this.rosterControl.Size = new System.Drawing.Size(339, 281);
             this.rosterControl.TabIndex = 32;
-            this.rosterControl.Load += new System.EventHandler(this.rosterControl_Load);
+            
+            this.rosterControl.SelectionChanged += new System.EventHandler(this.rosterControl_SelectionChanged);
+            
             // 
             // textBox1
             // 
