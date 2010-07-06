@@ -66,6 +66,7 @@ namespace agsXMPP.Client
             XmppCon.OnRosterEnd += new ObjectHandler(XmppCon_OnRosterEnd);
             XmppCon.OnRosterStart += new ObjectHandler(XmppCon_OnRosterStart);
             XmppCon.OnRosterItem += new XmppClientConnection.RosterHandler(XmppCon_OnRosterItem);
+            
 
 
             XmppCon.OnPresence += new PresenceHandler(XmppCon_OnPresence);
