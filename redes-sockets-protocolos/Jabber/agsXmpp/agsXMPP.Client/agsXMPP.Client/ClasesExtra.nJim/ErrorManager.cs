@@ -6,7 +6,7 @@ namespace nJim
 {
 
     /// <summary>
-    /// Gestion des diff�rentes erreurs
+    /// Gestion des direffenteserreurs
     /// </summary>
     public class ErrorManager : IDisposable
     {

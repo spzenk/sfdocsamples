@@ -628,5 +628,10 @@ namespace agsXMPP.Client
             msg.Body = txtMessage.Text;
             XmppCon.Send(msg);
         }
+
+        private void rosterControl_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
