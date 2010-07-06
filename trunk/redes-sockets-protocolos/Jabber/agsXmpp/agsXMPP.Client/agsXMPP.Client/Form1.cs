@@ -315,8 +315,8 @@ namespace agsXMPP.Client
                 //El usuario que lo envía desea suscribirse a la presencia del destinatario.
                 case PresenceType.subscribe:
                     {
-                        //frmSubscribe f = new frmSubscribe(XmppCon, pres.From);
-                        //f.Show();
+                        AceptSubscribe f = new AceptSubscribe(XmppCon, pres.From);
+                        f.Show();
                         break;
                     }
                 //respuesta que recibirá un usuario que ha realizado una petición de suscripción, que indica el estado actual de la suscripción.
