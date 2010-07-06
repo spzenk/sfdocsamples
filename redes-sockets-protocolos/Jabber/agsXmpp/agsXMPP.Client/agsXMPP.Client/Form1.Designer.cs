@@ -52,6 +52,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtBare = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +63,8 @@
             this.txtLogs.Location = new System.Drawing.Point(626, 12);
             this.txtLogs.Multiline = true;
             this.txtLogs.Name = "txtLogs";
-            this.txtLogs.Size = new System.Drawing.Size(304, 265);
+            this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLogs.Size = new System.Drawing.Size(304, 650);
             this.txtLogs.TabIndex = 0;
             // 
             // chkRegister
@@ -210,15 +214,15 @@
             // 
             // txtMessage
             // 
-            this.txtMessage.Location = new System.Drawing.Point(12, 462);
+            this.txtMessage.Location = new System.Drawing.Point(12, 549);
             this.txtMessage.Multiline = true;
             this.txtMessage.Name = "txtMessage";
-            this.txtMessage.Size = new System.Drawing.Size(373, 186);
+            this.txtMessage.Size = new System.Drawing.Size(373, 129);
             this.txtMessage.TabIndex = 29;
             // 
             // txtTo
             // 
-            this.txtTo.Location = new System.Drawing.Point(12, 436);
+            this.txtTo.Location = new System.Drawing.Point(52, 519);
             this.txtTo.Multiline = true;
             this.txtTo.Name = "txtTo";
             this.txtTo.Size = new System.Drawing.Size(168, 20);
@@ -227,7 +231,7 @@
             // txtSenMessage
             // 
             this.txtSenMessage.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.txtSenMessage.Location = new System.Drawing.Point(186, 432);
+            this.txtSenMessage.Location = new System.Drawing.Point(230, 519);
             this.txtSenMessage.Name = "txtSenMessage";
             this.txtSenMessage.Size = new System.Drawing.Size(88, 24);
             this.txtSenMessage.TabIndex = 31;
@@ -244,15 +248,13 @@
             this.rosterControl.HideEmptyGroups = true;
             this.rosterControl.Location = new System.Drawing.Point(281, 21);
             this.rosterControl.Name = "rosterControl";
-            this.rosterControl.Size = new System.Drawing.Size(339, 281);
+            this.rosterControl.Size = new System.Drawing.Size(264, 370);
             this.rosterControl.TabIndex = 32;
-            
             this.rosterControl.SelectionChanged += new System.EventHandler(this.rosterControl_SelectionChanged);
-            
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(599, 451);
+            this.textBox1.Location = new System.Drawing.Point(117, 446);
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
             this.textBox1.Size = new System.Drawing.Size(168, 20);
@@ -261,7 +263,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(491, 451);
+            this.label8.Location = new System.Drawing.Point(9, 446);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(93, 16);
             this.label8.TabIndex = 34;
@@ -270,17 +272,48 @@
             // button1
             // 
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.button1.Location = new System.Drawing.Point(791, 448);
+            this.button1.Location = new System.Drawing.Point(309, 443);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(88, 24);
             this.button1.TabIndex = 35;
             this.button1.Text = "Add";
+            // 
+            // txtBare
+            // 
+            this.txtBare.Location = new System.Drawing.Point(52, 496);
+            this.txtBare.Multiline = true;
+            this.txtBare.Name = "txtBare";
+            this.txtBare.Size = new System.Drawing.Size(168, 20);
+            this.txtBare.TabIndex = 36;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(9, 496);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(37, 20);
+            this.label9.TabIndex = 37;
+            this.label9.Text = "Bare";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(12, 519);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 20);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "User";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 690);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.txtBare);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBox1);
@@ -341,6 +374,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtBare;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
     }
 }
 
