@@ -1,0 +1,17 @@
+DevExpress.XtraBars.BarManager, DevExpress.XtraBars.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraLayout.LayoutControl, DevExpress.XtraLayout.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+
+DevExpress.XtraEditors.CheckEdit, DevExpress.XtraEditors.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraEditors.TextEdit, DevExpress.XtraEditors.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraEditors.LabelControl, DevExpress.XtraEditors.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraReports.UserDesigner.XRDesignBarManager, DevExpress.XtraReports.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraBars.Ribbon.RibbonControl, DevExpress.XtraBars.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraSpellChecker.SpellChecker, DevExpress.XtraSpellChecker.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraEditors.Repository.RepositoryItemComboBox, DevExpress.XtraEditors.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraRichEdit.RichEditControl, DevExpress.XtraRichEdit.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraGauges.Win.GaugeControl, DevExpress.XtraGauges.v9.1.Win, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraEditors.ComboBoxEdit, DevExpress.XtraEditors.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraEditors.Repository.RepositoryItemTextEdit, DevExpress.XtraEditors.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraGrid.GridControl, DevExpress.XtraGrid.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraEditors.ButtonEdit, DevExpress.XtraEditors.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
+DevExpress.XtraCharts.ChartControl, DevExpress.XtraCharts.v9.1.UI, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073
