@@ -640,8 +640,16 @@ namespace agsXMPP.Client
         private void rosterControl_SelectionChanged(object sender, EventArgs e)
         {
             RosterNode roster = rosterControl.SelectedItem();
-            txtTo.Text = roster.RosterItem.Jid.User;
-            txtBare.Text = roster.RosterItem.Jid.Bare;
+            if (roster.RosterItem != null)
+            {
+                txtTo.Text = roster.RosterItem.Jid.User;
+                txtBare.Text = roster.RosterItem.Jid.Bare;
+            }
+            else
+            {
+                txtTo.Text = "";
+                txtBare.Text = "";
+            }
         }
     }
 }
