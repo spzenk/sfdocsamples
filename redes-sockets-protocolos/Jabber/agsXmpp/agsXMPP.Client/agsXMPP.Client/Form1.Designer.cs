@@ -55,6 +55,8 @@
             this.txtBare = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.btnSendCommand = new System.Windows.Forms.Button();
+            this.txtCmdValue = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,7 +66,7 @@
             this.txtLogs.Multiline = true;
             this.txtLogs.Name = "txtLogs";
             this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLogs.Size = new System.Drawing.Size(304, 650);
+            this.txtLogs.Size = new System.Drawing.Size(304, 454);
             this.txtLogs.TabIndex = 0;
             // 
             // chkRegister
@@ -306,11 +308,32 @@
             this.label10.Text = "User";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btnSendCommand
+            // 
+            this.btnSendCommand.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnSendCommand.Location = new System.Drawing.Point(626, 519);
+            this.btnSendCommand.Name = "btnSendCommand";
+            this.btnSendCommand.Size = new System.Drawing.Size(88, 24);
+            this.btnSendCommand.TabIndex = 39;
+            this.btnSendCommand.Text = "Send command";
+            this.btnSendCommand.Click += new System.EventHandler(this.btnSendCommand_Click);
+            // 
+            // txtCmdValue
+            // 
+            this.txtCmdValue.Location = new System.Drawing.Point(720, 523);
+            this.txtCmdValue.Multiline = true;
+            this.txtCmdValue.Name = "txtCmdValue";
+            this.txtCmdValue.Size = new System.Drawing.Size(168, 20);
+            this.txtCmdValue.TabIndex = 40;
+            this.txtCmdValue.Text = "1232";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(986, 690);
+            this.Controls.Add(this.txtCmdValue);
+            this.Controls.Add(this.btnSendCommand);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtBare);
@@ -377,6 +400,8 @@
         private System.Windows.Forms.TextBox txtBare;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnSendCommand;
+        private System.Windows.Forms.TextBox txtCmdValue;
     }
 }
 

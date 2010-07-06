@@ -68,7 +68,7 @@ namespace agsXMPP.Client
             XmppCon.OnRosterItem += new XmppClientConnection.RosterHandler(XmppCon_OnRosterItem);
             XmppCon.OnXmppConnectionStateChanged += new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged);
 
-
+            agsXMPP.Factory.ElementFactory.AddElementType("command", "fwk.jabber:command", typeof(Comand));
             XmppCon.OnPresence += new PresenceHandler(XmppCon_OnPresence);
 
 
@@ -77,14 +77,34 @@ namespace agsXMPP.Client
 
             //agsXMPP.Factory.ElementFactory.AddElementType("Login", null, typeof(Settings.Login));
         }
+        private void LoadChatServers()
+        {
+            //treeGC.TreeViewNodeSorter = new TreeNodeSorter();
 
+            //string fileName = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            //fileName += @"\chatservers.xml";
+
+            //Document doc = new Document();
+            //doc.LoadFile(fileName);
+
+            //// Get Servers
+            //ElementList servers = doc.RootElement.SelectElements("Server");
+            //foreach (Element server in servers)
+            //{
+            //    TreeNode n = new TreeNode(server.Value);
+            //    n.Tag = "server";
+            //    n.ImageIndex = n.SelectedImageIndex = IMAGE_SERVER;
+
+            //    this.treeGC.Nodes.Add(n);
+            //}
+        }
         void XmppCon_OnXmppConnectionStateChanged(object sender, XmppConnectionState state)
         {
             if (InvokeRequired)
             {
                 // Windows Forms are not Thread Safe, we need to invoke this :(
                 // We're not in the UI thread, so we need to call BeginInvoke				
-                BeginInvoke(new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged), new object[] { sender,state });
+                BeginInvoke(new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged), new object[] { sender, state });
                 return;
             }
             AddLog("OnXmppConnectionStateChanged: " + state.ToString());
@@ -110,7 +130,7 @@ namespace agsXMPP.Client
             {
                 // Windows Forms are not Thread Safe, we need to invoke this :(
                 // We're not in the UI thread, so we need to call BeginInvoke				
-                BeginInvoke(new ObjectHandler(XmppCon_OnClose), new object[] { sender });
+                BeginInvoke(new ErrorHandler(XmppCon_OnError), new object[] { sender, ex });
                 return;
             }
 
@@ -366,12 +386,12 @@ namespace agsXMPP.Client
             {
                 // Windows Forms are not Thread Safe, we need to invoke this :(
                 // We're not in the UI thread, so we need to call BeginInvoke				
-                BeginInvoke(new ObjectHandler(XmppCon_OnClose), new object[] { sender });
+                BeginInvoke(new MessageHandler(XmppCon_OnMessage), new object[] { sender, msg });
                 return;
             }
 
-            txtSenMessage.Text = msg.Body;
-            AddLog(string.Concat("XmppCon_OnMessage from: ", msg.From));
+            txtMessage.Text = string.Concat(msg.From, Environment.NewLine, msg.Body);
+
         }
 
         void XmppCon_OnLogin(object sender)
@@ -648,7 +668,7 @@ namespace agsXMPP.Client
             XmppCon.Send(msg);
         }
 
-       
+
         private void rosterControl_SelectionChanged(object sender, EventArgs e)
         {
             RosterNode roster = rosterControl.SelectedItem();
@@ -662,6 +682,28 @@ namespace agsXMPP.Client
                 txtTo.Text = "";
                 txtBare.Text = "";
             }
+        }
+
+        private void btnSendCommand_Click(object sender, EventArgs e)
+        {
+            RosterNode roster = rosterControl.SelectedItem();
+            if (roster == null) return;
+            if (roster.RosterItem != null)
+            {
+                //IQ iq = new IQ(IqType.get, XmppCon.MyJID, roster.RosterItem.Jid);
+
+                agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
+                msg.To = roster.RosterItem.Jid;
+                
+                agsXMPP.Client.Comand cmd = new  agsXMPP.Client.Comand();
+
+                cmd.Type = "tipo 01";
+                cmd.Value = Convert.ToInt32(txtCmdValue.Text);
+
+                msg.AddChild(cmd);
+                XmppCon.Send(msg);
+            }
+
         }
     }
 }
