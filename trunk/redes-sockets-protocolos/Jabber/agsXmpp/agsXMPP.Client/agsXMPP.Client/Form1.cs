@@ -622,7 +622,7 @@ namespace agsXMPP.Client
             RosterNode roster = rosterControl.SelectedItem();
 
 
-            Jid rtfSend = new Jid(roster.Text, txtServer.Text, txtResource.Text);
+            Jid rtfSend = roster.RosterItem.Jid;//new Jid(roster.RosterItem.Jid, txtServer.Text, txtResource.Text);
 
             agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
 
@@ -639,7 +639,8 @@ namespace agsXMPP.Client
         private void rosterControl_SelectionChanged(object sender, EventArgs e)
         {
             RosterNode roster = rosterControl.SelectedItem();
-            txtTo.Text = roster.Text;
+            txtTo.Text = roster.RosterItem.Jid.User;
+            txtBare.Text = roster.RosterItem.Jid.Bare;
         }
     }
 }
