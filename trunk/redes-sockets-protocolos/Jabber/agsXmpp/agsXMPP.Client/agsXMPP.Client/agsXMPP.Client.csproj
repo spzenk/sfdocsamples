@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{99A956A3-9035-43BE-AFF2-4AB3FEFC5DB5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -67,22 +67,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="ErrorManager.cs" />
-    <Compile Include="common.cs" />
-    <Compile Include="Contact.cs" />
+    <Compile Include="ClasesExtra.nJim\Privacy.cs" />
+    <Compile Include="ClasesExtra.nJim\ErrorManager.cs" />
+    <Compile Include="ClasesExtra.nJim\common.cs" />
+    <Compile Include="ClasesExtra.nJim\Contact.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="GeoLocTools.cs" />
-    <Compile Include="Identity.cs" />
-    <Compile Include="Jabber.cs" />
+    <Compile Include="ClasesExtra.nJim\GeoLocTools.cs" />
+    <Compile Include="ClasesExtra.nJim\Identity.cs" />
+    <Compile Include="ClasesExtra.nJim\Jabber.cs" />
     <Compile Include="JabberClient.cs" />
-    <Compile Include="Presence.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="ClasesExtra.nJim\Presence.cs" />
+    <Compile Include="ClasesExtra.nJim\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -105,9 +105,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Query.cs" />
-    <Compile Include="Roster.cs" />
-    <Compile Include="structure.cs" />
+    <Compile Include="ClasesExtra.nJim\Query.cs" />
+    <Compile Include="ClasesExtra.nJim\Roster.cs" />
+    <Compile Include="ClasesExtra.nJim\structure.cs" />
     <Compile Include="Util.cs" />
     <Compile Include="XmppClentWrapper.cs" />
   </ItemGroup>

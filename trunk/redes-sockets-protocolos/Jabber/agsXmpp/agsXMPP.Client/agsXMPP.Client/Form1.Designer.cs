@@ -245,6 +245,7 @@
             this.rosterControl.Name = "rosterControl";
             this.rosterControl.Size = new System.Drawing.Size(339, 281);
             this.rosterControl.TabIndex = 32;
+            this.rosterControl.Load += new System.EventHandler(this.rosterControl_Load);
             // 
             // textBox1
             // 

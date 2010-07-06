@@ -6,7 +6,7 @@ namespace nJim
 {
 
     /// <summary>
-    /// Les diff�rentes �num�rations pour conversion
+    /// Les direffentes�num�rations pour conversion
     /// </summary>
     public class Enumerations
     {
@@ -889,7 +889,7 @@ namespace nJim
         #region ActivityType
 
         /// <summary>
-        /// LEs diff�rentes types d'activit�s
+        /// LEs direffentestypes d'activit�s
         /// </summary>
         public enum ActivityType
         {
