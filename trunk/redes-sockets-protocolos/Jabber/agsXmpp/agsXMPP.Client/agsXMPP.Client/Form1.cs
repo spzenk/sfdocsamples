@@ -622,7 +622,7 @@ namespace agsXMPP.Client
             RosterNode roster = rosterControl.SelectedItem();
 
 
-            Jid rtfSend = new Jid(roster.Name, txtServer.Text, txtResource.Text);
+            Jid rtfSend = new Jid(roster.Text, txtServer.Text, txtResource.Text);
 
             agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
 
