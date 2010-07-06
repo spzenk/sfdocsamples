@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AceptSubscribe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AceptSubscribe.Designer.cs">
+      <DependentUpon>AceptSubscribe.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClasesExtra.nJim\Privacy.cs" />
     <Compile Include="ClasesExtra.nJim\ErrorManager.cs" />
     <Compile Include="ClasesExtra.nJim\common.cs" />

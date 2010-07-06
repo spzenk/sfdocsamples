@@ -66,7 +66,7 @@ namespace agsXMPP.Client
             XmppCon.OnRosterEnd += new ObjectHandler(XmppCon_OnRosterEnd);
             XmppCon.OnRosterStart += new ObjectHandler(XmppCon_OnRosterStart);
             XmppCon.OnRosterItem += new XmppClientConnection.RosterHandler(XmppCon_OnRosterItem);
-            
+            XmppCon.OnXmppConnectionStateChanged += new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged);
 
 
             XmppCon.OnPresence += new PresenceHandler(XmppCon_OnPresence);
@@ -76,6 +76,18 @@ namespace agsXMPP.Client
             discoManager = new DiscoManager(XmppCon);
 
             //agsXMPP.Factory.ElementFactory.AddElementType("Login", null, typeof(Settings.Login));
+        }
+
+        void XmppCon_OnXmppConnectionStateChanged(object sender, XmppConnectionState state)
+        {
+            if (InvokeRequired)
+            {
+                // Windows Forms are not Thread Safe, we need to invoke this :(
+                // We're not in the UI thread, so we need to call BeginInvoke				
+                BeginInvoke(new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged), new object[] { sender,state });
+                return;
+            }
+            AddLog("OnXmppConnectionStateChanged: " + state.ToString());
         }
 
         void XmppCon_OnAuthError(object sender, Element e)
