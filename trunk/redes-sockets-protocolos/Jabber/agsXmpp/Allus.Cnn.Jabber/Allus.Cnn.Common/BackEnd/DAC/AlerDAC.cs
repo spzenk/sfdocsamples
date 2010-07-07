@@ -530,15 +530,15 @@ namespace Allus.Cnn.Common.DAC
                 wDataBase.AddInParameter(wCmd, "@DateStart", System.Data.DbType.DateTime, Convert.ToDateTime(pStartDate.Value.ToShortDateString()));
                 wDataBase.AddInParameter(wCmd, "@DateEnd", System.Data.DbType.DateTime, Convert.ToDateTime(pEndDate.Value.ToShortDateString()));
                 if (!string.IsNullOrEmpty(pMessagesBE.Title))
-                    wDataBase.AddInParameter(wCmd, "@Title", System.Data.DbType.String, HelperFunctions.GetSearchTypeValue(pMessagesBE.Title, Allus.Libs.Common.SearchtypeEnum.Contain));
+                    wDataBase.AddInParameter(wCmd, "@Title", System.Data.DbType.String, Fwk.Bases.Enums.GetSearchTypeValue(pMessagesBE.Title, Fwk.Bases.Enums.SearchtypeEnum.Contain));
                 if (!string.IsNullOrEmpty(pMessagesBE.Url))
-                    wDataBase.AddInParameter(wCmd, "@Url", System.Data.DbType.String, HelperFunctions.GetSearchTypeValue(pMessagesBE.Url, Allus.Libs.Common.SearchtypeEnum.Contain));
+                    wDataBase.AddInParameter(wCmd, "@Url", System.Data.DbType.String, Fwk.Bases.Enums.GetSearchTypeValue(pMessagesBE.Url, Fwk.Bases.Enums.SearchtypeEnum.Contain));
                 if (!string.IsNullOrEmpty(pMessagesBE.Sender))
                     wDataBase.AddInParameter(wCmd, "@Sender", System.Data.DbType.String, pMessagesBE.Sender);
                 if (!string.IsNullOrEmpty(pMessagesBE.MeshName))
-                    wDataBase.AddInParameter(wCmd, "@MeshName", System.Data.DbType.String, HelperFunctions.GetSearchTypeValue(pMessagesBE.MeshName, Allus.Libs.Common.SearchtypeEnum.Contain));
+                    wDataBase.AddInParameter(wCmd, "@MeshName", System.Data.DbType.String, Fwk.Bases.Enums.GetSearchTypeValue(pMessagesBE.MeshName, Fwk.Bases.Enums.SearchtypeEnum.Contain));
                 if (pMessagesBE.MessageType != MessageType.None)
-                    wDataBase.AddInParameter(wCmd, "@MessageType", System.Data.DbType.String, HelperFunctions.GetSearchTypeValue(Enum.GetName(typeof(MessageType), pMessagesBE.MessageType), Allus.Libs.Common.SearchtypeEnum.Contain));
+                    wDataBase.AddInParameter(wCmd, "@MessageType", System.Data.DbType.String, Fwk.Bases.Enums.GetSearchTypeValue(Enum.GetName(typeof(MessageType), pMessagesBE.MessageType), Fwk.Bases.Enums.SearchtypeEnum.Contain));
 
                 using (IDataReader reader = wDataBase.ExecuteReader(wCmd))
                 {

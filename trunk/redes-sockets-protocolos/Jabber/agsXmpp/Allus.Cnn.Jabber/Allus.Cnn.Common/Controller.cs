@@ -39,7 +39,7 @@ namespace Allus.Cnn.Common
             get { return Controller._LoggedColaborator; }
             set { Controller._LoggedColaborator = value; }
         }
-        static Fwk.HelperFunctions.Caching.FwkCache cache;
+        static Fwk.Caching.FwkCache cache;
 
         /// <summary>
         /// Obtiene la instancia estatica del <see cref="ColaboratorData"/>
@@ -65,7 +65,7 @@ namespace Allus.Cnn.Common
         static Controller()
         {
             ColaboratorList = new List<Colaborator>();
-            cache = new Fwk.HelperFunctions.Caching.FwkCache();
+            cache = new Fwk.Caching.FwkCache();
             _ClientServiceBase = new Fwk.Bases.ClientServiceBase();
             DomainList pAllDomains = null;
             try

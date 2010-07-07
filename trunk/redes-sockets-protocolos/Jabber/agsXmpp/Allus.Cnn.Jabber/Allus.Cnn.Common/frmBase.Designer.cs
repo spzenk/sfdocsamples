@@ -1,3 +1,5 @@
+
+using Allus.Libs.Common;
 namespace Allus.Cnn.Common
 {
     partial class frmBase
@@ -30,8 +32,8 @@ namespace Allus.Cnn.Common
         {
             this.components = new System.ComponentModel.Container();
             this.ctlLookAndFeel = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.MessageViewer = new Allus.Libs.Common.MessageViewerComponent(this.components);
-            this.ExceptionViewer = new Allus.Libs.Common.ExceptionViewComponent(this.components);
+            this.MessageViewer = new Allus.Libs.Controls.MessageViewerComponent(this.components);
+            this.ExceptionViewer = new Allus.Libs.Controls.ExceptionViewComponent(this.components);
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.fwkMailAgent1 = new Fwk.Mail.FwkMailAgent(this.components);
             this.SuspendLayout();
@@ -43,9 +45,9 @@ namespace Allus.Cnn.Common
             // MessageViewer
             // 
             this.MessageViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
-            this.MessageViewer.IconSize = Allus.Libs.Common.IconSize.Small;
+            this.MessageViewer.IconSize = IconSize.Small;
             this.MessageViewer.MessageBoxButtons = System.Windows.Forms.MessageBoxButtons.OK;
-            this.MessageViewer.MessageBoxIcon = Allus.Libs.Common.MessageBoxIcon.Information;
+            this.MessageViewer.MessageBoxIcon = MessageBoxIcon.Information;
             this.MessageViewer.TextMessageColor = System.Drawing.Color.White;
             this.MessageViewer.TextMessageForeColor = System.Drawing.Color.Black;
             this.MessageViewer.Title = "Message";
@@ -80,8 +82,8 @@ namespace Allus.Cnn.Common
         #endregion
 
         private DevExpress.LookAndFeel.DefaultLookAndFeel ctlLookAndFeel;
-        public Allus.Libs.Common.MessageViewerComponent MessageViewer;
-        public Allus.Libs.Common.ExceptionViewComponent ExceptionViewer;
+        public Allus.Libs.Controls.MessageViewerComponent MessageViewer;
+        public Allus.Libs.Controls.ExceptionViewComponent ExceptionViewer;
         public DevExpress.Utils.ToolTipController toolTipController1;
         public Fwk.Mail.FwkMailAgent fwkMailAgent1;
        

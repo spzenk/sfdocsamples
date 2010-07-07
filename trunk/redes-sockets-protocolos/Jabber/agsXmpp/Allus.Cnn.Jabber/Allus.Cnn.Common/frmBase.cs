@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Threading;
 using Allus.Libs.Common;
+using Allus.Libs.Controls;
 
 namespace Allus.Cnn.Common
 {
@@ -83,7 +84,7 @@ namespace Allus.Cnn.Common
             }
 
             System.Text.StringBuilder sb = new System.Text.StringBuilder(5000);
-            sb.Append(@"Se detectaron anomal�as en la aplicaci�n por favor chequee los siguientes errores: ");
+            sb.Append(@"Se detectaron anomalías en la aplicación por favor chequee los siguientes errores: ");
             sb.Append(Environment.NewLine);
             sb.Append(Environment.NewLine);
             sb.Append(@"{0}");

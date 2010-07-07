@@ -34,7 +34,7 @@ namespace Allus.Cnn.Common
             this.txtUrl = new DevExpress.XtraEditors.TextEdit();
             this.txtTitle = new DevExpress.XtraEditors.TextEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.richEditSimpleControl1 = new Allus.Libs.Controls.RrichEditBarMannagerControl();
+            this.richEditSimpleControl1 = new Allus.Libs.Controls.UC_RrichEditBarMannagerControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             ((System.ComponentModel.ISupportInitialize)(this.chkRequireConfirm.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgMessage)).BeginInit();
@@ -160,7 +160,7 @@ namespace Allus.Cnn.Common
         private DevExpress.XtraEditors.TextEdit txtUrl;
         private DevExpress.XtraEditors.TextEdit txtTitle;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private Allus.Libs.Controls.RrichEditBarMannagerControl richEditSimpleControl1;
+        private Allus.Libs.Controls.UC_RrichEditBarMannagerControl richEditSimpleControl1;
         private DevExpress.XtraEditors.PanelControl panelControl1;
     }
 }

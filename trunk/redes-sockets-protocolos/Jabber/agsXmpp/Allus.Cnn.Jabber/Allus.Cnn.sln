@@ -1,0 +1,50 @@
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allus.Cnn.Common", "Allus.Cnn.Common\Allus.Cnn.Common.csproj", "{7BC7649B-D565-48D2-9531-17E8ACFE0DBA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allus.Cnn.Admin", "Allus.Cnn.Admin\Allus.Cnn.Admin.csproj", "{3047699B-9663-429C-8736-8148185AE17D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allus.Cnn.Colaborator", "Allus.Cnn.Colaborator\Allus.Cnn.Colaborator.csproj", "{5A5CCF18-590C-4871-8616-E887FA73CCB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Allus.Cnn.Test", "Allus.Cnn.Test\Allus.Cnn.Test.csproj", "{0EC6454D-E94B-4C44-AB10-20B169A6BC3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0C9F39F4-770A-4519-A304-AE522DFB4159}"
+	ProjectSection(SolutionItems) = preProject
+		Allus.Cnn.vsmdi = Allus.Cnn.vsmdi
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Allus.Cnn.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7BC7649B-D565-48D2-9531-17E8ACFE0DBA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BC7649B-D565-48D2-9531-17E8ACFE0DBA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BC7649B-D565-48D2-9531-17E8ACFE0DBA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BC7649B-D565-48D2-9531-17E8ACFE0DBA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3047699B-9663-429C-8736-8148185AE17D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3047699B-9663-429C-8736-8148185AE17D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3047699B-9663-429C-8736-8148185AE17D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3047699B-9663-429C-8736-8148185AE17D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5CCF18-590C-4871-8616-E887FA73CCB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5CCF18-590C-4871-8616-E887FA73CCB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5CCF18-590C-4871-8616-E887FA73CCB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5CCF18-590C-4871-8616-E887FA73CCB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC6454D-E94B-4C44-AB10-20B169A6BC3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC6454D-E94B-4C44-AB10-20B169A6BC3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC6454D-E94B-4C44-AB10-20B169A6BC3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC6454D-E94B-4C44-AB10-20B169A6BC3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
