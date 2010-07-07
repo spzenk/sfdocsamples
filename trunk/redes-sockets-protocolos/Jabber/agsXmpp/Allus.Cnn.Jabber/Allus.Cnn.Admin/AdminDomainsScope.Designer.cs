@@ -33,7 +33,7 @@ namespace Allus.Cnn.Admin
             this.domainFilters1 = new Allus.Cnn.Common.DomainFilters();
             this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.textFindPopUp1 = new Allus.Libs.Controls.TextFindPopUp();
+            this.textFindPopUp1 = new Allus.Libs.Controls.UC_TextFindPopUp();
             this.adminDomainGrid_Dest = new Allus.Cnn.Admin.AdminDomainGrid();
             this.adminDomainGrid_Source = new Allus.Cnn.Admin.AdminDomainGrid();
             this.colaboratorsAdminGrid1 = new Allus.Cnn.Admin.ColaboratorsAdminGrid();
@@ -172,6 +172,6 @@ namespace Allus.Cnn.Admin
         private DevExpress.XtraEditors.PopupContainerControl popupContainerControl1;
         private DevExpress.XtraEditors.SimpleButton btnAdd;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private Allus.Libs.Controls.TextFindPopUp textFindPopUp1;
+        private Allus.Libs.Controls.UC_TextFindPopUp textFindPopUp1;
     }
 }

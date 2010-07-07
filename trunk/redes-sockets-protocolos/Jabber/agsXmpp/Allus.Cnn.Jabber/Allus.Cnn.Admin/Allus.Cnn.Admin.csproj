@@ -68,10 +68,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\Allus.Cnn.Weather.dll</HintPath>
     </Reference>
-    <Reference Include="Allus.Libs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libraries\Allus.Libs.dll</HintPath>
-    </Reference>
+    <Reference Include="Allus.Libs, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v9.1.Core, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -102,15 +99,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fwk.Bases, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases.Connector, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\Fwk.Bases.Connector.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Security, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Libraries\Fwk.Security.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
