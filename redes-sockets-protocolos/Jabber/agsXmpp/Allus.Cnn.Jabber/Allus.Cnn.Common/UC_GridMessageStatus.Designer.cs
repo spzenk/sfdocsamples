@@ -41,8 +41,8 @@ namespace Allus.Cnn.Common
             this.gridBand3 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.gridBand4 = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.exportToolBar1 = new Allus.Libs.Controls.ExportToolBar();
-            this.textFind1 = new Allus.Libs.Controls.TextFind();
+            this.exportToolBar1 = new Allus.Libs.Controls.UC_ExportToolBar();
+            this.textFind1 = new Allus.Libs.Controls.UC_TextFind();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.colaboratorDataBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bandedGridView1)).BeginInit();
@@ -227,8 +227,8 @@ namespace Allus.Cnn.Common
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn colMessageStatus;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand2;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand3;
-        private Allus.Libs.Controls.TextFind textFind1;
+        private Allus.Libs.Controls.UC_TextFind textFind1;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand gridBand4;
-        private Allus.Libs.Controls.ExportToolBar exportToolBar1;
+        private Allus.Libs.Controls.UC_ExportToolBar exportToolBar1;
     }
 }

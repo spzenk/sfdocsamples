@@ -39,7 +39,7 @@ namespace Allus.Cnn.Common
             this.colMeshId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDisplayMessageType = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemLookUpEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
-            this.textFindPopUp1 = new Allus.Libs.Controls.TextFindPopUp();
+            this.textFindPopUp1 = new Allus.Libs.Controls.UC_TextFindPopUp();
             this.popupContainerControl1 = new DevExpress.XtraEditors.PopupContainerControl();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
             this.domainCombosFilters1 = new Allus.Cnn.Common.DomainCombosFilters();
@@ -299,7 +299,7 @@ namespace Allus.Cnn.Common
 
         private DevExpress.XtraGrid.GridControl grdMessages;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private Allus.Libs.Controls.TextFindPopUp textFindPopUp1;
+        private Allus.Libs.Controls.UC_TextFindPopUp textFindPopUp1;
         private DevExpress.XtraEditors.PopupContainerControl popupContainerControl1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.CheckBox chkUseDate;

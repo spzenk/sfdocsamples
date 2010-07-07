@@ -45,7 +45,7 @@ namespace Allus.Cnn.Common
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
             this.colSender = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.exportToolBar1 = new Allus.Libs.Controls.ExportToolBar();
+            this.exportToolBar1 = new Allus.Libs.Controls.UC_ExportToolBar();
             ((System.ComponentModel.ISupportInitialize)(this.alertMessageBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdMessages)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdViewMessages)).BeginInit();
@@ -299,7 +299,7 @@ namespace Allus.Cnn.Common
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
         private DevExpress.XtraEditors.Repository.RepositoryItemDateEdit repositoryItemDateEdit1;
         private DevExpress.XtraGrid.Columns.GridColumn colSender;
-        private Allus.Libs.Controls.ExportToolBar exportToolBar1;
+        private Allus.Libs.Controls.UC_ExportToolBar exportToolBar1;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
 
 

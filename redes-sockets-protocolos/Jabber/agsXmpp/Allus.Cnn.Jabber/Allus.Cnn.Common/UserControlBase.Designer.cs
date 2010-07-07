@@ -1,4 +1,6 @@
 using Allus.Libs.Common;
+using Allus.Libs.Controls;
+
 namespace Allus.Cnn.Common
 {
     partial class UserControlBase
@@ -30,17 +32,17 @@ namespace Allus.Cnn.Common
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.MessageViewer = new Allus.Libs.Common.MessageViewerComponent(this.components);
-            this.ExceptionViewer = new Allus.Libs.Common.ExceptionViewComponent(this.components);
+            this.MessageViewer = new Allus.Libs.Controls.MessageViewerComponent(this.components);
+            this.ExceptionViewer = new Allus.Libs.Controls.ExceptionViewComponent(this.components);
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.SuspendLayout();
             // 
             // MessageViewer
             // 
             this.MessageViewer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(247)))), ((int)(((byte)(245)))), ((int)(((byte)(241)))));
-            this.MessageViewer.IconSize = Allus.Libs.Common.IconSize.Small;
+            this.MessageViewer.IconSize = IconSize.Small;
             this.MessageViewer.MessageBoxButtons = System.Windows.Forms.MessageBoxButtons.OK;
-            this.MessageViewer.MessageBoxIcon = Allus.Libs.Common.MessageBoxIcon.Information;
+            this.MessageViewer.MessageBoxIcon = MessageBoxIcon.Information;
             this.MessageViewer.TextMessageColor = System.Drawing.Color.White;
             this.MessageViewer.TextMessageForeColor = System.Drawing.Color.Black;
             this.MessageViewer.Title = "Message";

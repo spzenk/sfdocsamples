@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Fwk.HelperFunctions.Caching;
+using Fwk.Caching;
 using System.Windows.Forms;
 using System.Reflection;
 using Allus.Cnn.Common.BE;
@@ -51,7 +51,7 @@ namespace Allus.Cnn.Common
 
         public static void ClearServiceCache()
         {
-            FwkCache cache = Fwk.HelperFunctions.Caching.KwkCacheFactory.GetFwkCache("ServiceCache");
+            FwkCache cache = Fwk.Caching.KwkCacheFactory.GetFwkCache("ServiceCache");
             cache.ClearAll();
         }
     }

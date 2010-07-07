@@ -12,14 +12,10 @@
     <AssemblyName>Allus.Cnn.Common</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
@@ -42,9 +38,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Allus.Cnn.Weather, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
-    <Reference Include="Allus.Libs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Libraries\Allus.Libs.dll</HintPath>
-    </Reference>
+    <Reference Include="Allus.Libs, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Allus.Libs.Common, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Charts.v9.1.Core, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073">
       <Private>True</Private>
     </Reference>
