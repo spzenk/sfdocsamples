@@ -74,6 +74,7 @@
     <Compile Include="ClasesExtra.nJim\ErrorManager.cs" />
     <Compile Include="ClasesExtra.nJim\common.cs" />
     <Compile Include="ClasesExtra.nJim\Contact.cs" />
+    <Compile Include="JabberClient.cs" />
     <Compile Include="Comand.cs" />
     <Compile Include="frmDialogBase.cs">
       <SubType>Form</SubType>
@@ -108,7 +109,6 @@
     <Compile Include="frmRegister.Designer.cs">
       <DependentUpon>frmRegister.cs</DependentUpon>
     </Compile>
-    <Compile Include="JabberClient.cs" />
     <Compile Include="ClasesExtra.nJim\Presence.cs" />
     <Compile Include="ClasesExtra.nJim\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
