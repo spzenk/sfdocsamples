@@ -119,8 +119,6 @@ namespace agsXMPP.Client
                 return;
             }
 
-
-
             AddLog("Online");
         }
 
@@ -190,20 +188,12 @@ namespace agsXMPP.Client
         #endregion
 
 
-
-
-
-
         void XmppServices_OnLog(string msg)
         {
             AddLog(msg);
         }
 
       
-
-
-
-
         #region Roster Events
         private void XmppCon_OnRosterStart(object sender)
         {
@@ -326,11 +316,13 @@ namespace agsXMPP.Client
 
         void Login()
         {
+            Util.XmppServices.XmppCon = new XmppClientConnection();
+            CreateEvents();
             using (frmAuthenticate frm = new frmAuthenticate(rosterControl))
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    CreateEvents();
+                    
                     btnLogIn.Enabled = false;
                 }
                 else
