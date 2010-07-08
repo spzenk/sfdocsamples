@@ -264,42 +264,15 @@ namespace agsXMPP.Client
 
      
        
-
-        private void btnSendCommand_Click(object sender, EventArgs e)
-        {
-            RosterNode roster = Util.XmppServices.RosterControl.SelectedItem();
-            if (roster == null) return;
-            if (roster.RosterItem != null)
-            {
-                //IQ iq = new IQ(IqType.get, XmppCon.MyJID, roster.RosterItem.Jid);
-
-                agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
-                msg.To = roster.RosterItem.Jid;
-                
-                agsXMPP.Client.Comand cmd = new  agsXMPP.Client.Comand();
-
-                cmd.Type = "tipo 01";
-                cmd.Value = Convert.ToInt32(txtCmdValue.Text);
-
-                msg.AddChild(cmd);
-                Util.XmppServices.XmppCon.Send(msg);
-            }
-
-        }
-
-
-
-
-
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Login();
+            Login(FormStartPosition.CenterScreen);
         }
  
 
         private void btnLogIn_Click(object sender, EventArgs e)
         {
-            Login();
+            Login(FormStartPosition.CenterParent);
         }
 
         private void btnLogout_Click(object sender, EventArgs e)
@@ -314,19 +287,24 @@ namespace agsXMPP.Client
 
 
 
-        void Login()
+        void Login(FormStartPosition p)
         {
             Util.XmppServices.XmppCon = new XmppClientConnection();
             CreateEvents();
+
             using (frmAuthenticate frm = new frmAuthenticate(rosterControl))
             {
+                //frm.Parent = this;
+                frm.StartPosition = p;
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     
                     btnLogIn.Enabled = false;
+                    btnLogOut.Enabled = true;
                 }
                 else
                 {
+                    btnLogOut.Enabled = false;
                     btnLogIn.Enabled = true;
                 }
 
@@ -338,7 +316,27 @@ namespace agsXMPP.Client
 
         }
 
-    
+        private void btnSendCommand_Click(object sender, EventArgs e)
+        {
+            RosterNode roster = Util.XmppServices.RosterControl.SelectedItem();
+            if (roster == null) return;
+            if (roster.RosterItem != null)
+            {
+                //IQ iq = new IQ(IqType.get, XmppCon.MyJID, roster.RosterItem.Jid);
+
+                agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
+                msg.To = roster.RosterItem.Jid;
+
+                agsXMPP.Client.Comand cmd = new agsXMPP.Client.Comand();
+
+                cmd.Type = "tipo 01";
+                cmd.Value = Convert.ToInt32(txtCmdValue.Text);
+
+                msg.AddChild(cmd);
+                Util.XmppServices.XmppCon.Send(msg);
+            }
+
+        }
 
         public void CreateEvents()
         {
