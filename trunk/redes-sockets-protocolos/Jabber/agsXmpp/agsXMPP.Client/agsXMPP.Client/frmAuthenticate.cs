@@ -36,7 +36,7 @@ namespace agsXMPP.Client
         {
             SaveSettings();
 
-            Util.XmppServices.XmppCon = new XmppClientConnection();
+            
             Util.XmppServices.XmppCon.SocketConnectionType = agsXMPP.net.SocketConnectionType.Direct;
             Util.XmppServices.XmppCon.Server = Util.storage.StorageObject.Server;
             Util.XmppServices.XmppCon.Username = Util.storage.StorageObject.User;
@@ -54,9 +54,7 @@ namespace agsXMPP.Client
             //Util.XmppServices.XmppCon.ConnectServer = "http://vm-2k:8080/http-bind/";            
 
 
-            //if (chkRegister.Checked)
-            //    Util.XmppServices.XmppCon.RegisterAccount = true;
-            //else
+
             Util.XmppServices.XmppCon.RegisterAccount = false;
 
 
@@ -129,8 +127,8 @@ namespace agsXMPP.Client
                 return;
             }
             Util.XmppServices.DiscoServer();
-            Util.XmppServices.XmppCon.OnLogin -= new ObjectHandler(XmppCon_OnLogin);
-            Util.XmppServices.XmppCon.OnAuthError -= new XmppElementHandler(XmppCon_OnAuthError);
+            //Util.XmppServices.XmppCon.OnLogin -= new ObjectHandler(XmppCon_OnLogin);
+            //Util.XmppServices.XmppCon.OnAuthError -= new XmppElementHandler(XmppCon_OnAuthError);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
