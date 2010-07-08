@@ -10,7 +10,7 @@ using agsXMPP.protocol.client;
 
 namespace agsXMPP.Client
 {
-    public partial class AceptSubscribe : Form
+    public partial class AceptSubscribe : frmDialogBase
     {
         	private XmppClientConnection	_connection;
 		private Jid						_from;

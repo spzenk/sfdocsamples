@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{99A956A3-9035-43BE-AFF2-4AB3FEFC5DB5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -39,10 +39,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\agsXMPP.ui.dll</HintPath>
     </Reference>
-    <Reference Include="Fwk.Bases, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\fwk\branches\5.0.0\src\Libraries\Framework\Fwk.Bases.dll</HintPath>
-    </Reference>
+    <Reference Include="Fwk.Bases, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -78,15 +75,39 @@
     <Compile Include="ClasesExtra.nJim\common.cs" />
     <Compile Include="ClasesExtra.nJim\Contact.cs" />
     <Compile Include="Comand.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="frmDialogBase.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmDialogBase.Designer.cs">
+      <DependentUpon>frmDialogBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="ClasesExtra.nJim\GeoLocTools.cs" />
     <Compile Include="ClasesExtra.nJim\Identity.cs" />
     <Compile Include="ClasesExtra.nJim\Jabber.cs" />
+    <Compile Include="frmAuthenticate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAuthenticate.Designer.cs">
+      <DependentUpon>frmAuthenticate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmChat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmChat.Designer.cs">
+      <DependentUpon>frmChat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegister.Designer.cs">
+      <DependentUpon>frmRegister.cs</DependentUpon>
+    </Compile>
     <Compile Include="JabberClient.cs" />
     <Compile Include="ClasesExtra.nJim\Presence.cs" />
     <Compile Include="ClasesExtra.nJim\Program.cs" />
@@ -95,9 +116,21 @@
       <DependentUpon>AceptSubscribe.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmDialogBase.resx">
+      <DependentUpon>frmDialogBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAuthenticate.resx">
+      <DependentUpon>frmAuthenticate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmChat.resx">
+      <DependentUpon>frmChat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegister.resx">
+      <DependentUpon>frmRegister.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
