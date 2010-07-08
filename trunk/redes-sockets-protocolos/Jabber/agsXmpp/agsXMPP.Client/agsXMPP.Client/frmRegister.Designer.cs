@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnCancel = new System.Windows.Forms.Button();
             this.txtServer = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtResource = new System.Windows.Forms.TextBox();
@@ -39,19 +38,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.numPriority = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmdLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.cmdLogin = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnCancel.Location = new System.Drawing.Point(177, 285);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(88, 24);
-            this.btnCancel.TabIndex = 60;
-            this.btnCancel.Text = "Cancel";
             // 
             // txtServer
             // 
@@ -143,15 +134,6 @@
             this.label3.Text = "Password:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // cmdLogin
-            // 
-            this.cmdLogin.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.cmdLogin.Location = new System.Drawing.Point(57, 285);
-            this.cmdLogin.Name = "cmdLogin";
-            this.cmdLogin.Size = new System.Drawing.Size(88, 24);
-            this.cmdLogin.TabIndex = 55;
-            this.cmdLogin.Text = "Login";
-            // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -162,12 +144,41 @@
             this.label1.Text = "User";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCancel.Location = new System.Drawing.Point(175, 276);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(88, 24);
+            this.btnCancel.TabIndex = 61;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // cmdLogin
+            // 
+            this.cmdLogin.BackColor = System.Drawing.Color.Gray;
+            this.cmdLogin.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.cmdLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cmdLogin.Location = new System.Drawing.Point(55, 276);
+            this.cmdLogin.Name = "cmdLogin";
+            this.cmdLogin.Size = new System.Drawing.Size(88, 24);
+            this.cmdLogin.TabIndex = 60;
+            this.cmdLogin.Text = "Login";
+            this.cmdLogin.UseVisualStyleBackColor = false;
+            // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 342);
             this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.cmdLogin);
             this.Controls.Add(this.txtServer);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtResource);
@@ -178,7 +189,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.numPriority);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.cmdLogin);
             this.Controls.Add(this.label1);
             this.Name = "frmRegister";
             this.Text = "Register ";
@@ -190,7 +200,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.TextBox txtServer;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtResource;
@@ -201,7 +210,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numPriority;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button cmdLogin;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button cmdLogin;
     }
 }

@@ -148,12 +148,17 @@
             // 
             // cmdLogin
             // 
-            this.cmdLogin.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.cmdLogin.BackColor = System.Drawing.Color.Gray;
+            this.cmdLogin.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.cmdLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdLogin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.cmdLogin.Location = new System.Drawing.Point(50, 260);
             this.cmdLogin.Name = "cmdLogin";
             this.cmdLogin.Size = new System.Drawing.Size(88, 24);
             this.cmdLogin.TabIndex = 38;
             this.cmdLogin.Text = "Login";
+            this.cmdLogin.UseVisualStyleBackColor = false;
             this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
             // 
             // label1
@@ -177,12 +182,17 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnCancel.BackColor = System.Drawing.Color.Gray;
+            this.btnCancel.FlatAppearance.BorderColor = System.Drawing.Color.Blue;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnCancel.Location = new System.Drawing.Point(170, 260);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(88, 24);
             this.btnCancel.TabIndex = 45;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmAuthenticate

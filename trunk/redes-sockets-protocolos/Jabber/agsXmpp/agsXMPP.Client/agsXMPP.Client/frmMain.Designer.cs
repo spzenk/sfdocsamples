@@ -67,6 +67,7 @@
             // 
             this.rosterControl.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
+            this.rosterControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rosterControl.ColorGroup = System.Drawing.SystemColors.Highlight;
             this.rosterControl.ColorResource = System.Drawing.SystemColors.ControlText;
             this.rosterControl.ColorRoot = System.Drawing.SystemColors.Highlight;
@@ -81,20 +82,22 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(775, 147);
+            this.textBox1.Location = new System.Drawing.Point(758, 152);
             this.textBox1.Name = "textBox1";
             this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(168, 20);
+            this.textBox1.Size = new System.Drawing.Size(146, 20);
             this.textBox1.TabIndex = 33;
             // 
             // btnAddContact
             // 
-            this.btnAddContact.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnAddContact.Location = new System.Drawing.Point(681, 147);
+            this.btnAddContact.BackColor = System.Drawing.Color.LightGray;
+            this.btnAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddContact.Location = new System.Drawing.Point(664, 147);
             this.btnAddContact.Name = "btnAddContact";
             this.btnAddContact.Size = new System.Drawing.Size(88, 25);
             this.btnAddContact.TabIndex = 35;
             this.btnAddContact.Text = "Add contact";
+            this.btnAddContact.UseVisualStyleBackColor = false;
             this.btnAddContact.Click += new System.EventHandler(this.btnAddContact_Click);
             // 
             // txtBare
@@ -127,31 +130,35 @@
             // 
             // btnSendCommand
             // 
-            this.btnSendCommand.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btnSendCommand.Location = new System.Drawing.Point(681, 189);
+            this.btnSendCommand.BackColor = System.Drawing.Color.LightGray;
+            this.btnSendCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendCommand.Location = new System.Drawing.Point(664, 189);
             this.btnSendCommand.Name = "btnSendCommand";
             this.btnSendCommand.Size = new System.Drawing.Size(88, 25);
             this.btnSendCommand.TabIndex = 39;
             this.btnSendCommand.Text = "Send command";
+            this.btnSendCommand.UseVisualStyleBackColor = false;
             this.btnSendCommand.Click += new System.EventHandler(this.btnSendCommand_Click);
             // 
             // txtCmdValue
             // 
-            this.txtCmdValue.Location = new System.Drawing.Point(789, 193);
+            this.txtCmdValue.Location = new System.Drawing.Point(758, 193);
             this.txtCmdValue.Multiline = true;
             this.txtCmdValue.Name = "txtCmdValue";
-            this.txtCmdValue.Size = new System.Drawing.Size(168, 21);
+            this.txtCmdValue.Size = new System.Drawing.Size(146, 21);
             this.txtCmdValue.TabIndex = 40;
             this.txtCmdValue.Text = "1232";
             // 
             // btnLogIn
             // 
-            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnLogIn.BackColor = System.Drawing.Color.LightGray;
+            this.btnLogIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogIn.Location = new System.Drawing.Point(340, 29);
             this.btnLogIn.Name = "btnLogIn";
             this.btnLogIn.Size = new System.Drawing.Size(88, 25);
             this.btnLogIn.TabIndex = 41;
             this.btnLogIn.Text = "Loging";
+            this.btnLogIn.UseVisualStyleBackColor = false;
             this.btnLogIn.Click += new System.EventHandler(this.btnLogIn_Click);
             // 
             // label1
@@ -176,18 +183,21 @@
             // 
             // btnLogOut
             // 
-            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btnLogOut.BackColor = System.Drawing.Color.LightGray;
+            this.btnLogOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogOut.Location = new System.Drawing.Point(453, 29);
             this.btnLogOut.Name = "btnLogOut";
             this.btnLogOut.Size = new System.Drawing.Size(88, 25);
             this.btnLogOut.TabIndex = 44;
             this.btnLogOut.Text = "Logout";
+            this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(969, 570);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.label2);
