@@ -12,6 +12,10 @@ namespace agsXMPP.Client
 {
     public partial class frmAuthenticate : frmDialogBase
     {
+        // indica si ya se paso por este metodo o no.-
+        bool firsTime = true;
+
+        public event OnLogHandler OnLog;
         public frmAuthenticate()
         {
             InitializeComponent();
@@ -34,54 +38,59 @@ namespace agsXMPP.Client
 
         void Connect()
         {
-            SaveSettings();
-
-            
+            //Util.XmppServices.XmppCon = new XmppClientConnection();
             Util.XmppServices.XmppCon.SocketConnectionType = agsXMPP.net.SocketConnectionType.Direct;
-            Util.XmppServices.XmppCon.Server = Util.storage.StorageObject.Server;
-            Util.XmppServices.XmppCon.Username = Util.storage.StorageObject.User;
-            Util.XmppServices.XmppCon.Password = Util.storage.StorageObject.Password;
+
+            Util.XmppServices.XmppCon.Server = txtServer.Text;
+            Util.XmppServices.XmppCon.Username = txtJid.Text;
+            Util.XmppServices.XmppCon.Password = txtPassword.Text;
             Util.XmppServices.XmppCon.Resource = txtResource.Text;
             Util.XmppServices.XmppCon.Priority = (int)numPriority.Value;
-            Util.XmppServices.XmppCon.Port = int.Parse(Util.storage.StorageObject.Port);
+            Util.XmppServices.XmppCon.Port = int.Parse(txtPort.Text);
             Util.XmppServices.XmppCon.UseSSL = Util.storage.StorageObject.UseSSL;
-            Util.XmppServices.XmppCon.AutoResolveConnectServer = true;
-            Util.XmppServices.XmppCon.UseCompression = false;
 
 
 
-            //Util.XmppServices.XmppCon.SocketConnectionType    = agsXMPP.net.SocketConnectionType.Bosh;
-            //Util.XmppServices.XmppCon.ConnectServer = "http://vm-2k:8080/http-bind/";            
 
 
 
-            Util.XmppServices.XmppCon.RegisterAccount = false;
+            if (firsTime)
+            {
+                firsTime = false;
+                Util.XmppServices.XmppCon.AutoResolveConnectServer = true;
+                Util.XmppServices.XmppCon.UseCompression = false;
+                //Util.XmppServices.XmppCon.SocketConnectionType    = agsXMPP.net.SocketConnectionType.Bosh;
+                //Util.XmppServices.XmppCon.ConnectServer = "http://vm-2k:8080/http-bind/";        
+
+                Util.XmppServices.XmppCon.RegisterAccount = false;
+
+                // Capabilities
+                Util.XmppServices.XmppCon.EnableCapabilities = true;
+                Util.XmppServices.XmppCon.ClientVersion = "1.0";
+                Util.XmppServices.XmppCon.Capabilities.Node = "http://www.ag-software.de/miniclient/caps";
 
 
-            // Capabilities
-            Util.XmppServices.XmppCon.EnableCapabilities = true;
-            Util.XmppServices.XmppCon.ClientVersion = "1.0";
-            Util.XmppServices.XmppCon.Capabilities.Node = "http://www.ag-software.de/miniclient/caps";
+                // overwrite some settings for debugging
+                //_connection.UseStartTLS     = false;
+                //_connection.UseSSL          = false;
 
+                // overwrite some settings for Polling Test
+                //_connection.SocketConnectionType	      = agsXMPP.net.SocketConnectionType.HttpPolling;
+                //Util.XmppServices.XmppCon.UseCompression              = false;
+                //Util.XmppServices.XmppCon.UseStartTLS	              = false;
+                //Util.XmppServices.XmppCon.UseSSL                      = false;
+                //_connecXmppContion.AutoResolveConnectServer    = false;
+                //XmppCon.ConnectServer               = "http://vm-2000:5280/http-poll";
 
-            // overwrite some settings for debugging
-            //_connection.UseStartTLS     = false;
-            //_connection.UseSSL          = false;
+                agsXMPP.Factory.ElementFactory.AddElementType("command", "fwk.jabber:command", typeof(Comand));
+                Util.XmppServices.DiscoManager = new DiscoManager(Util.XmppServices.XmppCon);
 
-            // overwrite some settings for Polling Test
-            //_connection.SocketConnectionType	      = agsXMPP.net.SocketConnectionType.HttpPolling;
-            //Util.XmppServices.XmppCon.UseCompression              = false;
-            //Util.XmppServices.XmppCon.UseStartTLS	              = false;
-            //Util.XmppServices.XmppCon.UseSSL                      = false;
-            //_connecXmppContion.AutoResolveConnectServer    = false;
-            //XmppCon.ConnectServer               = "http://vm-2000:5280/http-poll";
+                SetDiscoInfo();
 
-            agsXMPP.Factory.ElementFactory.AddElementType("command", "fwk.jabber:command", typeof(Comand));
-            Util.XmppServices.DiscoManager = new DiscoManager(Util.XmppServices.XmppCon);
-            SetDiscoInfo();
-            Util.XmppServices.XmppCon.OnLogin += new ObjectHandler(XmppCon_OnLogin);
-
-            Util.XmppServices.XmppCon.OnAuthError += new XmppElementHandler(XmppCon_OnAuthError);
+                Util.XmppServices.XmppCon.OnLogin += new ObjectHandler(XmppCon_OnLogin);
+                Util.XmppServices.XmppCon.OnAuthError += new XmppElementHandler(XmppCon_OnAuthError);
+               
+            }
             Util.XmppServices.XmppCon.Open();
         }
 
@@ -92,11 +101,13 @@ namespace agsXMPP.Client
 
             if (Util.XmppServices.XmppCon.XmppConnectionState != XmppConnectionState.Disconnected)
                 Util.XmppServices.XmppCon.Close();
-
-
-            Util.XmppServices.RosterControl.Clear();
-            Util.XmppServices.XmppCon = null;
+           
+            //No se rrealiza mas esta accion aqui: Dado que otro formulario padre pudiera haber creado eventos de XmppCon y
+            //tenga que cerrarlos
+            //Util.XmppServices.RosterControl.Clear();
+            //Util.XmppServices.XmppCon = null;
         }
+       
         void XmppCon_OnAuthError(object sender, agsXMPP.Xml.Dom.Element e)
         {
 
@@ -107,16 +118,18 @@ namespace agsXMPP.Client
                 BeginInvoke(new XmppElementHandler(XmppCon_OnAuthError), new object[] { sender, e });
                 return;
             }
-
-            Disconnect();
-
-            MessageBox.Show("Error al autenticar! " + Environment.NewLine + "  password or nombre de usaurio incorrecto.",
+            MessageBox.Show("Error al autenticar! " + Environment.NewLine + "  password o nombre de usurio incorrecto.",
                 "Error",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Exclamation,
                 MessageBoxDefaultButton.Button1);
 
+            //Disconnect();
 
+            //if (OnAuthError != null)
+            //{
+            //    OnAuthError(this, new EventArgs());
+            //}
         }
 
         void XmppCon_OnLogin(object sender)
@@ -127,8 +140,9 @@ namespace agsXMPP.Client
                 return;
             }
             Util.XmppServices.DiscoServer();
-            //Util.XmppServices.XmppCon.OnLogin -= new ObjectHandler(XmppCon_OnLogin);
-            //Util.XmppServices.XmppCon.OnAuthError -= new XmppElementHandler(XmppCon_OnAuthError);
+            Util.XmppServices.XmppCon.OnLogin -= new ObjectHandler(XmppCon_OnLogin);
+            Util.XmppServices.XmppCon.OnAuthError -= new XmppElementHandler(XmppCon_OnAuthError);
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -146,10 +160,15 @@ namespace agsXMPP.Client
 
             if (!string.IsNullOrEmpty(Util.storage.StorageObject.Port))
                 txtPort.Text = Util.storage.StorageObject.Port;
+
+            if (!string.IsNullOrEmpty(Util.storage.StorageObject.Resource))
+                txtResource.Text = Util.storage.StorageObject.Resource;
         }
 
         private void frmAuthenticate_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Util.XmppServices.XmppCon.OnLogin -= new ObjectHandler(XmppCon_OnLogin);
+            Util.XmppServices.XmppCon.OnAuthError -= new XmppElementHandler(XmppCon_OnAuthError);
             SaveSettings();
         }
 
@@ -170,9 +189,15 @@ namespace agsXMPP.Client
             Util.storage.StorageObject.Password = txtPassword.Text;
             Util.storage.StorageObject.Server = txtServer.Text;
             Util.storage.StorageObject.Port = txtPort.Text;
-
-
+            Util.storage.StorageObject.Resource = txtResource.Text;
             Util.storage.Save();
+        }
+        void AddLog(string msg)
+        {
+            if (OnLog != null)
+            {
+                OnLog(msg);
+            }
         }
     }
 }

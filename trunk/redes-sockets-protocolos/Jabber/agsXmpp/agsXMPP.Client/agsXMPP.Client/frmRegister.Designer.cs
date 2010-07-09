@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.cmdLogin = new System.Windows.Forms.Button();
+            this.txtPort = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).BeginInit();
             this.SuspendLayout();
             // 
@@ -157,6 +158,7 @@
             this.btnCancel.TabIndex = 61;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // cmdLogin
             // 
@@ -169,14 +171,25 @@
             this.cmdLogin.Name = "cmdLogin";
             this.cmdLogin.Size = new System.Drawing.Size(88, 24);
             this.cmdLogin.TabIndex = 60;
-            this.cmdLogin.Text = "Login";
+            this.cmdLogin.Text = "Register";
             this.cmdLogin.UseVisualStyleBackColor = false;
+            this.cmdLogin.Click += new System.EventHandler(this.cmdLogin_Click);
+            // 
+            // txtPort
+            // 
+            this.txtPort.Location = new System.Drawing.Point(199, 155);
+            this.txtPort.MaxLength = 5;
+            this.txtPort.Name = "txtPort";
+            this.txtPort.Size = new System.Drawing.Size(72, 20);
+            this.txtPort.TabIndex = 62;
+            this.txtPort.Text = "5222";
             // 
             // frmRegister
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(363, 342);
+            this.Controls.Add(this.txtPort);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.cmdLogin);
             this.Controls.Add(this.txtServer);
@@ -192,6 +205,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmRegister";
             this.Text = "Register ";
+            this.Load += new System.EventHandler(this.frmRegister_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numPriority)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -213,5 +227,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button cmdLogin;
+        private System.Windows.Forms.TextBox txtPort;
     }
 }

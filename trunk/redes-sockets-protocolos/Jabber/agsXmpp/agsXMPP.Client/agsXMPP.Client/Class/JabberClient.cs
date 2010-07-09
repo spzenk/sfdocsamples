@@ -44,5 +44,13 @@ namespace agsXMPP.Client
             get { return _UseSSL; }
             set { _UseSSL = value; }
         }
+        string _Resource;
+
+           public string Resource
+        {
+            get { return _Resource; }
+            set { _Resource = value; }
+        }
+        
     }
 }
