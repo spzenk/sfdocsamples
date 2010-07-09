@@ -31,7 +31,7 @@
             this.txtLogs = new System.Windows.Forms.TextBox();
             this.txtTo = new System.Windows.Forms.TextBox();
             this.rosterControl = new agsXMPP.ui.roster.RosterControl();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNewContact = new System.Windows.Forms.TextBox();
             this.btnAddContact = new System.Windows.Forms.Button();
             this.txtBare = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -42,6 +42,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
+            this.btnRegister = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtLogs
@@ -80,13 +81,12 @@
             this.rosterControl.TabIndex = 32;
             this.rosterControl.SelectionChanged += new System.EventHandler(this.rosterControl_SelectionChanged);
             // 
-            // textBox1
+            // txtNewContact
             // 
-            this.textBox1.Location = new System.Drawing.Point(758, 152);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(146, 20);
-            this.textBox1.TabIndex = 33;
+            this.txtNewContact.Location = new System.Drawing.Point(758, 152);
+            this.txtNewContact.Name = "txtNewContact";
+            this.txtNewContact.Size = new System.Drawing.Size(146, 20);
+            this.txtNewContact.TabIndex = 33;
             // 
             // btnAddContact
             // 
@@ -193,12 +193,25 @@
             this.btnLogOut.UseVisualStyleBackColor = false;
             this.btnLogOut.Click += new System.EventHandler(this.btnLogout_Click);
             // 
+            // btnRegister
+            // 
+            this.btnRegister.BackColor = System.Drawing.Color.LightGray;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegister.Location = new System.Drawing.Point(579, 29);
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.Size = new System.Drawing.Size(88, 25);
+            this.btnRegister.TabIndex = 45;
+            this.btnRegister.Text = "Regiter";
+            this.btnRegister.UseVisualStyleBackColor = false;
+            this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(969, 570);
+            this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -209,7 +222,7 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtBare);
             this.Controls.Add(this.btnAddContact);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtNewContact);
             this.Controls.Add(this.rosterControl);
             this.Controls.Add(this.txtTo);
             this.Controls.Add(this.txtLogs);
@@ -227,7 +240,7 @@
         private System.Windows.Forms.TextBox txtLogs;
         private System.Windows.Forms.TextBox txtTo;
         private agsXMPP.ui.roster.RosterControl rosterControl;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNewContact;
         private System.Windows.Forms.Button btnAddContact;
         private System.Windows.Forms.TextBox txtBare;
         private System.Windows.Forms.Label label9;
@@ -238,6 +251,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogOut;
+        private System.Windows.Forms.Button btnRegister;
     }
 }
 

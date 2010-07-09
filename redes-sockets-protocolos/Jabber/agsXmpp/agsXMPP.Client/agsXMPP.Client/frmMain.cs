@@ -56,8 +56,7 @@ namespace agsXMPP.Client
         {
             if (InvokeRequired)
             {
-                // Windows Forms are not Thread Safe, we need to invoke this :(
-                // We're not in the UI thread, so we need to call BeginInvoke				
+ 			
                 BeginInvoke(new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged), new object[] { sender, state });
                 return;
             }
@@ -67,9 +66,7 @@ namespace agsXMPP.Client
         //void XmppCon_OnAuthError(object sender, Element e)
         //{
         //    if (InvokeRequired)
-        //    {
-        //        // Windows Forms are not Thread Safe, we need to invoke this :(
-        //        // We're not in the UI thread, so we need to call BeginInvoke				
+        //    {	
         //        BeginInvoke(new XmppElementHandler(XmppCon_OnAuthError), new object[] { sender,e });
         //        return;
         //    }
@@ -81,15 +78,12 @@ namespace agsXMPP.Client
         void XmppCon_OnError(object sender, Exception ex)
         {
             if (InvokeRequired)
-            {
-                // Windows Forms are not Thread Safe, we need to invoke this :(
-                // We're not in the UI thread, so we need to call BeginInvoke				
+            {			
                 BeginInvoke(new ErrorHandler(XmppCon_OnError), new object[] { sender, ex });
                 return;
             }
 
-
-            AddLog(ex.Message);
+           AddLog(ex.Message);
 
         }
 
@@ -97,14 +91,11 @@ namespace agsXMPP.Client
         {
             if (InvokeRequired)
             {
-                // Windows Forms are not Thread Safe, we need to invoke this :(
-                // We're not in the UI thread, so we need to call BeginInvoke				
                 BeginInvoke(new ObjectHandler(XmppCon_OnClose), new object[] { sender });
                 return;
             }
 
             AddLog("offline");
-
             RemoveEvents();
             btnLogIn.Enabled = true;
             btnLogOut.Enabled = false;
@@ -157,8 +148,6 @@ namespace agsXMPP.Client
         {
             if (InvokeRequired)
             {
-                // Windows Forms are not Thread Safe, we need to invoke this :(
-                // We're not in the UI thread, so we need to call BeginInvoke				
                 BeginInvoke(new OnPresenceDelegate(XmppCon_OnPresence), new object[] { sender, pres });
                 return;
             }
@@ -175,8 +164,6 @@ namespace agsXMPP.Client
         {
             if (InvokeRequired)
             {
-                // Windows Forms are not Thread Safe, we need to invoke this :(
-                // We're not in the UI thread, so we need to call BeginInvoke				
                 BeginInvoke(new MessageHandler(XmppCon_OnMessage), new object[] { sender, msg });
                 return;
             }
@@ -284,32 +271,65 @@ namespace agsXMPP.Client
             }
         }
 
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            if (Util.XmppServices.XmppCon.XmppConnectionState != XmppConnectionState.Disconnected)
+            {
+                Util.XmppServices.XmppCon.Close();
+            }
 
+            Util.XmppServices.XmppCon = new XmppClientConnection();
+            CreateEvents();
+
+            using (frmRegister frm = new frmRegister(rosterControl))
+            {
+
+                frm.StartPosition = FormStartPosition.CenterParent;
+               
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+
+                    btnLogIn.Enabled = false;
+                    btnLogOut.Enabled = true;
+                    btnRegister.Enabled = false;
+                }
+                else
+                {
+                    btnLogOut.Enabled = false;
+                    btnLogIn.Enabled = true;
+                    btnRegister.Enabled = true;
+                }
+
+            }
+        }
 
 
         void Login(FormStartPosition p)
         {
             Util.XmppServices.XmppCon = new XmppClientConnection();
             CreateEvents();
-
             using (frmAuthenticate frm = new frmAuthenticate(rosterControl))
             {
-                //frm.Parent = this;
+                frm.OnLog += new OnLogHandler(frm_OnLog);
                 frm.StartPosition = p;
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
-                    
+                 
                     btnLogIn.Enabled = false;
                     btnLogOut.Enabled = true;
+                    btnRegister.Enabled = false;
                 }
                 else
                 {
                     btnLogOut.Enabled = false;
                     btnLogIn.Enabled = true;
+                    btnRegister.Enabled = true;
                 }
 
             }
         }
+
+      
 
         private void btnAddContact_Click(object sender, EventArgs e)
         {
@@ -340,34 +360,28 @@ namespace agsXMPP.Client
 
         public void CreateEvents()
         {
-
-
-
             Util.XmppServices.XmppCon.OnIq += new IqHandler(XmppCon_OnIq);
             Util.XmppServices.XmppCon.OnMessage += new MessageHandler(XmppCon_OnMessage);
             Util.XmppServices.XmppCon.OnLogin += new ObjectHandler(XmppCon_OnLogin);
             Util.XmppServices.XmppCon.OnClose += new ObjectHandler(XmppCon_OnClose);
             Util.XmppServices.XmppCon.OnError += new ErrorHandler(XmppCon_OnError);
-            //Util.XmppServices.XmppCon.OnAuthError += new XmppElementHandler(XmppCon_OnAuthError);
+
 
             Util.XmppServices.XmppCon.OnRosterEnd += new ObjectHandler(XmppCon_OnRosterEnd);
             Util.XmppServices.XmppCon.OnRosterStart += new ObjectHandler(XmppCon_OnRosterStart);
             Util.XmppServices.XmppCon.OnRosterItem += new XmppClientConnection.RosterHandler(XmppCon_OnRosterItem);
             Util.XmppServices.XmppCon.OnXmppConnectionStateChanged += new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged);
             Util.XmppServices.XmppCon.OnPresence += new PresenceHandler(XmppCon_OnPresence);
+       }
 
-
-
-
-        }
         public void RemoveEvents()
         {
+
             Util.XmppServices.XmppCon.OnIq -= new IqHandler(XmppCon_OnIq);
             Util.XmppServices.XmppCon.OnMessage -= new MessageHandler(XmppCon_OnMessage);
             Util.XmppServices.XmppCon.OnLogin -= new ObjectHandler(XmppCon_OnLogin);
             Util.XmppServices.XmppCon.OnClose -= new ObjectHandler(XmppCon_OnClose);
             Util.XmppServices.XmppCon.OnError -= new ErrorHandler(XmppCon_OnError);
-            //Util.XmppServices.XmppCon.OnAuthError -= new XmppElementHandler(XmppCon_OnAuthError);
 
             Util.XmppServices.XmppCon.OnRosterEnd -= new ObjectHandler(XmppCon_OnRosterEnd);
             Util.XmppServices.XmppCon.OnRosterStart -= new ObjectHandler(XmppCon_OnRosterStart);
@@ -390,6 +404,12 @@ namespace agsXMPP.Client
 
             txtLogs.Text = logs.ToString();
         }
+
+        void frm_OnLog(string msg)
+        {
+            AddLog(msg);
+        }
+
         private void LoadChatServers()
         {
             //treeGC.TreeViewNodeSorter = new TreeNodeSorter();
@@ -411,6 +431,9 @@ namespace agsXMPP.Client
             //    this.treeGC.Nodes.Add(n);
             //}
         }
+
+     
+     
       
     }
 }

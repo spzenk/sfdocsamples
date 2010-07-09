@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region nms
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -28,7 +29,7 @@ using System.IO;
 using nJim;
 using Fwk.Caching;
 using System.Windows.Forms;
-
+#endregion
 
 namespace agsXMPP.Client
 {
@@ -88,8 +89,10 @@ namespace agsXMPP.Client
 
 
     public delegate void OnLogHandler(string msg);
+
     public class XmppServices
     {
+        #region properties
         public event OnLogHandler OnLog;
 
         public static Dictionary<string, Form> ChatForms = new Dictionary<string, Form>();
@@ -98,30 +101,26 @@ namespace agsXMPP.Client
         public List<Jid> Proxy = new List<Jid>();
         DiscoManager discoManager;
         agsXMPP.ui.roster.RosterControl rosterControl;
+        XmppClientConnection xmppCon;
 
         public DiscoManager DiscoManager
         {
             get { return discoManager; }
             set { discoManager = value; }
         }
-        XmppClientConnection xmppCon;
 
         public XmppClientConnection XmppCon
         {
             get { return xmppCon; }
             set { xmppCon = value; }
         }
-     
 
         public agsXMPP.ui.roster.RosterControl RosterControl
         {
             get { return rosterControl; }
             set { rosterControl = value; }
         }
-        public XmppServices()
-        {
-            //xmppCon = new XmppClientConnection();
-        }
+        #endregion
 
 
         #region << Switchers >>
