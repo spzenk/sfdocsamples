@@ -432,6 +432,16 @@ namespace agsXMPP.Client
             //}
         }
 
+        private void btnChat_Click(object sender, EventArgs e)
+        {
+            RosterNode rosterNode = Util.XmppServices.RosterControl.SelectedItem();
+            if (rosterNode == null) return;
+
+
+            Util.XmppServices.ChatWtichUser(rosterNode.RosterItem.Jid, rosterNode.Text);
+            
+        }
+
      
      
       

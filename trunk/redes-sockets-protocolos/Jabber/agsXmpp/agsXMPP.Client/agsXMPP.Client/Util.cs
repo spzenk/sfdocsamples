@@ -125,21 +125,59 @@ namespace agsXMPP.Client
 
         #region << Switchers >>
 
+        /// <summary>
+        /// Se crea un formulario de chat
+        /// Usauario A quiere chatear con usuario B
+        /// </summary>
+        /// <param name="fromJid">jabber id de A </param>
+        /// <param name="nick">Nick de A</param>
+        public void ChatWtichUser(Jid fromJid,string nick)
+        {
+
+              frmChat f = null;
+              if (ChatForms.ContainsKey(fromJid.ToString()))
+              {
+                  f = (frmChat)ChatForms[fromJid.ToString()];
+              }
+              else
+              {
+                   f = new frmChat(fromJid, nick);
+
+              }
+              f.Show();
+          
+          
+        }
+
+        /// <summary>
+        /// Al usuario B le llega un mensaje y levanta un formulario drmChat 
+        /// </summary>
+        /// <param name="msg">Message enviado por A</param>
         public void SwitchMessage(agsXMPP.protocol.client.Message msg)
         {
             if (msg.Body != null)//--> es un chat
             {
-                if (!ChatForms.ContainsKey(msg.From.Bare))
+                frmChat f = null;
+                if (ChatForms.ContainsKey(msg.From.Bare))
+                {
+                    f = (frmChat)ChatForms[msg.From.Bare];
+                    f.Show();
+                }
+                else
                 {
                     RosterNode rn = RosterControl.GetRosterItem(msg.From);
                     string nick = msg.From.Bare;
                     if (rn != null)
                         nick = rn.Text;
 
-                    frmChat f = new frmChat(msg.From, xmppCon, nick);
+                    f = new frmChat(msg.From, nick);
                     f.Show();
                     f.IncomingMessage(msg);
                 }
+
+
+          
+
             }
             if (msg.HasTag(typeof(Comand)))
             {
@@ -387,6 +425,86 @@ namespace agsXMPP.Client
             if (OnLog != null)
             {
                 OnLog(msg);
+            }
+        }
+
+        private void FindChatRooms(string name)
+        {
+            //TreeNode node = treeGC.SelectedNode;
+            //if (node == null || node.Level != 0)
+            //    return;
+
+            DiscoItemsIq discoIq = new DiscoItemsIq(IqType.get);
+            discoIq.To = new Jid(name);
+            this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetChatRooms), name);
+        }
+
+        /// <summary>
+        /// Callback
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="iq"></param>
+        /// <param name="data"></param>
+        private void OnGetChatRooms(object sender, IQ iq, object data)
+        {
+            //if (InvokeRequired)
+            //{
+ 
+            //    BeginInvoke(new IqCB(OnGetChatRooms), new object[] { sender, iq, data });
+            //    return;
+            //}
+
+            TreeNode node = data as TreeNode;
+            node.Nodes.Clear();
+
+            DiscoItems items = iq.Query as DiscoItems;
+            if (items == null)
+                return;
+
+            DiscoItem[] rooms = items.GetDiscoItems();
+            foreach (DiscoItem item in rooms)
+            {
+                TreeNode n = new TreeNode(item.Name);
+                n.Tag = item.Jid.ToString();
+                //n.ImageIndex = n.SelectedImageIndex = IMAGE_CHATROOM;
+                node.Nodes.Add(n);
+            }
+        }
+        private void FindParticipants(String roomName)
+        {
+            //TreeNode node = treeGC.SelectedNode;
+            //if (node == null && node.Level != 1)
+            //    return;
+
+            DiscoItemsIq discoIq = new DiscoItemsIq(IqType.get);
+            discoIq.To = new Jid((string)roomName);
+            this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetParticipants), roomName);
+        }
+
+        private void OnGetParticipants(object sender, IQ iq, object data)
+        {
+            //if (InvokeRequired)
+            //{
+            //    // Windows Forms are not Thread Safe, we need to invoke this :(
+            //    // We're not in the UI thread, so we need to call BeginInvoke				
+            //    BeginInvoke(new IqCB(OnGetParticipants), new object[] { sender, iq, data });
+            //    return;
+            //}
+
+            TreeNode node = data as TreeNode;
+            node.Nodes.Clear();
+
+            DiscoItems items = iq.Query as DiscoItems;
+            if (items == null)
+                return;
+
+            DiscoItem[] rooms = items.GetDiscoItems();
+            foreach (DiscoItem item in rooms)
+            {
+                TreeNode n = new TreeNode(item.Jid.Resource);
+                n.Tag = item.Jid.ToString();
+                //n.ImageIndex = n.SelectedImageIndex = IMAGE_PARTICIPANT;
+                node.Nodes.Add(n);
             }
         }
     }

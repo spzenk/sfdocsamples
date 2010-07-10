@@ -43,6 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
+            this.btnChat = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtLogs
@@ -83,7 +84,7 @@
             // 
             // txtNewContact
             // 
-            this.txtNewContact.Location = new System.Drawing.Point(758, 152);
+            this.txtNewContact.Location = new System.Drawing.Point(758, 229);
             this.txtNewContact.Name = "txtNewContact";
             this.txtNewContact.Size = new System.Drawing.Size(146, 20);
             this.txtNewContact.TabIndex = 33;
@@ -92,7 +93,7 @@
             // 
             this.btnAddContact.BackColor = System.Drawing.Color.LightGray;
             this.btnAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddContact.Location = new System.Drawing.Point(664, 147);
+            this.btnAddContact.Location = new System.Drawing.Point(664, 224);
             this.btnAddContact.Name = "btnAddContact";
             this.btnAddContact.Size = new System.Drawing.Size(88, 25);
             this.btnAddContact.TabIndex = 35;
@@ -132,7 +133,7 @@
             // 
             this.btnSendCommand.BackColor = System.Drawing.Color.LightGray;
             this.btnSendCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendCommand.Location = new System.Drawing.Point(664, 189);
+            this.btnSendCommand.Location = new System.Drawing.Point(664, 266);
             this.btnSendCommand.Name = "btnSendCommand";
             this.btnSendCommand.Size = new System.Drawing.Size(88, 25);
             this.btnSendCommand.TabIndex = 39;
@@ -142,7 +143,7 @@
             // 
             // txtCmdValue
             // 
-            this.txtCmdValue.Location = new System.Drawing.Point(758, 193);
+            this.txtCmdValue.Location = new System.Drawing.Point(758, 270);
             this.txtCmdValue.Multiline = true;
             this.txtCmdValue.Name = "txtCmdValue";
             this.txtCmdValue.Size = new System.Drawing.Size(146, 21);
@@ -176,9 +177,9 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(696, 50);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(116, 20);
+            this.label2.Size = new System.Drawing.Size(100, 20);
             this.label2.TabIndex = 43;
-            this.label2.Text = "Selected";
+            this.label2.Text = "Selected user";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnLogOut
@@ -205,12 +206,25 @@
             this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
+            // btnChat
+            // 
+            this.btnChat.BackColor = System.Drawing.Color.LightGray;
+            this.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnChat.Location = new System.Drawing.Point(796, 45);
+            this.btnChat.Name = "btnChat";
+            this.btnChat.Size = new System.Drawing.Size(53, 25);
+            this.btnChat.TabIndex = 46;
+            this.btnChat.Text = "chat";
+            this.btnChat.UseVisualStyleBackColor = false;
+            this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(969, 570);
+            this.Controls.Add(this.btnChat);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogOut);
             this.Controls.Add(this.label2);
@@ -252,6 +266,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnRegister;
+        private System.Windows.Forms.Button btnChat;
     }
 }
 
