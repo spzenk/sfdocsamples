@@ -14,13 +14,25 @@ namespace agsXMPP.Client
 {
     public partial class frmChat : frmDialogBase
     {
-        private XmppClientConnection _connection;
-        private Jid m_Jid;
+     
+        /// <summary>
+        /// JID de A. El creador del chat
+        /// </summary>
+        private Jid ownewrJid;
+        /// <summary>
+        /// Nick name de A
+        /// </summary>
         private string _nickname;
-        public frmChat(Jid jid, XmppClientConnection con, string nickname)
+
+        /// <summary>
+        /// A chateara con B
+        /// </summary>
+        /// <param name="jid">A</param>
+        /// <param name="nickname">Nock de A</param>
+        public frmChat(Jid jid, string nickname)
         {
-            m_Jid = jid;
-            _connection = con;
+            ownewrJid = jid;
+   
             _nickname = nickname;
 
 
@@ -29,16 +41,20 @@ namespace agsXMPP.Client
 
             this.Text = "Chat with " + nickname;
 
-            XmppServices.ChatForms.Add(m_Jid.Bare.ToLower(), this);
+            XmppServices.ChatForms.Add(ownewrJid.Bare.ToLower(), this);
 
-            // Setup new Message Callback
-            con.MessageGrabber.Add(jid, new BareJidComparer(), new MessageCB(MessageCallback), null);
+             Util.XmppServices.XmppCon.MessageGrabber.Add(jid, new BareJidComparer(), new MessageCB(MessageCallback), null);
         }
 
-        public frmChat(Jid jid, XmppClientConnection con, string nickname, bool privateChat)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="jid"></param>
+        /// <param name="nickname"></param>
+        /// <param name="privateChat"></param>
+        public frmChat(Jid jid,  string nickname, bool privateChat)
         {
-            m_Jid = jid;
-            _connection = con;
+
             _nickname = nickname;
 
 
@@ -47,13 +63,13 @@ namespace agsXMPP.Client
 
             this.Text = "Chat with " + nickname;
 
-            XmppServices.ChatForms.Add(m_Jid.Bare.ToLower(), this);
+            XmppServices.ChatForms.Add(ownewrJid.Bare.ToLower(), this);
 
             // Setup new Message Callback
             if (privateChat)
-                con.MessageGrabber.Add(jid, new BareJidComparer(), new MessageCB(MessageCallback), null);
+                 Util.XmppServices.XmppCon.MessageGrabber.Add(jid, new BareJidComparer(), new MessageCB(MessageCallback), null);
             else
-                con.MessageGrabber.Add(jid, new FullJidComparer(), new MessageCB(MessageCallback), null);
+                Util.XmppServices.XmppCon.MessageGrabber.Add(jid, new FullJidComparer(), new MessageCB(MessageCallback), null);
         }
 
 
@@ -69,7 +85,7 @@ namespace agsXMPP.Client
         public void IncomingMessage(agsXMPP.protocol.client.Message msg)
         {
             rtfChat.SelectionColor = Color.Red;
-            rtfChat.AppendText(_nickname + " said: ");
+            rtfChat.AppendText(_nickname + ": ");
             rtfChat.SelectionColor = Color.Black;
             rtfChat.AppendText(msg.Body);
             rtfChat.AppendText("\r\n");
@@ -97,10 +113,10 @@ namespace agsXMPP.Client
                 agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
 
                 msg.Type = MessageType.chat;
-                msg.To = m_Jid;
+                msg.To = ownewrJid;
                 msg.Body = rtfSend.Text;
 
-                _connection.Send(msg);
+                Util.XmppServices.XmppCon.Send(msg);
                 OutgoingMessage(msg);
                 rtfSend.Text = "";
             }
@@ -112,10 +128,10 @@ namespace agsXMPP.Client
             agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
 
             msg.Type = MessageType.chat;
-            msg.To = m_Jid;
+            msg.To = ownewrJid;
             msg.Body = rtfSend.Text;
 
-            _connection.Send(msg);
+            Util.XmppServices.XmppCon.Send(msg);
             OutgoingMessage(msg);
             rtfSend.Text = "";
         }

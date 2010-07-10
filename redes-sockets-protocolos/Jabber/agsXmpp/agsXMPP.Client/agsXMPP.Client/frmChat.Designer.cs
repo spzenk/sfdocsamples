@@ -103,6 +103,7 @@
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.statusBar1);
             this.Controls.Add(this.rtfChat);
+            this.MinimizeBox = true;
             this.Name = "frmChat";
             this.Text = "Chat";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
