@@ -96,6 +96,7 @@ namespace agsXMPP.Client
             }
 
             AddLog("offline");
+            this.Text = "offline";
             RemoveEvents();
             btnLogIn.Enabled = true;
             btnLogOut.Enabled = false;
@@ -110,6 +111,7 @@ namespace agsXMPP.Client
                 return;
             }
 
+            this.Text = "connected as: " + Util.XmppServices.XmppCon.Username;
             AddLog("Online");
         }
 
@@ -269,6 +271,7 @@ namespace agsXMPP.Client
                 //Esta accion llama a OnCLose y se eliminan los eventos
                 Util.XmppServices.XmppCon.Close();
             }
+       
         }
 
         private void btnRegister_Click(object sender, EventArgs e)
@@ -318,6 +321,7 @@ namespace agsXMPP.Client
                     btnLogIn.Enabled = false;
                     btnLogOut.Enabled = true;
                     btnRegister.Enabled = false;
+
                 }
                 else
                 {
