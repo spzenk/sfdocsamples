@@ -113,6 +113,8 @@ namespace agsXMPP.Client
 
             this.Text = "connected as: " + Util.XmppServices.XmppCon.Username;
             AddLog("Online");
+
+            Util.XmppServices.DiscoServer();
         }
 
         #region Message stanza
