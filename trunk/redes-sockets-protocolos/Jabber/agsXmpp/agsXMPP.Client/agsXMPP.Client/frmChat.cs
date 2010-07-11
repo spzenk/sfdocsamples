@@ -136,5 +136,11 @@ namespace agsXMPP.Client
             rtfSend.Text = "";
         }
 
+        private void frmChat_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Util.XmppServices.XmppCon.MessageGrabber.Remove(ownewrJid);
+            XmppServices.ChatForms.Remove(ownewrJid.Bare.ToLower());
+        }
+
     }
 }
