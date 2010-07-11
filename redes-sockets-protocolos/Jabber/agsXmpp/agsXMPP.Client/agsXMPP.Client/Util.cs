@@ -38,7 +38,9 @@ namespace agsXMPP.Client
     /// </summary>
     public static class Util
     {
-
+        public static  int IMAGE_PARTICIPANT = 3;
+        public static  int IMAGE_CHATROOM = 4;
+        public static  int IMAGE_SERVER = 5;
         public static XmppServices XmppServices;
         public static FwkSimpleStorageBase<JabberClient> storage = new FwkSimpleStorageBase<JabberClient>();
 
@@ -84,11 +86,22 @@ namespace agsXMPP.Client
             return 0;
         }
 
+        public static TreeNode GetNodeByName(TreeNodeCollection t,string name)
+        { 
+            foreach(TreeNode child in  t)
+            {
+                if(child.Text.Equals(name))
+                    return child;
 
+            }
+
+            return null;
+        }
     }
 
 
     public delegate void OnLogHandler(string msg);
+    public delegate void OnRoomsLoadedHandler(ChatRooms chatRooms);
 
     public class XmppServices
     {
@@ -427,7 +440,10 @@ namespace agsXMPP.Client
                 OnLog(msg);
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
         public  void FindChatRooms(string name)
         {
             //TreeNode node = treeGC.SelectedNode;
@@ -438,7 +454,7 @@ namespace agsXMPP.Client
             discoIq.To = new Jid(name);
             this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetChatRooms), name);
         }
-
+        public event OnRoomsLoadedHandler OnRoomsLoadedEvent ;
         /// <summary>
         /// Callback
         /// </summary>
@@ -454,9 +470,9 @@ namespace agsXMPP.Client
             //    return;
             //}
 
-            TreeNode node = data as TreeNode;
-            node.Nodes.Clear();
-
+            //TreeNode node = data as TreeNode;
+            //node.Nodes.Clear();
+            ChatRooms wChatRooms = new ChatRooms();
             DiscoItems items = iq.Query as DiscoItems;
             if (items == null)
                 return;
@@ -464,11 +480,15 @@ namespace agsXMPP.Client
             DiscoItem[] rooms = items.GetDiscoItems();
             foreach (DiscoItem item in rooms)
             {
-                TreeNode n = new TreeNode(item.Name);
-                n.Tag = item.Jid.ToString();
-                //n.ImageIndex = n.SelectedImageIndex = IMAGE_CHATROOM;
-                node.Nodes.Add(n);
+                wChatRooms.Servername = data.ToString();
+                wChatRooms.RoomJidList.Add(item.Name,item.Jid);
+                //TreeNode n = new TreeNode(item.Name);
+                //n.Tag = item.Jid.ToString();
+                //n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_CHATROOM;
+                //node.Nodes.Add(n);
             }
+            if (OnRoomsLoadedEvent != null)
+                OnRoomsLoadedEvent(wChatRooms);
         }
         private void FindParticipants(String roomName)
         {
@@ -506,6 +526,21 @@ namespace agsXMPP.Client
                 //n.ImageIndex = n.SelectedImageIndex = IMAGE_PARTICIPANT;
                 node.Nodes.Add(n);
             }
+        }
+    }
+
+
+    public class TreeNodeSorter : IComparer
+    {
+        // Compare the length of the strings, or the strings
+        // themselves, if they are the same length.
+        public int Compare(object x, object y)
+        {
+            TreeNode tx = x as TreeNode;
+            TreeNode ty = y as TreeNode;
+
+            // If they are the same length, call Compare.
+            return string.Compare(tx.Text, ty.Text);
         }
     }
 }
