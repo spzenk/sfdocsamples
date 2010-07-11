@@ -71,6 +71,7 @@
     <Compile Include="AceptSubscribe.Designer.cs">
       <DependentUpon>AceptSubscribe.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChatRooms.cs" />
     <Compile Include="ClasesExtra.nJim\Privacy.cs" />
     <Compile Include="ClasesExtra.nJim\ErrorManager.cs" />
     <Compile Include="ClasesExtra.nJim\common.cs" />

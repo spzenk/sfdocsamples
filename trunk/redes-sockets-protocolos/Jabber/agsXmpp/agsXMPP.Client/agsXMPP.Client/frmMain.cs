@@ -115,8 +115,49 @@ namespace agsXMPP.Client
             AddLog("Online");
 
             Util.XmppServices.DiscoServer();
-        }
 
+           
+           
+        }
+        void LoadRoms()
+        {
+
+            if (Util.XmppServices.XmppCon.XmppConnectionState == XmppConnectionState.Disconnected)
+                return;
+            Util.XmppServices.OnRoomsLoadedEvent += new OnRoomsLoadedHandler(XmppServices_OnRoomsLoadedEvent);
+            foreach (TreeNode nodeServer in this.treeGC.Nodes)
+            {
+                Util.XmppServices.FindChatRooms(nodeServer.Text);
+            }
+        }
+        /// <summary>
+        /// Agrego las salas al treeview
+        /// ejemplo:
+        /// 
+        /// conference.santana (server)
+        ///         amigos(room)
+        ///         empleados(room)
+        /// </summary>
+        /// <param name="chatRooms"></param>
+        void XmppServices_OnRoomsLoadedEvent(ChatRooms chatRooms)
+        {
+
+            if (InvokeRequired)
+            {
+                BeginInvoke(new OnRoomsLoadedHandler(XmppServices_OnRoomsLoadedEvent), new object[] { chatRooms });
+                return;
+            }
+            TreeNode serverNode = Util.GetNodeByName(treeGC.Nodes, chatRooms.Servername);
+            foreach (KeyValuePair<string, Jid> item in chatRooms.RoomJidList)
+            {
+
+                TreeNode n = new TreeNode(item.Key);
+                n.Tag = item.Value.ToString();
+                n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_CHATROOM;
+                serverNode.Nodes.Add(n);
+            }
+            serverNode.ExpandAll();
+        }
         #region Message stanza
 
         void XmppCon_OnIq(object sender, IQ iq)
@@ -258,6 +299,7 @@ namespace agsXMPP.Client
         private void frmMain_Load(object sender, EventArgs e)
         {
             Login(FormStartPosition.CenterScreen);
+            LoadChatServers();
         }
  
 
@@ -418,24 +460,26 @@ namespace agsXMPP.Client
 
         private void LoadChatServers()
         {
-            //treeGC.TreeViewNodeSorter = new TreeNodeSorter();
+            treeGC.TreeViewNodeSorter = new TreeNodeSorter();
 
-            //string fileName = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            //fileName += @"\chatservers.xml";
+            string fileName = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            fileName += @"\chatservers.xml";
 
-            //Document doc = new Document();
-            //doc.LoadFile(fileName);
+            Document doc = new Document();
+            doc.LoadFile(fileName);
 
-            //// Get Servers
-            //ElementList servers = doc.RootElement.SelectElements("Server");
-            //foreach (Element server in servers)
-            //{
-            //    TreeNode n = new TreeNode(server.Value);
-            //    n.Tag = "server";
-            //    n.ImageIndex = n.SelectedImageIndex = IMAGE_SERVER;
+            // Get Servers
+            ElementList servers = doc.RootElement.SelectElements("Server");
+            foreach (Element server in servers)
+            {
+                TreeNode n = new TreeNode(server.Value);
+                n.Tag = "server";
+                n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_SERVER;
 
-            //    this.treeGC.Nodes.Add(n);
-            //}
+                this.treeGC.Nodes.Add(n);
+            }
+
+            LoadRoms();
         }
 
         private void btnChat_Click(object sender, EventArgs e)
@@ -456,7 +500,7 @@ namespace agsXMPP.Client
             //if (node == null || node.Level != 0)
             //    return;
 
-            Util.XmppServices.FindChatRooms("conference.santana"); 
+           // Util.XmppServices.FindChatRooms("conference.santana"); 
         }
 
      

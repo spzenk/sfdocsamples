@@ -45,6 +45,7 @@
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnChat = new System.Windows.Forms.Button();
             this.btnFindRooms = new System.Windows.Forms.Button();
+            this.treeGC = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
             // 
             // txtLogs
@@ -79,7 +80,7 @@
             this.rosterControl.HideEmptyGroups = true;
             this.rosterControl.Location = new System.Drawing.Point(340, 60);
             this.rosterControl.Name = "rosterControl";
-            this.rosterControl.Size = new System.Drawing.Size(318, 498);
+            this.rosterControl.Size = new System.Drawing.Size(318, 303);
             this.rosterControl.TabIndex = 32;
             this.rosterControl.SelectionChanged += new System.EventHandler(this.rosterControl_SelectionChanged);
             // 
@@ -219,17 +220,25 @@
             this.btnChat.UseVisualStyleBackColor = false;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
-            // button1
+            // btnFindRooms
             // 
             this.btnFindRooms.BackColor = System.Drawing.Color.LightGray;
             this.btnFindRooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFindRooms.Location = new System.Drawing.Point(664, 323);
-            this.btnFindRooms.Name = "button1";
+            this.btnFindRooms.Name = "btnFindRooms";
             this.btnFindRooms.Size = new System.Drawing.Size(88, 25);
             this.btnFindRooms.TabIndex = 47;
             this.btnFindRooms.Text = "Fin Rooms";
             this.btnFindRooms.UseVisualStyleBackColor = false;
             this.btnFindRooms.Click += new System.EventHandler(this.btnFindRooms_Click);
+            // 
+            // treeGC
+            // 
+            this.treeGC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.treeGC.Location = new System.Drawing.Point(340, 415);
+            this.treeGC.Name = "treeGC";
+            this.treeGC.Size = new System.Drawing.Size(333, 143);
+            this.treeGC.TabIndex = 48;
             // 
             // frmMain
             // 
@@ -237,6 +246,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(969, 570);
+            this.Controls.Add(this.treeGC);
             this.Controls.Add(this.btnFindRooms);
             this.Controls.Add(this.btnChat);
             this.Controls.Add(this.btnRegister);
@@ -282,6 +292,7 @@
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnChat;
         private System.Windows.Forms.Button btnFindRooms;
+        private System.Windows.Forms.TreeView treeGC;
     }
 }
 
