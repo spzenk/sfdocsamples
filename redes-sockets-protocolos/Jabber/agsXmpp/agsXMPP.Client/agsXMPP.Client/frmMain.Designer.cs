@@ -44,6 +44,7 @@
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnChat = new System.Windows.Forms.Button();
+            this.btnFindRooms = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtLogs
@@ -218,12 +219,25 @@
             this.btnChat.UseVisualStyleBackColor = false;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
+            // button1
+            // 
+            this.btnFindRooms.BackColor = System.Drawing.Color.LightGray;
+            this.btnFindRooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFindRooms.Location = new System.Drawing.Point(664, 323);
+            this.btnFindRooms.Name = "button1";
+            this.btnFindRooms.Size = new System.Drawing.Size(88, 25);
+            this.btnFindRooms.TabIndex = 47;
+            this.btnFindRooms.Text = "Fin Rooms";
+            this.btnFindRooms.UseVisualStyleBackColor = false;
+            this.btnFindRooms.Click += new System.EventHandler(this.btnFindRooms_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(969, 570);
+            this.Controls.Add(this.btnFindRooms);
             this.Controls.Add(this.btnChat);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogOut);
@@ -267,6 +281,7 @@
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnChat;
+        private System.Windows.Forms.Button btnFindRooms;
     }
 }
 

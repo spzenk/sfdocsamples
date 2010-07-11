@@ -428,7 +428,7 @@ namespace agsXMPP.Client
             }
         }
 
-        private void FindChatRooms(string name)
+        public  void FindChatRooms(string name)
         {
             //TreeNode node = treeGC.SelectedNode;
             //if (node == null || node.Level != 0)

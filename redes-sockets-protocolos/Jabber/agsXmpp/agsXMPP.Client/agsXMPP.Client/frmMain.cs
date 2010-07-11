@@ -442,6 +442,17 @@ namespace agsXMPP.Client
             
         }
 
+        private void btnFindRooms_Click(object sender, EventArgs e)
+        {
+            //if (Util.XmppServices.XmppCon.XmppConnectionState == XmppConnectionState.Disconnected)
+            //    return;
+            //TreeNode node = treeGC.SelectedNode;
+            //if (node == null || node.Level != 0)
+            //    return;
+
+            Util.XmppServices.FindChatRooms("conference.santana"); 
+        }
+
      
      
       
