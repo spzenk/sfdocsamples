@@ -55,6 +55,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.ils16 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -330,12 +331,24 @@
             this.groupBox1.TabIndex = 55;
             this.groupBox1.TabStop = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.LightGray;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(675, 387);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(97, 25);
+            this.button1.TabIndex = 56;
+            this.button1.Text = "Find users";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(995, 639);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.treeGC);
@@ -393,6 +406,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ImageList ils16;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
