@@ -71,7 +71,7 @@
     <Compile Include="AceptSubscribe.Designer.cs">
       <DependentUpon>AceptSubscribe.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChatRooms.cs" />
+    <Compile Include="Class\ChatRooms.cs" />
     <Compile Include="ClasesExtra.nJim\Privacy.cs" />
     <Compile Include="ClasesExtra.nJim\ErrorManager.cs" />
     <Compile Include="ClasesExtra.nJim\common.cs" />
@@ -119,7 +119,7 @@
     </Compile>
     <Compile Include="ClasesExtra.nJim\Presence.cs" />
     <Compile Include="ClasesExtra.nJim\Program.cs" />
-    <Compile Include="IItems.cs" />
+    <Compile Include="Class\IItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AceptSubscribe.resx">
       <DependentUpon>AceptSubscribe.cs</DependentUpon>

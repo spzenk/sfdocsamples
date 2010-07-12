@@ -36,7 +36,7 @@ namespace agsXMPP.Client
     public partial class frmMain : Form
     {
         delegate void OnPresenceDelegate(object sender, agsXMPP.protocol.client.Presence pres);
-
+        Jid _SelectedRoom;
         int logCount = 0;
         static StringBuilder logs;
   
@@ -152,7 +152,7 @@ namespace agsXMPP.Client
             {
 
                 TreeNode n = new TreeNode(item.Key);
-                n.Tag = item.Value.ToString();
+                n.Tag = item.Value;
                 n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_CHATROOM;
                 serverNode.Nodes.Add(n);
             }
@@ -489,19 +489,34 @@ namespace agsXMPP.Client
             if (rosterNode == null) return;
 
 
-            Util.XmppServices.ChatWtichUser(rosterNode.RosterItem.Jid, rosterNode.Text);
+            Util.XmppServices.ChatWtich_User(rosterNode.RosterItem.Jid, rosterNode.Text);
             
         }
 
-        private void btnFindRooms_Click(object sender, EventArgs e)
+        private void btnInRooms_Click(object sender, EventArgs e)
         {
-            //if (Util.XmppServices.XmppCon.XmppConnectionState == XmppConnectionState.Disconnected)
-            //    return;
-            //TreeNode node = treeGC.SelectedNode;
-            //if (node == null || node.Level != 0)
-            //    return;
-
-           // Util.XmppServices.FindChatRooms("conference.santana"); 
+            if (_SelectedRoom == null) return;
+            if (txtNick.Text.Length == 0)
+            {
+                MessageBox.Show("Ingrese nick");
+                txtNick.Focus();
+                return;
+            }
+            Util.XmppServices.ChatWtich_Group(_SelectedRoom, txtNick.Text);
+        }
+      
+        private void treeGC_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Level == 1)
+            {
+                txtRoom.Text = e.Node.Tag.ToString();
+                _SelectedRoom = (Jid)e.Node.Tag;
+            }
+            else
+            {
+                txtRoom.Text = string.Empty;
+                _SelectedRoom = null;
+            }
         }
 
      

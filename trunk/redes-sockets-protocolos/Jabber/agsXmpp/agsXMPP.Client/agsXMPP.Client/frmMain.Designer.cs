@@ -44,8 +44,13 @@
             this.btnLogOut = new System.Windows.Forms.Button();
             this.btnRegister = new System.Windows.Forms.Button();
             this.btnChat = new System.Windows.Forms.Button();
-            this.btnFindRooms = new System.Windows.Forms.Button();
+            this.btnInRooms = new System.Windows.Forms.Button();
             this.treeGC = new System.Windows.Forms.TreeView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtRoom = new System.Windows.Forms.TextBox();
+            this.txtNick = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtLogs
@@ -106,7 +111,6 @@
             // txtBare
             // 
             this.txtBare.Location = new System.Drawing.Point(736, 73);
-            this.txtBare.Multiline = true;
             this.txtBare.Name = "txtBare";
             this.txtBare.Size = new System.Drawing.Size(168, 20);
             this.txtBare.TabIndex = 36;
@@ -220,25 +224,71 @@
             this.btnChat.UseVisualStyleBackColor = false;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
-            // btnFindRooms
+            // btnInRooms
             // 
-            this.btnFindRooms.BackColor = System.Drawing.Color.LightGray;
-            this.btnFindRooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFindRooms.Location = new System.Drawing.Point(664, 323);
-            this.btnFindRooms.Name = "btnFindRooms";
-            this.btnFindRooms.Size = new System.Drawing.Size(88, 25);
-            this.btnFindRooms.TabIndex = 47;
-            this.btnFindRooms.Text = "Fin Rooms";
-            this.btnFindRooms.UseVisualStyleBackColor = false;
-            this.btnFindRooms.Click += new System.EventHandler(this.btnFindRooms_Click);
+            this.btnInRooms.AllowDrop = true;
+            this.btnInRooms.BackColor = System.Drawing.Color.LightGray;
+            this.btnInRooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInRooms.Location = new System.Drawing.Point(699, 484);
+            this.btnInRooms.Name = "btnInRooms";
+            this.btnInRooms.Size = new System.Drawing.Size(88, 25);
+            this.btnInRooms.TabIndex = 47;
+            this.btnInRooms.Text = "Enter";
+            this.btnInRooms.UseVisualStyleBackColor = false;
+            this.btnInRooms.Click += new System.EventHandler(this.btnInRooms_Click);
             // 
             // treeGC
             // 
             this.treeGC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.treeGC.Location = new System.Drawing.Point(340, 415);
+            this.treeGC.Location = new System.Drawing.Point(340, 388);
             this.treeGC.Name = "treeGC";
-            this.treeGC.Size = new System.Drawing.Size(333, 143);
+            this.treeGC.Size = new System.Drawing.Size(333, 170);
             this.treeGC.TabIndex = 48;
+            this.treeGC.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeGC_AfterSelect);
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(696, 383);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 20);
+            this.label3.TabIndex = 51;
+            this.label3.Text = "Selected room";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtRoom
+            // 
+            this.txtRoom.Location = new System.Drawing.Point(696, 414);
+            this.txtRoom.Name = "txtRoom";
+            this.txtRoom.Size = new System.Drawing.Size(168, 20);
+            this.txtRoom.TabIndex = 49;
+            // 
+            // txtNick
+            // 
+            this.txtNick.Location = new System.Drawing.Point(699, 458);
+            this.txtNick.Name = "txtNick";
+            this.txtNick.Size = new System.Drawing.Size(168, 20);
+            this.txtNick.TabIndex = 52;
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(696, 435);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(37, 20);
+            this.label4.TabIndex = 53;
+            this.label4.Text = "Nick";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(337, 365);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 20);
+            this.label5.TabIndex = 54;
+            this.label5.Text = "Rooms";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmMain
             // 
@@ -246,8 +296,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(969, 570);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtNick);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtRoom);
             this.Controls.Add(this.treeGC);
-            this.Controls.Add(this.btnFindRooms);
+            this.Controls.Add(this.btnInRooms);
             this.Controls.Add(this.btnChat);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogOut);
@@ -291,8 +346,13 @@
         private System.Windows.Forms.Button btnLogOut;
         private System.Windows.Forms.Button btnRegister;
         private System.Windows.Forms.Button btnChat;
-        private System.Windows.Forms.Button btnFindRooms;
+        private System.Windows.Forms.Button btnInRooms;
         private System.Windows.Forms.TreeView treeGC;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtRoom;
+        private System.Windows.Forms.TextBox txtNick;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

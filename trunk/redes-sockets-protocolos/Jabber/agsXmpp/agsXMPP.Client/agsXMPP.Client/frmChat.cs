@@ -32,7 +32,7 @@ namespace agsXMPP.Client
         public frmChat(Jid jid, string nickname)
         {
             ownewrJid = jid;
-   
+
             _nickname = nickname;
 
 
@@ -43,7 +43,7 @@ namespace agsXMPP.Client
 
             XmppServices.ChatForms.Add(ownewrJid.Bare.ToLower(), this);
 
-             Util.XmppServices.XmppCon.MessageGrabber.Add(jid, new BareJidComparer(), new MessageCB(MessageCallback), null);
+            Util.XmppServices.XmppCon.MessageGrabber.Add(jid, new BareJidComparer(), new MessageCB(MessageCallback), null);
         }
 
         /// <summary>

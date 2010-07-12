@@ -144,7 +144,7 @@ namespace agsXMPP.Client
         /// </summary>
         /// <param name="fromJid">jabber id de A </param>
         /// <param name="nick">Nick de A</param>
-        public void ChatWtichUser(Jid fromJid,string nick)
+        public void ChatWtich_User(Jid fromJid,string nick)
         {
 
               frmChat f = null;
@@ -161,13 +161,31 @@ namespace agsXMPP.Client
           
           
         }
+        public void ChatWtich_Group(Jid roomJid, string nick)
+        {
 
+            frmGroupChat f = null;
+            if (GroupChatForms.ContainsKey(roomJid.ToString()))
+            {
+                f = (frmGroupChat)GroupChatForms[roomJid.ToString()];
+            }
+            else
+            {
+                f = new frmGroupChat(roomJid, nick);
+
+            }
+            f.Show();
+
+
+        }
         /// <summary>
         /// Al usuario B le llega un mensaje y levanta un formulario drmChat 
         /// </summary>
         /// <param name="msg">Message enviado por A</param>
         public void SwitchMessage(agsXMPP.protocol.client.Message msg)
         {
+            if (msg.Type == MessageType.groupchat) return;
+
             if (msg.Body != null)//--> es un chat
             {
                 frmChat f = null;
@@ -446,16 +464,13 @@ namespace agsXMPP.Client
         /// <param name="name"></param>
         public  void FindChatRooms(string name)
         {
-            //TreeNode node = treeGC.SelectedNode;
-            //if (node == null || node.Level != 0)
-            //    return;
-
             DiscoItemsIq discoIq = new DiscoItemsIq(IqType.get);
             discoIq.To = new Jid(name);
             this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetChatRooms), name);
         }
         public event OnItemsLoadedHandler OnRoomsLoadedEvent ;
         public event OnItemsLoadedHandler OnParticipantsLoadedEvent;
+
         /// <summary>
         /// Callback
         /// </summary>
@@ -475,20 +490,12 @@ namespace agsXMPP.Client
             {
                 wChatRooms.Servername = data.ToString();
                 wChatRooms.JidList.Add(item.Name,item.Jid);
-                //TreeNode n = new TreeNode(item.Name);
-                //n.Tag = item.Jid.ToString();
-                //n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_CHATROOM;
-                //node.Nodes.Add(n);
             }
             if (OnRoomsLoadedEvent != null)
                 OnRoomsLoadedEvent(wChatRooms);
         }
         private void FindParticipants(String roomName)
         {
-            //TreeNode node = treeGC.SelectedNode;
-            //if (node == null && node.Level != 1)
-            //    return;
-
             DiscoItemsIq discoIq = new DiscoItemsIq(IqType.get);
             discoIq.To = new Jid((string)roomName);
             this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetParticipants), roomName);
@@ -497,8 +504,6 @@ namespace agsXMPP.Client
         private void OnGetParticipants(object sender, IQ iq, object data)
         {
             Partisipants part = new Partisipants();
-            //TreeNode node = data as TreeNode;
-            //node.Nodes.Clear();
 
             DiscoItems items = iq.Query as DiscoItems;
             if (items == null)
@@ -516,16 +521,7 @@ namespace agsXMPP.Client
             if (OnParticipantsLoadedEvent != null)
                 OnParticipantsLoadedEvent(part);
 
-
-
-            //foreach (DiscoItem item in rooms)
-            //{
-            //    TreeNode n = new TreeNode(item.Jid.Resource);
-            //    n.Tag = item.Jid.ToString();
-            //    //n.ImageIndex = n.SelectedImageIndex = IMAGE_PARTICIPANT;
-            //    node.Nodes.Add(n);
-            //}
-        }
+       }
     }
 
 
