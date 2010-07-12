@@ -253,6 +253,20 @@ namespace agsXMPP.Client
             }
         }
 
+        private void btnFindParticipants_Click(object sender, EventArgs e)
+        {
+            Util.XmppServices.OnParticipantsLoadedEvent += new OnItemsLoadedHandler(XmppServices_OnParticipantsLoadedEvent);
+            Util.XmppServices.FindParticipants(_RoomJid.Bare);//
+        }
+
+        void XmppServices_OnParticipantsLoadedEvent(IItems items)
+        {
+            foreach (KeyValuePair<string,Jid> partisipant in items.JidList)
+            { 
+
+            }
+        }
+
         
 
     }
