@@ -124,7 +124,7 @@ namespace agsXMPP.Client
 
             if (Util.XmppServices.XmppCon.XmppConnectionState == XmppConnectionState.Disconnected)
                 return;
-            Util.XmppServices.OnRoomsLoadedEvent += new OnRoomsLoadedHandler(XmppServices_OnRoomsLoadedEvent);
+            Util.XmppServices.OnRoomsLoadedEvent += new OnItemsLoadedHandler(XmppServices_OnRoomsLoadedEvent);
             foreach (TreeNode nodeServer in this.treeGC.Nodes)
             {
                 Util.XmppServices.FindChatRooms(nodeServer.Text);
@@ -139,16 +139,16 @@ namespace agsXMPP.Client
         ///         empleados(room)
         /// </summary>
         /// <param name="chatRooms"></param>
-        void XmppServices_OnRoomsLoadedEvent(ChatRooms chatRooms)
+        void XmppServices_OnRoomsLoadedEvent(IItems chatRooms)
         {
 
             if (InvokeRequired)
             {
-                BeginInvoke(new OnRoomsLoadedHandler(XmppServices_OnRoomsLoadedEvent), new object[] { chatRooms });
+                BeginInvoke(new OnItemsLoadedHandler(XmppServices_OnRoomsLoadedEvent), new object[] { chatRooms });
                 return;
             }
             TreeNode serverNode = Util.GetNodeByName(treeGC.Nodes, chatRooms.Servername);
-            foreach (KeyValuePair<string, Jid> item in chatRooms.RoomJidList)
+            foreach (KeyValuePair<string, Jid> item in chatRooms.JidList)
             {
 
                 TreeNode n = new TreeNode(item.Key);
@@ -158,6 +158,7 @@ namespace agsXMPP.Client
             }
             serverNode.ExpandAll();
         }
+
         #region Message stanza
 
         void XmppCon_OnIq(object sender, IQ iq)

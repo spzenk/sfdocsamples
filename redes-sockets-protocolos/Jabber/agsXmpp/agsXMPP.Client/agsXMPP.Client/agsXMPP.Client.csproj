@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="ClasesExtra.nJim\Presence.cs" />
     <Compile Include="ClasesExtra.nJim\Program.cs" />
+    <Compile Include="IItems.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AceptSubscribe.resx">
       <DependentUpon>AceptSubscribe.cs</DependentUpon>

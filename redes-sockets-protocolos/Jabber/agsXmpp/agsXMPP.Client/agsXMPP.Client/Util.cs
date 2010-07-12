@@ -101,7 +101,7 @@ namespace agsXMPP.Client
 
 
     public delegate void OnLogHandler(string msg);
-    public delegate void OnRoomsLoadedHandler(ChatRooms chatRooms);
+    public delegate void OnItemsLoadedHandler(agsXMPP.Client.IItems chatRooms);
 
     public class XmppServices
     {
@@ -454,7 +454,8 @@ namespace agsXMPP.Client
             discoIq.To = new Jid(name);
             this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetChatRooms), name);
         }
-        public event OnRoomsLoadedHandler OnRoomsLoadedEvent ;
+        public event OnItemsLoadedHandler OnRoomsLoadedEvent ;
+        public event OnItemsLoadedHandler OnParticipantsLoadedEvent;
         /// <summary>
         /// Callback
         /// </summary>
@@ -463,15 +464,7 @@ namespace agsXMPP.Client
         /// <param name="data"></param>
         private void OnGetChatRooms(object sender, IQ iq, object data)
         {
-            //if (InvokeRequired)
-            //{
- 
-            //    BeginInvoke(new IqCB(OnGetChatRooms), new object[] { sender, iq, data });
-            //    return;
-            //}
-
-            //TreeNode node = data as TreeNode;
-            //node.Nodes.Clear();
+         
             ChatRooms wChatRooms = new ChatRooms();
             DiscoItems items = iq.Query as DiscoItems;
             if (items == null)
@@ -481,7 +474,7 @@ namespace agsXMPP.Client
             foreach (DiscoItem item in rooms)
             {
                 wChatRooms.Servername = data.ToString();
-                wChatRooms.RoomJidList.Add(item.Name,item.Jid);
+                wChatRooms.JidList.Add(item.Name,item.Jid);
                 //TreeNode n = new TreeNode(item.Name);
                 //n.Tag = item.Jid.ToString();
                 //n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_CHATROOM;
@@ -503,29 +496,35 @@ namespace agsXMPP.Client
 
         private void OnGetParticipants(object sender, IQ iq, object data)
         {
-            //if (InvokeRequired)
-            //{
-            //    // Windows Forms are not Thread Safe, we need to invoke this :(
-            //    // We're not in the UI thread, so we need to call BeginInvoke				
-            //    BeginInvoke(new IqCB(OnGetParticipants), new object[] { sender, iq, data });
-            //    return;
-            //}
-
-            TreeNode node = data as TreeNode;
-            node.Nodes.Clear();
+            Partisipants part = new Partisipants();
+            //TreeNode node = data as TreeNode;
+            //node.Nodes.Clear();
 
             DiscoItems items = iq.Query as DiscoItems;
             if (items == null)
                 return;
 
             DiscoItem[] rooms = items.GetDiscoItems();
+
+
             foreach (DiscoItem item in rooms)
             {
-                TreeNode n = new TreeNode(item.Jid.Resource);
-                n.Tag = item.Jid.ToString();
-                //n.ImageIndex = n.SelectedImageIndex = IMAGE_PARTICIPANT;
-                node.Nodes.Add(n);
+                part.Servername = data.ToString();
+                part.JidList.Add(item.Jid.Resource, item.Jid);
             }
+
+            if (OnParticipantsLoadedEvent != null)
+                OnParticipantsLoadedEvent(part);
+
+
+
+            //foreach (DiscoItem item in rooms)
+            //{
+            //    TreeNode n = new TreeNode(item.Jid.Resource);
+            //    n.Tag = item.Jid.ToString();
+            //    //n.ImageIndex = n.SelectedImageIndex = IMAGE_PARTICIPANT;
+            //    node.Nodes.Add(n);
+            //}
         }
     }
 
