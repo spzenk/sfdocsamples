@@ -55,6 +55,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.rtfSend = new System.Windows.Forms.RichTextBox();
             this.cmdSend = new System.Windows.Forms.Button();
+            this.btnFindParticipants = new System.Windows.Forms.Button();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
@@ -227,9 +228,10 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 130);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -238,7 +240,7 @@
             this.rtfSend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtfSend.Location = new System.Drawing.Point(3, 3);
             this.rtfSend.Name = "rtfSend";
-            this.rtfSend.Size = new System.Drawing.Size(425, 94);
+            this.rtfSend.Size = new System.Drawing.Size(425, 74);
             this.rtfSend.TabIndex = 0;
             this.rtfSend.Text = "";
             this.rtfSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtfSend_KeyPress);
@@ -249,7 +251,7 @@
             this.cmdSend.BackColor = System.Drawing.Color.Gray;
             this.cmdSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdSend.ForeColor = System.Drawing.Color.White;
-            this.cmdSend.Location = new System.Drawing.Point(351, 103);
+            this.cmdSend.Location = new System.Drawing.Point(351, 83);
             this.cmdSend.Name = "cmdSend";
             this.cmdSend.Size = new System.Drawing.Size(77, 24);
             this.cmdSend.TabIndex = 1;
@@ -257,12 +259,27 @@
             this.cmdSend.UseVisualStyleBackColor = false;
             this.cmdSend.Click += new System.EventHandler(this.cmdSend_Click);
             // 
+            // btnFindParticipants
+            // 
+            this.btnFindParticipants.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnFindParticipants.BackColor = System.Drawing.Color.Gray;
+            this.btnFindParticipants.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFindParticipants.ForeColor = System.Drawing.Color.White;
+            this.btnFindParticipants.Location = new System.Drawing.Point(170, 384);
+            this.btnFindParticipants.Name = "btnFindParticipants";
+            this.btnFindParticipants.Size = new System.Drawing.Size(77, 24);
+            this.btnFindParticipants.TabIndex = 2;
+            this.btnFindParticipants.Text = "Members";
+            this.btnFindParticipants.UseVisualStyleBackColor = false;
+            this.btnFindParticipants.Click += new System.EventHandler(this.btnFindParticipants_Click);
+            // 
             // frmGroupChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(623, 408);
+            this.Controls.Add(this.btnFindParticipants);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusBar1);
             this.Name = "frmGroupChat";
@@ -301,6 +318,7 @@
         private System.Windows.Forms.Button cmdChangeSubject;
         private System.Windows.Forms.ColumnHeader headerRole;
         private System.Windows.Forms.ColumnHeader headerAffiliation;
+        private System.Windows.Forms.Button btnFindParticipants;
 
     }
 }

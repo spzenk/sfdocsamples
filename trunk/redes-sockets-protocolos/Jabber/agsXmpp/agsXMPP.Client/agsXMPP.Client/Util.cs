@@ -101,7 +101,7 @@ namespace agsXMPP.Client
 
 
     public delegate void OnLogHandler(string msg);
-    public delegate void OnItemsLoadedHandler(agsXMPP.Client.IItems chatRooms);
+    public delegate void OnItemsLoadedHandler(agsXMPP.Client.IItems items);
 
     public class XmppServices
     {
@@ -459,7 +459,7 @@ namespace agsXMPP.Client
             }
         }
         /// <summary>
-        /// 
+        /// Busca las salas de conferencias de alguna sala.- 
         /// </summary>
         /// <param name="name"></param>
         public  void FindChatRooms(string name)
@@ -494,13 +494,28 @@ namespace agsXMPP.Client
             if (OnRoomsLoadedEvent != null)
                 OnRoomsLoadedEvent(wChatRooms);
         }
-        private void FindParticipants(String roomName)
+
+        /// <summary>
+        /// Busca los participantes de la sala. Solo los que estan conectados.-
+        /// </summary>
+        /// <param name="roomName">nombreSala@server</param>
+        public void FindParticipants(String roomName)
         {
             DiscoItemsIq discoIq = new DiscoItemsIq(IqType.get);
-            discoIq.To = new Jid((string)roomName);
+            //discoIq.To = new Jid((string)roomName);
+            //discoIq.To = new Jid("amigos.conference.santana");
+            discoIq.To = new Jid("amigos@conference.santana");
+            discoIq.From = xmppCon.MyJID; 
+            
             this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetParticipants), roomName);
         }
 
+        /// <summary>
+        /// Callback de la consulta de participantes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="iq"></param>
+        /// <param name="data"></param>
         private void OnGetParticipants(object sender, IQ iq, object data)
         {
             Partisipants part = new Partisipants();
