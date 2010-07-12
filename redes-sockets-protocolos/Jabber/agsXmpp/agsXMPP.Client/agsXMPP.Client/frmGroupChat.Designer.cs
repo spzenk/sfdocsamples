@@ -19,13 +19,13 @@
             }
             base.Dispose(disposing);
 
-            XmppServices.GroupChatForms.Remove(m_RoomJid.Bare.ToLower());
+            XmppServices.GroupChatForms.Remove(_RoomJid.Bare.ToLower());
             
             // Remove the Message Callback in the MessageGrabber
-            m_XmppCon.MessageGrabber.Remove(m_RoomJid);
+           Util.XmppServices.XmppCon.MessageGrabber.Remove(_RoomJid);
 
             // Remove the Presence Callback in the MessageGrabber
-            m_XmppCon.PresenceGrabber.Remove(m_RoomJid);
+           Util.XmppServices.XmppCon.PresenceGrabber.Remove(_RoomJid);
         }
 
         #region Windows Form Designer generated code
@@ -67,7 +67,7 @@
             // 
             // statusBar1
             // 
-            this.statusBar1.Location = new System.Drawing.Point(0, 330);
+            this.statusBar1.Location = new System.Drawing.Point(0, 384);
             this.statusBar1.Name = "statusBar1";
             this.statusBar1.Size = new System.Drawing.Size(623, 24);
             this.statusBar1.TabIndex = 6;
@@ -85,7 +85,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(623, 330);
+            this.splitContainer1.Size = new System.Drawing.Size(623, 384);
             this.splitContainer1.SplitterDistance = 188;
             this.splitContainer1.TabIndex = 7;
             // 
@@ -99,7 +99,7 @@
             this.lvwRoster.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvwRoster.Location = new System.Drawing.Point(0, 0);
             this.lvwRoster.Name = "lvwRoster";
-            this.lvwRoster.Size = new System.Drawing.Size(188, 330);
+            this.lvwRoster.Size = new System.Drawing.Size(188, 384);
             this.lvwRoster.SmallImageList = this.ilsRoster;
             this.lvwRoster.TabIndex = 0;
             this.lvwRoster.UseCompatibleStateImageBehavior = false;
@@ -127,12 +127,12 @@
             // 
             this.ilsRoster.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilsRoster.ImageStream")));
             this.ilsRoster.TransparentColor = System.Drawing.Color.Transparent;
-            //this.ilsRoster.Images.SetKeyName(0, "");
-            //this.ilsRoster.Images.SetKeyName(1, "");
-            //this.ilsRoster.Images.SetKeyName(2, "");
-            //this.ilsRoster.Images.SetKeyName(3, "");
-            //this.ilsRoster.Images.SetKeyName(4, "");
-            //this.ilsRoster.Images.SetKeyName(5, "");
+            this.ilsRoster.Images.SetKeyName(0, "");
+            this.ilsRoster.Images.SetKeyName(1, "");
+            this.ilsRoster.Images.SetKeyName(2, "");
+            this.ilsRoster.Images.SetKeyName(3, "");
+            this.ilsRoster.Images.SetKeyName(4, "");
+            this.ilsRoster.Images.SetKeyName(5, "");
             // 
             // splitContainer2
             // 
@@ -148,8 +148,8 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel1);
-            this.splitContainer2.Size = new System.Drawing.Size(431, 330);
-            this.splitContainer2.SplitterDistance = 215;
+            this.splitContainer2.Size = new System.Drawing.Size(431, 384);
+            this.splitContainer2.SplitterDistance = 250;
             this.splitContainer2.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -169,7 +169,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(431, 215);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(431, 250);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // rtfChat
@@ -178,7 +178,7 @@
             this.rtfChat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtfChat.Location = new System.Drawing.Point(3, 33);
             this.rtfChat.Name = "rtfChat";
-            this.rtfChat.Size = new System.Drawing.Size(425, 179);
+            this.rtfChat.Size = new System.Drawing.Size(425, 214);
             this.rtfChat.TabIndex = 3;
             this.rtfChat.Text = "";
             // 
@@ -195,13 +195,16 @@
             // 
             // cmdChangeSubject
             // 
+            this.cmdChangeSubject.BackColor = System.Drawing.Color.Gray;
             this.cmdChangeSubject.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cmdChangeSubject.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdChangeSubject.ForeColor = System.Drawing.Color.White;
             this.cmdChangeSubject.Location = new System.Drawing.Point(363, 3);
             this.cmdChangeSubject.Name = "cmdChangeSubject";
             this.cmdChangeSubject.Size = new System.Drawing.Size(65, 24);
             this.cmdChangeSubject.TabIndex = 6;
             this.cmdChangeSubject.Text = "change";
-            this.cmdChangeSubject.UseVisualStyleBackColor = true;
+            this.cmdChangeSubject.UseVisualStyleBackColor = false;
             this.cmdChangeSubject.Click += new System.EventHandler(this.cmdChangeSubject_Click);
             // 
             // txtSubject
@@ -227,7 +230,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 111);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(431, 130);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // rtfSend
@@ -235,32 +238,37 @@
             this.rtfSend.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rtfSend.Location = new System.Drawing.Point(3, 3);
             this.rtfSend.Name = "rtfSend";
-            this.rtfSend.Size = new System.Drawing.Size(425, 75);
+            this.rtfSend.Size = new System.Drawing.Size(425, 94);
             this.rtfSend.TabIndex = 0;
             this.rtfSend.Text = "";
+            this.rtfSend.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtfSend_KeyPress);
             // 
             // cmdSend
             // 
             this.cmdSend.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.cmdSend.Location = new System.Drawing.Point(351, 84);
+            this.cmdSend.BackColor = System.Drawing.Color.Gray;
+            this.cmdSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdSend.ForeColor = System.Drawing.Color.White;
+            this.cmdSend.Location = new System.Drawing.Point(351, 103);
             this.cmdSend.Name = "cmdSend";
             this.cmdSend.Size = new System.Drawing.Size(77, 24);
             this.cmdSend.TabIndex = 1;
             this.cmdSend.Text = "&Send";
-            this.cmdSend.UseVisualStyleBackColor = true;
+            this.cmdSend.UseVisualStyleBackColor = false;
             this.cmdSend.Click += new System.EventHandler(this.cmdSend_Click);
             // 
             // frmGroupChat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 354);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(623, 408);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusBar1);
             this.Name = "frmGroupChat";
             this.Text = "Group Chat";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGroupChat_FormClosed);
             this.Load += new System.EventHandler(this.frmGroupChat_Load);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmGroupChat_FormClosed);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
