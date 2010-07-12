@@ -120,6 +120,12 @@
     <Compile Include="ClasesExtra.nJim\Presence.cs" />
     <Compile Include="ClasesExtra.nJim\Program.cs" />
     <Compile Include="Class\IItems.cs" />
+    <Compile Include="frrmFindUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frrmFindUsers.Designer.cs">
+      <DependentUpon>frrmFindUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AceptSubscribe.resx">
       <DependentUpon>AceptSubscribe.cs</DependentUpon>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmRegister.resx">
       <DependentUpon>frmRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frrmFindUsers.resx">
+      <DependentUpon>frrmFindUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
