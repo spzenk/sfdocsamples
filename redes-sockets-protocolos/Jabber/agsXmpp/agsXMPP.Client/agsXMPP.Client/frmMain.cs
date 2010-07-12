@@ -321,10 +321,10 @@ namespace agsXMPP.Client
 
         private void btnRegister_Click(object sender, EventArgs e)
         {
-            if (Util.XmppServices.XmppCon.XmppConnectionState != XmppConnectionState.Disconnected)
-            {
-                Util.XmppServices.XmppCon.Close();
-            }
+            if (Util.XmppServices.XmppCon != null)
+                if (Util.XmppServices.XmppCon.XmppConnectionState != XmppConnectionState.Disconnected)
+                    Util.XmppServices.XmppCon.Close();
+
 
             Util.XmppServices.XmppCon = new XmppClientConnection();
             CreateEvents();
@@ -333,7 +333,7 @@ namespace agsXMPP.Client
             {
 
                 frm.StartPosition = FormStartPosition.CenterParent;
-               
+
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
 
@@ -349,8 +349,8 @@ namespace agsXMPP.Client
                 }
 
             }
-        }
 
+        }
 
         void Login(FormStartPosition p)
         {
@@ -378,11 +378,22 @@ namespace agsXMPP.Client
             }
         }
 
-      
+
 
         private void btnAddContact_Click(object sender, EventArgs e)
         {
+            if (!String.IsNullOrEmpty(txtNewContact.Text))
+            {
+                Jid jid = new Jid(txtNewContact.Text);
 
+
+                //Util.XmppServices.XmppCon.RosterManager.AddRosterItem(jid, NICK);
+                Util.XmppServices.XmppCon.RosterManager.AddRosterItem(jid,jid.User);
+
+
+                //Envia una peticion de subscripcion al usuario que quiere agregar
+                Util.XmppServices.XmppCon.PresenceManager.Subscribe(jid);
+            }
         }
 
         private void btnSendCommand_Click(object sender, EventArgs e)

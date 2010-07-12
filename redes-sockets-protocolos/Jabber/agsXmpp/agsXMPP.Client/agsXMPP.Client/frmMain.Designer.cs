@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.txtLogs = new System.Windows.Forms.TextBox();
             this.txtTo = new System.Windows.Forms.TextBox();
             this.rosterControl = new agsXMPP.ui.roster.RosterControl();
@@ -51,6 +53,9 @@
             this.txtNick = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.ils16 = new System.Windows.Forms.ImageList(this.components);
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtLogs
@@ -61,7 +66,7 @@
             this.txtLogs.Multiline = true;
             this.txtLogs.Name = "txtLogs";
             this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLogs.Size = new System.Drawing.Size(300, 526);
+            this.txtLogs.Size = new System.Drawing.Size(300, 595);
             this.txtLogs.TabIndex = 0;
             // 
             // txtTo
@@ -85,13 +90,13 @@
             this.rosterControl.HideEmptyGroups = true;
             this.rosterControl.Location = new System.Drawing.Point(340, 60);
             this.rosterControl.Name = "rosterControl";
-            this.rosterControl.Size = new System.Drawing.Size(318, 303);
+            this.rosterControl.Size = new System.Drawing.Size(318, 372);
             this.rosterControl.TabIndex = 32;
             this.rosterControl.SelectionChanged += new System.EventHandler(this.rosterControl_SelectionChanged);
             // 
             // txtNewContact
             // 
-            this.txtNewContact.Location = new System.Drawing.Point(758, 229);
+            this.txtNewContact.Location = new System.Drawing.Point(758, 200);
             this.txtNewContact.Name = "txtNewContact";
             this.txtNewContact.Size = new System.Drawing.Size(146, 20);
             this.txtNewContact.TabIndex = 33;
@@ -100,7 +105,7 @@
             // 
             this.btnAddContact.BackColor = System.Drawing.Color.LightGray;
             this.btnAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddContact.Location = new System.Drawing.Point(664, 224);
+            this.btnAddContact.Location = new System.Drawing.Point(664, 195);
             this.btnAddContact.Name = "btnAddContact";
             this.btnAddContact.Size = new System.Drawing.Size(88, 25);
             this.btnAddContact.TabIndex = 35;
@@ -141,7 +146,7 @@
             this.btnSendCommand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSendCommand.Location = new System.Drawing.Point(664, 266);
             this.btnSendCommand.Name = "btnSendCommand";
-            this.btnSendCommand.Size = new System.Drawing.Size(88, 25);
+            this.btnSendCommand.Size = new System.Drawing.Size(97, 25);
             this.btnSendCommand.TabIndex = 39;
             this.btnSendCommand.Text = "Send command";
             this.btnSendCommand.UseVisualStyleBackColor = false;
@@ -149,7 +154,7 @@
             // 
             // txtCmdValue
             // 
-            this.txtCmdValue.Location = new System.Drawing.Point(758, 270);
+            this.txtCmdValue.Location = new System.Drawing.Point(777, 266);
             this.txtCmdValue.Multiline = true;
             this.txtCmdValue.Name = "txtCmdValue";
             this.txtCmdValue.Size = new System.Drawing.Size(146, 21);
@@ -227,9 +232,10 @@
             // btnInRooms
             // 
             this.btnInRooms.AllowDrop = true;
+            this.btnInRooms.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnInRooms.BackColor = System.Drawing.Color.LightGray;
             this.btnInRooms.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInRooms.Location = new System.Drawing.Point(699, 484);
+            this.btnInRooms.Location = new System.Drawing.Point(27, 121);
             this.btnInRooms.Name = "btnInRooms";
             this.btnInRooms.Size = new System.Drawing.Size(88, 25);
             this.btnInRooms.TabIndex = 47;
@@ -239,17 +245,22 @@
             // 
             // treeGC
             // 
+            this.treeGC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.treeGC.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.treeGC.Location = new System.Drawing.Point(340, 388);
+            this.treeGC.ImageIndex = 0;
+            this.treeGC.ImageList = this.ils16;
+            this.treeGC.Location = new System.Drawing.Point(340, 453);
             this.treeGC.Name = "treeGC";
-            this.treeGC.Size = new System.Drawing.Size(333, 170);
+            this.treeGC.SelectedImageIndex = 0;
+            this.treeGC.Size = new System.Drawing.Size(318, 170);
             this.treeGC.TabIndex = 48;
             this.treeGC.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeGC_AfterSelect);
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(696, 383);
+            this.label3.Location = new System.Drawing.Point(24, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 51;
@@ -258,22 +269,25 @@
             // 
             // txtRoom
             // 
-            this.txtRoom.Location = new System.Drawing.Point(696, 414);
+            this.txtRoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtRoom.Location = new System.Drawing.Point(24, 51);
             this.txtRoom.Name = "txtRoom";
-            this.txtRoom.Size = new System.Drawing.Size(168, 20);
+            this.txtRoom.Size = new System.Drawing.Size(251, 20);
             this.txtRoom.TabIndex = 49;
             // 
             // txtNick
             // 
-            this.txtNick.Location = new System.Drawing.Point(699, 458);
+            this.txtNick.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtNick.Location = new System.Drawing.Point(27, 95);
             this.txtNick.Name = "txtNick";
-            this.txtNick.Size = new System.Drawing.Size(168, 20);
+            this.txtNick.Size = new System.Drawing.Size(251, 20);
             this.txtNick.TabIndex = 52;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(696, 435);
+            this.label4.Location = new System.Drawing.Point(24, 72);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 20);
             this.label4.TabIndex = 53;
@@ -282,27 +296,49 @@
             // 
             // label5
             // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(337, 365);
+            this.label5.Location = new System.Drawing.Point(337, 431);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 54;
             this.label5.Text = "Rooms";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // ils16
+            // 
+            this.ils16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ils16.ImageStream")));
+            this.ils16.TransparentColor = System.Drawing.Color.Transparent;
+            this.ils16.Images.SetKeyName(0, "application_xp_terminal.png");
+            this.ils16.Images.SetKeyName(1, "folder_user.png");
+            this.ils16.Images.SetKeyName(2, "group.png");
+            this.ils16.Images.SetKeyName(3, "user.png");
+            this.ils16.Images.SetKeyName(4, "comments.png");
+            this.ils16.Images.SetKeyName(5, "server.png");
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox1.Controls.Add(this.btnInRooms);
+            this.groupBox1.Controls.Add(this.txtRoom);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtNick);
+            this.groupBox1.Location = new System.Drawing.Point(675, 445);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(300, 165);
+            this.groupBox1.TabIndex = 55;
+            this.groupBox1.TabStop = false;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(969, 570);
+            this.ClientSize = new System.Drawing.Size(995, 639);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtNick);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtRoom);
             this.Controls.Add(this.treeGC);
-            this.Controls.Add(this.btnInRooms);
             this.Controls.Add(this.btnChat);
             this.Controls.Add(this.btnRegister);
             this.Controls.Add(this.btnLogOut);
@@ -323,6 +359,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Test jabber client";
             this.Load += new System.EventHandler(this.frmMain_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,6 +391,8 @@
         private System.Windows.Forms.TextBox txtNick;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ImageList ils16;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 
