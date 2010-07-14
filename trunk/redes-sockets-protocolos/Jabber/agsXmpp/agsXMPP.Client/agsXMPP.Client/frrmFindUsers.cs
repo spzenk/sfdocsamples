@@ -19,7 +19,7 @@ namespace agsXMPP.Client
         private string _IdFieldRequest = null;
         private string _IdSearchRequest = null;
         private bool _IsOldSearch = false;
-        DataTable _dataTable;
+        DataTable _dataTable= new DataTable(); 
         public frmFindUsers()
         {
             InitializeComponent();
@@ -391,6 +391,12 @@ namespace agsXMPP.Client
 
         #endregion
 
+        private void cboServices_SelectedValueChanged(object sender, EventArgs e)
+        {
+            RequestSearchFields();
+        }
+
+       
       
 
     }

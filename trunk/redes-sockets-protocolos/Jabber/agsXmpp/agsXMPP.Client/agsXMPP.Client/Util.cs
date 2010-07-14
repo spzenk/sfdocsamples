@@ -102,10 +102,13 @@ namespace agsXMPP.Client
 
     public delegate void OnLogHandler(string msg);
     public delegate void OnItemsLoadedHandler(agsXMPP.Client.IItems items);
+    //public delegate void OnParticipantsLoadedHandler(agsXMPP.Client.IItems items);
 
     public class XmppServices
     {
         #region properties
+        public event OnItemsLoadedHandler OnRoomsLoadedEvent;
+        public event OnItemsLoadedHandler OnParticipantsLoadedEvent;
         public event OnLogHandler OnLog;
 
         public static Dictionary<string, Form> ChatForms = new Dictionary<string, Form>();
@@ -240,7 +243,14 @@ namespace agsXMPP.Client
                 }
             }
 
-
+            if (iq.Type == IqType.error)
+            {
+                //if (iq.Error.Code == agsXMPP.protocol.client.ErrorCode.NotFound)
+                //{
+                    string msg = string.Concat(iq.From ," ", iq.Error.Condition);
+                    AddLog(msg);
+                //}
+            }
 
             if (iq.Type == IqType.get)
             {
@@ -458,19 +468,23 @@ namespace agsXMPP.Client
                 OnLog(msg);
             }
         }
+       
         /// <summary>
-        /// Busca las salas de conferencias de alguna sala.- 
+        /// Busca las salas de conferencias de alguna sala.-
+        /// 
         /// </summary>
-        /// <param name="name"></param>
-        public  void FindChatRooms(string name)
+        /// <param name="name">Reprecentan Chatservers 
+        /// EJ: conference.jabbers.ogr</param>
+        public void FindChatRooms(string name)
         {
+            //wChatRoomsList = new List<ChatRooms>();
+            if (this.XmppCon == null) return;
             DiscoItemsIq discoIq = new DiscoItemsIq(IqType.get);
             discoIq.To = new Jid(name);
             this.XmppCon.IqGrabber.SendIq(discoIq, new IqCB(OnGetChatRooms), name);
-        }
-        public event OnItemsLoadedHandler OnRoomsLoadedEvent ;
-        public event OnItemsLoadedHandler OnParticipantsLoadedEvent;
 
+        }
+    
         /// <summary>
         /// Callback
         /// </summary>
@@ -491,7 +505,7 @@ namespace agsXMPP.Client
                 wChatRooms.Servername = data.ToString();
                 wChatRooms.JidList.Add(item.Name,item.Jid);
             }
-            if (OnRoomsLoadedEvent != null)
+            if (OnRoomsLoadedEvent != null && wChatRooms.JidList.Count !=0)
                 OnRoomsLoadedEvent(wChatRooms);
         }
 

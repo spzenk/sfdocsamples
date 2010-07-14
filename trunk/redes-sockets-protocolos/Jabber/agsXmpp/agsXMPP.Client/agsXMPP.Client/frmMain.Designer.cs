@@ -48,12 +48,12 @@
             this.btnChat = new System.Windows.Forms.Button();
             this.btnInRooms = new System.Windows.Forms.Button();
             this.treeGC = new System.Windows.Forms.TreeView();
+            this.ils16 = new System.Windows.Forms.ImageList(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.txtRoom = new System.Windows.Forms.TextBox();
             this.txtNick = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.ils16 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
@@ -257,6 +257,17 @@
             this.treeGC.TabIndex = 48;
             this.treeGC.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeGC_AfterSelect);
             // 
+            // ils16
+            // 
+            this.ils16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ils16.ImageStream")));
+            this.ils16.TransparentColor = System.Drawing.Color.Transparent;
+            this.ils16.Images.SetKeyName(0, "application_xp_terminal.png");
+            this.ils16.Images.SetKeyName(1, "folder_user.png");
+            this.ils16.Images.SetKeyName(2, "group.png");
+            this.ils16.Images.SetKeyName(3, "user.png");
+            this.ils16.Images.SetKeyName(4, "comments.png");
+            this.ils16.Images.SetKeyName(5, "server.png");
+            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -306,17 +317,6 @@
             this.label5.Text = "Rooms";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ils16
-            // 
-            this.ils16.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ils16.ImageStream")));
-            this.ils16.TransparentColor = System.Drawing.Color.Transparent;
-            this.ils16.Images.SetKeyName(0, "application_xp_terminal.png");
-            this.ils16.Images.SetKeyName(1, "folder_user.png");
-            this.ils16.Images.SetKeyName(2, "group.png");
-            this.ils16.Images.SetKeyName(3, "user.png");
-            this.ils16.Images.SetKeyName(4, "comments.png");
-            this.ils16.Images.SetKeyName(5, "server.png");
-            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -341,6 +341,7 @@
             this.button1.TabIndex = 56;
             this.button1.Text = "Find users";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmMain
             // 

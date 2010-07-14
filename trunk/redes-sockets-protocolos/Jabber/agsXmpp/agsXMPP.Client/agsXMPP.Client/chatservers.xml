@@ -1,3 +1,6 @@
-﻿<ChatServers>   
-   <Server>conference.santana</Server>
+﻿<ChatServers>
+	
+	<Server>conference.corrsf71des02</Server>
+	<Server>conference.jabber.org</Server>
+	
 </ChatServers>

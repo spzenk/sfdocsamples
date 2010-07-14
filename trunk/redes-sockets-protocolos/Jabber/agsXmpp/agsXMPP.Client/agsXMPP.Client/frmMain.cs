@@ -119,11 +119,16 @@ namespace agsXMPP.Client
            
            
         }
+
+        /// <summary>
+        /// Carga las salas por cada servicio .-
+        /// </summary>
         void LoadRoms()
         {
 
             if (Util.XmppServices.XmppCon.XmppConnectionState == XmppConnectionState.Disconnected)
                 return;
+
             Util.XmppServices.OnRoomsLoadedEvent += new OnItemsLoadedHandler(XmppServices_OnRoomsLoadedEvent);
             foreach (TreeNode nodeServer in this.treeGC.Nodes)
             {
@@ -172,12 +177,6 @@ namespace agsXMPP.Client
 
 
             Util.XmppServices.SwitchIQ(iq);
-
-
-
-
-
-
 
         }
 
@@ -432,6 +431,8 @@ namespace agsXMPP.Client
             Util.XmppServices.XmppCon.OnRosterItem += new XmppClientConnection.RosterHandler(XmppCon_OnRosterItem);
             Util.XmppServices.XmppCon.OnXmppConnectionStateChanged += new XmppConnectionStateHandler(XmppCon_OnXmppConnectionStateChanged);
             Util.XmppServices.XmppCon.OnPresence += new PresenceHandler(XmppCon_OnPresence);
+
+             
        }
 
         public void RemoveEvents()
@@ -527,6 +528,14 @@ namespace agsXMPP.Client
             {
                 txtRoom.Text = string.Empty;
                 _SelectedRoom = null;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (frmFindUsers f = new frmFindUsers())
+            {
+                f.ShowDialog();
             }
         }
 
