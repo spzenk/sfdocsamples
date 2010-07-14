@@ -88,10 +88,51 @@ namespace agsXMPP.Client
                 SetDiscoInfo();
 
                 Util.XmppServices.XmppCon.OnLogin += new ObjectHandler(XmppCon_OnLogin);
-                Util.XmppServices.XmppCon.OnAuthError += new XmppElementHandler(XmppCon_OnAuthError);
+                Util.XmppServices.XmppCon.OnError += new ErrorHandler(XmppCon_OnError);
                
+                Util.XmppServices.XmppCon.OnAuthError += new XmppElementHandler(XmppCon_OnAuthError);
+              
+
+                Util.XmppServices.XmppCon.OnSocketError += new ErrorHandler(XmppCon_OnSocketError);
             }
             Util.XmppServices.XmppCon.Open();
+        }
+
+        void XmppCon_OnSocketError(object sender, Exception ex)
+        {
+            String msg = string.Empty;
+            if (ex.GetType() == typeof(System.Net.Sockets.SocketException))
+            {
+                if ((int)((System.Net.Sockets.SocketException)(ex)).ErrorCode == 11001)
+                {
+                    msg = "No se puede encontrar el servidor ";
+                   
+                }
+
+                if ((int)((System.Net.Sockets.SocketException)(ex)).ErrorCode == 10061)
+                {
+                    msg =ex.Message + Environment.NewLine  +" Es posible que en el servidor no este instalado un servidor jabber";
+
+                }
+
+            }
+
+            if (msg.Length == 0)
+                msg = ex.Message;
+
+            MessageBox.Show("Error al conectar! " + Environment.NewLine + msg,
+                 "Error",
+                 MessageBoxButtons.OK,
+                 MessageBoxIcon.Exclamation,
+                 MessageBoxDefaultButton.Button1);
+
+        }
+
+      
+
+        void XmppCon_OnError(object sender, Exception ex)
+        {
+            
         }
 
         void Disconnect()
