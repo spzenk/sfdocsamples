@@ -83,6 +83,7 @@ namespace TestFTPCOM
             {
                 if (!item.IsFolder)
                 {
+                    
                     AddViewItem(item, ref idImage);
                 }
             }
@@ -113,8 +114,11 @@ namespace TestFTPCOM
             sValues[7] = item.IsFolder.ToString();
             sValues[8] = item.IsLink.ToString();
             */
-            ImgListViewSmall.Images.Add(ExtractIcon.GetIcon(item.Path, true));
-
+            try
+            {
+                ImgListViewSmall.Images.Add(ExtractIcon.GetIcon(item.Path, true));
+            }
+            catch { }
             ListViewItem lvItem = new ListViewItem(sValues, idImage++);
             lvItem.Tag = item;
             LocalView.Items.Add(lvItem);
