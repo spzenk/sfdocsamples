@@ -9,11 +9,12 @@ namespace FwkFtpClient
 {
     class Ftp
     {
-
+        FtpWebRequest ftpRequest;
+        FtpWebResponse ftpResponse;
+        
         void subir()
         {
-            FtpWebRequest ftpRequest;
-            FtpWebResponse ftpResponse;
+      
 
 
             try
@@ -47,12 +48,12 @@ namespace FwkFtpClient
 
                 //Obtiene el FtpWebResponse de la operación de carga
                 this.ftpResponse = (FtpWebResponse)this.ftpRequest.GetResponse();
-                Response.Write(this.ftpResponse.StatusDescription); //Display response
+                //Response.Write(this.ftpResponse.StatusDescription); //Display response
             }
 
             catch (WebException webex)
             {
-                this.Message = webex.ToString();
+               //Message = webex.ToString();
             }
         }
     }

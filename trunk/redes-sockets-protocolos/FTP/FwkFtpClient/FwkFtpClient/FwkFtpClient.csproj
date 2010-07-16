@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5CEA08F1-D19B-4AE3-8332-CEB3B48A72E5}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -58,8 +58,18 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Ftp.cs" />
+    <Compile Include="FTPComponent.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FTPComponent.Designer.cs">
+      <DependentUpon>FTPComponent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FtpLib.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
