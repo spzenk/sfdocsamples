@@ -445,6 +445,7 @@ namespace FwkFtpClient
             if (!(retValue == 125 || retValue == 150))
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
 
             // Abre el stream de enrtada para leer el archivo de origen
@@ -502,6 +503,7 @@ namespace FwkFtpClient
             if (retValue != 250)
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
 
         }
@@ -534,6 +536,7 @@ namespace FwkFtpClient
             if (retValue != 250)
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
 
             
@@ -566,6 +569,7 @@ namespace FwkFtpClient
             {
                 Close();
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
             //if (debug)
             //    Console.WriteLine("USER " + ftpUser);
@@ -576,6 +580,7 @@ namespace FwkFtpClient
             {
                 Cleanup();
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
 
             if (retValue != 230)
@@ -588,6 +593,7 @@ namespace FwkFtpClient
                 {
                     Cleanup();
                     SendErrorEvent(new IOException(reply.Substring(4)));
+                    return;
                 }
             }
 
@@ -622,6 +628,7 @@ namespace FwkFtpClient
             if (retValue != 200)
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
         }
 
@@ -643,6 +650,7 @@ namespace FwkFtpClient
             if (retValue != 250)
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
             if (OnDirectoryCreatedEvent != null)
                   OnDirectoryCreatedEvent(dirName);
@@ -665,6 +673,7 @@ namespace FwkFtpClient
             if (retValue != 250)
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
             if (OnDirectoryRemovedEvent != null)
                 OnDirectoryRemovedEvent(dirName);
@@ -692,7 +701,9 @@ namespace FwkFtpClient
 
             if (retValue != 250)
             {
+
                 SendErrorEvent(new IOException(reply.Substring(4)));
+                return;
             }
 
             this.ftpPath = dirName;
@@ -833,6 +844,7 @@ namespace FwkFtpClient
                 else if (ch != ',')
                 {
                    SendErrorEvent(  new IOException(string .Concat("Malformed PASV reply: " + reply)));
+                   return null;
                 }
 
                 if (ch == ',' || i + 1 == len)
@@ -846,6 +858,7 @@ namespace FwkFtpClient
                     catch (Exception)
                     {
                         SendErrorEvent(new IOException(string .Concat("Malformed PASV reply: " + reply)));
+                        return null;
                     }
                 }
             }
@@ -864,6 +877,7 @@ namespace FwkFtpClient
             catch (Exception ex)
             {
                 SendErrorEvent(new IOException(string.Concat("Can't connect to remote server " + ex.Message)));
+                return null;
                 
             }
 
