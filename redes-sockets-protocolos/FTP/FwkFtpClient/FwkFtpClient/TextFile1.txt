@@ -1,0 +1,2 @@
+﻿http://www.webprogramacion.com/187/vbnet/cliente-ftp.aspx
+http://www.codeproject.com/KB/IP/ftp.aspx
