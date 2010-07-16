@@ -133,12 +133,8 @@ namespace FwkFtpClient
             dir.Name = ftpComponent1.FTPPath;
             dir.ImageKey = "folder_close_16.png";
 
-
             treeView1.Nodes.Add(dir);
-
-
             AddLog("Conected to server " + ftpComponent1.FTPServer);
-
             ftpComponent1.GetFileList("*.*");
         }
 
@@ -185,7 +181,15 @@ namespace FwkFtpClient
 
         private void button2_Click(object sender, EventArgs e)
         {
-         
+          string fileName =  Fwk.HelperFunctions.FileFunctions.OpenFileDialog_Open(string.Empty, "");
+          try
+          {
+              ftpComponent1.Upload(fileName);
+          }
+          catch (Exception ex)
+          {
+              MessageBox.Show(ex.Message);
+          }
         }
 
         TreeNode GetTreeNode_ByName(TreeNodeCollection nodeList, string name)

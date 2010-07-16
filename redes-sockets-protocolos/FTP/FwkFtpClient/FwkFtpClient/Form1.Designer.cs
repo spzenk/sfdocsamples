@@ -72,11 +72,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(328, 102);
+            this.button2.Location = new System.Drawing.Point(459, 37);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 27);
+            this.button2.Size = new System.Drawing.Size(45, 27);
             this.button2.TabIndex = 45;
-            this.button2.Text = "GetFileList";
+            this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
