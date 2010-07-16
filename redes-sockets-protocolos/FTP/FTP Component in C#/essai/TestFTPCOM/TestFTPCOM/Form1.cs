@@ -660,52 +660,7 @@ namespace TestFTPCOM
 				}
 		}
 
-		private void ftpc_DirCompleted(object sender, FTPCom.FTPEventArgs e)
-		{
-			int i = 0;
-			int idimage = 0;
-			string msg;
-
-			msg = "Transfered " + e.TotalBytes.ToString() + " bytes in " + ((float)e.TimeElapsed / 1000).ToString() + " seconds" + CRLF; 
-			TextLog.SelectionColor = Color.Black;
-			TextLog.AppendText(msg);
-
-			ServerView.BeginUpdate();
-			ServerView.Items.Clear();
-			ImgListServerSmall.Images.Clear();
-
-			ListViewItem lvItem = new ListViewItem("..");
-			ServerView.Items.Add(lvItem);
-
-			for (i = 0; i < ftpc.FileCount; i++)
-			{
-				if (ftpc.IsFolder(i))
-				{
-					string[] items = new String[2];
-					items[0] = ftpc.GetFileName(i);
-					items[1] = ftpc.GetFileSize(i).ToString();
-					ImgListServerSmall.Images.Add (m_IconFolder);
-					ServerView.Items.Add(new ListViewItem(items, idimage++));
-				}
-			}		
-			for (i = 0; i < ftpc.FileCount; i++)
-			{
-				if (!ftpc.IsFolder(i))
-				{
-					string[] items = new String[2];
-					items[0] = ftpc.GetFileName(i);
-					items[1] = ftpc.GetFileSize(i).ToString();
-					ImgListServerSmall.Images.Add (ExtractIcon.GetIcon(items[0], false));
-					ServerView.Items.Add(new ListViewItem(items, idimage++));
-				}
-			}		
-			ServerView.EndUpdate();
-			this.Cursor = Cursors.Default;
-		}
-
-		private void ServerView_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-		}
+	
 
 		private void LocalView_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
 		{
@@ -727,14 +682,11 @@ namespace TestFTPCOM
 			}
 		}
 
-		private void ftpc_FileDownloadCompleted(object sender, FTPCom.FTPEventArgs e)
-		{
-			string msg = "Transfered " + e.TotalBytes.ToString() + " bytes in " + ((float)e.TimeElapsed / 1000).ToString() + " seconds" + CRLF; 
-			TextLog.SelectionColor = Color.Black;
-			TextLog.AppendText(msg);
-			FillLocalView(m_currentFolder);
-		}
 
+
+        private void ServerView_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
+        {
+        }
 		private void ServerView_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
 		{
 			if (e.Button != 0)
@@ -795,21 +747,6 @@ namespace TestFTPCOM
 			m_previousfilename = ServerView.Items[e.Item].Text;
 		}
 
-		private void LocalView_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
-		{
-			if (e.Button != 0)
-			{
-				string msg = "";
-
-				for (int i = 0; i < LocalView.SelectedItems.Count; i++)
-				{
-					msg += LocalView.SelectedItems[i].Text + "\n";
-				}
-
-				LocalView.DoDragDrop(msg, DragDropEffects.Copy | DragDropEffects.Move);
-			}		
-		}
-
 		private void ServerView_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
 		{
 			if (e.Data.GetDataPresent(DataFormats.Text)) 
@@ -829,21 +766,27 @@ namespace TestFTPCOM
 				ftpc.FileUpload(sfile, GetFileSize(sfile));
 			}		
 		}
+		private void LocalView_MouseMove(object sender, System.Windows.Forms.MouseEventArgs e)
+		{
+			if (e.Button != 0)
+			{
+				string msg = "";
+
+				for (int i = 0; i < LocalView.SelectedItems.Count; i++)
+				{
+					msg += LocalView.SelectedItems[i].Text + "\n";
+				}
+
+				LocalView.DoDragDrop(msg, DragDropEffects.Copy | DragDropEffects.Move);
+			}		
+		}
+
 
 		private int GetFileSize(string filename)
 		{
 			FileInfo fi = new FileInfo(ftpc.LocalFolder + "\\" + filename);
 			return((int)fi.Length);
 		}
-
-		private void ftpc_FileUploadCompleted(object sender, FTPCom.FTPEventArgs e)
-		{
-			string msg = "Transfered " + e.TotalBytes.ToString() + " bytes in " + ((float)e.TimeElapsed / 1000).ToString() + " seconds" + CRLF; 
-			TextLog.SelectionColor = Color.Black;
-			TextLog.AppendText(msg);
-			ftpc.Dir();
-		}
-
 		private void MenuDelete_Click(object sender, System.EventArgs e)
 		{
 			for (int i = 0; i < ServerView.SelectedItems.Count; i++)
@@ -873,6 +816,63 @@ namespace TestFTPCOM
 			ServerView.SelectedItems[0].BeginEdit();
 		}
 
+        private void ftpc_DirCompleted(object sender, FTPCom.FTPEventArgs e)
+        {
+            int i = 0;
+            int idimage = 0;
+            string msg;
+
+            msg = "Transfered " + e.TotalBytes.ToString() + " bytes in " + ((float)e.TimeElapsed / 1000).ToString() + " seconds" + CRLF;
+            TextLog.SelectionColor = Color.Black;
+            TextLog.AppendText(msg);
+
+            ServerView.BeginUpdate();
+            ServerView.Items.Clear();
+            ImgListServerSmall.Images.Clear();
+
+            ListViewItem lvItem = new ListViewItem("..");
+            ServerView.Items.Add(lvItem);
+
+            for (i = 0; i < ftpc.FileCount; i++)
+            {
+                if (ftpc.IsFolder(i))
+                {
+                    string[] items = new String[2];
+                    items[0] = ftpc.GetFileName(i);
+                    items[1] = ftpc.GetFileSize(i).ToString();
+                    ImgListServerSmall.Images.Add(m_IconFolder);
+                    ServerView.Items.Add(new ListViewItem(items, idimage++));
+                }
+            }
+            for (i = 0; i < ftpc.FileCount; i++)
+            {
+                if (!ftpc.IsFolder(i))
+                {
+                    string[] items = new String[2];
+                    items[0] = ftpc.GetFileName(i);
+                    items[1] = ftpc.GetFileSize(i).ToString();
+                    ImgListServerSmall.Images.Add(ExtractIcon.GetIcon(items[0], false));
+                    ServerView.Items.Add(new ListViewItem(items, idimage++));
+                }
+            }
+            ServerView.EndUpdate();
+            this.Cursor = Cursors.Default;
+        }
+        private void ftpc_FileDownloadCompleted(object sender, FTPCom.FTPEventArgs e)
+        {
+            string msg = "Transfered " + e.TotalBytes.ToString() + " bytes in " + ((float)e.TimeElapsed / 1000).ToString() + " seconds" + CRLF;
+            TextLog.SelectionColor = Color.Black;
+            TextLog.AppendText(msg);
+            FillLocalView(m_currentFolder);
+        }
+        private void ftpc_FileUploadCompleted(object sender, FTPCom.FTPEventArgs e)
+        {
+            string msg = "Transfered " + e.TotalBytes.ToString() + " bytes in " + ((float)e.TimeElapsed / 1000).ToString() + " seconds" + CRLF;
+            TextLog.SelectionColor = Color.Black;
+            TextLog.AppendText(msg);
+            ftpc.Dir();
+        }
+
 		private void ftpc_FTPCommand(object sender, FTPCom.FTPEventArgs e)
 		{
 			TextLog.SelectionColor = Color.Blue;
@@ -882,16 +882,16 @@ namespace TestFTPCOM
 			TextLog.SelectionStart = TextLog.TextLength;
 			TextLog.ScrollToCaret();		
 		}
+        public void ftpc_ConnectionTerminated(object sender, FTPCom.FTPEventArgs e)
+        {
 
+        }
 		private void BtnClose_Click(object sender, System.EventArgs e)
 		{
 			ftpc.Disconnect();
 			ServerView.Items.Clear();
 		}
 
-		public void ftpc_ConnectionTerminated(object sender, FTPCom.FTPEventArgs e)
-		{
 		
-		}
 	}
 }
