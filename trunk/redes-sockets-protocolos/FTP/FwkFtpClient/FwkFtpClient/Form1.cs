@@ -10,7 +10,6 @@ using System.Windows.Forms;
 namespace FwkFtpClient
 {
     public partial class Form1 : Form
-
     {
         int logCount = 0;
         static StringBuilder logs;
@@ -20,20 +19,103 @@ namespace FwkFtpClient
             logs = new StringBuilder();
             ftpComponent1.OnErrorEvent += new ErrorHandler(ftpComponent1_OnErrorEvent);
             ftpComponent1.OnLoginEvent += new ObjectHandler(ftpComponent1_OnLoginEvent);
-            ftpComponent1.OnFileListResivedEvent += new ObjectHandler(ftpComponent1_OnFileListResivedEvent);
-            
-            
+            ftpComponent1.OnFileListResivedEvent += new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent);
+
+            ftpComponent1.OnFileRemovedEvent += new ObjectHandler(ftpComponent1_OnFileRemovedEvent);
+            ftpComponent1.OnFileResivedEvent += new ObjectHandler(ftpComponent1_OnFileResivedEvent);
+            ftpComponent1.OnFileUploadedEvent += new ObjectHandler(ftpComponent1_OnFileUploadedEvent);
+
+            ftpComponent1.OnDirectoryChangedEvent += new ObjectHandler(ftpComponent1_OnDirectoryChangedEvent);
+            ftpComponent1.OnDirectoryCreatedEvent += new ObjectHandler(ftpComponent1_OnDirectoryCreatedEvent);
+            ftpComponent1.OnDirectoryRemovedEvent += new ObjectHandler(ftpComponent1_OnDirectoryRemovedEvent);
         }
 
-        void ftpComponent1_OnFileListResivedEvent(object sender)
+        void ftpComponent1_OnDirectoryRemovedEvent(object sender)
         {
             if (InvokeRequired)
             {
 
-                BeginInvoke(new ObjectHandler(ftpComponent1_OnLoginEvent), new object[] { sender });
+                BeginInvoke(new ObjectHandler(ftpComponent1_OnDirectoryRemovedEvent), new object[] { sender });
                 return;
             }
-            string[] list = (string[])sender;
+        }
+
+        void ftpComponent1_OnDirectoryCreatedEvent(object sender)
+        {
+            if (InvokeRequired)
+            {
+
+                BeginInvoke(new ObjectHandler(ftpComponent1_OnDirectoryCreatedEvent), new object[] { sender });
+                return;
+            }
+        }
+
+        void ftpComponent1_OnDirectoryChangedEvent(object sender)
+        {
+            if (InvokeRequired)
+            {
+
+                BeginInvoke(new ObjectHandler(ftpComponent1_OnDirectoryChangedEvent), new object[] { sender });
+                return;
+            };
+        }
+
+        void ftpComponent1_OnFileUploadedEvent(object sender)
+        {
+            if (InvokeRequired)
+            {
+
+                BeginInvoke(new ObjectHandler(ftpComponent1_OnFileUploadedEvent), new object[] { sender });
+                return;
+            }
+        }
+
+        void ftpComponent1_OnFileResivedEvent(object sender)
+        {
+            if (InvokeRequired)
+            {
+
+                BeginInvoke(new ObjectHandler(ftpComponent1_OnFileResivedEvent), new object[] { sender });
+                return;
+            }
+        }
+
+        void ftpComponent1_OnFileRemovedEvent(object sender)
+        {
+            if (InvokeRequired)
+            {
+
+                BeginInvoke(new ObjectHandler(ftpComponent1_OnFileRemovedEvent), new object[] { sender });
+                return;
+            }
+        }
+
+        void ftpComponent1_OnFileListResivedEvent(string patch, String[] list)
+        {
+            if (InvokeRequired)
+            {
+
+                BeginInvoke(new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent), new object[] { patch, list });
+                return;
+            }
+            TreeNode parentNode = GetTreeNode_ByName(treeView1.Nodes, patch);
+
+            parentNode.Nodes.Clear();
+            TreeNode t;
+            foreach (string file in list)
+            {
+                if (!string.IsNullOrEmpty(file))
+                {
+                    t = new TreeNode(file);
+                    t.Name = string.Concat(patch, @"\", file);
+                    t.ImageKey = "doc_16.png";
+                    t.SelectedImageKey = "doc_sel_16.ico";
+                    t.Tag = "file";
+                    parentNode.Nodes.Add(t);
+                }
+            }
+
+            parentNode.ExpandAll();
 
         }
 
@@ -46,7 +128,18 @@ namespace FwkFtpClient
                 return;
             }
 
+            TreeNode dir = new TreeNode(ftpComponent1.FTPPath);
+            dir.Tag = "dir";
+            dir.Name = ftpComponent1.FTPPath;
+            dir.ImageKey = "folder_close_16.png";
+
+
+            treeView1.Nodes.Add(dir);
+
+
             AddLog("Conected to server " + ftpComponent1.FTPServer);
+
+            ftpComponent1.GetFileList("*.*");
         }
 
         void ftpComponent1_OnErrorEvent(Exception ex)
@@ -92,7 +185,39 @@ namespace FwkFtpClient
 
         private void button2_Click(object sender, EventArgs e)
         {
-            ftpComponent1.GetFileList("*.*");
+         
         }
+
+        TreeNode GetTreeNode_ByName(TreeNodeCollection nodeList, string name)
+        {
+            foreach (TreeNode node in nodeList)
+            {
+                if (node.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
+                    return node;
+
+            }
+            return null;
+        }
+
+        
+
+        private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Tag.Equals("dir"))
+            {
+                e.Node.ImageKey = "folder_open_16.png";
+            }
+        }
+
+        private void treeView1_AfterCollapse(object sender, TreeViewEventArgs e)
+        {
+            if (e.Node.Tag.Equals("dir"))
+            {
+                e.Node.TreeView.BeginUpdate();
+                e.Node.ImageKey = "folder_close_16.png";
+                e.Node.TreeView.EndUpdate();
+            }
+        }
+
     }
 }

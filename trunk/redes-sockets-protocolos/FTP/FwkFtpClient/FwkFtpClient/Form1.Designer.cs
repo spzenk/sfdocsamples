@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtLogs = new System.Windows.Forms.TextBox();
-            this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
             this.button2 = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -64,13 +67,8 @@
             this.txtLogs.Multiline = true;
             this.txtLogs.Name = "txtLogs";
             this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLogs.Size = new System.Drawing.Size(300, 525);
+            this.txtLogs.Size = new System.Drawing.Size(282, 525);
             this.txtLogs.TabIndex = 43;
-            // 
-            // ftpComponent1
-            // 
-            this.ftpComponent1.FTPPass = null;
-            this.ftpComponent1.FTPPort = 0;
             // 
             // button2
             // 
@@ -82,11 +80,39 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "folder_open_16.png");
+            this.imageList1.Images.SetKeyName(1, "folder_close_16.png");
+            this.imageList1.Images.SetKeyName(2, "doc_16.png");
+            this.imageList1.Images.SetKeyName(3, "doc_sel_16.ico");
+            // 
+            // treeView1
+            // 
+            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageList = this.imageList1;
+            this.treeView1.Location = new System.Drawing.Point(300, 135);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.SelectedImageIndex = 0;
+            this.treeView1.Size = new System.Drawing.Size(373, 418);
+            this.treeView1.TabIndex = 46;
+            this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
+            this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
+            // 
+            // ftpComponent1
+            // 
+            this.ftpComponent1.FTPPass = null;
+            this.ftpComponent1.FTPPort = 0;
+            this.ftpComponent1.Logined = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 565);
+            this.Controls.Add(this.treeView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLogs);
@@ -105,6 +131,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLogs;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.TreeView treeView1;
     }
 }
 

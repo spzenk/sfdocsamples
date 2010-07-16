@@ -13,6 +13,7 @@ namespace FwkFtpClient
     public delegate void DebugHandler(string msg);
     public delegate void ErrorHandler(Exception ex);
     public delegate void ObjectHandler(object sender);
+    public delegate void FileListResivedHandler(string path,String[] files);
     public partial class FTPComponent : Component
     {
         #region events
@@ -20,7 +21,18 @@ namespace FwkFtpClient
         public event ErrorHandler OnErrorEvent;
         public event ObjectHandler OnCloseEvent;
         public event ObjectHandler OnLoginEvent;
-        public event ObjectHandler OnFileListResivedEvent;
+
+        public event FileListResivedHandler OnFileListResivedEvent;
+
+        public event ObjectHandler OnFileRemovedEvent;
+        public event ObjectHandler OnFileUploadedEvent;
+        public event ObjectHandler OnFileResivedEvent;
+
+        public event ObjectHandler OnDirectoryChangedEvent;
+        public event ObjectHandler OnDirectoryCreatedEvent;
+        public event ObjectHandler OnDirectoryRemovedEvent;
+        
+
 
         /// <summary>
         /// 
@@ -200,7 +212,7 @@ namespace FwkFtpClient
                 SendErrorEvent(new IOException(reply.Substring(4)));
             }
             if(OnFileListResivedEvent!=null)
-                OnFileListResivedEvent(mess);
+                OnFileListResivedEvent(this.ftpPath, mess);
 
         }
 
@@ -234,48 +246,55 @@ namespace FwkFtpClient
 
         }
 
-        ///
-        /// Download a file to the Assembly's local directory,
-        /// keeping the same file name.
-        ///
-        ///
+
+        /// <summary>
+        /// Descarga el archivo remoto, mantiene el nombre original
+        /// </summary>
+        /// <param name="remFileName">Nombre del archivo remoto</param>
         public void Download(string remFileName)
         {
             Download(remFileName, string.Empty, false);
         }
 
-        ///
-        /// Download a remote file to the Assembly's local directory,
-        /// keeping the same file name, and set the resume flag.
-        ///
-        ///
-        ///
+       
+        /// <summary>
+        /// Descarga el archivo remoto, mantiene el nombre y establece la bandera
+        /// resume
+        /// </summary>
+        /// <param name="remFileName">Nombre del archivo remoto</param>
+        /// <param name="resume">Llama al comando REST: Reiniciar cargas y descargas de FTP y despues RETR
+        /// Las descargas se pueden reiniciar emitiendo primero un comando rest con el desplazamiento deseado y, 
+        /// a continuación, emitiendo el comando retr.
+        /// </param>
         public void Download(string remFileName, Boolean resume)
         {
             Download(remFileName, string.Empty, resume);
         }
 
-        ///
-        /// Download a remote file to a local file name which can include
-        /// a path. The local file name will be created or overwritten,
-        /// but the path must exist.
-        ///
-        ///
-        ///
-        public void Download(string remFileName, string locFileName)
+        /// <summary>
+        /// Descarga el archivo remoto. 
+        /// <summary>
+        /// <param name="remFileName">Nombre del archivo remoto</param>
+        /// <param name="fullLocalFileName">Nombre del archivo destino, Ruta+Nombre
+        /// La ruta debe existir y el archivo sera creado.
+        /// </param>
+        public void Download(string remFileName, string fullLocalFileName)
         {
-            Download(remFileName, locFileName, false);
+            Download(remFileName, fullLocalFileName, false);
         }
 
-        ///
-        /// Download a remote file to a local file name which can include
-        /// a path, and set the resume flag. The local file name will be
-        /// created or overwritten, but the path must exist.
-        ///
-        ///
-        ///
-        ///
-        public void Download(string remFileName, string locFileName, Boolean resume)
+
+        /// <summary>
+        /// Descarga el archivo remoto, el archivo sera creado o sobreescrito
+        /// <summary>
+        /// <param name="remFileName">Nombre del archivo remoto</param>
+        /// <param name="fullLocalFileName">Nombre del archivo destino, Ruta+Nombre
+        /// La ruta debe existir y el archivo sera creado o sobreescrito.</param>param>
+        /// <param name="resume">Llama al comando REST: Reiniciar cargas y descargas de FTP y despues RETR
+        /// Las descargas se pueden reiniciar emitiendo primero un comando rest con el desplazamiento deseado y, 
+        /// a continuación, emitiendo el comando retr.
+        /// </param>
+        public void Download(string remFileName, string fullLocalFileName, Boolean resume)
         {
             if (!logined)
             {
@@ -286,18 +305,18 @@ namespace FwkFtpClient
 
             SendDebug(string.Concat("Downloading file ", remFileName, " from ", ftpServer, "/", ftpPath));
 
-            if (locFileName.Equals(string.Empty))
+            if (fullLocalFileName.Equals(string.Empty))
             {
-                locFileName = remFileName;
+                fullLocalFileName = remFileName;
             }
 
-            if (!File.Exists(locFileName))
+            if (!File.Exists(fullLocalFileName))
             {
-                Stream st = File.Create(locFileName);
+                Stream st = File.Create(fullLocalFileName);
                 st.Close();
             }
 
-            FileStream output = new FileStream(locFileName, FileMode.Open);
+            FileStream output = new FileStream(fullLocalFileName, FileMode.Open);
 
             Socket cSocket = CreateDataSocket();
 
@@ -314,7 +333,7 @@ namespace FwkFtpClient
                     if (retValue != 350)
                     {
                         //throw new IOException(reply.Substring(4));
-                        //Some servers may not support resuming.
+                        //Algunos servers no soportan esta caracteristica(resuming)
                         offset = 0;
                     }
                 }
@@ -323,10 +342,10 @@ namespace FwkFtpClient
                 {
                     if (debug)
                     {
-                        Console.WriteLine("seeking to " + offset);
+                        SendDebug("seeking to " + offset);
                     }
                     long npos = output.Seek(offset, SeekOrigin.Begin);
-                    SendDebug(string.Concat("new pos=", npos));
+                    //SendDebug(string.Concat("new pos=", npos));
                 }
             }
 
@@ -363,23 +382,27 @@ namespace FwkFtpClient
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
             }
-
+            if (OnFileResivedEvent != null)
+                OnFileResivedEvent(fullLocalFileName);
         }
 
-        ///
-        /// Upload a file.
-        ///
-        ///
+       /// <summary>
+       /// Sube un archivo al servidor remoto.-
+       /// </summary>
+       /// <param name="fileName">Nombre del archivo a subir</param>
         public void Upload(string fileName)
         {
             Upload(fileName, false);
         }
 
-        ///
-        /// Upload a file and set the resume flag.
-        ///
-        ///
-        ///
+        /// <summary>
+        /// Sube un archivo al servidor remoto.-
+        /// </summary>
+        /// <param name="fileName">Nombre del archivo a subir</param>
+        /// <param name="resume">Llama al comando REST: Reiniciar cargas y descargas de FTP y despues RETR
+        /// Las descargas se pueden reiniciar emitiendo primero un comando rest con el desplazamiento deseado y, 
+        /// a continuación, emitiendo el comando retr.
+        /// </param>
         public void Upload(string fileName, Boolean resume)
         {
 
@@ -413,7 +436,6 @@ namespace FwkFtpClient
                 if (retValue != 350)
                 {
                     //throw new IOException(reply.Substring(4));
-                    //Remote server may not support resuming.
                     offset = 0;
                 }
             }
@@ -425,7 +447,7 @@ namespace FwkFtpClient
                 SendErrorEvent(new IOException(reply.Substring(4)));
             }
 
-            // open input stream to read source file
+            // Abre el stream de enrtada para leer el archivo de origen
             FileStream input = new FileStream(fileName, FileMode.Open);
 
             if (offset != 0)
@@ -438,7 +460,7 @@ namespace FwkFtpClient
                 input.Seek(offset, SeekOrigin.Begin);
             }
 
-            Console.WriteLine("Uploading file " + fileName + " to " + ftpPath);
+            SendDebug(string.Concat("Uploading file " , fileName , " to " + ftpPath));
 
             while ((bytes = input.Read(buffer, 0, buffer.Length)) > 0)
             {
@@ -448,7 +470,6 @@ namespace FwkFtpClient
             }
             input.Close();
 
-            //Console.WriteLine(string.empty);
 
             if (cSocket.Connected)
             {
@@ -460,12 +481,14 @@ namespace FwkFtpClient
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
             }
+            if (OnFileUploadedEvent != null)
+                OnFileUploadedEvent(fileName);
         }
 
-        ///
-        /// Delete a file from the remote FTP server.
-        ///
-        ///
+       /// <summary>
+       /// elimina un archivo
+       /// </summary>
+       /// <param name="fileName">Archivo a eliminar</param>
         public void DeleteRemoteFile(string fileName)
         {
 
@@ -487,8 +510,8 @@ namespace FwkFtpClient
         /// <summary>
         /// Renombrado de archivo en el servidor remoto
         /// </summary>
-        /// <param name="oldFileName"></param>
-        /// <param name="newFileName"></param>
+        /// <param name="oldFileName">Nombre viejo del archivo</param>
+        /// <param name="newFileName">Nuevo nombre</param>
         public void RenameRemoteFile(string oldFileName, string newFileName)
         {
 
@@ -513,6 +536,8 @@ namespace FwkFtpClient
                 SendErrorEvent(new IOException(reply.Substring(4)));
             }
 
+            
+
         }
         #endregion
 
@@ -521,6 +546,8 @@ namespace FwkFtpClient
         /// </summary>
         public void Conect()
         {
+            if(string.IsNullOrEmpty(ftpServer))
+                throw new IOException("El valor FTPServer no puede ser nulo");
 
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ep = new IPEndPoint(Dns.Resolve(ftpServer).AddressList[0], ftpPort);
@@ -580,7 +607,7 @@ namespace FwkFtpClient
         /// True = modo bunario para descargas
         /// False, Modo Ascii para descargas.
         /// </summary>
-        /// <param name="mode"></param>
+        /// <param name="mode">true o false</param>
         public void SetBinaryMode(Boolean mode)
         {
 
@@ -602,7 +629,7 @@ namespace FwkFtpClient
         /// <summary>
         /// Crea un directorio en el servidor remoto
         /// </summary>
-        /// <param name="dirName"></param>
+        /// <param name="dirName">directorio romoto crear</param>
         public void Mkdir(string dirName)
         {
 
@@ -617,13 +644,14 @@ namespace FwkFtpClient
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
             }
-
+            if (OnDirectoryCreatedEvent != null)
+                  OnDirectoryCreatedEvent(dirName);
         }
 
         /// <summary>
         /// Elimina un directorio en el servidor remoto
         /// </summary>
-        /// <param name="dirName"></param>
+        /// <param name="dirName">Directorio remoto a eliminar</param>
         public void Rmdir(string dirName)
         {
 
@@ -638,14 +666,15 @@ namespace FwkFtpClient
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
             }
-
+            if (OnDirectoryRemovedEvent != null)
+                OnDirectoryRemovedEvent(dirName);
         }
 
 
         /// <summary>
         /// Cambia el actual directorio en el servidor remoto
         /// </summary>
-        /// <param name="dirName"></param>
+        /// <param name="dirName">Nombre del directorio al que se quiere cambiar</param>
         public void Chdir(string dirName)
         {
 
@@ -670,11 +699,13 @@ namespace FwkFtpClient
 
             SendDebug(string.Concat("Current directory is " , ftpPath));
 
+            if (OnDirectoryChangedEvent != null)
+                OnDirectoryChangedEvent(dirName);
         }
 
-        ///
-        /// Close the FTP connection.
-        ///
+        /// <summary>
+        /// Cierra la conexion FTP.-
+        /// </summary>
         public void Close()
         {
 
