@@ -17,17 +17,17 @@ namespace FwkFtpClient
         {
             InitializeComponent();
             logs = new StringBuilder();
-            ftpComponent1.OnErrorEvent += new ErrorHandler(ftpComponent1_OnErrorEvent);
+            //ftpComponent1.OnErrorEvent += new ErrorHandler(ftpComponent1_OnErrorEvent);
             ftpComponent1.OnLoginEvent += new ObjectHandler(ftpComponent1_OnLoginEvent);
-            ftpComponent1.OnFileListResivedEvent += new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent);
+            //ftpComponent1.OnFileListResivedEvent += new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent);
 
-            ftpComponent1.OnFileRemovedEvent += new ObjectHandler(ftpComponent1_OnFileRemovedEvent);
-            ftpComponent1.OnFileDowloadEvent += new ObjectHandler(ftpComponent1_OnFileDowloadEvent);
-            ftpComponent1.OnFileUploadedEvent += new ObjectHandler(ftpComponent1_OnFileUploadedEvent);
+            //ftpComponent1.OnFileRemovedEvent += new ObjectHandler(ftpComponent1_OnFileRemovedEvent);
+            //ftpComponent1.OnFileDowloadEvent += new ObjectHandler(ftpComponent1_OnFileDowloadEvent);
+            //ftpComponent1.OnFileUploadedEvent += new ObjectHandler(ftpComponent1_OnFileUploadedEvent);
 
-            ftpComponent1.OnDirectoryChangedEvent += new ObjectHandler(ftpComponent1_OnDirectoryChangedEvent);
-            ftpComponent1.OnDirectoryCreatedEvent += new ObjectHandler(ftpComponent1_OnDirectoryCreatedEvent);
-            ftpComponent1.OnDirectoryRemovedEvent += new ObjectHandler(ftpComponent1_OnDirectoryRemovedEvent);
+            //ftpComponent1.OnDirectoryChangedEvent += new ObjectHandler(ftpComponent1_OnDirectoryChangedEvent);
+            //ftpComponent1.OnDirectoryCreatedEvent += new ObjectHandler(ftpComponent1_OnDirectoryCreatedEvent);
+            //ftpComponent1.OnDirectoryRemovedEvent += new ObjectHandler(ftpComponent1_OnDirectoryRemovedEvent);
         }
 
         void ftpComponent1_OnDirectoryRemovedEvent(object sender,Exception ex)
@@ -229,6 +229,19 @@ namespace FwkFtpClient
                 e.Node.ImageKey = "folder_close_16.png";
                 e.Node.TreeView.EndUpdate();
             }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ftpComponent1.FTPServer = "172.22.12.22";
+
+            ftpComponent1.FTPPass = "";
+            //ftpComponent1.FTPUser = "";
+
+            ftpComponent1.FTPPort = 21;
+            ftpComponent1.Debug = true;
+            ftpComponent1.BeginConnectAsync();
+            //ftpComponent1.BeginConnectAsync(new ObjectHandler(ftpComponent1_OnLoginEvent));
         }
 
     }
