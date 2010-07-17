@@ -15,15 +15,12 @@ using System.Runtime.Remoting.Messaging;
 
 namespace FwkFtpClient
 {
-    public delegate void DebugHandler(string msg);
-    public delegate void ErrorHandler(Exception ex);
-    public delegate void ObjectHandler(object sender,  Exception ex);
-    public delegate void FileListResivedHandler(string path, String[] files, Exception ex);
 
-    public delegate void ObjectHandlerAsync(  out Exception ex);
+
+
     [ToolboxItem(true)]
-    [ToolboxBitmap(typeof(FTPComponent), "Resources.db5.png")]
-    public partial class FTPComponent : Component
+    [ToolboxBitmap(typeof(FTPComponentOld), "Resources.db5.png")]
+    public partial class FTPComponentOld : Component
     {
         #region events
         public event DebugHandler OnDebugEvent;
@@ -156,13 +153,13 @@ namespace FwkFtpClient
 
         #endregion
 
-        public FTPComponent()
+        public FTPComponentOld()
         {
             InitializeComponent();
             logined = false;
         }
 
-        public FTPComponent(IContainer container)
+        public FTPComponentOld(IContainer container)
         {
             container.Add(this);
             InitializeComponent();
@@ -583,52 +580,11 @@ namespace FwkFtpClient
         }
         #endregion
 
-        public void BeginConnectAsync(ObjectHandler cb)
-        {
-            Exception ex = null;
-            ObjectHandlerAsync x = new ObjectHandlerAsync(ConectXXX);
-            x.BeginInvoke( out ex, new AsyncCallback(EndConnectAsync), cb);
-         
-        }
-        public void BeginConnectAsync()
-        {
-            Exception ex = null;
-            ObjectHandlerAsync x = new ObjectHandlerAsync(ConectXXX);
-            x.BeginInvoke(out ex, new AsyncCallback(EndConnectAsync), null);
+       
 
-        }
-        void EndConnectAsync(IAsyncResult res)
-        {
-            AsyncResult result = (AsyncResult)res;
+  
 
-            Exception ex;
-            ObjectHandler d = (ObjectHandler)res.AsyncState;
-            ObjectHandlerAsync del = (ObjectHandlerAsync)result.AsyncDelegate;
-            del.EndInvoke(out ex, res);
-            if (d != null)
-                d.Invoke(this, ex);
-            else
-                if (OnLoginEvent != null)
-                    OnLoginEvent(this, ex);
-        }
-
-        void ConectXXX( out Exception ex)
-        {
-         
-            ex = null;
-        
-            try
-            {
-                //throw new IOException("El valor FTPServer no puede ser nulo");
-                Conect();
-            }
-            catch (Exception err)
-            {
-                err.Source = "Origen de datos";
-                ex = err;
-            }
-        
-        }
+       
         /// <summary>
         /// Se concta al servidor remoto
         /// </summary>
@@ -640,30 +596,36 @@ namespace FwkFtpClient
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ep = new IPEndPoint(Dns.Resolve(ftpServer).AddressList[0], ftpPort);
 
-            //try
-            //{
+            try
+            {
                 clientSocket.Connect(ep);
-            //}
-            //catch (Exception ex)
-            //{
-            //    throw new IOException(reply.Substring(4));
-            //}
+            }
+            catch (Exception ex)
+            {
+                if (OnLoginEvent != null)
+                    OnLoginEvent(this, ex);
+                return;
+            }
 
             ReadReply();
             if (retValue != 220)
             {
                 Close();
-               
-                    throw new IOException(reply.Substring(4));
+                if (OnLoginEvent != null)
+                    OnLoginEvent(this, new IOException(reply.Substring(4)));
+                return;
             }
-
+            //if (debug)
+            //    Console.WriteLine("USER " + ftpUser);
 
             SendCommand("USER " + ftpUser);
 
             if (!(retValue == 331 || retValue == 230))
             {
                 Cleanup();
-                throw new IOException(reply.Substring(4));
+                if (OnLoginEvent != null)
+                    OnLoginEvent(this, new IOException(reply.Substring(4)));
+                return;
             }
 
             if (retValue != 230)
@@ -675,7 +637,8 @@ namespace FwkFtpClient
                 if (!(retValue == 230 || retValue == 202))
                 {
                     Cleanup();
-                    throw new IOException(reply.Substring(4));
+                    if (OnLoginEvent != null)
+                        OnLoginEvent(this, new IOException(reply.Substring(4)));
                 }
             }
 
