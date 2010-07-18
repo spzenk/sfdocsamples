@@ -6,15 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using FTPTest;
+using System.Text.RegularExpressions;
 
 namespace FwkFtpClient
 {
-    public partial class Form1 : Form
+    public partial class frmTest : Form
     {
         int logCount = 0;
         static StringBuilder logs;
-        public Form1()
+        public frmTest()
         {
             InitializeComponent();
             logs = new StringBuilder();
@@ -95,7 +95,7 @@ namespace FwkFtpClient
             if (InvokeRequired)
             {
 
-                BeginInvoke(new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent), new object[] { patch, list ,ex});
+                BeginInvoke(new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent), new object[] { patch, list, ex });
                 return;
             }
             if (ex != null)
@@ -104,65 +104,46 @@ namespace FwkFtpClient
                 return;
             }
             TreeNode parentNode = GetTreeNode_ByName(treeView1.Nodes, patch);
-
             parentNode.Nodes.Clear();
-            TreeNode t;
-            StringBuilder str = new StringBuilder();
-            List<ServerFileData> listServerFileData = new List<ServerFileData>();
-            foreach (string file in list)
+
+            List<ServerFileData> listServerFileData = ftpComponent1.ParseLSTCommandResponse(list);
+  
+
+            foreach (ServerFileData data in listServerFileData)
             {
-                //ServerFileData d = ParseDosDirLine(file);
-                str.AppendLine(file);
-            }
-            foreach (string file in list)
-            {
-                if (!string.IsNullOrEmpty(file))
-                {
-                    t = new TreeNode(file);
-                    t.Name = string.Concat(patch, @"\", file);
-                    t.ImageKey = "doc_16.png";
-                    t.SelectedImageKey = "doc_sel_16.ico";
-                    t.Tag = "file";
-                    parentNode.Nodes.Add(t);
-                }
+                if (data != null)
+
+                    if (!string.IsNullOrEmpty(data.FileName))
+                    {
+                        parentNode.Nodes.Add(GetNode(data));
+                    }
             }
 
             parentNode.ExpandAll();
 
         }
-        private ServerFileData ParseDosDirLine(string line)
+   
+        TreeNode GetNode(ServerFileData data)
         {
-            ServerFileData sfd = new ServerFileData();
 
-            try
+                
+            TreeNode t = new TreeNode(data.FileName);
+            t.Name = string.Concat(ftpComponent1.FTPPath, @"\", data.FileName);
+            if (data.IsDirectory )
             {
-                string[] parsed = new string[3];
-                int index = 0;
-                int position = 0;
-
-                // Parse out the elements
-                position = line.IndexOf(' ');
-                while (index < parsed.Length)
-                {
-                    parsed[index] = line.Substring(0, position);
-                    line = line.Substring(position);
-                    line = line.Trim();
-                    index++;
-                    position = line.IndexOf(' ');
-                }
-                sfd.fileName = line;
-
-                if (parsed[2] != "<DIR>")
-                    sfd.size = Convert.ToInt32(parsed[2]);
-
-                sfd.date = parsed[0] + ' ' + parsed[1];
-                sfd.isDirectory = parsed[2] == "<DIR>";
+                t.Tag = "d";
+                t.ImageKey = "folder_close_16.png";
+            
             }
-            catch
+            if (!data.IsDirectory)
             {
-                sfd = null;
+                t.Tag = "f";
+                t.Name = string.Concat(ftpComponent1.FTPPath, @"\", data.FileName);
+                t.ImageKey = "doc_16.png";
+                t.SelectedImageKey = "doc_sel_16.ico";
             }
-            return sfd;
+
+            return t;
         }
         void ftpComponent1_OnLoginEvent(object sender,Exception ex)
         {
@@ -178,7 +159,7 @@ namespace FwkFtpClient
                 return;
             }
             TreeNode dir = new TreeNode(ftpComponent1.FTPPath);
-            dir.Tag = "dir";
+            dir.Tag = "d";
             dir.Name = ftpComponent1.FTPPath;
             dir.ImageKey = "folder_close_16.png";
 
@@ -257,7 +238,7 @@ namespace FwkFtpClient
 
         private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Tag.Equals("dir"))
+            if (e.Node.Tag.Equals("d"))
             {
                 e.Node.ImageKey = "folder_open_16.png";
             }
@@ -265,7 +246,7 @@ namespace FwkFtpClient
 
         private void treeView1_AfterCollapse(object sender, TreeViewEventArgs e)
         {
-            if (e.Node.Tag.Equals("dir"))
+            if (e.Node.Tag.Equals("d"))
             {
                 e.Node.TreeView.BeginUpdate();
                 e.Node.ImageKey = "folder_close_16.png";
