@@ -8,8 +8,8 @@ namespace FwkFtpClient
 {
    internal  static class FtpUtilr
     {
-
-        public static string Eater(string line, int ix, int n)
+       const string CRLF = "\r\n";
+       internal static string Eater(string line, int ix, int n)
         {
             string res = "";
             int ws = 0;
@@ -27,7 +27,7 @@ namespace FwkFtpClient
             return res.Trim();
         }
 
-        public static void Parse(string line)
+       internal static void Parse(string line)
         {
             string protection = Eater(line, 0, 1);
             string owner = Eater(line, 1, 3);
@@ -74,7 +74,7 @@ namespace FwkFtpClient
         }
 
 
-        public static ServerFileData ParseUnixDirLine(string line)
+          internal static ServerFileData ParseUnixDirLine(string line)
         {
             ServerFileData sfd = new ServerFileData();
 
@@ -109,15 +109,19 @@ namespace FwkFtpClient
             }
             return sfd;
         }
-        static int m_filecount = 0;
+       
+       /// <summary>
+       /// Convierte una linea retornada atraves del comando FTP LIST a un objeto tipificado.-
+       /// Ejemplo: linea proveniente de un server Unix
+       /// -rwxrwxr--   1 andrw    video     3621773 Jan 31  2003 2FOR GOOD - You And Me.MP3
+       /// </summary>
+       /// <param name="sDir"></param>
         private static  void ParseUnixDirList(string sDir)
         {
-            const string CRLF = "\r\n";
-
+            
             try
             {
-                m_filecount = 0;
-                int i = 0;
+           
                 sDir = sDir.Replace(CRLF, "\r");
                 string[] sFile = sDir.Split(new Char[] { '\r' });
                 ServerFileData sfd = null;
@@ -143,17 +147,12 @@ namespace FwkFtpClient
                             if (autodetect == 2)
                                 sfd = ParseUnixDirLine(fileLine);
 
-                    //if (sfd != null)
-                    //{
-                    //    m_files[i] = sfd;
-                    //    i++;
-                    //    m_filecount = i;
-                    //}
+                   
                 }
             }
             catch (Exception e)
             {
-
+                throw e;
             }
         }
     }
