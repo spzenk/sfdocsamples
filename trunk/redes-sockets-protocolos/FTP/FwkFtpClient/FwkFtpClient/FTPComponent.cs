@@ -18,9 +18,10 @@ namespace FwkFtpClient
     public delegate void DebugHandler(string msg);
     public delegate void ErrorHandler(Exception ex);
     public delegate void ObjectHandler(object sender,  Exception ex);
-    public delegate void FileListResivedHandler(string path, String[] files, Exception ex);
+    public delegate void FileListResivedHandler(string mask, String[] files, Exception ex);
 
-    public delegate void ObjectHandlerAsync(  out Exception ex);
+    public delegate void ObjectHandlerAsync(out Exception ex);
+    public delegate void FileListResivedHandlerAsync(string mask, out String[] files, out Exception ex);
     [ToolboxItem(true)]
     [ToolboxBitmap(typeof(FTPComponent), "Resources.db5.png")]
     public partial class FTPComponent : Component
@@ -171,34 +172,62 @@ namespace FwkFtpClient
 
         #region  Files
 
+        public void BeginGetFileListAsync(string mask)
+        {
+            Exception ex = null;
+            String[] mess = null;
+            FileListResivedHandlerAsync x = new FileListResivedHandlerAsync(GetFileList);
+            x.BeginInvoke(mask, out mess, out ex, new AsyncCallback(EndGetFileListAsync), null);
+        }
+        void EndGetFileListAsync(IAsyncResult res)
+        {
+
+            AsyncResult result = (AsyncResult)res;
+
+            Exception ex;
+            String[] mess = null;
+            FileListResivedHandlerAsync del = (FileListResivedHandlerAsync)result.AsyncDelegate;
+            del.EndInvoke(out mess, out ex, res);
+
+            //mess = (String[])del.Method.ReturnParameter.DefaultValue;
+            if (OnFileListResivedEvent != null)
+                OnFileListResivedEvent(this.ftpPath, mess, ex);
+        }
+      void GetFileList(string mask, out String[] files, out Exception ex)
+        {
+            ex = null;
+            files = null;
+            try
+            {
+                files = GetFileList(mask);
+            
+            }
+            catch (Exception err)
+            {
+                err.Source = "Origen de datos";
+                ex = err;
+            }
+           
+        }
         /// <summary>
         /// Retorna un string[] con la lista de arhivos remotos.-
         /// </summary>
         /// <param name="mask"></param>
         /// <returns></returns>
-        public void GetFileList(string mask)
+        public string[]  GetFileList(string mask)
         {
             if (!logined)
             {
                 Conect();
             }
-            Socket cSocket = null;
-            try
-            {
-                 cSocket = CreateDataSocket();
-            }
-            catch (IOException ex)
-            {
-                if (OnFileListResivedEvent != null)
-                    OnFileListResivedEvent(this.ftpPath, null, ex);
-            }
+            Socket cSocket = CreateDataSocket();
 
-            SendCommand("NLST " + mask);
+            SendCommand("NLST ");
+            //SendCommand("NLST " + mask);
 
             if (!(retValue == 150 || retValue == 125))
             {
-                if (OnFileListResivedEvent != null)
-                    OnFileListResivedEvent(this.ftpPath, null, new IOException(reply.Substring(4)));
+                throw new IOException(reply.Substring(4));
             }
 
             mes = string.Empty;
@@ -209,12 +238,14 @@ namespace FwkFtpClient
                 int bytes = cSocket.Receive(buffer, buffer.Length, 0);
                 mes += Encoding.ASCII.GetString(buffer, 0, bytes);
 
-                if (bytes < buffer.Length)
+             
+                if (bytes == 0)
                 {
                     break;
                 }
             }
-
+            
+           
 
             string[] mess = mes.Split(seperator);
 
@@ -224,11 +255,11 @@ namespace FwkFtpClient
 
             if (retValue != 226)
             {
-                if (OnFileListResivedEvent != null)
-                    OnFileListResivedEvent(this.ftpPath, mess, new IOException(reply.Substring(4)));
+                throw new IOException(reply.Substring(4));
+           
             }
-            if (OnFileListResivedEvent != null)
-                OnFileListResivedEvent(this.ftpPath, mess, null);
+            return mess;
+
 
         }
 
@@ -583,17 +614,22 @@ namespace FwkFtpClient
         }
         #endregion
 
+        #region Connect & close
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cb"></param>
         public void BeginConnectAsync(ObjectHandler cb)
         {
             Exception ex = null;
-            ObjectHandlerAsync x = new ObjectHandlerAsync(ConectXXX);
+            ObjectHandlerAsync x = new ObjectHandlerAsync(Conect);
             x.BeginInvoke( out ex, new AsyncCallback(EndConnectAsync), cb);
          
         }
         public void BeginConnectAsync()
         {
             Exception ex = null;
-            ObjectHandlerAsync x = new ObjectHandlerAsync(ConectXXX);
+            ObjectHandlerAsync x = new ObjectHandlerAsync(Conect);
             x.BeginInvoke(out ex, new AsyncCallback(EndConnectAsync), null);
 
         }
@@ -602,24 +638,21 @@ namespace FwkFtpClient
             AsyncResult result = (AsyncResult)res;
 
             Exception ex;
-            ObjectHandler d = (ObjectHandler)res.AsyncState;
+            //ObjectHandler d = (ObjectHandler)res.AsyncState;
             ObjectHandlerAsync del = (ObjectHandlerAsync)result.AsyncDelegate;
             del.EndInvoke(out ex, res);
-            if (d != null)
-                d.Invoke(this, ex);
-            else
-                if (OnLoginEvent != null)
-                    OnLoginEvent(this, ex);
+            //if (d != null)
+            //    d.Invoke(this, ex);
+            //else
+            if (OnLoginEvent != null)
+                OnLoginEvent(this, ex);
         }
 
-        void ConectXXX( out Exception ex)
+        void Conect( out Exception ex)
         {
-         
             ex = null;
-        
             try
             {
-                //throw new IOException("El valor FTPServer no puede ser nulo");
                 Conect();
             }
             catch (Exception err)
@@ -627,8 +660,8 @@ namespace FwkFtpClient
                 err.Source = "Origen de datos";
                 ex = err;
             }
-        
         }
+
         /// <summary>
         /// Se concta al servidor remoto
         /// </summary>
@@ -642,7 +675,7 @@ namespace FwkFtpClient
 
             //try
             //{
-                clientSocket.Connect(ep);
+            clientSocket.Connect(ep);
             //}
             //catch (Exception ex)
             //{
@@ -653,8 +686,7 @@ namespace FwkFtpClient
             if (retValue != 220)
             {
                 Close();
-               
-                    throw new IOException(reply.Substring(4));
+                throw new IOException(reply.Substring(4));
             }
 
 
@@ -668,8 +700,6 @@ namespace FwkFtpClient
 
             if (retValue != 230)
             {
-                //if (debug)
-                //    Console.WriteLine("PASS xxx");
 
                 SendCommand("PASS " + ftpPass);
                 if (!(retValue == 230 || retValue == 202))
@@ -681,10 +711,10 @@ namespace FwkFtpClient
 
             logined = true;
 
-            if (OnLoginEvent != null)
-                OnLoginEvent(this, null);
+            //if (OnLoginEvent != null)
+            //    OnLoginEvent(this, null);
 
-            SendDebug("Connected to " + ftpServer);
+            //SendDebug("Connected to " + ftpServer);
             Chdir(ftpPath);
 
         }
@@ -701,6 +731,7 @@ namespace FwkFtpClient
             Cleanup();
             SendDebug("Closing...");
         }
+        #endregion
 
         /// <summary>
         /// True = modo bunario para descargas
@@ -720,8 +751,9 @@ namespace FwkFtpClient
             }
             if (retValue != 200)
             {
-                SendErrorEvent(new IOException(reply.Substring(4)));
-                return;
+                //SendErrorEvent(new IOException(reply.Substring(4)));
+                throw new IOException(reply.Substring(4));
+                //return;
             }
         }
 
@@ -742,13 +774,14 @@ namespace FwkFtpClient
 
             if (retValue != 250)
             {
-                if (OnDirectoryCreatedEvent != null)
-                    OnDirectoryCreatedEvent(dirName, new IOException(reply.Substring(4)));
+                //if (OnDirectoryCreatedEvent != null)
+                //    OnDirectoryCreatedEvent(dirName, new IOException(reply.Substring(4)));
 
-                return;
+                //return;
+                throw new IOException(reply.Substring(4));
             }
-            if (OnDirectoryCreatedEvent != null)
-                OnDirectoryCreatedEvent(dirName, null);
+            //if (OnDirectoryCreatedEvent != null)
+            //    OnDirectoryCreatedEvent(dirName, null);
         }
 
         /// <summary>
@@ -766,13 +799,7 @@ namespace FwkFtpClient
             SendCommand("RMD " + dirName);
 
             if (retValue != 250)
-            {
-                if (OnDirectoryRemovedEvent != null)
-                    OnDirectoryRemovedEvent(dirName, new IOException(reply.Substring(4)));
-                return;
-            }
-            if (OnDirectoryRemovedEvent != null)
-                OnDirectoryRemovedEvent(dirName, null);
+                throw new IOException(reply.Substring(4));
         }
 
 
@@ -797,17 +824,12 @@ namespace FwkFtpClient
 
             if (retValue != 250)
             {
-                if (OnDirectoryChangedEvent != null)
-                    OnDirectoryChangedEvent(dirName, new IOException(reply.Substring(4)));
-                return;
+             
+                throw new IOException(reply.Substring(4));
             }
 
             this.ftpPath = dirName;
 
-            SendDebug(string.Concat("Current directory is ", ftpPath));
-
-            if (OnDirectoryChangedEvent != null)
-                OnDirectoryChangedEvent(dirName, null);
         }
 
         #endregion
@@ -871,13 +893,6 @@ namespace FwkFtpClient
                 return ReadLine();
             }
 
-            //if (debug)
-            //{
-            //    for (int k = 0; k < mess.Length - 1; k++)
-            //    {
-            //        Console.WriteLine(mess[k]);
-            //    }
-            //}
             return mes;
         }
 
@@ -892,7 +907,7 @@ namespace FwkFtpClient
             clientSocket.Send(cmdBytes, cmdBytes.Length, 0);
             ReadReply();
         }
-
+      
         /// <summary>
         /// 
         /// </summary>

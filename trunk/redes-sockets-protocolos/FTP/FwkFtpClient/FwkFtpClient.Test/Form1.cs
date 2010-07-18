@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using FTPTest;
 
 namespace FwkFtpClient
 {
@@ -19,7 +20,7 @@ namespace FwkFtpClient
             logs = new StringBuilder();
             //ftpComponent1.OnErrorEvent += new ErrorHandler(ftpComponent1_OnErrorEvent);
             ftpComponent1.OnLoginEvent += new ObjectHandler(ftpComponent1_OnLoginEvent);
-            //ftpComponent1.OnFileListResivedEvent += new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent);
+            ftpComponent1.OnFileListResivedEvent += new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent);
 
             //ftpComponent1.OnFileRemovedEvent += new ObjectHandler(ftpComponent1_OnFileRemovedEvent);
             //ftpComponent1.OnFileDowloadEvent += new ObjectHandler(ftpComponent1_OnFileDowloadEvent);
@@ -106,6 +107,13 @@ namespace FwkFtpClient
 
             parentNode.Nodes.Clear();
             TreeNode t;
+            StringBuilder str = new StringBuilder();
+            List<ServerFileData> listServerFileData = new List<ServerFileData>();
+            foreach (string file in list)
+            {
+                //ServerFileData d = ParseDosDirLine(file);
+                str.AppendLine(file);
+            }
             foreach (string file in list)
             {
                 if (!string.IsNullOrEmpty(file))
@@ -122,7 +130,40 @@ namespace FwkFtpClient
             parentNode.ExpandAll();
 
         }
+        private ServerFileData ParseDosDirLine(string line)
+        {
+            ServerFileData sfd = new ServerFileData();
 
+            try
+            {
+                string[] parsed = new string[3];
+                int index = 0;
+                int position = 0;
+
+                // Parse out the elements
+                position = line.IndexOf(' ');
+                while (index < parsed.Length)
+                {
+                    parsed[index] = line.Substring(0, position);
+                    line = line.Substring(position);
+                    line = line.Trim();
+                    index++;
+                    position = line.IndexOf(' ');
+                }
+                sfd.fileName = line;
+
+                if (parsed[2] != "<DIR>")
+                    sfd.size = Convert.ToInt32(parsed[2]);
+
+                sfd.date = parsed[0] + ' ' + parsed[1];
+                sfd.isDirectory = parsed[2] == "<DIR>";
+            }
+            catch
+            {
+                sfd = null;
+            }
+            return sfd;
+        }
         void ftpComponent1_OnLoginEvent(object sender,Exception ex)
         {
             if (InvokeRequired)
@@ -143,7 +184,8 @@ namespace FwkFtpClient
 
             treeView1.Nodes.Add(dir);
             AddLog("Conected to server " + ftpComponent1.FTPServer);
-            ftpComponent1.GetFileList("*.*");
+            ftpComponent1.BeginGetFileListAsync("*.*");
+            
         }
 
         void ftpComponent1_OnErrorEvent(Exception ex)
@@ -233,15 +275,25 @@ namespace FwkFtpClient
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ftpComponent1.FTPServer = "172.22.12.22";
+            ftpComponent1.FTPServer = "194.44.214.3";
 
             ftpComponent1.FTPPass = "";
             //ftpComponent1.FTPUser = "";
 
+   
+            //ftpComponent1.FTPPath = "ftp://194.44.214.3/pub/music";
+
+            //ftpComponent1.FTPPath = "./pub/music/Dance/";
+            ftpComponent1.FTPPath = "./pub/music/Dance/";
             ftpComponent1.FTPPort = 21;
-            ftpComponent1.Debug = true;
+            ftpComponent1.Debug = false;
             ftpComponent1.BeginConnectAsync();
-            //ftpComponent1.BeginConnectAsync(new ObjectHandler(ftpComponent1_OnLoginEvent));
+   
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+           string[] f= ftpComponent1.GetFileList("*.*");
         }
 
     }
