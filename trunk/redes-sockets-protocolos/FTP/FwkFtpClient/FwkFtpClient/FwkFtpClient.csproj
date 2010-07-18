@@ -70,6 +70,7 @@
       <DependentUpon>FTPComponentodl.cs</DependentUpon>
     </Compile>
     <Compile Include="FtpLib.cs" />
+    <Compile Include="FtpUtilr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FTPComponent.resx">
       <DependentUpon>FTPComponent.cs</DependentUpon>

@@ -17,7 +17,7 @@ namespace FwkFtpClient
 {
     public delegate void DebugHandler(string msg);
     public delegate void ErrorHandler(Exception ex);
-    public delegate void ObjectHandler(object sender,  Exception ex);
+    public delegate void ObjectHandler(object sender, Exception ex);
     public delegate void FileListResivedHandler(string mask, String[] files, Exception ex);
 
     public delegate void ObjectHandlerAsync(out Exception ex);
@@ -181,9 +181,7 @@ namespace FwkFtpClient
         }
         void EndGetFileListAsync(IAsyncResult res)
         {
-
             AsyncResult result = (AsyncResult)res;
-
             Exception ex;
             String[] mess = null;
             FileListResivedHandlerAsync del = (FileListResivedHandlerAsync)result.AsyncDelegate;
@@ -193,28 +191,27 @@ namespace FwkFtpClient
             if (OnFileListResivedEvent != null)
                 OnFileListResivedEvent(this.ftpPath, mess, ex);
         }
-      void GetFileList(string mask, out String[] files, out Exception ex)
+        void GetFileList(string mask, out String[] files, out Exception ex)
         {
             ex = null;
             files = null;
             try
             {
                 files = GetFileList(mask);
-            
             }
             catch (Exception err)
             {
                 err.Source = "Origen de datos";
                 ex = err;
             }
-           
+
         }
         /// <summary>
         /// Retorna un string[] con la lista de arhivos remotos.-
         /// </summary>
         /// <param name="mask"></param>
         /// <returns></returns>
-        public string[]  GetFileList(string mask)
+        public string[] GetFileList(string mask)
         {
             if (!logined)
             {
@@ -222,7 +219,8 @@ namespace FwkFtpClient
             }
             Socket cSocket = CreateDataSocket();
 
-            SendCommand("NLST ");
+            SendCommand("LIST ");
+
             //SendCommand("NLST " + mask);
 
             if (!(retValue == 150 || retValue == 125))
@@ -238,14 +236,14 @@ namespace FwkFtpClient
                 int bytes = cSocket.Receive(buffer, buffer.Length, 0);
                 mes += Encoding.ASCII.GetString(buffer, 0, bytes);
 
-             
+
                 if (bytes == 0)
                 {
                     break;
                 }
             }
-            
-           
+
+
 
             string[] mess = mes.Split(seperator);
 
@@ -256,7 +254,7 @@ namespace FwkFtpClient
             if (retValue != 226)
             {
                 throw new IOException(reply.Substring(4));
-           
+
             }
             return mess;
 
@@ -343,8 +341,8 @@ namespace FwkFtpClient
         /// </param>
         public void Download(string remFileName, string fullLocalFileName, Boolean resume)
         {
-           
-           
+
+
             if (!logined)
             {
                 Conect();
@@ -623,8 +621,8 @@ namespace FwkFtpClient
         {
             Exception ex = null;
             ObjectHandlerAsync x = new ObjectHandlerAsync(Conect);
-            x.BeginInvoke( out ex, new AsyncCallback(EndConnectAsync), cb);
-         
+            x.BeginInvoke(out ex, new AsyncCallback(EndConnectAsync), cb);
+
         }
         public void BeginConnectAsync()
         {
@@ -648,7 +646,7 @@ namespace FwkFtpClient
                 OnLoginEvent(this, ex);
         }
 
-        void Conect( out Exception ex)
+        void Conect(out Exception ex)
         {
             ex = null;
             try
@@ -824,7 +822,7 @@ namespace FwkFtpClient
 
             if (retValue != 250)
             {
-             
+
                 throw new IOException(reply.Substring(4));
             }
 
@@ -834,7 +832,7 @@ namespace FwkFtpClient
 
         #endregion
 
-    
+
 
         /// <summary>
         /// Lee el buffer
@@ -907,7 +905,7 @@ namespace FwkFtpClient
             clientSocket.Send(cmdBytes, cmdBytes.Length, 0);
             ReadReply();
         }
-      
+
         /// <summary>
         /// 
         /// </summary>
@@ -978,6 +976,20 @@ namespace FwkFtpClient
             }
 
             return s;
+        }
+
+
+        public List<ServerFileData> ParseLSTCommandResponse(String[] list)
+        {
+
+            List<ServerFileData> listServerFileData = new List<ServerFileData>();
+            foreach (string file in list)
+            {
+                ServerFileData d = FtpUtilr.ParseUnixDirLine(file);
+                listServerFileData.Add(d);
+            }
+
+            return listServerFileData;
         }
     }
 }
