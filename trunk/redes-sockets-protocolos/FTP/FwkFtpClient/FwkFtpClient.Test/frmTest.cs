@@ -166,8 +166,8 @@ namespace FwkFtpClient
 
 
             //ftpComponent1.FTPPath = "./pub/music/Dance/";
-            ftpComponent1.FTPPath = "./pub/music/Dance/";
-            ftpComponent1.FTPPort = 21;
+            ftpComponent1.FTPPath = txtPath.Text;
+            //ftpComponent1.FTPPort = 21;
             ftpComponent1.Debug = false;
             ftpComponent1.BeginConnectAsync();
         }
