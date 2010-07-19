@@ -18,7 +18,7 @@ namespace FwkFtpClient
         {
             InitializeComponent();
             logs = new StringBuilder();
-            //ftpComponent1.OnErrorEvent += new ErrorHandler(ftpComponent1_OnErrorEvent);
+            ftpComponent1.OnErrorEvent += new ErrorHandler(ftpComponent1_OnErrorEvent);
             ftpComponent1.OnLoginEvent += new ObjectHandler(ftpComponent1_OnLoginEvent);
             ftpComponent1.OnFileListResivedEvent += new FileListResivedHandler(ftpComponent1_OnFileListResivedEvent);
 
@@ -31,35 +31,8 @@ namespace FwkFtpClient
             //ftpComponent1.OnDirectoryRemovedEvent += new ObjectHandler(ftpComponent1_OnDirectoryRemovedEvent);
         }
 
-        void ftpComponent1_OnDirectoryRemovedEvent(object sender,Exception ex)
-        {
-            if (InvokeRequired)
-            {
+      
 
-                BeginInvoke(new ObjectHandler(ftpComponent1_OnDirectoryRemovedEvent), new object[] { sender,ex });
-                return;
-            }
-        }
-
-        void ftpComponent1_OnDirectoryCreatedEvent(object sender, Exception ex)
-        {
-            if (InvokeRequired)
-            {
-
-                BeginInvoke(new ObjectHandler(ftpComponent1_OnDirectoryCreatedEvent), new object[] { sender });
-                return;
-            }
-        }
-
-        void ftpComponent1_OnDirectoryChangedEvent(object sender, Exception ex)
-        {
-            if (InvokeRequired)
-            {
-
-                BeginInvoke(new ObjectHandler(ftpComponent1_OnDirectoryChangedEvent), new object[] { sender });
-                return;
-            };
-        }
 
         void ftpComponent1_OnFileUploadedEvent(object sender, Exception ex)
         {
@@ -104,6 +77,8 @@ namespace FwkFtpClient
                 return;
             }
             TreeNode parentNode = GetTreeNode_ByName(treeView1.Nodes, patch);
+            if (parentNode == null)
+                parentNode = selecteNode;
             parentNode.Nodes.Clear();
 
             List<ServerFileData> listServerFileData = ftpComponent1.ParseLSTCommandResponse(list);
@@ -128,7 +103,7 @@ namespace FwkFtpClient
 
                 
             TreeNode t = new TreeNode(data.FileName);
-            t.Name = string.Concat(ftpComponent1.FTPPath, @"\", data.FileName);
+            t.Name = System.IO.Path.Combine(ftpComponent1.FTPPath, data.FileName);
             if (data.IsDirectory )
             {
                 t.Tag = "d";
@@ -138,7 +113,6 @@ namespace FwkFtpClient
             if (!data.IsDirectory)
             {
                 t.Tag = "f";
-                t.Name = string.Concat(ftpComponent1.FTPPath, @"\", data.FileName);
                 t.ImageKey = "doc_16.png";
                 t.SelectedImageKey = "doc_sel_16.ico";
             }
@@ -183,19 +157,19 @@ namespace FwkFtpClient
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //ftp://194.44.214.3/pub/music/Dance/
-            //172.22.12.22/
-            //ftpComponent1.FTPHost = "194.44.214.3";
-            ftpComponent1.FTPServer = "172.22.12.22";
+            ftpComponent1.FTPServer = txtServer.Text;
 
-            ftpComponent1.FTPPass = "";
-            //ftpComponent1.FTPUser = "";
+            ftpComponent1.FTPPass = txtPassword.Text;
+            ftpComponent1.FTPUser = txtUser.Text;
 
+
+
+
+            //ftpComponent1.FTPPath = "./pub/music/Dance/";
+            ftpComponent1.FTPPath = "./pub/music/Dance/";
             ftpComponent1.FTPPort = 21;
-            ftpComponent1.Debug = true;
-
-
-            ftpComponent1.Conect();
+            ftpComponent1.Debug = false;
+            ftpComponent1.BeginConnectAsync();
         }
 
         void AddLog(string msg)
@@ -256,25 +230,32 @@ namespace FwkFtpClient
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ftpComponent1.FTPServer = "194.44.214.3";
-
-            ftpComponent1.FTPPass = "";
-            //ftpComponent1.FTPUser = "";
-
-   
-            //ftpComponent1.FTPPath = "ftp://194.44.214.3/pub/music";
-
-            //ftpComponent1.FTPPath = "./pub/music/Dance/";
-            ftpComponent1.FTPPath = "./pub/music/Dance/";
-            ftpComponent1.FTPPort = 21;
-            ftpComponent1.Debug = false;
-            ftpComponent1.BeginConnectAsync();
+           
    
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
            string[] f= ftpComponent1.GetFileList("*.*");
+           ftpComponent1.Chdir("Dance2");
+           ftpComponent1.BeginGetFileListAsync("*.*");
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
+        }
+        TreeNode selecteNode;
+        private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            selecteNode = e.Node;
+            if (e.Node.Tag.Equals("d"))
+            {
+
+                string name = System.IO.Path.GetFileName(e.Node.Name);
+                ftpComponent1.Chdir(name);
+                ftpComponent1.BeginGetFileListAsync("*.*");
+            }
         }
 
     }

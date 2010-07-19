@@ -660,6 +660,7 @@ namespace FwkFtpClient
             if (retValue != 220)
             {
                 Close();
+                SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
             }
 
@@ -669,6 +670,7 @@ namespace FwkFtpClient
             if (!(retValue == 331 || retValue == 230))
             {
                 Cleanup();
+                SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
             }
 
@@ -679,6 +681,7 @@ namespace FwkFtpClient
                 if (!(retValue == 230 || retValue == 202))
                 {
                     Cleanup();
+                    SendErrorEvent(new IOException(reply.Substring(4)));
                     throw new IOException(reply.Substring(4));
                 }
             }
@@ -719,7 +722,10 @@ namespace FwkFtpClient
                 SendCommand("TYPE A");
 
             if (retValue != 200)
+            {
+                SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
+            }
 
         }
 
@@ -740,6 +746,7 @@ namespace FwkFtpClient
 
             if (retValue != 250)
             {
+                SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
             }
 
@@ -760,7 +767,10 @@ namespace FwkFtpClient
             SendCommand("RMD " + dirName);
 
             if (retValue != 250)
+            {
+                SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
+            }
         }
 
 
@@ -785,6 +795,7 @@ namespace FwkFtpClient
 
             if (retValue != 250)
             {
+                SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
             }
 
