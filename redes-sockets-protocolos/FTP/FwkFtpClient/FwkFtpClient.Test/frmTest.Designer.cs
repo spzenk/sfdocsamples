@@ -36,7 +36,6 @@
             this.button2 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
             this.button4 = new System.Windows.Forms.Button();
             this.txtServer = new System.Windows.Forms.TextBox();
             this.txtUser = new System.Windows.Forms.TextBox();
@@ -45,6 +44,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtPath = new System.Windows.Forms.TextBox();
+            this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
             this.SuspendLayout();
             // 
             // button1
@@ -80,7 +81,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(459, 37);
+            this.button2.Location = new System.Drawing.Point(470, 12);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 27);
             this.button2.TabIndex = 45;
@@ -114,17 +115,11 @@
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
             // 
-            // ftpComponent1
-            // 
-            this.ftpComponent1.FTPPass = null;
-            this.ftpComponent1.FTPPort = 0;
-            this.ftpComponent1.Logined = false;
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(573, 34);
+            this.button4.Location = new System.Drawing.Point(521, 11);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.Size = new System.Drawing.Size(75, 27);
             this.button4.TabIndex = 48;
             this.button4.Text = "button4";
             this.button4.UseVisualStyleBackColor = true;
@@ -136,7 +131,7 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(122, 20);
             this.txtServer.TabIndex = 49;
-            this.txtServer.Text = "194.44.214.3";
+            this.txtServer.Text = "172.22.12.22";
             // 
             // txtUser
             // 
@@ -193,11 +188,26 @@
             this.label5.Text = "FTP Directory";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // txtPath
+            // 
+            this.txtPath.Location = new System.Drawing.Point(300, 62);
+            this.txtPath.Name = "txtPath";
+            this.txtPath.Size = new System.Drawing.Size(373, 20);
+            this.txtPath.TabIndex = 56;
+            this.txtPath.Text = ".";
+            // 
+            // ftpComponent1
+            // 
+            this.ftpComponent1.FTPPass = null;
+            this.ftpComponent1.FTPPort = 0;
+            this.ftpComponent1.Logined = false;
+            // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 565);
+            this.Controls.Add(this.txtPath);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -235,6 +245,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtPath;
     }
 }
 
