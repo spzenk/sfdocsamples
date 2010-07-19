@@ -648,7 +648,8 @@ namespace FwkFtpClient
         {
             if (string.IsNullOrEmpty(ftpServer))
                 throw new IOException("El valor FTPServer no puede ser nulo");
-
+            if (ftpPort == 0)
+                ftpPort = 21;
             clientSocket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             IPEndPoint ep = new IPEndPoint(Dns.Resolve(ftpServer).AddressList[0], ftpPort);
 
@@ -963,7 +964,7 @@ namespace FwkFtpClient
             List<ServerFileData> listServerFileData = new List<ServerFileData>();
             foreach (string file in list)
             {
-                ServerFileData d = FtpUtilr.ParseUnixDirLine(file);
+                ServerFileData d = FtpUtilr.ParseUnixDirList(file);
                 listServerFileData.Add(d);
             }
 
