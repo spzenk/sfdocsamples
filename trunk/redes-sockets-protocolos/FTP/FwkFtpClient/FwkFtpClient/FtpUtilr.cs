@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Fwk.Caching;
 
 
 namespace FwkFtpClient
 {
-    internal static class FtpUtilr
+    public  static class FtpUtilr
     {
+        public static FwkSimpleStorageBase<JabberClient> storage = new FwkSimpleStorageBase<JabberClient>();
         const string CRLF = "\r\n";
         internal static string Eater(string line, int ix, int n)
         {
@@ -222,5 +224,45 @@ namespace FwkFtpClient
         public ServerFileData()
         {
         }
+    }
+
+
+
+
+
+    [Serializable]
+    public class JabberClient
+    {
+        string password;
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
+        }
+        string user;
+
+        public string User
+        {
+            get { return user; }
+            set { user = value; }
+        }
+        string _Server;
+
+        public string Server
+        {
+            get { return _Server; }
+            set { _Server = value; }
+        }
+        string _Port;
+
+        public string Port
+        {
+            get { return _Port; }
+            set { _Port = value; }
+        }
+
+        
+
     }
 }
