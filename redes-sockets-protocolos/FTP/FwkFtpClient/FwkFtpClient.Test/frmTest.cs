@@ -12,8 +12,10 @@ namespace FwkFtpClient
 {
     public partial class frmTest : Form
     {
+        static
         int logCount = 0;
         static StringBuilder logs;
+
         public frmTest()
         {
             InitializeComponent();
@@ -31,7 +33,6 @@ namespace FwkFtpClient
             //ftpComponent1.OnDirectoryRemovedEvent += new ObjectHandler(ftpComponent1_OnDirectoryRemovedEvent);
         }
 
-      
 
 
         void ftpComponent1_OnFileUploadedEvent(object sender, Exception ex)
@@ -82,7 +83,7 @@ namespace FwkFtpClient
             parentNode.Nodes.Clear();
 
             List<ServerFileData> listServerFileData = ftpComponent1.ParseLSTCommandResponse(list);
-  
+
 
             foreach (ServerFileData data in listServerFileData)
             {
@@ -97,18 +98,18 @@ namespace FwkFtpClient
             parentNode.ExpandAll();
 
         }
-   
+
         TreeNode GetNode(ServerFileData data)
         {
 
-                
+
             TreeNode t = new TreeNode(data.FileName);
             t.Name = System.IO.Path.Combine(ftpComponent1.FTPPath, data.FileName);
-            if (data.IsDirectory )
+            if (data.IsDirectory)
             {
                 t.Tag = "d";
                 t.ImageKey = "folder_close_16.png";
-            
+
             }
             if (!data.IsDirectory)
             {
@@ -119,7 +120,7 @@ namespace FwkFtpClient
 
             return t;
         }
-        void ftpComponent1_OnLoginEvent(object sender,Exception ex)
+        void ftpComponent1_OnLoginEvent(object sender, Exception ex)
         {
             if (InvokeRequired)
             {
@@ -140,7 +141,7 @@ namespace FwkFtpClient
             treeView1.Nodes.Add(dir);
             AddLog("Conected to server " + ftpComponent1.FTPServer);
             ftpComponent1.BeginGetFileListAsync("*.*");
-            
+
         }
 
         void ftpComponent1_OnErrorEvent(Exception ex)
@@ -186,15 +187,15 @@ namespace FwkFtpClient
 
         private void button2_Click(object sender, EventArgs e)
         {
-          string fileName =  Fwk.HelperFunctions.FileFunctions.OpenFileDialog_Open(string.Empty, "");
-          try
-          {
-              ftpComponent1.Upload(fileName);
-          }
-          catch (Exception ex)
-          {
-              MessageBox.Show(ex.Message);
-          }
+            string fileName = Fwk.HelperFunctions.FileFunctions.OpenFileDialog_Open(string.Empty, "");
+            try
+            {
+                ftpComponent1.Upload(fileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         TreeNode GetTreeNode_ByName(TreeNodeCollection nodeList, string name)
@@ -208,7 +209,7 @@ namespace FwkFtpClient
             return null;
         }
 
-        
+
 
         private void treeView1_AfterExpand(object sender, TreeViewEventArgs e)
         {
@@ -230,15 +231,15 @@ namespace FwkFtpClient
 
         private void button3_Click(object sender, EventArgs e)
         {
-           
-   
+
+
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-           string[] f= ftpComponent1.GetFileList("*.*");
-           ftpComponent1.Chdir("Dance2");
-           ftpComponent1.BeginGetFileListAsync("*.*");
+            string[] f = ftpComponent1.GetFileList("*.*");
+            ftpComponent1.Chdir("Dance2");
+            ftpComponent1.BeginGetFileListAsync("*.*");
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -249,14 +250,63 @@ namespace FwkFtpClient
         private void treeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             selecteNode = e.Node;
+
             if (e.Node.Tag.Equals("d"))
             {
-
+                btnCopytolocal.Enabled = false;
                 string name = System.IO.Path.GetFileName(e.Node.Name);
                 ftpComponent1.Chdir(name);
                 ftpComponent1.BeginGetFileListAsync("*.*");
             }
+
+            if (e.Node.Tag.Equals("f"))
+            {
+                btnCopytolocal.Enabled = true;
+
+            }
         }
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            selecteNode = e.Node;
+            btnCopytolocal.Enabled = false;
+            if (e.Node.Tag.Equals("f"))
+            {
+                btnCopytolocal.Enabled = true;
+            }
+        }
+        private void btnCopytolocal_Click(object sender, EventArgs e)
+        {
+            string fileName = Fwk.HelperFunctions.FileFunctions.OpenFileDialog_New(string.Empty, "", false);
+            if (string.IsNullOrEmpty(fileName)) return;
+            try
+            {
+                ftpComponent1.Download(selecteNode.Text, fileName);
+            }
+            catch (Exception ex)
+            {
+                AddLog(ex.Message);
+            }
+        }
+
+        private void frmTest_Load(object sender, EventArgs e)
+        {
+            FtpUtilr.storage.Load();
+            txtUser.Text = FtpUtilr.storage.StorageObject.User;
+            txtPassword.Text = FtpUtilr.storage.StorageObject.Password;
+            txtServer.Text = FtpUtilr.storage.StorageObject.Server;
+
+        }
+
+        private void frmTest_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            FtpUtilr.storage.StorageObject.User = txtUser.Text;
+            FtpUtilr.storage.StorageObject.Password = txtPassword.Text;
+            FtpUtilr.storage.StorageObject.Server = txtServer.Text;
+
+            FtpUtilr.storage.Save();
+        }
+
+
 
     }
 }

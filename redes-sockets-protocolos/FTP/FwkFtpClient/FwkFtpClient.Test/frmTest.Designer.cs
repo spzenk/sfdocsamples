@@ -45,6 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtPath = new System.Windows.Forms.TextBox();
+            this.btnCopytolocal = new System.Windows.Forms.Button();
             this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
             this.SuspendLayout();
             // 
@@ -113,6 +114,7 @@
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
             // 
             // button4
@@ -181,32 +183,47 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(297, 89);
+            this.label5.Location = new System.Drawing.Point(215, 55);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(139, 20);
+            this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 55;
             this.label5.Text = "FTP Directory";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(300, 62);
+            this.txtPath.Location = new System.Drawing.Point(305, 56);
             this.txtPath.Name = "txtPath";
             this.txtPath.Size = new System.Drawing.Size(373, 20);
             this.txtPath.TabIndex = 56;
             this.txtPath.Text = ".";
             // 
+            // btnCopytolocal
+            // 
+            this.btnCopytolocal.Enabled = false;
+            this.btnCopytolocal.Location = new System.Drawing.Point(300, 78);
+            this.btnCopytolocal.Name = "btnCopytolocal";
+            this.btnCopytolocal.Size = new System.Drawing.Size(73, 27);
+            this.btnCopytolocal.TabIndex = 57;
+            this.btnCopytolocal.Text = "Copy";
+            this.btnCopytolocal.UseVisualStyleBackColor = true;
+            this.btnCopytolocal.Click += new System.EventHandler(this.btnCopytolocal_Click);
+            // 
             // ftpComponent1
             // 
-            this.ftpComponent1.FTPPass = null;
-            this.ftpComponent1.FTPPort = 0;
-            this.ftpComponent1.Logined = false;
+            this.ftpComponent1.Debug = true;
+            this.ftpComponent1.FTPPass = "";
+            this.ftpComponent1.FTPPath = ".";
+            this.ftpComponent1.FTPPort = 21;
+            this.ftpComponent1.FTPServer = "";
+            this.ftpComponent1.FTPUser = "anonymous";
             // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(704, 565);
+            this.Controls.Add(this.btnCopytolocal);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -223,6 +240,8 @@
             this.Controls.Add(this.button1);
             this.Name = "frmTest";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmTest_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTest_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -231,7 +250,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private FTPComponent ftpComponent1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtLogs;
         private System.Windows.Forms.Button button2;
@@ -246,6 +264,8 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPath;
+        private System.Windows.Forms.Button btnCopytolocal;
+        private FTPComponent ftpComponent1;
     }
 }
 

@@ -57,21 +57,24 @@ namespace FwkFtpClient
 
         #region properties
         private char[] seperator = { '\n' };
-        private string ftpServer, mes;
+        private string ftpServer=string.Empty;
+        private string mes;
+
         private string ftpUser = "anonymous";
         private string ftpPath = ".";
         private string ftpPass = string.Empty;
-        private int ftpPort, bytes;
+        private int ftpPort = 21;
+        private int bytes;
         private int retValue;
-        private Boolean debug;
+        private Boolean debug = false;
         private Boolean logined;
 
-        [Browsable(false)]
-        public Boolean Logined
-        {
-            get { return logined; }
-            set { logined = value; }
-        }
+        //[Browsable(false)]
+        //public Boolean Logined
+        //{
+        //    get { return logined; }
+        //    set { logined = value; }
+        //}
         private string reply;
         Byte[] buffer = new Byte[512];
         private Socket clientSocket;
@@ -79,7 +82,7 @@ namespace FwkFtpClient
         /// Password para conectarce al servidor ftp.- Si es anonymous, no se establece este valor
         /// </summary>
         [Browsable(true)]
-        [Category("Fwk.factory"), DefaultValue(""), Description("Password para conectarce al servidor ftp.- Si es anonymous, no se establece este valor")]
+        [Category("Fwk.factory"), Description("Password para conectarce al servidor ftp.- Si es anonymous, no se establece este valor")]
         public string FTPPass
         {
             get { return ftpPass; }
@@ -89,7 +92,7 @@ namespace FwkFtpClient
         /// Usuario ftp.- Por defecto es anonymous
         /// </summary>
         [Browsable(true)]
-        [Category("Fwk.factory"), DefaultValue("anonymous"), Description("Usuario ftp.- Por defecto es anonymous")]
+        [Category("Fwk.factory"),  Description("Usuario ftp.- Por defecto es anonymous")]
         public string FTPUser
         {
             get { return ftpUser; }
@@ -99,7 +102,7 @@ namespace FwkFtpClient
         /// Ruta del servidor remoto
         /// </summary>
         [Browsable(true)]
-        [Category("Fwk.factory"), DefaultValue("."), Description("Ruta del servidor remoto")]
+        [Category("Fwk.factory"),  Description("Ruta del servidor remoto")]
         public string FTPPath
         {
             get { return ftpPath; }
@@ -110,7 +113,7 @@ namespace FwkFtpClient
         /// Direccion IP o Nombre del servidor remoto de ftp.- 
         /// </summary>
         [Browsable(true)]
-        [Category("Fwk.factory"), DefaultValue(null), Description("Direccion IP o Nombre del servidor remoto de ftp.- ")]
+        [Category("Fwk.factory"),  Description("Direccion IP o Nombre del servidor remoto de ftp.- ")]
         public string FTPServer
         {
             get { return ftpServer; }
@@ -122,7 +125,7 @@ namespace FwkFtpClient
         /// Puerto ftp del server remoto, en general es 21
         /// </summary>
         [Browsable(true)]
-        [Category("Fwk.factory"), DefaultValue(21), Description("Puerto ftp del server remoto, en general es 21")]
+        [Category("Fwk.factory"),  Description("Puerto ftp del server remoto, en general es 21")]
         public int FTPPort
         {
             get { return ftpPort; }
