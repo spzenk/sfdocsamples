@@ -6,10 +6,10 @@ using System.Text;
 
 namespace FwkFtpClient
 {
-   internal  static class FtpUtilr
+    internal static class FtpUtilr
     {
-       const string CRLF = "\r\n";
-       internal static string Eater(string line, int ix, int n)
+        const string CRLF = "\r\n";
+        internal static string Eater(string line, int ix, int n)
         {
             string res = "";
             int ws = 0;
@@ -27,7 +27,7 @@ namespace FwkFtpClient
             return res.Trim();
         }
 
-       internal static void Parse(string line)
+        internal static void Parse(string line)
         {
             string protection = Eater(line, 0, 1);
             string owner = Eater(line, 1, 3);
@@ -37,10 +37,10 @@ namespace FwkFtpClient
             //Console.WriteLine(filename + " " + size + " " + tim);
         }
 
-          static  ServerFileData ParseDosDirLine(string line)
+        static ServerFileData ParseDosDirLine(string line)
         {
             ServerFileData sfd = new ServerFileData();
-      
+
 
             try
             {
@@ -74,7 +74,7 @@ namespace FwkFtpClient
         }
 
 
-          internal static ServerFileData ParseUnixDirLine(string line)
+        static ServerFileData ParseUnixDirLine(string line)
         {
             ServerFileData sfd = new ServerFileData();
 
@@ -109,26 +109,27 @@ namespace FwkFtpClient
             }
             return sfd;
         }
-       
-       /// <summary>
-       /// Convierte una linea retornada atraves del comando FTP LIST a un objeto tipificado.-
-       /// Ejemplo: linea proveniente de un server Unix
-       /// -rwxrwxr--   1 andrw    video     3621773 Jan 31  2003 2FOR GOOD - You And Me.MP3
-       /// </summary>
-       /// <param name="sDir"></param>
-        private static  void ParseUnixDirList(string sDir)
+
+        /// <summary>
+        /// Convierte una linea retornada atraves del comando FTP LIST a un objeto tipificado.-
+        /// Ejemplo: linea proveniente de un server Unix
+        /// -rwxrwxr--   1 andrw    video     3621773 Jan 31  2003 2FOR GOOD - You And Me.MP3
+        /// </summary>
+        /// <param name="sDir"></param>
+        internal static ServerFileData ParseUnixDirList(string fileLine)
         {
-            
+
             try
             {
-           
-                sDir = sDir.Replace(CRLF, "\r");
-                string[] sFile = sDir.Split(new Char[] { '\r' });
+
+                fileLine = fileLine.Replace("\r", string.Empty);
+     
+                //string[] sFile = sDir.Split(new Char[] { '\r' });
                 ServerFileData sfd = null;
                 int autodetect = 0;
 
-                foreach (string fileLine in sFile)
-                {
+                //foreach (string fileLine in sDir)
+                //{
                     if (autodetect == 0)
                     {
                         sfd = ParseDosDirLine(fileLine);
@@ -147,8 +148,9 @@ namespace FwkFtpClient
                             if (autodetect == 2)
                                 sfd = ParseUnixDirLine(fileLine);
 
-                   
-                }
+
+                //}
+                return sfd;
             }
             catch (Exception e)
             {
@@ -158,67 +160,67 @@ namespace FwkFtpClient
     }
 
 
-   public class ServerFileData
-   {
-       private bool isDirectory;
+    public class ServerFileData
+    {
+        private bool isDirectory;
 
-       public bool IsDirectory
-       {
-           get { return isDirectory; }
-           set { isDirectory = value; }
-       }
-       private string fileName;
+        public bool IsDirectory
+        {
+            get { return isDirectory; }
+            set { isDirectory = value; }
+        }
+        private string fileName;
 
-       public string FileName
-       {
-           get { return fileName; }
-           set { fileName = value; }
-       }
-       private int size;
+        public string FileName
+        {
+            get { return fileName; }
+            set { fileName = value; }
+        }
+        private int size;
 
-       public int Size
-       {
-           get { return size; }
-           set { size = value; }
-       }
-       private string type;
+        public int Size
+        {
+            get { return size; }
+            set { size = value; }
+        }
+        private string type;
 
-       public string Type
-       {
-           get { return type; }
-           set { type = value; }
-       }
-       private string date;
+        public string Type
+        {
+            get { return type; }
+            set { type = value; }
+        }
+        private string date;
 
-       public string Date
-       {
-           get { return date; }
-           set { date = value; }
-       }
-       private string permission;
+        public string Date
+        {
+            get { return date; }
+            set { date = value; }
+        }
+        private string permission;
 
-       public string Permission
-       {
-           get { return permission; }
-           set { permission = value; }
-       }
-       private string owner;
+        public string Permission
+        {
+            get { return permission; }
+            set { permission = value; }
+        }
+        private string owner;
 
-       public string Owner
-       {
-           get { return owner; }
-           set { owner = value; }
-       }
-       private string group;
+        public string Owner
+        {
+            get { return owner; }
+            set { owner = value; }
+        }
+        private string group;
 
-       public string Group
-       {
-           get { return group; }
-           set { group = value; }
-       }
+        public string Group
+        {
+            get { return group; }
+            set { group = value; }
+        }
 
-       public ServerFileData()
-       {
-       }
-   }
+        public ServerFileData()
+        {
+        }
+    }
 }
