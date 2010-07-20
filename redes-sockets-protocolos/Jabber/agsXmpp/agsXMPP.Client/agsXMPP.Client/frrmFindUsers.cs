@@ -63,7 +63,8 @@ namespace agsXMPP.Client
 
             SearchIq siq = new SearchIq();
             siq.Type = agsXMPP.protocol.client.IqType.get;
-            siq.To = new Jid(cboServices.SelectedItem.ToString());
+            //siq.To = new Jid(cboServices.SelectedItem.ToString());
+            siq.To = new Jid(textBox1.Text);
 
             // Remuevo alguna consulta pendiente si hay
             if (_IdFieldRequest != null)
