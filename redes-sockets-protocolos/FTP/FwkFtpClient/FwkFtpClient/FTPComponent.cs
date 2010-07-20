@@ -284,21 +284,45 @@ namespace FwkFtpClient
 
             if (!System.IO.Directory.Exists(destPath))
                 System.IO.Directory.CreateDirectory(destPath);
-            if(!dir.Equals(this.FTPPath))
-                Chdir(dir);
+            //if(!dir.Equals(this.FTPPath))
+                
 
+            //busco todos los archivos y carpetas del directorio
             string[]  files = GetFileList("*.*");
             List<ServerFileData> wServerFileDataList = ParseLSTCommandResponse(files);
 
-            foreach (ServerFileData d in wServerFileDataList)
+            #region bajo todos los archivos primero
+            IEnumerable<ServerFileData> filesList = from f in wServerFileDataList where f.IsDirectory == false select f;
+
+            foreach (ServerFileData d in filesList)
             {
                 if (d != null)
-                    if (!d.IsDirectory)
-                    {
-                        Download(d.FileName, System.IO.Path.Combine(destPath, d.FileName));
-                    }
+                      Download(d.FileName, System.IO.Path.Combine(destPath, d.FileName));
+                    
             }
-            Chdir("..");
+            #endregion
+            if (recursive)
+            {
+                IEnumerable<ServerFileData> dirLis = from f in wServerFileDataList where f.IsDirectory select f;
+                foreach (ServerFileData d in dirLis)
+                {
+                    if (d != null)
+                    {
+                        dir = System.IO.Path.GetDirectoryName(dir);
+                        Chdir(dir);
+                        DowloadAllDir(d.FileName, System.IO.Path.Combine(destPath, d.FileName), recursive);
+                    }
+
+                }
+                //suvo un nivel
+                //Change the remote machine working directory to the parent of		 the current remote machine working directory
+                SendCommand("CDUP");
+                if (retValue != 350)
+                {
+          
+                }
+            
+            }
         }
         
 
@@ -790,14 +814,45 @@ namespace FwkFtpClient
                 SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
             }
-            SendCommand("PWD");
 
+            this.ftpPath = GetCurrentDir();
+
+        }
+
+        /// <summary>
+        /// Obtiene la ruta actual
+        /// </summary>
+        /// <returns></returns>
+        private string GetCurrentDir()
+        {
+            SendCommand("PWD");
             if (retValue != 257)
             {
                 SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
             }
-            ReadReply();
+
+            string currentPath = (mes.Split(' ')[1]).Replace("\"", String.Empty);
+            return currentPath;
+        }
+        [Obsolete("NO USAR: METODO en ENDESARROLLO")]
+        public void Chdir_cn(string dirName)
+        {
+            if (dirName.Equals("."))
+                return;
+
+            if (!logined)
+                Conect();
+
+            dirName = dirName.Replace(@"\",@"/");
+            SendCommand("CWD " + dirName);
+
+            if (retValue != 250)
+            {
+                SendErrorEvent(new IOException(reply.Substring(4)));
+                throw new IOException(reply.Substring(4));
+            }
+            
             this.ftpPath = dirName;
 
         }
@@ -806,7 +861,10 @@ namespace FwkFtpClient
         #region private methods
 
         /// <summary>
-        /// Lee el buffer
+        /// Calcula
+        /// retValue
+        /// mes
+        /// reply
         /// </summary>
         private void ReadReply()
         {

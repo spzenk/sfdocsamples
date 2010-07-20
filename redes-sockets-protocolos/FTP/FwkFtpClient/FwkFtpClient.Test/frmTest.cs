@@ -104,7 +104,7 @@ namespace FwkFtpClient
 
 
             TreeNode t = new TreeNode(data.FileName);
-            t.Name = System.IO.Path.Combine(ftpComponent1.FTPPath, data.FileName);
+            t.Name = String.Concat(ftpComponent1.FTPPath, "/",data.FileName);
             if (data.IsDirectory)
             {
                 t.Tag = "d";
@@ -256,7 +256,7 @@ namespace FwkFtpClient
             if (e.Node.Tag.Equals("d"))
             {
                 btnCopytolocal.Enabled = false;
-                string name = System.IO.Path.GetFileName(e.Node.Name);
+                string name = e.Node.Name;//;System.IO.Path.GetFileName(e.Node.Name);
                 ftpComponent1.Chdir(name);
                 ftpComponent1.BeginGetFileListAsync("*.*");
             }
@@ -317,7 +317,9 @@ namespace FwkFtpClient
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            //ftpComponent1.Chdir_Ls(txtPath.Text);
+
+
+            ftpComponent1.Chdir_cn(txtPath.Text);
         }
 
 
