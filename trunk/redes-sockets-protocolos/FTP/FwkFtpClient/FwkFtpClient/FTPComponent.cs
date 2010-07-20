@@ -308,8 +308,8 @@ namespace FwkFtpClient
                 {
                     if (d != null)
                     {
-                        dir = System.IO.Path.GetDirectoryName(dir);
-                        Chdir(dir);
+                        //dir = System.IO.Path.GetDirectoryName(dir);
+                        Chdir(d.FileName);
                         DowloadAllDir(d.FileName, System.IO.Path.Combine(destPath, d.FileName), recursive);
                     }
 
@@ -1011,10 +1011,14 @@ namespace FwkFtpClient
         {
 
             List<ServerFileData> listServerFileData = new List<ServerFileData>();
+             ServerFileData d =null;
             foreach (string file in list)
             {
-                ServerFileData d = FtpUtil.ParseUnixDirList(file);
-                listServerFileData.Add(d);
+                if (!String.IsNullOrEmpty(file))
+                {
+                    d = FtpUtil.ParseUnixDirList(file);
+                    listServerFileData.Add(d);
+                }
             }
 
             return listServerFileData;
