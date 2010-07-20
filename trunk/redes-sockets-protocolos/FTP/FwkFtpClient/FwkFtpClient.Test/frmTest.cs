@@ -237,9 +237,11 @@ namespace FwkFtpClient
 
         private void button4_Click(object sender, EventArgs e)
         {
-            string[] f = ftpComponent1.GetFileList("*.*");
-            ftpComponent1.Chdir("Dance2");
-            ftpComponent1.BeginGetFileListAsync("*.*");
+            //string[] f = ftpComponent1.GetFileList("*.*");
+            //ftpComponent1.Chdir("Dance2");
+            //ftpComponent1.BeginGetFileListAsync("*.*");
+
+            ftpComponent1.DowloadAllDir(txtPath.Text, @"c:\pepe", true);
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -273,14 +275,21 @@ namespace FwkFtpClient
             {
                 btnCopytolocal.Enabled = true;
             }
+
+            if (e.Node.Tag.Equals("d"))
+            {
+                txtPath.Text = e.Node.Name;
+            }
         }
         private void btnCopytolocal_Click(object sender, EventArgs e)
         {
             string fileName = Fwk.HelperFunctions.FileFunctions.OpenFileDialog_New(string.Empty, "", false);
+
             if (string.IsNullOrEmpty(fileName)) return;
             try
             {
-                ftpComponent1.Download(selecteNode.Text, fileName);
+                //ftpComponent1.Download(selecteNode.Text, fileName);
+                ftpComponent1.Download("*.*", fileName);
             }
             catch (Exception ex)
             {
@@ -290,20 +299,25 @@ namespace FwkFtpClient
 
         private void frmTest_Load(object sender, EventArgs e)
         {
-            FtpUtilr.storage.Load();
-            txtUser.Text = FtpUtilr.storage.StorageObject.User;
-            txtPassword.Text = FtpUtilr.storage.StorageObject.Password;
-            txtServer.Text = FtpUtilr.storage.StorageObject.Server;
+            FtpUtil.storage.Load();
+            txtUser.Text = FtpUtil.storage.StorageObject.User;
+            txtPassword.Text = FtpUtil.storage.StorageObject.Password;
+            txtServer.Text = FtpUtil.storage.StorageObject.Server;
 
         }
 
         private void frmTest_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FtpUtilr.storage.StorageObject.User = txtUser.Text;
-            FtpUtilr.storage.StorageObject.Password = txtPassword.Text;
-            FtpUtilr.storage.StorageObject.Server = txtServer.Text;
+            FtpUtil.storage.StorageObject.User = txtUser.Text;
+            FtpUtil.storage.StorageObject.Password = txtPassword.Text;
+            FtpUtil.storage.StorageObject.Server = txtServer.Text;
 
-            FtpUtilr.storage.Save();
+            FtpUtil.storage.Save();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            //ftpComponent1.Chdir_Ls(txtPath.Text);
         }
 
 
