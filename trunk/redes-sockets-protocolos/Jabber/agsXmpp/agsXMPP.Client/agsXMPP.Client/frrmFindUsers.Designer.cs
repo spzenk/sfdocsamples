@@ -44,6 +44,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.cmdSearch = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.contextMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -182,6 +183,7 @@
             this.tableLayoutPanel1.Controls.Add(this.cboServices, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.xDataControl, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.cmdSearch, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.textBox1, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -206,6 +208,14 @@
             this.cmdSearch.Text = "&Search";
             this.cmdSearch.UseVisualStyleBackColor = true;
             this.cmdSearch.Click += new System.EventHandler(this.cmdSearch_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(3, 51);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(197, 20);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.Text = "corrsf71des02";
             // 
             // statusStrip1
             // 
@@ -254,6 +264,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button cmdSearch;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.TextBox textBox1;
 
 
     }

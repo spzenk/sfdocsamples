@@ -56,6 +56,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnremoveUser = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,7 +105,7 @@
             // 
             // btnAddContact
             // 
-            this.btnAddContact.BackColor = System.Drawing.Color.LightGray;
+            this.btnAddContact.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.btnAddContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddContact.Location = new System.Drawing.Point(664, 195);
             this.btnAddContact.Name = "btnAddContact";
@@ -222,11 +223,11 @@
             // 
             this.btnChat.BackColor = System.Drawing.Color.LightGray;
             this.btnChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnChat.Location = new System.Drawing.Point(796, 45);
+            this.btnChat.Location = new System.Drawing.Point(796, 42);
             this.btnChat.Name = "btnChat";
             this.btnChat.Size = new System.Drawing.Size(53, 25);
             this.btnChat.TabIndex = 46;
-            this.btnChat.Text = "chat";
+            this.btnChat.Text = "Chat ";
             this.btnChat.UseVisualStyleBackColor = false;
             this.btnChat.Click += new System.EventHandler(this.btnChat_Click);
             // 
@@ -343,12 +344,25 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnremoveUser
+            // 
+            this.btnremoveUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.btnremoveUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnremoveUser.Location = new System.Drawing.Point(855, 42);
+            this.btnremoveUser.Name = "btnremoveUser";
+            this.btnremoveUser.Size = new System.Drawing.Size(88, 25);
+            this.btnremoveUser.TabIndex = 57;
+            this.btnremoveUser.Text = "Remove contact";
+            this.btnremoveUser.UseVisualStyleBackColor = false;
+            this.btnremoveUser.Click += new System.EventHandler(this.btnremoveUser_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(995, 639);
+            this.Controls.Add(this.btnremoveUser);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label5);
@@ -408,6 +422,7 @@
         private System.Windows.Forms.ImageList ils16;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnremoveUser;
     }
 }
 

@@ -471,39 +471,8 @@ namespace agsXMPP.Client
             AddLog(msg);
         }
 
-        private void LoadChatServers()
-        {
-            treeGC.TreeViewNodeSorter = new TreeNodeSorter();
-
-            string fileName = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-            fileName += @"\chatservers.xml";
-
-            Document doc = new Document();
-            doc.LoadFile(fileName);
-
-            // Get Servers
-            ElementList servers = doc.RootElement.SelectElements("Server");
-            foreach (Element server in servers)
-            {
-                TreeNode n = new TreeNode(server.Value);
-                n.Tag = "server";
-                n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_SERVER;
-
-                this.treeGC.Nodes.Add(n);
-            }
-
-            LoadRoms();
-        }
-
-        private void btnChat_Click(object sender, EventArgs e)
-        {
-            RosterNode rosterNode = Util.XmppServices.RosterControl.SelectedItem();
-            if (rosterNode == null) return;
-
-
-            Util.XmppServices.ChatWtich_User(rosterNode.RosterItem.Jid, rosterNode.Text);
-            
-        }
+       
+       
 
         private void btnInRooms_Click(object sender, EventArgs e)
         {
@@ -539,8 +508,53 @@ namespace agsXMPP.Client
             }
         }
 
-     
-     
+        private void btnremoveUser_Click(object sender, EventArgs e)
+        {
+            RosterNode rosterNode = Util.XmppServices.RosterControl.SelectedItem();
+
+            string user =rosterNode.ToString();
+            if (rosterNode == null) return;
+
+            //RosterIq riq = new RosterIq();
+            //riq.Type = IqType.set;
+            Util.XmppServices.XmppCon.RosterManager.RemoveRosterItem(rosterNode.RosterItem.Jid);
+
+            MessageBox.Show(string.Concat (user," se elimini con exito"));
+        }
+
+        private void btnChat_Click(object sender, EventArgs e)
+        {
+            RosterNode rosterNode = Util.XmppServices.RosterControl.SelectedItem();
+            if (rosterNode == null) return;
+
+
+            Util.XmppServices.ChatWtich_User(rosterNode.RosterItem.Jid, rosterNode.Text);
+
+        }
+        private void LoadChatServers()
+        {
+            treeGC.TreeViewNodeSorter = new TreeNodeSorter();
+
+            string fileName = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            fileName += @"\chatservers.xml";
+
+            Document doc = new Document();
+            doc.LoadFile(fileName);
+
+            // Get Servers
+            ElementList servers = doc.RootElement.SelectElements("Server");
+            foreach (Element server in servers)
+            {
+                TreeNode n = new TreeNode(server.Value);
+                n.Tag = "server";
+                n.ImageIndex = n.SelectedImageIndex = Util.IMAGE_SERVER;
+
+                this.treeGC.Nodes.Add(n);
+            }
+
+            LoadRoms();
+        }
+
       
     }
 }
