@@ -46,6 +46,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtPath = new System.Windows.Forms.TextBox();
             this.btnCopytolocal = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 89);
+            this.label1.Location = new System.Drawing.Point(21, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 44;
@@ -77,7 +78,7 @@
             this.txtLogs.Multiline = true;
             this.txtLogs.Name = "txtLogs";
             this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLogs.Size = new System.Drawing.Size(282, 441);
+            this.txtLogs.Size = new System.Drawing.Size(282, 595);
             this.txtLogs.TabIndex = 43;
             // 
             // button2
@@ -106,10 +107,10 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
-            this.treeView1.Location = new System.Drawing.Point(300, 112);
+            this.treeView1.Location = new System.Drawing.Point(300, 240);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(373, 441);
+            this.treeView1.Size = new System.Drawing.Size(510, 467);
             this.treeView1.TabIndex = 46;
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
@@ -119,11 +120,11 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(521, 11);
+            this.button4.Location = new System.Drawing.Point(658, 144);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 27);
+            this.button4.Size = new System.Drawing.Size(152, 27);
             this.button4.TabIndex = 48;
-            this.button4.Text = "button4";
+            this.button4.Text = "Descarga todo directorio";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
@@ -183,7 +184,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(215, 55);
+            this.label5.Location = new System.Drawing.Point(304, 111);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 55;
@@ -192,22 +193,32 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(305, 56);
+            this.txtPath.Location = new System.Drawing.Point(394, 112);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(373, 20);
+            this.txtPath.Size = new System.Drawing.Size(256, 20);
             this.txtPath.TabIndex = 56;
             this.txtPath.Text = ".";
             // 
             // btnCopytolocal
             // 
             this.btnCopytolocal.Enabled = false;
-            this.btnCopytolocal.Location = new System.Drawing.Point(300, 78);
+            this.btnCopytolocal.Location = new System.Drawing.Point(305, 207);
             this.btnCopytolocal.Name = "btnCopytolocal";
             this.btnCopytolocal.Size = new System.Drawing.Size(73, 27);
             this.btnCopytolocal.TabIndex = 57;
             this.btnCopytolocal.Text = "Copy";
             this.btnCopytolocal.UseVisualStyleBackColor = true;
             this.btnCopytolocal.Click += new System.EventHandler(this.btnCopytolocal_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(656, 111);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(154, 27);
+            this.button3.TabIndex = 58;
+            this.button3.Text = "ir a esta dir";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // ftpComponent1
             // 
@@ -222,7 +233,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(704, 565);
+            this.ClientSize = new System.Drawing.Size(841, 719);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnCopytolocal);
             this.Controls.Add(this.txtPath);
             this.Controls.Add(this.label5);
@@ -266,6 +278,7 @@
         private System.Windows.Forms.TextBox txtPath;
         private System.Windows.Forms.Button btnCopytolocal;
         private FTPComponent ftpComponent1;
+        private System.Windows.Forms.Button button3;
     }
 }
 

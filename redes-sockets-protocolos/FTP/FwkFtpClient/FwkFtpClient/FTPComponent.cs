@@ -215,26 +215,18 @@ namespace FwkFtpClient
             //SendCommand("NLST " + mask);
 
             if (!(retValue == 150 || retValue == 125))
-            {
-                throw new IOException(reply.Substring(4));
-            }
+               throw new IOException(reply.Substring(4));
+            
 
             mes = string.Empty;
 
             while (true)
             {
-
                 int bytes = cSocket.Receive(buffer, buffer.Length, 0);
                 mes += Encoding.ASCII.GetString(buffer, 0, bytes);
-
-
                 if (bytes == 0)
-                {
                     break;
-                }
             }
-
-
 
             string[] mess = mes.Split(seperator);
 
@@ -282,31 +274,35 @@ namespace FwkFtpClient
 
         }
 
+        
+
         #region Download
-      
-        /// <summary>
-        /// Descarga el archivo remoto, mantiene el nombre original
-        /// </summary>
-        /// <param name="remFileName">Nombre del archivo remoto</param>
-        public void Download(string remFileName)
+        public void DowloadAllDir(string dir, string destPath,bool recursive)
         {
-            Download(remFileName, string.Empty, false);
+            if (!logined)
+                Conect();
+
+            if (!System.IO.Directory.Exists(destPath))
+                System.IO.Directory.CreateDirectory(destPath);
+            if(!dir.Equals(this.FTPPath))
+                Chdir(dir);
+
+            string[]  files = GetFileList("*.*");
+            List<ServerFileData> wServerFileDataList = ParseLSTCommandResponse(files);
+
+            foreach (ServerFileData d in wServerFileDataList)
+            {
+                if (d != null)
+                    if (!d.IsDirectory)
+                    {
+                        Download(d.FileName, System.IO.Path.Combine(destPath, d.FileName));
+                    }
+            }
+            Chdir("..");
         }
+        
 
 
-        /// <summary>
-        /// Descarga el archivo remoto, mantiene el nombre y establece la bandera
-        /// resume
-        /// </summary>
-        /// <param name="remFileName">Nombre del archivo remoto</param>
-        /// <param name="resume">Llama al comando REST: Reiniciar cargas y descargas de FTP y despues RETR
-        /// Las descargas se pueden reiniciar emitiendo primero un comando rest con el desplazamiento deseado y, 
-        /// a continuación, emitiendo el comando retr.
-        /// </param>
-        public void Download(string remFileName, Boolean resume)
-        {
-            Download(remFileName, string.Empty, resume);
-        }
 
         /// <summary>
         /// Descarga el archivo remoto. 
@@ -357,17 +353,13 @@ namespace FwkFtpClient
 
             FileStream output = new FileStream(fullLocalFileName, FileMode.Open);
 
-            Socket cSocket = null;
-          
-                cSocket = CreateDataSocket();
+            Socket cSocket = cSocket = CreateDataSocket(); 
           
             long offset = 0;
 
             if (resume)
             {
-
                 offset = output.Length;
-
                 if (offset > 0)
                 {
                     SendCommand("REST " + offset);
@@ -378,7 +370,6 @@ namespace FwkFtpClient
                         offset = 0;
                     }
                 }
-
                 if (offset > 0)
                 {
                     if (debug)
@@ -386,11 +377,12 @@ namespace FwkFtpClient
                         SendDebug("seeking to " + offset);
                     }
                     long npos = output.Seek(offset, SeekOrigin.Begin);
-
                 }
             }
 
+           
             SendCommand("RETR " + remFileName);
+             
 
             if (!(retValue == 150 || retValue == 125))
             {
@@ -429,6 +421,8 @@ namespace FwkFtpClient
         }
 
         #endregion
+
+        #region Upload
         /// <summary>
         /// Sube un archivo al servidor remoto.-
         /// </summary>
@@ -534,6 +528,8 @@ namespace FwkFtpClient
 
             SendDebug(string.Concat("File ", fileName, " must successfully uploaded to ", ftpServer, "/", ftpPath));
         }
+
+        #endregion
 
         /// <summary>
         /// elimina un archivo
@@ -691,8 +687,6 @@ namespace FwkFtpClient
             }
 
             logined = true;
-
-
             SendDebug("Connected to " + ftpServer);
             Chdir(ftpPath);
 
@@ -777,23 +771,17 @@ namespace FwkFtpClient
             }
         }
 
-
         /// <summary>
         /// Cambia el actual directorio en el servidor remoto
         /// </summary>
         /// <param name="dirName">Nombre del directorio al que se quiere cambiar</param>
         public void Chdir(string dirName)
         {
-
             if (dirName.Equals("."))
-            {
                 return;
-            }
 
             if (!logined)
-            {
                 Conect();
-            }
 
             SendCommand("CWD " + dirName);
 
@@ -802,15 +790,21 @@ namespace FwkFtpClient
                 SendErrorEvent(new IOException(reply.Substring(4)));
                 throw new IOException(reply.Substring(4));
             }
+            SendCommand("PWD");
 
+            if (retValue != 257)
+            {
+                SendErrorEvent(new IOException(reply.Substring(4)));
+                throw new IOException(reply.Substring(4));
+            }
+            ReadReply();
             this.ftpPath = dirName;
 
         }
-
         #endregion
 
-
         #region private methods
+
         /// <summary>
         /// Lee el buffer
         /// </summary>
@@ -851,7 +845,6 @@ namespace FwkFtpClient
                     break;
                 }
             }
-
             string[] mess = mes.Split(seperator);
 
             if (mes.Length > 2)
@@ -893,9 +886,8 @@ namespace FwkFtpClient
             SendCommand("PASV");
 
             if (retValue != 227)
-            {
                 throw new IOException(reply.Substring(4));
-            }
+            
 
             int index1 = reply.IndexOf('(');
             int index2 = reply.IndexOf(')');
@@ -908,19 +900,16 @@ namespace FwkFtpClient
 
             for (int i = 0; i < len && partCount <= 6; i++)
             {
-
                 char ch = Char.Parse(ipData.Substring(i, 1));
+
                 if (Char.IsDigit(ch))
                     buf += ch;
                 else if (ch != ',')
-                {
                     throw new IOException(string.Concat("Malformed PASV reply: " + reply));
-
-                }
+                
 
                 if (ch == ',' || i + 1 == len)
                 {
-
                     try
                     {
                         parts[partCount++] = Int32.Parse(buf);
@@ -929,7 +918,6 @@ namespace FwkFtpClient
                     catch (Exception)
                     {
                         throw new IOException(string.Concat("Malformed PASV reply: " + reply));
-
                     }
                 }
             }
@@ -967,7 +955,7 @@ namespace FwkFtpClient
             List<ServerFileData> listServerFileData = new List<ServerFileData>();
             foreach (string file in list)
             {
-                ServerFileData d = FtpUtilr.ParseUnixDirList(file);
+                ServerFileData d = FtpUtil.ParseUnixDirList(file);
                 listServerFileData.Add(d);
             }
 

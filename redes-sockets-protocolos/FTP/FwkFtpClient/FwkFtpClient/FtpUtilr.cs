@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Fwk.Caching;
+using System.Net;
 
 
 namespace FwkFtpClient
 {
-    public  static class FtpUtilr
+    public  static class FtpUtil
     {
         public static FwkSimpleStorageBase<JabberClient> storage = new FwkSimpleStorageBase<JabberClient>();
         const string CRLF = "\r\n";
@@ -159,6 +160,8 @@ namespace FwkFtpClient
                 throw e;
             }
         }
+
+        
     }
 
 
