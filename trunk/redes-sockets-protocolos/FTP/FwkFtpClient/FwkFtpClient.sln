@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FwkFtpClient", "FwkFtpClient\FwkFtpClient.csproj", "{5CEA08F1-D19B-4AE3-8332-CEB3B48A72E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fwk.Net.Ftp.Test", "FwkFtpClient.Test\Fwk.Net.Ftp.Test.csproj", "{CF72C17F-60BC-425F-BAD4-9B3C5FBFA311}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fwk.Net.Ftp.Test", "Fwk.Net.Ftp.Test\Fwk.Net.Ftp.Test.csproj", "{CF72C17F-60BC-425F-BAD4-9B3C5FBFA311}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
