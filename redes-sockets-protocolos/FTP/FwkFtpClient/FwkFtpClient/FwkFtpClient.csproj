@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5CEA08F1-D19B-4AE3-8332-CEB3B48A72E5}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -102,6 +102,18 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\db5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\explorer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder %28Add%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Text.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

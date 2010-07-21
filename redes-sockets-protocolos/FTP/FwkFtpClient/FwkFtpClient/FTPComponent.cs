@@ -18,10 +18,21 @@ namespace FwkFtpClient
     public delegate void DebugHandler(string msg);
     public delegate void ErrorHandler(Exception ex);
     public delegate void ObjectHandler(object sender, Exception ex);
+    
+
     public delegate void FileListResivedHandler(string mask, String[] files, Exception ex);
 
     public delegate void ObjectHandlerAsync(out Exception ex);
     public delegate void FileListResivedHandlerAsync(string mask, out String[] files, out Exception ex);
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="dir">Directorio remoto</param>
+    /// <param name="destPath">Directorio local</param>
+    /// <param name="recursive">Aplica recursividad para descarga</param>
+    /// <param name="ex">Error en caso de que se porduzca</param>
+    public delegate void DowloadAllDirHandlerAsync(string dir, out string destPath,bool recursive, out Exception ex);
     [ToolboxItem(true)]
     [ToolboxBitmap(typeof(FTPComponent), "Resources.db5.png")]
     public partial class FTPComponent : Component
@@ -31,6 +42,11 @@ namespace FwkFtpClient
         public event ErrorHandler OnErrorEvent;
         public event ObjectHandler OnCloseEvent;
         public event ObjectHandler OnLoginEvent;
+
+        /// <summary>
+        /// Evento que se lanza cundo se finaliza BeginDowloadAllDirAsync
+        /// </summary>
+        public event ObjectHandler EndDowloadAllDirEvent;
         public event FileListResivedHandler OnFileListResivedEvent;
 
         /// <summary>
@@ -161,7 +177,10 @@ namespace FwkFtpClient
         }
 
         #region  Files
-
+        /// <summary>
+        /// Comienza a recivir archivos
+        /// </summary>
+        /// <param name="mask">Filtro ej *.*</param>
         public void BeginGetFileListAsync(string mask)
         {
             Exception ex = null;
@@ -181,7 +200,6 @@ namespace FwkFtpClient
             if (OnFileListResivedEvent != null)
                 OnFileListResivedEvent(this.ftpPath, mess, ex);
         }
-
         void GetFileList(string mask, out String[] files, out Exception ex)
         {
             ex = null;
@@ -197,6 +215,7 @@ namespace FwkFtpClient
             }
 
         }
+
         /// <summary>
         /// Retorna un string[] con la lista de arhivos remotos.-
         /// </summary>
@@ -277,6 +296,58 @@ namespace FwkFtpClient
         
 
         #region Download
+
+        /// <summary>
+        /// Comienza la descarga de forma asincrona
+        /// </summary>
+        /// <param name="dir">Directorio remoto</param>
+        /// <param name="destPath">Directorio local</param>
+        /// <param name="recursive">Recursividad</param>
+        public void BeginDowloadAllDirAsync(string dir, string destPath, bool recursive)
+        {
+            Exception ex = null;
+            DowloadAllDirHandlerAsync x = new DowloadAllDirHandlerAsync(DowloadAllDir);
+            x.BeginInvoke(dir,out destPath,recursive, out ex, new AsyncCallback(EndDowloadAllDirAsync), null);
+        }
+
+        /// <summary>
+        /// fin de la descarga completa del directorio
+        /// Fin de DowloadAllDirAsync
+        /// </summary>
+        /// <param name="res"></param>
+         void EndDowloadAllDirAsync(IAsyncResult res)
+        {
+            AsyncResult result = (AsyncResult)res;
+            Exception ex;
+            string destPath;
+            DowloadAllDirHandlerAsync del = (DowloadAllDirHandlerAsync)result.AsyncDelegate;
+            del.EndInvoke(out destPath,out ex, res);
+
+       
+            if (EndDowloadAllDirEvent != null)
+                EndDowloadAllDirEvent(destPath, ex);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="dir"></param>
+        /// <param name="destPath"></param>
+        /// <param name="recursive"></param>
+        /// <param name="ex"></param>
+        void DowloadAllDir (string dir,out  string destPath,bool recursive,out Exception ex)
+        {
+            ex = null;
+             destPath=null;
+            try
+            {
+                DowloadAllDir(dir,out destPath,recursive,out ex);
+            }
+            catch (Exception err)
+            {
+                ex = err;
+            }
+        }
         public void DowloadAllDir(string dir, string destPath,bool recursive)
         {
             if (!logined)
@@ -309,7 +380,7 @@ namespace FwkFtpClient
                     if (d != null)
                     {
                         //dir = System.IO.Path.GetDirectoryName(dir);
-                        Chdir(d.FileName);
+                        ChangeDir(d.FileName);
                         DowloadAllDir(d.FileName, System.IO.Path.Combine(destPath, d.FileName), recursive);
                     }
 
@@ -317,10 +388,10 @@ namespace FwkFtpClient
                 //suvo un nivel
                 //Change the remote machine working directory to the parent of		 the current remote machine working directory
                 SendCommand("CDUP");
-                if (retValue != 350)
-                {
+                //if (retValue != 350)
+                //{
           
-                }
+                //}
             
             }
         }
@@ -389,8 +460,6 @@ namespace FwkFtpClient
                     SendCommand("REST " + offset);
                     if (retValue != 350)
                     {
-                        //throw new IOException(reply.Substring(4));
-                        //Algunos servers no soportan esta caracteristica(resuming)
                         offset = 0;
                     }
                 }
@@ -712,7 +781,7 @@ namespace FwkFtpClient
 
             logined = true;
             SendDebug("Connected to " + ftpServer);
-            Chdir(ftpPath);
+            ChangeDir(ftpPath);
 
         }
 
@@ -756,7 +825,7 @@ namespace FwkFtpClient
         /// Crea un directorio en el servidor remoto
         /// </summary>
         /// <param name="dirName">directorio romoto crear</param>
-        public void Mkdir(string dirName)
+        public void CreateDir(string dirName)
         {
 
             if (!logined)
@@ -778,7 +847,7 @@ namespace FwkFtpClient
         /// Elimina un directorio en el servidor remoto
         /// </summary>
         /// <param name="dirName">Directorio remoto a eliminar</param>
-        public void Rmdir(string dirName)
+        public void RemoveDir(string dirName)
         {
 
             if (!logined)
@@ -799,7 +868,7 @@ namespace FwkFtpClient
         /// Cambia el actual directorio en el servidor remoto
         /// </summary>
         /// <param name="dirName">Nombre del directorio al que se quiere cambiar</param>
-        public void Chdir(string dirName)
+        public void ChangeDir(string dirName)
         {
             if (dirName.Equals("."))
                 return;
@@ -835,6 +904,7 @@ namespace FwkFtpClient
             string currentPath = (mes.Split(' ')[1]).Replace("\"", String.Empty);
             return currentPath;
         }
+
         [Obsolete("NO USAR: METODO en ENDESARROLLO")]
         public void Chdir_cn(string dirName)
         {
