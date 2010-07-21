@@ -1086,7 +1086,7 @@ namespace Fwk.Net.Ftp
             {
                 if (!String.IsNullOrEmpty(file))
                 {
-                    d = FtpUtil.ParseUnixDirList(file);
+                    d = Util.ParseUnixDirList(file);
                     listServerFileData.Add(d);
                 }
             }
