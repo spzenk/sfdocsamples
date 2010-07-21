@@ -36,7 +36,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnDowloadDir = new System.Windows.Forms.Button();
             this.txtServer = new System.Windows.Forms.TextBox();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
@@ -48,11 +48,16 @@
             this.btnCopytolocal = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtRoot = new System.Windows.Forms.TextBox();
+            this.btnFindRootFolder = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(211, 11);
+            this.button1.Location = new System.Drawing.Point(210, 49);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 27);
             this.button1.TabIndex = 0;
@@ -63,7 +68,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 89);
+            this.label1.Location = new System.Drawing.Point(20, 127);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 20);
             this.label1.TabIndex = 44;
@@ -74,16 +79,16 @@
             // 
             this.txtLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtLogs.Location = new System.Drawing.Point(12, 112);
+            this.txtLogs.Location = new System.Drawing.Point(11, 150);
             this.txtLogs.Multiline = true;
             this.txtLogs.Name = "txtLogs";
             this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtLogs.Size = new System.Drawing.Size(282, 595);
+            this.txtLogs.Size = new System.Drawing.Size(282, 566);
             this.txtLogs.TabIndex = 43;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(470, 12);
+            this.button2.Location = new System.Drawing.Point(469, 50);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 27);
             this.button2.TabIndex = 45;
@@ -107,10 +112,10 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
-            this.treeView1.Location = new System.Drawing.Point(300, 240);
+            this.treeView1.Location = new System.Drawing.Point(299, 278);
             this.treeView1.Name = "treeView1";
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(510, 467);
+            this.treeView1.Size = new System.Drawing.Size(510, 435);
             this.treeView1.TabIndex = 46;
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
             this.treeView1.AfterCollapse += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCollapse);
@@ -118,19 +123,22 @@
             this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             this.treeView1.AfterExpand += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterExpand);
             // 
-            // button4
+            // btnDowloadDir
             // 
-            this.button4.Location = new System.Drawing.Point(658, 144);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(152, 27);
-            this.button4.TabIndex = 48;
-            this.button4.Text = "Descarga todo directorio";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnDowloadDir.Enabled = false;
+            this.btnDowloadDir.Image = global::FwkFtpClient.Test.Properties.Resources.Folder__Add_;
+            this.btnDowloadDir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDowloadDir.Location = new System.Drawing.Point(657, 182);
+            this.btnDowloadDir.Name = "btnDowloadDir";
+            this.btnDowloadDir.Size = new System.Drawing.Size(152, 27);
+            this.btnDowloadDir.TabIndex = 48;
+            this.btnDowloadDir.Text = "Dowload selected dir";
+            this.btnDowloadDir.UseVisualStyleBackColor = true;
+            this.btnDowloadDir.Click += new System.EventHandler(this.button4_Click);
             // 
             // txtServer
             // 
-            this.txtServer.Location = new System.Drawing.Point(60, 11);
+            this.txtServer.Location = new System.Drawing.Point(59, 49);
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(122, 20);
             this.txtServer.TabIndex = 49;
@@ -138,7 +146,7 @@
             // 
             // txtUser
             // 
-            this.txtUser.Location = new System.Drawing.Point(60, 37);
+            this.txtUser.Location = new System.Drawing.Point(59, 75);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(122, 20);
             this.txtUser.TabIndex = 50;
@@ -146,7 +154,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(60, 63);
+            this.txtPassword.Location = new System.Drawing.Point(59, 101);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(122, 20);
             this.txtPassword.TabIndex = 51;
@@ -154,7 +162,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 7);
+            this.label2.Location = new System.Drawing.Point(11, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(37, 20);
             this.label2.TabIndex = 52;
@@ -164,7 +172,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 62);
+            this.label3.Location = new System.Drawing.Point(11, 100);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(37, 20);
             this.label3.TabIndex = 53;
@@ -174,7 +182,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(9, 37);
+            this.label4.Location = new System.Drawing.Point(8, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 20);
             this.label4.TabIndex = 54;
@@ -184,7 +192,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(304, 111);
+            this.label5.Location = new System.Drawing.Point(303, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(100, 20);
             this.label5.TabIndex = 55;
@@ -193,26 +201,28 @@
             // 
             // txtPath
             // 
-            this.txtPath.Location = new System.Drawing.Point(394, 112);
+            this.txtPath.Location = new System.Drawing.Point(409, 150);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(256, 20);
+            this.txtPath.Size = new System.Drawing.Size(338, 20);
             this.txtPath.TabIndex = 56;
             this.txtPath.Text = ".";
             // 
             // btnCopytolocal
             // 
             this.btnCopytolocal.Enabled = false;
-            this.btnCopytolocal.Location = new System.Drawing.Point(305, 207);
+            this.btnCopytolocal.Image = global::FwkFtpClient.Test.Properties.Resources.Text;
+            this.btnCopytolocal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCopytolocal.Location = new System.Drawing.Point(657, 215);
             this.btnCopytolocal.Name = "btnCopytolocal";
-            this.btnCopytolocal.Size = new System.Drawing.Size(73, 27);
+            this.btnCopytolocal.Size = new System.Drawing.Size(152, 27);
             this.btnCopytolocal.TabIndex = 57;
-            this.btnCopytolocal.Text = "Copy";
+            this.btnCopytolocal.Text = "Dowload selected file";
             this.btnCopytolocal.UseVisualStyleBackColor = true;
             this.btnCopytolocal.Click += new System.EventHandler(this.btnCopytolocal_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(656, 111);
+            this.button3.Location = new System.Drawing.Point(409, 176);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(154, 27);
             this.button3.TabIndex = 58;
@@ -229,11 +239,60 @@
             this.ftpComponent1.FTPServer = "";
             this.ftpComponent1.FTPUser = "anonymous";
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(296, 100);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 20);
+            this.label6.TabIndex = 59;
+            this.label6.Text = "Local Directory";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // txtRoot
+            // 
+            this.txtRoot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRoot.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtRoot.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
+            this.txtRoot.Location = new System.Drawing.Point(409, 101);
+            this.txtRoot.Name = "txtRoot";
+            this.txtRoot.Size = new System.Drawing.Size(338, 20);
+            this.txtRoot.TabIndex = 60;
+            this.txtRoot.Text = "c:\\";
+            // 
+            // btnFindRootFolder
+            // 
+            this.btnFindRootFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnFindRootFolder.Location = new System.Drawing.Point(753, 97);
+            this.btnFindRootFolder.Name = "btnFindRootFolder";
+            this.btnFindRootFolder.Size = new System.Drawing.Size(35, 23);
+            this.btnFindRootFolder.TabIndex = 61;
+            this.btnFindRootFolder.Text = "...";
+            this.btnFindRootFolder.UseVisualStyleBackColor = true;
+            this.btnFindRootFolder.Click += new System.EventHandler(this.btnFindRootFolder_Click);
+            // 
+            // label7
+            // 
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(0, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(841, 45);
+            this.label7.TabIndex = 62;
+            this.label7.Text = "Test FTP Component";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmTest
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(841, 719);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.btnFindRootFolder);
+            this.Controls.Add(this.txtRoot);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnCopytolocal);
             this.Controls.Add(this.txtPath);
@@ -244,14 +303,14 @@
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.txtServer);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnDowloadDir);
             this.Controls.Add(this.treeView1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtLogs);
             this.Controls.Add(this.button1);
             this.Name = "frmTest";
-            this.Text = "Form1";
+            this.Text = "Test Ftp Client";
             this.Load += new System.EventHandler(this.frmTest_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTest_FormClosing);
             this.ResumeLayout(false);
@@ -267,7 +326,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.TreeView treeView1;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnDowloadDir;
         private System.Windows.Forms.TextBox txtServer;
         private System.Windows.Forms.TextBox txtUser;
         private System.Windows.Forms.TextBox txtPassword;
@@ -279,6 +338,11 @@
         private System.Windows.Forms.Button btnCopytolocal;
         private FTPComponent ftpComponent1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtRoot;
+        private System.Windows.Forms.Button btnFindRootFolder;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label label7;
     }
 }
 

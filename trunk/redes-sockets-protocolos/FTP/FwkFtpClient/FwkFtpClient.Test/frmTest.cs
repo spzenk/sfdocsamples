@@ -148,7 +148,6 @@ namespace FwkFtpClient
         {
             if (InvokeRequired)
             {
-
                 BeginInvoke(new ErrorHandler(ftpComponent1_OnErrorEvent), new object[] { ex });
                 return;
             }
@@ -237,11 +236,10 @@ namespace FwkFtpClient
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //string[] f = ftpComponent1.GetFileList("*.*");
-            //ftpComponent1.Chdir("Dance2");
-            //ftpComponent1.BeginGetFileListAsync("*.*");
+        
 
-            ftpComponent1.DowloadAllDir(txtPath.Text, @"c:\pepe", true);
+            ftpComponent1.DowloadAllDir(txtPath.Text, txtRoot.Text, true);
+            System.Diagnostics.Process.Start(txtRoot.Text);
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -256,14 +254,16 @@ namespace FwkFtpClient
             if (e.Node.Tag.Equals("d"))
             {
                 btnCopytolocal.Enabled = false;
+                btnDowloadDir.Enabled = true;
                 string name = e.Node.Name;//;System.IO.Path.GetFileName(e.Node.Name);
-                ftpComponent1.Chdir(name);
+                ftpComponent1.ChangeDir(name);
                 ftpComponent1.BeginGetFileListAsync("*.*");
             }
 
             if (e.Node.Tag.Equals("f"))
             {
                 btnCopytolocal.Enabled = true;
+                btnDowloadDir.Enabled = false;
 
             }
         }
@@ -271,6 +271,7 @@ namespace FwkFtpClient
         {
             selecteNode = e.Node;
             btnCopytolocal.Enabled = false;
+            btnDowloadDir.Enabled = false;
             if (e.Node.Tag.Equals("f"))
             {
                 btnCopytolocal.Enabled = true;
@@ -279,6 +280,7 @@ namespace FwkFtpClient
             if (e.Node.Tag.Equals("d"))
             {
                 txtPath.Text = e.Node.Name;
+                btnDowloadDir.Enabled = true;
             }
         }
         private void btnCopytolocal_Click(object sender, EventArgs e)
@@ -320,6 +322,16 @@ namespace FwkFtpClient
 
 
             ftpComponent1.Chdir_cn(txtPath.Text);
+        }
+
+        private void btnFindRootFolder_Click(object sender, EventArgs e)
+        {
+            folderBrowserDialog1.SelectedPath = txtRoot.Text;
+            if (folderBrowserDialog1.ShowDialog(this) == DialogResult.OK)
+            {
+                txtRoot.Text = folderBrowserDialog1.SelectedPath;
+            }
+          
         }
 
 
