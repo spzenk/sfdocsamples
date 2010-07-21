@@ -302,20 +302,20 @@ namespace FwkFtpClient
 
         private void frmTest_Load(object sender, EventArgs e)
         {
-            FtpUtil.storage.Load();
-            txtUser.Text = FtpUtil.storage.StorageObject.User;
-            txtPassword.Text = FtpUtil.storage.StorageObject.Password;
-            txtServer.Text = FtpUtil.storage.StorageObject.Server;
+            Util.storage.Load();
+            txtUser.Text = Util.storage.StorageObject.User;
+            txtPassword.Text = Util.storage.StorageObject.Password;
+            txtServer.Text = Util.storage.StorageObject.Server;
 
         }
 
         private void frmTest_FormClosing(object sender, FormClosingEventArgs e)
         {
-            FtpUtil.storage.StorageObject.User = txtUser.Text;
-            FtpUtil.storage.StorageObject.Password = txtPassword.Text;
-            FtpUtil.storage.StorageObject.Server = txtServer.Text;
+            Util.storage.StorageObject.User = txtUser.Text;
+            Util.storage.StorageObject.Password = txtPassword.Text;
+            Util.storage.StorageObject.Server = txtServer.Text;
 
-            FtpUtil.storage.Save();
+            Util.storage.Save();
         }
 
         private void button3_Click_1(object sender, EventArgs e)

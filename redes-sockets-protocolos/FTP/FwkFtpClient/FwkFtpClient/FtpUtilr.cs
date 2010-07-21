@@ -8,37 +8,11 @@ using System.Net;
 
 namespace Fwk.Net.Ftp
 {
-    public  static class FtpUtil
+    public static class Util
     {
-        public static FwkSimpleStorageBase<JabberClient> storage = new FwkSimpleStorageBase<JabberClient>();
+        public static FwkSimpleStorageBase<SocketClient> storage = new FwkSimpleStorageBase<SocketClient>();
         const string CRLF = "\r\n";
-        internal static string Eater(string line, int ix, int n)
-        {
-            string res = "";
-            int ws = 0;
-            for (int i = 1; i < line.Length; i++)
-            {
-                if ((line[i] == ' ') && (line[i - 1] != ' '))
-                {
-                    ws = ws + 1;
-                }
-                if ((ws >= ix) && (ws < (ix + n)))
-                {
-                    res = res + line[i];
-                }
-            }
-            return res.Trim();
-        }
 
-        internal static void Parse(string line)
-        {
-            string protection = Eater(line, 0, 1);
-            string owner = Eater(line, 1, 3);
-            int size = int.Parse(Eater(line, 4, 1));
-            string tim = Eater(line, 5, 3);
-            string filename = Eater(line, 8, 100);
-            //Console.WriteLine(filename + " " + size + " " + tim);
-        }
 
         static ServerFileData ParseDosDirLine(string line)
         {
@@ -126,30 +100,30 @@ namespace Fwk.Net.Ftp
             {
 
                 fileLine = fileLine.Replace("\r", string.Empty);
-     
+
                 //string[] sFile = sDir.Split(new Char[] { '\r' });
                 ServerFileData sfd = null;
                 int autodetect = 0;
 
                 //foreach (string fileLine in sDir)
                 //{
-                    if (autodetect == 0)
+                if (autodetect == 0)
+                {
+                    sfd = ParseDosDirLine(fileLine);
+                    if (sfd == null)
                     {
-                        sfd = ParseDosDirLine(fileLine);
-                        if (sfd == null)
-                        {
-                            sfd = ParseUnixDirLine(fileLine);
-                            autodetect = 2;
-                        }
-                        else
-                            autodetect = 1;
+                        sfd = ParseUnixDirLine(fileLine);
+                        autodetect = 2;
                     }
                     else
-                        if (autodetect == 1)
-                            sfd = ParseDosDirLine(fileLine);
-                        else
-                            if (autodetect == 2)
-                                sfd = ParseUnixDirLine(fileLine);
+                        autodetect = 1;
+                }
+                else
+                    if (autodetect == 1)
+                        sfd = ParseDosDirLine(fileLine);
+                    else
+                        if (autodetect == 2)
+                            sfd = ParseUnixDirLine(fileLine);
 
 
                 //}
@@ -161,7 +135,7 @@ namespace Fwk.Net.Ftp
             }
         }
 
-        
+
     }
 
 
@@ -233,39 +207,4 @@ namespace Fwk.Net.Ftp
 
 
 
-    [Serializable]
-    public class JabberClient
-    {
-        string password;
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        }
-        string user;
-
-        public string User
-        {
-            get { return user; }
-            set { user = value; }
-        }
-        string _Server;
-
-        public string Server
-        {
-            get { return _Server; }
-            set { _Server = value; }
-        }
-        string _Port;
-
-        public string Port
-        {
-            get { return _Port; }
-            set { _Port = value; }
-        }
-
-        
-
-    }
 }
