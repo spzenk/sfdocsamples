@@ -1,4 +1,4 @@
-﻿//namespace FwkFtpClient
+﻿//namespace Fwk.Net.Ftp
 //{
 //    partial class FTPComponentNew
 //    {

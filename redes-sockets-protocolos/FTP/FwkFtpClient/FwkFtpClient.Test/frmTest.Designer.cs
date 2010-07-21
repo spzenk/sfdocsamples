@@ -1,4 +1,5 @@
-﻿namespace FwkFtpClient
+﻿using Fwk.Net.Ftp;
+namespace FwkFtpClient
 {
     partial class frmTest
     {
@@ -47,7 +48,7 @@
             this.txtPath = new System.Windows.Forms.TextBox();
             this.btnCopytolocal = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
+            this.ftpComponent1 = new Fwk.Net.Ftp.FTPComponent(this.components);
             this.label6 = new System.Windows.Forms.Label();
             this.txtRoot = new System.Windows.Forms.TextBox();
             this.btnFindRootFolder = new System.Windows.Forms.Button();
@@ -126,7 +127,7 @@
             // btnDowloadDir
             // 
             this.btnDowloadDir.Enabled = false;
-            this.btnDowloadDir.Image = global::FwkFtpClient.Test.Properties.Resources.Folder__Add_;
+            this.btnDowloadDir.Image = global::Fwk.Net.Ftp.Test.Properties.Resources.Folder__Add_;
             this.btnDowloadDir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDowloadDir.Location = new System.Drawing.Point(657, 182);
             this.btnDowloadDir.Name = "btnDowloadDir";
@@ -210,7 +211,7 @@
             // btnCopytolocal
             // 
             this.btnCopytolocal.Enabled = false;
-            this.btnCopytolocal.Image = global::FwkFtpClient.Test.Properties.Resources.Text;
+            this.btnCopytolocal.Image = global::Fwk.Net.Ftp.Test.Properties.Resources.Text;
             this.btnCopytolocal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCopytolocal.Location = new System.Drawing.Point(657, 215);
             this.btnCopytolocal.Name = "btnCopytolocal";

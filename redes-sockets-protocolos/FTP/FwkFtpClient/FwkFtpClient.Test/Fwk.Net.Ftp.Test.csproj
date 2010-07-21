@@ -8,8 +8,8 @@
     <ProjectGuid>{CF72C17F-60BC-425F-BAD4-9B3C5FBFA311}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FwkFtpClient.Test</RootNamespace>
-    <AssemblyName>FwkFtpClient.Test</AssemblyName>
+    <RootNamespace>Fwk.Net.Ftp.Test</RootNamespace>
+    <AssemblyName>Fwk.Net.Ftp.Test</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

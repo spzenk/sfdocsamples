@@ -13,7 +13,7 @@ using System.Data.Odbc;
 using System.Reflection;
 using System.Runtime.Remoting.Messaging;
 
-namespace FwkFtpClient
+namespace Fwk.Net.Ftp
 {
     public delegate void DebugHandler(string msg);
     public delegate void ErrorHandler(Exception ex);

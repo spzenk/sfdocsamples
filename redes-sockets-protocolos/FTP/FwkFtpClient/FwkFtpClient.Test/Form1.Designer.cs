@@ -1,4 +1,5 @@
-﻿namespace FwkFtpClient.Test
+﻿using Fwk.Net.Ftp;
+namespace FwkFtpClient.Test
 {
     partial class Form1
     {
@@ -29,7 +30,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ftpComponent1 = new FwkFtpClient.FTPComponent(this.components);
+            this.ftpComponent1 = new Fwk.Net.Ftp.FTPComponent(this.components);
             this.SuspendLayout();
             // 
             // ftpComponent1
