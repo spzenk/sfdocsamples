@@ -31,10 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fwk.Bases, Version=3.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\fwk\branches\3.1.0\src\Libraries\Framework\Fwk.Bases.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -88,16 +84,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FwkFtpClient\FwkFtpClient.csproj">
-      <Project>{5CEA08F1-D19B-4AE3-8332-CEB3B48A72E5}</Project>
-      <Name>FwkFtpClient</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Properties\Text.png" />
     <None Include="Resources\Text.png" />
     <None Include="Resources\Folder %28Add%29.png" />
     <Content Include="TextFile1.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Fwk.Bases\Fwk.Bases.csproj">
+      <Project>{1654A893-0408-474E-873C-E79F00D7587C}</Project>
+      <Name>Fwk.Bases</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
