@@ -8,11 +8,14 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using Fwk.Net.Ftp;
+using Fwk.Caching;
+using Fwk.Net;
 
 namespace FwkFtpClient
 {
     public partial class frmTest : Form
     {
+        public static FwkSimpleStorageBase<SocketClient> storage = new FwkSimpleStorageBase<SocketClient>();
         static
         int logCount = 0;
         static StringBuilder logs;
@@ -302,27 +305,27 @@ namespace FwkFtpClient
 
         private void frmTest_Load(object sender, EventArgs e)
         {
-            Util.storage.Load();
-            txtUser.Text = Util.storage.StorageObject.User;
-            txtPassword.Text = Util.storage.StorageObject.Password;
-            txtServer.Text = Util.storage.StorageObject.Server;
+            frmTest.storage.Load();
+            txtUser.Text = frmTest.storage.StorageObject.User;
+            txtPassword.Text = frmTest.storage.StorageObject.Password;
+            txtServer.Text = frmTest.storage.StorageObject.Server;
 
         }
 
         private void frmTest_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Util.storage.StorageObject.User = txtUser.Text;
-            Util.storage.StorageObject.Password = txtPassword.Text;
-            Util.storage.StorageObject.Server = txtServer.Text;
+            frmTest.storage.StorageObject.User = txtUser.Text;
+            frmTest.storage.StorageObject.Password = txtPassword.Text;
+            frmTest.storage.StorageObject.Server = txtServer.Text;
 
-            Util.storage.Save();
+            frmTest.storage.Save();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
 
 
-            ftpComponent1.Chdir_cn(txtPath.Text);
+            //ftpComponent1.Chdir_cn(txtPath.Text);
         }
 
         private void btnFindRootFolder_Click(object sender, EventArgs e)
