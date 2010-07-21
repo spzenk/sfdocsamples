@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace FwkFtpClient.Properties
+namespace Fwk.Net.Ftp.Properties
 {
 
 

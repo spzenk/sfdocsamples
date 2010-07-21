@@ -6,7 +6,7 @@ using Fwk.Caching;
 using System.Net;
 
 
-namespace FwkFtpClient
+namespace Fwk.Net.Ftp
 {
     public  static class FtpUtil
     {

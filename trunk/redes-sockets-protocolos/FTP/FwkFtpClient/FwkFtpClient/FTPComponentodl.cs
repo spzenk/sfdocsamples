@@ -13,7 +13,7 @@
 //using System.Reflection;
 //using System.Runtime.Remoting.Messaging;
 
-//namespace FwkFtpClient
+//namespace Fwk.Net.Ftp
 //{
 
 
