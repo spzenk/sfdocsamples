@@ -10,7 +10,7 @@ namespace Fwk.Net.Ftp
 {
     public static class Util
     {
-        public static FwkSimpleStorageBase<SocketClient> storage = new FwkSimpleStorageBase<SocketClient>();
+        
         const string CRLF = "\r\n";
 
 
