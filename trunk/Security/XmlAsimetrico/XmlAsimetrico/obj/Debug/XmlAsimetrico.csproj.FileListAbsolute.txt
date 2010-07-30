@@ -1,0 +1,10 @@
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\obj\Debug\XmlAsimetrico.Properties.Resources.resources
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\obj\Debug\XmlAsimetrico.csproj.GenerateResource.Cache
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\bin\Debug\CampaingMainToolBar.xml
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\bin\Debug\ConfigurationManager.xml
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\bin\Debug\XmlAsimetrico.exe
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\bin\Debug\XmlAsimetrico.pdb
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\obj\Debug\XmlAsimetrico.exe
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\obj\Debug\XmlAsimetrico.pdb
+D:\Projects\DocEjemplos\sfdocsamples\Security\XmlAsimetrico\XmlAsimetrico\obj\Debug\XmlAsimetrico.Form1.resources
