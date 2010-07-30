@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ConfigurationManager.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="bin\Debug\ConfigurationManager.xml" />
     <Content Include="ConfigurationManager_Enc.xml" />

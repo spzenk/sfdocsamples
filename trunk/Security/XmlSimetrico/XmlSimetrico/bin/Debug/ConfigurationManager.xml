@@ -1,4 +1,5 @@
-﻿<ConfigurationFile>
+
+<ConfigurationFile>
   <EntityState>Unchanged</EntityState>
   <Encrypted>false</Encrypted>
   <FileName>ConfigurationManager.xml</FileName>
@@ -15,12 +16,7 @@
         </Key>
         <Key name="MaxLenghtField" encrypted="false">
           <EntityState>Unchanged</EntityState>
-          <EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element" xmlns="http://www.w3.org/2001/04/xmlenc#">
-            <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
-            <CipherData>
-              <CipherValue>leW/JBgywWU+krwB2ZM0wyXa+2M8WeOTi139ivIZ5bdxXTuIgGwVvRH+csV2HAk4npU1BZHl2/StFo3iLx1DMuwqT4pxHeDHF4H5pRW6CRHTY/TCEc+soIWODVy/m8xYm0LlNp9MdKSR8TUxhMeUdQ==</CipherValue>
-            </CipherData>
-          </EncryptedData>
+          <EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element" xmlns="http://www.w3.org/2001/04/xmlenc#"><EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" /><CipherData><CipherValue>dqSU6k+hGojZGL/s8fLWM5Q3IED53OC7ZR5f/cnmjXjx1R6oUah2whlCVxYeYm701cfxwIdS5lVrNRfwDHLrtP59ZHUigHGOQ46rEypHZwersa9N46WWtM684UPw3ak0Snr96cit87GFhEnBe/H4cw==</CipherValue></CipherData></EncryptedData>
         </Key>
         <Key name="RecordSetsNull" encrypted="false">
           <EntityState>Unchanged</EntityState>
@@ -36,12 +32,7 @@
         </Key>
         <Key name="RecordSetAttributesNull" encrypted="false">
           <EntityState>Unchanged</EntityState>
-          <EncryptedData Type="http://www.w3.org/2001/04/xmlenc#Element" xmlns="http://www.w3.org/2001/04/xmlenc#">
-            <EncryptionMethod Algorithm="http://www.w3.org/2001/04/xmlenc#aes256-cbc" />
-            <CipherData>
-              <CipherValue>1cv5+DZgQxRa/Ioauex8QSbQbFcL97sDTGjKdxuJ6eCZswk9Y18KOLUdmtaHftq3ILKfGixuEFYiV1StVgpcFhp5iLKcS32idTlX7doSZR/cepYm4xGtFafB6AGc0oeb</CipherValue>
-            </CipherData>
-          </EncryptedData>
+          <Value><![CDATA[Los atributos del lote no pueden estar vacio]]></Value>
         </Key>
       </Keys>
     </Group>
