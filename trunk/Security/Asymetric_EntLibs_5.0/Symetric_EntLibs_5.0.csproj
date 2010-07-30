@@ -8,8 +8,8 @@
     <ProjectGuid>{8E45CF15-8A78-4DC3-BA33-F2A72A8A6C92}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Asymetric_EntLibs_5._0</RootNamespace>
-    <AssemblyName>Asymetric_EntLibs_5.0</AssemblyName>
+    <RootNamespace>Symetric_EntLibs_5._0</RootNamespace>
+    <AssemblyName>Symetric_EntLibs_5._0</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -84,6 +84,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
