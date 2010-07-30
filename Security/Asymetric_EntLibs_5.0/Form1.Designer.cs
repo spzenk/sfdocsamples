@@ -112,11 +112,11 @@
             // 
             // btnKey
             // 
-            this.btnKey.Location = new System.Drawing.Point(634, 25);
+            this.btnKey.Location = new System.Drawing.Point(116, 13);
             this.btnKey.Name = "btnKey";
-            this.btnKey.Size = new System.Drawing.Size(58, 22);
+            this.btnKey.Size = new System.Drawing.Size(169, 22);
             this.btnKey.TabIndex = 15;
-            this.btnKey.Text = "...";
+            this.btnKey.Text = "Create key file";
             this.btnKey.UseVisualStyleBackColor = true;
             this.btnKey.Click += new System.EventHandler(this.btnKey_Click);
             // 
@@ -126,15 +126,16 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtReference.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.txtReference.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.FileSystemDirectories;
-            this.txtReference.Location = new System.Drawing.Point(40, 27);
+            this.txtReference.Location = new System.Drawing.Point(40, 37);
             this.txtReference.Name = "txtReference";
             this.txtReference.Size = new System.Drawing.Size(565, 20);
             this.txtReference.TabIndex = 16;
+            this.txtReference.Text = "c:\\allus_key.key";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 11);
+            this.label1.Location = new System.Drawing.Point(37, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 17;

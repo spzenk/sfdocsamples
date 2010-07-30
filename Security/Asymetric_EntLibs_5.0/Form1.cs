@@ -11,12 +11,13 @@ using System.IO;
 using System.Security.Cryptography;
 using Fwk.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.Configuration;
+using Symetric_EntLibs_5._0;
 
 namespace Asymetric_EntLibs_5_0
 {
     public partial class Form1 : Form
     {
-        static string symmKeyFileName = "seckey.key";
+        //static string symmKeyFileName = "seckey.key";
         public Form1()
         {
             InitializeComponent();
@@ -24,76 +25,59 @@ namespace Asymetric_EntLibs_5_0
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
-            //txtCifrado.Text = Cryptographer.EncryptSymmetric("RijndaelManaged", txtValorOriginal.Text);
-
-            if (GetSymmetricCryptoProvider())
-            {
-                byte[] decryptedBin = Encoding.UTF8.GetBytes(txtValorOriginal.Text);
-                txtCifrado.Text = Convert.ToBase64String(_SymmetricAlgorithmProvider.Encrypt(decryptedBin));
-            }
+            ISymetriCypher wISymetriCypher = SymetricCypherFactory.Get<RijndaelManaged>(txtReference.Text);
+            txtCifrado.Text = wISymetriCypher.Encrypt(txtValorOriginal.Text);
+          
         }
 
         private void btnDEncrypt_Click(object sender, EventArgs e)
         {
-            //txtNoCifrado.Text = Cryptographer.DecryptSymmetric("RijndaelManaged", txtCifrado.Text);
-
-            
-            if (GetSymmetricCryptoProvider())
-            {
-                byte[] cryptedBin = Convert.FromBase64String(txtCifrado.Text);
-                txtNoCifrado.Text = Encoding.UTF8.GetString(_SymmetricAlgorithmProvider.Decrypt(cryptedBin));
-            }
-            
+           
+            ISymetriCypher wISymetriCypher = SymetricCypherFactory.Get<RijndaelManaged>(txtReference.Text);
+            txtNoCifrado.Text = wISymetriCypher.Dencrypt(txtCifrado.Text);
+         
         }
 
         private  void CreateKeys()
         {
-            symmKeyFileName = Fwk.HelperFunctions.FileFunctions.OpenFileDialog_New(symmKeyFileName, "Key Files(*.key)|*.key", false);
 
-            
-            if (!string.IsNullOrEmpty(symmKeyFileName))
-            {
-                txtReference.Text = symmKeyFileName;
-                ProtectedKey symmetricKey = KeyManager.GenerateSymmetricKey(typeof(RijndaelManaged), DataProtectionScope.LocalMachine);
-                using (FileStream keyStream = new FileStream(symmKeyFileName, FileMode.Create))
-                {
-                    KeyManager.Write(keyStream, symmetricKey);
-                }
-            }
-   
+
         }
 
         private void btnKey_Click(object sender, EventArgs e)
         {
 
 
-            CreateKeys();
-           
+            ISymetriCypher wISymetriCypher = SymetricCypherFactory.Get<RijndaelManaged>(txtReference.Text);
+
+            txtReference.Text = wISymetriCypher.CreateKeyFile();
+
         }
 
-        SymmetricAlgorithmProvider _SymmetricAlgorithmProvider;
-        bool GetSymmetricCryptoProvider()
-        {
-            if (File.Exists(txtReference.Text))
-            {
-                
-                
-                if (_SymmetricAlgorithmProvider == null)
+        //SymmetricAlgorithmProvider _SymmetricAlgorithmProvider;
+        //bool GetSymmetricCryptoProvider()
+        //{
+        //    if (File.Exists(txtReference.Text))
+        //    {
 
-                    _SymmetricAlgorithmProvider = new SymmetricAlgorithmProvider(typeof(RijndaelManaged), txtReference.Text, DataProtectionScope.LocalMachine);
-                
-                return true;
-            }
-            else
-            {
-                MessageBox.Show("No existe un archivo de clave de encriptacion");
-                return false;
-            }
+        //        FileStream fs = new FileStream(txtReference.Text, FileMode.Open, FileAccess.Read);
+        //        if (_SymmetricAlgorithmProvider == null)
+
+        //            //_SymmetricAlgorithmProvider = new SymmetricAlgorithmProvider(typeof(RijndaelManaged), txtReference.Text, DataProtectionScope.LocalMachine);
+        //            _SymmetricAlgorithmProvider = new SymmetricAlgorithmProvider(typeof(RijndaelManaged), fs, DataProtectionScope.LocalMachine);
+              
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("No existe un archivo de clave de encriptacion");
+        //        return false;
+        //    }
 
             
             
             
-        }
+        //}
 
         
     }
