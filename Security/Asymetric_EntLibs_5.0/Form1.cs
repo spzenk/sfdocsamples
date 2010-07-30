@@ -17,7 +17,7 @@ namespace Asymetric_EntLibs_5_0
 {
     public partial class Form1 : Form
     {
-        //static string symmKeyFileName = "seckey.key";
+    
         public Form1()
         {
             InitializeComponent();
@@ -37,13 +37,6 @@ namespace Asymetric_EntLibs_5_0
             txtNoCifrado.Text = wISymetriCypher.Dencrypt(txtCifrado.Text);
          
         }
-
-        private  void CreateKeys()
-        {
-
-
-        }
-
         private void btnKey_Click(object sender, EventArgs e)
         {
 
@@ -53,31 +46,6 @@ namespace Asymetric_EntLibs_5_0
             txtReference.Text = wISymetriCypher.CreateKeyFile();
 
         }
-
-        //SymmetricAlgorithmProvider _SymmetricAlgorithmProvider;
-        //bool GetSymmetricCryptoProvider()
-        //{
-        //    if (File.Exists(txtReference.Text))
-        //    {
-
-        //        FileStream fs = new FileStream(txtReference.Text, FileMode.Open, FileAccess.Read);
-        //        if (_SymmetricAlgorithmProvider == null)
-
-        //            //_SymmetricAlgorithmProvider = new SymmetricAlgorithmProvider(typeof(RijndaelManaged), txtReference.Text, DataProtectionScope.LocalMachine);
-        //            _SymmetricAlgorithmProvider = new SymmetricAlgorithmProvider(typeof(RijndaelManaged), fs, DataProtectionScope.LocalMachine);
-              
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("No existe un archivo de clave de encriptacion");
-        //        return false;
-        //    }
-
-            
-            
-            
-        //}
 
         
     }
