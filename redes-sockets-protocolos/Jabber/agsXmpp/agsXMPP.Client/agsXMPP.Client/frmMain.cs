@@ -219,13 +219,6 @@ namespace agsXMPP.Client
         #endregion
         #endregion
 
-
-        void XmppServices_OnLog(string msg)
-        {
-            AddLog(msg);
-        }
-
-      
         #region Roster Events
         private void XmppCon_OnRosterStart(object sender)
         {
@@ -294,6 +287,11 @@ namespace agsXMPP.Client
 
         #endregion
 
+
+        void XmppServices_OnLog(string msg)
+        {
+            AddLog(msg);
+        }
      
        
         private void frmMain_Load(object sender, EventArgs e)
@@ -519,7 +517,7 @@ namespace agsXMPP.Client
             //riq.Type = IqType.set;
             Util.XmppServices.XmppCon.RosterManager.RemoveRosterItem(rosterNode.RosterItem.Jid);
 
-            MessageBox.Show(string.Concat (user," se elimini con exito"));
+            MessageBox.Show(string.Concat (user," se elimino con exito"));
         }
 
         private void btnChat_Click(object sender, EventArgs e)
@@ -553,6 +551,17 @@ namespace agsXMPP.Client
             }
 
             LoadRoms();
+        }
+
+        private void btnBroadCast_Click(object sender, EventArgs e)
+        {
+            agsXMPP.protocol.client.Message msg = new agsXMPP.protocol.client.Message();
+            msg.Subject = "Mensaje a todos";
+
+            msg.To = new Jid(string.Concat("all@broadcast.", Util.storage.StorageObject.Server));
+            msg.Body = "Hola a todos";
+            Util.XmppServices.XmppCon.Send(msg);
+
         }
 
       

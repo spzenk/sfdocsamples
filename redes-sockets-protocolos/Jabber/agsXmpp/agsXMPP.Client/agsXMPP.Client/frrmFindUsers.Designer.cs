@@ -62,7 +62,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(204, 20);
+            this.label1.Size = new System.Drawing.Size(289, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Search Service";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,7 +126,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(425, 706);
+            this.dataGridView1.Size = new System.Drawing.Size(600, 706);
             this.dataGridView1.TabIndex = 3;
             // 
             // cboServices
@@ -135,8 +135,9 @@
             this.cboServices.FormattingEnabled = true;
             this.cboServices.Location = new System.Drawing.Point(3, 23);
             this.cboServices.Name = "cboServices";
-            this.cboServices.Size = new System.Drawing.Size(204, 21);
+            this.cboServices.Size = new System.Drawing.Size(289, 21);
             this.cboServices.TabIndex = 1;
+            this.cboServices.SelectedIndexChanged += new System.EventHandler(this.cboServices_SelectedIndexChanged);
             this.cboServices.SelectedValueChanged += new System.EventHandler(this.cboServices_SelectedValueChanged);
             // 
             // xDataControl
@@ -149,7 +150,7 @@
             this.xDataControl.Name = "xDataControl";
             this.xDataControl.ShowButtons = false;
             this.xDataControl.ShowLegend = true;
-            this.xDataControl.Size = new System.Drawing.Size(204, 583);
+            this.xDataControl.Size = new System.Drawing.Size(289, 563);
             this.xDataControl.TabIndex = 2;
             // 
             // toolStripStatusLabel1
@@ -160,7 +161,6 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -171,8 +171,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(639, 706);
-            this.splitContainer1.SplitterDistance = 210;
+            this.splitContainer1.Size = new System.Drawing.Size(899, 706);
+            this.splitContainer1.SplitterDistance = 295;
             this.splitContainer1.TabIndex = 3;
             // 
             // tableLayoutPanel1
@@ -187,20 +187,21 @@
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(210, 706);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(295, 706);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // cmdSearch
             // 
             this.cmdSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdSearch.Enabled = false;
-            this.cmdSearch.Location = new System.Drawing.Point(105, 669);
+            this.cmdSearch.Location = new System.Drawing.Point(190, 649);
             this.cmdSearch.Margin = new System.Windows.Forms.Padding(10);
             this.cmdSearch.Name = "cmdSearch";
             this.cmdSearch.Size = new System.Drawing.Size(95, 27);
@@ -223,7 +224,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 706);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(639, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(899, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -231,7 +232,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(639, 728);
+            this.ClientSize = new System.Drawing.Size(899, 728);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "frmFindUsers";
