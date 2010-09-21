@@ -46,7 +46,7 @@ namespace agsXMPP.Client
         /// Efectua una busqueda al server de los campos por los cuales buscar
         /// cboServices.SelectedItem.ToString()
         /// </summary>
-        private void RequestSearchFields()
+        private void RequestSearchFields(string jidServiceName)
         {
             //Example 1. Requesting Search Fields
 
@@ -64,7 +64,7 @@ namespace agsXMPP.Client
             SearchIq siq = new SearchIq();
             siq.Type = agsXMPP.protocol.client.IqType.get;
             //siq.To = new Jid(cboServices.SelectedItem.ToString());
-            siq.To = new Jid(textBox1.Text);
+            siq.To = new Jid(jidServiceName);
 
             // Remuevo alguna consulta pendiente si hay
             if (_IdFieldRequest != null)
@@ -394,7 +394,12 @@ namespace agsXMPP.Client
 
         private void cboServices_SelectedValueChanged(object sender, EventArgs e)
         {
-            RequestSearchFields();
+            RequestSearchFields(cboServices.SelectedItem.ToString());
+        }
+
+        private void cboServices_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
 
        
