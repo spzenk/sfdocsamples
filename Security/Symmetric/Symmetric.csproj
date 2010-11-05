@@ -35,6 +35,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\sfimplementations\trunk\Company\CallCenterChat\statics\Fwk.Bases.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\sfimplementations\trunk\Company\CallCenterChat\statics\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\sfimplementations\trunk\Company\CallCenterChat\statics\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -53,7 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="FwkSymetricAlg.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
