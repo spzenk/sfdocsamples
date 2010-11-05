@@ -37,17 +37,17 @@ namespace Symmetric
 
 
 
-        public static string Encrypt(string value,string k)
+        public static string Encrypt(string plainText, string k)
         {
-            return Encrypt(value,Convert.FromBase64String(k.Split('$')[0]), Convert.FromBase64String(k.Split('$')[1]));
+            return Encrypt(plainText, Convert.FromBase64String(k.Split('$')[0]), Convert.FromBase64String(k.Split('$')[1]));
         }
 
-        public static string Encrypt(string value)
+        public static string Encrypt(string plainText)
         {
-           return Encrypt(value,_SymmetricAlgorithm.Key, _SymmetricAlgorithm.IV);
+            return Encrypt(plainText, _SymmetricAlgorithm.Key, _SymmetricAlgorithm.IV);
         }
 
-        static string Encrypt(string value, byte[] rgbKey, byte[] rgbIV)
+        static string Encrypt(string plainText, byte[] rgbKey, byte[] rgbIV)
         {
             //Get an encryptor.
             ICryptoTransform encryptor = _SymmetricAlgorithm.CreateEncryptor(rgbKey, rgbIV);
@@ -63,7 +63,7 @@ namespace Symmetric
                 {
 
                     //Write all data to the stream.
-                    swEncrypt.Write(value);
+                    swEncrypt.Write(plainText);
                 }
             }
 
