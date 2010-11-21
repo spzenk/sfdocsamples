@@ -22,7 +22,7 @@
 //using System.Data;
 //using DotNetNuke;
 
-//namespace YourCompany.Modules.GuestbookCS
+//namespace Pelsoft.Modules.GuestbookCS
 //{
 
 //    /// ----------------------------------------------------------------------------- 
@@ -57,7 +57,7 @@
 //        /// </summary>
 //        private static void CreateProvider()
 //        {
-//            objProvider = (DataProvider)DotNetNuke.Framework.Reflection.CreateObject("data", "YourCompany.Modules.GuestbookCS", "");
+//            objProvider = (DataProvider)DotNetNuke.Framework.Reflection.CreateObject("data", "Pelsoft.Modules.GuestbookCS", "");
 //        }
 
 //        /// <summary>

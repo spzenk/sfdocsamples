@@ -9,8 +9,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WroxModules.GuestbookCS</RootNamespace>
-    <AssemblyName>WroxModules.GuestbookCS</AssemblyName>
+    <RootNamespace>Pelsoft.GuestbookCS</RootNamespace>
+    <AssemblyName>Pelsoft.GuestbookCS</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -24,7 +24,7 @@
     <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\WroxModules.GuestbookCS.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\Pelsoft.GuestbookCS.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -94,6 +94,7 @@
     </None>
     <None Include="01.00.00.SqlDataProvider" />
     <None Include="GuestbookCS.dnn" />
+    <None Include="script.sql" />
     <None Include="Uninstall.SqlDataProvider" />
   </ItemGroup>
   <ItemGroup>

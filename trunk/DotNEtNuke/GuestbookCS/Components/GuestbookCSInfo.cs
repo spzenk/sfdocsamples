@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Web;
 
-namespace WroxModules.GuestbookCS
+namespace Pelsoft.Modules.GuestbookCS
 {
     public class GuestbookEntryInfo
     {
@@ -17,57 +17,57 @@ namespace WroxModules.GuestbookCS
         #endregion
 
         #region Public Properties
-        /// < summary >
+        /// <summary>
         /// The unique identifier for an entry
-        /// < /summary >
+        /// </summary>
         public int EntryId
         {
             get { return _entryId; }
             set { _entryId = value; }
         }
-        /// < summary >
+        /// <summary>
         /// The id of the module in which it is located
-        /// < /summary >
+        /// </summary>
         public int ModuleId
         {
             get { return _moduleId; }
             set { _moduleId = value; }
         }
-        /// < summary >
+        /// <summary>
         /// The name of the submitter, as entered via the website
-        /// < /summary >
+        /// </summary>
         public string SubmitterName
         {
             get { return _submitterName; }
             set { _submitterName = value; }
         }
-        /// < summary >
+        /// <summary>
         /// The website of the submitter, as entered via the website
-        /// < /summary >
+        /// </summary>
         public string SubmitterWebsite
         {
             get { return _submitterWebsite; }
             set { _submitterWebsite = value; }
         }
-        /// < summary >
+        /// <summary>
         /// The submitter comments as entered via the website
-        /// < /summary >
+        /// </summary>
         public string SubmitterComment
         {
             get { return _submitterComment; }
             set { _submitterComment = value; }
         }
-        /// < summary >
+        /// <summary >
         /// The date submitted
-        /// < /summary >
+        /// </summary>
         public DateTime SubmissionDate
         {
             get { return _submissionDate; }
             set { _submissionDate = value; }
         }
-        /// < summary >
+        /// <summary >
         /// Is this entry approved?
-        /// < /summary >
+        /// </summary>
         public bool IsApproved
         {
             get { return _isApproved; }
@@ -104,7 +104,7 @@ namespace WroxModules.GuestbookCS
 //using System.Configuration;
 //using System.Data;
 
-//namespace YourCompany.Modules.GuestbookCS
+//namespace Pelsoft.Modules.GuestbookCS
 //{
 
 //    /// ----------------------------------------------------------------------------- 

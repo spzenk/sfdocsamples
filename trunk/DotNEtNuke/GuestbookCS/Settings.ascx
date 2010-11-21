@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="false" Inherits="YourCompany.Modules.GuestbookCS.Settings" Codebehind="Settings.ascx.cs" %>
+<%@ Control Language="C#" AutoEventWireup="false" Inherits="Pelsoft.Modules.GuestbookCS.Settings" Codebehind="Settings.ascx.cs" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 <table cellspacing="0" cellpadding="2" border="0" summary="GuestbookCS Settings Design Table">
     <tr>

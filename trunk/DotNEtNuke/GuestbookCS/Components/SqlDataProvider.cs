@@ -5,7 +5,7 @@ using System.Data;
 using DotNetNuke.Framework.Providers;
 using Microsoft.ApplicationBlocks.Data;
 
-namespace WroxModules.GuestbookCS
+namespace Pelsoft.Modules.GuestbookCS
 {
     public class SqlDataProvider //:DataProvider
     {
@@ -24,11 +24,11 @@ namespace WroxModules.GuestbookCS
         #region cstor
 
 
-        /// < summary >
+        /// <summary>
         /// cstor used to create the sqlProvider with required parameters from
         /// the configuration
         /// section of web.config file
-        /// < /summary >
+        /// </summary>
         public SqlDataProvider()
         {
             Provider provider = (Provider)providerConfiguration.Providers[providerConfiguration.DefaultProvider];
@@ -56,20 +56,35 @@ namespace WroxModules.GuestbookCS
         }
         #endregion
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="moduleId"></param>
+        /// <param name="submitterName"></param>
+        /// <param name="submitterWebsite"></param>
+        /// <param name="submitterComment"></param>
+        /// <param name="submissionDate"></param>
+        /// <param name="isApproved"></param>
         public void InsertGuestbookEntry(int moduleId, string submitterName, string submitterWebsite, string submitterComment, DateTime submissionDate, bool isApproved)
         {
             SqlHelper.ExecuteNonQuery(connectionString, GetFullyQualifiedName("InsertGuestbookEntry"), moduleId,
             submitterName, submitterWebsite, submitterComment,
             submissionDate, isApproved);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="moduleId"></param>
+        /// <param name="entryId"></param>
         public void ApproveGuestbookEntry(int moduleId, int entryId)
         {
-            SqlHelper.ExecuteNonQuery(connectionString,
-            GetFullyQualifiedName("AproveGuestbookEntry"),
-            moduleId, entryId);
+            SqlHelper.ExecuteNonQuery(connectionString,            GetFullyQualifiedName("AproveGuestbookEntry"),            moduleId, entryId);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="moduleId"></param>
+        /// <param name="entryId"></param>
         public void DeleteGuestbookEntry(int moduleId, int entryId)
         {
             SqlHelper.ExecuteNonQuery(connectionString, GetFullyQualifiedName("DeleteGuestbookEntry"), moduleId, entryId);
@@ -121,7 +136,7 @@ namespace WroxModules.GuestbookCS
 //using DotNetNuke.Common.Utilities;
 //using DotNetNuke.Framework.Providers;
 
-//namespace YourCompany.Modules.GuestbookCS
+//namespace Pelsoft.Modules.GuestbookCS
 //{
 
 //    /// ----------------------------------------------------------------------------- 
@@ -140,7 +155,7 @@ namespace WroxModules.GuestbookCS
 //        #region "Private Members"
 
 //        private const string ProviderType = "data";
-//        private const string ModuleQualifier = "YourCompany_";
+//        private const string ModuleQualifier = "Pelsoft_";
 
 //        private ProviderConfiguration _providerConfiguration = ProviderConfiguration.GetProviderConfiguration(ProviderType);
 //        private string _connectionString;

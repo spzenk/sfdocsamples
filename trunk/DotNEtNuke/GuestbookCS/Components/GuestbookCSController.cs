@@ -7,8 +7,11 @@ using DotNetNuke.Common.Utilities;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Services.Search;
 
-namespace WroxModules.GuestbookCS
+namespace Pelsoft.Modules.GuestbookCS
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class GuestbookCSController
     {
         SqlDataProvider _SqlDataProvider = null;
@@ -18,9 +21,9 @@ namespace WroxModules.GuestbookCS
             _SqlDataProvider = new SqlDataProvider();
         }
         #region Public Methods
-        /// < summary >
+        /// <summary>
         /// This method will insert a guestbook entry to the system
-        /// < /summary >
+        /// </summary>
         /// < param name=”oInfo” > The hydrated information object < /param >
         public void InsertGuestbookEntry(GuestbookEntryInfo oInfo)
         {
@@ -29,36 +32,36 @@ namespace WroxModules.GuestbookCS
             oInfo.SubmitterComment,
             oInfo.SubmissionDate, oInfo.IsApproved);
         }
-        /// < summary >
+        /// <summary>
         /// This method will approve a guestbook entry
-        /// < /summary >
+        /// </summary>
         /// < param name=”moduleId” > The id of the module used to modify theentries < /param >
         /// < param name=”entryId” > The id of the entry < /param >
         public void ApproveGuestbookEntry(int moduleId, int entryId)
         {
             _SqlDataProvider.ApproveGuestbookEntry(moduleId, entryId);
         }
-        /// < summary >
+        /// <summary>
         /// This method will delete a guestbook entry
-        /// < /summary >
+        /// </summary>
         /// < param name=”moduleId” > The id of the module used to delete theentries < /param >
         /// < param name=”entryId” > The id of the entry < /param >
         public void DeleteGuestbookEntry(int moduleId, int entryId)
         {
             _SqlDataProvider.DeleteGuestbookEntry(moduleId, entryId);
         }
-        /// < summary >
+        /// <summary>
         /// This method will get the listing of all approved entries
-        /// < /summary >
+        /// </summary>
         /// /// < param name=”moduleId” > The instance to get entries for < /param >
         /// < returns > The hydrated collection of information objects < /returns >
         public List<GuestbookEntryInfo> GetApprovedEntries(int moduleId)
         {
             return CBO.FillCollection<GuestbookEntryInfo>(_SqlDataProvider.GetApprovedEntries(moduleId));
         }
-        /// < summary >
+        /// <summary>
         /// This method will get the listing of all entries
-        /// < /summary >
+        /// </summary>
         /// < param name=”moduleId” > The instance to get entries for < /param >
         /// < returns > The hydrated collection of information objects < /returns >
         public List<GuestbookEntryInfo> GetAllEntries(int moduleId)
@@ -106,7 +109,7 @@ namespace WroxModules.GuestbookCS
 //using DotNetNuke.Services.Search;
 //using DotNetNuke.Entities.Modules;
 
-//namespace YourCompany.Modules.GuestbookCS
+//namespace Pelsoft.Modules.GuestbookCS
 //{
 
 //    /// ----------------------------------------------------------------------------- 

@@ -1,4 +1,4 @@
-<%@ Control Language="C#" Inherits="YourCompany.Modules.GuestbookCS.ViewGuestbookCS"
+<%@ Control Language="C#" Inherits="Pelsoft.Modules.GuestbookCS.ViewGuestbookCS"
     AutoEventWireup="true" CodeBehind="ViewGuestbookCS.ascx.cs" %>
 <asp:DataList ID="lstContent" DataKeyField="ItemID" runat="server" CellPadding="4"
     OnItemDataBound="lstContent_ItemDataBound">
