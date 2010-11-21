@@ -10,33 +10,33 @@
 
 /** Drop FAQs Table **/
 
-ALTER TABLE {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS] DROP CONSTRAINT [FK_{objectQualifier}GuestbookCS_{objectQualifier}Modules]
+ALTER TABLE {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS] DROP CONSTRAINT [FK_{objectQualifier}GuestbookCS_{objectQualifier}Modules]
 GO
 
-ALTER TABLE {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS] DROP CONSTRAINT [PK_{objectQualifier}YourCompany_GuestbookCS]
+ALTER TABLE {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS] DROP CONSTRAINT [PK_{objectQualifier}Pelsoft_GuestbookCS]
 GO
 
-DROP INDEX {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS].[IX_{objectQualifier}YourCompany_GuestbookCS]
+DROP INDEX {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS].[IX_{objectQualifier}Pelsoft_GuestbookCS]
 GO
 
-DROP TABLE {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS]
+DROP TABLE {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS]
 GO
 
 /** Drop Stored Procedures **/
 
-DROP PROCEDURE {databaseOwner}[{objectQualifier}YourCompany_GetGuestbookCSs]
+DROP PROCEDURE {databaseOwner}[{objectQualifier}Pelsoft_GetGuestbookCSs]
 GO
 
-DROP PROCEDURE {databaseOwner}[{objectQualifier}YourCompany_GetGuestbookCS]
+DROP PROCEDURE {databaseOwner}[{objectQualifier}Pelsoft_GetGuestbookCS]
 GO
 
-DROP PROCEDURE {databaseOwner}[{objectQualifier}YourCompany_AddGuestbookCS]
+DROP PROCEDURE {databaseOwner}[{objectQualifier}Pelsoft_AddGuestbookCS]
 GO
 
-DROP PROCEDURE {databaseOwner}[{objectQualifier}YourCompany_UpdateGuestbookCS]
+DROP PROCEDURE {databaseOwner}[{objectQualifier}Pelsoft_UpdateGuestbookCS]
 GO
 
-DROP PROCEDURE {databaseOwner}[{objectQualifier}YourCompany_DeleteGuestbookCS]
+DROP PROCEDURE {databaseOwner}[{objectQualifier}Pelsoft_DeleteGuestbookCS]
 GO
 
 /************************************************************/

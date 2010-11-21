@@ -10,9 +10,9 @@
 
 /** Create Table **/
 
-if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}YourCompany_GuestbookCS]') and OBJECTPROPERTY(id, N'IsTable') = 1)
+if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS]') and OBJECTPROPERTY(id, N'IsTable') = 1)
 	BEGIN
-		CREATE TABLE {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS]
+		CREATE TABLE {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS]
 		(
 			[ModuleID] [int] NOT NULL,
 			[ItemID] [int] NOT NULL IDENTITY(1, 1),
@@ -21,40 +21,40 @@ if not exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwne
 			[CreatedDate] [datetime] NOT NULL
 		)
 
-		ALTER TABLE {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS] ADD CONSTRAINT [PK_{objectQualifier}YourCompany_GuestbookCS] PRIMARY KEY CLUSTERED  ([ItemID])
-		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}YourCompany_GuestbookCS] ON {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS] ([ModuleID])
+		ALTER TABLE {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS] ADD CONSTRAINT [PK_{objectQualifier}Pelsoft_GuestbookCS] PRIMARY KEY CLUSTERED  ([ItemID])
+		CREATE NONCLUSTERED INDEX [IX_{objectQualifier}Pelsoft_GuestbookCS] ON {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS] ([ModuleID])
 
-		ALTER TABLE {databaseOwner}[{objectQualifier}YourCompany_GuestbookCS] WITH NOCHECK ADD CONSTRAINT [FK_{objectQualifier}YourCompany_GuestbookCS_{objectQualifier}Modules] FOREIGN KEY ([ModuleID]) REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]) ON DELETE CASCADE NOT FOR REPLICATION
+		ALTER TABLE {databaseOwner}[{objectQualifier}Pelsoft_GuestbookCS] WITH NOCHECK ADD CONSTRAINT [FK_{objectQualifier}Pelsoft_GuestbookCS_{objectQualifier}Modules] FOREIGN KEY ([ModuleID]) REFERENCES {databaseOwner}[{objectQualifier}Modules] ([ModuleID]) ON DELETE CASCADE NOT FOR REPLICATION
 	END
 GO
 
 
 /** Drop Existing Stored Procedures **/
 
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}YourCompany_GetGuestbookCSs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-	drop procedure {databaseOwner}{objectQualifier}YourCompany_GetGuestbookCSs
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}Pelsoft_GetGuestbookCSs]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}Pelsoft_GetGuestbookCSs
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}YourCompany_GetGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-	drop procedure {databaseOwner}{objectQualifier}YourCompany_GetGuestbookCS
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}Pelsoft_GetGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}Pelsoft_GetGuestbookCS
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}YourCompany_AddGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-	drop procedure {databaseOwner}{objectQualifier}YourCompany_AddGuestbookCS
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}Pelsoft_AddGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}Pelsoft_AddGuestbookCS
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}YourCompany_UpdateGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-	drop procedure {databaseOwner}{objectQualifier}YourCompany_UpdateGuestbookCS
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}Pelsoft_UpdateGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}Pelsoft_UpdateGuestbookCS
 GO
 
-if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}YourCompany_DeleteGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
-	drop procedure {databaseOwner}{objectQualifier}YourCompany_DeleteGuestbookCS
+if exists (select * from dbo.sysobjects where id = object_id(N'{databaseOwner}[{objectQualifier}Pelsoft_DeleteGuestbookCS]') and OBJECTPROPERTY(id, N'IsProcedure') = 1)
+	drop procedure {databaseOwner}{objectQualifier}Pelsoft_DeleteGuestbookCS
 GO
 
 /** Create Stored Procedures **/
 
 
-create procedure {databaseOwner}{objectQualifier}YourCompany_GetGuestbookCSs
+create procedure {databaseOwner}{objectQualifier}Pelsoft_GetGuestbookCSs
 
 	@ModuleId int
 
@@ -64,14 +64,14 @@ select ModuleId,
        ItemId,
        Content,
        CreatedByUser,
-       {objectQualifier}YourCompany_GuestbookCS.CreatedDate,
+       {objectQualifier}Pelsoft_GuestbookCS.CreatedDate,
        'CreatedByUserName' = {objectQualifier}Users.FirstName + ' ' + {objectQualifier}Users.LastName
-from {objectQualifier}YourCompany_GuestbookCS
-inner join {objectQualifier}Users on {objectQualifier}YourCompany_GuestbookCS.CreatedByUser = {objectQualifier}Users.UserId
+from {objectQualifier}Pelsoft_GuestbookCS
+inner join {objectQualifier}Users on {objectQualifier}Pelsoft_GuestbookCS.CreatedByUser = {objectQualifier}Users.UserId
 where  ModuleId = @ModuleId
 GO
 
-create procedure {databaseOwner}{objectQualifier}YourCompany_GetGuestbookCS
+create procedure {databaseOwner}{objectQualifier}Pelsoft_GetGuestbookCS
 
 	@ModuleId int,
         @ItemId int
@@ -82,16 +82,16 @@ select ModuleId,
        ItemId,
        Content,
        CreatedByUser,
-       {objectQualifier}YourCompany_GuestbookCS.CreatedDate,
+       {objectQualifier}Pelsoft_GuestbookCS.CreatedDate,
        'CreatedByUserName' = {objectQualifier}Users.FirstName + ' ' + {objectQualifier}Users.LastName
-from {objectQualifier}YourCompany_GuestbookCS
-inner join {objectQualifier}Users on {objectQualifier}YourCompany_GuestbookCS.CreatedByUser = {objectQualifier}Users.UserId
+from {objectQualifier}Pelsoft_GuestbookCS
+inner join {objectQualifier}Users on {objectQualifier}Pelsoft_GuestbookCS.CreatedByUser = {objectQualifier}Users.UserId
 where  ModuleId = @ModuleId
 and ItemId = @ItemId
 GO
 
 
-create procedure {databaseOwner}{objectQualifier}YourCompany_AddGuestbookCS
+create procedure {databaseOwner}{objectQualifier}Pelsoft_AddGuestbookCS
 
 	@ModuleId       int,
 	@Content        ntext,
@@ -99,7 +99,7 @@ create procedure {databaseOwner}{objectQualifier}YourCompany_AddGuestbookCS
 
 as
 
-insert into {objectQualifier}YourCompany_GuestbookCS (
+insert into {objectQualifier}Pelsoft_GuestbookCS (
 	ModuleId,
 	Content,
 	CreatedByUser,
@@ -114,7 +114,7 @@ values (
 
 GO
 
-create procedure {databaseOwner}{objectQualifier}YourCompany_UpdateGuestbookCS
+create procedure {databaseOwner}{objectQualifier}Pelsoft_UpdateGuestbookCS
 
 	@ModuleId       int,
         @ItemId         int,
@@ -123,7 +123,7 @@ create procedure {databaseOwner}{objectQualifier}YourCompany_UpdateGuestbookCS
 
 as
 
-update {objectQualifier}YourCompany_GuestbookCS
+update {objectQualifier}Pelsoft_GuestbookCS
 set    Content       = @Content,
        CreatedByUser = @UserID,
        CreatedDate   = getdate()
@@ -132,7 +132,7 @@ and    ItemId = @ItemId
 
 GO
 
-create procedure {databaseOwner}{objectQualifier}YourCompany_DeleteGuestbookCS
+create procedure {databaseOwner}{objectQualifier}Pelsoft_DeleteGuestbookCS
 
 	@ModuleId       int,
         @ItemId         int
@@ -140,7 +140,7 @@ create procedure {databaseOwner}{objectQualifier}YourCompany_DeleteGuestbookCS
 as
 
 delete
-from   {objectQualifier}YourCompany_GuestbookCS
+from   {objectQualifier}Pelsoft_GuestbookCS
 where  ModuleId = @ModuleId
 and    ItemId = @ItemId
 

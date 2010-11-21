@@ -33,7 +33,7 @@ using DotNetNuke.Services.Localization;
 using DotNetNuke.Entities.Modules;
 using DotNetNuke.Entities.Modules.Actions;
 
-namespace YourCompany.Modules.GuestbookCS
+namespace Pelsoft.Modules.GuestbookCS
 {
 
     /// ----------------------------------------------------------------------------- 
@@ -60,21 +60,21 @@ namespace YourCompany.Modules.GuestbookCS
             try
             {
                 GuestbookCSController objGuestbookCSs = new GuestbookCSController();
-                List<GuestbookCSInfo> colGuestbookCSs;
+                List<GuestbookEntryInfo> colGuestbookCSs;
 
                 // get the content from the GuestbookCS table 
-                colGuestbookCSs = objGuestbookCSs.GetGuestbookCSs(ModuleId);
+                colGuestbookCSs = objGuestbookCSs.GetAllEntries(ModuleId);
 
                 if (colGuestbookCSs.Count == 0)
                 {
                     // add the content to the GuestbookCS table 
-                    GuestbookCSInfo objGuestbookCS = new GuestbookCSInfo();
+                    GuestbookEntryInfo objGuestbookCS = new GuestbookEntryInfo();
                     objGuestbookCS.ModuleId = ModuleId;
-                    objGuestbookCS.Content = Localization.GetString("DefaultContent", LocalResourceFile);
-                    objGuestbookCS.CreatedByUser = this.UserId;
-                    objGuestbookCSs.AddGuestbookCS(objGuestbookCS);
+                    objGuestbookCS.SubmitterComment = Localization.GetString("DefaultContent", LocalResourceFile);
+                    objGuestbookCS.SubmitterName  = this.UserId.ToString();
+                    objGuestbookCSs.InsertGuestbookEntry(objGuestbookCS);
                     // get the content from the GuestbookCS table 
-                    colGuestbookCSs = objGuestbookCSs.GetGuestbookCSs(ModuleId);
+                    //colGuestbookCSs = objGuestbookCSs.GetGuestbookCSs(ModuleId);
                 }
 
                 // bind the content to the repeater 
@@ -104,7 +104,7 @@ namespace YourCompany.Modules.GuestbookCS
             if (!string.IsNullOrEmpty((string)Settings["template"]))
             {
                 strContent = (string)Settings["template"];
-                ArrayList objProperties = CBO.GetPropertyInfo(typeof(GuestbookCSInfo));
+                ArrayList objProperties = CBO.GetPropertyInfo(typeof(GuestbookEntryInfo));
                 foreach (PropertyInfo objPropertyInfo in objProperties)
                 {
                     strContent = strContent.Replace("[" + objPropertyInfo.Name.ToUpper() + "]", Server.HtmlDecode(DataBinder.Eval(e.Item.DataItem, objPropertyInfo.Name).ToString()));

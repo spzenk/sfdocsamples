@@ -1,4 +1,4 @@
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EditGuestbookCS.ascx.cs" Inherits="YourCompany.Modules.GuestbookCS.EditGuestbookCS" %>
+<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EditGuestbookCS.ascx.cs" Inherits="Pelsoft.Modules.GuestbookCS.EditGuestbookCS" %>
 <%@ Register TagPrefix="dnn" TagName="Label" Src="~/controls/LabelControl.ascx" %>
 <%@ Register TagPrefix="dnn" TagName="TextEditor" Src="~/controls/TextEditor.ascx"%>
 <%@ Register TagPrefix="dnn" TagName="Audit" Src="~/controls/ModuleAuditControl.ascx" %>

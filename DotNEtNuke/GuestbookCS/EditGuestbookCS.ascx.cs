@@ -27,7 +27,7 @@ using DotNetNuke.Services.Exceptions;
 using DotNetNuke.Services.Localization;
 using DotNetNuke.Entities.Modules;
 
-namespace WroxModules.GuestbookCS
+namespace Pelsoft.Modules.GuestbookCS
 {
 
     /// ----------------------------------------------------------------------------- 
@@ -80,7 +80,7 @@ namespace WroxModules.GuestbookCS
                     {
                         // get content 
                         GuestbookCSController objGuestbookCSs = new GuestbookCSController();
-                        GuestbookCSInfo objGuestbookCS = objGuestbookCSs.GetGuestbookCS(ModuleId, ItemId);
+                        GuestbookEntryInfo objGuestbookCS = objGuestbookCSs.GetGuestbookCS(ModuleId, ItemId);
                         if ((objGuestbookCS != null))
                         {
                             txtContent.Text = objGuestbookCS.Content;
@@ -145,22 +145,22 @@ namespace WroxModules.GuestbookCS
             {
                 GuestbookCSController objGuestbookCSs = new GuestbookCSController();
 
-                GuestbookCSInfo objGuestbookCS = new GuestbookCSInfo();
+                GuestbookEntryInfo objGuestbookCS = new GuestbookEntryInfo();
 
                 objGuestbookCS.ModuleId = ModuleId;
-                objGuestbookCS.ItemId = ItemId;
-                objGuestbookCS.Content = txtContent.Text;
-                objGuestbookCS.CreatedByUser = this.UserId;
+                //objGuestbookCS.ItemId = ItemId;
+                //objGuestbookCS.Content = txtContent.Text;
+                //objGuestbookCS.CreatedByUser = this.UserId;
 
                 if (Null.IsNull(ItemId))
                 {
                     // add the content within the GuestbookCS table 
-                    objGuestbookCSs.AddGuestbookCS(objGuestbookCS);
+                    objGuestbookCSs.InsertGuestbookEntry(objGuestbookCS);
                 }
                 else
                 {
                     // update the content within the GuestbookCS table 
-                    objGuestbookCSs.UpdateGuestbookCS(objGuestbookCS);
+                    //objGuestbookCSs.ApproveGuestbookEntry(objGuestbookCS);
                 }
 
                 // Redirect back to the portal home page 
@@ -191,7 +191,7 @@ namespace WroxModules.GuestbookCS
                 {
 
                     GuestbookCSController objGuestbookCSs = new GuestbookCSController();
-                    objGuestbookCSs.DeleteGuestbookCS(ModuleId, ItemId);
+                    objGuestbookCSs.DeleteGuestbookEntry(ModuleId, ItemId);
 
                 }
 

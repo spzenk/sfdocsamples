@@ -1,34 +1,34 @@
 <dotnetnuke version="3.0" type="Module">
   <folders>
     <folder>
-      <name>YourCompany.GuestbookCS</name>
+      <name>Pelsoft.GuestbookCS</name>
       <friendlyname>GuestbookCS</friendlyname>
-      <foldername>YourCompany.GuestbookCS</foldername>
-      <modulename>YourCompany.GuestbookCS</modulename>
+      <foldername>Pelsoft.GuestbookCS</foldername>
+      <modulename>Pelsoft.GuestbookCS</modulename>
       <description>A GuestbookCS module</description>
       <version>01.00.00</version>
-      <businesscontrollerclass>YourCompany.Modules.GuestbookCS.GuestbookCSController</businesscontrollerclass>
+      <businesscontrollerclass>Pelsoft.Modules.GuestbookCS.GuestbookCSController</businesscontrollerclass>
       <modules>
         <module>
           <friendlyname>GuestbookCS</friendlyname>
           <cachetime>0</cachetime>
           <controls>
             <control>
-              <src>DesktopModules/YourCompany.GuestbookCS/ViewGuestbookCS.ascx</src>
+              <src>DesktopModules/Pelsoft.GuestbookCS/ViewGuestbookCS.ascx</src>
               <type>View</type>
               <helpurl></helpurl>
             </control>
             <control>
               <key>Edit</key>
               <title>Edit Content</title>
-              <src>DesktopModules/YourCompany.GuestbookCS/EditGuestbookCS.ascx</src>
+              <src>DesktopModules/Pelsoft.GuestbookCS/EditGuestbookCS.ascx</src>
               <type>Edit</type>
               <helpurl></helpurl>
             </control>
             <control>
               <key>Settings</key>
               <title>GuestbookCS Settings</title>
-              <src>DesktopModules/YourCompany.GuestbookCS/Settings.ascx</src>
+              <src>DesktopModules/Pelsoft.GuestbookCS/Settings.ascx</src>
               <type>Edit</type>
               <helpurl></helpurl>
             </control>
