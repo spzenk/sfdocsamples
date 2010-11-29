@@ -126,7 +126,7 @@ namespace TestFTPCOM
 
         private void BTConnect_Click(object sender, System.EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
+        
 
             ftpc.Username = EFUsername.Text;
             ftpc.Password = EFPassword.Text;
