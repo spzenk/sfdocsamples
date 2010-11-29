@@ -233,7 +233,7 @@
             this.EFPassword.Name = "EFPassword";
             this.EFPassword.Size = new System.Drawing.Size(104, 20);
             this.EFPassword.TabIndex = 27;
-            this.EFPassword.Text = "anonymous@free.fr";
+            this.EFPassword.Text = "D3s4rr0ll0";
             // 
             // Text1
             // 
@@ -249,7 +249,7 @@
             this.EFUsername.Name = "EFUsername";
             this.EFUsername.Size = new System.Drawing.Size(80, 20);
             this.EFUsername.TabIndex = 25;
-            this.EFUsername.Text = "anonymous";
+            this.EFUsername.Text = "desarrollo";
             // 
             // label2
             // 
@@ -267,7 +267,7 @@
             this.CBFTPServer.Name = "CBFTPServer";
             this.CBFTPServer.Size = new System.Drawing.Size(136, 21);
             this.CBFTPServer.TabIndex = 22;
-            this.CBFTPServer.Text = "localhost";
+            this.CBFTPServer.Text = "172.22.13.150";
             // 
             // label1
             // 
