@@ -1,0 +1,11 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Maria.Master" AutoEventWireup="true" CodeBehind="Maria.Ubicacion.Master.master.cs" Inherits="Maria.Maria.Ubicacion.Master" %>
+<%@ Register src="Menues/VMenu_Localidad.ascx" tagname="VMenu_Localidad" tagprefix="uc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContetnPH1" runat="server">
+
+    <uc1:VMenu_Localidad ID="VMenu_Localidad1" runat="server" />
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContetnPH2" runat="server">
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
