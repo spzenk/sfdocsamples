@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MainMenu>
+	<ItemMenu AuthorizationRuleName="" Name="Inicio" Url="~\Forms\RecordSetMannager\SelectRecordSet.aspx?AlreadyOpened=true" Title="Inicios" Description="Página principal del sitio" ImageSmall="~\Images"/>
+	<ItemMenu AuthorizationRuleName="" Name="Localidad" Url="~\Forms\RecordSetMannager\RecordSetMannager.aspx" Title="Gestionar Lote" Description="o" ImageSmall="~\Images"/>
+	<ItemMenu AuthorizationRuleName="" Name="Municipalidad" Url="~\Forms\RecordsAdministration\ResetRecordManagement.aspx?MassiveClosure=false" Title="Municipalidad" Description=""/>
+	<ItemMenu AuthorizationRuleName="" Name="Tramites" Url="" Title="Tramites" Description="Reportes"/>
+	<ItemMenu AuthorizationRuleName="" Name="Noticias" Url="" Title="Sistema" Description="Sistema"/>
+</MainMenu>
