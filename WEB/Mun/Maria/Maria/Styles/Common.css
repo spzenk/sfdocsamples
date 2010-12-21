@@ -36,3 +36,49 @@ border-width:1px 1px 0;
 height:30px;
 margin-left:180px;
 }
+
+.hasLeftCol #contentCol {
+border-left:1px solid #B3B3B3;
+margin-left:181px;
+}
+
+#contentCol {
+background-color:#FFFFFF;
+padding-top:15px;
+}
+
+.clearfix {
+display:block;
+}
+
+
+#sizer {
+	width: 58%;
+	max-width: 192px;
+	margin: 0 auto;
+	padding: 0;
+}
+#expander
+{
+    position: relative;
+    min-width: 772px; /* Critical Safari fix! */
+    margin: 0 -386px 0 -386px;
+    background: #FFFFFF;
+    background-image: none;
+    background-repeat: repeat-y;
+    background-position: left top;
+}
+
+/* Holly hack for IE \*/
+* html #expander { height: 0; }
+/* */
+
+#wrapper { 
+	width: 100%; /* helps IE get the child percentages right. */
+	border-left:10px solid #FFFFFF;
+	border-bottom:10px solid #FFFFFF;
+	text-align:left;
+	background-image:url(Images/rightcol_bg.png);
+	background-repeat:repeat-y;
+	background-position:top right;
+} 
