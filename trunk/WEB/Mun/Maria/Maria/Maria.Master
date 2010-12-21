@@ -9,65 +9,48 @@
     <link href="Styles/Common.css" rel="stylesheet" type="text/css" />
       <link href="Styles/Menu.css" rel="stylesheet" type="text/css" />
    
-    <style type="text/css">
-        .style1
-        {
-            width: 165px;
-            height: 597px;
-        }
-       
-        .style3
-        {
-            height: 597px;
-        }
-        .style4
-        {
-            width: 108px;
-        }
-    </style>
+     <style type="text/css">
+         .style1
+         {
+             width: 240px;
+         }
+     </style>
+   
 </head>
 <body>
     <form id="form1" runat="server">
       <div></div>
     <div>
-        <table style="width:100%;">
+        <table style="width: 100%;">
             <tr class="headNav">
-                <td  colspan="2" >
-                    &nbsp;</td>
-                <td  colspan="2">
+                <td colspan="0" class="style1">
+                    &nbsp;
+                </td>
+                <td colspan="3">
                     <uc1:MainMenu ID="MainMenu1" runat="server" />
                 </td>
             </tr>
             <tr>
-                <td id="LeftContent" class="style1">
+                <td id="LeftContent" colspan="1" class="style1">
                     <div class="LeftPanelMenuDiv" style="line-height: normal; vertical-align: top">
-                  
                         <asp:ContentPlaceHolder ID="ContetnPH1" runat="server">
                         </asp:ContentPlaceHolder>
-                   
-                    </div>                    
-                    
+                    </div>
                 </td>
-                <td id="CentertContent" class="style2" colspan="2">
-                <div id="CenterContentDiv" 
-                        
-                        
-                        style="padding: inherit; border-style: groove; position: relative; width: 866px; height: 442px; top: -271px; left: 0px; float: left;">
-                    
-                    
-                        <asp:ContentPlaceHolder id="ContetnPH2" runat="server">
-                        
+                <td id="CentertContent"  colspan="1">
+                    <div id="CenterContentDiv" style="padding: inherit; border-style: groove; position: relative;
+                        width: 100%; height: 442px; top: 1px; left: 0px; float: left;">
+                        <asp:ContentPlaceHolder ID="ContetnPH2" runat="server">
                         </asp:ContentPlaceHolder>
-                  
-                </div>
-                    
+                    </div>
                 </td>
-                <td id="RightContent" class="style3">
-                    </td>
+                <td id="RightContent" >
+                </td>
             </tr>
             <tr>
                 <td id="FooterContent" class="FooterContent" colspan="4">
-                    &nbsp;</td>
+                    &nbsp;
+                </td>
             </tr>
         </table>
     </div>
