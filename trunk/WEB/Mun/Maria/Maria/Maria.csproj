@@ -85,6 +85,13 @@
     <Compile Include="Menues\VMenu_Localidad.ascx.designer.cs">
       <DependentUpon>VMenu_Localidad.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Localidad_Economia.aspx.cs">
+      <DependentUpon>Localidad_Economia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad_Economia.aspx.designer.cs">
+      <DependentUpon>Localidad_Economia.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Localidad_Historia.aspx.cs">
       <DependentUpon>Localidad_Historia.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,13 +105,6 @@
     </Compile>
     <Compile Include="Modules\Localidad_NaceUnPueblo.aspx.designer.cs">
       <DependentUpon>Localidad_NaceUnPueblo.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Modules\Localidad_UbicacionAcceso.aspx.cs">
-      <DependentUpon>Localidad_UbicacionAcceso.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\Localidad_UbicacionAcceso.aspx.designer.cs">
-      <DependentUpon>Localidad_UbicacionAcceso.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menues\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
@@ -149,7 +149,6 @@
     <Content Include="Menues\VMenu_Localidad.ascx" />
     <Content Include="Modules\Localidad_Historia.aspx" />
     <Content Include="Modules\Localidad_NaceUnPueblo.aspx" />
-    <Content Include="Modules\Localidad_UbicacionAcceso.aspx" />
     <Content Include="Menues\MainMenu.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -170,6 +169,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maria.Ubicacion.Master.master" />
+    <Content Include="Modules\Localidad_Economia.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
