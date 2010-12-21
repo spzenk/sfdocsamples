@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maria {
+namespace Maria.Menues {
     
     
-    public partial class page2 {
+    public partial class VMenu_Localidad {
     }
 }

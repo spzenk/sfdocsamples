@@ -11,9 +11,9 @@
 
         <ul>
 
-                <li><a href="#menuv">Inicio</a> </li>
+                <li><a href="../Modules/HomeWebForm.aspx">Inicio</a> </li>
 
-                <li><a href="#menuv">Localidad</a></li>
+                <li><a href="../Modules/Localidad_UbicacionAcceso.aspx">Localidad</a></li>
 
                 <li><a href="#menuv">Municipalidad</a></li>
 

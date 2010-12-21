@@ -64,6 +64,41 @@
     <Compile Include="Maria.Master.designer.cs">
       <DependentUpon>Maria.Master</DependentUpon>
     </Compile>
+    <Compile Include="Menues\VMenu_Localidad.ascx.cs">
+      <DependentUpon>VMenu_Localidad.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menues\VMenu_Localidad.ascx.designer.cs">
+      <DependentUpon>VMenu_Localidad.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Localidad_Economia.aspx.cs">
+      <DependentUpon>Localidad_Economia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad_Economia.aspx.designer.cs">
+      <DependentUpon>Localidad_Economia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Localidad_Historia.aspx.cs">
+      <DependentUpon>Localidad_Historia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad_Historia.aspx.designer.cs">
+      <DependentUpon>Localidad_Historia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Localidad_NaceUnPueblo.aspx.cs">
+      <DependentUpon>Localidad_NaceUnPueblo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad_NaceUnPueblo.aspx.designer.cs">
+      <DependentUpon>Localidad_NaceUnPueblo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Localidad_UbicacionAcceso.aspx.cs">
+      <DependentUpon>Localidad_UbicacionAcceso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad_UbicacionAcceso.aspx.designer.cs">
+      <DependentUpon>Localidad_UbicacionAcceso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menues\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -85,12 +120,12 @@
     <Compile Include="Modules\HomeWebForm.aspx.designer.cs">
       <DependentUpon>HomeWebForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page2.aspx.cs">
-      <DependentUpon>page2.aspx</DependentUpon>
+    <Compile Include="Modules\Municipalidad.aspx.cs">
+      <DependentUpon>Municipalidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page2.aspx.designer.cs">
-      <DependentUpon>page2.aspx</DependentUpon>
+    <Compile Include="Modules\Municipalidad.aspx.designer.cs">
+      <DependentUpon>Municipalidad.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -104,6 +139,11 @@
     <Content Include="Images\bg_main.png" />
     <Content Include="Images\bg_up.png" />
     <Content Include="Images\bottom_shadow.png" />
+    <Content Include="Menues\VMenu_Localidad.ascx" />
+    <Content Include="Modules\Localidad_Economia.aspx" />
+    <Content Include="Modules\Localidad_Historia.aspx" />
+    <Content Include="Modules\Localidad_NaceUnPueblo.aspx" />
+    <Content Include="Modules\Localidad_UbicacionAcceso.aspx" />
     <Content Include="Menues\MainMenu.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -111,7 +151,7 @@
     <Content Include="Menues\MainMenu.ascx" />
     <Content Include="Menues\VMenu_Home.ascx" />
     <Content Include="Modules\HomeWebForm.aspx" />
-    <Content Include="page2.aspx" />
+    <Content Include="Modules\Municipalidad.aspx" />
     <Content Include="Styles\Common.css" />
     <Content Include="Styles\Menu.css" />
   </ItemGroup>
