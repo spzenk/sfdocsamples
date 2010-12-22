@@ -1,0 +1,61 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Maquetado.Site1" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Pagina de pruebas de master pages</title>
+    <link href="Styles/site1.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="wrap">
+        <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server" />
+       <div id="GeneralContainer" class="clearfix">
+                <div id="GCHeader">
+                    <table width="100%"   border="2">
+                        <tr>
+                            <td align="left"  bgcolor="#CCCC00">
+                                <p>columna izquierda cabecera</p>
+                            </td>
+                            <td align="right" bgcolor="#FF9900">
+                                  <p>columna derecha cabecera</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="GCContent">
+                    <div id="GCRightContent">
+                        <table class="GCRCHeader">
+                            <tr>
+                                <td>
+                                       <p>Content--> Cabecera --> fila 1</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <hr style="height:1px; color:#EEEEEE;" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-size:1.5em; padding:5px 0px 5px 0px; color:#555555; font-weight: bold;">
+                                    <asp:Label ID="lblRecordSetName" runat="server" Text="Etiqueta" />
+                                </td>
+                            </tr>
+                        </table>
+                 
+                               <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                            <ContentTemplate>
+                                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+           
+                        <br />
+                        <div id="GCPreFooter"></div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
