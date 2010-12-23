@@ -58,7 +58,7 @@ h6 {
 p  {
     margin: 1em 0;
     line-height:1.4;
-    height: 284px;
+    height: 10px;
 }
 a {
 	text-decoration:underline;
@@ -117,12 +117,13 @@ a:hover {text-decoration:none;}
 	position:absolute;
 	margin-left:-1000px;
 }
-#leftcolumn{
-	float:left;
-	width:152px;
-	margin-right:-3px; /* IE 3px display bug fix (in conjunction with the rule following below)*/
-	background-color:#EBE4DE;
-	font-size:0.9em;
+#leftcolumn
+{
+    float: left;
+    width: 152px;
+    margin-right: -3px; /* IE 3px display bug fix (in conjunction with the rule following below)*/
+    background-color: #FFFFFF;
+    font-size: 0.9em;
 }
 
 html>body #leftcolumn{margin-right:0;}
