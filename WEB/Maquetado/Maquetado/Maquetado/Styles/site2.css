@@ -1,3 +1,420 @@
-﻿body
+﻿html, body, div, p, h1, h2, h3, h4, h5, h6, blockquote, ol, ul, li, dl, dt, dd, td, form, fieldset, a, img, button {
+     border-style: none;
+    border-color: inherit;
+    border-width: 0;
+    margin: 0;
+    padding: 0;
+
+}
+
+/* 'Jello Mold' page construction technique based on http://www.positioniseverything.net/articles/jello.html */
+body
 {
+    margin: 0;
+    padding: 0 386px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 76%;
+    background-image: url('../Images/bg_tile.jpg');
+    background-repeat: repeat-x;
+    background-color: #FFFFFF;
+    color: #333333;
+}
+
+h1, h2, h3, h4, h5, h6 {color:#573922;}
+
+/*Typographics styles adapted from http://www.thenoodleincident.com/tutorials/typography/ */
+h1
+{
+    margin: 0;
+    font-size: 1.6em;
+    font-weight: normal;
+}
+h2 {
+	margin: 0.5em 0;
+	font-size: 1.5em;
+	font-weight: normal;
+}
+h3 {
+	margin: 0.5em 0;
+	font-size: 1.4em;
+	font-weight: normal;
+}
+h4 {
+	margin: 0.5em 0;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+h5 {
+	margin: 0.5em 0;
+	font-size: 1.0em;
+	font-weight: bold;
+}
+h6 {
+	margin: 0.5em 0;
+	font-size: 0.8em;
+	font-weight: bold;
+}
+p  {
+    margin: 1em 0;
+    line-height:1.4;
+    height: 284px;
+}
+a {
+	text-decoration:underline;
+	color:#F369B1;
+}
+
+a:hover {text-decoration:none;}
+
+#sizer {
+	width: 58%;
+	max-width: 192px;
+	margin: 10px auto 0 auto;
+	padding: 0;
+}
+#expander {
+	position: relative;
+	min-width: 772px; /* Critical Safari fix! */
+	margin: 0 -380px 0 -380px;
+	background: #FFFFFF url('../Images/column_bg.gif') repeat-y right top;
+	top: 80px;
+	left: -59px;
+    height: 512px;
+    width: 1137px;
+}
+
+/* Holly hack for IE \*/
+* html #expander { height: 0; }
+/* */
+
+#wrapper
+{
+    width: 100%; /* helps IE get the child percentages right. */
+    border-bottom: 1px solid #EBE4DE;
+    text-align: left;
+    background-image: url(../Images/column_bg.gif);
+    background-repeat: repeat-y;
+} 
+
+/* http://positioniseverything.net/easyclearing */
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-table;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+
+#skiptocontent{
+	position:absolute;
+	margin-left:-1000px;
+}
+#leftcolumn{
+	float:left;
+	width:152px;
+	margin-right:-3px; /* IE 3px display bug fix (in conjunction with the rule following below)*/
+	background-color:#EBE4DE;
+	font-size:0.9em;
+}
+
+html>body #leftcolumn{margin-right:0;}
+
+#leftcoltop{
+	height:40px;
+	background-color:#FAECE8;	
+	background-image:url(../Images/leftcoltop.gif);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+}
+#loginbox {
+    min-height:124px;	
+	margin:2px;
+	padding:5px 0.5em;
+	border:1px solid #493221;
+	background-color:#FFFFFF;
+	background-image:url(../Images/colgradient_short.jpg);
+	background-repeat:repeat-x;
+	color:#6D584D;
+}
+
+* html #loginbox {height:124px;}
+
+#loginbox h4 {margin:0;}
+
+#leftbarcontainer {
+	margin:2px;
+	padding:4em 0.5em;
+	border:1px solid #6D5B4D;
+	background-color:#FFFFFF;
+}
+#subnav {
+	padding-bottom:1em;
+	overflow:hidden;
+}
+
+#subnav a {}
+
+#subnav a:hover {text-decoration:underline;}
+
+.leftbaritem {padding:2em 0.5em;}
+
+#rightcolumn{
+	float:right;
+	width:152px;
+	margin-left:-3px; /* IE 3px display bug fix (in conjunction with the rule following below)*/
+	background-color:#EBE4DE;
+	font-size:0.9em;
+}
+html>body #rightcolumn{margin-left:0;}
+
+#rightcoltop{	
+	height:40px;
+	padding:0 1em;
+	text-align:right;
+	color:#563821;
+	background-color:#FAECE8;
+	background-image:url(../Images/rightcoltop.gif);
+	background-position:bottom left;
+	background-repeat:no-repeat;
+}
+
+#rightcoltop a {color:#563821;}
+
+#searchbox {
+	position:relative;	
+	height:130px;
+	padding:5px 0.5em;
+	margin-bottom:-2px;
+	background-color:#FFFFFF;
+	background-image: url(../Images/searchbox_bg.jpg);
+	background-repeat: no-repeat;
+}
+
+#searchbox div {
+    position:absolute; 
+    bottom:0.5em; 
+    text-align:right;
+}
+#loginbox .txtBox, #searchbox .txtBox {
+    border:1px solid #64493E;
+    background-color:#FFFFFF;
+    font-size:1em;
+}
+#rightbarcontainer {
+	margin:2px;
+	padding:4em 0.5em;
+	border:1px solid #EAA6CB;
+	background-color:#FFFFFF;
+	background-image:url(../Images/rightbarcontainer_bg.gif);
+	background-repeat:no-repeat;
+}
+.rightbaritem{
+	padding:2em 0.5em;
+	background-image:url(../Images/rightbarheader.gif);
+	background-repeat:no-repeat;
+}
+#centercolumn{
+	height:1%;
+	margin:0;
+	background-image:url(../Images/centercolrightcorner.gif); 
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+html>body #centercolumn {
+	height:auto;
+	margin-left:152px;
+	margin-right:152px;
+}
+#centercoltop{
+	height:18px;	
+	background-image:url(../Images/centercolleftcorner.gif); 
+	background-repeat:no-repeat;
+}
+
+html>body #centercoltop {height:19px;}
+
+#mainnav {	
+	height:22px;
+	background-color:transparent;
+	font-size:1em;
+	background-image:url(../Images/mainnav_bg.gif);
+	background-repeat:repeat-x;
+	background-position:bottom left;	
+}
+
+html>body #mainnav {height:21px;}
+
+#mainnav a {}
+
+#mainnav a:hover {}
+
+#mainnav table {text-align:right;}
+
+#mainnav .item {
+	padding:0em 1em; 
+	border-top:6px solid #FFFFFF;
+	font-weight:bold;
+	color:#6D584D;
+}
+
+html>body #mainnav .item {border-top:6px solid transparent;} 
+
+#mainnav .hover{}
+
+#mainnav .selected {
+	border-top:6px solid #FAEBE7;
+	background-image:url(../Images/mainnavselected.gif);
+	background-repeat:repeat-x;	
+}
+
+html>body #mainnav .selected {border-top:6px solid #FAEBE7;} 
+    
+#header {
+	position:relative;
+	height:134px;
+	margin:2px;
+	border:1px solid #493221;
+    background-color:#FFFFFF;
+	background-image:url(../Images/header_bg.jpg);
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+#maincontent {
+	margin:2px;
+	padding:4em 2em;
+	border:1px solid #EAA6CB;
+	background-image:url(../Images/maincontent_bg.gif);
+	background-repeat:no-repeat;
+	background-position:top right;
+}
+#maincontent .teaser {
+	margin:-0.7em 0 0 0;
+	color:#A68866;
+}
+
+#maincontent h2:before{content: url(../Images/magnolia_small.gif);}
+
+#maincontent fieldset {	
+	margin-bottom:1em;
+	padding:1em;
+	border:1px dotted #EEA2CD;
+	color:#573922;
+}
+
+#maincontent legend {background-color:#FFFFFF;}
+
+* html #maincontent legend {padding:0.5em;}
+
+#maincontent label {line-height:2em;} 
+
+#maincontent .txtBox {
+    border:1px solid #DDD1C4;
+    font-size:1em;
+    background-color:#F5F2EF;
+}
+
+html>body #maincontent .txtBox {font-size:1.2em;}
+
+#maincontent .txtBox:focus {background-color:#FFFFFF;}   
+    
+#maincontent caption {
+    text-align:left; 
+    font-weight:bold;
+}
+
+#maincontent table tr td {padding: 0.2em 0.5em;} 
+
+.button {
+    border:1px solid #64493E;
+    color:#6D584D;
+    background-color:#FAEBE7;
+    font-size:smaller;
+}    
+.imgfloatright {
+	float:right;
+	display:inline;
+	margin: 0.25em 0 0.25em 1em;
+}
+.imgfloatleft {
+	float:left;
+	display:inline;
+	margin: 0.25em 1em 0.25em 0;
+}
+div.readmore {
+	text-align:right;
+}
+#footer {
+    margin:2px;
+    padding:0.5em;
+    font-size:smaller;
+}
+
+#footer a {padding:0 0.5em;}
+
+@media print {	
+	body {
+		margin:0;
+		padding:0;
+		font-size:11pt;
+		line-height:13pt;
+		background:#FFFFFF !important;
+	}
+	#sizer {
+		margin:0;
+		width:auto !important;
+	}
+	#expander {
+		margin:0 !important;
+		background: none;
+	}	
+	#wrapper {
+		border-bottom-style:none;
+		background:none;
+	}	
+	a {
+		color:#666666; 
+		text-decoration:underline;
+	}
+	
+	#leftcolumn, #rightcolumn, #maincontent h2:before {display:none;}	
+	
+	#centercolumn {
+		width:100%;
+		margin:0 !important;
+		background:none;
+	}
+	#centercoltop {
+		height:auto;
+		background:none;
+	}
+	#header {
+		margin:0; 
+		border:none;
+		height:auto;
+		background:none;
+	}
+	
+	/*If the logo is a transparent gif it will look rather unsightly on paper, so you can turn 
+		it off here. */
+	#header img {display:none;}
+	
+	#maincontent {
+		margin:0; 
+		border:none;
+		background:transparent;
+	}
+	
+	#maincontent .teaser {font-style:italic;}
+	
+	#maincontent fieldset {border:none;}
+	
+	#maincontent .txtBox {background:none;}
 }

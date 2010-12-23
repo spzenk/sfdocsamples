@@ -1,0 +1,55 @@
+﻿*
+{
+    margin: 0;
+    padding: 0;
+}
+
+
+html, body
+{
+      height: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    font-family: Verdana, Helvetica, Sans-Serif;
+    font-size: small;
+    height: 100%;
+}
+
+
+.clearfix:after
+{
+    content: ".";   
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix
+{
+    display: inline-block;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix    
+{
+    height: 1%;
+}
+.clearfix
+{
+    display: block;
+}
+/* End hide from IE-mac */
+
+#div1
+{
+    background-position: right top;
+    border-style: hidden;
+    position: relative;
+    min-width: 772px; /* Critical Safari fix! */
+    margin: 0 -186px 0 -186px;
+    background: #FFFFFF ;
+    top: 10px;
+    left: 0px;
+    height: 328px;
+}
