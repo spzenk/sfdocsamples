@@ -71,12 +71,33 @@
     <Compile Include="Site2.Master.designer.cs">
       <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
+    <Compile Include="TestProperties.aspx.cs">
+      <DependentUpon>TestProperties.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TestProperties.aspx.designer.cs">
+      <DependentUpon>TestProperties.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm3.aspx.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm3.aspx.designer.cs">
+      <DependentUpon>WebForm3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -87,8 +108,36 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\ad.jpg" />
+    <Content Include="Images\bg_tile.jpg" />
+    <Content Include="Images\centercolleftcorner.gif" />
+    <Content Include="Images\centercolrightcorner.gif" />
+    <Content Include="Images\colgradient_short.jpg" />
+    <Content Include="Images\column_bg.gif" />
+    <Content Include="Images\company_logo.gif" />
+    <Content Include="Images\header_bg.jpg" />
+    <Content Include="Images\icon-delete.gif" />
+    <Content Include="Images\icon-floppy.gif" />
+    <Content Include="Images\icon-pencil-x.gif" />
+    <Content Include="Images\icon-pencil.gif" />
+    <Content Include="Images\leftcoltop.gif" />
+    <Content Include="Images\magnolia_small.gif" />
+    <Content Include="Images\maincontent_bg.gif" />
+    <Content Include="Images\mainnavselected.gif" />
+    <Content Include="Images\mainnav_bg.gif" />
+    <Content Include="Images\product1.jpg" />
+    <Content Include="Images\product2.jpg" />
+    <Content Include="Images\product3.jpg" />
+    <Content Include="Images\rightbarcontainer_bg.gif" />
+    <Content Include="Images\rightbarheader.gif" />
+    <Content Include="Images\rightcoltop.gif" />
+    <Content Include="Images\searchbox_bg.jpg" />
+    <Content Include="Styles\prop.css" />
     <Content Include="Site2.Master" />
     <Content Include="Styles\site2.css" />
+    <Content Include="TestProperties.aspx" />
+    <Content Include="WebForm2.aspx" />
+    <Content Include="WebForm3.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,18 +4,41 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+     <title>Pagina de pruebas de master pages</title>
+    <link href="Styles/site2.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
-    <div id="wrap">
+	<div id="sizer">
+
         <div id="expander">
             <div id="wrapper" class="clearfix">
                 <form id="form1" runat="server">
-                <div>
-                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                    </asp:ContentPlaceHolder>
+                <div id="leftcolumn">
+                  <div>
+                        <asp:ContentPlaceHolder ID="ContetnPH1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </div>
+                <div id="centercolumn">
+                    <div id="centercoltop">
+                        <%-- Leave blank. --%></div>
+                    <div id="mainnav" align="right">
+                    </div>
+                    <div id="header">
+                    </div>
+                    <div id="maincontent">
+                        <asp:ContentPlaceHolder runat="server" ID="content">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <div id="footer">
+                        &copy;&nbsp;2005 site name <a href="javascript:;" title="Sample link # 1">Link 1</a>&nbsp;<a
+                            href="javascript:;" title="Sample link # 2">Link 2</a>&nbsp;<a href="javascript:;"
+                                title="Sample link # 3">Link 3</a>&nbsp;<a href="javascript:;" title="Sample link # 4">Link
+                                    4</a>
+                    </div>
+                </div>
+                <div id="rightcolumn">
                 </div>
                 </form>
             </div>
