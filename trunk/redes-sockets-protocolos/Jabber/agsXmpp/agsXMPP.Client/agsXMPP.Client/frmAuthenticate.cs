@@ -14,7 +14,7 @@ namespace agsXMPP.Client
     {
         // indica si ya se paso por este metodo o no.-
         bool firsTime = true;
-
+        
         public event OnLogHandler OnLog;
         public frmAuthenticate()
         {
