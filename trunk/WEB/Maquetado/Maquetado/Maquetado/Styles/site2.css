@@ -15,8 +15,7 @@ body
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 76%;
-    background-image: url('../Images/bg_tile.jpg');
-    background-repeat: repeat-x;
+
     background-color: #FFFFFF;
     color: #333333;
 }
@@ -58,7 +57,8 @@ h6 {
 p  {
     margin: 1em 0;
     line-height:1.4;
-    height: 10px;
+    height: 25px;
+    width: 895px;
 }
 a {
 	text-decoration:underline;
@@ -73,15 +73,16 @@ a:hover {text-decoration:none;}
 	margin: 10px auto 0 auto;
 	padding: 0;
 }
-#expander {
-	position: relative;
-	min-width: 772px; /* Critical Safari fix! */
-	margin: 0 -380px 0 -380px;
-	background: #FFFFFF url('../Images/column_bg.gif') repeat-y right top;
-	top: 80px;
-	left: -59px;
-    height: 512px;
-    width: 1137px;
+#expander
+{
+    position: relative;
+    min-width: 772px; /* Critical Safari fix! */
+    margin: 0 0px 0 -380px;
+    background: #FFFFFF none repeat-y right top;
+    top: 0px;
+    left: -59px;
+    height: 707px;
+    width: 100%;
 }
 
 /* Holly hack for IE \*/
@@ -113,10 +114,7 @@ a:hover {text-decoration:none;}
 .clearfix {display: block;}
 /* End hide from IE-mac */
 
-#skiptocontent{
-	position:absolute;
-	margin-left:-1000px;
-}
+
 #leftcolumn
 {
     float: left;
@@ -135,16 +133,7 @@ html>body #leftcolumn{margin-right:0;}
 	background-position:bottom right;
 	background-repeat:no-repeat;
 }
-#loginbox {
-    min-height:124px;	
-	margin:2px;
-	padding:5px 0.5em;
-	border:1px solid #493221;
-	background-color:#FFFFFF;
-	background-image:url(../Images/colgradient_short.jpg);
-	background-repeat:repeat-x;
-	color:#6D584D;
-}
+
 
 * html #loginbox {height:124px;}
 
@@ -189,26 +178,8 @@ html>body #rightcolumn{margin-left:0;}
 
 #rightcoltop a {color:#563821;}
 
-#searchbox {
-	position:relative;	
-	height:130px;
-	padding:5px 0.5em;
-	margin-bottom:-2px;
-	background-color:#FFFFFF;
-	background-image: url(../Images/searchbox_bg.jpg);
-	background-repeat: no-repeat;
-}
 
-#searchbox div {
-    position:absolute; 
-    bottom:0.5em; 
-    text-align:right;
-}
-#loginbox .txtBox, #searchbox .txtBox {
-    border:1px solid #64493E;
-    background-color:#FFFFFF;
-    font-size:1em;
-}
+
 #rightbarcontainer {
 	margin:2px;
 	padding:4em 0.5em;

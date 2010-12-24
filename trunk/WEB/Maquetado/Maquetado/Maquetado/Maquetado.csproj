@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\ad.jpg" />
+    <Content Include="Images\bg_gradient_blue.JPG" />
     <Content Include="Images\bg_tile.jpg" />
     <Content Include="Images\centercolleftcorner.gif" />
     <Content Include="Images\centercolrightcorner.gif" />
