@@ -9,40 +9,21 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div class="" id="blueBar">
+    <div id="banner">
     </div>
-    <div id="globalContainer" class="clearfix">
-        <div id="content" class="fb_content clearfix">
-                <div id="maincontent" >
-                    <div id ="leftCol" ></div>
-                    <div id="contentArea">
-                    
-                    </div>
-                </div>
-            </div>
-     </div>
-    <div id="pageFooter">
-        <div id="contentCurve">
-        </div>
-        <div id="footerContainer" class="clearfix">
-            <div class="lfloat">
-                <div class="uiTextSubtitle">
-                    <span title="HPHP - 522 - -jNy42Wv84v0afatmB2f0g - 2417144">Facebook &copy; 2010</span>
-                    · <a title="Usa Facebook en otro idioma." href="/ajax/intl/language_dialog.php?uri=http%3A%2F%2Fwww.facebook.com%2Fhome.php"
-                        rel="dialog">Español</a></div>
-            </div>
-            <div class="uiTextSubtitle rfloat">
-                <a title="Lee nuestro blog, descubre el centro de recursos y encuentra ofertas de trabajo."
-                    accesskey="8" href="http://www.facebook.com/facebook">Acerca de</a> · <a title="Anúnciate en Facebook."
-                        href="http://www.facebook.com/campaign/landing.php?placement=pf&amp;campaign_id=402047449186&amp;extra_1=0">
-                        Publicidad</a> · <a title="Desarrolla en nuestra plataforma." href="http://developers.facebook.com/?ref=pf">
-                            Desarrolladores</a> · <a title="Realiza tu próximo cambio de empleo en nuestra extraordinaria empresa."
-                                href="http://www.facebook.com/careers/?ref=pf">Empleo</a> · <a title="Infórmate acerca de tu privacidad y Facebook."
-                                    href="http://www.facebook.com/privacy/explanation.php">Privacidad</a>
-                · <a title="Consulta nuestras condiciones de servicio." accesskey="9" href="http://www.facebook.com/terms.php?ref=pf">
-                    Condiciones</a> · <a title="Visita nuestro Servicio de ayuda." accesskey="0" href="http://www.facebook.com/help/?ref=pf">
-                        Servicio de ayuda</a></div>
-        </div>
+    <div id="wrap">
+    <div id="leftcontent">
+        <asp:ContentPlaceHolder ID="ContentLeft" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    
+    <div id="centercontent">
+        <asp:ContentPlaceHolder ID="ContentCenter" runat="server">
+        </asp:ContentPlaceHolder>
+    </div>
+    
+    <div id="rightcontent">
+    </div>
     </div>
     </form>
 </body>
