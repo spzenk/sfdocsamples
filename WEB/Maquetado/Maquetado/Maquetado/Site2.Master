@@ -30,13 +30,9 @@
                     </div>
                     <div id="maincontent">
                         <asp:ContentPlaceHolder runat="server" ID="content">
+                       
+                           
                         </asp:ContentPlaceHolder>
-                    </div>
-                    <div id="footer">
-                        &copy;&nbsp;2005 site name <a href="javascript:;" title="Sample link # 1">Link 1</a>&nbsp;<a
-                            href="javascript:;" title="Sample link # 2">Link 2</a>&nbsp;<a href="javascript:;"
-                                title="Sample link # 3">Link 3</a>&nbsp;<a href="javascript:;" title="Sample link # 4">Link
-                                    4</a>
                     </div>
                 </div>
                 <div id="rightcolumn">
