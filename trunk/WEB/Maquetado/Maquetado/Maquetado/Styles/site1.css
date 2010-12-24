@@ -7,12 +7,15 @@
 	
 #leftcontent
 {
+    background-position: #fff;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #FFFFFF #336699 #FFFFFF #FFFFFF;
     position: absolute;
     left: 10px;
     top: 50px;
     width: 200px;
     background: #fff;
-    border: 1px solid #FFFFFF;
 }
 
 	#centercontent
@@ -23,7 +26,7 @@
     background-position: #fff;
     border-style: solid;
     border-width: thin;
-    border-color: #FFFFFF #000 #336699 #000;
+    border-color: #FFFFFF #336699 #FFFFFF #336699;
     background: #fff;
     voice-family: inherit;
     margin-left: 201px;
