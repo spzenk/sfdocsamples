@@ -56,6 +56,27 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Menues\MainMenu.ascx.cs">
+      <DependentUpon>MainMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menues\MainMenu.ascx.designer.cs">
+      <DependentUpon>MainMenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Menues\VMenu_Home.ascx.cs">
+      <DependentUpon>VMenu_Home.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menues\VMenu_Home.ascx.designer.cs">
+      <DependentUpon>VMenu_Home.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Menues\VMenu_Localidad.ascx.cs">
+      <DependentUpon>VMenu_Localidad.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menues\VMenu_Localidad.ascx.designer.cs">
+      <DependentUpon>VMenu_Localidad.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -118,6 +139,10 @@
     <Content Include="Images\rightbarheader.gif" />
     <Content Include="Images\rightcoltop.gif" />
     <Content Include="Images\searchbox_bg.jpg" />
+    <Content Include="Menues\MainMenu.ascx" />
+    <Content Include="Menues\MainMenu.xml" />
+    <Content Include="Menues\VMenu_Home.ascx" />
+    <Content Include="Menues\VMenu_Localidad.ascx" />
     <Content Include="Styles\prop.css" />
     <Content Include="Site2.Master" />
     <Content Include="Styles\site2.css" />
