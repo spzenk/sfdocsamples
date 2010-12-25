@@ -12,18 +12,16 @@
     <div id="banner">
     </div>
     <div id="wrap">
-    <div id="leftcontent">
-        <asp:ContentPlaceHolder ID="ContentLeft" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-    
-    <div id="centercontent">
-        <asp:ContentPlaceHolder ID="ContentCenter" runat="server">
-        </asp:ContentPlaceHolder>
-    </div>
-    
-    <div id="rightcontent">
-    </div>
+        <div id="leftcontent">
+            <asp:ContentPlaceHolder ID="ContentLeft" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="centercontent">
+            <asp:ContentPlaceHolder ID="ContentCenter" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="rightcontent">
+        </div>
     </div>
     </form>
 </body>
