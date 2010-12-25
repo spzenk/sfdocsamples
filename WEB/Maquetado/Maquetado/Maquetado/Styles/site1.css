@@ -1,8 +1,10 @@
-﻿body {
-		margin:10px 10px 0px 10px;
-		padding:0px;
-		background:none repeat scroll 0 0 #DDDDDD;
-        font:12px/1.2 Verdana,Arial,Helvetica,sans-serif;
+﻿body
+{
+    background-position: 0 0;
+    margin: 10px 10px 0px 10px;
+    padding: 0px;
+    background: #FFFFFF none repeat scroll 0 0;
+    font: 12px/1.2 Verdana,Arial,Helvetica,sans-serif;
 }
 	
 #leftcontent
@@ -12,26 +14,25 @@
     border-width: 1px;
     border-color: #FFFFFF #336699 #FFFFFF #FFFFFF;
     position: absolute;
-    left: 10px;
-    top: 50px;
     width: 200px;
     background: #fff;
 }
 
 	#centercontent
-{
-    margin-left: 199px;
-    margin-right: 199px;
-    voice-family: "\"}\"";
-    background-position: #fff;
-    border-style: solid;
-    border-width: thin;
-    border-color: #FFFFFF #336699 #FFFFFF #336699;
-    background: #fff;
-    voice-family: inherit;
-    margin-left: 201px;
-    margin-right: 201px;
-}
+        {
+            margin-left: 199px;
+            margin-right: 199px;
+            voice-family: "\"}\"";
+            background-position: #fff;
+            border-style: solid;
+            border-width: thin;
+            border-color: #FFFFFF #336699 #FFFFFF #336699;
+            background: #fff;
+            voice-family: inherit;
+            margin-left: 201px;
+            margin-right: 201px;
+            min-height : 500px;
+        }
 				
 	html>body #centercontent {
    		margin-left: 201px;
@@ -88,7 +89,10 @@
 {
     margin:0;
     padding:0;
-    height: 254px;
-    width: 1404px;
+    height: 594px;
+    width: 99%;
+    position : relative;
+    top: 8px;
+    left: 7px;
 }
 	
