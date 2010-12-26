@@ -1,0 +1,1 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/mariaDiv.Master" AutoEventWireup="true" CodeBehind="MariaDiv_Localidad.master.cs" Inherits="Maria.MariaDiv_Localidad" %>
