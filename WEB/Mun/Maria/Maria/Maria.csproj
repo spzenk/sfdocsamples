@@ -64,12 +64,19 @@
     <Compile Include="Maria.Master.designer.cs">
       <DependentUpon>Maria.Master</DependentUpon>
     </Compile>
-    <Compile Include="Maria.Ubicacion.Master.master.cs">
-      <DependentUpon>Maria.Ubicacion.Master.master</DependentUpon>
+    <Compile Include="MariaDiv_Localidad.master.cs">
+      <DependentUpon>MariaDiv_Localidad.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Maria.Ubicacion.Master.master.designer.cs">
-      <DependentUpon>Maria.Ubicacion.Master.master</DependentUpon>
+    <Compile Include="MariaDiv_Localidad.master.designer.cs">
+      <DependentUpon>MariaDiv_Localidad.master</DependentUpon>
+    </Compile>
+    <Compile Include="Maria_Localidad.master.cs">
+      <DependentUpon>Maria_Localidad.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maria_Localidad.master.designer.cs">
+      <DependentUpon>Maria_Localidad.master</DependentUpon>
     </Compile>
     <Compile Include="mariaDiv.Master.cs">
       <DependentUpon>mariaDiv.Master</DependentUpon>
@@ -84,6 +91,13 @@
     </Compile>
     <Compile Include="Menues\VMenu_Localidad.ascx.designer.cs">
       <DependentUpon>VMenu_Localidad.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Localidad\Localidad_Economia.aspx.cs">
+      <DependentUpon>Localidad_Economia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad\Localidad_Economia.aspx.designer.cs">
+      <DependentUpon>Localidad_Economia.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Localidad_Economia.aspx.cs">
       <DependentUpon>Localidad_Economia.aspx</DependentUpon>
@@ -127,6 +141,13 @@
     <Compile Include="Modules\HomeWebForm.aspx.designer.cs">
       <DependentUpon>HomeWebForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Localidad_UbicacionAcceso.aspx.cs">
+      <DependentUpon>Localidad_UbicacionAcceso.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad_UbicacionAcceso.aspx.designer.cs">
+      <DependentUpon>Localidad_UbicacionAcceso.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Municipalidad.aspx.cs">
       <DependentUpon>Municipalidad.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,11 +186,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="mariaDiv.Master" />
-    <Content Include="Styles\Stylesheet1.css" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Maria.Ubicacion.Master.master" />
+    <Content Include="Maria_Localidad.master" />
     <Content Include="Modules\Localidad_Economia.aspx" />
+    <Content Include="Modules\Localidad_UbicacionAcceso.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MariaDiv_Localidad.master" />
+    <Content Include="Modules\Localidad\Localidad_Economia.aspx" />
+    <Content Include="Styles\mariaDiv.css" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

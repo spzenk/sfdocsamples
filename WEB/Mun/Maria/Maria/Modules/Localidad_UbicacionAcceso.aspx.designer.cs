@@ -11,6 +11,6 @@
 namespace Maria.Modules {
     
     
-    public partial class Localidad_NaceUnPueblo {
+    public partial class Localidad_UbicacionAcceso {
     }
 }
