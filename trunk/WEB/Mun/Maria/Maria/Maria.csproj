@@ -78,13 +78,6 @@
     <Compile Include="Maria_Localidad.master.designer.cs">
       <DependentUpon>Maria_Localidad.master</DependentUpon>
     </Compile>
-    <Compile Include="mariaDiv.Master.cs">
-      <DependentUpon>mariaDiv.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="mariaDiv.Master.designer.cs">
-      <DependentUpon>mariaDiv.Master</DependentUpon>
-    </Compile>
     <Compile Include="Menues\VMenu_Localidad.ascx.cs">
       <DependentUpon>VMenu_Localidad.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -183,9 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="mariaDiv.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Maria_Localidad.master" />
