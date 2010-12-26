@@ -17,17 +17,27 @@
     width: 200px;
     background: #fff;
 }
-
-	#centercontent
+	#rightcontent
+{
+    border-left: 1px solid #336699;
+    border-right: 1px solid #FFFFFF;
+    border-top: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    position: absolute;
+        right: 10px;
+        width: 190px;
+        background: #fff;
+    top: 3px;
+}
+#centercontent
         {
-            margin-left: 199px;
-            margin-right: 199px;
+                
             voice-family: "\"}\"";
             background-position: #fff;
+            background: #fff;
             border-style: solid;
             border-width: thin;
             border-color: #FFFFFF #336699 #FFFFFF #336699;
-            background: #fff;
             voice-family: inherit;
             margin-left: 201px;
             margin-right: 201px;
@@ -39,18 +49,7 @@
    		margin-right:201px;
 		}
 
-	#rightcontent
-{
-    background-position: #fff;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #FFFFFF #FFFFFF #FFFFFF #336699;
-    position: absolute;
-    right: 10px;
-    top: 50px;
-    width: 200px;
-    background: #fff;
-}
+
 	
 	#banner {
 	    background-color:#3B5998;
