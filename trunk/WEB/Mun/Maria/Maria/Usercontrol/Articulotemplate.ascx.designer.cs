@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maria.Modules.Localidad {
+namespace Maria.Usercontrol {
     
     
-    public partial class Localidad_Economia {
+    public partial class Articulotemplate {
     }
 }

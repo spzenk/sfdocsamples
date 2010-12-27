@@ -11,6 +11,6 @@
 namespace Maria.Modules.Localidad {
     
     
-    public partial class Localidad_Economia {
+    public partial class Localidad_Ubicacion {
     }
 }

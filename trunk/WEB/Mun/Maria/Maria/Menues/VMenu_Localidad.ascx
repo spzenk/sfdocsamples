@@ -12,7 +12,7 @@
 <div id="menuv" class  ="menuv">
 
         <ul>
-                <li><a href="/Modules/Localidad/Localidad_UbicacionAcceso.aspx">Ubicación y accesos</a> </li>
+                <li><a href="/Modules/Localidad/Localidad_Ubicacion.aspx">Ubicación y accesos</a> </li>
 
                 <li><a href="/Modules/Localidad/Localidad_Economia.aspx">Actividad económica</a></li>
 
