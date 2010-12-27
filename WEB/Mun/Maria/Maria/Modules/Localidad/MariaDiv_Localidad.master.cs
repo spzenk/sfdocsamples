@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Maria.Modules.Localidad
+namespace Maria
 {
-    public partial class Localidad_Economia : System.Web.UI.Page
+    public partial class MariaDiv_Localidad : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

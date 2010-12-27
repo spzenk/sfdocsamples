@@ -7,15 +7,15 @@
 </script>
 
 
-<div id="menuh" class  ="menuh">
+<div id="menuh" >
 
         <ul>
 
                 <li><a href="../Modules/HomeWebForm.aspx">Inicio</a> </li>
 
-                <li><a href="../Modules/Localidad_UbicacionAcceso.aspx">Localidad</a></li>
+                <li><a href="/Modules/Localidad/Localidad_Economia.aspx">Localidad</a></li>
 
-                <li><a href="#menuv">Municipalidad</a></li>
+                <li><a href="/Modules/Localidad/Localidad_Economia.aspx">Municipalidad</a></li>
 
                 <li><a href="#menuv">Tramites</a></li>
 
