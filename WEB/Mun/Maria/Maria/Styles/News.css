@@ -1,0 +1,117 @@
+﻿#EnvelopeNews
+{
+	float: left;
+	width: 100%;
+	height: 100%;
+	margin: 5px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	display: block;
+	border-width: thin;
+	border-style: solid;
+	border-color: #5183af;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: small;
+}
+
+.EnvelopeNewsHeader
+{
+	width: 90%;
+	margin: 5px 5px 5px 10px;
+	padding: 0px 0px 0px 0px;
+    font-weight: bolder;
+}
+
+.EnvelopeNewsBody
+{
+	width: 90%;
+	margin: 0px 0px 5px 30px;
+	padding: 0px 0px 0px 0px;
+}
+
+.AreaNewsComments
+{
+    background-color: #F9F9F9;
+}
+
+.EnvelopeNewsComments
+{
+    width: 90%;
+	margin: 0px 0px 5px 30px;
+	padding: 0px 0px 0px 0px;
+}
+
+.EnvelopeNewsHeader #NewsHeaderTitle
+{
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	color: #165993;
+}
+
+.EnvelopeNewsHeader #NewsHeaderNumerator
+{
+	background-position: left bottom;
+	margin: 0px 0px 0px 0px;	
+	color: #165993;
+}
+
+.EnvelopeNewsHeader #NewsHeaderText
+{
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	font-size: small;
+}
+
+.EnvelopeNewsHeader #NewsHeaderNumeratorTitle
+{
+    margin: 5px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.EnvelopeNewsHeader #NewsHeaderBody
+{
+    margin: 5px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.ItemNewsId
+{
+	float: left;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.ItemNewsText
+{
+	float: left;
+	padding: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.ItemNewsObject
+{
+	position: relative;
+	padding: 0px 0px 0px 0px;
+}
+
+#radiobuttonlist 
+{
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: small;
+	color: #ff3;	
+}
+
+.checkbox 
+{
+	font-family: Verdana, Helvetica, sans-serif;
+}
+
+.guionbajo 
+{
+	color: #fff;
+	border: 1px solid red;
+}
+
+#chkItem 
+{
+	margin: 0px 0px 0px 0px;
+}

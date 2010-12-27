@@ -85,6 +85,13 @@
     <Compile Include="Modules\Localidad\Localidad_Historia.aspx.designer.cs">
       <DependentUpon>Localidad_Historia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Localidad\Localidad_Ubicacion.aspx.cs">
+      <DependentUpon>Localidad_Ubicacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Localidad\Localidad_Ubicacion.aspx.designer.cs">
+      <DependentUpon>Localidad_Ubicacion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Localidad\MariaDiv_Localidad.master.cs">
       <DependentUpon>MariaDiv_Localidad.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -120,7 +127,28 @@
     <Compile Include="Menues\VMenu_Home.ascx.designer.cs">
       <DependentUpon>VMenu_Home.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Usercontrol\Articulotemplate.ascx.cs">
+      <DependentUpon>Articulotemplate.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\Articulotemplate.ascx.designer.cs">
+      <DependentUpon>Articulotemplate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\NewsBase.ascx.cs">
+      <DependentUpon>NewsBase.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\NewsBase.ascx.designer.cs">
+      <DependentUpon>NewsBase.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usercontrol\News_Simple.ascx.cs">
+      <DependentUpon>News_Simple.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\News_Simple.ascx.designer.cs">
+      <DependentUpon>News_Simple.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\bg.png" />
@@ -156,6 +184,12 @@
     <Content Include="mariaDiv.Master" />
     <Content Include="Modules\Localidad\Localidad_Economia.aspx" />
     <Content Include="Modules\Localidad\Localidad_Historia.aspx" />
+    <Content Include="Modules\Localidad\Localidad_Ubicacion.aspx" />
+    <Content Include="Styles\articulos.css" />
+    <Content Include="Styles\News.css" />
+    <Content Include="Usercontrol\Articulotemplate.ascx" />
+    <Content Include="Usercontrol\NewsBase.ascx" />
+    <Content Include="Usercontrol\News_Simple.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

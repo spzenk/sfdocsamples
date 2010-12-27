@@ -9,6 +9,7 @@
   
       <link href="Styles/Common.css" rel="stylesheet" type="text/css" />
       <link href="Styles/mariadiv.css" rel="stylesheet" type="text/css" />
+       <link href="/Styles/articulos.css" rel="stylesheet" type="text/css" />
         <title></title>
 </head>
 <body>

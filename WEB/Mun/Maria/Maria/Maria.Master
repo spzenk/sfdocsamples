@@ -8,7 +8,7 @@
      <title>Municipalidad de Adelia María</title>
     <link href="Styles/Common.css" rel="stylesheet" type="text/css" />
       <link href="Styles/Menu.css" rel="stylesheet" type="text/css" />
-   
+   <link href="/Styles/articulos.css" rel="stylesheet" type="text/css" />
      <style type="text/css">
          .style1
          {
