@@ -72,6 +72,20 @@
     <Compile Include="mariaDiv.Master.designer.cs">
       <DependentUpon>mariaDiv.Master</DependentUpon>
     </Compile>
+    <Compile Include="Maria_Municipal.master.cs">
+      <DependentUpon>Maria_Municipal.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maria_Municipal.master.designer.cs">
+      <DependentUpon>Maria_Municipal.master</DependentUpon>
+    </Compile>
+    <Compile Include="Menues\DinMenu.ascx.cs">
+      <DependentUpon>DinMenu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menues\DinMenu.ascx.designer.cs">
+      <DependentUpon>DinMenu.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Menues\Vmenu_Municipalidad.ascx.cs">
       <DependentUpon>Vmenu_Municipalidad.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -128,13 +142,6 @@
     <Compile Include="Modules\Localidad\Localidad_Ubicacion.aspx.designer.cs">
       <DependentUpon>Localidad_Ubicacion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Localidad\MariaDiv_Localidad.master.cs">
-      <DependentUpon>MariaDiv_Localidad.master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\Localidad\MariaDiv_Localidad.master.designer.cs">
-      <DependentUpon>MariaDiv_Localidad.master</DependentUpon>
-    </Compile>
     <Compile Include="Maria_Localidad.master.cs">
       <DependentUpon>Maria_Localidad.master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -176,6 +183,13 @@
     </Compile>
     <Compile Include="Modules\Localidad\Uc_ExplicacionEscudo.ascx.designer.cs">
       <DependentUpon>Uc_ExplicacionEscudo.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx.cs">
+      <DependentUpon>Muni_Inst_Cultura.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx.designer.cs">
+      <DependentUpon>Muni_Inst_Cultura.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\Articulotemplate.ascx.cs">
       <DependentUpon>Articulotemplate.ascx</DependentUpon>
@@ -226,11 +240,12 @@
     <Content Include="Maria_Localidad.master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Modules\Localidad\MariaDiv_Localidad.master" />
     <Content Include="Styles\mariaDiv.css" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Escudo.JPG" />
+    <Content Include="Images\hader-top-bg.png" />
+    <Content Include="Menues\DinMenu.ascx" />
     <Content Include="Menues\Vmenu_Municipalidad.ascx" />
     <Content Include="Modules\Localidad\Localidad_Escudo.htm" />
     <Content Include="Modules\Localidad\Localidad_Escudo_archivos\colorschememapping.xml" />
@@ -257,11 +272,12 @@
     <Content Include="Usercontrol\News_Simple.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Maria_Municipal.master" />
+    <Content Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx" />
     <None Include="Modules\Localidad\Localidad_Escudo_archivos\themedata.thmx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Modules\Municipalidad\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
