@@ -2,7 +2,7 @@
 {
     border-color: #FFFFFF;
     float: left;
-    width: 95%;
+    width: 92%;
     height: 100%;
     padding: 10px;
     display: block;
@@ -50,6 +50,9 @@
 }
 
 
-.EnvelopeNews p {
-
-    margin-left: 40px}
+.EnvelopeNews p
+{
+    margin-left: 80px;
+    line-height: 20px;
+    margin-top: 20px;
+}
