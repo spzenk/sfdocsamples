@@ -1,51 +1,37 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DinMenu.ascx.cs" Inherits="Maria.Menues.DinMenu" %>
-<asp:menu id="NavigationMenu"
-        staticdisplaylevels="3"
-        staticsubmenuindent="10" 
-        orientation="Vertical"
-        target="_blank"  
-        runat="server" MaximumDynamicDisplayLevels="2">
-
+    
+  <link href="../Styles/Menu.css" rel="stylesheet" type="text/css" />
+<div id="d1" style="width: 100%">
+    <asp:Menu ID="NavigationMenu" StaticDisplayLevels="3" StaticSubMenuIndent="10" Orientation="Vertical"
+        Target="_blank" runat="server" MaximumDynamicDisplayLevels="2" Height="100%"
+        Width="100%" ForeColor="#003300" Font-Names="Verdana" Font-Size="X-Small">
+        <LevelMenuItemStyles>
+            <asp:MenuItemStyle BackColor="Black" ForeColor="#CCCCCC" />
+            <asp:MenuItemStyle BackColor="White" Font-Bold="True" BorderStyle="Outset" VerticalPadding="10" />
+            <asp:MenuItemStyle BackColor="White" />
+        </LevelMenuItemStyles>
         <LevelSelectedStyles>
-            <asp:MenuItemStyle BackColor="White" BorderStyle="None" Font-Underline="False" 
-                ForeColor="#003300" />
+            <asp:MenuItemStyle BackColor="#336699" ForeColor="#FFFFCC" />
+            <asp:MenuItemStyle BackColor="#336699" ForeColor="#FFFFCC" />
+            <asp:MenuItemStyle BackColor="#336699" ForeColor="#FFFFCC" />
         </LevelSelectedStyles>
-     <dynamicmenustyle backcolor="LightSkyBlue"
-          forecolor="Black"
-          borderstyle="Solid"
-          borderwidth="1"
-          bordercolor="Black" />
-
-      
-
-        <items>
-          <asp:menuitem navigateurl="" 
-            text="Municipalidad"
-            tooltip="Municipalidad">
-            <asp:menuitem 
-              text="Institucional"
-              tooltip="Institucional">
-              <asp:menuitem navigateurl="\modules\Municipalidad\Muni_Inst_Cultura.aspx" 
-                text="Cultura"
-                tooltip="Cultura"/>
-              <asp:menuitem navigateurl="\modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx"
-                text="Medio Ambiente"
-                tooltip="Medio Ambiente"/>
-               <asp:menuitem navigateurl="\modules\Municipalidad\Muni_Inst_Promocion_Social.aspx" 
-                text="Promoción Social"
-                tooltip="Promoción Social"/>
-            </asp:menuitem>
-            <asp:menuitem navigateurl=""
-              text="Obras de Gobierno"
-              tooltip="Obras de Gobierno">
-              <asp:menuitem navigateurl="\modules\Municipalidad\Muni_Inst_ObrasConstrucción.aspx"
-                text="Obras en Construcción"
-                tooltip="Obras en Construcción"/>
-              <asp:menuitem navigateurl="\modules\Municipalidad\Muni_Inst_ObrasPlanificadas.aspx"
-                text="Obras Planificadas"
-                tooltip="Obras Planificadas"/>
-            </asp:menuitem>
-          </asp:menuitem>
-        </items>
-
-      </asp:menu>
+        <Items>
+            <asp:MenuItem NavigateUrl="" Text="Municipalidad" ToolTip="Municipalidad">
+                <asp:MenuItem Text="Institucional" ToolTip="Institucional">
+                    <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Inst_Cultura.aspx" Text="Cultura"
+                        ToolTip="Cultura" />
+                    <asp:MenuItem NavigateUrl="\modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx" Text="Medio Ambiente"
+                        ToolTip="Medio Ambiente" />
+                    <asp:MenuItem NavigateUrl="\modules\Municipalidad\Muni_Inst_Promocion_Social.aspx"
+                        Text="Promoción Social" ToolTip="Promoción Social" />
+                </asp:MenuItem>
+                <asp:MenuItem NavigateUrl="" Text="Obras de Gobierno" ToolTip="Obras de Gobierno">
+                    <asp:MenuItem NavigateUrl="\modules\Municipalidad\Muni_Inst_ObrasConstrucción.aspx"
+                        Text="Obras en Construcción" ToolTip="Obras en Construcción" />
+                    <asp:MenuItem NavigateUrl="\modules\Municipalidad\Muni_Inst_ObrasPlanificadas.aspx"
+                        Text="Obras Planificadas" ToolTip="Obras Planificadas" />
+                </asp:MenuItem>
+            </asp:MenuItem>
+        </Items>
+    </asp:Menu>
+</div>
