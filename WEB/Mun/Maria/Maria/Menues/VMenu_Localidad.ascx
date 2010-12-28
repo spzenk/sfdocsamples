@@ -18,7 +18,7 @@
 
                 <li><a href="/Modules/Localidad/Localidad_Historia.aspx">Historia</a></li>
 
-                <li><a href="/Modules/Localidad/Localidad_NaceUnPueblo.aspx">Nace un pueblo</a></li>
+                <li><a href="/Modules/Localidad/Localidad_Nace.aspx">Nace un pueblo</a></li>
         </ul>
 
 </div>
