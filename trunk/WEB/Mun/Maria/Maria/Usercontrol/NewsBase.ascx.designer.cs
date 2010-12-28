@@ -23,6 +23,15 @@ namespace Maria {
         protected global::System.Web.UI.WebControls.Label lblNewsOrder;
         
         /// <summary>
+        /// Silverlight1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.SilverlightControls.Silverlight Silverlight1;
+        
+        /// <summary>
         /// txtNewsText control.
         /// </summary>
         /// <remarks>

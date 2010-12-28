@@ -14,12 +14,13 @@
         <br style="margin-left: 40px" />
         Emerge en una planicie de la llanura pampeana a 264 mts. sobre el nivel del mar
         y sobre Ruta
+        
         <br style="margin-left: 40px" />
         Provincial Nº 24. De clima templado, ventoso, con un régimen de lluvia irregular.<br
             style="margin-left: 40px" />
         Históricamente surge con el paso del último tramo del ferrocarril construido con
         capitales ingleses en 1928,
-        <br style="margin-left: 40px" />
+        <br style="margin-left: 40px" />    
         en el Km. 1001/2 del Ramal Laboulaye a Sampacho.
         <br style="margin-left: 40px" />
         <br style="margin-left: 40px" />
@@ -28,8 +29,14 @@
         <br style="margin-left: 40px" />
         En ese mismo año, después del censo Nacional, se fueron agregando datos de personas
         y zonas que no
-        habían sido censadas y forman parte del pueblo y colonia, arrojando la suma total
-        de 7.256 habitantes(6341 en zona urbana y 1015 en zona rural). En los últimos 25 años extendió sus
+        habían sido censadas y 
+    </p>
+    <p>
+        forman parte del pueblo y colonia, arrojando la suma total
+        de 7.256 habitantes(6341 en zona urbana y 1015 en zona rural). 
+    </p>
+    <p>
+        En los últimos 25 años extendió sus
         límites de manera notable,
         actualmente cubre una superficie de 424 has. con 225 manzanas en la zona urbana.
     </p>
