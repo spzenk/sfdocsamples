@@ -15,7 +15,7 @@
 
                 <li><a href="/Modules/Localidad/Localidad_Economia.aspx">Localidad</a></li>
 
-                <li><a href="/Modules/Localidad/Localidad_Economia.aspx">Municipalidad</a></li>
+                <li><a href="/Modules/Municipalidad/Muni_Inst_Cultura.aspx">Municipalidad</a></li>
 
                 <li><a href="#menuv">Tramites</a></li>
 

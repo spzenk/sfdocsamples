@@ -51,16 +51,19 @@
 
 
 	
-	#banner {
-	    background-color:#3B5998;
-		height:40px;
-		border-top:1px solid #000;
-		border-right:1px solid #000;
-		border-left:1px solid #000;
-		voice-family: "\"}\"";
-		voice-family: inherit;
-		height:39px;
-		}
+	#banner
+{
+   
+    height: 40px;
+    border-top: 1px solid #000;
+    border-right: 1px solid #000;
+    border-left: 1px solid #000;
+    voice-family: "\"}\"";
+    voice-family: inherit;
+    height: 39px;
+    background-image: url('../Images/hader-top-bg.png');
+    background-repeat: repeat-x;
+}
 	html>body #banner {
 		height:39px;
 		}
