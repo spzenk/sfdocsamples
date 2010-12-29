@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Maria.Modules.Municipalidad
+namespace Maria.Modules.Tramites
 {
-    public partial class Tramites_Inmuebles : System.Web.UI.Page
+    public partial class Tramites_LicenciaConducir : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
