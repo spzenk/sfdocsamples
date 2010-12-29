@@ -8,9 +8,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maria.Modules.Municipalidad {
+namespace Maria {
     
     
-    public partial class Muni_Inst_Cultura {
+    public partial class Maria_Tramites {
+        
+        /// <summary>
+        /// DinMenu_Tramites1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Maria.Menues.DinMenu_Tramites DinMenu_Tramites1;
     }
 }

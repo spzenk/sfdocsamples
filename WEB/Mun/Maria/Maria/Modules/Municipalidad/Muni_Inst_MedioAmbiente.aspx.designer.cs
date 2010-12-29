@@ -11,6 +11,6 @@
 namespace Maria.Modules.Municipalidad {
     
     
-    public partial class Muni_Inst_Cultura {
+    public partial class Muni_Inst_MedioAmbiente {
     }
 }
