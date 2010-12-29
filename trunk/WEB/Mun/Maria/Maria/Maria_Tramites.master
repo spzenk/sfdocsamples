@@ -1,0 +1,13 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/mariaDiv.Master" AutoEventWireup="true" CodeBehind="Maria_Tramites.master.cs" Inherits="Maria.Maria_Tramites" %>
+
+<%@ Register src="Menues/DinMenu_Tramites.ascx" tagname="DinMenu_Tramites" tagprefix="uc1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentLeft" runat="server">
+
+    <uc1:DinMenu_Tramites ID="DinMenu_Tramites1" runat="server" />
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentCenter" runat="server">
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentRight" runat="server">
+</asp:Content>

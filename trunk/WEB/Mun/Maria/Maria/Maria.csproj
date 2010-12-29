@@ -184,12 +184,33 @@
     <Compile Include="Modules\Localidad\Uc_ExplicacionEscudo.ascx.designer.cs">
       <DependentUpon>Uc_ExplicacionEscudo.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Maria_Tramites.master.cs">
+      <DependentUpon>Maria_Tramites.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maria_Tramites.master.designer.cs">
+      <DependentUpon>Maria_Tramites.master</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx.cs">
       <DependentUpon>Muni_Inst_Cultura.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx.designer.cs">
       <DependentUpon>Muni_Inst_Cultura.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx.cs">
+      <DependentUpon>Muni_Inst_MedioAmbiente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx.designer.cs">
+      <DependentUpon>Muni_Inst_MedioAmbiente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menues\DinMenu_Tramites.ascx.cs">
+      <DependentUpon>DinMenu_Tramites.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menues\DinMenu_Tramites.ascx.designer.cs">
+      <DependentUpon>DinMenu_Tramites.ascx</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\Articulotemplate.ascx.cs">
       <DependentUpon>Articulotemplate.ascx</DependentUpon>
@@ -274,7 +295,10 @@
   <ItemGroup>
     <Content Include="Maria_Municipal.master" />
     <Content Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx" />
+    <Content Include="Modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx" />
+    <Content Include="Menues\DinMenu_Tramites.ascx" />
     <None Include="Modules\Localidad\Localidad_Escudo_archivos\themedata.thmx" />
+    <Content Include="Maria_Tramites.master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
