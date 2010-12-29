@@ -20,16 +20,7 @@ namespace Maria {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Maria.Menues.DinMenu DinMenu1;
-        
-        /// <summary>
-        /// UpdatePanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::Maria.Menues.DinMenu_Municipalidad DinMenu1;
         
         /// <summary>
         /// ContentPlaceHolder1 control.

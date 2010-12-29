@@ -4,9 +4,9 @@
 <div id="d1" style="width: 100%">
 
          <asp:Menu ID="NavigationMenu" StaticDisplayLevels="3" StaticSubMenuIndent="10" Orientation="Vertical"
-        Target="_top" runat="server" MaximumDynamicDisplayLevels="2" Height="32%"
+        runat="server" MaximumDynamicDisplayLevels="2" Height="32%"
         Width="100%" ForeColor="#003300" Font-Names="Verdana" Font-Size="X-Small" 
-                EnableViewState="False">
+                EnableViewState="False" >
         <LevelMenuItemStyles>
             <asp:MenuItemStyle BackColor="Black" ForeColor="#CCCCCC" Font-Bold = "True"/>
             <asp:MenuItemStyle BackColor="White" Font-Bold="True" BorderStyle="Outset" VerticalPadding="10" />
@@ -25,7 +25,7 @@
                     <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Tramites_Vehiculos.aspx" Text="Vehículos"
                         ToolTip="Vehículos" />
                     <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Tramites_Inmuebles.aspx"
-                        Text="Inmuebles" ToolTip="v" />
+                        Text="Inmuebles" ToolTip="Inmuebles" />
               
             </asp:MenuItem>
         </Items>

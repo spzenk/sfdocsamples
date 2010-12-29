@@ -11,7 +11,7 @@
 namespace Maria.Menues {
     
     
-    public partial class DinMenu {
+    public partial class DinMenu_Municipalidad {
         
         /// <summary>
         /// ScriptManager1 control.
