@@ -11,6 +11,6 @@
 namespace Maria.Modules.Tramites {
     
     
-    public partial class Tramites_Inmuebles {
+    public partial class Tramites_LicenciaConducir {
     }
 }
