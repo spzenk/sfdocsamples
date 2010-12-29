@@ -219,19 +219,26 @@
     <Compile Include="Modules\Municipalidad\Muni_Tramites_Inmuebles.aspx.designer.cs">
       <DependentUpon>Muni_Tramites_Inmuebles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Municipalidad\Muni_Tramites_LicenciaConducir.aspx.cs">
-      <DependentUpon>Muni_Tramites_LicenciaConducir.aspx</DependentUpon>
+    <Compile Include="Modules\Tramites\Tramites_Inmuebles.aspx.cs">
+      <DependentUpon>Tramites_Inmuebles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\Municipalidad\Muni_Tramites_LicenciaConducir.aspx.designer.cs">
-      <DependentUpon>Muni_Tramites_LicenciaConducir.aspx</DependentUpon>
+    <Compile Include="Modules\Tramites\Tramites_Inmuebles.aspx.designer.cs">
+      <DependentUpon>Tramites_Inmuebles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Municipalidad\Muni_Tramites_Vehiculos.aspx.cs">
-      <DependentUpon>Muni_Tramites_Vehiculos.aspx</DependentUpon>
+    <Compile Include="Modules\Tramites\Tramites_LicenciaConducir.aspx.cs">
+      <DependentUpon>Tramites_LicenciaConducir.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Modules\Municipalidad\Muni_Tramites_Vehiculos.aspx.designer.cs">
-      <DependentUpon>Muni_Tramites_Vehiculos.aspx</DependentUpon>
+    <Compile Include="Modules\Tramites\Tramites_LicenciaConducir.aspx.designer.cs">
+      <DependentUpon>Tramites_LicenciaConducir.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Tramites\Tramites_Vehiculos.aspx.cs">
+      <DependentUpon>Tramites_Vehiculos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Tramites\Tramites_Vehiculos.aspx.designer.cs">
+      <DependentUpon>Tramites_Vehiculos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\Articulotemplate.ascx.cs">
       <DependentUpon>Articulotemplate.ascx</DependentUpon>
@@ -318,8 +325,9 @@
     <None Include="Modules\Localidad\Localidad_Escudo_archivos\themedata.thmx" />
     <Content Include="Maria_Tramites.master" />
     <Content Include="Modules\Municipalidad\Muni_Tramites_Inmuebles.aspx" />
-    <Content Include="Modules\Municipalidad\Muni_Tramites_LicenciaConducir.aspx" />
-    <Content Include="Modules\Municipalidad\Muni_Tramites_Vehiculos.aspx" />
+    <Content Include="Modules\Tramites\Tramites_Inmuebles.aspx" />
+    <Content Include="Modules\Tramites\Tramites_LicenciaConducir.aspx" />
+    <Content Include="Modules\Tramites\Tramites_Vehiculos.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
