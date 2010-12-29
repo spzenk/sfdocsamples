@@ -14,9 +14,9 @@
 
                 <li><a href="/Modules/Municipalidad/Muni_Inst_Cultura.aspx">Municipalidad</a></li>
 
-                <li><a href="/Modules/Municipalidad/Muni_Tramites_LicenciaConducir.aspx">Trámites</a></li>
+                <li><a href="/Modules/Tramites/Tramites_LicenciaConducir.aspx">Trámites</a></li>
 
-                <li><a href="/Modules/Municipalidad/Noticias/Muni_Noticas.aspx">Noticias</a></li>
+                <li><a href="/Modules/Noticias/Muni_Noticas.aspx">Noticias</a></li>
 
         </ul>
 
