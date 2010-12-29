@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace Maria.Menues
+namespace Maria.Modules.Municipalidad
 {
-    public partial class DinMenu : System.Web.UI.UserControl
+    public partial class Muni_Tramites_Inmuebles : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

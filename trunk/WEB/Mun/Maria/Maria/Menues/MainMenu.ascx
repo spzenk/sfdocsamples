@@ -6,20 +6,17 @@
     
 </script>
 
-
 <div id="menuh" >
-
         <ul>
-
                 <li><a href="/Modules/Home/HomeWebForm.aspx">Inicio</a> </li>
 
                 <li><a href="/Modules/Localidad/Localidad_Economia.aspx">Localidad</a></li>
 
                 <li><a href="/Modules/Municipalidad/Muni_Inst_Cultura.aspx">Municipalidad</a></li>
 
-                <li><a href="#menuv">Tramites</a></li>
+                <li><a href="/Modules/Municipalidad/Muni_Tramites_LicenciaConducir.aspx">Trámites</a></li>
 
-                <li><a href="#menuv">Noticias</a></li>
+                <li><a href="/Modules/Municipalidad/Noticias/Muni_Noticas.aspx">Noticias</a></li>
 
         </ul>
 

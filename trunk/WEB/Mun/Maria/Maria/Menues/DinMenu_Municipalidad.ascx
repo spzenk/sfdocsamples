@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DinMenu.ascx.cs" Inherits="Maria.Menues.DinMenu" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DinMenu_Municipalidad.ascx.cs" Inherits="Maria.Menues.DinMenu_Municipalidad" %>
 <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>   
   <link href="../Styles/Menu.css" rel="stylesheet" type="text/css" />
@@ -6,7 +6,7 @@
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
          <asp:Menu ID="NavigationMenu" StaticDisplayLevels="3" StaticSubMenuIndent="10" Orientation="Vertical"
-        Target="_top" runat="server" MaximumDynamicDisplayLevels="2" Height="32%"
+        runat="server" MaximumDynamicDisplayLevels="2" Height="32%"
         Width="100%" ForeColor="#003300" Font-Names="Verdana" Font-Size="X-Small" 
                 EnableViewState="False">
         <LevelMenuItemStyles>

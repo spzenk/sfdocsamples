@@ -10,7 +10,7 @@
 
 
 
-<div id="menuv" class  ="menuv">
+<div id="menuv" >
     
         <ul>
                 <li><a href="#menuv">Mapa del sitio</a> </li>
