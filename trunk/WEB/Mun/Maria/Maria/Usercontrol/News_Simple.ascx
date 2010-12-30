@@ -6,11 +6,16 @@
 
 <div id="<%=string.Concat("WC", News.NewsId) %>">
     <div id="EnvelopeNews">
-        <asp:Panel ID="pnlTitle" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        </asp:ScriptManager>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:Panel ID="pnlTitle" runat="server">
             <div class="EnvelopeNewsHeader">
                 
             </div>  
         </asp:Panel>
+        <ContentTemplate>
+        
         <asp:Panel ID="pnlContent" runat="server">
             <div class="EnvelopeNewsBody">
                 <asp:Panel ID="Panel1" runat="server" />
@@ -29,5 +34,7 @@
             CollapseControlID="pnlTitle"
             ExpandControlID="pnlTitle">
         </cc1:CollapsiblePanelExtender>
+          </ContentTemplate>
+        </asp:UpdatePanel>
     </div>
 </div>

@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
   <div id="Div1" class="EnvelopeCont">
-        <div id="d1" class="EnvelopeNews">
+        <div id="d1" class="EnvelopeArtic">
             <h1>
                 Vehiculos</h1>
             <h2>

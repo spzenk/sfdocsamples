@@ -11,7 +11,7 @@
 }
 
 
-.EnvelopeNews
+.EnvelopeArtic
 {
     float: left;
     width: 100%;
@@ -34,7 +34,7 @@
     border-width: 1px;
 }
 
-.EnvelopeNewsHeader
+.EnvelopeArticHeader
 {
 	width: 90%;
 	margin: 5px 5px 5px 10px;
@@ -42,7 +42,7 @@
     font-weight: bolder;
 }
 
-.EnvelopeNewsBody
+.EnvelopeArticBody
 {
 	width: 90%;
 	margin: 0px 0px 5px 30px;
@@ -50,7 +50,7 @@
 }
 
 
-.EnvelopeNews p
+.EnvelopeArtic p
 {
     margin-left: 80px;
     line-height: 20px;

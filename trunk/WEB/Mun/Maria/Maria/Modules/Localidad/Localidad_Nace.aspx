@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maria_Localidad.master" AutoEventWireup="true" CodeBehind="Localidad_Nace.aspx.cs" Inherits="Maria.Modules.Localidad.Localidad_Nace" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div id="Div1" class ="EnvelopeCont">
-        <div id="d1" class="EnvelopeNews">
+        <div id="d1" class="EnvelopeArtic">
             <h1>
                 Pasa el Ferrocarril</h1>
             <p>
@@ -29,7 +29,7 @@
         </div>
     </div>
  <div id="Div2" class ="EnvelopeCont">
-        <div id="Div3" class="EnvelopeNews">
+        <div id="Div3" class="EnvelopeArtic">
             <h1>
                 Nace un Pueblo</h1>
             <p>
@@ -130,7 +130,7 @@ ProductID="la Iglesia" w:st="on">la Iglesia</st1:PersonName>, zona mejor urbaniz
         </div>
   </div>
  <div id="Div4" class ="EnvelopeCont">
-        <div id="Div5" class="EnvelopeNews">
+        <div id="Div5" class="EnvelopeArtic">
             <h1>
                 Barrio Norte</h1>
             <p class="MsoNormal">

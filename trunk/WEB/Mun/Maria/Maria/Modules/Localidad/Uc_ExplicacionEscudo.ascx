@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Uc_ExplicacionEscudo.ascx.cs" Inherits="Maria.Modules.Localidad.Uc_ExplicacionEscudo" %>
 <link href="/Styles/articulos.css" rel="stylesheet" type="text/css" />
 <div id="Div1" class ="EnvelopeCont">
-        <div id="d1" class="EnvelopeNews">
+        <div id="d1" class="EnvelopeArtic">
             <p class="MsoNormal">
                 <b style="mso-bidi-font-weight:normal">
                 <span style="font-size:9.0pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;mso-bidi-font-family:
