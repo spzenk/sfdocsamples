@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="Div1" class ="EnvelopeCont">
-        <div id="d1" class="EnvelopeNews">
+        <div id="d1" class="EnvelopeArtic">
             <h1>
                 Historia Municipal</h1>
             <p>
@@ -623,8 +623,7 @@ font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;">Durante sus gestiones de
                     estructura de hormigón armado con deficiencia estructurales y prueba de carga; 
                     construcción en el mismo de aulas y cerramiento perimetral<o:p></o:p></span></li>
             </ul>
-            <p>&nbsp;</p>
-            <p></p>
+            
         </div>
     </div>
 </asp:Content>

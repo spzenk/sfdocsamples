@@ -13,9 +13,9 @@
 <div id="menuv" >
     
         <ul>
-                <li><a href="#menuv">Mapa del sitio</a> </li>
+                
 
-                <li><a href="#menuv">Tasas municipales</a></li>
+                <li><a href="/Modules/Home/TasasMunicipales.aspx">Tasas municipales</a></li>
 
                 <li><a href="#menuv">Municipalidad</a></li>
 

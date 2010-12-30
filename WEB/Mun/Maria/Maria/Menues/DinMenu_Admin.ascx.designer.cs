@@ -8,10 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maria.Modules.Localidad {
+namespace Maria.Menues {
     
     
-    public partial class Localidad_Historia {
-        
+    public partial class DinMenu_Admin {
     }
 }

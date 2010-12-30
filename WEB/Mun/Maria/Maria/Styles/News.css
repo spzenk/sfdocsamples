@@ -115,3 +115,26 @@
 {
 	margin: 0px 0px 0px 0px;
 }
+
+
+
+.cpHeader
+        {
+            color: white;
+            background-color: #719DDB;
+            font: bold 11px auto "Trebuchet MS", Verdana;
+            font-size: 12px;
+            cursor: pointer;
+            width:450px;
+            height:18px;
+            padding: 4px;           
+        }
+        .cpBody
+        {
+            background-color: #DCE4F9;
+            font: normal 11px auto Verdana, Arial;
+            border: 1px gray;               
+            width:450px;
+            padding: 4px;
+            padding-top: 7px;
+        }       

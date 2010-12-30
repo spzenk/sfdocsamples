@@ -1,6 +1,6 @@
 <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="t.ascx.cs" Inherits="Maria.Modules.Localidad.t" %>
 <div id="Div1" class ="EnvelopeCont">
-        <div id="d1" class="EnvelopeNews">
+        <div id="d1" class="EnvelopeArtic">
         
               <html xmlns:v="urn:schemas-microsoft-com:vml"
 xmlns:o="urn:schemas-microsoft-com:office:office"

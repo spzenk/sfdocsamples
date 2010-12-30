@@ -4,7 +4,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <div id="Div1" class ="EnvelopeCont">
 
-<div id="d1" class ="EnvelopeNews">
+<div id="d1" class ="EnvelopeArtic">
     <h1>
         Ubicación y acceso</h1>
     <p>
