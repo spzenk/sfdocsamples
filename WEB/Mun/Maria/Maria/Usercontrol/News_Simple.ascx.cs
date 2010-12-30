@@ -13,5 +13,13 @@ namespace Maria.Usercontrol
         {
 
         }
+
+        protected void btnCreateNew_Click(object sender, EventArgs e)
+        {
+            News wNews = new News();
+            wNews.Text = this.txtComments.Text;
+            wNews.Title = this.txtTitle.Text;
+            wNews.CreateDate = System.DateTime.Now;
+        }
     }
 }
