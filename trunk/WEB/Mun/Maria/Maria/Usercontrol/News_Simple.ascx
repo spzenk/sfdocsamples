@@ -27,6 +27,18 @@
 </script>
 
 
+<style type="text/css">
+    .style1
+    {
+        width: 74px;
+    }
+    .style2
+    {
+        width: 47px;
+    }
+</style>
+
+
 <div id="Div2">
 
     <div id="Div3" class ="EnvelopeContNews">
@@ -38,18 +50,44 @@
                         </div>
                     </asp:Panel>
                     <asp:Panel ID="pnlContent" runat="server" Height="174px">
-                        <asp:Panel ID="Panel1" runat="server" CssClass="cpHeader">
+                        <asp:Panel ID="Panel1" runat="server" CssClass="cpHeaderStatic">
                             <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
                       </asp:Panel>
                         <asp:Panel ID="pnlComments" runat="server" CssClass="EnvelopeNewsBody">
-                            <asp:Label ID="Label2" runat="server" Text="Titulo: " />
+                            <table style="width: 100%; height : "100%"">
+                                <tr>
+                              
+                                    <td class="style1">
+                                        &nbsp;
+                                        <asp:Label ID="Label2" runat="server" Text="Titulo: " />
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                        <asp:TextBox ID="txtTitle" runat="server" BorderColor="#003366" Columns="250" 
+                                            CssClass="guionbajo" ForeColor="Black" Height="21px" MaxLength="1000" Rows="4" 
+                                            Width="44%" />
+                                    </td>
+                                </tr>
+                                <tr>
+                           
+                                    <td class="style1">
+                                        &nbsp;
+                                        <asp:Label ID="lblComments" runat="server" Text="Texto: " />
+                                    </td>
+                                    <td>
+                                        &nbsp;
+                                        <asp:TextBox ID="txtComments" runat="server" Columns="250" 
+                                            CssClass="AreaNewsComments" Height="171px" MaxLength="1000" Rows="4" 
+                                            TextMode="MultiLine" Width="100%" />
+                                    </td>
+                                </tr>
+                            
+                            </table>
                             <br />
-                            <asp:Label ID="lblComments" runat="server" Text="Texto: " />
-                            <asp:TextBox ID="txtTitle" runat="server" CssClass="guionbajo" MaxLength="1000" Width="44%"
-                                Columns="250" Rows="4" Height="21px" BorderColor="#003366" ForeColor="Black" />
+                           
+                              
                             <br />
-                            <asp:TextBox ID="txtComments" runat="server" CssClass="AreaNewsComments" MaxLength="1000"
-                                Width="100%" Columns="250" Rows="4" TextMode="MultiLine" />
+                                <br />
                             <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click" />
                         </asp:Panel>
                     </asp:Panel>
@@ -62,7 +100,7 @@
         <div id="d1" class="EnvelopeNews">
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-                    <asp:Panel ID="pHeader" runat="server" CssClass="cpHeader">
+                    <asp:Panel ID="pHeader" runat="server" CssClass="cpHeaderExpand">
                         <asp:Label ID="lblText" runat="server" Text="Avanzada" />
                     </asp:Panel>
                     <asp:Panel ID="pBody" runat="server" CssClass="cpBody">
@@ -77,5 +115,4 @@
             </asp:UpdatePanel>
         </div>
      </div>
-</div>
 </div>
