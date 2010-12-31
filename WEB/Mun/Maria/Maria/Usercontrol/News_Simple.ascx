@@ -49,7 +49,7 @@
                         <div class="EnvelopeNewsHeader">
                         </div>
                     </asp:Panel>
-                    <asp:Panel ID="pnlContent" runat="server" Height="174px">
+                    <asp:Panel ID="pnlContent" runat="server" Height="100%">
                         <asp:Panel ID="Panel1" runat="server" CssClass="cpHeaderStatic">
                             <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
                       </asp:Panel>
@@ -59,10 +59,10 @@
                               
                                     <td class="style1">
                                         &nbsp;
-                                        <asp:Label ID="Label2" runat="server" Text="Titulo: " />
+                                        <asp:Label ID="Label2" runat="server" Text="Titulo " />
                                     </td>
                                     <td>
-                                        &nbsp;
+                                    
                                         <asp:TextBox ID="txtTitle" runat="server" BorderColor="#003366" Columns="250" 
                                             CssClass="guionbajo" ForeColor="Black" Height="21px" MaxLength="1000" Rows="4" 
                                             Width="44%" />
@@ -72,10 +72,10 @@
                            
                                     <td class="style1">
                                         &nbsp;
-                                        <asp:Label ID="lblComments" runat="server" Text="Texto: " />
+                                        <asp:Label ID="lblComments" runat="server" Text="Texto " />
                                     </td>
                                     <td>
-                                        &nbsp;
+                                       
                                         <asp:TextBox ID="txtComments" runat="server" Columns="250" 
                                             CssClass="AreaNewsComments" Height="171px" MaxLength="1000" Rows="4" 
                                             TextMode="MultiLine" Width="100%" />
