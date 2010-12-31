@@ -2,8 +2,10 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register src="NewsBase.ascx" tagname="NewsBase" tagprefix="uc1" %>
+
 <link href="../Styles/News.css" rel="stylesheet" type="text/css" />
 
+<link href="../Styles/common.css" rel="stylesheet" type="text/css" />
    <script type="text/javascript">
 
        function pageLoad(sender, args) {
@@ -22,10 +24,15 @@
                if (sender._expandControlID != CollapsiblePanel._expandControlID)
                    CollapsiblePanel.collapsePanel(CollapsiblePanel._expandControlID);
            }
-       }       
- 
+       }
+       function cambiarEstilo() {
+
+           document.getElementById('btnCreateNew').style.backgroundColor = '#FFAAFF';
+       
+       }
 </script>
 
+   
 
 <style type="text/css">
     .style1
@@ -88,7 +95,8 @@
                               
                             <br />
                                 <br />
-                            <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click" />
+                            <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" 
+                                OnClick="btnCreateNew_Click" CssClass="btGrisNegrita" />
                         </asp:Panel>
                     </asp:Panel>
          
