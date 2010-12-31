@@ -82,3 +82,12 @@ display:block;
 	background-repeat:repeat-y;
 	background-position:top right;
 } 
+
+
+.btGrisNegrita
+{
+    background-color: #666666;
+    color: #FFFFFF;
+    font-size: small;
+    border: 1px solid #333333;
+}

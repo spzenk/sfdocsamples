@@ -21,16 +21,17 @@
 
         float: left;
 }
-#menuh a {
-
-        text-decoration: none;
-        color: #3366CC;
-        background: #F0F7FC;
-        display: block;
-        padding: 3px 10px;
-        text-align: center;
-        border: 1px solid #ACCFE8;
-        border-width: 1px 1px 1px 0;
+#menuh a
+{
+    background-position: left;
+    text-decoration: none;
+    color: #000000;
+    background: #CCCCCC;
+    display: block;
+    padding: 3px 10px;
+    text-align: center;
+    border: 1px solid #ACCFE8;
+    border-width: 1px 1px 1px 0;
 }
 
 
@@ -45,10 +46,10 @@
 
 
 
-#menuh a:hover {
-
-        background: #DBEBF6;
-
+#menuh a:hover
+{
+    background-position: center;
+    background: #FFFFCC;
 }
 
 
