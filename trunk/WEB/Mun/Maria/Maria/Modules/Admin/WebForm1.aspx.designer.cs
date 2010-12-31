@@ -8,28 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maria {
+namespace Maria.Modules.Admin {
     
     
-    public partial class mariaDiv {
-        
-        /// <summary>
-        /// Head1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
-        
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+    public partial class WebForm1 {
         
         /// <summary>
         /// ScriptManager1 control.
@@ -41,39 +23,48 @@ namespace Maria {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// MainMenu1 control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Maria.MenuMain MainMenu1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// ContentLeft control.
+        /// pHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentLeft;
+        protected global::System.Web.UI.WebControls.Panel pHeader;
         
         /// <summary>
-        /// ContentCenter control.
+        /// lblText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentCenter;
+        protected global::System.Web.UI.WebControls.Label lblText;
         
         /// <summary>
-        /// ContentRight control.
+        /// pBody control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentRight;
+        protected global::System.Web.UI.WebControls.Panel pBody;
+        
+        /// <summary>
+        /// CollapsiblePanelExtender1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender1;
     }
 }

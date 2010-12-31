@@ -1,4 +1,15 @@
-﻿#EnvelopeNews
+﻿.EnvelopeContNews
+{
+    border-color: #FFFFFF;
+    float: left;
+    width: 92%;
+    height: 100%;
+    padding: 10px;
+    display: block;
+    border-width: thin;
+    margin-right: 0px;
+}
+#EnvelopeNews
 {
     float: left;
     width: 100%;
