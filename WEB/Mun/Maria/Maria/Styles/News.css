@@ -9,7 +9,7 @@
     border-width: thin;
     margin-right: 0px;
 }
-#EnvelopeNews
+.EnvelopeNews
 {
     float: left;
     width: 100%;
@@ -138,9 +138,9 @@
 
 .cpHeaderStatic
 {
-    color: #000000;
+    color: #336699;
     background-color: #FFFFFF;
-    font: bold 11px auto "Trebuchet MS" , Verdana;
+    font: bold 11px Verdana;
     font-size: 12px;
     cursor: pointer;
     width: 450px;
@@ -151,7 +151,7 @@
 {
     color: #000000;
     background-color: #FFFFCC;
-    font: bold 11px auto "Trebuchet MS" , Verdana;
+    font: bold 11px Verdana;
     font-size: 12px;
     cursor: pointer;
     width: 450px;
@@ -161,7 +161,7 @@
  .cpBody
 {
     background-color: #FFFFFF;
-    font: normal 11px auto Verdana, Arial;
+    font: normal 11px Verdana;
     border: 1px gray;
     width: 450px;
     padding: 4px;
