@@ -136,10 +136,21 @@
 
 
 
-.cpHeader
+.cpHeaderStatic
 {
-    color: white;
-    background-color: #336699;
+    color: #000000;
+    background-color: #FFFFFF;
+    font: bold 11px auto "Trebuchet MS" , Verdana;
+    font-size: 12px;
+    cursor: pointer;
+    width: 450px;
+    height: 18px;
+    padding: 4px;
+}
+.cpHeaderExpand
+{
+    color: #000000;
+    background-color: #FFFFCC;
     font: bold 11px auto "Trebuchet MS" , Verdana;
     font-size: 12px;
     cursor: pointer;
