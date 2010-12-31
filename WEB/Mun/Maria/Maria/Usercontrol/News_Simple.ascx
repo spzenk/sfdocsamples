@@ -3,6 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register src="NewsBase.ascx" tagname="NewsBase" tagprefix="uc1" %>
 <link href="../Styles/News.css" rel="stylesheet" type="text/css" />
+
    <script type="text/javascript">
 
        function pageLoad(sender, args) {
@@ -28,8 +29,8 @@
 
 <div id="Div2">
 
-    <div id="Div3" class ="EnvelopeCont">
-        <div id="Div4" class="EnvelopeArtic">
+    <div id="Div3" class ="EnvelopeContNews">
+        <div id="Div4" class="EnvelopeNews">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <asp:Panel ID="pnlTitle" runat="server">
@@ -38,7 +39,8 @@
                     </asp:Panel>
                     <asp:Panel ID="pnlContent" runat="server" Height="174px">
                         <asp:Panel ID="Panel1" runat="server" CssClass="cpHeader">
-                            <asp:Label ID="Label1" runat="server" /></asp:Panel>
+                            <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
+                      </asp:Panel>
                         <asp:Panel ID="pnlComments" runat="server" CssClass="EnvelopeNewsBody">
                             <asp:Label ID="Label2" runat="server" Text="Titulo: " />
                             <br />
@@ -51,27 +53,24 @@
                             <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click" />
                         </asp:Panel>
                     </asp:Panel>
-                    <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender1" runat="server" TargetControlID="pnlContent"
-                        CollapseControlID="pnlTitle" ExpandControlID="pnlTitle" Collapsed="true" TextLabelID="lblText"
-                        CollapsedText="+ Noticias" ExpandedText="- Noticias" CollapsedSize="0">
-                    </cc1:CollapsiblePanelExtender>
+         
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
     </div>
-    <div id="Div1" class ="EnvelopeCont">
-        <div id="d1" class="EnvelopeArtic">
+    <div id="Div1" class ="EnvelopeContNews">
+        <div id="d1" class="EnvelopeNews">
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
                     <asp:Panel ID="pHeader" runat="server" CssClass="cpHeader">
-                        <asp:Label ID="lblText" runat="server" />
+                        <asp:Label ID="lblText" runat="server" Text="Avanzada" />
                     </asp:Panel>
                     <asp:Panel ID="pBody" runat="server" CssClass="cpBody">
                         Aagregue noticias
                     </asp:Panel>
                     <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="server" TargetControlID="pBody"
                         CollapseControlID="pHeader" ExpandControlID="pHeader" Collapsed="true" TextLabelID="lblText"
-                        CollapsedText="Click to Show Content.." ExpandedText="Click to Hide Content.."
+                        CollapsedText="+ Avanzada" ExpandedText="- Avanzada"
                         CollapsedSize="0">
                     </cc1:CollapsiblePanelExtender>
                 </ContentTemplate>
