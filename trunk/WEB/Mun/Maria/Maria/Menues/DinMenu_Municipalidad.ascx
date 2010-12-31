@@ -1,10 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DinMenu_Municipalidad.ascx.cs" Inherits="Maria.Menues.DinMenu_Municipalidad" %>
-<asp:ScriptManager ID="ScriptManager1" runat="server">
-</asp:ScriptManager>   
+ 
   <link href="../Styles/Menu.css" rel="stylesheet" type="text/css" />
 <div id="d1" style="width: 100%">
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-        <ContentTemplate>
+
          <asp:Menu ID="NavigationMenu" StaticDisplayLevels="3" StaticSubMenuIndent="10" Orientation="Vertical"
         runat="server" MaximumDynamicDisplayLevels="2" Height="32%"
         Width="100%" ForeColor="#003300" Font-Names="Verdana" Font-Size="X-Small" 
@@ -38,8 +36,7 @@
             </asp:MenuItem>
         </Items>
     </asp:Menu>
-        </ContentTemplate>
-    </asp:UpdatePanel>
+
     
 </div>
 
