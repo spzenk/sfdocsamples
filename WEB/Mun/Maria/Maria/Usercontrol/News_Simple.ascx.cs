@@ -11,7 +11,7 @@ namespace Maria.Usercontrol
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            btnCreateNew.Attributes.Add("onfocus", "javascript:cambiarEstilo();"); 
         }
 
         protected void btnCreateNew_Click(object sender, EventArgs e)
@@ -20,6 +20,11 @@ namespace Maria.Usercontrol
             wNews.Text = this.txtComments.Text;
             wNews.Title = this.txtTitle.Text;
             wNews.CreateDate = System.DateTime.Now;
+        }
+
+        protected void txtComments_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

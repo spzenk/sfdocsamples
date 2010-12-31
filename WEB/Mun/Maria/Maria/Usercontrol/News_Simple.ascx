@@ -85,7 +85,8 @@
                                        
                                         <asp:TextBox ID="txtComments" runat="server" Columns="250" 
                                             CssClass="AreaNewsComments" Height="171px" MaxLength="1000" Rows="4" 
-                                            TextMode="MultiLine" Width="100%" />
+                                            TextMode="MultiLine" Width="100%" 
+                                            ontextchanged="txtComments_TextChanged" />
                                     </td>
                                 </tr>
                             
