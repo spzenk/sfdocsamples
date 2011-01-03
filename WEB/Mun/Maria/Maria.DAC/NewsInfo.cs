@@ -21,7 +21,7 @@ namespace Maria.DAC
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase("maria");
+                wDataBase = DatabaseFactory.CreateDatabase("data");
                 wCmd = wDataBase.GetStoredProcCommand("dbo.news_i");
 
                 wDataBase.AddInParameter(wCmd, "Id", System.Data.DbType.Guid, pNewsInfo.Id);
@@ -57,7 +57,7 @@ namespace Maria.DAC
         {
             List<NewsInfo> wFwk_NewsList = new List<NewsInfo>();
             NewsInfo wFwk_News;
-            using (SqlConnection cnn = new SqlConnection(GetCnnstring("maria")))
+            using (SqlConnection cnn = new SqlConnection(GetCnnstring("data")))
             {
                 using (SqlCommand cmd = cnn.CreateCommand())
                 {
@@ -68,7 +68,7 @@ namespace Maria.DAC
                             while (reader.Read())
                             {
                                 wFwk_News = new NewsInfo();
-                                wFwk_News.Id = (Guid)reader["Id"];
+                                wFwk_News.Id = (Guid)reader["newsid"];
                                 if (reader["Img"] != DBNull.Value)
                                     wFwk_News.Img = (byte[])reader["Img"];
 
