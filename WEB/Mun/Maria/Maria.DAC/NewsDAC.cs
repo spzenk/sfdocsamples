@@ -10,6 +10,17 @@ namespace Maria.BE
     { }
     public class NewsInfo
     {
+
+        public NewsInfo()
+        {
+            _Id = Guid.NewGuid();
+        }
+
+        public NewsInfo(Guid pGuid)
+        {
+            _Id = pGuid;
+        }
+
         Guid _Id;
 
         public Guid Id
