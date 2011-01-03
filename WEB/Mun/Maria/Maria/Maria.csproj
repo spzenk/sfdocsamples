@@ -35,6 +35,22 @@
       <HintPath>..\..\libs\AjaxControlToolkit.dll</HintPath>
     </Reference>
     <Reference Include="DevExpress.Data.v9.1, Version=9.1.4.0, Culture=neutral, PublicKeyToken=5377c8e3b72b4073, processorArchitecture=MSIL" />
+    <Reference Include="Fwk.Bases, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core">
@@ -286,7 +302,6 @@
     <Compile Include="Modules\Tramites\Tramites_Vehiculos.aspx.designer.cs">
       <DependentUpon>Tramites_Vehiculos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="News.cs" />
     <Compile Include="Usercontrol\Articulotemplate.ascx.cs">
       <DependentUpon>Articulotemplate.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -381,6 +396,12 @@
     <Content Include="Modules\Tramites\Tramites_Inmuebles.aspx" />
     <Content Include="Modules\Tramites\Tramites_LicenciaConducir.aspx" />
     <Content Include="Modules\Tramites\Tramites_Vehiculos.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Maria.DAC\Maria.DAC.csproj">
+      <Project>{842A24D2-7052-4D70-BCBB-728FE29E0385}</Project>
+      <Name>Maria.DAC</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

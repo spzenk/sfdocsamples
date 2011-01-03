@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Maria.DAC;
+using Maria.BE;
 
 namespace Maria.Usercontrol
 {
@@ -16,10 +18,12 @@ namespace Maria.Usercontrol
 
         protected void btnCreateNew_Click(object sender, EventArgs e)
         {
-            News wNews = new News();
+            NewsInfo wNews = new NewsInfo();
             wNews.Text = this.txtComments.Text;
             wNews.Title = this.txtTitle.Text;
-            wNews.CreateDate = System.DateTime.Now;
+            //wNews.Img = System.DateTime.Now;
+
+            MariaDAC.Create(wNews);
         }
 
         protected void txtComments_TextChanged(object sender, EventArgs e)
