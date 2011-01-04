@@ -39,6 +39,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
     </Reference>
+    <Reference Include="Fwk.Security, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Fwk.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
@@ -47,9 +51,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\libs\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="RichTextEditor, Version=1.0.3076.39377, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\RTE\bin\RichTextEditor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -78,6 +90,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\SessionProxy.cs" />
     <Compile Include="Maria.Master.cs">
       <DependentUpon>Maria.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -105,6 +118,13 @@
     </Compile>
     <Compile Include="Maria_Municipal.master.designer.cs">
       <DependentUpon>Maria_Municipal.master</DependentUpon>
+    </Compile>
+    <Compile Include="Maria_News.master.cs">
+      <DependentUpon>Maria_News.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maria_News.master.designer.cs">
+      <DependentUpon>Maria_News.master</DependentUpon>
     </Compile>
     <Compile Include="Menues\DinMenu_Admin.ascx.cs">
       <DependentUpon>DinMenu_Admin.ascx</DependentUpon>
@@ -281,6 +301,13 @@
     <Compile Include="Modules\Municipalidad\Muni_Tramites_Inmuebles.aspx.designer.cs">
       <DependentUpon>Muni_Tramites_Inmuebles.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Noticias\News.aspx.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Noticias\News.aspx.designer.cs">
+      <DependentUpon>News.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Tramites\Tramites_Inmuebles.aspx.cs">
       <DependentUpon>Tramites_Inmuebles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -309,12 +336,26 @@
     <Compile Include="Usercontrol\Articulotemplate.ascx.designer.cs">
       <DependentUpon>Articulotemplate.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrol\NewsBase.ascx.cs">
-      <DependentUpon>NewsBase.ascx</DependentUpon>
+    <Compile Include="Usercontrol\NewsFooter.ascx.cs">
+      <DependentUpon>NewsFooter.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usercontrol\NewsBase.ascx.designer.cs">
-      <DependentUpon>NewsBase.ascx</DependentUpon>
+    <Compile Include="Usercontrol\NewsFooter.ascx.designer.cs">
+      <DependentUpon>NewsFooter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\NewsPanel.ascx.cs">
+      <DependentUpon>NewsPanel.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\NewsPanel.ascx.designer.cs">
+      <DependentUpon>NewsPanel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\NewsTitle.ascx.cs">
+      <DependentUpon>NewsTitle.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\NewsTitle.ascx.designer.cs">
+      <DependentUpon>NewsTitle.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usercontrol\News_Simple.ascx.cs">
@@ -323,6 +364,13 @@
     </Compile>
     <Compile Include="Usercontrol\News_Simple.ascx.designer.cs">
       <DependentUpon>News_Simple.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\News_SimpleView.ascx.cs">
+      <DependentUpon>News_SimpleView.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\News_SimpleView.ascx.designer.cs">
+      <DependentUpon>News_SimpleView.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -375,10 +423,12 @@
     <Content Include="Styles\articulos.css" />
     <Content Include="Styles\News.css" />
     <Content Include="Usercontrol\Articulotemplate.ascx" />
-    <Content Include="Usercontrol\NewsBase.ascx" />
+    <Content Include="Usercontrol\NewsTitle.ascx" />
     <Content Include="Usercontrol\News_Simple.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\cal_16.png" />
+    <Content Include="Images\confirm_16.png" />
     <Content Include="Images\hader-top-bg.JPG" />
     <Content Include="Maria_Municipal.master" />
     <Content Include="Menues\DinMenu_Admin.ascx" />
@@ -389,13 +439,18 @@
     <Content Include="Modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx" />
     <Content Include="Menues\DinMenu_Tramites.ascx" />
     <Content Include="Maria_Home.master" />
+    <Content Include="Maria_News.master" />
     <None Include="Modules\Localidad\Localidad_Escudo_archivos\themedata.thmx" />
     <Content Include="Maria_Admin.master" />
     <Content Include="Maria_Tramites.master" />
     <Content Include="Modules\Municipalidad\Muni_Tramites_Inmuebles.aspx" />
+    <Content Include="Modules\Noticias\News.aspx" />
     <Content Include="Modules\Tramites\Tramites_Inmuebles.aspx" />
     <Content Include="Modules\Tramites\Tramites_LicenciaConducir.aspx" />
     <Content Include="Modules\Tramites\Tramites_Vehiculos.aspx" />
+    <Content Include="Usercontrol\NewsFooter.ascx" />
+    <Content Include="Usercontrol\NewsPanel.ascx" />
+    <Content Include="Usercontrol\News_SimpleView.ascx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Maria.DAC\Maria.DAC.csproj">
