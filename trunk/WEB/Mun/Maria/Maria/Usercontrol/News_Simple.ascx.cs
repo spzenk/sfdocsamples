@@ -19,9 +19,9 @@ namespace Maria.Usercontrol
         protected void btnCreateNew_Click(object sender, EventArgs e)
         {
             NewsInfo wNews = new NewsInfo();
-            wNews.Text = this.txtComments.Text;
+          
             wNews.Title = this.txtTitle.Text;
-            //wNews.Img = System.DateTime.Now;
+            wNews.Text = this.txtText.Text;
 
             MariaDAC.Create(wNews);
         }

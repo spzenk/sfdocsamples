@@ -16,7 +16,7 @@ namespace Maria
         }
         public void Populate(NewsInfo pNew)
         {
-            this.lblDate.Text = pNew.CreationDate.ToString();
+          
             this.lblTitle.Text = pNew.Title;
         }
     }

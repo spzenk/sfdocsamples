@@ -107,4 +107,10 @@ namespace Maria
             set { _CurrentSession["Principal"] = value; }
         }
     }
+
+    public class WebUserControlsConstants
+    {
+
+        public const string News_SimpleView = "~/UserControl/News_SimpleView.ascx";
+    }
 }

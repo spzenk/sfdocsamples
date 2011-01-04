@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Maria.BE;
 
 namespace Maria.Usercontrol
 {
@@ -13,5 +14,11 @@ namespace Maria.Usercontrol
         {
 
         }
+        public void Populate(NewsInfo pNew)
+        {
+            this.lblDate.Text = string.Concat( pNew.CreationDate.ToLongDateString() , " a las ",pNew.CreationDate.ToShortTimeString());
+          
+        }
+
     }
 }
