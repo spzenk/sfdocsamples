@@ -59,8 +59,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common.cs" />
+    <Compile Include="MariaDAC.cs" />
     <Compile Include="NewsInfo.cs" />
-    <Compile Include="NewsDAC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

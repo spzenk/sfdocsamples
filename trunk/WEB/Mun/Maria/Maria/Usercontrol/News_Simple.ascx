@@ -1,7 +1,7 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="News_Simple.ascx.cs" Inherits="Maria.Usercontrol.News_Simple" %>
+﻿    <%@ Control Language="C#" AutoEventWireup="true" CodeBehind="News_Simple.ascx.cs" Inherits="Maria.Usercontrol.News_Simple" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<%@ Register src="NewsBase.ascx" tagname="NewsBase" tagprefix="uc1" %>
+<%@ Register src="NewsTitle.ascx" tagname="NewsTitle" tagprefix="uc1" %>
 
 <link href="../Styles/News.css" rel="stylesheet" type="text/css" />
 <link href="../Styles/common.css" rel="stylesheet" type="text/css" />

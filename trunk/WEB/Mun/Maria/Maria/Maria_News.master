@@ -1,0 +1,10 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/mariaDiv.Master" AutoEventWireup="true" CodeBehind="Maria_News.master.cs" Inherits="Maria.Maria_News" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentLeft" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentCenter" runat="server">
+<asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+
+</asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentRight" runat="server">
+</asp:Content>
