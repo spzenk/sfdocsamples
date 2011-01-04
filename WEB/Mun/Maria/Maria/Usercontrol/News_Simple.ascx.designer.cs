@@ -95,13 +95,13 @@ namespace Maria.Usercontrol {
         protected global::System.Web.UI.WebControls.Label lblComments;
         
         /// <summary>
-        /// txtComments control.
+        /// txtText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtComments;
+        protected global::System.Web.UI.WebControls.TextBox txtText;
         
         /// <summary>
         /// btnCreateNew control.

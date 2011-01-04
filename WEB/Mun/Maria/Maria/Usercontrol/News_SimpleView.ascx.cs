@@ -18,8 +18,9 @@ namespace Maria.Usercontrol
         {
 
             this.NewsTitle1.Populate(pNew);
-            //this.lblDate.Text = pNew.CreationDate.ToString();
-            //this.lblTitle.Text = pNew.Title;
+            this.NewsFooter1.Populate(pNew);
+            this.lblTextContent.Text = pNew.Text;
+            //this.txtTextContent.InnerText = pNew.Text;
         }
     }
 }
