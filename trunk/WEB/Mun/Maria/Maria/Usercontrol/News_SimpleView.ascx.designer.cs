@@ -32,13 +32,13 @@ namespace Maria.Usercontrol {
         protected global::Maria.NewsTitle NewsTitle1;
         
         /// <summary>
-        /// lblTextContent control.
+        /// TextBox2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTextContent;
+        protected global::System.Web.UI.WebControls.TextBox TextBox2;
         
         /// <summary>
         /// NewsFooter1 control.

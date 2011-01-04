@@ -16,11 +16,12 @@ namespace Maria.Usercontrol
         }
         public void Populate(NewsInfo pNew)
         {
-
+           
             this.NewsTitle1.Populate(pNew);
             this.NewsFooter1.Populate(pNew);
-            this.lblTextContent.Text = pNew.Text;
-            //this.txtTextContent.InnerText = pNew.Text;
+         
+            this.TextBox2.Text = pNew.Text;
+       
         }
     }
 }

@@ -10,8 +10,10 @@
         <asp:Panel ID="pnlTitle" runat="server">
             <uc1:NewsTitle ID="NewsTitle1" runat="server" />
         </asp:Panel>
-        <div class="EnvelopeNewsBody">
-            <asp:Label ID="lblTextContent" runat="server"></asp:Label>
+        
+                <div class="EnvelopeNewsBody">
+            <asp:TextBox ID="TextBox2" runat="server" style="margin-bottom: 0px" BorderStyle="None" 
+                        Height="100%" TextMode="MultiLine" Width="100%"></asp:TextBox> 
         </div>
     </div>
     <div>
