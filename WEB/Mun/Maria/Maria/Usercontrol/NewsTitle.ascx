@@ -8,7 +8,7 @@
         <span id="NewsHeaderTitle"><asp:Label ID="lblDate" runat="server" Text="333"></asp:Label></span>
        
     </div>--%>
-    <div id="NewsHeaderTitle">
+    <div class ="NewsHeaderTitle">
         <span >
             <asp:Label ID="lblTitle" runat="server"></asp:Label>
         </span>

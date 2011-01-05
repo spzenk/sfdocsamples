@@ -32,8 +32,6 @@
        }
 </script>
 
-   
-
 <style type="text/css">
     .style1
     {
@@ -53,15 +51,12 @@
         <div id="Div4" class="EnvelopeNews">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
-                    <asp:Panel ID="pnlTitle" runat="server">
-                        <div class="EnvelopeNewsHeader">
-                        </div>
-                    </asp:Panel>
-                    <asp:Panel ID="pnlContent" runat="server" Height="100%">
-                        <asp:Panel ID="Panel1" runat="server" CssClass="cpHeaderStatic">
-                            <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
-                      </asp:Panel>
-                        <asp:Panel ID="pnlComments" runat="server" CssClass="EnvelopeNewsBody">
+             
+                        <asp:Panel ID="pnlContent" runat="server" Height="100%">
+                            <asp:Panel ID="pnHeader" runat="server" CssClass="cpHeaderStatic">
+                                <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
+                          </asp:Panel>
+                        <asp:Panel ID="pnlBody" runat="server" CssClass="EnvelopeNewsBody">
                             <table style="width: 100%; height : "100%"">
                                 <tr>
                               
@@ -73,7 +68,7 @@
                                     
                                         <asp:TextBox ID="txtTitle" runat="server" BorderColor="#003366" Columns="250" 
                                             CssClass="guionbajo" ForeColor="Black" Height="21px" MaxLength="1000" Rows="4" 
-                                            Width="44%" />
+                                            Width="90%" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -85,7 +80,7 @@
                                     <td>
                                        
                                         <asp:TextBox ID="txtText" runat="server" Columns="250" 
-                                            CssClass="AreaNewsComments" Height="228px" MaxLength="1000" Rows="4" 
+                                           Height="228px" MaxLength="1000" Rows="4" 
                                             TextMode="MultiLine" Width="92%" 
                                             ontextchanged="txtComments_TextChanged" />
                                     </td>
@@ -108,7 +103,7 @@
     </div>
     <div id="Div1" class ="EnvelopeContNews">
         <div id="d1" class="EnvelopeNews">
-            <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+            <asp:UpdatePanel ID="UpdatePanel2" runat="server" >
                 <ContentTemplate>
                     <asp:Panel ID="pHeader" runat="server" CssClass="cpHeaderExpand">
                         <asp:Label ID="lblText" runat="server" Text="Avanzada" />
