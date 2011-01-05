@@ -20,6 +20,6 @@ namespace Maria.Modules.Admin {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Maria.Usercontrol.News_Simple News_Simple1;
+        protected global::Maria.Usercontrol.News_Simple_Creator News_Simple1;
     }
 }
