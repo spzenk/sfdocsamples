@@ -8,6 +8,8 @@
 
 <div id="menuh" >
         <ul>
+        
+         <li><a href="/Modules/Noticias/WebForm1.aspx">Rich Text</a></li>
                 <li><a href="/Modules/Home/HomeWebForm.aspx">Inicio</a> </li>
 
                 <li><a href="/Modules/Localidad/Localidad_Economia.aspx">Localidad</a></li>

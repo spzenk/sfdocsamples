@@ -49,10 +49,9 @@
                                     </td>
                                     <td>
                                        
-                                        <asp:TextBox ID="txtText" runat="server" Columns="250" 
-                                           Height="228px" MaxLength="1000" Rows="4" 
-                                            TextMode="MultiLine" Width="92%" 
-                                            />
+                                     <textarea runat="server" id="txtText" name="txtBody" rows="8" cols="50" 
+                                        onkeyup="javascript:ValidateKeys(this, 4000);" onkeypress="javascript:return LimitSize(this, 4000);" 
+                                        onchange="javascript:ValidateSize(this, 4000);"></textarea>
                                     </td>
                                 </tr>
                             
