@@ -17,17 +17,16 @@ namespace Maria.Modules.Noticias
 
            foreach (NewsInfo n in wNewsList)
            {
-               this.pnlNewscontainer.Controls.Add(LoadNews(n));
+               this.pnlNewscontainer.Controls.Add(LoadSimpleNews(n));
            }
         }
 
 
 
-        private System.Web.UI.UserControl LoadNews(NewsInfo pNewsInfo)
+        private System.Web.UI.UserControl LoadSimpleNews(NewsInfo pNewsInfo)
         {
             System.Web.UI.UserControl wWebNews = (System.Web.UI.UserControl)Page.LoadControl(WebUserControlsConstants.News_SimpleView);
-
-          
+         
             ((News_SimpleView)wWebNews).Populate(pNewsInfo);
             wWebNews.EnableViewState = true;
 
@@ -35,5 +34,7 @@ namespace Maria.Modules.Noticias
 
             return wWebNews;
         }
+
+      
     }
 }

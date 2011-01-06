@@ -49,9 +49,10 @@
                                     </td>
                                     <td>
                                        
-                                     <textarea runat="server" id="txtText" name="txtBody" rows="8" cols="50" 
+                                     <textarea runat="server" id="txtBody" name="txtBody" rows="8" cols="50" 
                                         onkeyup="javascript:ValidateKeys(this, 4000);" onkeypress="javascript:return LimitSize(this, 4000);" 
                                         onchange="javascript:ValidateSize(this, 4000);"></textarea>
+                                          <textarea runat="server" id="tt" name="tt" rows="8" cols="50"></textarea>
                                     </td>
                                 </tr>
                             

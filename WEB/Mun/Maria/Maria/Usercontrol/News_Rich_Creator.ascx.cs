@@ -21,9 +21,17 @@ namespace Maria.Usercontrol
             NewsInfo wNews = new NewsInfo();
 
             wNews.Title = this.txtTitle.Text;
-            wNews.Text = this.txtText.Value;
-            HtmlTextArea wHtmlTextArea = (HtmlTextArea)this.Page.FindControl("txtBody");
-            MariaDAC.Create(wNews);
+           
+            HtmlTextArea wHtmlTextArea = (HtmlTextArea)this.FindControl("txtBody");
+            wNews.Text = wHtmlTextArea.InnerHtml;
+
+            wNews.Text = wHtmlTextArea.InnerText;
+
+            wNews.Text = wHtmlTextArea.Value;
+            HtmlTextArea tt = (HtmlTextArea)this.FindControl("tt");
+            wNews.Text = tt.Value;
+           
+            //MariaDAC.Create(wNews);
         }
     }
 }
