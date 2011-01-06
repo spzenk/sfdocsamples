@@ -154,6 +154,13 @@
     <Compile Include="Modules\Admin\Admin_CreateNews.aspx.designer.cs">
       <DependentUpon>Admin_CreateNews.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Admin\Admin_CreateRichNews.aspx.cs">
+      <DependentUpon>Admin_CreateRichNews.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Admin\Admin_CreateRichNews.aspx.designer.cs">
+      <DependentUpon>Admin_CreateRichNews.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Admin\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -440,6 +447,7 @@
     <Content Include="Maria_Municipal.master" />
     <Content Include="Menues\DinMenu_Admin.ascx" />
     <Content Include="Modules\Admin\Admin_CreateNews.aspx" />
+    <Content Include="Modules\Admin\Admin_CreateRichNews.aspx" />
     <Content Include="Modules\Admin\WebForm1.aspx" />
     <Content Include="Modules\Home\Home_TasasMunicipales.aspx" />
     <Content Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx" />
