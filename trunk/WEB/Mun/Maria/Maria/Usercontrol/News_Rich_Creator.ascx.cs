@@ -42,9 +42,6 @@ namespace Maria.Usercontrol
             //MariaDAC.Create(wNews);
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

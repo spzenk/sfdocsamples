@@ -3,11 +3,12 @@
 <%@ Register src="../../Usercontrol/News_Rich_Creator.ascx" tagname="News_Rich_Creator" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<script type="text/javascript" src="../../js/tinymce/jscripts/tiny_mce/tiny_mce_src.js"></script>
+
+    <script type="text/javascript" src="../../js/tinymce/jscripts/tiny_mce/tiny_mce_src.js"></script>
     <script type="text/javascript" >
         tinyMCE.init({
-        mode: "exact",
-            elements: "ctl00_ctl00_ContentCenter_ContentPlaceHolder1_News_Rich_Creator1_txtBody", //ctl00$cphMP_SuenoCelesteMain$dvwDetail$txtBody
+        mode: "textareas",
+        elements: "ctl00_ctl00_ContentCenter_ContentPlaceHolder1_News_Rich_Creator1_txtBody,ctl00$ctl00$ContentCenter$ContentPlaceHolder1$News_Rich_Creator1$txtBody", //ctl00$cphMP_SuenoCelesteMain$dvwDetail$txtBody
             theme: "advanced",
             language: "es",
             entity_encoding : 'raw',
@@ -28,12 +29,12 @@
         });
         function SaveMyPreciousValues() {
 
-      tinyMCE.triggerSave(false, true);
-            x = document.getElementById('ctl00_ctl00_ContentCenter_ContentPlaceHolder1_News_Rich_Creator1_txtBody');
+             tinyMCE.triggerSave(false, true);
+             x = document.getElementById('ctl00_ctl00_ContentCenter_ContentPlaceHolder1_News_Rich_Creator1_txtBody');
             alert(x.value);
-//            x = document.getElementById('txtBody');
-      //            alert(x.value);
-            alert('dfDAD');
+            document.getElementById('htmlTextValue').value = 'dasdasdad';
+
+            alert(document.getElementById('htmlTextValue').value);
         
         };
         function x(txtName) {
@@ -51,5 +52,6 @@
 
         };
     </script >
+    <input type="hidden" name="htmlTextValue" value="0" />
     <uc1:News_Rich_Creator ID="News_Rich_Creator1" runat="server" />
 </asp:Content>
