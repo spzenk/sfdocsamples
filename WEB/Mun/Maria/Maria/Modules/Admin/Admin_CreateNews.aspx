@@ -7,7 +7,7 @@
 <script type="text/javascript" src="../../Usercontrol/tinymce/jscripts/tiny_mce/tiny_mce_src.js"></script>
     <script type="text/javascript" >
         tinyMCE.init({
-            mode: "textareas",
+         mode: "exact",
             elements: "TextBox1", //ctl00$cphMP_SuenoCelesteMain$dvwDetail$txtBody
             theme: "advanced",
             language: "es",
