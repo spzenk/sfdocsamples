@@ -4,6 +4,7 @@
 <link href="../Styles/News.css" rel="stylesheet" type="text/css" />
 <link href="../Styles/common.css" rel="stylesheet" type="text/css" />
 
+
 <style type="text/css">
     .style1
     {
@@ -13,6 +14,11 @@
     .style2
     {
         width: 47px;
+    }
+    #txtBody
+    {
+        height: 338px;
+        width: 861px;
     }
 </style>
 
@@ -38,7 +44,7 @@
                                     
                                         <asp:TextBox ID="txtTitle" runat="server" BorderColor="#003366" Columns="250" 
                                             CssClass="guionbajo" ForeColor="Black" Height="21px" MaxLength="1000" Rows="4" 
-                                            Width="90%" />
+                                            Width="90%"   />
                                     </td>
                                 </tr>
                                 <tr>
@@ -48,22 +54,17 @@
                                         <asp:Label ID="lblComments" runat="server" Text="Texto " />
                                     </td>
                                     <td>
-                                       
-                                     <textarea runat="server" id="txtBody" name="txtBody" rows="8" cols="50" 
-                                        onkeyup="javascript:ValidateKeys(this, 4000);" onkeypress="javascript:return LimitSize(this, 4000);" 
-                                        onchange="javascript:ValidateSize(this, 4000);"></textarea>
-                                          <textarea runat="server" id="tt" name="tt" rows="8" cols="50"></textarea>
+                                    <textarea runat="server" id="txtBody" name="txtBody" rows="8" cols="50"> </textarea>
                                     </td>
                                 </tr>
                             
                             </table>
                             <br />
-                           
-                              
-                            <br />
-                                <br />
+                          
                             <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" 
-                                OnClick="btnCreateNew_Click" CssClass="btGrisNegrita" />
+                                OnClick="btnCreateNew_Click"   CssClass="btGrisNegrita" 
+                                onclientclick="SaveMyPreciousValues();"  />
+                           
                         </asp:Panel>
                     </asp:Panel>
          

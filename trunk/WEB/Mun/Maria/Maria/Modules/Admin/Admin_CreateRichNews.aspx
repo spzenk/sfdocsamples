@@ -3,13 +3,14 @@
 <%@ Register src="../../Usercontrol/News_Rich_Creator.ascx" tagname="News_Rich_Creator" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<script type="text/javascript" src="../../Usercontrol/tinymce/jscripts/tiny_mce/tiny_mce_src.js"></script>
+<script type="text/javascript" src="../../js/tinymce/jscripts/tiny_mce/tiny_mce_src.js"></script>
     <script type="text/javascript" >
         tinyMCE.init({
         mode: "exact",
             elements: "ctl00_ctl00_ContentCenter_ContentPlaceHolder1_News_Rich_Creator1_txtBody", //ctl00$cphMP_SuenoCelesteMain$dvwDetail$txtBody
             theme: "advanced",
             language: "es",
+            entity_encoding : 'raw',
             plugins: "style,layer,table,save,advhr,advimage,advlink,emotions,spellchecker,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,preview",
 
             // Theme options - button# indicated the row# only
@@ -25,6 +26,30 @@
             theme_advanced_toolbar_align: "left",
             theme_advanced_statusbar_location: "bottom"
         });
+        function SaveMyPreciousValues() {
+
+      tinyMCE.triggerSave(false, true);
+            x = document.getElementById('ctl00_ctl00_ContentCenter_ContentPlaceHolder1_News_Rich_Creator1_txtBody');
+            alert(x.value);
+//            x = document.getElementById('txtBody');
+      //            alert(x.value);
+            alert('dfDAD');
+        
+        };
+        function x(txtName) {
+
+            txtArea = document.getElementById(txtName);
+            alert(txtArea.value);
+
+        };  
+        function GetText2(txtName) {
+
+            tinyMCE.triggerSave(false, true);
+            txtArea = document.getElementById(txtName);
+            
+            return txtArea.value;
+
+        };
     </script >
     <uc1:News_Rich_Creator ID="News_Rich_Creator1" runat="server" />
 </asp:Content>

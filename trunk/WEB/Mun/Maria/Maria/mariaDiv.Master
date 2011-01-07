@@ -12,6 +12,8 @@
        <link href="/Styles/articulos.css" rel="stylesheet" type="text/css" />
        <link href="/Styles/news.css" rel="stylesheet" type="text/css" />
         <title></title>
+
+        
 </head>
 <body>
     <form id="form1" runat="server">
