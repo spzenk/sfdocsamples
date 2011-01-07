@@ -18,6 +18,9 @@ namespace Maria.Usercontrol
         }
         protected void btnCreateNew_Click(object sender, EventArgs e)
         {
+            string inputText = Request.Form["txtBody"];
+
+
             NewsInfo wNews = new NewsInfo();
 
             wNews.Title = this.txtTitle.Text;
@@ -28,10 +31,20 @@ namespace Maria.Usercontrol
             wNews.Text = wHtmlTextArea.InnerText;
 
             wNews.Text = wHtmlTextArea.Value;
-            HtmlTextArea tt = (HtmlTextArea)this.FindControl("tt");
-            wNews.Text = tt.Value;
-           
+
+            wNews.Text = Request.Form["txtBody"];
+
+            wNews.Text = Request.Form["ctl00_ctl00_ContentCenter_ContentPlaceHolder1_News_Rich_Creator1_txtBody"];
+
+
+            wNews.Text = Request.Form["ctl00$ctl00$ContentCenter$ContentPlaceHolder1$News_Rich_Creator1$txtBody"];
+
             //MariaDAC.Create(wNews);
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
