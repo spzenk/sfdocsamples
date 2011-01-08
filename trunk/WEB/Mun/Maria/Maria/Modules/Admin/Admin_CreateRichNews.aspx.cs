@@ -20,7 +20,7 @@ namespace Maria.Modules.Admin
         {
           
             NewsInfo wNews = new NewsInfo();
-            wNews.Title = this.txtTitle.Text;
+            wNews.Title = this.txtTitle.Value;
             wNews.Text = txtBody.Value;
 
 
