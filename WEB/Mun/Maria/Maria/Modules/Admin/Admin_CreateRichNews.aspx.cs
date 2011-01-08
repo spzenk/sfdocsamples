@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Maria.BE;
+using Maria.DAC;
 
 namespace Maria.Modules.Admin
 {
@@ -13,5 +15,18 @@ namespace Maria.Modules.Admin
         {
 
         }
+
+        protected void btnCreateNew_Click(object sender, EventArgs e)
+        {
+          
+            NewsInfo wNews = new NewsInfo();
+            wNews.Title = this.txtTitle.Text;
+            wNews.Text = txtBody.Value;
+
+
+            MariaDAC.Create(wNews);
+        }
+
+        
     }
 }
