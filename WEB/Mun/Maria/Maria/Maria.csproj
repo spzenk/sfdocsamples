@@ -435,6 +435,7 @@
     <Content Include="Menues\DinMenu_Admin.ascx" />
     <Content Include="Modules\Admin\Admin_CreateNews.aspx" />
     <Content Include="Modules\Admin\Admin_CreateRichNews.aspx" />
+    <Content Include="Modules\Admin\collapsable.txt" />
     <Content Include="Modules\Home\Home_TasasMunicipales.aspx" />
     <Content Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx" />
     <Content Include="Modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx" />

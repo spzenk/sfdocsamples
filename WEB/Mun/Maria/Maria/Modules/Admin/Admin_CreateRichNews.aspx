@@ -30,39 +30,60 @@
        
     </script >
   <div id="Div3" class ="EnvelopeContNews">
-
-        <div id="Div4" class="EnvelopeNews">
-
+      <div id="Div4" class="EnvelopeNews">
+          <asp:Panel ID="pnlContent" runat="server" Height="100%">
+              <div>
+                  <asp:Panel ID="pnHeader" runat="server" CssClass="cpHeaderStatic">
+                      <div>
+                          <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
+                      </div>
+               
+                          
              
-                        <asp:Panel ID="pnlContent" runat="server" Height="100%">
-                            <asp:Panel ID="pnHeader" runat="server" CssClass="cpHeaderStatic">
-                                <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
-                          </asp:Panel>
-                        <asp:Panel ID="pnlBody" runat="server" CssClass="EnvelopeNewsBody">
-                           
-                                      <div><asp:Label ID="Label2" runat="server" Text="Titulo " /></div>
-                                        
-                                   <div>
-                                   <textarea runat="server" id="txtTitle" name="txtTitle" cols ="10"
-                                            style="width: 546px; height: 39px"> </textarea>
-                                      
-                              </div>
-                                        <asp:Label ID="lblComments" runat="server" Text="Texto " />
-                                      <div>
-                                     <textarea runat="server" id="txtBody" name="txtBody" cols ="10"
-                                            style="width: 546px; height: 39px"> </textarea>
-                                    
-                             
-                            </div>
-                           
-                          <div>
-                            <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click"   CssClass="btGrisNegrita"/>
-                           </div>
-                        </asp:Panel>
-                    </asp:Panel>
-         
-
-        </div>
+                  </asp:Panel>
+              </div>
+              <asp:Panel ID="pnlBody" runat="server" CssClass="EnvelopeNewsBody">
+              <div id="d1">
+                              <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                                  <ContentTemplate>
+                                      <asp:Panel ID="pHeader" runat="server" CssClass="cpHeaderExpand">
+                                          <asp:Label ID="lblText" runat="server" Text="Avanzada" />
+                                      </asp:Panel>
+                                      <asp:Panel ID="pBody" runat="server" CssClass="cpBody">
+                                          <div>
+                                              <asp:Label ID="Label3" runat="server" Text="Fecha de expiración" />
+                                          </div>
+                                          <div>
+                                              <asp:TextBox ID="txtStartDate" runat="server" Height="24px" Width="222px"></asp:TextBox>
+                                              <cc1:CalendarExtender ID="CalendarExtender1" TargetControlID="txtStartDate" runat="server">
+                                              </cc1:CalendarExtender>
+                                          </div>
+                                      </asp:Panel>
+                                      <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="server" TargetControlID="pBody"
+                                          CollapseControlID="pHeader" ExpandControlID="pHeader" Collapsed="true" TextLabelID="lblText"
+                                          CollapsedText="+ Avanzada" ExpandedText="- Avanzada" CollapsedSize="0">
+                                      </cc1:CollapsiblePanelExtender>
+                                  </ContentTemplate>
+                              </asp:UpdatePanel>
+                          </div>
+                  <div>
+                      <asp:Label ID="Label2" runat="server" Text="Titulo " /></div>
+                  <div>
+                      <textarea runat="server" id="txtTitle" name="txtTitle" cols="10" style="width: 546px;
+                          height: 39px"> </textarea>
+                  </div>
+                  <asp:Label ID="lblComments" runat="server" Text="Texto " />
+                  <div>
+                      <textarea runat="server" id="txtBody" name="txtBody" cols="10" style="width: 100%;
+                          height: 400px"> </textarea>
+                  </div>
+                  <div>
+                      <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click"
+                          CssClass="btGrisNegrita" />
+                  </div>
+              </asp:Panel>
+          </asp:Panel>
+      </div>
     </div>
   
     

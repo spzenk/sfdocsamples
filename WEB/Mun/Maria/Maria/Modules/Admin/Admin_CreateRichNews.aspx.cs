@@ -22,8 +22,8 @@ namespace Maria.Modules.Admin
             NewsInfo wNews = new NewsInfo();
             wNews.Title = this.txtTitle.Value;
             wNews.Text = txtBody.Value;
-
-
+            wNews.ExpitationDate = this.CalendarExtender1.SelectedDate;
+               
             MariaDAC.Create(wNews);
         }
 
