@@ -39,38 +39,25 @@
                                 <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
                           </asp:Panel>
                         <asp:Panel ID="pnlBody" runat="server" CssClass="EnvelopeNewsBody">
-                            <table style="width: 100%; height : "100%">
-                                <tr>
-                              
-                                    <td>
+                           
+                                      <div><asp:Label ID="Label2" runat="server" Text="Titulo " /></div>
+                                        
+                                   <div>
+                                   <textarea runat="server" id="txtTitle" name="txtTitle" cols ="10"
+                                            style="width: 546px; height: 39px"> </textarea>
                                       
-                                        <asp:Label ID="Label2" runat="server" Text="Titulo " />
-                                    </td>
-                                    <td ">
-                                    
-                                        <asp:TextBox ID="txtTitle" runat="server" BorderColor="#003366" Columns="250" 
-                                            CssClass="guionbajo" ForeColor="Black" Height="21px" MaxLength="1000" Rows="4" 
-                                            Width="90%"   />
-                                    </td>
-                                </tr>
-                                <tr>
-                           
-                                    <td >
-                                        &nbsp;
+                              </div>
                                         <asp:Label ID="lblComments" runat="server" Text="Texto " />
-                                    </td>
-                                    <td>
-                                     <textarea runat="server" id="txtBody" name="txtBody" 
-                                            style="width: 546px; height: 389px"> </textarea>
+                                      <div>
+                                     <textarea runat="server" id="txtBody" name="txtBody" cols ="10"
+                                            style="width: 546px; height: 39px"> </textarea>
                                     
-                                    </td>
-                                </tr>
-                            
-                            </table>
-                            <br />
-                          
-                            <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click"   CssClass="btGrisNegrita"/>
+                             
+                            </div>
                            
+                          <div>
+                            <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click"   CssClass="btGrisNegrita"/>
+                           </div>
                         </asp:Panel>
                     </asp:Panel>
          

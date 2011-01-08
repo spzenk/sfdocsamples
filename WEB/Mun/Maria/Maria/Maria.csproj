@@ -161,13 +161,6 @@
     <Compile Include="Modules\Admin\Admin_CreateRichNews.aspx.designer.cs">
       <DependentUpon>Admin_CreateRichNews.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Admin\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\Admin\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Modules\Home\Home_TasasMunicipales.aspx.cs">
       <DependentUpon>Home_TasasMunicipales.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -365,13 +358,6 @@
       <DependentUpon>NewsTitle.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Usercontrol\News_Rich_Creator.ascx.cs">
-      <DependentUpon>News_Rich_Creator.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Usercontrol\News_Rich_Creator.ascx.designer.cs">
-      <DependentUpon>News_Rich_Creator.ascx</DependentUpon>
-    </Compile>
     <Compile Include="Usercontrol\News_Simple_Creator.ascx.cs">
       <DependentUpon>News_Simple_Creator.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -449,7 +435,6 @@
     <Content Include="Menues\DinMenu_Admin.ascx" />
     <Content Include="Modules\Admin\Admin_CreateNews.aspx" />
     <Content Include="Modules\Admin\Admin_CreateRichNews.aspx" />
-    <Content Include="Modules\Admin\WebForm1.aspx" />
     <Content Include="Modules\Home\Home_TasasMunicipales.aspx" />
     <Content Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx" />
     <Content Include="Modules\Municipalidad\Muni_Inst_MedioAmbiente.aspx" />
@@ -470,7 +455,6 @@
     <Content Include="Modules\Tramites\Tramites_LicenciaConducir.aspx" />
     <Content Include="Modules\Tramites\Tramites_Vehiculos.aspx" />
     <Content Include="Usercontrol\NewsFooter.ascx" />
-    <Content Include="Usercontrol\News_Rich_Creator.ascx" />
     <Content Include="Usercontrol\News_SimpleView.ascx" />
     <Content Include="js\tinymce\jscripts\tiny_mce\langs\en.js" />
     <Content Include="js\tinymce\jscripts\tiny_mce\langs\es.js" />

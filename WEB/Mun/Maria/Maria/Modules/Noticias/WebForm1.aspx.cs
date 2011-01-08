@@ -13,5 +13,10 @@ namespace Maria.Modules.Noticias
         {
 
         }
+        protected void btnCreateNew_Click(object sender, EventArgs e)
+        {
+            lblResult1.Text = TextBox1.Value; // para textareas, el texto está en el VALUE
+            lblResult2.Text = TextBox2.Text; // para textboxes, el texto está en el TXT
+        }
     }
 }
