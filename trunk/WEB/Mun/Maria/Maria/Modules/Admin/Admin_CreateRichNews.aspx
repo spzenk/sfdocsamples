@@ -27,9 +27,14 @@
         theme_advanced_statusbar_location: "bottom"
     });
 
-    function f(arg) {
-            target.value = arg._selectedDate.format("MM-dd-yyyy");
-        };
+    function checkDate(sender, args) {
+        var dt = new Date();//Tien el dia ed hoy
+        //sender._selectedDate Es lafecha edl calendario seleccionada
+        //alert(dt.format(sender._format));
+        if (sender._selectedDate < dt) {
+            sender._textbox.set_Value(dt.format(sender._format));
+        }
+    }
        
     </script >
   <div id="Div3" class ="EnvelopeContNews">
@@ -50,9 +55,8 @@
                                       <asp:Panel ID="pHeader" runat="server" CssClass="cpHeaderExpand">
                                           <asp:Label ID="lblText" runat="server" Text="Avanzada" />
                                       </asp:Panel>
-                                      <asp:Panel ID="pBody" runat="server" CssClass="cpBody">
+                                      <asp:Panel ID="pBody" runat="server" CssClass="cpBody" Width="612px">
                                           <div>
-                                              
                                               <asp:Label ID="Label3" runat="server" Text="Fecha de expiración" />
                                           </div>
                                           <div>
@@ -62,12 +66,18 @@
                                         runat="server"
                                         ImageUrl="~/Images/cal_16.png"
                                         CausesValidation="False" />
-                                       <asp:RangeValidator ID="RangeValidator1" runat="server" 
-                                                  ErrorMessage="La fecha de expiracion debe ser mayor a hoy" ControlToValidate = "txtStartDate"
-                                                   Type="Date" Display="Dynamic"></asp:RangeValidator>
                                               <asp:TextBox ID="txtStartDate" runat="server" Height="24px" Width="222px"></asp:TextBox>
-                                              <cc1:CalendarExtender ID="CalendarExtender1" Format ="dd/MM/yyyy" TargetControlID="txtStartDate" runat="server" OnClientDateSelectionChanged="f">
+                                              <cc1:CalendarExtender ID="CalendarExtender1" Format ="dd/MM/yyyy" TargetControlID="txtStartDate" runat="server" OnClientDateSelectionChanged="checkDate">
                                               </cc1:CalendarExtender>
+                                              <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                                                  ControlToValidate="txtStartDate" Display="Dynamic"  
+                                                  ErrorMessage="La fecha de expiracion debe ser mayor a hoy" Type="Date" 
+                                                  SetFocusOnError="True" MaximumValue="1/1/2200"></asp:RangeValidator>
+                                                  <asp:RegularExpressionValidator ID="RegularExpressionValidator2" 
+                                                  runat="server" ControlToValidate="txtStartDate" 
+                                                  Display="Static" ErrorMessage="Formato Fecha incorrecto Ej. 25/11/2006" 
+                                                   SetFocusOnError="True" 
+                                                  ValidationExpression="\d{2}/\d{2}/\d{4}" ></asp:RegularExpressionValidator>
                                           </div>
                                       </asp:Panel>
                                       <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="server" TargetControlID="pBody"
@@ -79,11 +89,11 @@
                           </div>
                   <div>
                       <asp:Label ID="Label2" runat="server" Text="Titulo " /></div>
-                  <div>
-                      <textarea runat="server" id="txtTitle" name="txtTitle" cols="10" style="width: 546px;
+                  <div class ="NewsHeaderTitle">
+                      <textarea runat="server" id="txtTitle" name="txtTitle" style="width: 768px;
                           height: 39px"> </textarea>
-                  </div>
-                  <asp:Label ID="lblComments" runat="server" Text="Texto " />
+                  </div >
+                  <asp:Label ID="lblComments" runat="server" Text="Contenido de la noticia" />
                   <div>
                       <textarea runat="server" id="txtBody" name="txtBody" cols="10" style="width: 100%;
                           height: 400px"> </textarea>

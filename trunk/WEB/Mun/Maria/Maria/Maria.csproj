@@ -427,6 +427,7 @@
     <Content Include="Usercontrol\News_Simple_Creator.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\about.png" />
     <Content Include="Images\cal_16.png" />
     <Content Include="Images\confirm_16.png" />
     <Content Include="Images\hader-top-bg.JPG" />
