@@ -40,7 +40,7 @@ namespace Maria.BE
         public DateTime? ExpitationDate
         {
             get { return _ExpitationDate; }
-            set { _ExpitationDate = value.Value; }
+            set { _ExpitationDate = value; }
         }
         string _CreationUser;
 
