@@ -95,6 +95,24 @@ namespace Maria.Modules.Admin {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
+        /// btnCalenderPopup control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton btnCalenderPopup;
+        
+        /// <summary>
+        /// RangeValidator1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator RangeValidator1;
+        
+        /// <summary>
         /// txtStartDate control.
         /// </summary>
         /// <remarks>

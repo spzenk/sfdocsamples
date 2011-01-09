@@ -25,8 +25,11 @@
         theme_advanced_toolbar_location: "top",
         theme_advanced_toolbar_align: "left",
         theme_advanced_statusbar_location: "bottom"
-        });
+    });
 
+    function f(arg) {
+            target.value = arg._selectedDate.format("MM-dd-yyyy");
+        };
        
     </script >
   <div id="Div3" class ="EnvelopeContNews">
@@ -37,8 +40,6 @@
                       <div>
                           <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
                       </div>
-               
-                          
              
                   </asp:Panel>
               </div>
@@ -51,11 +52,21 @@
                                       </asp:Panel>
                                       <asp:Panel ID="pBody" runat="server" CssClass="cpBody">
                                           <div>
+                                              
                                               <asp:Label ID="Label3" runat="server" Text="Fecha de expiración" />
                                           </div>
                                           <div>
+                                          <asp:ImageButton
+                                        ID="btnCalenderPopup"
+                                        Width="16" Height="16"
+                                        runat="server"
+                                        ImageUrl="~/Images/cal_16.png"
+                                        CausesValidation="False" />
+                                       <asp:RangeValidator ID="RangeValidator1" runat="server" 
+                                                  ErrorMessage="La fecha de expiracion debe ser mayor a hoy" ControlToValidate = "txtStartDate"
+                                                   Type="Date" Display="Dynamic"></asp:RangeValidator>
                                               <asp:TextBox ID="txtStartDate" runat="server" Height="24px" Width="222px"></asp:TextBox>
-                                              <cc1:CalendarExtender ID="CalendarExtender1" TargetControlID="txtStartDate" runat="server">
+                                              <cc1:CalendarExtender ID="CalendarExtender1" Format ="dd/MM/yyyy" TargetControlID="txtStartDate" runat="server" OnClientDateSelectionChanged="f">
                                               </cc1:CalendarExtender>
                                           </div>
                                       </asp:Panel>
