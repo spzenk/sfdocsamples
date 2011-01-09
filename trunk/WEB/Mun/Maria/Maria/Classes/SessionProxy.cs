@@ -47,7 +47,7 @@ namespace Maria
             _CurrentSession["FilterTextBoxList"] = null;
             _CurrentSession["FilterDropDownList"] = null;
             _CurrentSession["FilterButtonList"] = null;
-            _CurrentSession["FilterRecordSetAttributeList"] = null;
+
             
      
 
