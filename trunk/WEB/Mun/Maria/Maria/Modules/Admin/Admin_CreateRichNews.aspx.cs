@@ -13,7 +13,8 @@ namespace Maria.Modules.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
+            RangeValidator1.MaximumValue = new DateTime(2400, 01, 01).ToString("dd/MM/yyyy");
         }
 
         protected void btnCreateNew_Click(object sender, EventArgs e)
@@ -22,11 +23,14 @@ namespace Maria.Modules.Admin
             NewsInfo wNews = new NewsInfo();
             wNews.Title = this.txtTitle.Value;
             wNews.Text = txtBody.Value;
-            wNews.ExpitationDate = this.CalendarExtender1.SelectedDate;
-               
+            wNews.ExpitationDate = System.Convert.ToDateTime(txtStartDate.Text);
+         
+
+           
             MariaDAC.Create(wNews);
         }
 
         
+
     }
 }
