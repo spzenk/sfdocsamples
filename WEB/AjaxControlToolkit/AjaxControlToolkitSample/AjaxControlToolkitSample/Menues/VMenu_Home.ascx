@@ -15,11 +15,11 @@
         <ul>
                 
 
-                <li><a href="/Modules/Home/TasasMunicipales.aspx">Tasas municipales</a></li>
+                <li><a href="/Modules/AnimationExtender_Click.aspx">AnimationExtender Click</a></li>
 
-                <li><a href="#menuv">Municipalidad</a></li>
+                <li><a href="/Modules/AnimationExtender_MouseOver.aspx">AnimationExtender_MouseOver</a></li>
 
-                <li><a href="#menuv">Ordenanzas</a></li>
+           
         </ul>
 
 </div>

@@ -8,37 +8,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AjaxControlToolkitSample {
+namespace AjaxControlToolkitSample.Modules {
     
     
-    public partial class _Default {
+    public partial class AnimationExtender_Click {
         
         /// <summary>
-        /// Head1 control.
+        /// lnkBtnColHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnColHelp;
         
         /// <summary>
-        /// form1 control.
+        /// lnkBtnCloseColHelp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// ScriptManager1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        protected global::System.Web.UI.WebControls.LinkButton lnkBtnCloseColHelp;
         
         /// <summary>
         /// AnimationExtender1 control.
@@ -50,12 +41,12 @@ namespace AjaxControlToolkitSample {
         protected global::AjaxControlToolkit.AnimationExtender AnimationExtender1;
         
         /// <summary>
-        /// Panel1 control.
+        /// AnimationExtender2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
+        protected global::AjaxControlToolkit.AnimationExtender AnimationExtender2;
     }
 }

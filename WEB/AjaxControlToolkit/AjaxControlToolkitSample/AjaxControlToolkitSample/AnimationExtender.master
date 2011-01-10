@@ -1,0 +1,12 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/mariaDiv.Master" AutoEventWireup="true" CodeBehind="AnimationExtender.master.cs" Inherits="AjaxControlToolkitSample.AnimationExtender1" %>
+<%@ Register src="Menues/VMenu_Home.ascx" tagname="VMenu_Home" tagprefix="uc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentLeft" runat="server">
+    <uc1:VMenu_Home ID="VMenu_Home1" runat="server" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentCenter" runat="server">
+ <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+    </asp:Content>
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentRight" runat="server">
+   
+</asp:Content>

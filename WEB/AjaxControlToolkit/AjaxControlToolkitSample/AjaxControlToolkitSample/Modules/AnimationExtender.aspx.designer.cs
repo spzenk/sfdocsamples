@@ -12,41 +12,5 @@ namespace AjaxControlToolkitSample {
     
     
     public partial class AnimationExtender {
-        
-        /// <summary>
-        /// lnkBtnColHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnColHelp;
-        
-        /// <summary>
-        /// lnkBtnCloseColHelp control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkBtnCloseColHelp;
-        
-        /// <summary>
-        /// AnimationExtender1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AnimationExtender AnimationExtender1;
-        
-        /// <summary>
-        /// AnimationExtender2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.AnimationExtender AnimationExtender2;
     }
 }

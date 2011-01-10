@@ -63,6 +63,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimationExtender.master.cs">
+      <DependentUpon>AnimationExtender.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AnimationExtender.master.designer.cs">
+      <DependentUpon>AnimationExtender.master</DependentUpon>
+    </Compile>
     <Compile Include="Modules\AnimationExtender.aspx.cs">
       <DependentUpon>AnimationExtender.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -98,6 +105,20 @@
     <Compile Include="Menues\VMenu_Home.ascx.designer.cs">
       <DependentUpon>VMenu_Home.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\AnimationExtender_Click.aspx.cs">
+      <DependentUpon>AnimationExtender_Click.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AnimationExtender_Click.aspx.designer.cs">
+      <DependentUpon>AnimationExtender_Click.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\AnimationExtender_MouseOver.aspx.cs">
+      <DependentUpon>AnimationExtender_MouseOver.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\AnimationExtender_MouseOver.aspx.designer.cs">
+      <DependentUpon>AnimationExtender_MouseOver.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +129,11 @@
     <Content Include="Styles\mariaDiv.css" />
     <Content Include="Styles\Menu.css" />
     <Content Include="Styles\News.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AnimationExtender.master" />
+    <Content Include="Modules\AnimationExtender_Click.aspx" />
+    <Content Include="Modules\AnimationExtender_MouseOver.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
