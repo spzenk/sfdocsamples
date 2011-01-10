@@ -9,7 +9,7 @@
 <div id="menuh" >
         <ul>
         
-                <li><a href="/Modules/AnimationExtender.aspx">AnimationExtender</a></li>
+                <li><a href="/Modules/AnimationExtender_Click.aspx">AnimationExtender</a></li>
               
 
                 <li><a href="/Modules/Collapsable.aspx">Collapsable</a></li>
