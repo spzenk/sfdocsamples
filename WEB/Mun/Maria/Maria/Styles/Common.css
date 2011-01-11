@@ -1,15 +1,4 @@
 ﻿
-#Footer
-{
-    clear: both;
-    position: relative;
-    margin-top: -50px;
-    width: 100%;
-    height: 35px;
-    text-align: center;
-    vertical-align: middle;
-    background-image: url('/Images/bg.png');
-}
 #PreFooter
 {
     background-position: right bottom;
