@@ -1,5 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/mariaDiv.Master" AutoEventWireup="true" CodeBehind="Maria_Home.master.cs" Inherits="Maria.Maria_Home" %>
+<%@ Register src="Menues/VMenu_Home.ascx" tagname="VMenu_Home" tagprefix="uc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentLeft" runat="server">
+    <uc1:VMenu_Home ID="VMenu_Home1" runat="server" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentCenter" runat="server">
     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

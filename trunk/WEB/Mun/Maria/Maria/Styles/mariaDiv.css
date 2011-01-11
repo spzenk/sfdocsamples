@@ -1,12 +1,16 @@
 ﻿body
 {
     background-position: 0 0;
-    margin: 10px 10px 0px 10px;
+    margin: 10px 35px 0px 35px;
     padding: 0px;
-    background: #FFFFFF none repeat scroll 0 0;
+    background: #FFFFFF url('../Images/bg_main.png') repeat-x scroll 0 0;
     font: 11px/1.2 Verdana, Arial, Helvetica, sans-serif;
+    min-width : 500;
 }
-	
+.clearfix
+{
+    display: inline-block;
+}
 #leftcontent
 {
     background-position: #fff;
@@ -51,10 +55,10 @@
 
 
 	
-	#banner
+#banner
 {
    
-    height: 40px;
+    height: 50px;
     border-top: 1px solid #000;
     border-right: 1px solid #000;
     border-left: 1px solid #000;
@@ -91,10 +95,34 @@
 {
     margin:0;
     padding:0;
-    height: 594px;
+    height: 794px;
     width: 99%;
     position : relative;
     top: 8px;
     left: 7px;
 }
 	
+.Footer
+{    clear: both;
+    border-width: 2px;
+    border-color: #336699;
+    padding: 30px;
+    margin: 5px;
+    position: relative;
+    border-top-style: groove;
+        margin-left:auto;
+    margin-right:auto;
+       text-align: center;
+        vertical-align: middle;
+}
+
+.footer2 {
+
+    position : relative;
+    width:750px;
+    text-align:center;
+
+    margin:0 auto;
+    height: 65px;
+    background-color: #ffffff;
+}

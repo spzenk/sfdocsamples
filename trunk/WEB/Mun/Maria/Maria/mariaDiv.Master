@@ -7,7 +7,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head id="Head1" runat="server">
   
-    
       <link href="Styles/mariadiv.css" rel="stylesheet" type="text/css" />
        <link href="/Styles/articulos.css" rel="stylesheet" type="text/css" />
        <link href="/Styles/news.css" rel="stylesheet" type="text/css" />
@@ -20,6 +19,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
     <div id="banner">
+         <div style="vertical-align: middle; font-family: 'Arial Black'; font-size: x-large; color: #CCCC00; display: table-header-group; float: left; overflow: visible;">Municipalidad de Adelia María</div>
     </div>
     <div id="Div1">
         <uc1:MainMenu ID="MainMenu1" runat="server" />
@@ -38,6 +38,8 @@
             </asp:ContentPlaceHolder>
         </div>
     </div>
+     <div id="Divfooter" class="Footer"  >
+     </div>
     </form>
 </body>
 </html>
