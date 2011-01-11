@@ -4,6 +4,7 @@ using System.Web.SessionState;
 
 using System.Security.Principal;
 using Microsoft.Practices.EnterpriseLibrary.Security;
+using Maria.BE;
 
 
 namespace Maria
@@ -12,6 +13,12 @@ namespace Maria
     {
         private HttpSessionState _CurrentSession;
 
+
+        public Guid CurrentNewsInfoGuid
+        {
+            get { return (Guid)_CurrentSession["CurrentNewsInfoGuid"]; }
+            set { _CurrentSession["CurrentNewsInfoGuid"] = value; }
+        }
         /// <summary>
         /// Limpia el ProxySession
         /// </summary>
@@ -53,7 +60,7 @@ namespace Maria
 
             //limpio filtros para JS
             _CurrentSession["FilterAndValues"] = string.Empty;
-            _CurrentSession["FiltersDeleted"] = string.Empty;
+            _CurrentSession["CurrentNewsInfo"] = null;
         }
 
         public SessionProxy(HttpSessionState PageSession)
@@ -112,5 +119,6 @@ namespace Maria
     {
 
         public const string News_SimpleView = "~/UserControl/News_SimpleView.ascx";
+        public const string NavigateUrl_NewsFullView = "~/Modules/Noticias/NewsFullView.aspx?id={0}";
     }
 }
