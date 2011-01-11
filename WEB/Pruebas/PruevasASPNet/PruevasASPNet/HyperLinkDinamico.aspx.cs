@@ -14,7 +14,7 @@ namespace WebApplication1
         protected void Page_Load(object sender, EventArgs e)
         {
 
-
+            
             this.HyperLink1.NavigateUrl = string.Format(url,24326054);
         }
 
