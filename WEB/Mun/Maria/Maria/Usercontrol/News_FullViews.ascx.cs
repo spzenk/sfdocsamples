@@ -6,21 +6,23 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Maria.BE;
 
-namespace Maria
+namespace Maria.Usercontrol
 {
-    public partial class NewsTitle : System.Web.UI.UserControl
+    public partial class News_FullViews : System.Web.UI.UserControl
     {
-       
         protected void Page_Load(object sender, EventArgs e)
         {
 
         }
+
         public void Populate(NewsInfo pNew)
         {
-            
-            this.lblTitle.Text = pNew.Title;
-            this.lblTitle.NavigateUrl = string.Format(WebUserControlsConstants.NavigateUrl_NewsFullView, pNew.Id.ToString());
-    
+
+            this.NewsTitle1.Populate(pNew);
+            this.NewsFooter1.Populate(pNew);
+
+            this.TextBox2.Text = pNew.Text;
+
         }
     }
 }

@@ -23,7 +23,9 @@ namespace Maria.Modules.Admin
             NewsInfo wNews = new NewsInfo();
             wNews.Title = this.txtTitle.Value;
             wNews.Text = txtBody.Value;
-            wNews.ExpitationDate = System.Convert.ToDateTime(txtStartDate.Text);
+            wNews.TextIntro = txtIntro.Value;
+            if (!string.IsNullOrEmpty(txtStartDate.Text))
+                wNews.ExpitationDate = System.Convert.ToDateTime(txtStartDate.Text);
          
 
            

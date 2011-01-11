@@ -1,16 +1,19 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="NewsTitle.ascx.cs" Inherits="Maria.NewsTitle" %>
     
-
+<link href="/Styles/Common.css" rel="stylesheet" type="text/css" />
 <link href="/Styles/News.css" rel="stylesheet" type="text/css" />
 
 <div  class="EnvelopeNewsHeader">
-  <%--  <div id="NewsHeaderNumeratorTitle">
-        <span id="NewsHeaderTitle"><asp:Label ID="lblDate" runat="server" Text="333"></asp:Label></span>
-       
-    </div>--%>
+  
     <div class ="NewsHeaderTitle">
-        <span >
-            <asp:Label ID="lblTitle" runat="server"></asp:Label>
-        </span>
+      
+            <span id="NewsHeaderTitle">
+            <img  alt="" src="../Images/new_16.png" /></span>
+            <asp:HyperLink ID="lblTitle" Target ="_blank" 
+                NavigateUrl="~/Modules/Noticias/NewsFullView.aspx" runat="server" 
+                CssClass="NewsHeaderTitle" Font-Underline="False">HyperLink</asp:HyperLink>
+                
+        
+          
     </div>
 </div>
