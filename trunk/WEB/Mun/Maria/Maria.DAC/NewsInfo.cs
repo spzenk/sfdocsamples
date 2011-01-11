@@ -56,6 +56,13 @@ namespace Maria.BE
             get { return _Text; }
             set { _Text = value; }
         }
+        string _TextIntro;
+
+        public string TextIntro
+        {
+            get { return _TextIntro; }
+            set { _TextIntro = value; }
+        }
         string _Title;
 
         public string Title

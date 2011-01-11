@@ -30,13 +30,14 @@ namespace Maria.DAC
                     wDataBase.AddInParameter(wCmd, "Img", System.Data.DbType.Binary, pNewsInfo.Img);
 
                 if (pNewsInfo.ExpitationDate != null)
-                    wDataBase.AddInParameter(wCmd, "ExpitationDate", System.Data.DbType.Binary, pNewsInfo.ExpitationDate.Value);
+                    wDataBase.AddInParameter(wCmd, "ExpirationDate", System.Data.DbType.DateTime, pNewsInfo.ExpitationDate.Value);
 
 
                 if (pNewsInfo.CreationUser != null)
                     wDataBase.AddInParameter(wCmd, "CreationUser", System.Data.DbType.Binary, pNewsInfo.CreationUser);
 
                 wDataBase.AddInParameter(wCmd, "Body", System.Data.DbType.Binary, Fwk.HelperFunctions.TypeFunctions.ConvertStringToByteArray(pNewsInfo.Text));
+                wDataBase.AddInParameter(wCmd, "TextIntro", System.Data.DbType.Binary, Fwk.HelperFunctions.TypeFunctions.ConvertStringToByteArray(pNewsInfo.TextIntro));
                 wDataBase.AddInParameter(wCmd, "Title", System.Data.DbType.String, pNewsInfo.Title);
 
                 wDataBase.ExecuteNonQuery(wCmd);
@@ -85,6 +86,8 @@ namespace Maria.DAC
 
                             wNewsInfo.Title = reader["Title"].ToString();
                             wNewsInfo.Text = Fwk.HelperFunctions.TypeFunctions.ConvertBytesToTextString((Byte[])(reader["Body"]));
+                            if (reader["TextIntro"] != DBNull.Value)
+                                wNewsInfo.TextIntro = Fwk.HelperFunctions.TypeFunctions.ConvertBytesToTextString((Byte[])(reader["TextIntro"]));
                             wNewsInfo.CreationDate = Convert.ToDateTime(reader["CreationDate"]);
                             wNewsInfo.CreationUser = reader["CreationUser"].ToString();
 
@@ -101,6 +104,51 @@ namespace Maria.DAC
             }
         }
 
+
+        public static NewsInfo GetById(Guid pGuid)
+        {
+            Database wDataBase = null;
+            DbCommand wCmd = null;
+            NewsInfo wNewsInfo = null;
+            try
+            {
+                wDataBase = DatabaseFactory.CreateDatabase("data");
+
+
+                using (wCmd = wDataBase.GetStoredProcCommand("News_g_Id"))
+                {
+
+                    wDataBase.AddInParameter(wCmd, "Id", System.Data.DbType.Guid, pGuid);
+
+
+                    using (IDataReader reader = wDataBase.ExecuteReader(wCmd))
+                    {
+
+                        while (reader.Read())
+                        {
+                            wNewsInfo = new NewsInfo();
+                            wNewsInfo.Id = (Guid)reader["newsid"];
+                            if (reader["Img"] != DBNull.Value)
+                                wNewsInfo.Img = (byte[])reader["Img"];
+
+                            wNewsInfo.Title = reader["Title"].ToString();
+                            wNewsInfo.Text = Fwk.HelperFunctions.TypeFunctions.ConvertBytesToTextString((Byte[])(reader["Body"]));
+                            if (reader["TextIntro"] != DBNull.Value)
+                                wNewsInfo.TextIntro = Fwk.HelperFunctions.TypeFunctions.ConvertBytesToTextString((Byte[])(reader["TextIntro"]));
+                            wNewsInfo.CreationDate = Convert.ToDateTime(reader["CreationDate"]);
+                            wNewsInfo.CreationUser = reader["CreationUser"].ToString();
+                          
+                        }
+                    }
+                }
+
+                return wNewsInfo;
+            }
+            catch (Exception ex)
+            {
+                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            }
+        }
 
     }
 }
