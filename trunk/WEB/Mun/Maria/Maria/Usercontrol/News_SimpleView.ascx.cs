@@ -20,7 +20,7 @@ namespace Maria.Usercontrol
             this.NewsTitle1.Populate(pNew);
             this.NewsFooter1.Populate(pNew);
          
-            this.TextBox2.Text = pNew.Text;
+            this.TextBox2.Text = pNew.TextIntro;
        
         }
     }

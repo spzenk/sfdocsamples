@@ -8,18 +8,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maria {
+namespace Maria.Modules.Noticias {
     
     
-    public partial class NewsTitle {
+    public partial class NewsFullView {
         
         /// <summary>
-        /// lblTitle control.
+        /// News_FullViews1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lblTitle;
+        protected global::Maria.Usercontrol.News_FullViews News_FullViews1;
     }
 }

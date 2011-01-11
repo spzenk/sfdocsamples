@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maria_News.master" AutoEventWireup="true"  ValidateRequest ="false" CodeBehind="Admin_CreateRichNews.aspx.cs" Inherits="Maria.Modules.Admin.Admin_CreateRichNews" EnableSessionState="False" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Maria_News.master" AutoEventWireup="true"  ValidateRequest ="false" CodeBehind="Admin_CreateRichNews.aspx.cs" Inherits="Maria.Modules.Admin.Admin_CreateRichNews" EnableSessionState="False" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 
@@ -8,7 +8,7 @@
     <script type="text/javascript" >
         tinyMCE.init({
         mode: "exact",
-        elements: "ctl00$ctl00$ContentCenter$ContentPlaceHolder1$txtBody,ctl00$ctl00$ContentCenter$ContentPlaceHolder1$TextBox1, ctl00$ctl00$ContentCenter$ContentPlaceHolder1$TextBox2", //ctl00$cphMP_SuenoCelesteMain$dvwDetail$txtBody
+        elements: "ctl00$ctl00$ContentCenter$ContentPlaceHolder1$txtBody,ctl00$ctl00$ContentCenter$ContentPlaceHolder1$txtIntro, ctl00$ctl00$ContentCenter$ContentPlaceHolder1$TextBox2", //ctl00$cphMP_SuenoCelesteMain$dvwDetail$txtBody
         theme: "advanced",
         language: "es",
         plugins: "style,layer,table,save,advhr,advimage,advlink,emotions,spellchecker,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,preview",
@@ -42,6 +42,7 @@
           <asp:Panel ID="pnlContent" runat="server" Height="100%">
               <div>
                   <asp:Panel ID="pnHeader" runat="server" CssClass="cpHeaderStatic">
+                  
                       <div>
                           <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
                       </div>
@@ -57,7 +58,7 @@
                                       </asp:Panel>
                                       <asp:Panel ID="pBody" runat="server" CssClass="cpBody" Width="612px">
                                           <div>
-                                              <asp:Label ID="Label3" runat="server" Text="Fecha de expiración" />
+                                              <asp:Label ID="Label3" runat="server" Text="Fecha de expiraci�n" />
                                           </div>
                                           <div>
                                           <asp:ImageButton
@@ -79,6 +80,8 @@
                                                    SetFocusOnError="True" 
                                                   ValidationExpression="\d{2}/\d{2}/\d{4}" ></asp:RegularExpressionValidator>
                                           </div>
+                                
+            
                                       </asp:Panel>
                                       <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="server" TargetControlID="pBody"
                                           CollapseControlID="pHeader" ExpandControlID="pHeader" Collapsed="true" TextLabelID="lblText"
@@ -87,16 +90,25 @@
                                   </ContentTemplate>
                               </asp:UpdatePanel>
                           </div>
-                  <div>
+                  <div >
                       <asp:Label ID="Label2" runat="server" Text="Titulo " /></div>
-                  <div class ="NewsHeaderTitle">
-                      <textarea runat="server" id="txtTitle" name="txtTitle" style="width: 768px;
-                          height: 39px"> </textarea>
+                  <div >
+                      <textarea runat="server" id="txtTitle" name="txtTitle"  style="width: 100%;
+                          height: 39px; color: #165993; font-size: 13px; font-style: normal; font-weight: bold; font-family: Verdana;"> </textarea>
                   </div >
+                   <asp:Label ID="Label4" runat="server" Text="Parrafo introductorio" />
+                  
+                  <div>
+                      <textarea runat="server" id="txtIntro" name="txtIntro" cols="10" style="width: 100%;
+                          height:100px"> </textarea>
+   
+                  </div>
                   <asp:Label ID="lblComments" runat="server" Text="Contenido de la noticia" />
+                  
                   <div>
                       <textarea runat="server" id="txtBody" name="txtBody" cols="10" style="width: 100%;
                           height: 400px"> </textarea>
+   
                   </div>
                   <div>
                       <asp:Button ID="btnCreateNew" runat="server" Text="Crear noticia" OnClick="btnCreateNew_Click"

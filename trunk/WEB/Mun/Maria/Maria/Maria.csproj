@@ -308,6 +308,13 @@
     <Compile Include="Modules\Noticias\News.aspx.designer.cs">
       <DependentUpon>News.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Noticias\NewsFullView.aspx.cs">
+      <DependentUpon>NewsFullView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Noticias\NewsFullView.aspx.designer.cs">
+      <DependentUpon>NewsFullView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Noticias\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -358,6 +365,13 @@
       <DependentUpon>NewsTitle.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usercontrol\News_FullViews.ascx.cs">
+      <DependentUpon>News_FullViews.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\News_FullViews.ascx.designer.cs">
+      <DependentUpon>News_FullViews.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\News_Simple_Creator.ascx.cs">
       <DependentUpon>News_Simple_Creator.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -427,10 +441,10 @@
     <Content Include="Usercontrol\News_Simple_Creator.ascx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\about.png" />
     <Content Include="Images\cal_16.png" />
     <Content Include="Images\confirm_16.png" />
     <Content Include="Images\hader-top-bg.JPG" />
+    <Content Include="Images\new_16.png" />
     <Content Include="js\my.js" />
     <Content Include="Maria_Municipal.master" />
     <Content Include="Menues\DinMenu_Admin.ascx" />
@@ -452,11 +466,13 @@
     <Content Include="Maria_Tramites.master" />
     <Content Include="Modules\Municipalidad\Muni_Tramites_Inmuebles.aspx" />
     <Content Include="Modules\Noticias\News.aspx" />
+    <Content Include="Modules\Noticias\NewsFullView.aspx" />
     <Content Include="Modules\Noticias\WebForm1.aspx" />
     <Content Include="Modules\Tramites\Tramites_Inmuebles.aspx" />
     <Content Include="Modules\Tramites\Tramites_LicenciaConducir.aspx" />
     <Content Include="Modules\Tramites\Tramites_Vehiculos.aspx" />
     <Content Include="Usercontrol\NewsFooter.ascx" />
+    <Content Include="Usercontrol\News_FullViews.ascx" />
     <Content Include="Usercontrol\News_SimpleView.ascx" />
     <Content Include="js\tinymce\jscripts\tiny_mce\langs\en.js" />
     <Content Include="js\tinymce\jscripts\tiny_mce\langs\es.js" />

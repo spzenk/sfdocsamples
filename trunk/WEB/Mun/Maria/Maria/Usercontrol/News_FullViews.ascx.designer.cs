@@ -11,7 +11,7 @@
 namespace Maria.Usercontrol {
     
     
-    public partial class News_SimpleView {
+    public partial class News_FullViews {
         
         /// <summary>
         /// NewsTitle1 control.
