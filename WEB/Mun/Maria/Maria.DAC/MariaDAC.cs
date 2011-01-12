@@ -54,45 +54,7 @@ namespace Maria.DAC
             }
         }
 
-        //public static void Update(NewsInfo pNewsInfo)
-        //{
-        //    Database wDataBase = null;
-        //    DbCommand wCmd = null;
-
-        //    try
-        //    {
-        //        wDataBase = DatabaseFactory.CreateDatabase("data");
-        //        wCmd = wDataBase.GetStoredProcCommand("dbo.news_u");
-
-        //        wDataBase.AddInParameter(wCmd, "Id", System.Data.DbType.Guid, pNewsInfo.Id);
-
-        //        if (pNewsInfo.Img != null)
-        //            wDataBase.AddInParameter(wCmd, "Img", System.Data.DbType.Binary, pNewsInfo.Img);
-
-        //        if (pNewsInfo.ExpitationDate != null)
-        //            wDataBase.AddInParameter(wCmd, "ExpirationDate", System.Data.DbType.DateTime, pNewsInfo.ExpitationDate.Value);
-
-
-        //        if (pNewsInfo.CreationUser != null)
-        //            wDataBase.AddInParameter(wCmd, "CreationUser", System.Data.DbType.Binary, pNewsInfo.CreationUser);
-
-        //        wDataBase.AddInParameter(wCmd, "Body", System.Data.DbType.Binary, Fwk.HelperFunctions.TypeFunctions.ConvertStringToByteArray(pNewsInfo.Text));
-        //        wDataBase.AddInParameter(wCmd, "TextIntro", System.Data.DbType.Binary, Fwk.HelperFunctions.TypeFunctions.ConvertStringToByteArray(pNewsInfo.TextIntro));
-        //        wDataBase.AddInParameter(wCmd, "Title", System.Data.DbType.String, pNewsInfo.Title);
-
-        //        wDataBase.ExecuteNonQuery(wCmd);
-
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        if (ex.Number != 2627)
-        //            throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-        //    }
-        //}
+        
 
 
         /// <summary>
@@ -135,7 +97,34 @@ namespace Maria.DAC
             }
 
         }
+        /// <summary>
+        /// remove
+        /// </summary>
+        ///<param name="pNewsInfo">News</param>
+        /// <returns>void</returns>
+        /// <Date>2011-01-12T17:03:30</Date>
+        /// <Author>moviedo</Author>
+        public static void Remove(Guid pId)
+        {
+            Database wDataBase = null;
+            DbCommand wCmd = null;
 
+            try
+            {
+                wDataBase = DatabaseFactory.CreateDatabase("data");
+                wCmd = wDataBase.GetStoredProcCommand("News_d");
+
+
+                wDataBase.AddInParameter(wCmd, "NewsId", System.Data.DbType.Guid, pId);
+                
+                wDataBase.ExecuteNonQuery(wCmd);
+            }
+            catch (Exception ex)
+            {
+                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            }
+
+        }
         public static NewsList SearchByParam(NewsInfo pNewsInfo)
         {
             Database wDataBase = null;
