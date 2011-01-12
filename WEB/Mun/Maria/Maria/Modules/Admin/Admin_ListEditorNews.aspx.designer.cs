@@ -8,27 +8,36 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maria {
+namespace Maria.Modules.Admin {
     
     
-    public partial class Maria_News {
+    public partial class Admin_ListEditorNews {
         
         /// <summary>
-        /// DinMenu_Admin1 control.
+        /// txtSearch control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Maria.Menues.DinMenu_Admin DinMenu_Admin1;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
         
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// btnSeach control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.ImageButton btnSeach;
+        
+        /// <summary>
+        /// pnlNewscontainer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlNewscontainer;
     }
 }

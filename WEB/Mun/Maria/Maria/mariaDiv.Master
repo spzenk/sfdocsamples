@@ -8,6 +8,7 @@
 <head id="Head1" runat="server">
   
       <link href="Styles/mariadiv.css" rel="stylesheet" type="text/css" />
+      <link href="Styles/common.css" rel="stylesheet" type="text/css" />
        <link href="/Styles/articulos.css" rel="stylesheet" type="text/css" />
        <link href="/Styles/news.css" rel="stylesheet" type="text/css" />
         <title></title>
@@ -37,8 +38,10 @@
         <asp:ContentPlaceHolder ID="ContentRight" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <div class ="push"></div>
     </div>
-     <div id="Divfooter" class="Footer"  >
+     <div id="Divfooter" class="Footer">
+     <div style="border-style: groove; height: 100%;"></div>
      </div>
     </form>
 </body>
