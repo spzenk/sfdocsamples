@@ -118,7 +118,10 @@ namespace Maria
     public class WebUserControlsConstants
     {
 
+        public const string News_ItemList = "~/UserControl/News_ItemList.ascx";
         public const string News_SimpleView = "~/UserControl/News_SimpleView.ascx";
         public const string NavigateUrl_NewsFullView = "~/Modules/Noticias/NewsFullView.aspx?id={0}";
+        public const string NavigateUrl_Admin_NewsUpdate = "~/Modules/Admin/Admin_NewsUpdate.aspx?id={0}";
+        
     }
 }
