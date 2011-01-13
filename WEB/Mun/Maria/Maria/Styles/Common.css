@@ -13,3 +13,17 @@
     color: #FFFF66;
 }
 
+
+.LeftBox
+{
+    margin: 0px;
+    border: 1px groove #CCCCCC;
+}
+
+.LeftBox h1
+{
+    padding: 0px;
+    margin: 0px;
+    font-family: verdana;
+    font-size: 11px;
+}

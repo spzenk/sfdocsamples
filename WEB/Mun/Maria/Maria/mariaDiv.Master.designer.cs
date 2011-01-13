@@ -41,13 +41,22 @@ namespace Maria {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// MainMenu1 control.
+        /// News_Search_Control1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Maria.MenuMain MainMenu1;
+        protected global::Maria.Usercontrol.News_Search_Control News_Search_Control1;
+        
+        /// <summary>
+        /// MainMenu2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Maria.MenuMain MainMenu2;
         
         /// <summary>
         /// ContentLeft control.

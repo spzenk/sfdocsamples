@@ -13,12 +13,28 @@ namespace Maria.Modules.Noticias
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           NewsList wNewsList = MariaDAC.SearchByParam(new NewsInfo());
-
-           foreach (NewsInfo n in wNewsList)
+            global::Maria.BE.NewsList wNewsList = null;
+            global::Maria.BE.NewsInfo wInfoParam = null;
+           if (!Page.IsPostBack)
            {
-               this.pnlNewscontainer.Controls.Add(LoadSimpleNews(n));
+
+               wInfoParam = new global::Maria.BE.NewsInfo();
+               if(!string.IsNullOrEmpty(Request.QueryString["t"]))
+               {
+                   
+                   wInfoParam.Title =string.Concat("%",Request.QueryString["t"],"%" );
+                  
+               }
+               wNewsList = MariaDAC.SearchByParam(wInfoParam);
+
+
+               foreach (NewsInfo n in wNewsList)
+               {
+                   this.pnlNewscontainer.Controls.Add(LoadSimpleNews(n));
+               }
+
            }
+           
         }
 
 
