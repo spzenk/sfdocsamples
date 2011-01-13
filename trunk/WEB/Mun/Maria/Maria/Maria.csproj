@@ -393,6 +393,13 @@
     <Compile Include="Usercontrol\News_ItemList.ascx.designer.cs">
       <DependentUpon>News_ItemList.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Usercontrol\News_Search_Control.ascx.cs">
+      <DependentUpon>News_Search_Control.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\News_Search_Control.ascx.designer.cs">
+      <DependentUpon>News_Search_Control.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\News_Simple_Creator.ascx.cs">
       <DependentUpon>News_Simple_Creator.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -502,6 +509,7 @@
     <Content Include="Usercontrol\News_Collapsed_RichText.ascx" />
     <Content Include="Usercontrol\News_FullViews.ascx" />
     <Content Include="Usercontrol\News_ItemList.ascx" />
+    <Content Include="Usercontrol\News_Search_Control.ascx" />
     <Content Include="Usercontrol\News_SimpleView.ascx" />
     <Content Include="js\tinymce\jscripts\tiny_mce\langs\en.js" />
     <Content Include="js\tinymce\jscripts\tiny_mce\langs\es.js" />

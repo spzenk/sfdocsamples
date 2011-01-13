@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="mariaDiv.master.cs" Inherits="Maria.mariaDiv"  %>
 
 <%@ Register src="Menues/MainMenu.ascx" tagname="MainMenu" tagprefix="uc1" %>
-
+<%@ Register src="Usercontrol/News_Search_Control.ascx" tagname="News_Search_Control" tagprefix="uc2" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml" >
@@ -22,8 +22,14 @@
     <div id="banner">
          <div style="vertical-align: middle; font-family: 'Arial Black'; font-size: x-large; color: #CCCC00; display: table-header-group; float: left; overflow: visible;">Municipalidad de Adelia María</div>
     </div>
+       <div style="float:right"> <uc2:news_search_control ID="News_Search_Control1" 
+               runat="server" /></div>
     <div id="Div1">
-        <uc1:MainMenu ID="MainMenu1" runat="server" />
+    
+    
+    
+   <uc1:MainMenu ID="MainMenu2" runat="server" />   
+       
     </div>
     <div id="wrap">
         <div id="leftcontent">
