@@ -20,7 +20,20 @@ namespace Maria.Usercontrol
 
             this.lblTitle.Text = pNew.Title;
             this.lblTitle.NavigateUrl = string.Format(WebUserControlsConstants.NavigateUrl_Admin_NewsUpdate, pNew.Id.ToString());
+            this.btnEdit.PostBackUrl = string.Format(WebUserControlsConstants.NavigateUrl_Admin_NewsUpdate, pNew.Id.ToString());
+            HiddenField1.Value = pNew.Id.ToString();
+        }
 
+        protected void btnRemove_Click(object sender, ImageClickEventArgs e)
+        {
+            Guid id = new Guid(HiddenField1.Value);
+            DAC.MariaDAC.Remove(id);
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Guid id = new Guid(HiddenField1.Value);
+            DAC.MariaDAC.Remove(id);
         }
 
        
