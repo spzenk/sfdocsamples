@@ -25,7 +25,7 @@
         <Items>
             <asp:MenuItem NavigateUrl="" Text="Tramites" ToolTip="Tramites">
                
-                    <asp:MenuItem NavigateUrl="/modules/Admin/Admin_CreateRichNews.aspx" Text="Crear nueva noticia"
+                    <asp:MenuItem NavigateUrl="/modules/Admin/Admin_CreateRichNews2.aspx" Text="Crear nueva noticia"
                         ToolTip="Cree una nueva noticia" />
                     <asp:MenuItem NavigateUrl="/modules/Admin/Admin_ListEditorNews.aspx" Text="Buscar noticias"
                         ToolTip="Buscar noticias" />

@@ -19,7 +19,7 @@
                 <li><a href="/Modules/Tramites/Tramites_LicenciaConducir.aspx">Trámites</a></li>
 
                 <li><a href="/Modules/Noticias/News.aspx">Noticias</a></li>
-                 <li><a href="/Modules/Admin/Admin_CreateRichNews.aspx">Admin</a></li>
+                 <li><a href="/Modules/Admin/Admin_CreateRichNews2.aspx">Admin</a></li>
 
         </ul>
 

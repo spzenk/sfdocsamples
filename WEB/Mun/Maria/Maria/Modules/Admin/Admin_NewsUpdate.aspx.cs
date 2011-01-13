@@ -27,8 +27,9 @@ namespace Maria.Modules.Admin
                 wNewsInfo = MariaDAC.GetById(id);
 
                 this.txtTitle.Value = wNewsInfo.Title;
-                this.txtBody.Value = wNewsInfo.Text;
-                 txtIntro.Value = wNewsInfo.TextIntro;
+                this.News_Collapsed_RichText_Txt.populate(wNewsInfo.TextIntro, "Contenido de la nota completa");
+                this.News_Collapsed_RichText_TxtIntro.populate(wNewsInfo.Text, "Nota rápida");
+         
                  if (wNewsInfo.ExpitationDate != null)
                      txtStartDate.Text = wNewsInfo.ExpitationDate.ToString();
 
@@ -42,8 +43,8 @@ namespace Maria.Modules.Admin
         {
             NewsInfo wNews = new NewsInfo(new Guid(Request.QueryString["id"]));
             wNews.Title = this.txtTitle.Value;
-            wNews.Text = txtBody.Value;
-            wNews.TextIntro = txtIntro.Value;
+            wNews.Text = News_Collapsed_RichText_Txt.HtmlText;
+            wNews.TextIntro = News_Collapsed_RichText_TxtIntro.HtmlText;
             if (!string.IsNullOrEmpty(txtStartDate.Text))
                 wNews.ExpitationDate = System.Convert.ToDateTime(txtStartDate.Text);
 

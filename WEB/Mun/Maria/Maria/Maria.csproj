@@ -140,19 +140,19 @@
     <Compile Include="Menues\Vmenu_Municipalidad.ascx.designer.cs">
       <DependentUpon>Vmenu_Municipalidad.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Modules\Admin\Admin_CreateNews.aspx.cs">
-      <DependentUpon>Admin_CreateNews.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Modules\Admin\Admin_CreateNews.aspx.designer.cs">
-      <DependentUpon>Admin_CreateNews.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Modules\Admin\Admin_CreateRichNews.aspx.cs">
       <DependentUpon>Admin_CreateRichNews.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\Admin\Admin_CreateRichNews.aspx.designer.cs">
       <DependentUpon>Admin_CreateRichNews.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Admin\Admin_CreateRichNews2.aspx.cs">
+      <DependentUpon>Admin_CreateRichNews2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Admin\Admin_CreateRichNews2.aspx.designer.cs">
+      <DependentUpon>Admin_CreateRichNews2.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Admin\Admin_ListEditorNews.aspx.cs">
       <DependentUpon>Admin_ListEditorNews.aspx</DependentUpon>
@@ -372,6 +372,13 @@
       <DependentUpon>NewsTitle.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usercontrol\News_Collapsed_RichText.ascx.cs">
+      <DependentUpon>News_Collapsed_RichText.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\News_Collapsed_RichText.ascx.designer.cs">
+      <DependentUpon>News_Collapsed_RichText.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\News_FullViews.ascx.cs">
       <DependentUpon>News_FullViews.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -460,13 +467,14 @@
     <Content Include="Images\edit.png" />
     <Content Include="Images\hader-top-bg.JPG" />
     <Content Include="Images\new_16.png" />
+    <Content Include="Images\remov_16.png" />
     <Content Include="Images\search.png" />
     <Content Include="Images\tilde_guion-griz.png" />
     <Content Include="js\my.js" />
     <Content Include="Maria_Municipal.master" />
     <Content Include="Menues\DinMenu_Admin.ascx" />
-    <Content Include="Modules\Admin\Admin_CreateNews.aspx" />
     <Content Include="Modules\Admin\Admin_CreateRichNews.aspx" />
+    <Content Include="Modules\Admin\Admin_CreateRichNews2.aspx" />
     <Content Include="Modules\Admin\Admin_ListEditorNews.aspx" />
     <Content Include="Modules\Admin\Admin_NewsUpdate.aspx" />
     <Content Include="Modules\Admin\collapsable.txt" />
@@ -491,6 +499,7 @@
     <Content Include="Modules\Tramites\Tramites_LicenciaConducir.aspx" />
     <Content Include="Modules\Tramites\Tramites_Vehiculos.aspx" />
     <Content Include="Usercontrol\NewsFooter.ascx" />
+    <Content Include="Usercontrol\News_Collapsed_RichText.ascx" />
     <Content Include="Usercontrol\News_FullViews.ascx" />
     <Content Include="Usercontrol\News_ItemList.ascx" />
     <Content Include="Usercontrol\News_SimpleView.ascx" />

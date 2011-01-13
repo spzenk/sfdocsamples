@@ -9,71 +9,63 @@
 //------------------------------------------------------------------------------
 
 namespace Maria.Usercontrol {
-    
-    
-    public partial class News_ItemList {
+
+
+    public partial class News_Collapsed_RichText
+    {
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// imgImage control.
+        /// pHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgImage;
+        protected global::System.Web.UI.WebControls.Panel pHeader;
         
         /// <summary>
-        /// lblTitle control.
+        /// lbltitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lblTitle;
+        protected global::System.Web.UI.WebControls.Label lbltitle;
         
         /// <summary>
-        /// btnEdit control.
+        /// pBody control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnEdit;
+        protected global::System.Web.UI.WebControls.Panel pBody;
         
         /// <summary>
-        /// btnRemove control.
+        /// txtIntro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnRemove;
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea txtIntro;
         
         /// <summary>
-        /// Button1 control.
+        /// CollapsiblePanelExtender2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// HiddenField1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HiddenField1;
+        protected global::AjaxControlToolkit.CollapsiblePanelExtender CollapsiblePanelExtender2;
     }
 }

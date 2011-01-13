@@ -11,7 +11,7 @@
 namespace Maria.Modules.Admin {
     
     
-    public partial class Admin_NewsUpdate {
+    public partial class Admin_CreateRichNews2 {
         
         /// <summary>
         /// pnlContent control.

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maria_Admin.master"  ValidateRequest ="false" AutoEventWireup="true" CodeBehind="Admin_NewsUpdate.aspx.cs" Inherits="Maria.Modules.Admin.Admin_NewsUpdate" %>
-
+<%@ Register src="../../Usercontrol/News_Collapsed_RichText.ascx" tagname="News_Collapsed_RichText" tagprefix="uc1" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -7,8 +7,8 @@
     <script  type="text/javascript" src="../../js/tinymce/jscripts/tiny_mce/tiny_mce_src.js"></script>
     <script type="text/javascript" >
         tinyMCE.init({
-            mode: "exact",
-            elements: "ctl00$ctl00$ContentCenter$ContentPlaceHolder1$txtBody,ctl00$ctl00$ContentCenter$ContentPlaceHolder1$txtIntro, ctl00$ctl00$ContentCenter$ContentPlaceHolder1$TextBox2", //ctl00$cphMP_SuenoCelesteMain$dvwDetail$txtBody
+        mode: "exact",
+        elements: "ctl00$ctl00$ContentCenter$ContentPlaceHolder1$News_Collapsed_RichText_TxtIntro$txtIntro,ctl00$ctl00$ContentCenter$ContentPlaceHolder1$News_Collapsed_RichText_Txt$txtIntro", 
             theme: "advanced",
             language: "es",
             plugins: "style,layer,table,save,advhr,advimage,advlink,emotions,spellchecker,iespell,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,preview",
@@ -94,20 +94,15 @@
                       <textarea runat="server" id="txtTitle" name="txtTitle"  style="width: 100%;
                           height: 39px; color: #165993; font-size: 13px; font-style: normal; font-weight: bold; font-family: Verdana;"> </textarea>
                   </div >
-                   <asp:Label ID="Label4" runat="server" Text="Parrafo introductorio" />
-                  
-                  <div>
-                      <textarea runat="server" id="txtIntro" name="txtIntro" cols="10" style="width: 100%;
-                          height:100px"> </textarea>
-   
+                     <div>
+                      &nbsp;<uc1:News_Collapsed_RichText ID="News_Collapsed_RichText_TxtIntro" 
+                          runat="server" />
                   </div>
-                  <asp:Label ID="lblComments" runat="server" Text="Contenido de la noticia" />
-                  
                   <div>
-                      <textarea runat="server" id="txtBody" name="txtBody" cols="10" style="width: 100%;
-                          height: 400px"> </textarea>
+                      &nbsp;<uc1:News_Collapsed_RichText ID="News_Collapsed_RichText_Txt" 
+                          runat="server" />
    
-                  </div>
+                 </div>
                   <div>
                       <asp:Button ID="btnCreateNew" runat="server" Text="Actualizar noticia" OnClick="btnCreateNew_Click"
                           CssClass="btGrisNegrita" />
