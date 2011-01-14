@@ -34,12 +34,19 @@
  </script >
  
 <head runat="server">
-
-
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
+            <div style="border: thick groove #006699; width: 100%; height: 689px">
+            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+                    codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,29,0" 
+                    style="width: 100%; height: 95%">
+          <param name="movie" value="archivo.swf" />
+          <param name="quality" value="high" />
+          <embed src="splash.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" width="100%" height="100%"></embed>
+        </object>
+</div>
     <div>
   
         <asp:HyperLink ID="HyperLink1" NavigateUrl ="~/HyperLinkDinamico_Target.aspx?newGuid=12345"  runat="server" Target  ="_blank">HyperLink</asp:HyperLink>
