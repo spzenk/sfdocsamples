@@ -441,7 +441,6 @@
     <Content Include="js2\tinymce\jscripts\tiny_mce\utils\form_utils.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\utils\mctabs.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\utils\validate.js" />
-    <Content Include="splash.swf" />
     <Content Include="Tinymce.aspx" />
     <Content Include="Web.config" />
     <Content Include="HyperLinkDinamico_Target.aspx" />
@@ -625,6 +624,7 @@
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\f\fb\fb7\fb74\" />
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\f\fd\fdd\fdde\" />
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\f\fe\fe7\fe78\" />
+    <Folder Include="store\pictures\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

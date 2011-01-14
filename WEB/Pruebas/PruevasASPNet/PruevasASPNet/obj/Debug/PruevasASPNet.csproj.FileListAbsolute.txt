@@ -3,3 +3,8 @@ D:\Projects\sfdocsamples\WEB\tESTjAVAsCRIPT\WebApplication1\WebApplication1\obj\
 D:\Projects\sfdocsamples\WEB\tESTjAVAsCRIPT\WebApplication1\WebApplication1\bin\WebApplication1.dll
 D:\Projects\sfdocsamples\WEB\tESTjAVAsCRIPT\WebApplication1\WebApplication1\bin\WebApplication1.pdb
 D:\Projects\sfdocsamples\WEB\tESTjAVAsCRIPT\WebApplication1\WebApplication1\obj\Debug\WebApplication1.pdb
+D:\Projects\sfdocsamples\WEB\Pruebas\PruevasASPNet\PruevasASPNet\bin\WebApplication1.dll
+D:\Projects\sfdocsamples\WEB\Pruebas\PruevasASPNet\PruevasASPNet\bin\WebApplication1.pdb
+D:\Projects\sfdocsamples\WEB\Pruebas\PruevasASPNet\PruevasASPNet\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\sfdocsamples\WEB\Pruebas\PruevasASPNet\PruevasASPNet\obj\Debug\WebApplication1.dll
+D:\Projects\sfdocsamples\WEB\Pruebas\PruevasASPNet\PruevasASPNet\obj\Debug\WebApplication1.pdb
