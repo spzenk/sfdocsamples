@@ -13,7 +13,7 @@ namespace Maria.Usercontrol
 
         public string HtmlText
         {
-            get { return txtIntro.Value; }
+            get { return txtText.Value; }
            
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -22,7 +22,7 @@ namespace Maria.Usercontrol
         }
         internal void populate(string htmlTextIntro,string labelTitulo)
         {
-          txtIntro.Value = htmlTextIntro;
+            txtText.Value = htmlTextIntro;
           lbltitle.Text = labelTitulo;
         }
     }
