@@ -10,7 +10,7 @@
                 <asp:Label ID="lbltitle" runat="server" Text="Parrafo introductorio" />
             </asp:Panel>
             <asp:Panel ID="pBody" runat="server" CssClass="cpBody" Width="100%">
-                <textarea runat="server" id="txtIntro" name="txtIntro" cols="10" style="width: 100%;
+                <textarea runat="server" id="txtText" name="txtIntro" cols="10" style="width: 100%;
                     height: 500px"> </textarea>
             </asp:Panel>
             <cc1:CollapsiblePanelExtender ID="CollapsiblePanelExtender2" runat="server" TargetControlID="pBody"
