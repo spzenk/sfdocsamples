@@ -22,12 +22,15 @@ body
 
 #wrap
 {
-    margin:0 auto -4em;
-    padding:0;
+    border-style: groove none none none;
+    border-width: 1px;
+    border-color: #999999;
+    margin: 0 auto -4em;
+    padding: 0;
     height: auto !important;
-    min-height:100%;
+    min-height: 100%;
     width: 99%;
-    position : relative;
+    position: relative;
     top: 8px;
     left: 7px;
 }
