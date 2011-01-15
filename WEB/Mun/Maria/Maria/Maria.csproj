@@ -702,6 +702,26 @@
     <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\media\js\media.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\media\langs\en_dlg.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\media\media.htm" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\css\browser.css" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\css\jquery.contextMenu.css" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\editor_plugin_src.js" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\button-bg.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\cut.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\door.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\fading_background_19.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\folder.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\folder_home.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\go-home.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\login-page-bg.jpg" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\page_white_copy.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\page_white_delete.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\page_white_edit.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\img\page_white_paste.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\js\jquery.contextMenu.js" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\js\jquery.jqURL.js" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\js\netbrowser.js" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\langs\en_dlg.js" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\netImageBrowser\up.aspx" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\nonbreaking\editor_plugin.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\nonbreaking\editor_plugin_src.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\noneditable\editor_plugin.js" />
@@ -791,9 +811,12 @@
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\about.htm" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\anchor.htm" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\charmap.htm" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\colorpicker.jpg" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\color_picker.htm" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\editor_template.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\editor_template_src.js" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\folder_picture.png" />
+    <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\icons.gif" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\image.htm" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\img\colorpicker.jpg" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\themes\advanced\img\icons.gif" />
@@ -1020,6 +1043,7 @@
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\f\fb\fb7\fb74\" />
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\f\fd\fdd\fdde\" />
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\f\fe\fe7\fe78\" />
+    <Folder Include="store\news\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />

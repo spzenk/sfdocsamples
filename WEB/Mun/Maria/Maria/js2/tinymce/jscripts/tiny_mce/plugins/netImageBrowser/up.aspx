@@ -6,8 +6,8 @@
 
 <script runat="server">
 
-    private string path = HttpContext.Current.Server.MapPath("../../../images");
-    private string imgPath = "../../../images";
+    private string path = HttpContext.Current.Server.MapPath("../../../../../../store");
+    private string imgPath = "../../../../../../store";
 
 
 
