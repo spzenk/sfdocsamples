@@ -9,10 +9,9 @@
 //------------------------------------------------------------------------------
 
 namespace Maria.Usercontrol {
-
-
-    public partial class News_Collapsed_RichText
-    {
+    
+    
+    public partial class News_Collapsed_RichText {
         
         /// <summary>
         /// UpdatePanel2 control.
@@ -51,7 +50,7 @@ namespace Maria.Usercontrol {
         protected global::System.Web.UI.WebControls.Panel pBody;
         
         /// <summary>
-        /// txtIntro control.
+        /// txtText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

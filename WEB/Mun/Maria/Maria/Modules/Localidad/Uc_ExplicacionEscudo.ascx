@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Uc_ExplicacionEscudo.ascx.cs" Inherits="Maria.Modules.Localidad.Uc_ExplicacionEscudo" %>
-<link href="/Styles/articulos.css" rel="stylesheet" type="text/css" />
+<link href="Styles/articulos.css" rel="stylesheet" type="text/css" />
 <div id="Div1" class ="EnvelopeCont">
         <div id="d1" class="EnvelopeArtic">
             <p class="MsoNormal">
