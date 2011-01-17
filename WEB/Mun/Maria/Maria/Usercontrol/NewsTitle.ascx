@@ -7,7 +7,7 @@
     <div class ="NewsHeaderTitle">
       
             <span id="NewsHeaderTitle">
-            <img  alt="" src="../Images/new_16.png" /></span>
+            <img  alt="" src="../../Images/tilde_guion-griz.png" /></span>
             <asp:HyperLink ID="lblTitle" Target ="_blank" 
                 NavigateUrl="~/Modules/Noticias/NewsFullView.aspx" runat="server" 
                 CssClass="NewsHeaderTitle" Font-Underline="False">HyperLink</asp:HyperLink>

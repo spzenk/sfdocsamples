@@ -8,7 +8,7 @@
        
     <div style="font-family: verdana; font-size: x-small; color: #669999" >
         <span id="NewsFooerText0">
-            <img alt="" src="../Images/cal_16.png" /></span>
+            <img alt="" src="../../Images/cal_16.png" /></span>
         <span id="NewsFooerText1">Publicado </span>
         <span id="NewsFooerText2">
             <asp:Label ID="lblDate" runat="server"></asp:Label>
