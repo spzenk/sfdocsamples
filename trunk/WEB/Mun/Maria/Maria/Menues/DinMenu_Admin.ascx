@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DinMenu_Admin.ascx.cs" Inherits="Maria.Menues.DinMenu_Admin" %>
     
-<link href="/Styles/Common.css" rel="stylesheet" type="text/css" />
-  <link href="/Styles/Menu.css" rel="stylesheet" type="text/css" />
+<link href="../Styles/Common.css" rel="stylesheet" type="text/css" />
+  <link href="../Styles/Menu.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" language="javascript">
     
 </script>
@@ -25,9 +25,9 @@
         <Items>
             <asp:MenuItem NavigateUrl="" Text="Tramites" ToolTip="Tramites">
                
-                    <asp:MenuItem NavigateUrl="/modules/Admin/Admin_CreateRichNews2.aspx" Text="Crear nueva noticia"
+                    <asp:MenuItem NavigateUrl="~/Modules/Admin/Admin_CreateRichNews2.aspx" Text="Crear nueva noticia"
                         ToolTip="Cree una nueva noticia" />
-                    <asp:MenuItem NavigateUrl="/modules/Admin/Admin_ListEditorNews.aspx" Text="Buscar noticias"
+                    <asp:MenuItem NavigateUrl="~/Modules/Admin/Admin_ListEditorNews.aspx" Text="Buscar noticias"
                         ToolTip="Buscar noticias" />
             
               

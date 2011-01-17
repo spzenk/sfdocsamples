@@ -2,8 +2,8 @@
 
 
     
-<link href="/Styles/Common.css" rel="stylesheet" type="text/css" />
-  <link href="/Styles/Menu.css" rel="stylesheet" type="text/css" />
+<link href="../Styles/Common.css" rel="stylesheet" type="text/css" />
+  <link href="../Styles/Menu.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" language="javascript">
 
 </script>
@@ -15,7 +15,7 @@
         <ul>
                 
 
-                <li><a href="/Modules/Home/TasasMunicipales.aspx">Tasas municipales</a></li>
+                <li><a href="../../Modules/Home/TasasMunicipales.aspx">Tasas municipales</a></li>
 
                 <li><a href="#menuv">Municipalidad</a></li>
 

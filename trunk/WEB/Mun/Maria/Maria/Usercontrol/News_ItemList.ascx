@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="News_ItemList.ascx.cs" Inherits="Maria.Usercontrol.News_ItemList" %>
-<link href="/Styles/Common.css" rel="stylesheet" type="text/css" />
-<link href="/Styles/News.css" rel="stylesheet" type="text/css" />
+<link href="../Styles/Common.css" rel="stylesheet" type="text/css" />
+<link href="../Styles/News.css" rel="stylesheet" type="text/css" />
 
 <div  class="EnvelopeNewsHeader">
   

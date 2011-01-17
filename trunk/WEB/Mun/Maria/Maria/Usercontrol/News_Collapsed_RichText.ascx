@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="News_Collapsed_RichText.ascx.cs" Inherits="Maria.Usercontrol.News_Collapsed_RichText" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
-<link href="/Styles/Common.css" rel="stylesheet" type="text/css" />
-<link href="/Styles/News.css" rel="stylesheet" type="text/css" />
+<link href="../Styles/Common.css" rel="stylesheet" type="text/css" />
+<link href="../Styles/News.css" rel="stylesheet" type="text/css" />
 
 <div id="d1" style="width: 100%; height: 100%"  >
     <asp:UpdatePanel ID="UpdatePanel2" runat="server">

@@ -20,11 +20,11 @@
         <Items>
             <asp:MenuItem NavigateUrl="" Text="Tramites" ToolTip="Tramites">
                
-                    <asp:MenuItem NavigateUrl="/modules/Tramites/Tramites_LicenciaConducir.aspx" Text="Licencia de conducir"
+                    <asp:MenuItem NavigateUrl="~/Modules/Tramites/Tramites_LicenciaConducir.aspx" Text="Licencia de conducir"
                         ToolTip="Licencia de conducir" />
-                    <asp:MenuItem NavigateUrl="/modules/Tramites/Tramites_Vehiculos.aspx" Text="Vehículos"
+                    <asp:MenuItem NavigateUrl="~/Modules/Tramites/Tramites_Vehiculos.aspx" Text="Vehículos"
                         ToolTip="Vehículos" />
-                    <asp:MenuItem NavigateUrl="/modules/Tramites/Tramites_Inmuebles.aspx"
+                    <asp:MenuItem NavigateUrl="~/Modules/Tramites/Tramites_Inmuebles.aspx"
                         Text="Inmuebles" ToolTip="Inmuebles" />
               
             </asp:MenuItem>

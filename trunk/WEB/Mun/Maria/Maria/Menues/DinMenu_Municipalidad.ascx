@@ -20,17 +20,17 @@
         <Items>
             <asp:MenuItem NavigateUrl="" Text="Municipalidad" ToolTip="Municipalidad">
                 <asp:MenuItem Text="Institucional" ToolTip="Institucional">
-                    <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Inst_Cultura.aspx" Text="Cultura"
+                    <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_Cultura.aspx" Text="Cultura"
                         ToolTip="Cultura" />
-                    <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Inst_MedioAmbiente.aspx" Text="Medio Ambiente"
+                    <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_MedioAmbiente.aspx" Text="Medio Ambiente"
                         ToolTip="Medio Ambiente" />
-                    <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Inst_Promocion_Social.aspx"
+                    <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_Promocion_Social.aspx"
                         Text="Promoción Social" ToolTip="Promoción Social" />
                 </asp:MenuItem>
                 <asp:MenuItem NavigateUrl="" Text="Obras de Gobierno" ToolTip="Obras de Gobierno">
-                    <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Inst_ObrasConstrucción.aspx"
+                    <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_ObrasConstrucción.aspx"
                         Text="Obras en Construcción" ToolTip="Obras en Construcción" />
-                    <asp:MenuItem NavigateUrl="/modules/Municipalidad/Muni_Inst_ObrasPlanificadas.aspx"
+                    <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_ObrasPlanificadas.aspx"
                         Text="Obras Planificadas" ToolTip="Obras Planificadas" />
                 </asp:MenuItem>
             </asp:MenuItem>
