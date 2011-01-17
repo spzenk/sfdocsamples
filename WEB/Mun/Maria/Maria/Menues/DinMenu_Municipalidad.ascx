@@ -9,8 +9,8 @@
                 EnableViewState="False">
         <LevelMenuItemStyles>
             <asp:MenuItemStyle BackColor="Black" ForeColor="#CCCCCC" />
-            <asp:MenuItemStyle BackColor="White" Font-Bold="True" BorderStyle="Outset" VerticalPadding="10" />
-            <asp:MenuItemStyle BackColor="White" />
+            <asp:MenuItemStyle BackColor="White" Font-Bold="True" BorderStyle="None" VerticalPadding="10" />
+            <asp:MenuItemStyle BackColor="White" Font-Bold="False" BorderStyle="None" VerticalPadding="10" />
         </LevelMenuItemStyles>
         <LevelSelectedStyles>
             <asp:MenuItemStyle BackColor="#336699" ForeColor="#FFFFCC" />
