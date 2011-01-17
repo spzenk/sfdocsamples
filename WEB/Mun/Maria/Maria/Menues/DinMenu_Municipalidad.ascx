@@ -28,7 +28,7 @@
                         Text="Promoción Social" ToolTip="Promoción Social" />
                 </asp:MenuItem>
                 <asp:MenuItem NavigateUrl="" Text="Obras de Gobierno" ToolTip="Obras de Gobierno">
-                    <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_ObrasConstrucción.aspx"
+                    <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_ObrasConstruccion.aspx"
                         Text="Obras en Construcción" ToolTip="Obras en Construcción" />
                     <asp:MenuItem NavigateUrl="~/Modules/Municipalidad/Muni_Inst_ObrasPlanificadas.aspx"
                         Text="Obras Planificadas" ToolTip="Obras Planificadas" />
