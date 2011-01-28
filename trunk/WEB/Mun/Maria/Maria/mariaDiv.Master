@@ -21,7 +21,7 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
     <div id="banner">
-         <div style="vertical-align: middle; font-family: 'Arial Black'; font-size: x-large; color: #CCCC00; display: table-header-group; float: left; overflow: visible;">Municipalidad de Adelia María</div>
+         <div style="vertical-align: middle; font-family: ChessmasterX; font-size: x-large; color: #FFFFFF; display: table-header-group; float: left; overflow: visible;">Municipalidad de Adelia María</div>
     </div>
        <div style="float:right"> <uc2:news_search_control ID="News_Search_Control1" 
                runat="server" /></div>
@@ -48,7 +48,10 @@
         <div class ="push"></div>
     </div>
      <div id="Divfooter" class="Footer">
-     <div style="border-style: groove; height: 100%;"></div>
+     <div style="border-style: groove none none none; height: 100%; background-color: #FFFFFF;">
+          <p>Copirigh Pelsoft .- Software factory</p>
+     </div>
+
      </div>
     </form>
 </body>
