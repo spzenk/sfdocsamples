@@ -76,8 +76,8 @@
     }
        
     </script >
-  <div id="Div3" class ="EnvelopeContNews">
-      <div id="Div4" class="EnvelopeNews">
+
+     
           <asp:Panel ID="pnlContent" runat="server" Height="100%">
               <div>
                   <asp:Panel ID="pnHeader" runat="server" CssClass="cpHeaderStatic">
@@ -153,8 +153,7 @@
               </asp:Panel>
           </asp:Panel>
       </div>
-    </div>
-  
+
     
 </asp:Content>
 
