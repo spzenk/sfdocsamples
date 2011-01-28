@@ -19,7 +19,11 @@ body
     display: inline-block;
 }
 
+/*
 
+Sticky Footer http://ryanfait.com/sticky-footer/layout.css
+
+*/
 #wrap
 {
     border-style: groove none none none;
