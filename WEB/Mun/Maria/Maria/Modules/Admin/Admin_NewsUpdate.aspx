@@ -11,7 +11,7 @@
         elements: "ctl00$ctl00$ContentCenter$ContentPlaceHolder1$News_Collapsed_RichText_TxtIntro$txtText,ctl00$ctl00$ContentCenter$ContentPlaceHolder1$News_Collapsed_RichText_Txt$txtText",
         theme: "advanced",
         //        language: "es",
-        plugins: "pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,ibrowser",
+        plugins: "safari,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template,wordcount,advlist,autosave,netImageBrowser",
 
             // Theme options
             theme_advanced_buttons1: "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
@@ -21,7 +21,7 @@
             theme_advanced_toolbar_location: "top",
             theme_advanced_toolbar_align: "left",
             theme_advanced_statusbar_location: "bottom",
-            theme_advanced_resizing: true
+            theme_advanced_resizing: true  ,
 
         // Example content CSS (should be your site CSS)
         content_css: "css/content.css",
@@ -71,13 +71,13 @@
         }
        
     </script >
-  <div id="Div3" class ="EnvelopeContNews">
-      <div id="Div4" class="EnvelopeNews">
+    
+
           <asp:Panel ID="pnlContent" runat="server" Height="100%">
               <div>
                   <asp:Panel ID="pnHeader" runat="server" CssClass="cpHeaderStatic">
                       <div>
-                          <asp:Label ID="Label1" runat="server" Text="Nueva noticia" />
+                          <asp:Label ID="Label1" runat="server" Text="Actualizar noticia" />
                       </div>
                   </asp:Panel>
               </div>
@@ -143,8 +143,7 @@
                   </div>
               </asp:Panel>
           </asp:Panel>
-      </div>
-    </div>
+
   
   
 </asp:Content>
