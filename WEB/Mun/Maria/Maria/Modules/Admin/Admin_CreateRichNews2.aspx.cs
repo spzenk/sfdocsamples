@@ -13,6 +13,10 @@ namespace Maria.Modules.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!Page.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect(@"~\modules\Admin\Admin_NotAuthorizedUser.aspx");
+            }
             if (!IsPostBack)
             {
                 RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
