@@ -10,7 +10,7 @@
       <link href="Styles/mariadiv.css" rel="stylesheet" type="text/css" />
       <link href="Styles/common.css" rel="stylesheet" type="text/css" />
        <link href="Styles/articulos.css" rel="stylesheet" type="text/css" />
-       <link href="Styles/news.css" rel="stylesheet" type="text/css" />
+       <link href="Styles/News.css" rel="stylesheet" type="text/css" />
           <link href="Styles/Menu.css" rel="stylesheet" type="text/css" />
         <title></title>
 
@@ -20,11 +20,30 @@
     <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
 </asp:ScriptManager>
+  
+  <div id="divStatus" >
+        <table>
+           
+            <tr>
+             <td>   <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Login/IniciarSesionSmall.gif" EnableTheming="False" EnableViewState="False" /></td>
+                <td>
+                 
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" LoginImageUrl="" LoginText="Iniciar Sesión" LogoutImageUrl=""  
+                        LogoutText="Cerrar Sesión" ForeColor="Black" LogoutAction="RedirectToLoginPage" OnLoggingOut="LoginStatus1_LoggingOut" />
+                    
+                </td>
+                <td>  <asp:LoginName ID="LoginName1" runat="server" FormatString="Bienvenido {0}!" BorderColor="White" />      </td>
+            </tr>
+        </table>
+  </div>
+  
     <div id="banner">
          <div style="vertical-align: middle; font-family: ChessmasterX; font-size: x-large; color: #FFFFFF; display: table-header-group; float: left; overflow: visible;">Municipalidad de Adelia María</div>
+  
     </div>
-       <div style="float:right"> <uc2:news_search_control ID="News_Search_Control1" 
-               runat="server" /></div>
+    <div style="float: right">
+        <uc2:News_Search_Control ID="News_Search_Control1" runat="server" />
+    </div>
     <div id="Div1">
     
     
