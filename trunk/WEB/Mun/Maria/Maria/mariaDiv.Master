@@ -22,19 +22,22 @@
 </asp:ScriptManager>
   
   <div id="divStatus" >
-        <table>
-           
-            <tr>
-             <td>   <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Login/IniciarSesionSmall.gif" EnableTheming="False" EnableViewState="False" /></td>
-                <td>
-                 
-                    <asp:LoginStatus ID="LoginStatus1" runat="server" LoginImageUrl="" LoginText="Iniciar Sesión" LogoutImageUrl=""  
-                        LogoutText="Cerrar Sesión" ForeColor="Black" LogoutAction="RedirectToLoginPage" OnLoggingOut="LoginStatus1_LoggingOut" />
-                    
-                </td>
-                <td>  <asp:LoginName ID="LoginName1" runat="server" FormatString="Bienvenido {0}!" BorderColor="White" />      </td>
-            </tr>
-        </table>
+      <table>
+          <tr>
+              <td>
+                  <asp:Image ID="Image1" runat="server" ImageUrl="~/Images/Login/IniciarSesionSmall.gif"
+                      EnableTheming="False" EnableViewState="False" />
+              </td>
+              <td>
+                  <asp:LoginStatus ID="LoginStatus1" runat="server" LoginImageUrl="" LoginText="Iniciar Sesión"
+                      LogoutImageUrl="" LogoutText="Cerrar Sesión" ForeColor="Black" LogoutAction="RedirectToLoginPage"
+                      OnLoggingOut="LoginStatus1_LoggingOut" />
+              </td>
+              <td align="left">
+                  <asp:LoginName ID="LoginName1" runat="server" FormatString="Bienvenido {0}!" BorderColor="White" />
+              </td>
+          </tr>
+      </table>
   </div>
   
     <div id="banner">
