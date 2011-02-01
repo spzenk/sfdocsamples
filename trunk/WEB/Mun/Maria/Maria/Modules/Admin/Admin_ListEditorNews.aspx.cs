@@ -14,7 +14,10 @@ namespace Maria.Modules.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect(string.Format(WebUserControlsConstants.NotAuthorizedUser_Redirect, this.Page.AppRelativeVirtualPath));
+            }
         }
 
        

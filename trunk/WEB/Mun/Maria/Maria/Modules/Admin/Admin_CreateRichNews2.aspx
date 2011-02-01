@@ -77,7 +77,7 @@
        
     </script >
 
-     
+    <div id="Div4" >    
           <asp:Panel ID="pnlContent" runat="server" Height="100%">
               <div>
                   <asp:Panel ID="pnHeader" runat="server" CssClass="cpHeaderStatic">
@@ -154,7 +154,7 @@
           </asp:Panel>
     
 
-    
+    </div>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">

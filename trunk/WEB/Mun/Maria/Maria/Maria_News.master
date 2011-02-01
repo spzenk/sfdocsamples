@@ -4,9 +4,12 @@
     <uc1:DinMenu_Admin ID="DinMenu_Admin1" runat="server" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentCenter" runat="server">
-    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                </asp:ContentPlaceHolder>
+   <div id="Div3" class="EnvelopeContNews">
+       
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
 
+    </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentRight" runat="server">
 </asp:Content>
