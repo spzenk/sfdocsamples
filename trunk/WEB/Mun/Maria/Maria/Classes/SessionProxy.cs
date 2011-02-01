@@ -123,6 +123,8 @@ namespace Maria
         public const string NavigateUrl_NewsFullView = "~/Modules/Noticias/NewsFullView.aspx?id={0}";
         public const string NavigateUrl_Admin_NewsUpdate = "~/Modules/Admin/Admin_NewsUpdate.aspx?id={0}";
 
-        public const string NavigateUrl_News = "~/Modules/Noticias/News.aspx?t={0}"; 
+        public const string NavigateUrl_News = "~/Modules/Noticias/News.aspx?t={0}";
+
+        public const string NotAuthorizedUser_Redirect = @"~/modules/Admin/Admin_NotAuthorizedUser.aspx?id={0}"; 
     }
 }

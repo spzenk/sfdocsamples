@@ -25,25 +25,8 @@
       </asp:Login>
   </div>
  
-    <asp:LoginView ID="LoginView1" runat="server">
-        <AnonymousTemplate>
-            Debe iniciar sesión para poder realizar esta acción.-
-        </AnonymousTemplate>
-        <LoggedInTemplate>
-            Bienbenido
-            <asp:LoginName ID="LoginName1" runat="Server"></asp:LoginName>
-            .
-        </LoggedInTemplate>
-        <RoleGroups>
-            <asp:RoleGroup Roles="Admin">
-                <ContentTemplate>
-                    <asp:LoginName ID="LoginName2" runat="Server"></asp:LoginName>
-                    , you are logged in as an administrator.
-                </ContentTemplate>
-            </asp:RoleGroup>
-        </RoleGroups>
-    </asp:LoginView>
-    </p>
+    c
+
 
 </div>
 </asp:Content>

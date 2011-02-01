@@ -135,3 +135,33 @@ html>body #banner {
 		}
 	
 
+
+
+
+#LoginContainer
+{
+    text-align: center;
+    padding-top: 50px;
+}
+
+.Login
+{
+    color: Black;
+    font-weight: bold;
+}
+
+.LoginTable
+{
+    border-collapse: collapse;
+    font-size: small;
+}
+
+.LoginTableTitle
+{
+    background-color: #82A8DF;
+}
+
+.LoginTableTextBox
+{
+    width: 150px;
+}

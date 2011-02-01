@@ -25,8 +25,7 @@
                 Height="20px" DescriptionUrl="~/Modules/Admin/Admin_NewsUpdate.aspx" 
     
             ToolTip="Eliminar esta noticia"  
-            OnClick="btnRemove_Click" /><asp:Button ID="Button1" runat="server" 
-            Text="Button" onclick="Button1_Click" />
+            OnClick="btnRemove_Click" style="width: 20px" />
         </span>
         <asp:HiddenField ID="HiddenField1" runat="server" />
     </div>

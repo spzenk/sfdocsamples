@@ -161,12 +161,26 @@
     <Compile Include="Modules\Admin\Admin_ListEditorNews.aspx.designer.cs">
       <DependentUpon>Admin_ListEditorNews.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Admin\Admin_Login.aspx.cs">
+      <DependentUpon>Admin_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Admin\Admin_Login.aspx.designer.cs">
+      <DependentUpon>Admin_Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Admin\Admin_NewsUpdate.aspx.cs">
       <DependentUpon>Admin_NewsUpdate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Modules\Admin\Admin_NewsUpdate.aspx.designer.cs">
       <DependentUpon>Admin_NewsUpdate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Modules\Admin\Admin_NotAuthorizedUser.aspx.cs">
+      <DependentUpon>Admin_NotAuthorizedUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Admin\Admin_NotAuthorizedUser.aspx.designer.cs">
+      <DependentUpon>Admin_NotAuthorizedUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="Modules\Home\Home_TasasMunicipales.aspx.cs">
       <DependentUpon>Home_TasasMunicipales.aspx</DependentUpon>
@@ -473,10 +487,16 @@
     <Content Include="Images\confirm_16.png" />
     <Content Include="Images\edit.png" />
     <Content Include="Images\hader-top-bg.JPG" />
+    <Content Include="Images\Login\ActualizarPerfilBig.gif" />
+    <Content Include="Images\Login\ActualizarPerfilSmall.gif" />
+    <Content Include="Images\Login\IniciarSesionBig.gif" />
+    <Content Include="Images\Login\IniciarSesionSmall.gif" />
     <Content Include="Images\new_16.png" />
     <Content Include="Images\remov_16.png" />
     <Content Include="Images\search.png" />
     <Content Include="Images\tilde_guion-griz.png" />
+    <Content Include="Images\Warning.png" />
+    <Content Include="js2\my.js" />
     <Content Include="js2\tinymce\changelog.txt" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\langs\en.js" />
     <Content Include="js2\tinymce\jscripts\tiny_mce\plugins\advhr\css\advhr.css" />
@@ -869,7 +889,9 @@
     <Content Include="Modules\Admin\Admin_CreateRichNews.aspx" />
     <Content Include="Modules\Admin\Admin_CreateRichNews2.aspx" />
     <Content Include="Modules\Admin\Admin_ListEditorNews.aspx" />
+    <Content Include="Modules\Admin\Admin_Login.aspx" />
     <Content Include="Modules\Admin\Admin_NewsUpdate.aspx" />
+    <Content Include="Modules\Admin\Admin_NotAuthorizedUser.aspx" />
     <Content Include="Modules\Admin\collapsable.txt" />
     <Content Include="Modules\Home\Home_TasasMunicipales.aspx" />
     <Content Include="Modules\Municipalidad\Muni_Inst_Cultura.aspx" />
