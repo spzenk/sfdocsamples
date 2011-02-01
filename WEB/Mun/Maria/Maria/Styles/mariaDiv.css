@@ -54,7 +54,6 @@ Sticky Footer http://ryanfait.com/sticky-footer/layout.css
 }
 
 
-
 #leftcontent
 {
     border: 1px hidden #FFFFFF;
@@ -65,15 +64,16 @@ Sticky Footer http://ryanfait.com/sticky-footer/layout.css
 }
 #rightcontent
 {
+    background-position: #66CCFF;
     border-left: 1px solid #336699;
     border-right: 1px solid #FFFFFF;
     border-top: 1px solid #FFFFFF;
     border-bottom: 1px solid #FFFFFF;
     position: absolute;
-        right: 10px;
-        width: 190px;
-        background: #fff;
-    top: 3px;
+    right: 10px;
+    width: 190px;
+    background: #66CCFF;
+    top: 1px;
 }
 #centercontent
         {
@@ -83,15 +83,15 @@ Sticky Footer http://ryanfait.com/sticky-footer/layout.css
             background: #fff;
             border-style: solid;
             border-width: thin;
-            border-color: #FFFFFF #336699 #FFFFFF #336699;
+            border-color: #FFFFFF #FFFFFF #FFFFFF #FFFFFF;
             voice-family: inherit;
             margin-left: 201px;
             margin-right: 201px;
-            min-height : 500px;
+            
         }
 				
 	html>body #centercontent {
-   		margin-left: 201px;
+   		margin-left: 241px;
    		margin-right:201px;
 		}
 

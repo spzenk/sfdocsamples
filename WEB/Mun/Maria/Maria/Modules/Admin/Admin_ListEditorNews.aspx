@@ -5,7 +5,7 @@
 <div class="NewsHeaderTitle">
 <h1>Ingrece parte del título de la noticia</h1>
 </div>
-    <div class="NewsHeaderTitle">
+    <div >
         <span id="spam2">
             <asp:TextBox ID="txtSearch" runat="server" Width="323px"></asp:TextBox>
         </span><span id="Span1">

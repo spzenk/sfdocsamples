@@ -357,6 +357,13 @@
     <Compile Include="Modules\Tramites\Tramites_LicenciaConducir.aspx.designer.cs">
       <DependentUpon>Tramites_LicenciaConducir.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Modules\Tramites\Tramites_RegistroCivil.aspx.cs">
+      <DependentUpon>Tramites_RegistroCivil.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Modules\Tramites\Tramites_RegistroCivil.aspx.designer.cs">
+      <DependentUpon>Tramites_RegistroCivil.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Modules\Tramites\Tramites_Vehiculos.aspx.cs">
       <DependentUpon>Tramites_Vehiculos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -482,6 +489,11 @@
     <Content Include="Usercontrol\News_Simple_Creator.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ASPNETDB.MDF">
+    </Content>
+    <Content Include="App_Data\aspnetdb_log.ldf">
+      <DependentUpon>ASPNETDB.MDF</DependentUpon>
+    </Content>
     <Content Include="Images\bg_main2.PNG" />
     <Content Include="Images\cal_16.png" />
     <Content Include="Images\confirm_16.png" />
@@ -959,6 +971,7 @@
     <Content Include="Modules\Noticias\WebForm1.aspx" />
     <Content Include="Modules\Tramites\Tramites_Inmuebles.aspx" />
     <Content Include="Modules\Tramites\Tramites_LicenciaConducir.aspx" />
+    <Content Include="Modules\Tramites\Tramites_RegistroCivil.aspx" />
     <Content Include="Modules\Tramites\Tramites_Vehiculos.aspx" />
     <Content Include="Usercontrol\NewsFooter.ascx" />
     <Content Include="Usercontrol\News_Collapsed_RichText.ascx" />
@@ -974,7 +987,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\js\" />
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\0\00\009\009e\" />
     <Folder Include="js2\tinymce\jscripts\tiny_mce\plugins\ibrowser\scripts\phpThumb\cache\0\01\016\016e\" />

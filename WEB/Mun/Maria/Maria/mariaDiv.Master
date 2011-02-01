@@ -67,7 +67,10 @@
         <asp:ContentPlaceHolder ID="ContentRight" runat="server">
             </asp:ContentPlaceHolder>
         </div>
-        <div class ="push"></div>
+        <div class ="push">
+           
+        </div>
+        
     </div>
      <div id="Divfooter" class="Footer">
      <div style="border-style: groove none none none; height: 100%; background-color: #FFFFFF;">

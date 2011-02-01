@@ -15,7 +15,6 @@ namespace Maria.Modules.Admin
         {
             if (!Page.User.Identity.IsAuthenticated)
             {
-                //Response.Redirect(@"~\modules\Admin\Admin_NotAuthorizedUser.aspx?id=Admin_CreateRichNews2.aspx");
                 Response.Redirect(string.Format(WebUserControlsConstants.NotAuthorizedUser_Redirect, this.Page.AppRelativeVirtualPath));
             }
             if (!IsPostBack)

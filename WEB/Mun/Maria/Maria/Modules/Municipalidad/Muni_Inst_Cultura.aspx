@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maria_Municipal.master" AutoEventWireup="true" CodeBehind="Muni_Inst_Cultura.aspx.cs" Inherits="Maria.Modules.Municipalidad.Muni_Inst_Cultura" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div id="Div1" class="EnvelopeCont">
+
         <div id="d1" class="EnvelopeArtic">
             <div style="mso-element:para-border-div;border:none;border-bottom:solid #4F81BD 1.0pt;
 mso-border-bottom-themecolor:accent1;mso-border-bottom-alt:solid #4F81BD .5pt;
@@ -65,5 +65,5 @@ line-height:150%;font-family:&quot;Book Antiqua&quot;,&quot;serif&quot;;mso-bidi
             <p class="MsoNormal" style="text-align:justify">
                 <span style="font-size:10.0pt"><o:p>&nbsp;</o:p></span></p>
         </div>
-    </div>
+
  </asp:Content>

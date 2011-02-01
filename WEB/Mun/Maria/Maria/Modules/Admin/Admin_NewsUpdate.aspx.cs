@@ -15,7 +15,12 @@ namespace Maria.Modules.Admin
         Guid id;
         protected void Page_Load(object sender, EventArgs e)
         {
-      
+            if (!Page.User.Identity.IsAuthenticated)
+            {
+                Response.Redirect(string.Format(WebUserControlsConstants.NotAuthorizedUser_Redirect, this.Page.AppRelativeVirtualPath));
+            }
+
+
             global::Maria.BE.NewsInfo wNewsInfo = null;
             RangeValidator1.MinimumValue = DateTime.Now.ToString("dd/MM/yyyy");
           

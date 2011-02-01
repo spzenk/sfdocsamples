@@ -8,7 +8,7 @@
         Width="100%" ForeColor="#003300" Font-Names="Verdana" Font-Size="X-Small" 
                 EnableViewState="False">
         <LevelMenuItemStyles>
-            <asp:MenuItemStyle BackColor="Black" ForeColor="#CCCCCC" />
+            <asp:MenuItemStyle BackColor="Black" ForeColor="#CCCCCC"  Font-Size =Larger Font-Bold="True" />
             <asp:MenuItemStyle BackColor="White" Font-Bold="True" BorderStyle="None" VerticalPadding="10" />
             <asp:MenuItemStyle BackColor="White" Font-Bold="False" BorderStyle="None" VerticalPadding="10" />
         </LevelMenuItemStyles>

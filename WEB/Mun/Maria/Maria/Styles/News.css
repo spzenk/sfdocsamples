@@ -2,14 +2,14 @@
 /*envolvente primario para user control de edicion*/	
 .EnvelopeContNews
 {
-    border-color: #FFFFFF;
+    border-style: solid;
+    border-color: #FFFFFF #336699 #336699 #336699;
     float: left;
     width: 92%;
     height: 100%;
     padding: 10px;
     display: block;
     border-width: thin;
-    margin-right: 0px;
 }
 
 /*envolvente secundario para user control de edicion*/	
