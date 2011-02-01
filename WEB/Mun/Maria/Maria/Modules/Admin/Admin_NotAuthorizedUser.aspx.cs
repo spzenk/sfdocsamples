@@ -11,7 +11,10 @@ namespace Maria.Modules.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                this.Login1.DestinationPageUrl = Request.QueryString["id"];
+            }
         }
     }
 }
