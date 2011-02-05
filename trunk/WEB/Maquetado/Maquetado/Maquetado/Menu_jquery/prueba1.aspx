@@ -12,8 +12,9 @@ http://web.ontuts.com/tutoriales/creando-un-menu-desplegable-en-jquery/--%>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="styles/prueba1.css" />
     <link rel="stylesheet" type="text/css" href="styles/jquery.hrzAccordion.examples.css" />
-    <script type="text/javascript" src="JS/jquery_1.5.js"></script>
-        <script type="text/javascript" src="JS/preba1.js"></script>
+    
+    <script type="text/javascript" src="JS/jquery_1.4.js"></script>
+        <script type="text/javascript" src="JS/prueba1.js"></script>
     <script type="text/javascript" src="JS/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="JS/jquery.hrzAccordion.js"></script>
     <script type="text/javascript" src="JS/jquery.hrzAccordion.examples.js"></script>
@@ -22,7 +23,7 @@ http://web.ontuts.com/tutoriales/creando-un-menu-desplegable-en-jquery/--%>
 
 <body>
     <form id="form1" runat="server">
-    <div>
+
      <div class="wrapper">  
         <h1>Creando un menú desplegable en jQuery</h1>  
         <ul class="dropdown">  
@@ -32,7 +33,7 @@ http://web.ontuts.com/tutoriales/creando-un-menu-desplegable-en-jquery/--%>
             <li><a href="#">Contacto</a></li>  
             <li class="last"><a href="#">Ver más...</a></li>  
         </ul>  
-    </div>  
+
     </div>
     </form>
 </body>
