@@ -1,11 +1,11 @@
 ﻿//variable global para controles dropdown
 
-var menu =  "ul.dropdown";
+var menu =  'ul.dropdown';
 
 //control de eventos
 (this.document).ready(function() {
     menu.mouseover(function() {
-        displayOptions((this).find("li"));
+        displayOptions((this).find('li'));
     });
     menu.mouseout(function() {
         hideOptions((this));
@@ -18,6 +18,6 @@ function displayOptions(e) {
 }
 //funcion que OCULTA los elementos del menu
 function hideOptions(e) {
-    e.find("li").hide();
-    e.find("li.active").show();
+    e.find('li').hide();
+    e.find('li.active').show();
 }
