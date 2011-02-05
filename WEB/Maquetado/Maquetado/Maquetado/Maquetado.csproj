@@ -56,6 +56,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maquetado1\Maquetado1.aspx.cs">
+      <DependentUpon>Maquetado1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maquetado1\Maquetado1.aspx.designer.cs">
+      <DependentUpon>Maquetado1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menues\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -84,13 +91,6 @@
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Site2.Master.cs">
-      <DependentUpon>Site2.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site2.Master.designer.cs">
-      <DependentUpon>Site2.Master</DependentUpon>
     </Compile>
     <Compile Include="TestProperties.aspx.cs">
       <DependentUpon>TestProperties.aspx</DependentUpon>
@@ -139,13 +139,13 @@
     <Content Include="Images\rightbarheader.gif" />
     <Content Include="Images\rightcoltop.gif" />
     <Content Include="Images\searchbox_bg.jpg" />
+    <Content Include="Maquetado1\Maquetado1.aspx" />
+    <Content Include="Maquetado1\site1.css" />
     <Content Include="Menues\MainMenu.ascx" />
     <Content Include="Menues\MainMenu.xml" />
     <Content Include="Menues\VMenu_Home.ascx" />
     <Content Include="Menues\VMenu_Localidad.ascx" />
     <Content Include="Styles\prop.css" />
-    <Content Include="Site2.Master" />
-    <Content Include="Styles\site2.css" />
     <Content Include="TestProperties.aspx" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
