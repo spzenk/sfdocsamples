@@ -5,10 +5,10 @@ var menu =  "ul.dropdown";
 //control de eventos
 (this.document).ready(function() {
     menu.mouseover(function() {
-        displayOptions($(this).find("li"));
+        displayOptions((this).find("li"));
     });
     menu.mouseout(function() {
-        hideOptions($(this));
+        hideOptions((this));
     });
 })
 

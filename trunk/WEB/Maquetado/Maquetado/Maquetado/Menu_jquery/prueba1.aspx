@@ -11,13 +11,9 @@ http://web.ontuts.com/tutoriales/creando-un-menu-desplegable-en-jquery/--%>
     <title></title>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <link rel="stylesheet" type="text/css" href="styles/prueba1.css" />
-    <link rel="stylesheet" type="text/css" href="styles/jquery.hrzAccordion.examples.css" />
-    
-    <script type="text/javascript" src="JS/jquery_1.4.js"></script>
-        <script type="text/javascript" src="JS/prueba1.js"></script>
-    <script type="text/javascript" src="JS/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="JS/jquery.hrzAccordion.js"></script>
-    <script type="text/javascript" src="JS/jquery.hrzAccordion.examples.js"></script>
+ 
+  
+  
 
 </head>
 
@@ -35,6 +31,9 @@ http://web.ontuts.com/tutoriales/creando-un-menu-desplegable-en-jquery/--%>
         </ul>  
 
     </div>
+      
+    <script type="text/javascript" src="JS/jquery_1.4.js"></script>
+        <script type="text/javascript" src="JS/prueba1.js"></script>
     </form>
 </body>
 </html>
