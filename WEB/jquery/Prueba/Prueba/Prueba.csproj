@@ -81,7 +81,9 @@
     <Content Include="JS\jquery_1.4.js" />
     <Content Include="JS\jquery_1.5.js" />
     <Content Include="JS\black-menu.js" />
+    <Content Include="Menu_jquery\Links.txt" />
     <Content Include="Menu_jquery\Menu.aspx" />
+    <Content Include="Menu_jquery\SimpleMenuAcordion-Black.aspx" />
     <Content Include="Menu_jquery\styles\jquery.hrzAccordion.defaults.css" />
     <Content Include="Menu_jquery\styles\jquery.hrzAccordion.examples.css" />
     <Content Include="Menu_jquery\styles\black-menu-style.css" />
@@ -99,6 +101,13 @@
     </Compile>
     <Compile Include="Menu_jquery\Menu.aspx.designer.cs">
       <DependentUpon>Menu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Menu_jquery\SimpleMenuAcordion-Black.aspx.cs">
+      <DependentUpon>SimpleMenuAcordion-Black.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Menu_jquery\SimpleMenuAcordion-Black.aspx.designer.cs">
+      <DependentUpon>SimpleMenuAcordion-Black.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menu_jquery\VisualStudioInetellisence.aspx.cs">
       <DependentUpon>VisualStudioInetellisence.aspx</DependentUpon>
