@@ -7,10 +7,11 @@
     <title></title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js">
+  
     </script>
-
-    <% /* %><script type="text/javascript" src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.3.2-vsdoc.js"></script><% */ %>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script> 
+        <% /* %><script type="text/javascript" src="http://ajax.microsoft.com/ajax/jQuery/jquery-1.3.2-vsdoc.js"></script><% */ %>
+  
 </head>
 <body>
     <form id="form1" runat="server">
