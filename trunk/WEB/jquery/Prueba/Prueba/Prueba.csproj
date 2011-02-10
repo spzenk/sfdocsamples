@@ -88,6 +88,61 @@
     <Content Include="Menu_jquery\styles\jquery.hrzAccordion.examples.css" />
     <Content Include="Menu_jquery\styles\black-menu-style.css" />
     <Content Include="Menu_jquery\VisualStudioInetellisence.aspx" />
+    <Content Include="Slider_fotos_videos\colorbox\border.png" />
+    <Content Include="Slider_fotos_videos\colorbox\colorbox.css" />
+    <Content Include="Slider_fotos_videos\colorbox\controls.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderBottomCenter.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderBottomLeft.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderBottomRight.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderMiddleLeft.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderMiddleRight.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderTopCenter.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderTopLeft.png" />
+    <Content Include="Slider_fotos_videos\colorbox\internet_explorer\borderTopRight.png" />
+    <Content Include="Slider_fotos_videos\colorbox\jquery.colorbox-min.js" />
+    <Content Include="Slider_fotos_videos\colorbox\jquery.colorbox.js" />
+    <Content Include="Slider_fotos_videos\colorbox\loading.gif" />
+    <Content Include="Slider_fotos_videos\colorbox\loading_background.png" />
+    <Content Include="Slider_fotos_videos\colorbox\overlay.png" />
+    <Content Include="Slider_fotos_videos\css\anythingslider.css" />
+    <Content Include="Slider_fotos_videos\css\page.css" />
+    <Content Include="Slider_fotos_videos\css\theme-construction.css" />
+    <Content Include="Slider_fotos_videos\css\theme-cs-portfolio.css" />
+    <Content Include="Slider_fotos_videos\css\theme-metallic.css" />
+    <Content Include="Slider_fotos_videos\css\theme-minimalist-round.css" />
+    <Content Include="Slider_fotos_videos\css\theme-minimalist-square.css" />
+    <Content Include="Slider_fotos_videos\Demo1.aspx" />
+    <Content Include="Slider_fotos_videos\Demo2.aspx" />
+    <Content Include="Slider_fotos_videos\demos.htm" />
+    <Content Include="Slider_fotos_videos\images\251356.jpg" />
+    <Content Include="Slider_fotos_videos\images\arrows-construction.gif" />
+    <Content Include="Slider_fotos_videos\images\arrows-cs-portfolio.jpg" />
+    <Content Include="Slider_fotos_videos\images\arrows-default.png" />
+    <Content Include="Slider_fotos_videos\images\arrows-metallic.png" />
+    <Content Include="Slider_fotos_videos\images\arrows-minimalist.png" />
+    <Content Include="Slider_fotos_videos\images\bg-cs-portfolio.jpg" />
+    <Content Include="Slider_fotos_videos\images\cellshade.png" />
+    <Content Include="Slider_fotos_videos\images\nav-construction.png" />
+    <Content Include="Slider_fotos_videos\images\nav-cs-portfolio.png" />
+    <Content Include="Slider_fotos_videos\images\ribbon1.png" />
+    <Content Include="Slider_fotos_videos\images\ribbon2.png" />
+    <Content Include="Slider_fotos_videos\images\slide-civil-1.jpg" />
+    <Content Include="Slider_fotos_videos\images\slide-civil-2.jpg" />
+    <Content Include="Slider_fotos_videos\images\slide-env-1.jpg" />
+    <Content Include="Slider_fotos_videos\images\slide-env-2.jpg" />
+    <Content Include="Slider_fotos_videos\images\slide-tele-1.jpg" />
+    <Content Include="Slider_fotos_videos\images\slide-tele-2.jpg" />
+    <Content Include="Slider_fotos_videos\images\th-slide-civil-1.jpg" />
+    <Content Include="Slider_fotos_videos\images\th-slide-civil-2.jpg" />
+    <Content Include="Slider_fotos_videos\images\th-slide-env-1.jpg" />
+    <Content Include="Slider_fotos_videos\images\th-slide-env-2.jpg" />
+    <Content Include="Slider_fotos_videos\js\demo.js" />
+    <Content Include="Slider_fotos_videos\js\jquery.anythingslider.fx.js" />
+    <Content Include="Slider_fotos_videos\js\jquery.anythingslider.fx.min.js" />
+    <Content Include="Slider_fotos_videos\js\jquery.anythingslider.js" />
+    <Content Include="Slider_fotos_videos\js\jquery.anythingslider.min.js" />
+    <Content Include="Slider_fotos_videos\js\jquery.easing.1.2.js" />
+    <Content Include="Slider_fotos_videos\js\swfobject.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +172,20 @@
       <DependentUpon>VisualStudioInetellisence.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Slider_fotos_videos\Demo1.aspx.cs">
+      <DependentUpon>Demo1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Slider_fotos_videos\Demo1.aspx.designer.cs">
+      <DependentUpon>Demo1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Slider_fotos_videos\Demo2.aspx.cs">
+      <DependentUpon>Demo2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Slider_fotos_videos\Demo2.aspx.designer.cs">
+      <DependentUpon>Demo2.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
