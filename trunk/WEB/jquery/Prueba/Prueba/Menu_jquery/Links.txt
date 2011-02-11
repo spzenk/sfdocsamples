@@ -14,3 +14,8 @@ http://www.cssblog.es/ejemplos-de-menus-complejos-con-css-jquery/
 
 
 http://css-tricks.com/downloads/
+
+
+Todos los ultimos mejores plugins jQuery
+
+	http://www.tuprogramador.com/blog/todos-los-ultimos-mejores-plugins-jquery.html
