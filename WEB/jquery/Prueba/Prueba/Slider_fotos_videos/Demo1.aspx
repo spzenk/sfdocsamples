@@ -33,7 +33,42 @@
  <script type="text/javascript" src="js/demo.js"></script>
  <script type="text/javascript" src="colorbox/jquery.colorbox-min.js"></script>
 
+   <script type ="text/javascript" >
+       function formatText(index, panel) {
+           return index + "";
+       };
+       $(function() {
+           var singleSlide = true,
+            options = {
+         autoPlay: false,                // This turns off the entire FUNCTIONALY, not just if it starts running or not.
+         buildNavigation: false,         // If true, builds and list of anchor links to link to each slide
+         easing: "easeInOutExpo",        // Anything other than "linear" or "swing" requires the easing plugin
+         delay: 3000,                    // How long between slide transitions in AutoPlay mode
+         animationTime: 600,             // How long the slide transition takes
+         hashTags: true,                 // Should links change the hashtag in the URL?
+         pauseOnHover: true,             // If true, and autoPlay is enabled, the show will pause on hover
+         navigationFormatter: formatText // Details at the top of the file on this use (advanced use)
+     };
 
+           // Add player options if more than one slide exists
+           if ($('.anythingSlider > div > ul > li').length > 1) {
+               $.extend(options, {
+                   autoPlay: true,
+                   startStopped: true,     // If autoPlay is on, this can force it to start stopped
+                   startText: "Iniciar",         // Start text
+                   stopText: "Parar",        // Stop text
+                   buildNavigation: true
+               });
+               singleSlide = false;
+           }
+
+           // Initiate anythingSlider
+           $('.anythingSlider').anythingSlider(6);
+
+           // hide anythingSlider navigation arrows
+           if (singleSlide) { $('.anythingSlider a.arrow').hide(); }
+       });
+     </script>
 </head>
 
 <body>

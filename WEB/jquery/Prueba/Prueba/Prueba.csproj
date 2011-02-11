@@ -70,6 +70,10 @@
     <Content Include="Menu_jquery\images\com_04.gif" />
     <Content Include="Menu_jquery\images\com_05.gif" />
     <Content Include="Menu_jquery\images\image_test.gif" />
+    <Content Include="Menu_jquery\images\th-slide-civil-1.jpg" />
+    <Content Include="Menu_jquery\images\th-slide-civil-2.jpg" />
+    <Content Include="Menu_jquery\images\th-slide-env-1.jpg" />
+    <Content Include="Menu_jquery\images\th-slide-env-2.jpg" />
     <Content Include="Menu_jquery\images\title1.png" />
     <Content Include="Menu_jquery\images\title2.png" />
     <Content Include="Menu_jquery\images\title3.png" />

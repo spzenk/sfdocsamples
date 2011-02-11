@@ -95,17 +95,17 @@ ul li                  { font: 15px Georgia, Serif; margin: 0 0 8px 0; }
 .caption-top .close,
 .caption-right .close,
 .caption-bottom .close,
-.caption-left .close   { font-size: 80%; cursor: pointer; float: right; display: inline-block; }
+.caption-left .close   { font-size: 80%; cursor: pointer; float: right; display: inline-block;}
 
  /* captions */
  /* set to position: relative here in case javascript is disabled, script sets captions to position: absolute */
 #slider3 .caption-top,
 #slider3 .caption-right,
 #slider3 .caption-bottom,
-#slider3 .caption-left { background: #000; color: #fff; padding: 10px; margin: 0; position: relative; z-index: 10; opacity: .8; filter: alpha(opacity=80); }
+#slider3 .caption-left {  visibility : hidden; background: #000; color: #fff; padding: 10px; margin: 0; position: relative; z-index: 10; opacity: .8; filter: alpha(opacity=80); }
 
 /* Top caption - padding is included in the width (480px here, 500px in the script), same for height */
-#slider3 .caption-top    { left: 0; top: 0; width: 480px; height: 30px; }
+#slider3 .caption-top    { left: 0; top: 0; width: 480px; height: 30px;  visibility:visible;}
 
 /* Right caption - padding is included in the width (130px here, 150px in the script), same for height */
 #slider3 .caption-right  { right: 0; bottom: 0; width: 130px; height: 180px;  }
