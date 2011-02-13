@@ -125,7 +125,7 @@ $(document).ready(function(){
 		if ($this.find('.caption-left').length) { $this.find('.caption-left').show().animate({ left: 0, opacity: 1 }, 400); }
 	};
 	hideCaptions = function(el){
-		var $this = el;
+		var $this = el; 
 		if ($this.find('.caption-top').length) { $this.find('.caption-top').stop().animate({ top: -50, opacity: 0 }, 400, function(){ $this.find('.caption-top').hide(); }); }
 		if ($this.find('.caption-right').length) { $this.find('.caption-right').stop().animate({ right: -150, opacity: 0 }, 400, function(){ $this.find('.caption-right').hide(); }); }
 		if ($this.find('.caption-bottom').length) { $this.find('.caption-bottom').stop().animate({ bottom: -50, opacity: 0 }, 400, function(){ $this.find('.caption-bottom').hide(); }); }

@@ -13,14 +13,19 @@
 
 
   <script type="text/javascript">
-
+        //con esta funcion inicio el slider1
       $(function() {
           $('#slider1').anythingSlider({
               buildNavigation: true,
-              themeDirectory: 'Slider_fotos_videos/css/theme-{themeName}.css',
+              themeDirectory: 'Slider_fotos_videos/css/theme-{themeName}.css', //Aqui fijo el directorio donde estan los temas
               theme: 'metallic',
-              navigationFormatter: function(i, panel) {
-                  return '<img src="Slider_fotos_videos/images/th-slide-' + ['civil-1', 'env-1', 'civil-2', 'env-2'][i - 1] + '.jpg">';
+              navigationFormatter: function(i, panel) { //aqui cargamos las imagenes pequeñas o thumbs
+              return '<img src="Slider_fotos_videos/images/th-slide-'
+                  + ['civil-1', 
+                  'env-1',
+                   'civil-2',
+                   'env-2']
+                   [i - 1] + '.jpg">';
               }
           });
       });
@@ -48,7 +53,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div id="demo2">
+    <div id="xx" class ="DivSlider1">
         <h2 class="title">Slider desde un directorio diferente</h2>
         
         <ul id="slider1">
