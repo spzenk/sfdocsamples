@@ -26,32 +26,19 @@
     <!-- Anything Slider -->
     <link rel="stylesheet" href="Slider_fotos_videos/css/anythingslider.css" type="text/css"    media="screen" />
  
-
-
-
-
     <!-- Anything Slider optional plugins -->
-
     <script type="text/javascript" src="Slider_fotos_videos/js/jquery.easing.1.2.js"></script>
     <script type="text/javascript" src="Slider_fotos_videos/js/swfobject.js"></script>
-
-
-    <script type="text/javascript" src="Slider_fotos_videos/js/jquery.anythingslider.js"></script>
-
+ 
     <!-- AnythingSlider optional FX extension -->
-
     <script type="text/javascript" src="Slider_fotos_videos/js/jquery.anythingslider.fx.min.js"></script>
 
     <!-- Demos page only -->
     <link rel="stylesheet" href="Slider_fotos_videos/css/page.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="Slider_fotos_videos/colorbox/colorbox.css" type="text/css" media="screen" />
-
     <script type="text/javascript" src="Slider_fotos_videos/js/demo.js"></script>
     <script type="text/javascript" src="Slider_fotos_videos/colorbox/jquery.colorbox-min.js"></script>
     
-    
-  
-
 </head>
 <body>
     <form id="form1" runat="server">
