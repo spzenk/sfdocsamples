@@ -6,7 +6,7 @@ a, a img               { border: 0; text-decoration: none; }
 #ribbon1, #ribbon2     { display: block; position: absolute; top: 0; left: 0; width: 200px; height: 200px; background: left top no-repeat; }
 #ribbon1               { background-image: url(../images/ribbon1.png); }
 #ribbon2               { background-image: url(../images/ribbon2.png); }
-#page-wrap, #demo2     { width: 90%; padding: 15px; margin: 0 auto 50px; position: relative; }
+#pag.-wrap, .DivSlider1     { width: 90%; padding: 15px; margin: 0 auto 50px; position: relative; }
 
 h1                     { font: bold 60px Helvetica, Sans-Serif; letter-spacing: -2px; margin: 20px 0; text-align: center; }
 h2                     { font: bold 30px Helvetica, Sans-Serif; letter-spacing: -1px; margin: 0 0 10px 0; color: #002266; }
@@ -64,25 +64,24 @@ ul li                  { font: 15px Georgia, Serif; margin: 0 0 8px 0; }
 /** Demo 1 **/
 /* colorbox images to full size */
 #cboxPhoto             { width: 100%; height: 100%; margin: 0 !important; }
-/* Change metallic slider defaults to show thumbnails -
-  using #demo2 (page wrapper) to increase this CSS priority */
-#demo2 div.anythingSlider-metallic .thumbNav a {
+/* Change metallic slider defaults to show thumbnails.DivSlider1 using .DivSlider1 (page wrapper) to increase this CSS priority */
+.DivSlider1 div.anythingSlider-metallic .thumbNav a {
  background-image: url();
  height: 30px;
  width: 30px;
  border: #000 1px solid;
  border-radius: 2px;
  -moz-border-radius: 2px;
- -webkit-border-radius: 2px;
+ -webkit-border-radi.DivSlider1x;
  text-indent: 0;
 }
-/* border around image to show current page */
-#demo2 div.anythingSlider-metallic .thumbNav a:hover,
-#demo2 div.anythingSlider-metallic .thumbNav a.cur {
+/* border around image .o show current page */
+.DivSlider1 div.anythingSlider-metallic .thumbNav a:hover,
+.DivSlider1 div.anythingSlider-metallic .thumbNav a.cur {
  border-color: #fff;
 }
 /* reposition the start/stop button */
-#demo2 div.anythingSlider-metallic .start-stop {
+.DivSlider1 div.anythingSlider-metallic .start-stop {
  margin-top: 15px;
 }
 
