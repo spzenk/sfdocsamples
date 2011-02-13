@@ -607,9 +607,9 @@
 		resumeOnVideoEnd    : true,      // If true & the slideshow is active & a youtube video is playing, it will pause the autoplay until the video is complete
 		stopAtEnd           : false,     // If true & the slideshow is active, the slideshow will stop on the last page
 		playRtl             : false,     // If true, the slideshow will move right-to-left
-		startText           : "Start",   // Start button text
-		stopText            : "Stop",    // Stop button text
-		delay               : 3000,      // How long between slideshow transitions in AutoPlay mode (in milliseconds)
+		startText           : "Iniciar",   // Start button text
+		stopText            : "Detener",    // Stop button text
+		delay               : 2500,      // How long between slideshow transitions in AutoPlay mode (in milliseconds)
 		resumeDelay         : 15000,     // Resume slideshow after user interaction, only if autoplayLocked is true (in milliseconds).
 		animationTime       : 600,       // How long the slideshow transition takes (in milliseconds)
 		easing              : "swing",   // Anything other than "linear" or "swing" requires the easing plugin
