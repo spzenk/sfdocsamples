@@ -6,7 +6,7 @@ $(document).ready(function(){
 		active      : false // start compressed
 	});
 
-	$('#slider1')
+	$('.Slider1')
 	.anythingSlider({
 		width          : 400,
 		height         : 300,

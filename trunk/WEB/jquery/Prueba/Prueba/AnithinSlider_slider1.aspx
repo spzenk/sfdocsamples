@@ -15,7 +15,7 @@
   <script type="text/javascript">
         //con esta funcion inicio el slider1
       $(function() {
-          $('#slider1').anythingSlider({
+          $('.Slider1').anythingSlider({
               buildNavigation: true,
               themeDirectory: 'Slider_fotos_videos/css/theme-{themeName}.css', //Aqui fijo el directorio donde estan los temas
               theme: 'metallic',
@@ -56,7 +56,7 @@
     <div id="xx" class ="DivSlider1">
         <h2 class="title">Slider desde un directorio diferente</h2>
         
-        <ul id="slider1">
+        <ul id ="s1" class="Slider1">
             <li>
                 <img src="Slider_fotos_videos/images/slide-civil-1.jpg" alt="" /></li>
             <li>
