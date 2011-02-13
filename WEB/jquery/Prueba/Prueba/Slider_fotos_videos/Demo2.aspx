@@ -16,8 +16,8 @@
 
  <!-- Anything Slider optional plugins -->
  <script type="text/javascript" src="js/jquery.easing.1.2.js"></script> 
- <script type="text/javascript" src="js/swfobject.js"></script> <!-- http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js -->
- 
+ <script type="text/javascript" src="js/swfobject.js"></script> 
+     
  <!-- Anything Slider -->
  <link rel="stylesheet" href="css/anythingslider.css" type="text/css" media="screen" />
  <script type="text/javascript" src="js/jquery.anythingslider.js"></script>
