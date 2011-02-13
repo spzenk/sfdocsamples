@@ -13,14 +13,17 @@
 
 
   <script type="text/javascript">
-      
-          $(function () {
-        $('#slider1').anythingSlider({
-        buildNavigation: true,
-        themeDirectory: 'Slider_fotos_videos/css/theme-{themeName}.css',
-            theme: 'metallic'
-        });
-    });
+
+      $(function() {
+          $('#slider1').anythingSlider({
+              buildNavigation: true,
+              themeDirectory: 'Slider_fotos_videos/css/theme-{themeName}.css',
+              theme: 'metallic',
+              navigationFormatter: function(i, panel) {
+                  return '<img src="Slider_fotos_videos/images/th-slide-' + ['civil-1', 'env-1', 'civil-2', 'env-2'][i - 1] + '.jpg">';
+              }
+          });
+      });
     
     </script>
  
@@ -45,7 +48,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
+    <div id="demo2">
         <h2 class="title">Slider desde un directorio diferente</h2>
         
         <ul id="slider1">
