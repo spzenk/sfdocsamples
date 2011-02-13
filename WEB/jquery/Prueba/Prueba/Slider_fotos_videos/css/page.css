@@ -46,7 +46,7 @@ ul li                  { font: 15px Georgia, Serif; margin: 0 0 8px 0; }
 
 /* Set slider1 panel 5 stuff - adding padding directly to the panel will
    shift panels after it, so we need a wrapper */
-#slider1 .panel5 ul    { width: 225px; margin: 0 5px 0 15px; }
+.Slider1 .panel5 ul    { width: 225px; margin: 0 5px 0 15px; }
 
 /* Set slider2 panel sizes */
 #slider2 .panel1       { width: 500px; height: 350px; }
@@ -72,7 +72,7 @@ ul li                  { font: 15px Georgia, Serif; margin: 0 0 8px 0; }
  border: #000 1px solid;
  border-radius: 2px;
  -moz-border-radius: 2px;
- -webkit-border-radi.DivSlider1x;
+ -webkit-border-radi.DivSlider1;
  text-indent: 0;
 }
 /* border around image .o show current page */
