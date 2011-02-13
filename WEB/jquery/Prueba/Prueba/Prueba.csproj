@@ -148,7 +148,7 @@
     <Content Include="Slider_fotos_videos\js\jquery.easing.1.2.js" />
     <Content Include="Slider_fotos_videos\js\swfobject.js" />
     <Content Include="Web.config" />
-    <Content Include="WebForm1.aspx" />
+    <Content Include="AnithinSlider_slider1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Menu_jquery\Acordion.aspx.cs">
@@ -191,12 +191,12 @@
     <Compile Include="Slider_fotos_videos\Demo2.aspx.designer.cs">
       <DependentUpon>Demo2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="AnithinSlider_slider1.aspx.cs">
+      <DependentUpon>AnithinSlider_slider1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="AnithinSlider_slider1.aspx.designer.cs">
+      <DependentUpon>AnithinSlider_slider1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

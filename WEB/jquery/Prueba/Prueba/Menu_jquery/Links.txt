@@ -19,3 +19,13 @@ http://css-tricks.com/downloads/
 Todos los ultimos mejores plugins jQuery
 
 	http://www.tuprogramador.com/blog/todos-los-ultimos-mejores-plugins-jquery.html
+
+
+
+AnythingSlider
+
+Appearance-Options
+	https://github.com/ProLoser/AnythingSlider/wiki/Appearance-Options
+	
+	Navigation options
+	https://github.com/ProLoser/AnythingSlider/wiki/Navigation-Options

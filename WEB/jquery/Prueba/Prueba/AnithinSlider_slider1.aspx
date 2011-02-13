@@ -21,6 +21,7 @@
             theme: 'metallic'
         });
     });
+    
     </script>
  
  
@@ -30,7 +31,8 @@
     
     <!-- Anything Slider -->
     <link rel="stylesheet" href="Slider_fotos_videos/css/anythingslider.css" type="text/css"    media="screen" />
-    
+     <script type="text/javascript" src="Slider_fotos_videos/js/jquery.anythingslider.js"></script>
+     
     <!-- AnythingSlider optional FX extension -->
     <script type="text/javascript" src="Slider_fotos_videos/js/jquery.anythingslider.fx.min.js"></script>
 
