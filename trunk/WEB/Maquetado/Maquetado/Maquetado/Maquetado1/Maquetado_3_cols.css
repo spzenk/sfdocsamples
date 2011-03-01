@@ -1,0 +1,54 @@
+﻿.content1
+{
+        background-color:Black; 
+        border-style: solid none none none;
+        border-width: 1px;
+         border-color: #999966;
+        margin: 0 auto -4em;
+        padding: 0;
+        height: auto !important;
+        height: 100%;
+       
+        width: 95%;
+}
+.content
+{
+        background-color:Black; 
+         overflow: hidden;
+        height: 100%;
+        width: 100%;
+}
+/*capa 1*/
+.leftcontent
+{
+  
+    background-color:Gray; 
+  
+    width: 150px;
+    padding:10px;
+    float:left;
+    height: 306px;
+}
+/*capa 3*/
+.centercontent
+  {
+        background-color:White; 
+       margin-left:175px;
+       margin-right:220px;
+    height: 198px;
+}
+  
+/*capa 2*/
+.rightcontent
+{
+     float:right;
+     background-color:Olive; 
+     padding:10px;
+   
+     width: 200px;
+     
+}
+
+
+
+    .clearBoth{clear :both}
