@@ -63,6 +63,13 @@
     <Compile Include="Maquetado1\Maquetado1.aspx.designer.cs">
       <DependentUpon>Maquetado1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Maquetado1\Maquetado_3_cols.aspx.cs">
+      <DependentUpon>Maquetado_3_cols.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maquetado1\Maquetado_3_cols.aspx.designer.cs">
+      <DependentUpon>Maquetado_3_cols.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Menues\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -162,6 +169,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\BrowserFile1.browser" />
+    <Content Include="Maquetado1\Maquetado_3_cols.css" />
+    <Content Include="Maquetado1\Maquetado_3_cols.aspx" />
     <Content Include="Menu_jquery\JS\jquery-1.3.2.js" />
     <Content Include="Menu_jquery\JS\jquery.easing.1.3.js" />
     <Content Include="Menu_jquery\JS\jquery.hrzAccordion.examples.js" />
