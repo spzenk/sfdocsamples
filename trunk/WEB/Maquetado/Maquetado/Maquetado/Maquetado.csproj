@@ -56,6 +56,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Maquetado1\Grid960\ChildPage.aspx.cs">
+      <DependentUpon>ChildPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maquetado1\Grid960\ChildPage.aspx.designer.cs">
+      <DependentUpon>ChildPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Maquetado1\Grid960\Masterpage.Master.cs">
+      <DependentUpon>Masterpage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maquetado1\Grid960\Masterpage.Master.designer.cs">
+      <DependentUpon>Masterpage.Master</DependentUpon>
+    </Compile>
     <Compile Include="Maquetado1\Maquetado1.aspx.cs">
       <DependentUpon>Maquetado1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -69,6 +83,13 @@
     </Compile>
     <Compile Include="Maquetado1\Maquetado_3_cols.aspx.designer.cs">
       <DependentUpon>Maquetado_3_cols.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Maquetado1\Grid960\prueba.aspx.cs">
+      <DependentUpon>prueba.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Maquetado1\Grid960\prueba.aspx.designer.cs">
+      <DependentUpon>prueba.aspx</DependentUpon>
     </Compile>
     <Compile Include="Menues\MainMenu.ascx.cs">
       <DependentUpon>MainMenu.ascx</DependentUpon>
@@ -169,6 +190,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Browsers\BrowserFile1.browser" />
+    <Content Include="Maquetado1\Grid960\css\960.css" />
+    <Content Include="Maquetado1\Grid960\css\960_24_col.css" />
+    <Content Include="Maquetado1\Grid960\css\reset.css" />
+    <Content Include="Maquetado1\Grid960\css\rtl_960.css" />
+    <Content Include="Maquetado1\Grid960\css\rtl_960_24_col.css" />
+    <Content Include="Maquetado1\Grid960\css\rtl_text.css" />
+    <Content Include="Maquetado1\Grid960\css\text.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\960.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\960_24_col.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\demo.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\reset.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\rtl_960.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\rtl_960_24_col.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\rtl_text.css" />
+    <Content Include="Maquetado1\Grid960\css\uncompressed\text.css" />
     <Content Include="Maquetado1\Maquetado_3_cols.css" />
     <Content Include="Maquetado1\Maquetado_3_cols.aspx" />
     <Content Include="Menu_jquery\JS\jquery-1.3.2.js" />
@@ -197,6 +233,13 @@
     <Content Include="Menu_jquery\styles\jquery.hrzAccordion.defaults.css" />
     <Content Include="Menu_jquery\styles\jquery.hrzAccordion.examples.css" />
     <Content Include="Menu_jquery\styles\prueba1.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Maquetado1\Grid960\ChildPage.aspx" />
+    <Content Include="Maquetado1\Grid960\css\Mysyle.css" />
+    <Content Include="Maquetado1\Grid960\css\prueba.css" />
+    <Content Include="Maquetado1\Grid960\Masterpage.Master" />
+    <Content Include="Maquetado1\Grid960\prueba.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
