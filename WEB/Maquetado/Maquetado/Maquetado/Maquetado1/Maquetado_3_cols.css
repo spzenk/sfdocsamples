@@ -14,9 +14,9 @@
 .content
 {
         background-color:Black; 
+         
          overflow: hidden;
-        height: 100%;
-        width: 100%;
+        width: 900px;
 }
 /*capa 1*/
 .leftcontent
@@ -24,18 +24,18 @@
   
     background-color:Gray; 
   
-    width: 150px;
+    width: 500px;
     padding:10px;
     float:left;
-    height: 306px;
+    height:100%;
 }
 /*capa 3*/
 .centercontent
-  {
+  { 
         background-color:White; 
-       margin-left:175px;
-       margin-right:220px;
-    height: 198px;
+       margin-left:520px;
+       margin-right:125px;
+        height:100%;
 }
   
 /*capa 2*/
@@ -44,9 +44,9 @@
      float:right;
      background-color:Olive; 
      padding:10px;
-   
-     width: 200px;
-     
+
+     width: 100px;
+     height:100%;
 }
 
 

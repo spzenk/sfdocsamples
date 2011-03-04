@@ -1,0 +1,48 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Maquetado1/Grid960/Masterpage.Master" AutoEventWireup="true" CodeBehind="ChildPage.aspx.cs" Inherits="Maquetado.Maquetado1.Grid960.ChildPage" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <p>
+    <br />
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+</asp:Content>

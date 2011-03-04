@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Masterpage.master.cs" Inherits="Maquetado.Maquetado1.Grid960.Masterpage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>maquetado con grid 960</title>
+    <link href="css/text.css" rel="stylesheet" type="text/css" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css" />
+    <link href="css/960.css" rel="stylesheet" type="text/css" />
+    <link href="css/Mysyle.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="container_12" id="master_header">
+        <div id="title" class="grid_5">
+             <h1>Municipalidad de Adelia Maria</h1>
+        </div>
+        <div id="searcher" class="grid_7">
+ 
+              <input type="text" />
+              <input type="button" value="buscar" />
+    
+        </div>
+           <div class="clear"></div> 
+    </div>
+
+    <div class ="container_12" id="wrap" >
+        <div id="leftcol" class="grid_2 alpha">
+        hola
+        </div>
+        <div id="centercol" class="grid_8 ">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="rightcol" class="grid_2 omega">
+        hola
+        </div>
+        <div class="clear"></div>
+    </div>
+       
+    <div class ="container_12" id="footer" >
+
+          <div id="Div1" class=" push_14 "></div>
+   
+    <div id="Div2" class="grid_4 suffix_8 ">
+           pelsoft soft informatco
+        </div>
+    </div>
+   
+    </form>
+</body>
+</html>

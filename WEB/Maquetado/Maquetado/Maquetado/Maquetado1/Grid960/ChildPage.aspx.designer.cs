@@ -8,9 +8,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Maquetado.Maquetado1 {
+namespace Maquetado.Maquetado1.Grid960 {
     
     
-    public partial class Maquetado_3_cols {
+    public partial class ChildPage {
     }
 }
