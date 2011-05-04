@@ -21,7 +21,7 @@ namespace Poisoned.WcfService
                 String wStrMessage = Encoding.ASCII.GetString((Byte[])messageInBytes);
                 SysEventMessage wSysEvent = (SysEventMessage)SerializationFunctions.DeserializeFromXml(typeof(SysEventMessage), wStrMessage);
 
-               
+                //throw new Exception();
 
             }
             catch (Exception ex)

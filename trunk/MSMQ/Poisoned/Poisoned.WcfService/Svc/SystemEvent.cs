@@ -41,11 +41,11 @@ namespace Poisoned.WcfService
         [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public void SubmitMessage_Queue(byte[] message, DateTime time)
         {
-            //MsmqMessageProperty mqProp = OperationContext.Current.IncomingMessageProperties[MsmqMessageProperty.Name] as MsmqMessageProperty
+            
             try
             {
                 ReceivedInfoProc.Process(message, time);
-                throw new Exception();
+               
             }
             catch (Exception ex)
             {

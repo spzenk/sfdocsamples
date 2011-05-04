@@ -10,13 +10,19 @@ namespace Poisoned.WcfService
 
 
     [ServiceContract(SessionMode = SessionMode.NotAllowed)]
-    public interface ISystemEventDLQ
+    public interface ISystemEventDLQ 
+    {
+        [OperationContract(IsOneWay = true)]
+        void SubmitMessage_Queue(Byte[] message, DateTime time);
+    }
+
+    [ServiceContract]
+    public interface ISystemEvent
     {
 
-         [OperationContract(IsOneWay = true)]
+        [OperationContract(IsOneWay = true)]
         void SubmitMessage_Queue(Byte[] message, DateTime time);
 
 
     }
-
 }
