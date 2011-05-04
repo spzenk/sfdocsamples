@@ -31,7 +31,7 @@ namespace Poisoned.WcfService
         SystemEvent _SystemEvent;
         public SystemEventDLQ()
     {
-        _SystemEvent = new SystemEvent();
+        //_SystemEvent = new SystemEvent();
     }
 
 
@@ -41,6 +41,7 @@ namespace Poisoned.WcfService
         public void SubmitMessage_Queue(byte[] message, DateTime time)
         {
             MsmqMessageProperty mqProp = OperationContext.Current.IncomingMessageProperties[MsmqMessageProperty.Name] as MsmqMessageProperty;
+            
             // resend the message if timed out
             if (mqProp.DeliveryFailure == DeliveryFailure.ReachQueueTimeout ||
                 mqProp.DeliveryFailure == DeliveryFailure.ReceiveTimeout)
@@ -50,7 +51,9 @@ namespace Poisoned.WcfService
                 //Console.WriteLine("Trying to resend the message");
 
                 // reuse the same transaction used to read the message from dlq to enqueue the message to app. queue
-                _SystemEvent.SubmitMessage_Queue(message,time);
+                //_SystemEvent.SubmitMessage_Queue(message,time);
+
+                Fwk.HelperFunctions.FileFunctions.SaveTextFile("log.txt", "Time To Live expired", true);
                 
             }
           

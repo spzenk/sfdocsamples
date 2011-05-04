@@ -65,9 +65,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dead_letter_queue\ISystemEventDLQ.cs" />
     <Compile Include="Dead_letter_queue\SystemEventDLQ.cs" />
-    <Compile Include="Svc\Class1.cs" />
     <Compile Include="Svc\ISystemEvent.cs" />
     <Compile Include="MessageQueueProcess_MSMQ.cs">
       <SubType>Component</SubType>

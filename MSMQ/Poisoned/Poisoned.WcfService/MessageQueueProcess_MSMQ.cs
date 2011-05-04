@@ -44,6 +44,17 @@ namespace Poisoned.WcfService
                 CreateQueue(Poisoned.WcfService.Properties.Settings.Default.QueuePath);
                 serviceHost = new ServiceHost(typeof(SystemEvent));
                 serviceHost.Open();
+
+                CreateQueue(@".\private$\syseventqueueDLQ");
+                serviceHost = new ServiceHost(typeof(SystemEventDLQ));
+          
+                    // Open the ServiceHostBase to create listeners and start listening for messages.
+                    serviceHost.Open();
+
+                
+                
+
+
             }
             catch (Exception ex)
             {
