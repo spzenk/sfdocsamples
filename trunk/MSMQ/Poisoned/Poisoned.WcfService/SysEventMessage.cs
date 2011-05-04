@@ -25,7 +25,10 @@ namespace Poisoned.WcfService
 
         public String SerialNumber
         {
-            get { return _SerialNumber; }
+            get { return _SerialNumber; 
+            
+          
+            }
             set { _SerialNumber = value; }
         }
 
@@ -174,4 +177,6 @@ namespace Poisoned.WcfService
 		}
 
     }
+
+  
 }

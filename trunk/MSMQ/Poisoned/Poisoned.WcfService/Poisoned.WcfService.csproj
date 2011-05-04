@@ -65,18 +65,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="ISystemEvent.cs" />
+    <Compile Include="Dead_letter_queue\ISystemEventDLQ.cs" />
+    <Compile Include="Dead_letter_queue\SystemEventDLQ.cs" />
+    <Compile Include="Svc\Class1.cs" />
+    <Compile Include="Svc\ISystemEvent.cs" />
     <Compile Include="MessageQueueProcess_MSMQ.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="MessageQueueProcess_MSMQ.Designer.cs">
       <DependentUpon>MessageQueueProcess_MSMQ.cs</DependentUpon>
     </Compile>
-    <Compile Include="SysEventDeamonSvcInstaller.cs">
+    <Compile Include="winservice\SysEventDeamonSvcInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SysEventDeamonSvcInstaller.Designer.cs">
+    <Compile Include="winservice\SysEventDeamonSvcInstaller.Designer.cs">
       <DependentUpon>SysEventDeamonSvcInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,14 +93,14 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SysEventDeamonSvc.cs">
+    <Compile Include="winservice\SysEventDeamonSvc.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="SysEventDeamonSvc.Designer.cs">
+    <Compile Include="winservice\SysEventDeamonSvc.Designer.cs">
       <DependentUpon>SysEventDeamonSvc.cs</DependentUpon>
     </Compile>
     <Compile Include="SysEventMessage.cs" />
-    <Compile Include="SystemEvent.cs" />
+    <Compile Include="Svc\SystemEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -112,7 +114,7 @@
       <DependentUpon>MessageQueueProcess_MSMQ.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SysEventDeamonSvcInstaller.resx">
+    <EmbeddedResource Include="winservice\SysEventDeamonSvcInstaller.resx">
       <DependentUpon>SysEventDeamonSvcInstaller.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
