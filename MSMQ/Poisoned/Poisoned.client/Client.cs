@@ -33,6 +33,9 @@ namespace Poisoned
             {
                 SysEventMessage msg = CreateMsg(i);
 
+
+               
+                Fwk.HelperFunctions.FileFunctions.SaveTextFile("ddd",msg.GetXml());
                 svc.SubmitMessage_Queue(encoding.GetBytes(msg.GetXml()), DateTime.Now);
             }
         }
