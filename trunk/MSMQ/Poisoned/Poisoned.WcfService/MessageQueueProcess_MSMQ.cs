@@ -41,7 +41,7 @@ namespace Poisoned.WcfService
             try
             {
 
-                CreateQueue(Poisoned.WcfService.Properties.Settings.Default.QueuePath);
+                CreateQueue(Poisoned.WcfService.Properties.Settings.Default.QueueName);
                 serviceHost = new ServiceHost(typeof(SystemEvent));
                 serviceHost.Open();
 
