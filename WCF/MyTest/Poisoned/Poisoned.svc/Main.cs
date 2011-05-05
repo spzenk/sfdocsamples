@@ -17,6 +17,20 @@ namespace Poisoned.svc
         public Main()
         {
             InitializeComponent();
+            svc.OnLogEvent += new EventHandler(svc_OnLogEvent);
+        }
+
+        void svc_OnLogEvent(object sender, EventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                
+                this.BeginInvoke(new EventHandler(svc_OnLogEvent), new object[] { sender, e });
+                return;
+            }
+            str.AppendLine("-----------------------------------------------");
+            str.AppendLine(sender.ToString());
+            memoEdit1.Text = str.ToString();
         }
 
         private void btnStart_Click(object sender, EventArgs e)

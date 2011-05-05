@@ -74,12 +74,6 @@
     <Compile Include="MessageQueueProcess_MSMQ.Designer.cs">
       <DependentUpon>MessageQueueProcess_MSMQ.cs</DependentUpon>
     </Compile>
-    <Compile Include="winservice\SysEventDeamonSvcInstaller.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="winservice\SysEventDeamonSvcInstaller.Designer.cs">
-      <DependentUpon>SysEventDeamonSvcInstaller.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReceivedInfoProc.cs" />
     <Compile Include="Properties\Resource.Designer.cs">
@@ -91,12 +85,6 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="winservice\SysEventDeamonSvc.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="winservice\SysEventDeamonSvc.Designer.cs">
-      <DependentUpon>SysEventDeamonSvc.cs</DependentUpon>
     </Compile>
     <Compile Include="SysEventMessage.cs" />
     <Compile Include="Svc\SystemEvent.cs" />
@@ -112,9 +100,6 @@
     <EmbeddedResource Include="MessageQueueProcess_MSMQ.resx">
       <DependentUpon>MessageQueueProcess_MSMQ.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="winservice\SysEventDeamonSvcInstaller.resx">
-      <DependentUpon>SysEventDeamonSvcInstaller.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -14,14 +14,6 @@ using System.ServiceModel.Channels;
 namespace Poisoned.WcfService
 {
 
-    /// <summary>
-    /// Este servicio procesa la cola de MSMQ no enviados transaccional
-    /// 
-    /// </summary>
-    //[ServiceBehavior(ReleaseServiceInstanceOnTransactionComplete = false,
-    //   TransactionIsolationLevel = System.Transactions.IsolationLevel.Serializable,
-    //   ConcurrencyMode = ConcurrencyMode.Single)]
-    //[ServiceBehavior(InstanceContextMode = InstanceContextMode.PerCall)]
 
     [ServiceBehavior(InstanceContextMode = InstanceContextMode.Single,
         ConcurrencyMode = ConcurrencyMode.Single, AddressFilterMode = AddressFilterMode.Any)]
