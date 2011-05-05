@@ -10,7 +10,7 @@
 
 [assembly: System.Runtime.Serialization.ContractNamespaceAttribute("http://Microsoft.ServiceModel.Samples", ClrNamespace="Microsoft.ServiceModel.Samples")]
 
-namespace Microsoft.ServiceModel.Samples
+namespace Microsoft.ServiceModel.Samples 
 {
     using System.Runtime.Serialization;
     
