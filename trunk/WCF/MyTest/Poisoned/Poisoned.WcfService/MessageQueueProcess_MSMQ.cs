@@ -15,11 +15,12 @@ namespace Poisoned.WcfService
 
     public partial class MessageQueueProcess_MSMQ : Component
     {
-   
+        public event EventHandler OnLogEvent = null;
+        ServiceHost serviceHost;
         public MessageQueueProcess_MSMQ()
         {
             InitializeComponent();
-            Init();
+            
         }
 
         public MessageQueueProcess_MSMQ(IContainer container)
@@ -27,11 +28,10 @@ namespace Poisoned.WcfService
             container.Add(this);
 
             InitializeComponent();
-            Init();
+           
         }
 
 
-        ServiceHost serviceHost;
 
         /// <summary>
         /// Comienza a leer la cola de manera asincrona
@@ -40,98 +40,49 @@ namespace Poisoned.WcfService
         {
             try
             {
+               serviceHost =  SystemEvent.StartService();
+               serviceHost.Closing += new EventHandler(serviceHost_Closing);
+               serviceHost.Faulted += new EventHandler(serviceHost_Faulted);
+                //serviceHost = new ServiceHost(typeof(SystemEventDLQ));
 
-                CreateQueue(Poisoned.WcfService.Properties.Settings.Default.QueueName);
-                serviceHost = new ServiceHost(typeof(SystemEvent));
-                serviceHost.Open();
-
-                CreateQueue(@".\private$\syseventqueueDLQ");
-                serviceHost = new ServiceHost(typeof(SystemEventDLQ));
-          
-                    // Open the ServiceHostBase to create listeners and start listening for messages.
-                    serviceHost.Open();
-
-                
-                
-
-
-            }
+                //// Open the ServiceHostBase to create listeners and start listening for messages.
+                //serviceHost.Open();
+           }
             catch (Exception ex)
             {
-            
                 ReceivedInfoProc.LogError(ex);
-   
             }
         }
+
+      
         public void StopResiveMessage()
         {
-            serviceHost.Close();
+            SystemEvent.StopService(serviceHost);
+            
         }
 
-        public static void OnServiceFaulted(object sender, EventArgs e)
+        void serviceHost_Faulted(object sender, EventArgs e)
         {
-
-            Event ev = new Event();
-            ev.AppId = Poisoned.WcfService.Properties.Resource.Title;
-            ev.LogType = EventType.Error;
-            ev.Message.Text = Poisoned.WcfService.Properties.Resource.Title + " Faulted";
-            ev.Source = Poisoned.WcfService.Properties.Resource.Title;
-
-            StaticLogger.Log(Fwk.Logging.Targets.TargetType.Database, ev, null, "logs");
+            Log("Faulted host service " + sender.ToString());
         }
-
-        void Init()
+        void serviceHost_Closing(object sender, EventArgs e)
         {
-           try
-            {
-              
-                //".\\Private$\\MyPrivateQueue";
-                //@".\private$\TarifadorQueue";
-//                SysEventQueue.Path = Poisoned.WcfService.Properties.Settings.Default.QueuePath;
-                //CreateQueue(SysEventQueue.Path);
-
-            }
-            catch (Exception ex)
-            {
-                ReceivedInfoProc.LogError(ex);
-          
-            }
-        
-
-           
-
-   
-
+            Log("cerrando host service ");
         }
+
+        void Log(string msg)
+        {
+            if (OnLogEvent != null)
+            {
+                OnLogEvent(msg, new EventArgs());
+            }
+        }
+      
+
+     
 
        
 
-        /// <summary>
-        /// Obtiene todos los msg de MSMQ
-        /// </summary>
-        /// <returns></returns>
-        //public ReceivedInfoList GetAllMessageFromMSMQ_NoRemoveMessages()
-        //{
-        //    ReceivedInfoList wReceivedInfoList = new ReceivedInfoList();
-        //    int id = 1;
-
-
-        //    Message[] wMessageCollection = this.SysEventQueue.GetAllMessages();
-        //    foreach (Message msg in wMessageCollection)
-        //    {
-        //        // Display the label of each message.
-
-        //        ReceivedInfoBE wReceivedInfoBE = new ReceivedInfoBE();
-        //        wReceivedInfoBE.id = id++;
-        //        wReceivedInfoBE.timeDayHours = msg.Label;
-        //        wReceivedInfoList.Add(wReceivedInfoBE);
-        //    }
-
-
-
-
-        //    return wReceivedInfoList;
-        //}
 
         /// <summary>
         ///  Create the transacted MSMQ queue if necessary.
@@ -158,9 +109,6 @@ namespace Poisoned.WcfService
                         entry = new MessageQueueAccessControlEntry(tr, MessageQueueAccessRights.FullControl, AccessControlEntryType.Allow);
                         SysEventQueue.SetPermissions(entry);
                     }
-
-
-
                 }
 
             }
@@ -169,7 +117,6 @@ namespace Poisoned.WcfService
                 ReceivedInfoProc.LogError(ex);
           
             }
-
         }
     }
 }

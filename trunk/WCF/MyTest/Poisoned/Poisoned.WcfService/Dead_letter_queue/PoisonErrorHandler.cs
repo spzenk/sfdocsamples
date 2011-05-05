@@ -6,6 +6,7 @@ using System.Transactions;
 using System.ServiceModel;
 using System.Threading;
 using System.ServiceModel.Dispatcher;
+using System.ServiceModel.Channels;
 
 namespace Poisoned.WcfService
 {

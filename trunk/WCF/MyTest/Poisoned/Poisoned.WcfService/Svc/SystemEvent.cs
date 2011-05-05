@@ -43,7 +43,8 @@ namespace Poisoned.WcfService
         [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public void SubmitMessage_Queue(byte[] message, DateTime time)
         {
-            
+
+            System.Threading.Thread.Sleep(4000);
             try
             {
                 ReceivedInfoProc.Process(message, time);
@@ -51,32 +52,12 @@ namespace Poisoned.WcfService
             }
             catch (Exception ex)
             {
-                ReceivedInfoProc.LogError_WE(ex);
+              
                 ReceivedInfoProc.LogError(ex);
             }
         }
 
-        //public static void Main()
-        //{
-        //    string queueName = ConfigurationManager.AppSettings["queueName"];
-        //    string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
-
-        //    if (!MessageQueue.Exists(queueName))
-        //        MessageQueue.Create(queueName, true);
-
-        //    //using (ServiceHost host = new ServiceHost(serviceType, new Uri(baseAddress)))
-        //    using (ServiceHost serviceHost = new ServiceHost(typeof(SystemEvent)))
-        //    {
-        //        serviceHost.Open();
-        //    }
-        //    MessageQueueProcess_MSMQ svc = new MessageQueueProcess_MSMQ();
-        //    svc.StartResiveMessage();
-        //    // The service can now be accessed.
-        //    Console.WriteLine("The service is ready.");
-        //    Console.WriteLine("Press <ENTER> to terminate service.");
-        //    Console.WriteLine();
-        //    Console.ReadLine();
-        //}
+   
 
         #endregion
 
@@ -86,7 +67,7 @@ namespace Poisoned.WcfService
             StartService();
         }
 
-        public static void StartService()
+        public static ServiceHost StartService()
         {
             // Get MSMQ queue name from app settings in configuration
             QueueName = Poisoned.WcfService.Properties.Settings.Default.QueueName;
@@ -115,13 +96,20 @@ namespace Poisoned.WcfService
 
             // Open the ServiceHostBase to create listeners and start listening for messages.
             serviceHost.Open();
+            return serviceHost;
+        }
+        public static void StopService(ServiceHost serviceHost)
+        {
+            if (serviceHost.State != CommunicationState.Faulted)
+                serviceHost.Close();
 
         }
 
-
         public static void OnServiceFaulted(object sender, EventArgs e)
         {
-            Console.WriteLine("Service Faulted");
+            StopService((ServiceHost)sender);
+           StartService();
+           
         }
         
 
