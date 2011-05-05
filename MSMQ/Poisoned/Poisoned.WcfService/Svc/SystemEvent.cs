@@ -29,6 +29,8 @@ namespace Poisoned.WcfService
        ConcurrencyMode = ConcurrencyMode.Single)]
     public class SystemEvent : ISystemEvent
     {
+        public static string QueueName;
+        public static string PoisonQueueName;
 
         #region ISystemEvent Members
 
@@ -77,5 +79,51 @@ namespace Poisoned.WcfService
         //}
 
         #endregion
+
+
+        public static void StartThreadProc(object stateInfo)
+        {
+            StartService();
+        }
+
+        public static void StartService()
+        {
+            // Get MSMQ queue name from app settings in configuration
+            QueueName = Poisoned.WcfService.Properties.Settings.Default.QueueName;
+
+            // Get MSMQ queue name for the final poison queue
+            PoisonQueueName = Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName;
+
+            // Create the transacted MSMQ queue if necessary.
+            if (!MessageQueue.Exists(QueueName))
+                MessageQueue.Create(QueueName, true);
+
+            // Create the transacted poison message MSMQ queue if necessary.
+            if (!MessageQueue.Exists(PoisonQueueName))
+                MessageQueue.Create(PoisonQueueName, true);
+
+
+            // Get the base address that is used to listen for WS-MetaDataExchange requests
+            // This is useful to generate a proxy for the client
+            //string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
+
+            // Create a ServiceHost for the OrderProcessorService type.
+            ServiceHost serviceHost = new ServiceHost(typeof(SystemEvent));
+
+            // Hook on to the service host faulted events
+            serviceHost.Faulted += new EventHandler(OnServiceFaulted);
+
+            // Open the ServiceHostBase to create listeners and start listening for messages.
+            serviceHost.Open();
+
+        }
+
+
+        public static void OnServiceFaulted(object sender, EventArgs e)
+        {
+            Console.WriteLine("Service Faulted");
+        }
+        
+
     }
 }
