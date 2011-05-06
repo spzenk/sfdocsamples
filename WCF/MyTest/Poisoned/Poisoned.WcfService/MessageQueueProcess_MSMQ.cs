@@ -40,9 +40,11 @@ namespace Poisoned.WcfService
         {
             try
             {
+                SystemEvent.parentComponent = this;
                _SystemEvent = new SystemEvent();
-               _SystemEvent.StartService();
                _SystemEvent.OnLogEvent += new EventHandler(SystemEvent_OnLogEvent);
+               _SystemEvent.StartService();
+               
            }
             catch (Exception ex)
             {
@@ -57,8 +59,9 @@ namespace Poisoned.WcfService
             try
             {
                 _SystemEventPoison = new SystemEventPoison();
-                _SystemEventPoison.StartService();
                 _SystemEventPoison.OnLogEvent += new EventHandler(SystemEvent_OnLogEvent);
+                _SystemEventPoison.StartService();
+
             }
             catch (Exception ex)
             {

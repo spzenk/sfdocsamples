@@ -14,9 +14,7 @@ using System.ServiceModel.Channels;
 namespace Poisoned.WcfService
 {
 
-    [ServiceBehavior(ReleaseServiceInstanceOnTransactionComplete = false,
-       TransactionIsolationLevel = System.Transactions.IsolationLevel.Serializable,
-       ConcurrencyMode = ConcurrencyMode.Single)]
+    [ServiceBehavior(AddressFilterMode = AddressFilterMode.Any)]
     public class SystemEventPoison : SvcBase, ISystemEvent
     {
 
