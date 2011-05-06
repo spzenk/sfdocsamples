@@ -63,7 +63,7 @@ namespace Poisoned.WcfService
 
                 StaticLogger.Log(Fwk.Logging.Targets.TargetType.File, ev, "Error.xml", string.Empty);
             }
-            throw ex;
+     
         }
 
         internal static void LogError(string msg)
