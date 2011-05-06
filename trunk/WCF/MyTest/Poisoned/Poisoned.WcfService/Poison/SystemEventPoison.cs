@@ -49,8 +49,7 @@ namespace Poisoned.WcfService
         public  void StartService()
         {
 
-            //if (!MessageQueue.Exists(Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName))
-            //    MessageQueue.Create(Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName, true);
+
 
             Host = new ServiceHost(typeof(SystemEventPoison));
             Host.Faulted += new EventHandler(OnServiceFaulted);
@@ -63,10 +62,6 @@ namespace Poisoned.WcfService
         public void OnServiceFaulted(object sender, EventArgs e)
         {
             Log("Falla en  host service SystemEventPoison" );
-
-            //StopService();
-            //StartService();
-
         }
 
         void serviceHost_Closing(object sender, EventArgs e)
