@@ -27,9 +27,11 @@ namespace Poisoned.WcfService
     [ServiceBehavior(ReleaseServiceInstanceOnTransactionComplete = false,
        TransactionIsolationLevel = System.Transactions.IsolationLevel.Serializable,
        ConcurrencyMode = ConcurrencyMode.Single)]
+    [PoisonErrorBehavior]
     public class SystemEvent : SvcBase, ISystemEvent
     {
        
+        public static MessageQueueProcess_MSMQ parentComponent =null;
        
         static Random r = new Random(137);
 
@@ -72,9 +74,9 @@ namespace Poisoned.WcfService
         #endregion
 
 
-        public  void StartThreadProc(object stateInfo)
+        public static void StartThreadProc(object stateInfo)
         {
-            StartService();
+           parentComponent.StartResiveMessage();
         }
 
         public  void StartService()
@@ -84,6 +86,8 @@ namespace Poisoned.WcfService
             if (!MessageQueue.Exists(Poisoned.WcfService.Properties.Settings.Default.QueueName))
                 MessageQueue.Create(Poisoned.WcfService.Properties.Settings.Default.QueueName, true);
 
+            if (!MessageQueue.Exists(Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName))
+                MessageQueue.Create(Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName, true);
 
             // Create a ServiceHost for the OrderProcessorService type.
              Host = new ServiceHost(typeof(SystemEvent));
@@ -94,13 +98,16 @@ namespace Poisoned.WcfService
 
             // Open the ServiceHostBase to create listeners and start listening for messages.
             Host.Open();
-
+            Log("Servicio SystemEvent iniciado");
 
         }
         public  void StopService()
         {
             if (Host.State != CommunicationState.Faulted)
+            {
                 Host.Close();
+                Log("Servicio SystemEvent detenido");
+            }
 
         }
 
@@ -108,14 +115,14 @@ namespace Poisoned.WcfService
         {
             Log("Falla en host service SystemEvent");
         
-            StopService();
-           StartService();
+           // StopService();
+           //StartService();
            
         }
 
         void serviceHost_Closing(object sender, EventArgs e)
         {
-            Log("cerrando host service SystemEvent");
+            Log("Cerrando host service SystemEvent");
         }
 
     }

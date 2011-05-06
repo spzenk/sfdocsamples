@@ -7,12 +7,13 @@ using System.ServiceModel;
 using System.Threading;
 using System.ServiceModel.Dispatcher;
 using System.ServiceModel.Channels;
+using System.ServiceModel.Description;
 
 namespace Poisoned.WcfService
 {
     public class PoisonErrorHandler : IErrorHandler
     {
-        //static WaitCallback orderProcessingCallback = new WaitCallback(SystemEvent.StartThreadProc);
+       static  WaitCallback orderProcessingCallback = new WaitCallback(SystemEvent.StartThreadProc);
 
         public void ProvideFault(Exception error, MessageVersion version, ref Message fault)
         {
@@ -82,11 +83,39 @@ namespace Poisoned.WcfService
                 Console.WriteLine();
                 Console.WriteLine("Restarting the service to process rest of the messages in the queue");
                 Console.WriteLine("Press <ENTER> to stop the service");
-                //ThreadPool.QueueUserWorkItem(orderProcessingCallback);
+                ThreadPool.QueueUserWorkItem(orderProcessingCallback);
                 return true;
             }
 
             return false;
+        }
+    }
+
+
+    public sealed class PoisonErrorBehaviorAttribute : Attribute, IServiceBehavior
+    {
+        PoisonErrorHandler poisonErrorHandler;
+
+        public PoisonErrorBehaviorAttribute()
+        {
+            this.poisonErrorHandler = new PoisonErrorHandler();
+        }
+
+        void IServiceBehavior.Validate(ServiceDescription description, ServiceHostBase serviceHostBase)
+        {
+        }
+
+        void IServiceBehavior.AddBindingParameters(ServiceDescription description, ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<ServiceEndpoint> endpoints, BindingParameterCollection parameters)
+        {
+        }
+
+        void IServiceBehavior.ApplyDispatchBehavior(ServiceDescription description, ServiceHostBase serviceHostBase)
+        {
+            foreach (ChannelDispatcherBase channelDispatcherBase in serviceHostBase.ChannelDispatchers)
+            {
+                ChannelDispatcher channelDispatcher = channelDispatcherBase as ChannelDispatcher;
+                channelDispatcher.ErrorHandlers.Add(poisonErrorHandler);
+            }
         }
     }
 
