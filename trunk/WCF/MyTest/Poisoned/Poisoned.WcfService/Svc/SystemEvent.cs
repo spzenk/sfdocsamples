@@ -27,10 +27,11 @@ namespace Poisoned.WcfService
     [ServiceBehavior(ReleaseServiceInstanceOnTransactionComplete = false,
        TransactionIsolationLevel = System.Transactions.IsolationLevel.Serializable,
        ConcurrencyMode = ConcurrencyMode.Single)]
-    public class SystemEvent : ISystemEvent
+    public class SystemEvent : SvcBase, ISystemEvent
     {
-        public static string QueueName;
-        public static string PoisonQueueName;
+       
+       
+        static Random r = new Random(137);
 
         #region ISystemEvent Members
 
@@ -43,17 +44,26 @@ namespace Poisoned.WcfService
         [OperationBehavior(TransactionScopeRequired = true, TransactionAutoComplete = true)]
         public void SubmitMessage_Queue(byte[] message, DateTime time)
         {
+            int randomNumber = r.Next(10);
 
-            System.Threading.Thread.Sleep(4000);
-            try
+            if (randomNumber % 2 == 0)
             {
-                ReceivedInfoProc.Process(message, time);
-               
+                try
+                {
+                    ReceivedInfoProc.Process(message, time);
+
+                }
+                catch (Exception ex)
+                {
+                    ReceivedInfoProc.LogError(ex);
+                }
             }
-            catch (Exception ex)
+            else
             {
-              
-                ReceivedInfoProc.LogError(ex);
+                SysEventMessage m = ReceivedInfoProc.GetSysEventMessage(message);
+                Log("Abortando transaccion, Evento con problema : " + m.IdEvent);
+
+                throw new Exception("No se puede procesar el evento: " + m.IdEvent);
             }
         }
 
@@ -62,56 +72,51 @@ namespace Poisoned.WcfService
         #endregion
 
 
-        public static void StartThreadProc(object stateInfo)
+        public  void StartThreadProc(object stateInfo)
         {
             StartService();
         }
 
-        public static ServiceHost StartService()
+        public  void StartService()
         {
-            // Get MSMQ queue name from app settings in configuration
-            QueueName = Poisoned.WcfService.Properties.Settings.Default.QueueName;
-
-            // Get MSMQ queue name for the final poison queue
-            PoisonQueueName = Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName;
-
+            
             // Create the transacted MSMQ queue if necessary.
-            if (!MessageQueue.Exists(QueueName))
-                MessageQueue.Create(QueueName, true);
+            if (!MessageQueue.Exists(Poisoned.WcfService.Properties.Settings.Default.QueueName))
+                MessageQueue.Create(Poisoned.WcfService.Properties.Settings.Default.QueueName, true);
 
-            // Create the transacted poison message MSMQ queue if necessary.
-            if (!MessageQueue.Exists(PoisonQueueName))
-                MessageQueue.Create(PoisonQueueName, true);
-
-
-            // Get the base address that is used to listen for WS-MetaDataExchange requests
-            // This is useful to generate a proxy for the client
-            //string baseAddress = ConfigurationManager.AppSettings["baseAddress"];
 
             // Create a ServiceHost for the OrderProcessorService type.
-            ServiceHost serviceHost = new ServiceHost(typeof(SystemEvent));
+             Host = new ServiceHost(typeof(SystemEvent));
 
             // Hook on to the service host faulted events
-            serviceHost.Faulted += new EventHandler(OnServiceFaulted);
+             Host.Faulted += new EventHandler(OnServiceFaulted);
+             Host.Closing += new EventHandler(serviceHost_Closing);
 
             // Open the ServiceHostBase to create listeners and start listening for messages.
-            serviceHost.Open();
-            return serviceHost;
+            Host.Open();
+
+
         }
-        public static void StopService(ServiceHost serviceHost)
+        public  void StopService()
         {
-            if (serviceHost.State != CommunicationState.Faulted)
-                serviceHost.Close();
+            if (Host.State != CommunicationState.Faulted)
+                Host.Close();
 
         }
 
-        public static void OnServiceFaulted(object sender, EventArgs e)
+        public  void OnServiceFaulted(object sender, EventArgs e)
         {
-            StopService((ServiceHost)sender);
+            Log("Falla en host service SystemEvent");
+        
+            StopService();
            StartService();
            
         }
-        
+
+        void serviceHost_Closing(object sender, EventArgs e)
+        {
+            Log("cerrando host service SystemEvent");
+        }
 
     }
 }

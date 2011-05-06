@@ -12,7 +12,7 @@ namespace Poisoned.WcfService
 {
     public class PoisonErrorHandler : IErrorHandler
     {
-        static WaitCallback orderProcessingCallback = new WaitCallback(SystemEvent.StartThreadProc);
+        //static WaitCallback orderProcessingCallback = new WaitCallback(SystemEvent.StartThreadProc);
 
         public void ProvideFault(Exception error, MessageVersion version, ref Message fault)
         {
@@ -30,8 +30,8 @@ namespace Poisoned.WcfService
 
                 // Get MSMQ queue name from app settings in configuration.
 
-                System.Messaging.MessageQueue orderQueue = new System.Messaging.MessageQueue(SystemEvent.QueueName);
-                System.Messaging.MessageQueue poisonMessageQueue = new System.Messaging.MessageQueue(SystemEvent.PoisonQueueName);
+                System.Messaging.MessageQueue orderQueue = new System.Messaging.MessageQueue(Poisoned.WcfService.Properties.Settings.Default.QueueName);
+                System.Messaging.MessageQueue poisonMessageQueue = new System.Messaging.MessageQueue(Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName);
                 System.Messaging.Message message = null;
 
                 // Use a new transaction scope to remove the message from the main application queue and add it to the poison queue.
@@ -55,7 +55,7 @@ namespace Poisoned.WcfService
                                 // complete transaction scope
                                 txScope.Complete();
 
-                                Console.WriteLine("Moved poisoned message with look up id: {0} to poison queue: {1} ", lookupId, SystemEvent.PoisonQueueName);
+                                Console.WriteLine("Moved poisoned message with look up id: {0} to poison queue: {1} ", lookupId, Poisoned.WcfService.Properties.Settings.Default.PoisonQueueName);
                                 break;
                             }
 
@@ -82,7 +82,7 @@ namespace Poisoned.WcfService
                 Console.WriteLine();
                 Console.WriteLine("Restarting the service to process rest of the messages in the queue");
                 Console.WriteLine("Press <ENTER> to stop the service");
-                ThreadPool.QueueUserWorkItem(orderProcessingCallback);
+                //ThreadPool.QueueUserWorkItem(orderProcessingCallback);
                 return true;
             }
 

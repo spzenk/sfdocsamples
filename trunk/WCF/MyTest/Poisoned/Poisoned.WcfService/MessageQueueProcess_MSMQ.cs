@@ -31,8 +31,8 @@ namespace Poisoned.WcfService
            
         }
 
-
-
+        SystemEvent _SystemEvent = null;
+        SystemEventPoison _SystemEventPoison = null;
         /// <summary>
         /// Comienza a leer la cola de manera asincrona
         /// </summary>
@@ -40,36 +40,46 @@ namespace Poisoned.WcfService
         {
             try
             {
-               serviceHost =  SystemEvent.StartService();
-               serviceHost.Closing += new EventHandler(serviceHost_Closing);
-               serviceHost.Faulted += new EventHandler(serviceHost_Faulted);
-                //serviceHost = new ServiceHost(typeof(SystemEventDLQ));
-
-                //// Open the ServiceHostBase to create listeners and start listening for messages.
-                //serviceHost.Open();
+               _SystemEvent = new SystemEvent();
+               _SystemEvent.StartService();
+               _SystemEvent.OnLogEvent += new EventHandler(SystemEvent_OnLogEvent);
            }
             catch (Exception ex)
             {
                 ReceivedInfoProc.LogError(ex);
             }
         }
+        /// <summary>
+        /// Comienza a leer la cola de manera asincrona
+        /// </summary>
+        public void StartResivePoisonedMessage()
+        {
+            try
+            {
+                _SystemEventPoison = new SystemEventPoison();
+                _SystemEventPoison.StartService();
+                _SystemEventPoison.OnLogEvent += new EventHandler(SystemEvent_OnLogEvent);
+            }
+            catch (Exception ex)
+            {
+                ReceivedInfoProc.LogError(ex);
+            }
+        }
+
+        void SystemEvent_OnLogEvent(object sender, EventArgs e)
+        {
+            Log(sender.ToString());
+        }
 
       
         public void StopResiveMessage()
         {
-            SystemEvent.StopService(serviceHost);
+            _SystemEvent.StopService();
             
         }
 
-        void serviceHost_Faulted(object sender, EventArgs e)
-        {
-            Log("Faulted host service " + sender.ToString());
-        }
-        void serviceHost_Closing(object sender, EventArgs e)
-        {
-            Log("cerrando host service ");
-        }
-
+     
+      
         void Log(string msg)
         {
             if (OnLogEvent != null)

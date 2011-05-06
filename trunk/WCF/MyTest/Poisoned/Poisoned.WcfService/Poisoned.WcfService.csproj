@@ -65,8 +65,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dead_letter_queue\PoisonErrorHandler.cs" />
+    <Compile Include="Poison\PoisonErrorHandler.cs" />
     <Compile Include="Dead_letter_queue\SystemEventDLQ.cs" />
+    <Compile Include="Poison\SystemEventPoison.cs" />
+    <Compile Include="SvcBase.cs" />
     <Compile Include="Svc\ISystemEvent.cs" />
     <Compile Include="MessageQueueProcess_MSMQ.cs">
       <SubType>Component</SubType>

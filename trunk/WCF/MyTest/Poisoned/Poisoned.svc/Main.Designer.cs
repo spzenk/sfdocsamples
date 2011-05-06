@@ -31,6 +31,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,11 +70,24 @@
             this.memoEdit1.Size = new System.Drawing.Size(769, 460);
             this.memoEdit1.TabIndex = 3;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(372, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(180, 29);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Start listen poison";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(807, 541);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.memoEdit1);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.btnStart);
@@ -89,6 +103,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnStop;
         private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private System.Windows.Forms.Button button1;
     }
 }
 
