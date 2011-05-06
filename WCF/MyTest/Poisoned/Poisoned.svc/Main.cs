@@ -61,13 +61,25 @@ namespace Poisoned.svc
             }
         }
 
-
-
         void LogError(Exception ex)
         {
             str.AppendLine("-----------------------------------------------");
             str.AppendLine(Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex));
             memoEdit1.Text = str.ToString();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                svc.StartResivePoisonedMessage();
+                //btnStop.Enabled = true;
+                button1.Enabled = false;
+            }
+            catch (Exception ex)
+            {
+                LogError(ex);
+            }
         }
 
     }
