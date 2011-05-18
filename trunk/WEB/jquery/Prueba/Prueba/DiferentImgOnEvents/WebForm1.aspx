@@ -5,40 +5,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml" >
 <head runat="server">
 <link href="style.css" rel="stylesheet" type="text/css" />
-<script src="../JS/jquery-1.3.2.js" type="text/javascript"></script>
+<%--<script src="../JS/jquery-1.3.2.js" type="text/javascript"></script>--%>
+    <script src="../JS/jquery-1.5.js" type="text/javascript"></script>
 <script type ="text/javascript">
     $(document).ready(function () {
+        $("#i").css("visibility", "visible");
+        //   
+        //        $("#c").mouseenter(function () { $("#i").css("visibility", "visible"); });
+        //        $("#c").mouseleave(function () { $("#i").css("visibility", "hidden"); });
 
-   
-        $("#c").mouseenter(function () {
-            $("#i").css("visibility", "visible");
-//            $("#i").css("background-color", "White)");
-        });
-        $("#c").mouseleave(function () {
-//            $("#i").css("background-color", "White)");
-            $("#i").css("visibility", "hidden");
-         
-        });
 
-//        $("#b").mouseenter(function () {
-//           $("#i").css("background-image", "url('close_16.png')");
-//       });
-
-//        $("#b").mouseleave(function () {
-//            $("#i").css("background-image", "url('close_carvon_16.png')");
-//          
-//        });
 
         $("#i").mouseenter(function () {
-//            $("#i").css("background-color", "#768DD4");
-            $("#i").css("background-image", "url('close_16.png')");
+            //$("#img").append("background-color", "#768DD4");
+            $("#i").css("background-image", "url('close_16.png')").fadeTo(500, 1);
         });
         $("#i").mouseleave(function () {
-//            $("#i").css("background-color", "White)");
-            $("#i").css("background-image", "url('close_carvon_16.png')");
+            //            $("#.img").css("background-color", "#FFFFFF)");
+            $("#i").css("background-image", "url('close_carvon_16.png')").fadeTo(500, 0);
+
         });
 
+
+        $("#c").hover(
+        function () {
+            $("#b").stop().fadeTo(500, 1);
+            $("#i").stop().fadeTo(500, 1);
+        },
+
+        function () {
+            $("#b").stop().fadeTo(500, 0);
+            $("#i").stop().fadeTo(500, 0);
+        });
     }); 
+
+    //la velocidad de la animación debes modificar los valores de fadeTo(500).
 </script>
 
     <title></title>
