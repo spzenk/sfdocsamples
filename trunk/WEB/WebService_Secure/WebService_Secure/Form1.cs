@@ -19,11 +19,13 @@ namespace WebService_Secure
 
         private void button1_Click(object sender, EventArgs e)
         {
-            System.Net.NetworkCredential Credentials = new System.Net.NetworkCredential("moviedo", "3");
+            System.Net.NetworkCredential cr = new System.Net.NetworkCredential("moviedo", "3");
+            System.Net.WebProxy pr = new System.Net.WebProxy("127.0.1.2", 80);
+      
             gastosWs.SingleService svc = new WebService_Secure.gastosWs.SingleService();
 
-            svc.Credentials = Credentials;
-
+            svc.Credentials = cr;
+            svc.Proxy = pr;
             try
             {
 
