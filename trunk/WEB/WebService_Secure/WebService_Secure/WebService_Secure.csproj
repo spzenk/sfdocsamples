@@ -33,7 +33,11 @@
   <ItemGroup>
     <Reference Include="Fwk.Bases, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\sfimplementations\PelsoftGastos\trunk\libraries\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Framework\Fwk.Bases.dll</HintPath>
+    </Reference>
+    <Reference Include="Fwk.Bases.Connector, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Framework\Fwk.Bases.Connector.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -88,6 +92,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
     </Compile>
+    <Compile Include="Web References\SingleService\Reference.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -119,6 +124,12 @@
     </None>
     <None Include="Web References\gastosWs\SingleService.disco" />
     <None Include="Web References\gastosWs\SingleService.wsdl" />
+    <None Include="Web References\SingleService\MetadataProvider.datasource" />
+    <None Include="Web References\SingleService\Reference.map" />
+    <None Include="Web References\SingleService\SingleService.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web References\SingleService\SingleService.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
