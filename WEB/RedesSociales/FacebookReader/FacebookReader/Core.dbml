@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="PortalMovistar" Class="CoreDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=CORRSF71DES01;Initial Catalog=PortalMovistar;Persist Security Info=True;User ID=PortalMovistar;Password=PortalMovistar" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Post" Member="Posts">
+    <Type Name="Post">
+      <Column Name="PostID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FromUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ToUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SourcePostID" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="SocialNetworkID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AppSourceID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Permlink" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="ParentPostID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Post_Post" Member="Posts" ThisKey="PostID" OtherKey="ParentPostID" Type="Post" />
+      <Association Name="Post_Post" Member="ParentPost" ThisKey="ParentPostID" OtherKey="PostID" Type="Post" IsForeignKey="true" />
+      <Association Name="SocialNetwork_Post" Member="SocialNetwork" ThisKey="SocialNetworkID" OtherKey="SocialNetworkID" Type="SocialNetwork" IsForeignKey="true" />
+      <Association Name="User_Post" Member="To" ThisKey="ToUserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="User_Post1" Member="From" ThisKey="FromUserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SocialNetwork" Member="SocialNetworks">
+    <Type Name="SocialNetwork">
+      <Column Name="SocialNetworkID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SocialNetworkName" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="SocialNetwork_Post" Member="Posts" ThisKey="SocialNetworkID" OtherKey="SocialNetworkID" Type="Post" />
+      <Association Name="SocialNetwork_User" Member="Users" ThisKey="SocialNetworkID" OtherKey="SocialNetworkID" Type="User" />
+      <Association Name="SocialNetwork_Message" Member="Messages" ThisKey="SocialNetworkID" OtherKey="SocialNetworkID" Type="Message" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[User]" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(256) NULL" CanBeNull="true" />
+      <Column Name="SourceUserID" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ImageUrl" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="SocialNetworkID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Active" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" CanBeNull="false" />
+      <Column Name="Followers" Storage="_ContactsCount" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="User_Post" Member="Posts" ThisKey="UserID" OtherKey="ToUserID" Type="Post" />
+      <Association Name="User_Post1" Member="UserPosts" ThisKey="UserID" OtherKey="FromUserID" Type="Post" />
+      <Association Name="User_Recipient" Member="Recipients" ThisKey="UserID" OtherKey="RecipientUserID" Type="Recipient" />
+      <Association Name="User_Message" Member="Messages" ThisKey="UserID" OtherKey="SenderUserID" Type="Message" />
+      <Association Name="SocialNetwork_User" Member="SocialNetwork" ThisKey="SocialNetworkID" OtherKey="SocialNetworkID" Type="SocialNetwork" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Recipient" Member="Recipients">
+    <Type Name="Recipient">
+      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RecipientUserID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="User_Recipient" Member="RecipientUser" Storage="_User" ThisKey="RecipientUserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="Message_Recipient" Member="Message" ThisKey="MessageID" OtherKey="MessageID" Type="Message" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Message" Member="Messages">
+    <Type Name="Message">
+      <Column Name="MessageID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SourceMessageID" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="SenderUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Text" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="SocialNetworkID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Subject" Type="System.String" CanBeNull="false" />
+      <Column Name="MailboxUserID" Type="System.String" DbType="VarChar(256) NOT NULL" CanBeNull="false" />
+      <Association Name="Message_Recipient" Member="Recipients" ThisKey="MessageID" OtherKey="MessageID" Type="Recipient" />
+      <Association Name="SocialNetwork_Message" Member="SocialNetwork" ThisKey="SocialNetworkID" OtherKey="SocialNetworkID" Type="SocialNetwork" IsForeignKey="true" />
+      <Association Name="User_Message" Member="SenderUser" Storage="_User" ThisKey="SenderUserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

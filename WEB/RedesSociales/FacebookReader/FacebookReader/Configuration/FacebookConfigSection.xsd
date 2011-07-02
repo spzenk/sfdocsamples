@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema targetNamespace="http://tempuri.org/XMLSchema.xsd" elementFormDefault="qualified" xmlns="http://tempuri.org/XMLSchema.xsd" xmlns:mstns="http://tempuri.org/XMLSchema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FacebookConfig">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element name="Providers" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="add" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                  <xs:attribute name="userId" type="xs:string" use="required" />
+                  <xs:attribute name="sourceId" type="xs:long" use="required" />
+                  <xs:attribute name="userAccessToken" type="xs:string" use="required" />
+                  <xs:attribute name="pageAccessToken" type="xs:string" use="optional" />
+                  <xs:attribute name="enabled" type="xs:boolean" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="remove" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="clear" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:attribute name="defaultProviderName" type="xs:string" use="required" />
+      <xs:attribute name="limit" type="xs:long" use="optional" default="500" />
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+
+<!--
+Este esquema se utiliza para ver el intellisence en los archivos de configuracion en tiempo de diseño.
+Para poder verlo se debe agregar el elemento en el archivo DotNetConfig.xsd ubicado en 
+C:\Archivos de programa\Microsoft Visual Studio 9.0\Xml\Schemas.
+-->
