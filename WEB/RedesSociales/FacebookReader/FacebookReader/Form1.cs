@@ -47,14 +47,13 @@ namespace Fwk.SocialNetworks.Facebook
         {
             fp = new FacebookProcessor();
             fp.InitSettings();
-            StringBuilder s = new StringBuilder(string.Concat("provider   = ", fp.FacebookConfig.DefaultProvider.Name,"\r\n"));
+            //StringBuilder s = new StringBuilder(string.Concat("provider   = ", fp.FacebookConfig.DefaultProvider.Name,"\r\n"));
 
             
-            s.AppendLine(string.Concat("Source Id       = ", fp.FacebookConfig.DefaultProvider.SourceId));
-            s.AppendLine(string.Concat("UserAccessToken = ", fp.FacebookConfig.DefaultProvider.UserAccessToken));
-            s.AppendLine(string.Concat("PageAccessToken = ", fp.FacebookConfig.DefaultProvider.PageAccessToken));
+            //s.AppendLine(string.Concat("Source Id       = ", fp.FacebookConfig.DefaultProvider.SourceId));
+            //s.AppendLine(string.Concat("UserAccessToken = ", fp.FacebookConfig.DefaultProvider.UserAccessToken));
+            //s.AppendLine(string.Concat("PageAccessToken = ", fp.FacebookConfig.DefaultProvider.PageAccessToken));
 
-            textBox2.Text = s.ToString();
 
             List<string> ps = new List<string>();
             foreach (FacebookProvider p in fp.FacebookConfig.Providers)
@@ -64,6 +63,18 @@ namespace Fwk.SocialNetworks.Facebook
             }
             comboBox1.DataSource = ps;
             comboBox1.SelectedIndex = 1;
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            StringBuilder s = new StringBuilder(string.Concat("selected provider   = ", comboBox1.SelectedItem.ToString(), "\r\n"));
+
+
+            s.AppendLine(string.Concat("Source Id       = ", fp.FacebookConfig.Providers[comboBox1.SelectedItem.ToString()].SourceId));
+            s.AppendLine(string.Concat("UserAccessToken = ", fp.FacebookConfig.Providers[comboBox1.SelectedItem.ToString()].UserAccessToken));
+            s.AppendLine(string.Concat("PageAccessToken = ", fp.FacebookConfig.Providers[comboBox1.SelectedItem.ToString()].PageAccessToken));
+
+            textBox2.Text = s.ToString();
         }
     }
 }
