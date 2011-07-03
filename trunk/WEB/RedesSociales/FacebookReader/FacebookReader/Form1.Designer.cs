@@ -37,12 +37,14 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dateSinse = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Provider = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dateSinse)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 80);
+            this.button1.Location = new System.Drawing.Point(12, 178);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 43);
             this.button1.TabIndex = 0;
@@ -54,13 +56,13 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(55, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(327, 20);
+            this.textBox1.Size = new System.Drawing.Size(165, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.Text = "1440380615";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(388, -1);
+            this.button2.Location = new System.Drawing.Point(226, -1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(105, 27);
             this.button2.TabIndex = 2;
@@ -91,7 +93,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(12, 129);
+            this.button3.Location = new System.Drawing.Point(12, 227);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(107, 43);
             this.button3.TabIndex = 5;
@@ -130,11 +132,30 @@
             this.label2.TabIndex = 9;
             this.label2.Text = "Dias atras para consultar";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 151);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 10;
+            // 
+            // Provider
+            // 
+            this.Provider.AutoSize = true;
+            this.Provider.Location = new System.Drawing.Point(16, 135);
+            this.Provider.Name = "Provider";
+            this.Provider.Size = new System.Drawing.Size(46, 13);
+            this.Provider.TabIndex = 11;
+            this.Provider.Text = "Provider";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 701);
+            this.Controls.Add(this.Provider);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dateSinse);
             this.Controls.Add(this.textBox2);
@@ -145,7 +166,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Facebook tester form";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dateSinse)).EndInit();
             this.ResumeLayout(false);
@@ -164,6 +185,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.NumericUpDown dateSinse;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label Provider;
     }
 }
 

@@ -19,19 +19,19 @@ namespace Fwk.SocialNetworks.Facebook
         FacebookProcessor fp = null;
         private void button1_Click(object sender, EventArgs e)
         {
-           txtRes.Text = fp.GetwMessagesList(DateTime.Now.AddDays(-275));
+            txtRes.Text = fp.GetwMessagesList(DateTime.Now.AddDays(-275), comboBox1.SelectedItem.ToString());
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            txtRes.Text = fp.Get_stream_post(DateTime.Now.AddDays(-275));
+            txtRes.Text = fp.Get_stream_post(DateTime.Now.AddDays(-275),comboBox1.SelectedItem.ToString());
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             FacebookProcessor fp = new FacebookProcessor();
             fp.InitSettings();
-            User user = fp.GetUser_From_Facebook(textBox1.Text);
+            User user = fp.GetUser_From_Facebook(textBox1.Text, comboBox1.SelectedItem.ToString());
             StringBuilder s = new StringBuilder(user.UserName);
 
 
@@ -55,6 +55,15 @@ namespace Fwk.SocialNetworks.Facebook
             s.AppendLine(string.Concat("PageAccessToken = ", fp.FacebookConfig.DefaultProvider.PageAccessToken));
 
             textBox2.Text = s.ToString();
+
+            List<string> ps = new List<string>();
+            foreach (FacebookProvider p in fp.FacebookConfig.Providers)
+            {
+               ps.Add(p.Name);
+
+            }
+            comboBox1.DataSource = ps;
+            comboBox1.SelectedIndex = 1;
         }
     }
 }
