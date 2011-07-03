@@ -19,6 +19,15 @@ namespace  Fwk.SocialNetworks.Facebook
         /// </summary>
         public static WebProxy Proxy = null;
          static string execfaceQuery = "https://api.facebook.com/method/fql.query?query={0}";
+         static string sp_stream_by_sourceid_updatedtime = "SELECT updated_time, post_id, created_time, actor_id, target_id, permalink, message, comments FROM stream WHERE source_id = {0} AND updated_time > {1}";
+         static string sp_comment_by_post_id = "SELECT fromid, time, text, id FROM comment WHERE post_id = '{0}'"; 
+        static string  sp_user_uid ="SELECT pic_small,uid,name FROM user WHERE uid = {0}";
+
+        static string sp_thread_by_folderid_time = "SELECT thread_id, folder_id, subject, recipients, updated_time, parent_message_id, parent_thread_id, message_count, snippet, snippet_author, object_id, unread, viewer_id FROM thread WHERE folder_id = 0 AND updated_time > {0}";
+
+        static string sp_message_by_Threadid_time = "SELECT message_id, thread_id, author_id, body, created_time FROM message WHERE thread_id = {0} AND created_time > {1}";
+
+        static string sp_page_by_pageid= "SELECT page_id, name, pic_small FROM page WHERE page_id = {0}";
         #endregion
 
         /// <summary>
@@ -26,16 +35,16 @@ namespace  Fwk.SocialNetworks.Facebook
         /// </summary>
         /// <param name="wQuery"></param>
         /// <returns></returns>
-         private static fql_query_response ExecuteQuery(String pQuery, String pAccessToken, int? pLimit)
+         private static fql_query_response ExecuteQuery(String pQuery, String accessToken, int? limit)
          {
              fql_query_response res = null;
              error_response er = null;
              String wUrlString = string.Format(execfaceQuery, pQuery);
-             if (pLimit.HasValue)
+             if (limit.HasValue)
              {
-                 wUrlString = string.Concat(wUrlString, string.Format(" LIMIT {0}", pLimit.Value));
+                 wUrlString = string.Concat(wUrlString, string.Format(" LIMIT {0}", limit.Value));
              }
-             wUrlString = string.Concat(wUrlString, string.Format("&access_token={0}", pAccessToken));
+             wUrlString = string.Concat(wUrlString, string.Format("&access_token={0}", accessToken));
              Uri wUrl = new Uri(wUrlString);
              StreamReader wReader = HttpGet(wUrl);
              res = Helper.DeserializeResponse(wReader, out er);
@@ -96,7 +105,7 @@ namespace  Fwk.SocialNetworks.Facebook
         ///     
         /// The stream table is limited to the last 30 days or 50 posts, whichever is greater.
         /// </summary>
-        /// <param name="pTimestamp">
+        /// <param name="timeStamp">
         /// updated_time The time the post was last updated, which occurs when a user comments on the post.</param>
         /// <param name="userAccessToken"></param>
         /// <param name="pSourceId">source_id (int)
@@ -104,29 +113,23 @@ namespace  Fwk.SocialNetworks.Facebook
         /// This includes both posts that the user or Page has authored (that is, the actor_id is the source_id) 
         /// and posts that have been directed at this target user, Page, group, or event (that is, the target_id is the source_id).
         /// </param>
-        /// <param name="pLimit"></param>
+        /// <param name="limit"></param>
         /// <returns></returns>
-        public static fql_query_response GetNewerStream(Int64 pTimestamp, String userAccessToken, long pSourceId, int? pLimit)
+        public static fql_query_response GetNewerStream(Int64 timeStamp, String userAccessToken, long sourceId, int? limit)
         {
-
-
-            String wQuery = String.Format(@"SELECT updated_time, post_id, created_time, actor_id, target_id, permalink, message, comments FROM stream WHERE source_id = {0} AND updated_time > {1}", pSourceId, pTimestamp);
-
-            return ExecuteQuery(wQuery, userAccessToken, pLimit);
-
-
-
-
-
+           return ExecuteQuery( String.Format(sp_stream_by_sourceid_updatedtime, sourceId, timeStamp), userAccessToken, limit);
         }
 
-        public static fql_query_response GetCommentBySourcePostId(String pPostId, String pAccessToken, int? pLimit)
+        /// <summary>
+        /// Obtiene los comentarios de un determinado post
+        /// </summary>
+        /// <param name="pPostId"></param>
+        /// <param name="accessToken"></param>
+        /// <param name="limit"></param>
+        /// <returns></returns>
+        public static fql_query_response GetCommentBySourcePostId(String pPostId, String accessToken, int? limit)
         {
-            String wQuery = String.Format(@"SELECT fromid, time, text, id FROM comment WHERE post_id = '{0}'", pPostId);
-            return ExecuteQuery(wQuery, pAccessToken, pLimit);
-
-
-        
+            return ExecuteQuery(sp_comment_by_post_id, accessToken, limit);
         }
 
         /// <summary>
@@ -134,10 +137,9 @@ namespace  Fwk.SocialNetworks.Facebook
         /// </summary>
         /// <param name="pUserID"></param>
         /// <returns></returns>
-        public static fql_query_response GetUser(String pSourceUserID, String pAccessToken, int? pLimit)
+        public static fql_query_response GetUser(String sourceUserID, String accessToken, int? limit)
         {
-            String wQuery = String.Format(@"SELECT pic_small,uid,name FROM user WHERE uid = {0}", pSourceUserID);
-            return ExecuteQuery(wQuery, pAccessToken, pLimit);
+            return ExecuteQuery( String.Format(sp_user_uid, sourceUserID), accessToken, limit);
 
         }
 
@@ -146,41 +148,37 @@ namespace  Fwk.SocialNetworks.Facebook
         /// </summary>
         /// <param name="pUserID"></param>
         /// <returns></returns>
-        public static fql_query_response GetPage(String pSourceUserID, String pAccessToken, int? pLimit)
+        public static fql_query_response GetPage(String sourceUserID, String accessToken, int? limit)
         {
-            String wQuery = String.Format(@"SELECT page_id, name, pic_small FROM page WHERE page_id = {0}", pSourceUserID);
-            return ExecuteQuery(wQuery, pAccessToken, pLimit);
+            return ExecuteQuery( String.Format(sp_page_by_pageid, sourceUserID), accessToken, limit);
         }
 
 
         /// <summary>
-        /// 
+        /// Obtine hilos de mensages de un usuario o app
         /// </summary>
-        /// <param name="pTimeStamp"></param>
-        /// <param name="pAccessToken"></param>
-        /// <param name="pLimit"></param>
+        /// <param name="timeStamp"></param>
+        /// <param name="accessToken"></param>
+        /// <param name="limit"></param>
         /// <returns></returns>
-        public static fql_query_response GetThreadList(Int64 pTimeStamp, String pAccessToken, int? pLimit)
+        public static fql_query_response GetThreadList(Int64 timeStamp, String accessToken, int? limit)
         {
-            String wQuery = String.Format(@"SELECT thread_id, folder_id, subject, recipients, updated_time, parent_message_id, parent_thread_id, message_count, snippet, snippet_author, object_id, unread, viewer_id FROM thread WHERE folder_id = 0 AND updated_time > {0}", pTimeStamp);
-            return ExecuteQuery(wQuery, pAccessToken, pLimit);
-
-     
+            return ExecuteQuery(String.Format(sp_thread_by_folderid_time, timeStamp), accessToken, limit);
+    
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="pThreadId"></param>
-        /// <param name="pTimeStamp"></param>
-        /// <param name="pAccessToken"></param>
-        /// <param name="pLimit"></param>
+        /// <param name="threadId"></param>
+        /// <param name="timeStamp"></param>
+        /// <param name="accessToken"></param>
+        /// <param name="limit"></param>
         /// <returns></returns>
-        public static fql_query_response GetMessagesInThread(String pThreadId, Int64 pTimeStamp, String pAccessToken, int? pLimit)
+        public static fql_query_response GetMessagesInThread(String threadId, Int64 timeStamp, String accessToken, int? limit)
         {
-            String wQuery = String.Format(string.Format(@"SELECT message_id, thread_id, author_id, body, created_time FROM message WHERE thread_id = {0} AND created_time > {1}", pThreadId, pTimeStamp));
-
-            return ExecuteQuery(wQuery, pAccessToken, pLimit);
+            
+            return ExecuteQuery(String.Format(string.Format(sp_message_by_Threadid_time, threadId, timeStamp)), accessToken, limit);
 
 
         }
