@@ -7,6 +7,7 @@ using System.IO;
 using Fwk.SocialNetworks.Facebook.Configuration;
 using System.Xml;
 using System.Xml.Serialization;
+using Fwk.HelperFunctions;
 
 namespace  Fwk.SocialNetworks.Facebook
 {
@@ -216,7 +217,7 @@ namespace  Fwk.SocialNetworks.Facebook
             //Obtenemos el post recién ingresado a partir de la fecha.
             long sourceId = provider.SourceId;
             string accessToken = provider.UserAccessToken;
-            long unixDateTime = Helper.DateTimeToUnixTimeStamp(wLastDate);
+            long unixDateTime = DateFunctions.DateTimeToUnixTimeStamp(wLastDate);
             fql_query_response wLastPost = FacebookWrapper.GetNewerStream(unixDateTime, accessToken, sourceId, pSection.Limit);
 
             //Si no es null devolvemos el Post recién ingresado
