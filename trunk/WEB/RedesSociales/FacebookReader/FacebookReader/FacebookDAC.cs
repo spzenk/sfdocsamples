@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Fwk.HelperFunctions;
 
 namespace Fwk.SocialNetworks.Facebook
 {
@@ -165,7 +166,7 @@ namespace Fwk.SocialNetworks.Facebook
 
                 if (wDate.HasValue)
                 {
-                    return Helper.DateTimeToUnixTimeStamp(wDate.Value);
+                    return DateFunctions.DateTimeToUnixTimeStamp(wDate.Value);
                 }
 
                 return 0;
@@ -187,7 +188,7 @@ namespace Fwk.SocialNetworks.Facebook
 
                 if (wDate.HasValue)
                 {
-                    return Helper.DateTimeToUnixTimeStamp(wDate.Value);
+                    return DateFunctions.DateTimeToUnixTimeStamp(wDate.Value);
                 }
 
                 return 0;
@@ -248,7 +249,7 @@ namespace Fwk.SocialNetworks.Facebook
         /// <returns></returns>
         internal static Int64 GetLastPost()
         {
-            Int64 wLastStoredPostTimeStamp = Helper.DateTimeToUnixTimeStamp(Constants.LogSince);
+            Int64 wLastStoredPostTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(Constants.LogSince);
             Int64 wLastStoredInDB = DataCore.GetLastStoredPostTimestamp(Enums.SocialNetwork.Facebook);
 
             if (wLastStoredInDB > 0)
@@ -266,7 +267,7 @@ namespace Fwk.SocialNetworks.Facebook
         /// <returns></returns>
         internal static Int64 GetLastMessage()
         {
-            Int64 wLastStoredMessageTimeStamp = Helper.DateTimeToUnixTimeStamp(Constants.LogSince);
+            Int64 wLastStoredMessageTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(Constants.LogSince);
             Int64 wLastStoredInDB = DataCore.GetLastStoredMessageTimestamp(Enums.SocialNetwork.Facebook);
 
             if (wLastStoredInDB > 0)
@@ -288,7 +289,7 @@ namespace Fwk.SocialNetworks.Facebook
         {
             Post wPost = new Post()
             {
-                CreationDate = Helper.UnixTimeStampToDateTime(Convert.ToInt64(pItemComment.time)),
+                CreationDate = DateFunctions.UnixTimeStampToDateTime(Convert.ToInt64(pItemComment.time)),
                 From = user,
                 Message = pItemComment.text,
                 SocialNetwork = pSocialNetwork,

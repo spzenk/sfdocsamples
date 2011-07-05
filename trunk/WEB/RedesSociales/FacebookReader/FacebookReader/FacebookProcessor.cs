@@ -12,6 +12,7 @@ using System.Xml.XPath;
 using System.Configuration;
 using Fwk.SocialNetworks.Facebook.Configuration;
 using System.Transactions;
+using Fwk.HelperFunctions;
 
 
 namespace Fwk.SocialNetworks.Facebook
@@ -237,7 +238,7 @@ namespace Fwk.SocialNetworks.Facebook
         {
             string messageLine = "thread_id = {0} message_id = {1} date = {2}";
             StringBuilder str = new StringBuilder();
-            Int64 wLastStoredMessageTimeStamp = Helper.DateTimeToUnixTimeStamp(dateSince);
+            Int64 wLastStoredMessageTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(dateSince);
             fql_query_response wMessageResponse = null;
             fql_query_response wThreadResponse = FacebookWrapper.GetThreadList(wLastStoredMessageTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
             //Por cada hilo de mensajes...
@@ -260,7 +261,7 @@ namespace Fwk.SocialNetworks.Facebook
                     try
                     {
 
-                        str.AppendLine(string.Format(messageLine, wMessage.thread_id, wMessage.message_id, Helper.UnixTimeStampToDateTime(Convert.ToInt64(wMessage.created_time)).ToLongDateString()));
+                        str.AppendLine(string.Format(messageLine, wMessage.thread_id, wMessage.message_id,DateFunctions.UnixTimeStampToDateTime(Convert.ToInt64(wMessage.created_time)).ToLongDateString()));
                         str.AppendLine(Environment.NewLine);
                         str.AppendLine(wMessage.body);
                         str.AppendLine(Environment.NewLine);
@@ -296,7 +297,7 @@ namespace Fwk.SocialNetworks.Facebook
         {
             string messageLine = "post_id = {0} message_id = {1} date = {2}";
             StringBuilder str = new StringBuilder();
-            Int64 wLastStoredPostTimeStamp = Helper.DateTimeToUnixTimeStamp(dateSince);
+            Int64 wLastStoredPostTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(dateSince);
             
             fql_query_response wResponses = FacebookWrapper.GetNewerStream(wLastStoredPostTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Providers[providerName].SourceId, facebookConfigSection.Limit);
             
@@ -307,7 +308,7 @@ namespace Fwk.SocialNetworks.Facebook
                 {
                     str.AppendLine("----------------------------inicio post ---------------------------");
 
-                    str.AppendLine(string.Format(messageLine, wItem.post_id, wItem.actor_id, Helper.UnixTimeStampToDateTime(Convert.ToInt64(wItem.created_time)).ToLongDateString()));
+                    str.AppendLine(string.Format(messageLine, wItem.post_id, wItem.actor_id, DateFunctions.UnixTimeStampToDateTime(Convert.ToInt64(wItem.created_time)).ToLongDateString()));
                     str.AppendLine(Environment.NewLine);
                     str.AppendLine(wItem.message);
                     str.AppendLine(Environment.NewLine);
@@ -337,7 +338,7 @@ namespace Fwk.SocialNetworks.Facebook
                 Text = pMessage.body,
                 Subject = pThread.subject,
                 SourceMessageID = pMessage.message_id,
-                CreatedDate = Helper.UnixTimeStampToDateTime(Convert.ToInt64(pMessage.created_time)),
+                CreatedDate = DateFunctions.UnixTimeStampToDateTime(Convert.ToInt64(pMessage.created_time)),
                 SenderUser = this.GetUser_From_Database(pMessage.author_id, providerName),
                 SocialNetwork = socialNetwork,
                 MailboxUserID = pMailboxUserID
@@ -382,7 +383,7 @@ namespace Fwk.SocialNetworks.Facebook
             wPost.Permlink = pItem.permalink;
             wPost.SocialNetworkID = Constants.SocialNetworkID;
             wPost.SourcePostID = pItem.post_id;
-            wPost.CreationDate = Helper.UnixTimeStampToDateTime(Convert.ToInt64(pItem.created_time));
+            wPost.CreationDate = DateFunctions.UnixTimeStampToDateTime(Convert.ToInt64(pItem.created_time));
             wPost.SocialNetwork = socialNetwork;
             wPost.From = this.GetUser_From_Database(pItem.actor_id,providerName);
             wPost.To = this.GetUser_From_Database(pItem.target_id, providerName);
