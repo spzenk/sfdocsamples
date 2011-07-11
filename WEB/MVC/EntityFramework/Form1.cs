@@ -58,8 +58,10 @@ namespace EntityFramework
             List<string> s = new List<string>();
             AdventureWorksEntities dc = new AdventureWorksEntities();
 
-            Product product = dc.Product.First<Product>(p => p.ProductID.Equals(Convert.ToInt32(txtId.Text)));
-
+            int ID = Convert.ToInt32(txtId.Text);
+            Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
+            var o = from a in dc.Product where a.ProductID.Equals(ID)  select a;
+            var prod2 = o.First();
             s.Add(string.Concat("Name ",product.Name));
             s.Add(string.Concat("ProductModel ", product.ProductModel.Name));
         }
