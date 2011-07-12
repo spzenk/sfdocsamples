@@ -1,4 +1,4 @@
-﻿namespace  Fwk.SocialNetworks.Facebook
+﻿namespace  Fwk.SocialNetworks.Data
 {
     partial class Form1
     {

@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Fwk.HelperFunctions;
-
-namespace Fwk.SocialNetworks.Facebook
+using Fwk.SocialNetworks.Data;
+using System.Data.Common;
+using System.Data;
+namespace Fwk.SocialNetworks.Data
 {
     public class DataCore
     {
@@ -54,7 +56,7 @@ namespace Fwk.SocialNetworks.Facebook
             Post wPost = null;
             using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
             {
-            var wData = from p in wCoreDataContext.Posts
+                var wData = from p in wCoreDataContext.Posts
                             where p.SourcePostID == pSourcePostID & p.SocialNetworkID == (int)pSocialNetwork
                             select p;
 
@@ -209,15 +211,48 @@ namespace Fwk.SocialNetworks.Facebook
             }
         }
 
+        /// <summary>
+        /// Inserta lote de posts en una transaccion ReadCommitted
+        /// </summary>
+        /// <param name="posts"></param>
+        internal static void CreatePost(List<Post> posts)
+        {
+
+            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
+            using (DbTransaction transaction = dc.Connection.BeginTransaction(IsolationLevel.ReadCommitted))
+            {
+                try
+                {
+                    foreach (Post wPost in posts)
+                    {
+                        dc.Posts.InsertOnSubmit(wPost);
+                    }
+                    dc.SubmitChanges();
+                    dc.Transaction.Commit();
+                }
+                catch (Exception)
+                {
+                    dc.Transaction.Rollback();
+                }
+            }
+
+
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="post"></param>
         internal static void CreatePost(Post post)
         {
             using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
             {
-
                 dc.Posts.InsertOnSubmit(post);
                 dc.SubmitChanges();
             }
         }
+
+
         internal static void CreateMessage(Message pMessage)
         {
             using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
@@ -265,10 +300,10 @@ namespace Fwk.SocialNetworks.Facebook
         /// </summary>
         /// <param name="pCoreDataContext"></param>
         /// <returns></returns>
-        internal static Int64 GetLastMessage()
+        internal static Int64 GetLastMessage(Enums.SocialNetwork pSocialNetwork)
         {
             Int64 wLastStoredMessageTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(Constants.LogSince);
-            Int64 wLastStoredInDB = DataCore.GetLastStoredMessageTimestamp(Enums.SocialNetwork.Facebook);
+            Int64 wLastStoredInDB = DataCore.GetLastStoredMessageTimestamp(pSocialNetwork);
 
             if (wLastStoredInDB > 0)
             {

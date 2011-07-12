@@ -10,12 +10,13 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Xml.XPath;
 using System.Configuration;
-using Fwk.SocialNetworks.Facebook.Configuration;
+using Fwk.SocialNetworks.Data.Configuration;
 using System.Transactions;
 using Fwk.HelperFunctions;
+using Fwk.SocialNetworks.Data;
 
 
-namespace Fwk.SocialNetworks.Facebook
+namespace Fwk.SocialNetworks
 {
     public class FacebookProcessor
     {
@@ -122,13 +123,11 @@ namespace Fwk.SocialNetworks.Facebook
         /// </summary>
         public void StoreNewMessages(string providerName)
         {
-
-
             fql_query_response wThreadResponse = null;
             fql_query_response wMessageResponse = null;
 
             //Busca la mayor fecha (convertida a timestamp) almacenada en DB.
-            Int64 wLastStoredPostTimeStamp = DataCore.GetLastMessage();
+            Int64 wLastStoredPostTimeStamp = DataCore.GetLastMessage(Enums.SocialNetwork.Facebook);
 
             //busca los hilos de mensajes mayores a la fecha obtenida anteriormente.
             wThreadResponse = FacebookWrapper.GetThreadList(wLastStoredPostTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
@@ -343,6 +342,7 @@ namespace Fwk.SocialNetworks.Facebook
                 SocialNetwork = socialNetwork,
                 MailboxUserID = pMailboxUserID
             };
+
             using (var trans = new TransactionScope(TransactionScopeOption.Required, new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted },
                            EnterpriseServicesInteropOption.Automatic))
             {

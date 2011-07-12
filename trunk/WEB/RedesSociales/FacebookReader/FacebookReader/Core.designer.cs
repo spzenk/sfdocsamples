@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Fwk.SocialNetworks.Facebook
+namespace Fwk.SocialNetworks.Data
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;

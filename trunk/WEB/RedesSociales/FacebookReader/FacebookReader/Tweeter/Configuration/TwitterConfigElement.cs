@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Fwk.SocialNetworks.Facebook.Configuration
+namespace Fwk.SocialNetworks.Twitter.Configuration
 {
-    public class FacebookProvider : ConfigurationElement
+    public class TwitterConfigElement : ConfigurationElement
     {
-        public FacebookProvider() { }
+        public TwitterConfigElement() { }
 
         /// <summary>
-        /// Nombre clave del elemento, este valor debe ser unico.
+        /// Nombre del elemento, este valor debe ser unico.
         /// </summary>
         [ConfigurationProperty("name", IsRequired = true, IsKey = true), StringValidator(InvalidCharacters = @" ~!@#$%^&*()[]{}/;'""|\")]
         public string Name
@@ -19,18 +19,6 @@ namespace Fwk.SocialNetworks.Facebook.Configuration
             get
             {
                 return (string)this["name"];
-            }
-        }
-
-        /// <summary>
-        /// Identificador del muro a leer.
-        /// </summary>
-        [ConfigurationProperty("sourceId", IsRequired = true)]
-        public long SourceId
-        {
-            get
-            {
-                return (long)this["sourceId"];
             }
         }
 
@@ -47,33 +35,33 @@ namespace Fwk.SocialNetworks.Facebook.Configuration
         }
 
         /// <summary>
-        /// Access token de lectura.
+        /// Access token de acceso del usuario.
         /// </summary>
-        [ConfigurationProperty("userAccessToken", IsRequired = true, IsKey = false)]
-        public string UserAccessToken
+        [ConfigurationProperty("accessToken", IsRequired = true)]
+        public string AccessToken
         {
             get
             {
-                return (string)this["userAccessToken"];
+                return (string)this["accessToken"];
             }
         }
 
         /// <summary>
-        /// Access token de escritura.
+        /// Clave del Access token de acceso del usuario.
         /// </summary>
-        [ConfigurationProperty("pageAccessToken", IsRequired = false, IsKey = false)]
-        public string PageAccessToken
+        [ConfigurationProperty("accessTokenSecret", IsRequired = true)]
+        public string AccessTokenSecret
         {
             get
             {
-                return (string)this["pageAccessToken"];
+                return (string)this["accessTokenSecret"];
             }
         }
 
         /// <summary>
         /// Determina si el elemento esta habilitado.
         /// </summary>
-        [ConfigurationProperty("enabled", IsRequired = true, IsKey = false, DefaultValue = true)]
+        [ConfigurationProperty("enabled", IsRequired = true, DefaultValue = true)]
         public bool Enabled
         {
             get

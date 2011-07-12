@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
-using Fwk.SocialNetworks.Facebook.Configuration;
+using Fwk.SocialNetworks.Data.Configuration;
 using System.Xml;
 using System.Xml.Serialization;
 using Fwk.HelperFunctions;
 
-namespace  Fwk.SocialNetworks.Facebook
+namespace  Fwk.SocialNetworks.Data
 {
     public class FacebookWrapper
     {
