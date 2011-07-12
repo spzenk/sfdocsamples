@@ -8,7 +8,7 @@ using System.IO;
 using System.Configuration;
 
 
-namespace Fwk.SocialNetworks.Facebook
+namespace Fwk.SocialNetworks.Data
 {
     public class Helper
     {

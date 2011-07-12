@@ -6,9 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Fwk.SocialNetworks.Facebook.Configuration;
+using Fwk.SocialNetworks.Data.Configuration;
 
-namespace Fwk.SocialNetworks.Facebook
+namespace Fwk.SocialNetworks.Data
 {
     public partial class Form1 : Form
     {

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="UserSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="Fwk.SocialNetworks.Twitter">
+
+  <xs:element name="user">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="id" type="xs:integer"/>
+        <xs:element name="name" type="xs:string"/>
+        <xs:element name="screen_name" type="xs:integer"/>
+        <xs:element name="profile_image_url" type="xs:anyURI"/>
+        <xs:element name="created_at" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  
+</xs:schema>
