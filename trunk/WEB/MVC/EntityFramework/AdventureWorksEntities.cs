@@ -13,7 +13,7 @@ namespace EntityFramework
         partial void OnNameChanging(string value)
         {
             if(string.IsNullOrEmpty(value))
-                throw new InvalidOperationException("Nomnre no puede ser nulo");
+                throw new Fwk.Exceptions.FunctionalException(1000,"Nomnre no puede ser nulo");
         }
         
     }
