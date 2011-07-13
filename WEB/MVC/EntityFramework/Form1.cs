@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using System.Data.Entity;
+using Fwk.Exceptions;
 
 namespace EntityFramework
 {
@@ -55,15 +56,55 @@ namespace EntityFramework
 
         private void button3_Click(object sender, EventArgs e)
         {
-            List<string> s = new List<string>();
+            StringBuilder s= new StringBuilder();
             AdventureWorksEntities dc = new AdventureWorksEntities();
 
             int ID = Convert.ToInt32(txtId.Text);
             Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
-            var o = from a in dc.Product where a.ProductID.Equals(ID)  select a;
+            var o = from a in dc.Product where a.ProductID.Equals(ID) select a;
             var prod2 = o.First();
-            s.Add(string.Concat("Name ",product.Name));
-            s.Add(string.Concat("ProductModel ", product.ProductModel.Name));
+            s.AppendLine(string.Concat("Name ", product.Name));
+            if (product.ProductModel != null)
+                s.AppendLine(string.Concat("ProductModel ", product.ProductModel.Name));
+
+
+            textBox1.Text = s.ToString();
+        }
+
+        private void btnGetXml_Click(object sender, EventArgs e)
+        {
+            AdventureWorksEntities dc = new AdventureWorksEntities();
+
+            int ID = Convert.ToInt32(txtId.Text);
+            Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
+
+            ProductMapp wProductMapp = new ProductMapp();
+            wProductMapp.MakeFlag = product.MakeFlag;
+            wProductMapp.Name = product.Name;
+            wProductMapp.ProductID = product.ProductID;
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            int ID = Convert.ToInt32(txtId.Text);
+            AdventureWorksEntities dc = new AdventureWorksEntities();
+            Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
+
+            try
+            {
+
+                product.Name = txtName.Text;
+                dc.SaveChanges();
+                MessageBox.Show("Changes saved to the database.");
+            }
+            catch (FunctionalException fx)
+            {
+                if(fx.ErrorId.Equals("1000"))
+                    MessageBox.Show(fx.Message);
+                else
+                    MessageBox.Show("Fue un moco desconocido");
+            }
+            
         }
 
 
