@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 using System.Data.Entity;
 using Fwk.Exceptions;
+using Newtonsoft.Json;
 
 namespace EntityFramework
 {
@@ -82,6 +83,20 @@ namespace EntityFramework
             wProductMapp.MakeFlag = product.MakeFlag;
             wProductMapp.Name = product.Name;
             wProductMapp.ProductID = product.ProductID;
+
+            wProductMapp.SellStartDate = product.SellStartDate;
+
+            string json = JsonConvert.SerializeObject(wProductMapp, Formatting.Indented);
+
+//            {
+//  "ProductID": 680,
+//  "Name": "HL Road Frame - Black, 57",
+//  "ProductNumber": null,
+//  "MakeFlag": true,
+//  "SellStartDate": "\/Date(896670000000-0300)\/"
+//}
+
+            textBox1.Text = json;
         }
 
         private void button4_Click(object sender, EventArgs e)
