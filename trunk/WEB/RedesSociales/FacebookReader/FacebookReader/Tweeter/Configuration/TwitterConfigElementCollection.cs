@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Fwk.SocialNetworks.Twitter.Configuration
+namespace Fwk.SocialNetworks.Config
 {
     public class TwitterConfigElementCollection : ConfigurationElementCollection
     {

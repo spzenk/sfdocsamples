@@ -3,8 +3,10 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Twitterizer;
 
-namespace Fwk.SocialNetworks.Twitter.Configuration
+
+namespace Fwk.SocialNetworks.Config
 {
     public class TwitterConfig : ConfigurationSection
     {
@@ -56,6 +58,15 @@ namespace Fwk.SocialNetworks.Twitter.Configuration
             }
         }
 
+        [ConfigurationProperty("Proxy", IsRequired = false)]
+        public ProxyElement Proxy
+        {
+            get
+            {
+                return (ProxyElement)base["Proxy"];
+            }
+        }
+
         public TwitterConfigElement GetProvider(string name)
         {
             foreach (TwitterConfigElement wElement in this.Providers)
@@ -69,6 +80,19 @@ namespace Fwk.SocialNetworks.Twitter.Configuration
         public TwitterConfigElement DefaultProvider
         {
             get { return this.GetProvider((string)base["defaultProviderName"]); }
+        }
+
+
+
+        public OAuthTokens GetOAuthTokens(string providerName)
+        {
+            OAuthTokens wOAuthTokens = new OAuthTokens();
+            wOAuthTokens.AccessToken = this.Providers[providerName].AccessToken;
+            wOAuthTokens.AccessTokenSecret = this.Providers[providerName].AccessTokenSecret;
+
+            wOAuthTokens.ConsumerKey = this.ConsumerKey;
+            wOAuthTokens.ConsumerSecret = this.ConsumerSecret;
+            return wOAuthTokens;
         }
     }
 }

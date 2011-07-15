@@ -3,8 +3,9 @@ using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Twitterizer;
 
-namespace Fwk.SocialNetworks.Twitter.Configuration
+namespace Fwk.SocialNetworks.Config
 {
     public class TwitterConfigElement : ConfigurationElement
     {
@@ -69,5 +70,6 @@ namespace Fwk.SocialNetworks.Twitter.Configuration
                 return (bool)this["enabled"];
             }
         }
+
     }
 }

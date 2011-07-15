@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Xml.XPath;
 using System.Configuration;
-using Fwk.SocialNetworks.Twitter.Configuration;
+using Fwk.SocialNetworks.Config;
 using TweetSharp.Twitter.Fluent;
 using TweetSharp.Twitter.Model;
 using TweetSharp.Extensions;
@@ -24,10 +24,6 @@ namespace Fwk.SocialNetworks.Twitter
 
         SocialNetwork socialNetwork;
 
-        TwitterConfig twitterConfigSection;
-
-        public WebProxy Proxy { get; set; }
-
 
         #endregion
 
@@ -35,21 +31,13 @@ namespace Fwk.SocialNetworks.Twitter
         public void InitSettings()
         {
 
-            try
-            {
-                twitterConfigSection = (System.Configuration.ConfigurationManager.GetSection("TwitterConfig") as TwitterConfig);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar levantar la configuración de la seccion [FacebookConfig] de Facebook", ex);
-            }
 
             if (socialNetwork == null)
             {
                 //Busca la red social correspondiente.
                 socialNetwork = DataCore.GetSocialNetwork(Enums.SocialNetwork.Twitter);
             }
-
+            
         }
 
 
@@ -110,7 +98,7 @@ namespace Fwk.SocialNetworks.Twitter
 
         #region [CoreDataContext Methods]
 
-        private User GetTwitterizerUser(decimal pUserId, string pScreenName)
+        private User GetTwitterizerUser(decimal pUserId, string pScreenName,string providerName)
         {
             //Busca el usuario en DB.
             User wUser = DataCore.GetUser(pUserId.ToString(), Enums.SocialNetwork.Twitter);
@@ -118,8 +106,8 @@ namespace Fwk.SocialNetworks.Twitter
             if (wUser == null)
             {
                 //Si no lo encuentra en DB lo busca en twitter.
-                TwitterWrapper wTwitterizer = new TwitterWrapper(Proxy);
-                global::Twitterizer.TwitterUser wTwitterUser = wTwitterizer.GetUser(pUserId);
+
+                global::Twitterizer.TwitterUser wTwitterUser = TwitterWrapper.GetUser(pUserId, providerName);
 
                 if (wTwitterUser != null)
                 {
@@ -253,7 +241,7 @@ namespace Fwk.SocialNetworks.Twitter
             return wPost;
         }
 
-        private Post ParseStatus(global::Twitterizer.TwitterStatus pTwitterStatus)
+        private Post ParseStatus(global::Twitterizer.TwitterStatus pTwitterStatus, string providerName)
         {
             Post wPost = new Post();
 
@@ -271,13 +259,13 @@ namespace Fwk.SocialNetworks.Twitter
 
             if (pTwitterStatus.InReplyToUserId.HasValue)
             {
-                wPost.To = this.GetTwitterizerUser(pTwitterStatus.InReplyToUserId.Value, pTwitterStatus.InReplyToScreenName);
+                wPost.To = this.GetTwitterizerUser(pTwitterStatus.InReplyToUserId.Value, pTwitterStatus.InReplyToScreenName, providerName);
             }
 
             return wPost;
         }
 
-        private Message ParseDirectMessage(global::Twitterizer.TwitterDirectMessage pTwitterDirectMessage)
+        private Message ParseDirectMessage(global::Twitterizer.TwitterDirectMessage pTwitterDirectMessage, string providerName)
         {
             Message wMessage = new Message();
             Recipient wRecipient = new Recipient();
@@ -285,7 +273,7 @@ namespace Fwk.SocialNetworks.Twitter
             wMessage.CreatedDate = pTwitterDirectMessage.CreatedDate;
             wMessage.SourceMessageID = pTwitterDirectMessage.Id.ToString();
             wMessage.SocialNetwork = socialNetwork;
-            wMessage.MailboxUserID = twitterConfigSection.DefaultProvider.UserId;
+            wMessage.MailboxUserID = TwitterWrapper.Config.Providers[providerName].UserId;
             wMessage.SenderUser = this.GetTwitterizerUser(pTwitterDirectMessage.Sender);
             wRecipient.RecipientUser = this.GetTwitterizerUser(pTwitterDirectMessage.Recipient);
             wMessage.Recipients.Add(wRecipient);
@@ -377,22 +365,18 @@ namespace Fwk.SocialNetworks.Twitter
 
         #region [Statuses Methods]
 
-        #region TweetSharp
 
-
-
-        #endregion
 
         #region Twiterizer
 
-        public void LogStatuses()
+        public void LogStatuses(string providerName)
         {
             //Verifica si el proveedor por defecto esta habilitado y si no lo esta no loguea.
-            if (twitterConfigSection.DefaultProvider.Enabled == false) { return; }
+            //if (configSection.DefaultProvider.Enabled == false) { return; }
 
             List<global::Twitterizer.TwitterStatus> wList = new List<global::Twitterizer.TwitterStatus>();
 
-            TwitterWrapper wTwitterizer = new TwitterWrapper(Proxy);
+         
 
             decimal? wSinceStatusId = null;
 
@@ -403,13 +387,13 @@ namespace Fwk.SocialNetworks.Twitter
                 wSinceStatusId = Convert.ToDecimal(wMaxSourcePostId);
             }
 
-            wList.AddRange(wTwitterizer.GetAllUserMentions(wSinceStatusId, Constants.LogSince));
+            wList.AddRange(TwitterWrapper.GetAllUserMentions(wSinceStatusId, Constants.LogSince, providerName));
 
-            wList.AddRange(wTwitterizer.GetAllUserStatuses(wSinceStatusId, Constants.LogSince));
+            wList.AddRange(TwitterWrapper.GetAllUserStatuses(wSinceStatusId, Constants.LogSince, providerName));
 
             if (wList.Count > 0)
             {
-                this.SaveStatuses(wList);
+                this.SaveStatuses(wList,providerName);
             }
         }
 
@@ -417,7 +401,7 @@ namespace Fwk.SocialNetworks.Twitter
         /// 
         /// </summary>
         /// <param name="pList"></param>
-        private void SaveStatuses(List<global::Twitterizer.TwitterStatus> pList)
+        private void SaveStatuses(List<global::Twitterizer.TwitterStatus> pList, string providerName)
         {
             Post wPost;
             List<Post> wPostList = new List<Post>();
@@ -426,7 +410,7 @@ namespace Fwk.SocialNetworks.Twitter
             {
                 foreach (global::Twitterizer.TwitterStatus item in pList.OrderBy(r => r.Id))
                 {
-                     wPost = this.ParseStatus(item);
+                     wPost = this.ParseStatus(item,providerName);
                 }
 
                 DataCore.CreatePost(wPostList);
@@ -465,14 +449,13 @@ namespace Fwk.SocialNetworks.Twitter
 
         #region [Messages Methods]
 
-        public void LogMessages()
+        public void LogMessages(string providerName)
         {
             //Verifica si el proveedor por defecto esta habilitado y si no lo esta no loguea.
-            if (twitterConfigSection.DefaultProvider.Enabled == false) { return; }
+            //if (configSection.DefaultProvider.Enabled == false) { return; }
 
             List<global::Twitterizer.TwitterDirectMessage> wList = new List<global::Twitterizer.TwitterDirectMessage>();
 
-            TwitterWrapper wTwitterizer = new TwitterWrapper(Proxy);
 
             decimal? wSinceStatusId = null;
 
@@ -483,35 +466,35 @@ namespace Fwk.SocialNetworks.Twitter
                 wSinceStatusId = Convert.ToDecimal(wMaxSourceMessageId);
             }
 
-            wList.AddRange(wTwitterizer.GetAllUserMessages(wSinceStatusId, Constants.LogSince));
+            wList.AddRange(TwitterWrapper.GetAllUserMessages(wSinceStatusId, Constants.LogSince, providerName));
 
-            wList.AddRange(wTwitterizer.GetAllUserMessagesSent(wSinceStatusId, Constants.LogSince));
+            wList.AddRange(TwitterWrapper.GetAllUserMessagesSent(wSinceStatusId, Constants.LogSince, providerName));
 
             if (wList.Count > 0)
             {
-                this.SaveMessages(wList);
+                this.SaveMessages(wList,providerName);
             }
         }
 
-        private void SaveMessages(List<global::Twitterizer.TwitterDirectMessage> pList)
+        private void SaveMessages(List<global::Twitterizer.TwitterDirectMessage> pList, string providerName)
         {
 
 
 
             foreach (global::Twitterizer.TwitterDirectMessage item in pList.OrderBy(r => r.Id))
             {
-                this.SaveMessage(item);
+                this.SaveMessage(item,providerName);
             }
 
         }
 
-        private void SaveMessage(global::Twitterizer.TwitterDirectMessage item)
+        private void SaveMessage(global::Twitterizer.TwitterDirectMessage item, string providerName)
         {
             try
             {
 
 
-                Message wMessage = this.ParseDirectMessage(item);
+                Message wMessage = this.ParseDirectMessage(item,providerName);
                 DataCore.CreateMessage(wMessage);
 
             }

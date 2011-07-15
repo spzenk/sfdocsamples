@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Configuration;
 
-namespace Fwk.SocialNetworks.Data.Configuration
+namespace Fwk.SocialNetworks.Config
 {
     public class ProxyElement : ConfigurationElement
     {

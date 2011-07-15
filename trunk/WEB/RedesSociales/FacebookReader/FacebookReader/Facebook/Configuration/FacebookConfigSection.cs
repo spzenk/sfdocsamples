@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Fwk.SocialNetworks.Data.Configuration
+namespace Fwk.SocialNetworks.Config
 {
     public class FacebookConfig : ConfigurationSection
     {
