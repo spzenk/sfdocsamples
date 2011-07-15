@@ -4,55 +4,84 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.IO;
-using Fwk.SocialNetworks.Data.Configuration;
 using System.Xml;
 using System.Xml.Serialization;
 using Fwk.HelperFunctions;
+using Fwk.SocialNetworks.Config;
 
-namespace  Fwk.SocialNetworks.Data
+namespace Fwk.SocialNetworks.Data
 {
     public class FacebookWrapper
     {
         #region Properties
+        static  FacebookConfig facebookConfigSection;
+
+        public static FacebookConfig Config
+        {
+            get { return facebookConfigSection; }
+        }
 
         /// <summary>
         /// Proxy de la red para hacer el request HTTP, puede estar en null
         /// </summary>
         public static WebProxy Proxy = null;
-         static string execfaceQuery = "https://api.facebook.com/method/fql.query?query={0}";
-         static string sp_stream_by_sourceid_updatedtime = "SELECT updated_time, post_id, created_time, actor_id, target_id, permalink, message, comments FROM stream WHERE source_id = {0} AND updated_time > {1}";
-         static string sp_comment_by_post_id = "SELECT fromid, time, text, id FROM comment WHERE post_id = '{0}'"; 
-        static string  sp_user_uid ="SELECT pic_small,uid,name FROM user WHERE uid = {0}";
-
+        static string execfaceQuery = "https://api.facebook.com/method/fql.query?query={0}";
+        static string sp_stream_by_sourceid_updatedtime = "SELECT updated_time, post_id, created_time, actor_id, target_id, permalink, message, comments FROM stream WHERE source_id = {0} AND updated_time > {1}";
+        static string sp_comment_by_post_id = "SELECT fromid, time, text, id FROM comment WHERE post_id = '{0}'";
+        static string sp_user_uid = "SELECT pic_small,uid,name FROM user WHERE uid = {0}";
         static string sp_thread_by_folderid_time = "SELECT thread_id, folder_id, subject, recipients, updated_time, parent_message_id, parent_thread_id, message_count, snippet, snippet_author, object_id, unread, viewer_id FROM thread WHERE folder_id = 0 AND updated_time > {0}";
-
         static string sp_message_by_Threadid_time = "SELECT message_id, thread_id, author_id, body, created_time FROM message WHERE thread_id = {0} AND created_time > {1}";
-
-        static string sp_page_by_pageid= "SELECT page_id, name, pic_small FROM page WHERE page_id = {0}";
+        static string sp_page_by_pageid = "SELECT page_id, name, pic_small FROM page WHERE page_id = {0}";
         #endregion
+
+        static FacebookWrapper()
+        {
+            try
+            {
+                facebookConfigSection = (System.Configuration.ConfigurationManager.GetSection("FacebookConfig") as FacebookConfig);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar levantar la configuración de la seccion [FacebookConfig] de Facebook", ex);
+            }
+
+            if (facebookConfigSection.Proxy != null)
+            {
+                if (facebookConfigSection.Proxy.IsBypassed)
+                {
+                    WebProxy wWebProxy = new WebProxy(facebookConfigSection.Proxy.Name, facebookConfigSection.Proxy.Port);
+
+                    wWebProxy.Credentials = new System.Net.NetworkCredential(facebookConfigSection.Proxy.UserName, facebookConfigSection.Proxy.Password, facebookConfigSection.Proxy.Domain);
+
+
+                    FacebookWrapper.Proxy = wWebProxy;
+                }
+            }
+           
+        }
 
         /// <summary>
         /// Ejecuta cualquier query de FQL
         /// </summary>
         /// <param name="wQuery"></param>
         /// <returns></returns>
-         private static fql_query_response ExecuteQuery(String pQuery, String accessToken, int? limit)
-         {
-             fql_query_response res = null;
-             error_response er = null;
-             String wUrlString = string.Format(execfaceQuery, pQuery);
-             if (limit.HasValue)
-             {
-                 wUrlString = string.Concat(wUrlString, string.Format(" LIMIT {0}", limit.Value));
-             }
-             wUrlString = string.Concat(wUrlString, string.Format("&access_token={0}", accessToken));
-             Uri wUrl = new Uri(wUrlString);
-             StreamReader wReader = HttpGet(wUrl);
-             res = Helper.DeserializeResponse(wReader, out er);
-             if (er != null)
-                 throw Helper.MapErrorAndThrowException(er);
-             return res;
-         }
+        private static fql_query_response ExecuteQuery(String pQuery, String accessToken, int? limit)
+        {
+            fql_query_response res = null;
+            error_response er = null;
+            String wUrlString = string.Format(execfaceQuery, pQuery);
+            if (limit.HasValue)
+            {
+                wUrlString = string.Concat(wUrlString, string.Format(" LIMIT {0}", limit.Value));
+            }
+            wUrlString = string.Concat(wUrlString, string.Format("&access_token={0}", accessToken));
+            Uri wUrl = new Uri(wUrlString);
+            StreamReader wReader = HttpGet(wUrl);
+            res = Helper.DeserializeResponse(wReader, out er);
+            if (er != null)
+                throw Helper.MapErrorAndThrowException(er);
+            return res;
+        }
 
         /// <summary>
         /// Se conecta a la URI y te devuelve un reader para leer los resultados de la consulta.
@@ -118,7 +147,7 @@ namespace  Fwk.SocialNetworks.Data
         /// <returns></returns>
         public static fql_query_response GetNewerStream(Int64 timeStamp, String userAccessToken, long sourceId, int? limit)
         {
-           return ExecuteQuery( String.Format(sp_stream_by_sourceid_updatedtime, sourceId, timeStamp), userAccessToken, limit);
+            return ExecuteQuery(String.Format(sp_stream_by_sourceid_updatedtime, sourceId, timeStamp), userAccessToken, limit);
         }
 
         /// <summary>
@@ -140,7 +169,7 @@ namespace  Fwk.SocialNetworks.Data
         /// <returns></returns>
         public static fql_query_response GetUser(String sourceUserID, String accessToken, int? limit)
         {
-            return ExecuteQuery( String.Format(sp_user_uid, sourceUserID), accessToken, limit);
+            return ExecuteQuery(String.Format(sp_user_uid, sourceUserID), accessToken, limit);
 
         }
 
@@ -151,7 +180,7 @@ namespace  Fwk.SocialNetworks.Data
         /// <returns></returns>
         public static fql_query_response GetPage(String sourceUserID, String accessToken, int? limit)
         {
-            return ExecuteQuery( String.Format(sp_page_by_pageid, sourceUserID), accessToken, limit);
+            return ExecuteQuery(String.Format(sp_page_by_pageid, sourceUserID), accessToken, limit);
         }
 
 
@@ -165,7 +194,7 @@ namespace  Fwk.SocialNetworks.Data
         public static fql_query_response GetThreadList(Int64 timeStamp, String accessToken, int? limit)
         {
             return ExecuteQuery(String.Format(sp_thread_by_folderid_time, timeStamp), accessToken, limit);
-    
+
         }
 
         /// <summary>
@@ -178,7 +207,7 @@ namespace  Fwk.SocialNetworks.Data
         /// <returns></returns>
         public static fql_query_response GetMessagesInThread(String threadId, Int64 timeStamp, String accessToken, int? limit)
         {
-            
+
             return ExecuteQuery(String.Format(string.Format(sp_message_by_Threadid_time, threadId, timeStamp)), accessToken, limit);
 
 
@@ -258,7 +287,7 @@ namespace  Fwk.SocialNetworks.Data
             int? limit = pSection.Limit;
             string accessToken = provider.UserAccessToken;
 
-            fql_query_response wPost =  FacebookWrapper.GetCommentBySourcePostId(pPostId, accessToken, limit);
+            fql_query_response wPost = FacebookWrapper.GetCommentBySourcePostId(pPostId, accessToken, limit);
 
 
             //Si no es null devuelve el último comentario (es el comentario recién ingresado)
@@ -271,12 +300,12 @@ namespace  Fwk.SocialNetworks.Data
                 return null;
             }
         }
-       
-         
+
+
     }
 
-   
 
 
-  
+
+
 }

@@ -10,7 +10,7 @@ using System.Xml.Serialization;
 using System.Xml;
 using System.Xml.XPath;
 using System.Configuration;
-using Fwk.SocialNetworks.Data.Configuration;
+using Fwk.SocialNetworks.Config;
 using System.Transactions;
 using Fwk.HelperFunctions;
 using Fwk.SocialNetworks.Data;
@@ -20,19 +20,12 @@ namespace Fwk.SocialNetworks
 {
     public class FacebookProcessor
     {
-        Timer _Timer;
+       
 
         #region [Members & Constructor]
-
+        Timer _Timer;
         SocialNetwork socialNetwork = null;
-        FacebookConfig facebookConfigSection;
-       
      
-        public FacebookConfig FacebookConfig
-        {
-            get { return facebookConfigSection; }
-        }
-
       
         #endregion
        
@@ -41,15 +34,7 @@ namespace Fwk.SocialNetworks
         public void InitSettings()
         {
 
-            try
-            {
-                facebookConfigSection = (System.Configuration.ConfigurationManager.GetSection("FacebookConfig") as FacebookConfig);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar levantar la configuración de la seccion [FacebookConfig] de Facebook", ex);
-            }
-
+            
             if (socialNetwork == null)
             {
                 //Busca la red social correspondiente.
@@ -57,19 +42,6 @@ namespace Fwk.SocialNetworks
             }
 
 
-            if (facebookConfigSection.Proxy != null)
-            {
-                if (facebookConfigSection.Proxy.IsBypassed)
-                {
-                    WebProxy wWebProxy = new WebProxy(facebookConfigSection.Proxy.Name, facebookConfigSection.Proxy.Port);
-
-                    wWebProxy.Credentials = new System.Net.NetworkCredential(facebookConfigSection.Proxy.UserName, facebookConfigSection.Proxy.Password, facebookConfigSection.Proxy.Domain);
-
-
-                    FacebookWrapper.Proxy = wWebProxy;
-                }
-            }
-           
         }
  
 
@@ -80,7 +52,7 @@ namespace Fwk.SocialNetworks
 
         public void StoreNewStream()
         {
-            StoreNewStream(facebookConfigSection.DefaultProviderName);
+            StoreNewStream(FacebookWrapper.Config.DefaultProviderName);
         }
 
         /// <summary>
@@ -93,7 +65,7 @@ namespace Fwk.SocialNetworks
             //Busca la mayor fecha (convertida a timestamp) almacenada en DB.
             Int64 wLastStoredPostTimeStamp = DataCore.GetLastPost();
             //Busca los posts mayores a la fecha obtenida anteriormente.
-            fql_query_response wResponses = FacebookWrapper.GetNewerStream(wLastStoredPostTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Providers[providerName].SourceId, facebookConfigSection.Limit);
+            fql_query_response wResponses = FacebookWrapper.GetNewerStream(wLastStoredPostTimeStamp, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Providers[providerName].SourceId, FacebookWrapper.Config.Limit);
             //Si no encuentra nuevos posts, no hace nada.
             if (wResponses.stream_post == null) { return; }
 
@@ -130,7 +102,7 @@ namespace Fwk.SocialNetworks
             Int64 wLastStoredPostTimeStamp = DataCore.GetLastMessage(Enums.SocialNetwork.Facebook);
 
             //busca los hilos de mensajes mayores a la fecha obtenida anteriormente.
-            wThreadResponse = FacebookWrapper.GetThreadList(wLastStoredPostTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+            wThreadResponse = FacebookWrapper.GetThreadList(wLastStoredPostTimeStamp, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
 
 
 
@@ -139,7 +111,7 @@ namespace Fwk.SocialNetworks
             foreach (thread wThread in wThreadResponse.thread)
             {
                 //... Busca los mensajes propiamente dichos del hilo.
-                wMessageResponse = FacebookWrapper.GetMessagesInThread(wThread.thread_id, wLastStoredPostTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+                wMessageResponse = FacebookWrapper.GetMessagesInThread(wThread.thread_id, wLastStoredPostTimeStamp, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
 
 
                 //Si el hilo no tiene mensajes, pasa al siguiente hilo.
@@ -152,7 +124,7 @@ namespace Fwk.SocialNetworks
                     try
                     {
                         //Crea y guarda el mensaje.
-                        this.InsertMessageAndRecipients(wThread, wMessage, facebookConfigSection.Providers[providerName].UserId, providerName);
+                        this.InsertMessageAndRecipients(wThread, wMessage, FacebookWrapper.Config.Providers[providerName].UserId, providerName);
 
                     }
                     catch (Exception ex)
@@ -188,7 +160,7 @@ namespace Fwk.SocialNetworks
         {
             User userFrom = null;
             //Busca los comentarios del post recibido por parametro.
-            fql_query_response wCommentResponses = FacebookWrapper.GetCommentBySourcePostId(pItem.post_id, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+            fql_query_response wCommentResponses = FacebookWrapper.GetCommentBySourcePostId(pItem.post_id, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
 
 
             if (Convert.ToInt64(pItem.created_time) > pLastStoredPostTimeStamp)
@@ -226,7 +198,7 @@ namespace Fwk.SocialNetworks
         }
         public string GetwMessagesList(DateTime dateSince)
         {
-            return GetwMessagesList(dateSince, facebookConfigSection.DefaultProviderName);
+            return GetwMessagesList(dateSince, FacebookWrapper.Config.DefaultProviderName);
         }
         /// <summary>
         /// Lee los mensages de una cuenta (usuario o aplicacion)
@@ -239,7 +211,7 @@ namespace Fwk.SocialNetworks
             StringBuilder str = new StringBuilder();
             Int64 wLastStoredMessageTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(dateSince);
             fql_query_response wMessageResponse = null;
-            fql_query_response wThreadResponse = FacebookWrapper.GetThreadList(wLastStoredMessageTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+            fql_query_response wThreadResponse = FacebookWrapper.GetThreadList(wLastStoredMessageTimeStamp, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
             //Por cada hilo de mensajes...
             foreach (thread wThread in wThreadResponse.thread)
             {
@@ -247,7 +219,7 @@ namespace Fwk.SocialNetworks
                 str.AppendLine(string.Concat("Subjet:   ", wThread.subject));
                 
                 //... Busca los mensajes propiamente dichos del hilo.
-                wMessageResponse = FacebookWrapper.GetMessagesInThread(wThread.thread_id, wLastStoredMessageTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+                wMessageResponse = FacebookWrapper.GetMessagesInThread(wThread.thread_id, wLastStoredMessageTimeStamp, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
 
 
                 //Si el hilo no tiene mensajes, pasa al siguiente hilo.
@@ -265,7 +237,7 @@ namespace Fwk.SocialNetworks
                         str.AppendLine(wMessage.body);
                         str.AppendLine(Environment.NewLine);
                         //Crea y guarda el mensaje.
-                        //this.InsertMessageAndRecipients(wThread, wMessage, _facebookConfigSection.Providers[providerName].UserId);
+                        //this.InsertMessageAndRecipients(wThread, wMessage, _FacebookWrapper.Config.Providers[providerName].UserId);
 
                     }
                     catch (Exception ex)
@@ -285,7 +257,7 @@ namespace Fwk.SocialNetworks
         /// <returns></returns>
         public string Get_stream_post(DateTime dateSince)
         {
-            return Get_stream_post(dateSince, facebookConfigSection.DefaultProviderName);
+            return Get_stream_post(dateSince, FacebookWrapper.Config.DefaultProviderName);
         }
         /// <summary>
         /// Obtiene lista de posts en el muro de una aplicacion o usuario
@@ -298,7 +270,7 @@ namespace Fwk.SocialNetworks
             StringBuilder str = new StringBuilder();
             Int64 wLastStoredPostTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(dateSince);
             
-            fql_query_response wResponses = FacebookWrapper.GetNewerStream(wLastStoredPostTimeStamp, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Providers[providerName].SourceId, facebookConfigSection.Limit);
+            fql_query_response wResponses = FacebookWrapper.GetNewerStream(wLastStoredPostTimeStamp, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Providers[providerName].SourceId, FacebookWrapper.Config.Limit);
             
             //Por cada post encontrado...
             foreach (stream_post wItem in wResponses.stream_post)
@@ -408,7 +380,7 @@ namespace Fwk.SocialNetworks
         /// <returns></returns>
         public User GetUser_From_Database(String pSourceUserId)
         {
-            return GetUser_From_Database(pSourceUserId, facebookConfigSection.DefaultProviderName);
+            return GetUser_From_Database(pSourceUserId, FacebookWrapper.Config.DefaultProviderName);
         }
 
         /// <summary>
@@ -432,7 +404,7 @@ namespace Fwk.SocialNetworks
             else // if (wUser.UserName == null)
             {
                 //Si el usuario existe pero el username es nulo, lo actualiza.
-                wResponse = FacebookWrapper.GetUser(pSourceUserId, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+                wResponse = FacebookWrapper.GetUser(pSourceUserId, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
 
 
 
@@ -455,7 +427,7 @@ namespace Fwk.SocialNetworks
                 else
                 {
                     //Si el usuario no lo encontramos en Facebook preguntamos si es una página.
-                    wResponse = FacebookWrapper.GetPage(pSourceUserId, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+                    wResponse = FacebookWrapper.GetPage(pSourceUserId, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
 
 
                     if (wResponse.page != null)
@@ -480,7 +452,7 @@ namespace Fwk.SocialNetworks
         /// <returns></returns>
         public User GetUser_From_Facebook(String pSourceUserId)
         {
-            return GetUser_From_Facebook(pSourceUserId, facebookConfigSection.DefaultProviderName);
+            return GetUser_From_Facebook(pSourceUserId, FacebookWrapper.Config.DefaultProviderName);
         }
 
         /// <summary>
@@ -491,7 +463,7 @@ namespace Fwk.SocialNetworks
         public User GetUser_From_Facebook(String pSourceUserId, string providerName)
         {
             User wUser = null;
-            fql_query_response wResponse = FacebookWrapper.GetUser(pSourceUserId, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+            fql_query_response wResponse = FacebookWrapper.GetUser(pSourceUserId, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
 
 
             if (wResponse.user != null)
@@ -513,7 +485,7 @@ namespace Fwk.SocialNetworks
             }
 
             //Si el usuario no lo encontramos en Facebook preguntamos si es una página. Si no es una página creamos un user para mantener consistencia.
-            wResponse = FacebookWrapper.GetPage(pSourceUserId, facebookConfigSection.Providers[providerName].UserAccessToken, facebookConfigSection.Limit);
+            wResponse = FacebookWrapper.GetPage(pSourceUserId, FacebookWrapper.Config.Providers[providerName].UserAccessToken, FacebookWrapper.Config.Limit);
             if (wResponse.page != null)
             {
                 wUser = new User()

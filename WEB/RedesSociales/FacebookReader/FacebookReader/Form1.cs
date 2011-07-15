@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Fwk.SocialNetworks.Data.Configuration;
+using Fwk.SocialNetworks.Config;
 
 namespace Fwk.SocialNetworks.Data
 {
@@ -56,7 +56,7 @@ namespace Fwk.SocialNetworks.Data
 
 
             List<string> ps = new List<string>();
-            foreach (FacebookProvider p in fp.FacebookConfig.Providers)
+            foreach (FacebookProvider p in FacebookWrapper.Config.Providers)
             {
                ps.Add(p.Name);
 
@@ -70,9 +70,9 @@ namespace Fwk.SocialNetworks.Data
             StringBuilder s = new StringBuilder(string.Concat("selected provider   = ", comboBox1.SelectedItem.ToString(), "\r\n"));
 
 
-            s.AppendLine(string.Concat("Source Id       = ", fp.FacebookConfig.Providers[comboBox1.SelectedItem.ToString()].SourceId));
-            s.AppendLine(string.Concat("UserAccessToken = ", fp.FacebookConfig.Providers[comboBox1.SelectedItem.ToString()].UserAccessToken));
-            s.AppendLine(string.Concat("PageAccessToken = ", fp.FacebookConfig.Providers[comboBox1.SelectedItem.ToString()].PageAccessToken));
+            s.AppendLine(string.Concat("Source Id       = ", FacebookWrapper.Config.Providers[comboBox1.SelectedItem.ToString()].SourceId));
+            s.AppendLine(string.Concat("UserAccessToken = ", FacebookWrapper.Config.Providers[comboBox1.SelectedItem.ToString()].UserAccessToken));
+            s.AppendLine(string.Concat("PageAccessToken = ", FacebookWrapper.Config.Providers[comboBox1.SelectedItem.ToString()].PageAccessToken));
 
             textBox2.Text = s.ToString();
         }

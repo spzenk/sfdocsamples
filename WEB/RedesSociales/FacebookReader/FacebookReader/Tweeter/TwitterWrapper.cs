@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-using Fwk.SocialNetworks.Twitter.Configuration;
+using Fwk.SocialNetworks.Config;
 using System.Net;
 using System.Linq;
 using System.Text;
@@ -13,21 +13,54 @@ namespace Fwk.SocialNetworks.Twitter
     {
         #region [Members]
 
-        WebProxy _WebProxy;
-        OAuthTokens _OAuthTokens;
-        TwitterConfigElement _DefaultProvider;
-        TwitterConfig _TwitterConfigSection;
 
+        /// <summary>
+        /// Proxy de la red para hacer el request HTTP, puede estar en null
+        /// </summary>
+        public static WebProxy Proxy = null;
+
+        
+       static TwitterConfig configSection;
+
+
+        public static TwitterConfig Config
+        {
+            get { return configSection; }
+        }
+
+        static TwitterWrapper()
+        {
+            
+            try
+            {
+                configSection = (System.Configuration.ConfigurationManager.GetSection("TwitterConfig") as TwitterConfig);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar levantar la configuración de la seccion [TwitterConfig] de Twitter", ex);
+            }
+
+            if (configSection.Proxy != null)
+            {
+                if (configSection.Proxy.IsBypassed)
+                {
+                    WebProxy wWebProxy = new WebProxy(configSection.Proxy.Name, configSection.Proxy.Port);
+
+                    wWebProxy.Credentials = new System.Net.NetworkCredential(configSection.Proxy.UserName, configSection.Proxy.Password, configSection.Proxy.Domain);
+
+
+                    TwitterWrapper.Proxy = wWebProxy;
+                }
+            }
+        }
         #endregion
 
  
 
     
 
-        public TwitterWrapper(WebProxy proxy)
+        public TwitterWrapper()
         {
-            _WebProxy = proxy;
-
             this.InitializeClass();
         }
 
@@ -35,16 +68,16 @@ namespace Fwk.SocialNetworks.Twitter
 
         #region [Private Methods]
 
-        private TwitterStatusCollection GetStatuses(decimal? pSinceStatusId, decimal? pMaxStatusId)
+        private static TwitterStatusCollection GetStatuses(decimal? pSinceStatusId, decimal? pMaxStatusId,string providerName)
         {
             //Verifica si el restante de consultas permitidas es menor al minimo configurado.
             //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (this.HasExceededLimit()) { return new TwitterStatusCollection(); }
+            if (HasExceededLimit(providerName)) { return new TwitterStatusCollection(); }
 
             TimelineOptions wTimelineOptions = new TimelineOptions();
-            wTimelineOptions.Count = _TwitterConfigSection.StatusesCount;
+            wTimelineOptions.Count = configSection.StatusesCount;
             wTimelineOptions.IncludeRetweets = true;
-            wTimelineOptions.Proxy = _WebProxy;
+            wTimelineOptions.Proxy = Proxy;
 
             if (pMaxStatusId.HasValue)
             {
@@ -56,23 +89,23 @@ namespace Fwk.SocialNetworks.Twitter
                 wTimelineOptions.SinceStatusId = pSinceStatusId.Value;
             }
 
-            TwitterStatusCollection result = TwitterTimeline.UserTimeline(_OAuthTokens, wTimelineOptions);
+            TwitterStatusCollection result = TwitterTimeline.UserTimeline(configSection.GetOAuthTokens(providerName), wTimelineOptions);
 
-            if (result == null) { this.CheckForErrors(); }
+            if (result == null) {CheckForErrors(); }
 
             return result;
         }
 
-        private TwitterStatusCollection GetMentions(decimal? pSinceStatusId, decimal? pMaxStatusId)
+        private static TwitterStatusCollection GetMentions(decimal? pSinceStatusId, decimal? pMaxStatusId, string providerName)
         {
             //Verifica si el restante de consultas permitidas es menor al minimo configurado.
             //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (this.HasExceededLimit()) { return new TwitterStatusCollection(); }
+            if (HasExceededLimit(providerName)) { return new TwitterStatusCollection(); }
 
             TimelineOptions wTimelineOptions = new TimelineOptions();
-            wTimelineOptions.Count = _TwitterConfigSection.StatusesCount;
+            wTimelineOptions.Count = configSection.StatusesCount;
             wTimelineOptions.IncludeRetweets = true;
-            wTimelineOptions.Proxy = _WebProxy;
+            wTimelineOptions.Proxy = Proxy;
 
             if (pMaxStatusId.HasValue)
             {
@@ -84,20 +117,20 @@ namespace Fwk.SocialNetworks.Twitter
                 wTimelineOptions.SinceStatusId = pSinceStatusId.Value;
             }
 
-            TwitterStatusCollection result = TwitterTimeline.Mentions(_OAuthTokens, wTimelineOptions);
+            TwitterStatusCollection result = TwitterTimeline.Mentions(configSection.GetOAuthTokens(providerName), wTimelineOptions);
 
-            if (result == null) { this.CheckForErrors(); }
+            if (result == null) {CheckForErrors(); }
 
             return result;
         }
 
-        private TwitterDirectMessageCollection GetDirectMessages(decimal? pSinceStatusId, decimal? pMaxStatusId)
+        private static TwitterDirectMessageCollection GetDirectMessages(decimal? pSinceStatusId, decimal? pMaxStatusId, string providerName)
         {
             //Verifica si el restante de consultas permitidas es menor al minimo configurado.
             //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (this.HasExceededLimit()) { return new TwitterDirectMessageCollection(); }
+            if (HasExceededLimit(providerName)) { return new TwitterDirectMessageCollection(); }
 
-            DirectMessagesOptions wDirectMessagesOptions = new DirectMessagesOptions() { Proxy = _WebProxy };
+            DirectMessagesOptions wDirectMessagesOptions = new DirectMessagesOptions() { Proxy = Proxy };
 
             if (pMaxStatusId.HasValue)
             {
@@ -109,20 +142,20 @@ namespace Fwk.SocialNetworks.Twitter
                 wDirectMessagesOptions.SinceStatusId = pSinceStatusId.Value;
             }
 
-            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessages(_OAuthTokens, wDirectMessagesOptions);
+            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessages(configSection.GetOAuthTokens(providerName), wDirectMessagesOptions);
 
-            if (result == null) { this.CheckForErrors(); }
+            if (result == null) { CheckForErrors(); }
 
             return result;
         }
 
-        private TwitterDirectMessageCollection GetDirectMessagesSent(decimal? pSinceStatusId, decimal? pMaxStatusId)
+        private static TwitterDirectMessageCollection GetDirectMessagesSent(decimal? pSinceStatusId, decimal? pMaxStatusId,string providerName)
         {
             //Verifica si el restante de consultas permitidas es menor al minimo configurado.
             //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (this.HasExceededLimit()) { return new TwitterDirectMessageCollection(); }
+            if (HasExceededLimit(providerName)) { return new TwitterDirectMessageCollection(); }
 
-            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = _WebProxy };
+            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = Proxy };
 
             if (pMaxStatusId.HasValue)
             {
@@ -134,67 +167,62 @@ namespace Fwk.SocialNetworks.Twitter
                 wDirectMessagesSentOptions.SinceStatusId = pSinceStatusId.Value;
             }
 
-            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessagesSent(_OAuthTokens, wDirectMessagesSentOptions);
+            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessagesSent(configSection.GetOAuthTokens(providerName), wDirectMessagesSentOptions);
 
-            if (result == null) { this.CheckForErrors(); }
+            if (result == null) { CheckForErrors(); }
 
             return result;
         }
 
-        private bool HasExceededLimit()
+        private static bool HasExceededLimit(string providerName)
         {
-            return (this.GetRateLimitStatus().RemainingHits < _TwitterConfigSection.MinRemainingHits);
+            return (GetRateLimitStatus(providerName).RemainingHits < configSection.MinRemainingHits);
         }
 
         private void InitializeClass()
         {
             
 
-            _OAuthTokens = new OAuthTokens();
-            _OAuthTokens.AccessToken = _DefaultProvider.AccessToken;
-            _OAuthTokens.AccessTokenSecret = _DefaultProvider.AccessTokenSecret;
 
-            _OAuthTokens.ConsumerKey = _TwitterConfigSection.ConsumerKey;
-            _OAuthTokens.ConsumerSecret = _TwitterConfigSection.ConsumerSecret;
         }
 
         #endregion
 
         #region [Public Methods]
 
-        public TwitterUser GetUser(decimal userId)
+        public static TwitterUser GetUser(decimal userId,string providerName)
         {
             OptionalProperties wOptionalProperties;
             wOptionalProperties = new OptionalProperties();
-            wOptionalProperties.Proxy = _WebProxy;
+            wOptionalProperties.Proxy = Proxy;
 
-            TwitterUser wTwitterUser = TwitterUser.Show(_OAuthTokens, userId, wOptionalProperties);
+            TwitterUser wTwitterUser = TwitterUser.Show(configSection.GetOAuthTokens(providerName), userId, wOptionalProperties);
 
-            if (wTwitterUser == null) { this.CheckForErrors(); }
+            if (wTwitterUser == null) { CheckForErrors(); }
 
             return wTwitterUser;
         }
 
-        public TwitterUser GetUser(string userName)
+        public static TwitterUser GetUser(string userName,string providerName)
         {
             OptionalProperties wOptionalProperties;
             wOptionalProperties = new OptionalProperties();
-            wOptionalProperties.Proxy = _WebProxy;
+            wOptionalProperties.Proxy = Proxy;
 
-            TwitterUser wTwitterUser = TwitterUser.Show(_OAuthTokens, userName, wOptionalProperties);
+            TwitterUser wTwitterUser = TwitterUser.Show(configSection.GetOAuthTokens(providerName), userName, wOptionalProperties);
 
-            if (wTwitterUser == null) { this.CheckForErrors(); }
+            if (wTwitterUser == null) { CheckForErrors(); }
 
             return wTwitterUser;
         }
 
-        public List<TwitterStatus> GetAllUserMentions(decimal? pSinceStatusId, DateTime logSince)
+        public static List<TwitterStatus> GetAllUserMentions(decimal? pSinceStatusId, DateTime logSince, string providerName)
         {
             TwitterStatusCollection wTwitterStatusCollection;
             List<TwitterStatus> wList = new List<TwitterStatus>();
             List<TwitterStatus> wTempList = new List<TwitterStatus>();
 
-            wTwitterStatusCollection = this.GetMentions(pSinceStatusId, null);
+            wTwitterStatusCollection = GetMentions(pSinceStatusId, null, providerName);
 
             if (wTwitterStatusCollection != null)
             {
@@ -209,7 +237,7 @@ namespace Fwk.SocialNetworks.Twitter
 
                 wTempList.Clear();
 
-                wTwitterStatusCollection = this.GetMentions(pSinceStatusId, wMaxStatusId);
+                wTwitterStatusCollection = GetMentions(pSinceStatusId, wMaxStatusId, providerName);
 
                 if (wTwitterStatusCollection != null && wTwitterStatusCollection.Count > 0)
                 {
@@ -224,13 +252,13 @@ namespace Fwk.SocialNetworks.Twitter
             return wList;
         }
 
-        public List<TwitterStatus> GetAllUserStatuses(decimal? pSinceStatusId, DateTime logSince)
+        public static List<TwitterStatus> GetAllUserStatuses(decimal? pSinceStatusId, DateTime logSince, string providerName)
         {
             TwitterStatusCollection wTwitterStatusCollection;
             List<TwitterStatus> wList = new List<TwitterStatus>();
             List<TwitterStatus> wTempList = new List<TwitterStatus>();
 
-            wTwitterStatusCollection = this.GetStatuses(pSinceStatusId, null);
+            wTwitterStatusCollection = GetStatuses(pSinceStatusId, null, providerName);
 
             if (wTwitterStatusCollection != null)
             {
@@ -245,7 +273,7 @@ namespace Fwk.SocialNetworks.Twitter
 
                 wTempList.Clear();
 
-                wTwitterStatusCollection = this.GetStatuses(pSinceStatusId, wMaxStatusId);
+                wTwitterStatusCollection = GetStatuses(pSinceStatusId, wMaxStatusId, providerName);
 
                 if (wTwitterStatusCollection != null && wTwitterStatusCollection.Count > 0)
                 {
@@ -260,13 +288,13 @@ namespace Fwk.SocialNetworks.Twitter
             return wList;
         }
 
-        public List<TwitterDirectMessage> GetAllUserMessages(decimal? pSinceStatusId, DateTime logSince)
+        public static List<TwitterDirectMessage> GetAllUserMessages(decimal? pSinceStatusId, DateTime logSince,string providerName)
         {
             TwitterDirectMessageCollection wTwitterDirectMessageCollection;
             List<TwitterDirectMessage> wList = new List<TwitterDirectMessage>();
             List<TwitterDirectMessage> wTempList = new List<TwitterDirectMessage>();
 
-            wTwitterDirectMessageCollection = this.GetDirectMessages(pSinceStatusId, null);
+            wTwitterDirectMessageCollection = GetDirectMessages(pSinceStatusId, null, providerName);
 
             if (wTwitterDirectMessageCollection != null)
             {
@@ -281,7 +309,7 @@ namespace Fwk.SocialNetworks.Twitter
 
                 wTempList.Clear();
 
-                wTwitterDirectMessageCollection = this.GetDirectMessages(pSinceStatusId, wMaxStatusId);
+                wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, wMaxStatusId, providerName);
 
                 if (wTwitterDirectMessageCollection != null && wTwitterDirectMessageCollection.Count > 0)
                 {
@@ -296,13 +324,13 @@ namespace Fwk.SocialNetworks.Twitter
             return wList;
         }
 
-        public List<TwitterDirectMessage> GetAllUserMessagesSent(decimal? pSinceStatusId, DateTime logSince)
+        public static List<TwitterDirectMessage> GetAllUserMessagesSent(decimal? pSinceStatusId, DateTime logSince,string providerName)
         {
             TwitterDirectMessageCollection wTwitterDirectMessageCollection;
             List<TwitterDirectMessage> wList = new List<TwitterDirectMessage>();
             List<TwitterDirectMessage> wTempList = new List<TwitterDirectMessage>();
 
-            wTwitterDirectMessageCollection = this.GetDirectMessagesSent(pSinceStatusId, null);
+            wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, null, providerName);
 
             if (wTwitterDirectMessageCollection != null)
             {
@@ -317,7 +345,7 @@ namespace Fwk.SocialNetworks.Twitter
 
                 wTempList.Clear();
 
-                wTwitterDirectMessageCollection = this.GetDirectMessagesSent(pSinceStatusId, wMaxStatusId);
+                wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, wMaxStatusId,providerName);
 
                 if (wTwitterDirectMessageCollection != null && wTwitterDirectMessageCollection.Count > 0)
                 {
@@ -332,13 +360,13 @@ namespace Fwk.SocialNetworks.Twitter
             return wList;
         }
 
-        public TwitterRateLimitStatus GetRateLimitStatus()
+        public static TwitterRateLimitStatus GetRateLimitStatus(string providerName)
         {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = _WebProxy };
-            return TwitterRateLimitStatus.GetStatus(_OAuthTokens, wOptionalProperties);
+            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
+            return TwitterRateLimitStatus.GetStatus(configSection.GetOAuthTokens(providerName), wOptionalProperties);
         }
 
-        public void CheckForErrors()
+        public static void CheckForErrors()
         {
             if (global::Twitterizer.RequestStatus.LastRequestStatus.Status != RequestResult.Success)
             {
@@ -365,9 +393,9 @@ namespace Fwk.SocialNetworks.Twitter
         /// responder, debe contener la mencion del usuario remitente del mensaje padre.
         /// </remarks>
         /// <returns>El status creado.</returns>
-        public TwitterStatus Update(string pText, decimal? pInReplayToStatudId)
+        public static TwitterStatus Update(string pText, decimal? pInReplayToStatudId, string providerName)
         {
-            StatusUpdateOptions wStatusUpdateOptions = new StatusUpdateOptions() { Proxy = _WebProxy };
+            StatusUpdateOptions wStatusUpdateOptions = new StatusUpdateOptions() { Proxy = Proxy };
 
             if (pInReplayToStatudId.HasValue)
             {
@@ -375,9 +403,9 @@ namespace Fwk.SocialNetworks.Twitter
                 wStatusUpdateOptions.InReplyToStatusId = pInReplayToStatudId.Value;
             }
 
-            TwitterStatus wTwitterStatus = TwitterStatus.Update(_OAuthTokens, pText, wStatusUpdateOptions);
+            TwitterStatus wTwitterStatus = TwitterStatus.Update(configSection.GetOAuthTokens(providerName), pText, wStatusUpdateOptions);
 
-            this.CheckForErrors();
+            CheckForErrors();
 
             return wTwitterStatus;
         }
@@ -388,13 +416,13 @@ namespace Fwk.SocialNetworks.Twitter
         /// <param name="pUserId">Identificador del usuario</param>
         /// <param name="pText">Texto del mensaje, inferior a 140 caracteres.</param>
         /// <returns>El mensaje directo enviado.</returns>
-        public TwitterDirectMessage SendDirectMessage(decimal pUserId, string pText)
+        public static TwitterDirectMessage SendDirectMessage(decimal pUserId, string pText,string providerName)
         {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = _WebProxy };
+            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
 
-            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(_OAuthTokens, pUserId, pText, wOptionalProperties);
+            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(configSection.GetOAuthTokens(providerName), pUserId, pText, wOptionalProperties);
 
-            this.CheckForErrors();
+            CheckForErrors();
 
             return wTwitterDirectMessage;
         }
@@ -405,13 +433,13 @@ namespace Fwk.SocialNetworks.Twitter
         /// <param name="pScreenName">Screen Name del usuario</param>
         /// <param name="pText">Texto del mensaje, inferior a 140 caracteres.</param>        
         /// <returns>El mensaje directo enviado.</returns>
-        public TwitterDirectMessage SendDirectMessage(string pScreenName, string pText)
+        public static TwitterDirectMessage SendDirectMessage(string pScreenName, string pText,string providerName)
         {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = _WebProxy };
+            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
 
-            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(_OAuthTokens, pScreenName, pText, wOptionalProperties);
+            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(configSection.GetOAuthTokens(providerName), pScreenName, pText, wOptionalProperties);
 
-            this.CheckForErrors();
+            CheckForErrors();
 
             return wTwitterDirectMessage;
         }
