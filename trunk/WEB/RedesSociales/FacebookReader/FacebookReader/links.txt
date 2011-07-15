@@ -1,0 +1,15 @@
+﻿http://code.google.com/p/oauth-dot-net/
+OAuth.net is a .net library which provides full OAuth consumer and provider support.
+ The library facilitates secure API authentication in a simple and standard method for desktop and web applications.
+
+OAuth allows user to grant and deny one application access to the data stored in another application.
+It forms one of the foundation blocks of the data portability concept, which has the aim of allowing users to easily move their personal data around the web.
+
+
+baadal an open source port of Shindig to C#
+
+https://sites.google.com/site/baadalsharp/
+
+
+OpenSocial Tutorial
+http://docs.opensocial.org/display/OSD/OpenSocial+Tutorial
