@@ -87,6 +87,17 @@ namespace Fwk.SocialNetworks.Config
             }
         }
 
-
+        [ConfigurationProperty("url")]
+        public string Url
+        {
+            get
+            {
+                return (string)this["url"];
+            }
+            set
+            {
+                this["url"] = value;
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ using TweetSharp.Twitter.Model;
 using TweetSharp.Extensions;
 using TweetSharp.Twitter.Extensions;
 using TweetSharp;
+using Fwk.SocialNetworks.Config;
 
 namespace Fwk.SocialNetworks.Twitter
 {
@@ -21,27 +22,11 @@ namespace Fwk.SocialNetworks.Twitter
     {
         static string _ConsumerKey = "9a7S21L9kIEQminDtAl6A";
         static  string _ConsumerSecret = "2o5eAeVwb2DeofJIieeOxRBIDRSaJASQs7L5PDLR8";
-
         static string _AccessToken = "183244012-bkfiuFXXMDAtJtoOju2HsD99S8XorzTsoZfRNJyK";
         static string _AccessTokenSecret = "1tky2wvX3OMd7w25CDSNHveo1q2gVUNIsvC7unInk";
 
-        public static  UserSchema.user DeserializeUserResponse(string userResponse)
-        {
-            TextReader wTextReader = new StringReader(userResponse);
 
-            XmlSerializer wSerializer = new XmlSerializer(typeof(UserSchema.user));
 
-            return (UserSchema.user)wSerializer.Deserialize(wTextReader);
-        }
-
-        public static StreamSchema.statuses DeserializeStatusesResponse(string statusesResponse)
-        {
-            TextReader wTextReader = new StringReader(statusesResponse);
-
-            XmlSerializer wSerializer = new XmlSerializer(typeof(StreamSchema.statuses));
-
-            return (StreamSchema.statuses)wSerializer.Deserialize(wTextReader);
-        }
 
         public static StreamSchema.statuses GetUserStatuses(string userName, long? beforeId)
         {
@@ -62,7 +47,7 @@ namespace Fwk.SocialNetworks.Twitter
 
             ITwitterLeafNode leafNode = userTimeLine.AsXml();
 
-            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy("http://proxyallus:3030").Request();
+            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy(TwitterWrapper.Config.Proxy.Url).Request();
 
             if (wTwitterResult.IsTwitterError)
             {
@@ -74,7 +59,7 @@ namespace Fwk.SocialNetworks.Twitter
             }
             else
             {
-                return DeserializeStatusesResponse(wTwitterResult.Response);
+                return (StreamSchema.statuses)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(StreamSchema.statuses), wTwitterResult.Response);
             }
         }
 
@@ -100,8 +85,8 @@ namespace Fwk.SocialNetworks.Twitter
             }
 
             ITwitterLeafNode leafNode = statusMentions.AsXml();
-
-            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy("http://proxy:3128").Request();
+            //TwitterWrapper.Config.Proxy.Url
+            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy(TwitterWrapper.Config.Proxy.Url).Request();
 
             if (wTwitterResult.IsTwitterError)
             {
@@ -114,7 +99,7 @@ namespace Fwk.SocialNetworks.Twitter
             else
             {
 
-                return DeserializeStatusesResponse(wTwitterResult.Response);
+                return (StreamSchema.statuses)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(StreamSchema.statuses), wTwitterResult.Response);  //DeserializeStatusesResponse(wTwitterResult.Response);
             }
         }
 
@@ -141,7 +126,7 @@ namespace Fwk.SocialNetworks.Twitter
 
             ITwitterLeafNode leafNode = userTimeLine.AsXml();
 
-            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy("http://proxy:3128").Request();
+            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy(TwitterWrapper.Config.Proxy.Url).Request();
 
             if (wTwitterResult.IsTwitterError)
             {
@@ -153,7 +138,7 @@ namespace Fwk.SocialNetworks.Twitter
             }
             else
             {
-                return DeserializeStatusesResponse(wTwitterResult.Response);
+                return (StreamSchema.statuses)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(StreamSchema.statuses), wTwitterResult.Response); //DeserializeStatusesResponse(wTwitterResult.Response);
             }
         }
 
@@ -214,10 +199,10 @@ namespace Fwk.SocialNetworks.Twitter
             ITwitterUsersShow user = request.Users().ShowProfileFor(Convert.ToInt32(userId));
 
             ITwitterLeafNode leafNode = user.AsXml();
+            
+            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy(TwitterWrapper.Config.Proxy.Url).Request();
 
-            TwitterResult wTwitterResult = leafNode.Configuration.UseProxy("http://proxyallus:3030").Request();
-
-            return DeserializeUserResponse(wTwitterResult.Response);
+            return (UserSchema.user)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(UserSchema.user), wTwitterResult.Response); //DeserializeUserResponse(wTwitterResult.Response);
         }
     }
 }
