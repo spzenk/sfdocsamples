@@ -1,0 +1,26 @@
+﻿http://blogs.msdn.com/b/adonet/archive/2008/02/04/exploring-the-performance-of-the-ado-net-entity-framework-part-1.aspx
+
+Performance Matters
+Query Execution
+	  Loading Metadata 11% –
+	  Initializing Metadata 14%– 	
+	  Opening Connection 8%–
+	   View Generation 56%
+	   Load Assembly 2%– 
+	   Tracking 1% (cacheode clases- tracks changes made to entity objects)
+	   Materialization 7%
+	   Misc 1%– 
+·       
+
+http://geeks.ms/blogs/quintas/archive/2008/02/14/buenas-pr-225-cticas-para-contextos-de-tiempo-de-vida-cortos-en-ado-net-entity-framework-beta3.aspx
+Acelerando la creación de ObjectContext
+Buenas practicas:
+
+	1- Having the view pre-generated reduces the startup time down to 2933 milliseconds or about a 28% decrease. For scenarios where view generation is the primary cost, s
+
+	Se puede reducir el tiempo de generación de la vista (un 58% del tiempo de creación) teniéndola compilada previamente.
+	Para ello deberemos ejecutar edmgen.exe con la opción /mode:ViewGeneration, esto crea un fichero de código que puede ser incluido en nuestro proyecto
+
+Antipatrones
+	NO compartir un único ObjectContext por dominio de aplicación
+	No poner en variable de sesión en  una aplicación ASP.NET 

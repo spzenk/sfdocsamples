@@ -10,7 +10,8 @@ using System.Windows.Forms;
 using System.Data.Entity;
 using Fwk.Exceptions;
 using Newtonsoft.Json;
-
+using System.Data.Common;
+using System.Transactions;
 namespace EntityFramework
 {
     public partial class Form1 : Form
@@ -88,13 +89,13 @@ namespace EntityFramework
 
             string json = JsonConvert.SerializeObject(wProductMapp, Formatting.Indented);
 
-//            {
-//  "ProductID": 680,
-//  "Name": "HL Road Frame - Black, 57",
-//  "ProductNumber": null,
-//  "MakeFlag": true,
-//  "SellStartDate": "\/Date(896670000000-0300)\/"
-//}
+            //            {
+            //  "ProductID": 680,
+            //  "Name": "HL Road Frame - Black, 57",
+            //  "ProductNumber": null,
+            //  "MakeFlag": true,
+            //  "SellStartDate": "\/Date(896670000000-0300)\/"
+            //}
 
             textBox1.Text = json;
         }
@@ -120,6 +121,61 @@ namespace EntityFramework
                     MessageBox.Show("Fue un moco desconocido");
             }
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            using (AdventureWorksEntities dc = new AdventureWorksEntities())
+            {
+                
+                 dc.Connection.Open();
+                 DbTransaction tr = dc.Connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+                var products = from p in dc.Product where p.Class.Equals("M") select p;
+                Int16 level = 1;
+               
+               
+                UpdateProducts(products.ToList<Product>(), level);
+                dc.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+                
+               // throw new Exception();
+                tr.Commit();
+                //tr.Rollback();
+                
+            }
+
+        }
+
+        void UpdateProducts(List<Product> products,Int16 level)
+        {
+            foreach (Product p in products)
+            {
+                p.SafetyStockLevel = Convert.ToInt16( p.SafetyStockLevel + level);
+            }
+         
+        }
+
+        private void btnTransactions_2_Click(object sender, EventArgs e)
+        {
+            using (TransactionScope transaction = new TransactionScope())
+            {
+                using (AdventureWorksEntities dc = new AdventureWorksEntities())
+                {
+
+                    dc.Connection.Open();
+
+                    var products = from p in dc.Product where p.Class.Equals("M") select p;
+                    Int16 level = 1;
+
+
+                    UpdateProducts(products.ToList<Product>(), level);
+                    dc.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
+
+                    //throw new Exception();
+                }
+                transaction.Complete();
+            }
+          
+
         }
 
 
