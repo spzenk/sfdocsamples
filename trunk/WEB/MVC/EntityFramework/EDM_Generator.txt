@@ -1,1 +1,10 @@
-﻿
+﻿Documentacion EntityFrameworkTemplateFileManager utilidad Entity Framework
+
+c:\Archivos de programa\Microsoft Visual Studio 10.0\Common7\IDE\Extensions\Microsoft\Entity Framework Tools\Templates\Includes\
+
+http://msdn.microsoft.com/es-es/library/ff477603.aspx
+
+
+Ejemplos
+
+http://damieng.com/blog/2008/07/23/linq-to-sql-t4-template-reloaded
