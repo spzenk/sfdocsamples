@@ -8,3 +8,6 @@ http://msdn.microsoft.com/es-es/library/ff477603.aspx
 Ejemplos
 
 http://damieng.com/blog/2008/07/23/linq-to-sql-t4-template-reloaded
+
+T4 Text Template Control Blocks
+http://msdn.microsoft.com/en-us/library/bb126545.aspx
