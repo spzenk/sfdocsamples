@@ -30,6 +30,7 @@ namespace Asymetric_1.Client
         private void btnDEncrypt_Click(object sender, EventArgs e)
         {
             txtNoCifrado.Text = Desencriptar(txtCifrado.Text);
+            
         }
         private void CargarLlave(string archivo)
         {
