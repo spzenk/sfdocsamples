@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{F85369F2-BD64-4953-A924-90A838D8A29A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{5FA90AD0-1DDA-424A-8D6D-569E0C9D8CD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "service\Service.csproj", "{5FA90AD0-1DDA-424A-8D6D-569E0C9D8CD9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoisonMessageService", "PoisonMessageService\PoisonMessageService.csproj", "{4E66F395-1641-4F2D-AD94-DFB97A805338}"
 EndProject
