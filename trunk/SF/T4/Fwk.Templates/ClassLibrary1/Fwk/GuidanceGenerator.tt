@@ -4,21 +4,18 @@
 <#@ Template Language="C#v3.5" #>  
 <#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
 <#@ import namespace="System.Data.SqlClient" #>
-<#@ include file="DeleteProcedureTemplate.tt" #>
-<#@ include file="InsertProcedureTemplate.tt" #>
-<#@ include file="UpdateProcedureTemplate.tt" #>
+<#@ include file="EntityTemplate2.tt" #>
+
 <#+
-// <copyright file="CrudProcedureGenerator.tt" company="pelsoft">
-//  Copyright © pelsoft. All Rights Reserved.
-// </copyright>
+
 
  public class CrudProcedureGenerator : Generator
 {
     public string CnnString;
     public string DatabaseName;
-  	public DeleteProcedureTemplate DeleteTemplate = new DeleteProcedureTemplate();
-	public InsertProcedureTemplate InsertTemplate = new InsertProcedureTemplate();
-	public UpdateProcedureTemplate UpdateTemplate = new UpdateProcedureTemplate();
+  	
+	public EntityTemplate2 template = new EntityTemplate2();
+	
 	
 
   protected override void RunCore()
@@ -41,18 +38,13 @@
     {
       
 		
-		 this.InsertTemplate.DatabaseName = this.DatabaseName;
-	     this.InsertTemplate.ServerConnection = serverConnection;
-         this.InsertTemplate.TableName = table.Name;
-		 this.UpdateTemplate.DatabaseName = this.DatabaseName;
-	     this.UpdateTemplate.ServerConnection = serverConnection;
-         this.UpdateTemplate.TableName = table.Name;
-		 this.DeleteTemplate.DatabaseName = this.DatabaseName;
-	     this.DeleteTemplate.ServerConnection = serverConnection;
-         this.DeleteTemplate.TableName = table.Name;
-      	 this.DeleteTemplate.RenderToFile(DatabaseName + "_Del.sql");
-		 this.InsertTemplate.RenderToFile(DatabaseName + "_Insert.sql");
-		 this.UpdateTemplate.RenderToFile(DatabaseName + "_Update.sql");
+		 this.template.DatabaseName = this.DatabaseName;
+	     this.template.ServerConnection = serverConnection;
+         this.template.TableName = table.Name;
+		 
+		 this.template.RenderToFile(table + ".cs");
+		 
+		 
     }
 	    //}
     // catch (FailedOperationException e)
