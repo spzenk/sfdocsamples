@@ -1,0 +1,38 @@
+﻿<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#+
+public class EntityTemplate2 : Template
+{
+	
+	public string EntityName ;
+	public string TargetNamespace;
+	public string TableName;
+	public Microsoft.SqlServer.Management.Common.ServerConnection Connection;
+	
+	 protected override void RenderCore()
+    {
+		Server server = new Server(Connection);
+        Database database = new Database(server, DatabaseName);
+        Table table = new Table(database, TableName);
+        table.Refresh();
+		
+		#>
+		
+		public class <#= table.Name #>{
+		<#+
+        PushIndent("\t");
+        foreach (Column column in table.Columns)
+        {
+            if (column.InPrimaryKey)
+                WriteLine("@" + column.Name + " " + column.DataType.Name);
+        }
+        PopIndent();
+		#>
+		}
+		<#+
+	}
+}
+
+#>

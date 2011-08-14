@@ -1,0 +1,16 @@
+﻿<#@ template language="C#" #>
+<#@ property processor="PropertyProcessor" name="EntityName" #>
+<#@ property processor="PropertyProcessor" name="TargetNamespace" #>
+<#@ assembly name="System.dll" #>
+using System;
+using System.Collections.Generic;
+using System.Text;
+using ISU.Common.BackEnd;
+
+namespace <#= TargetNamespace #>.Entities
+{
+	[Serializable]
+	public class <#= EntityName #> : <#= EntityName #>Base
+	{
+	}
+}

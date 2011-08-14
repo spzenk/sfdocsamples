@@ -1,0 +1,55 @@
+﻿<#@ template language="C#" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Data" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ Assembly Name="System.Windows.Forms.dll" #>
+<#@ assembly name="Microsoft.SqlServer.Smo" #>
+<#@ assembly name="Microsoft.SqlServer.ConnectionInfo" #>
+<#@ assembly name="Microsoft.SqlServer.Management.Sdk.Sfc" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Data" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#@ import namespace="Microsoft.SqlServer.Management.Smo" #>
+<#@ include file="HelperFunctions.cs.t4" #>
+<#
+	string EntityName = "GastoBE";
+ 	string TargetNamespace = "ss";
+  	string TableName = "Gasto";
+ 	string CnnString = @"Data Source=santana\SQLEXPRESS2008R2;Initial Catalog=gastos_my;Integrated Security=True";
+	string databaseName ="gastos_my";
+#>	
+using System;
+using System.Collections.Generic;
+using System.Text;
+
+
+namespace <#= TargetNamespace #>
+{
+	[Serializable]
+	public class <#= EntityName #>
+	{
+			<#
+				Table t = GetTable(TableName,CnnString,databaseName);
+				//PushIndent(@"\t");
+				foreach (Column column in t.Columns)
+				{ #>	
+				
+				 public string	<#= column.Name #> () {get;set;}
+				
+				
+				 
+				<# } #>
+				
+		
+				
+	}
+}
+
+<#+ 
+				string GetType()
+				
+				#>
