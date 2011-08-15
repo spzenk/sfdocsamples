@@ -53,6 +53,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fwk.CodeGenerator.Core">
+      <HintPath>..\..\..\..\..\fwk\trunk\src\FrameworkTools\Fwk.CodeGenerator\Fwk.CodeGenerator.Core\bin\Debug\Fwk.CodeGenerator.Core.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ExceptionMessageBox, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Microsoft SQL Server\100\SDK\Assemblies\Microsoft.ExceptionMessageBox.dll</HintPath>
@@ -103,12 +106,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="fwk.guidances\EntityTemplate.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EntityTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +120,10 @@
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Include="EntityTemplate.tt">
+    </None>
+    <None Include="fwk.guidances\Fwk.Codegenerator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Fwk.Codegenerator.cs</LastGenOutput>
     </None>
     <None Include="fwk.guidances\EntityTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -175,6 +176,14 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\DAC.txt" />
+    <Content Include="Templates\Entity.txt" />
+    <Content Include="Templates\Isvc.txt" />
+    <Content Include="Templates\MappingType.xml" />
+    <Content Include="Templates\Svc.txt" />
+    <Content Include="Templates\Templates.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
