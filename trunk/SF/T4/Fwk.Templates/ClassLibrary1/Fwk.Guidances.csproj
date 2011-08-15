@@ -53,8 +53,8 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Fwk.CodeGenerator.Core">
-      <HintPath>..\..\..\..\..\fwk\trunk\src\FrameworkTools\Fwk.CodeGenerator\Fwk.CodeGenerator.Core\bin\Debug\Fwk.CodeGenerator.Core.dll</HintPath>
+    <Reference Include="Fwk.Bases">
+      <HintPath>..\..\..\..\..\fwk\trunk\src\Libraries\Framework\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ExceptionMessageBox, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -106,6 +106,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="fwk.guidances\EntitySimpleTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntitySimpleTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fwk.guidances\EntityTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntityTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -121,13 +131,9 @@
     </None>
     <None Include="EntityTemplate.tt">
     </None>
-    <None Include="fwk.guidances\Fwk.Codegenerator.tt">
+    <None Include="fwk.guidances\EntitySimpleTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Fwk.Codegenerator.cs</LastGenOutput>
-    </None>
-    <None Include="fwk.guidances\EntityTemplate.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EntityTemplate.cs</LastGenOutput>
+      <LastGenOutput>EntitySimpleTemplate.cs</LastGenOutput>
     </None>
     <None Include="Fwk\fwk.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -144,6 +150,10 @@
     <None Include="isu\EntityBase.cs.t4" />
     <None Include="isu\EntityConcrete.cs.t4" />
     <None Include="isu\EntityControllerBase.cs.t4" />
+    <None Include="fwk.guidances\EntityTemplate.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityTemplate.cs</LastGenOutput>
+    </None>
     <None Include="UpdateProcedureTemplate.tt">
     </None>
   </ItemGroup>
@@ -152,9 +162,9 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Fwk.Templates\Fwk.Templates.csproj">
+    <ProjectReference Include="..\Fwk.Templates\Fwk.Guidance.Core.csproj">
       <Project>{EA99897A-ADDB-4B36-A332-56FA244720CA}</Project>
-      <Name>Fwk.Templates</Name>
+      <Name>Fwk.Guidance.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -181,7 +191,9 @@
     <Content Include="Templates\DAC.txt" />
     <Content Include="Templates\Entity.txt" />
     <Content Include="Templates\Isvc.txt" />
-    <Content Include="Templates\MappingType.xml" />
+    <Content Include="Templates\MappingType.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Templates\Svc.txt" />
     <Content Include="Templates\Templates.xml" />
   </ItemGroup>

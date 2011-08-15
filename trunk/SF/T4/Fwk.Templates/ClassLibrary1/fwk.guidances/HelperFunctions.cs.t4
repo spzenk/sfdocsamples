@@ -22,6 +22,18 @@ private Microsoft.SqlServer.Management.Smo.Database GetDatabase(string cnnString
                  
 	return  db; 
 }
+						
+private string GetCSharpType(Microsoft.SqlServer.Management.Smo.Column column)
+{
+//	return Fwk.Guidance.Core.FwkGeneratorHelper.GetCSharpType(column);
+	return Fwk.Guidance.Core.FwkGenerator.GetCSharpType( column.DataType.Name.ToUpper());
+	
+}
+			
+private string GetNullable(Microsoft.SqlServer.Management.Smo.Column column)
+{
 
+	return Fwk.Guidance.Core.FwkGenerator.GetNullable(column.DataType.Name.ToUpper());
+}
 
 #>
