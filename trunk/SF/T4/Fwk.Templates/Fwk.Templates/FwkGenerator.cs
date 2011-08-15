@@ -24,10 +24,7 @@ namespace Fwk.Guidance.Core
 
         static FwkGenerator()
         {
-            //roottemplate = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates"); //Path.Combine(HelperFunctions.ProgramFilesx86(), @"Allus Global BPO\FwkTemplates\tt\");
-
-            //_TemplateDocument = (TemplateDocument)HelperFunctions.DeserializeFromXml(typeof(TemplateDocument), GetFileTemplate("Templates.xml"));
-            //_MappingTypes = (MappingTypes)HelperFunctions.DeserializeFromXml(typeof(MappingTypes), HelperFunctions.GetFileTemplate(roottemplate, "MappingType.xml"));
+            
             LoadMappingTypes();
             NotSupportTypes_ToIncludeInBackEnd = "xml,timestamp,sql_variant";
             NotSupportTypes_ToSearchInStoreProcedure = "xml,timestamp,sql_variant,varbinary,binary,image";
