@@ -132,10 +132,7 @@
     </None>
     <None Include="DeleteProcedureTemplate.tt">
     </None>
-    <None Include="EntityFramework\EntityFwkGen.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>EntityFwkGen.cs</LastGenOutput>
-    </None>
+    <None Include="EntityFramework\EntityFwkGen.tt" />
     <None Include="EntityFramework\EntityFwkGen_helper.tt" />
     <None Include="EntityFramework\Model1.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
