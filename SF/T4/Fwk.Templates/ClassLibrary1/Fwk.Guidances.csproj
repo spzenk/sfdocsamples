@@ -96,6 +96,8 @@
     <Reference Include="System.Data.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -106,24 +108,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="fwk.guidances\EntitySimpleTemplate.cs">
+    <Compile Include="CrudProcedureGenerator.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntitySimpleTemplate.tt</DependentUpon>
+      <DependentUpon>CrudProcedureGenerator.tt</DependentUpon>
     </Compile>
-    <Compile Include="fwk.guidances\EntityTemplate.cs">
+    <Compile Include="EntityFramework\Gastos.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>EntityTemplate.tt</DependentUpon>
+      <DependentUpon>Gastos.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="EntityFramework\Gastos.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Gastos.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="CrudProcedureGenerator.tt">
       <LastGenOutput>CrudProcedureGenerator.cs</LastGenOutput>
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Include="DeleteProcedureTemplate.tt">
+    </None>
+    <None Include="EntityFramework\EntityFwkGen.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EntityFwkGen.cs</LastGenOutput>
+    </None>
+    <None Include="EntityFramework\EntityFwkGen_helper.tt" />
+    <None Include="EntityFramework\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.cs</LastGenOutput>
     </None>
     <None Include="EntityGenerator.tt">
       <LastGenOutput>EntityGenerator.cs</LastGenOutput>
@@ -143,7 +159,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>GuidanceGenerator.cs</LastGenOutput>
     </None>
-    <None Include="Fwk\EntityTemplate2.tt" />
     <None Include="fwk.guidances\HelperFunctions.cs.t4" />
     <None Include="InsertProcedureTemplate.tt">
     </None>
