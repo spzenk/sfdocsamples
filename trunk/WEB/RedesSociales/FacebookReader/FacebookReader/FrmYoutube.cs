@@ -57,10 +57,10 @@ namespace Fwk.SocialNetworks.Data
         }
         void Authenticate(string userName, string password)
         {
-          
+
 
             YouTubeService service = new YouTubeService("pelsoft", developerKey);
-           
+
             service.setUserCredentials(userName, password);
             //textbox1 contains username and maskedTextBox1 contains password
             try
@@ -70,42 +70,47 @@ namespace Fwk.SocialNetworks.Data
             catch (System.Net.WebException e)
             { MessageBox.Show(e.Message); }
         }
+
         YouTubeRequest GetYouTubeRequest(string userName, string password)
         {
-           
-            string clientID = "";
-             string YOUTUBE_CHANNEL = "moviedomof";
-             YouTubeRequestSettings settings = new YouTubeRequestSettings("pelsoft", developerKey, userName, password);
-             settings.Timeout = 3000;
-           
+            string authSubUrl = AuthSubUtil.getRequestUrl(@"http://www.allus.com", "http://gdata.youtube.com", false, false);
+
+            //http://www.allus.com/?token=1/jWsaQjdCeZQKYQc3HKQ0Pzy5Oxm8VUiPLVsexE7Wp0A
+            //http://www.allus.com/?token=1/4dfiL65QdZmpvOmUr-CJfIwvhK0XE3mcEgFljwBPAxQ
+            YouTubeRequestSettings settings = null;// new YouTubeRequestSettings("pelsoft", developerKey, userName, password);
+
+            settings = new YouTubeRequestSettings("http://www.allus.com", developerKey, "4dfiL65QdZmpvOmUr-CJfIwvhK0XE3mcEgFljwBPAxQ");
+            settings.Timeout = 1000000;
             YouTubeRequest wYouTubeRequest = new YouTubeRequest(settings);
             wYouTubeRequest.Proxy = YoutubeWrapper.Proxy;
-            
+
             return wYouTubeRequest;
-
-
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
 
-           // Authenticate("moviedomof","lincelince");
-
+            // Authenticate("moviedomof","lincelince");
             YouTubeRequest request = GetYouTubeRequest("moviedomof", "lincelince");
 
-         
-            
-
             //request.GetComments(
-                //http://gdata.youtube.com/feeds/api/videos
-                              
-            
+            //http://gdata.youtube.com/feeds/api/videos
+
+
+            string s = YoutubeWrapper.FetchingReqToken();
+            //Authorization: OAuth o
+            //auth_version="1.0",
+            //oauth_nonce="77d5b9ce50f34ab8a36da1288d9ed800",
+            //oauth_timestamp="1314909000",
+            //oauth_consumer_key="pelsoft",
+            //oauth_signature_method="HMAC-SHA1",
+            //oauth_signature="a%2BH3lyDwMVPzUWJBQk3nCJv1s%2FY%3D"
 
 
             //Displaying a feed of videos
-            Feed<Video> videoFeed = request.Get<Video>(new Uri(YoutubeWrapper.Get_Url_Feed_Video("",0,10)));
+            Feed<Video> videoFeed = request.Get<Video>(new Uri(YoutubeWrapper.Get_Video()));
 
-           txtRes.Text= YoutubeWrapper.PrintVideoFeed(videoFeed);
+            txtRes.Text = YoutubeWrapper.PrintVideoFeed(videoFeed);
 
 
         }

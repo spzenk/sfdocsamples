@@ -5,6 +5,7 @@ using System.Text;
 using Google.YouTube;
 using Google.GData.Extensions.MediaRss;
 using Google.GData.Client;
+
 using System.Net;
 
 namespace Fwk.SocialNetworks.Youtube
@@ -117,7 +118,7 @@ namespace Fwk.SocialNetworks.Youtube
         }
 
         static string feed_video_q_starti_max_v = " http://gdata.youtube.com/feeds/api/videos?q={0}&start-index={1}&max-results={2}&v={3}";
-
+        static string feeds_uploads = "http://gdata.youtube.com/feeds/api/users/{0}/uploads";
         /// <summary>
         /// Un feed de vídeos puede contener un máximo de 999 entradas
         /// </summary>
@@ -130,12 +131,49 @@ namespace Fwk.SocialNetworks.Youtube
 
             string feedUrl = String.Format("http://gdata.youtube.com/feeds/api/users/{0}/uploads?orderby=published","moviedomof");
 
-            //return feedUrl;
-            //return "http://gdata.youtube.com/feeds/api/users/moviedomof/uploads?orderby=published";
 
-            return "http://gdata.youtube.com/feeds/api/users/" + "moviedomof" + "/uploads";
-           //Sample http://gdata.youtube.com/feeds/api/videos?q=skateboarding+dog&start-index=21&max-results=10&v=2
-            //return String.Format(feed_video_q_starti_max_v, filter, startIndex.ToString(), maxResults.ToString(), 2);
+            feedUrl = String.Format(feeds_uploads,"moviedomof");
+
+        ///http://gdata.youtube.com/feeds/api/users/GoogleDevelopers/uploads
+            return feedUrl ;
+        }
+
+        internal static string Get_Video()
+        {
+
+            string feedUrl = "http://gdata.youtube.com/feeds/api/users/GoogleDevelopers/uploads";
+
+
+
+      
+            return feedUrl;
+        }
+
+
+        /// <summary>
+        /// OAuth in the Google Data Protocol Client Libraries 
+        /// http://code.google.com/intl/es-AR/apis/gdata/docs/auth/oauth.html
+        /// </summary>
+        /// <returns></returns>
+        internal static string FetchingReqToken()
+        { 
+         
+            string CONSUMER_KEY = "pelsoft";
+            string CONSUMER_SECRET = "lincelince"; 
+            string SCOPE ="http://gdata.youtube.com";
+            // Multi-scoped token. string SCOPE = "https://www.google.com/calendar/feeds/ https://www.google.com/m8/feeds/";
+            //OAuthParameters parameters = new OAuthParameters()
+            //{
+            //    ConsumerKey = CONSUMER_KEY,
+            //    ConsumerSecret = CONSUMER_SECRET,
+            //    Scope = SCOPE,
+            //    Callback = "http://muniadelia.com/access_token",
+            //    SignatureMethod = "HMAC-SHA1"
+            //};
+            Uri u = new Uri(@"http://www.muniadelia.com/access_token");
+            string str = OAuthUtil.GenerateHeader(u, CONSUMER_KEY, CONSUMER_SECRET, "HMAC-SHA1");
+
+            return str;
         }
     }
 }
