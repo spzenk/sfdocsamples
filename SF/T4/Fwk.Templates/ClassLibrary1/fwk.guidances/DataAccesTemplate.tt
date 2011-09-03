@@ -77,8 +77,9 @@ namespace <#= TargetNamespace #>.DAC{
 				 wDataBase.AddInParameter(wCmd, "<#= column.Name #>", <#=  GetDbType(column) #>, p<#= TableName #>.<#= column.Name #>);
 				<# } #>
 			
+			wDataBase.ExecuteNonQuery(wCmd);
 			
-			p<#= EntityName #>.<#= GetPK(t) #>
+				p<#= EntityName #>.<#= GetPK(t) #> = pSurvey.SurveyId = ( <#=  GetCSharpType(column) #>)wDataBase.GetParameterValue(wCmd, <#= GetPK(t) #> );
 			}
             catch (Exception ex)
             {
