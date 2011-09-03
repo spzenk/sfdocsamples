@@ -13,6 +13,8 @@ namespace Fwk.Guidance.Core
 {
     public class FwkGenerator
     {
+        const string DBO_SCHEMA = "dbo";
+        internal static TemplateDocument TemplateDocument {get;set;}
         internal static string NotSupportTypes_ToIncludeInBackEnd;
         internal static string NotSupportTypes_ToSearchInStoreProcedure;
         internal static string NotSupportTypes_ToInsertStoreProcedure;
@@ -22,33 +24,108 @@ namespace Fwk.Guidance.Core
             get { return _MappingTypes; }
         }
 
+      
         static FwkGenerator()
         {
-            
+            string roottemplate = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Templates");
             LoadMappingTypes();
             NotSupportTypes_ToIncludeInBackEnd = "xml,timestamp,sql_variant";
             NotSupportTypes_ToSearchInStoreProcedure = "xml,timestamp,sql_variant,varbinary,binary,image";
             NotSupportTypes_ToInsertStoreProcedure = "xml,timestamp,sql_variant";
+            
+
         }
         internal static string Xml = "value 1";
         public static string Get()
         {
             return Xml;
         }
+        public static void Init(string templateSource)
+        {
+            TemplateDocument = (TemplateDocument)HelperFunctions.DeserializeFromXml(typeof(TemplateDocument), HelperFunctions.GetFileTemplate("", templateSource));
+        }
+
+        public static string GetCSharpType(Column column)
+        {
+            string sqlname = column.DataType.Name.ToUpper();
+            //if (pColumn.DataType.SqlDataType.ToString().Equals("UserDefinedDataType"))
+            //{
+            //    //dataTypeName = UserDefinedTypes.GetUserDefinedType(pColumn.DataType.Name).SystemType.ToUpper();
+            //}
+            if (_MappingTypes.ExistMappingType_sqlname(sqlname))
+                return _MappingTypes.GetMappingType_sqlname(sqlname).Cshrarptype;
 
 
-        public static string GetCSharpType(string dataTypeName)
+            return string.Empty;
+        }
+        public static string GetDbType(Column pColumn)
+        {
+            string sqlname = pColumn.DataType.Name.ToUpper();
+            //if (pColumn.DataType.SqlDataType.ToString().Equals("UserDefinedDataType"))
+            //{
+            //    //dataTypeName = UserDefinedTypes.GetUserDefinedType(pColumn.DataType.Name).SystemType.ToUpper();
+            //}
+            if (_MappingTypes.ExistMappingType_sqlname(sqlname))
+                return _MappingTypes.GetMappingType_sqlname(sqlname).DBtype;
+
+
+            return string.Empty;
+        }
+        public static string GetDbType(string sqlname)
         {
 
             //if (pColumn.DataType.SqlDataType.ToString().Equals("UserDefinedDataType"))
             //{
             //    //dataTypeName = UserDefinedTypes.GetUserDefinedType(pColumn.DataType.Name).SystemType.ToUpper();
             //}
-            if (_MappingTypes.ExistMappingType_sqlname(dataTypeName))
-                return _MappingTypes.GetMappingType_sqlname(dataTypeName).Cshrarptype;
+            if (_MappingTypes.ExistMappingType_sqlname(sqlname))
+                return _MappingTypes.GetMappingType_sqlname(sqlname).DBtype;
 
 
             return string.Empty;
+        }
+
+        public static bool GeColumnFindeable(Column pColumn)
+        {
+            string wTypeName = pColumn.DataType.Name.ToUpper();
+            //if (pColumn.DataType.SqlDataType.ToString().Equals("UserDefinedDataType"))
+            //{
+            //    wTypeName = UserDefinedTypes.GetUserDefinedType(pColumn.DataType.Name).SystemType.ToUpper();
+            //}
+            switch (wTypeName)
+            {
+                case "UNIQUEIDENTIFIER":
+
+                case "BIT":
+
+
+                case "REAL":
+                case "NUMERIC":
+                case "BIGINT":
+                case "SMALLINT":
+                case "INT":
+                case "TINYINT":
+                case "SMALLDATETIME":
+                case "DATETIME":
+                case "CHAR":
+                case "NCHAR":
+                case "VARCHAR":
+                case "NVARCHAR":
+                    return true;
+                case "MONEY":
+                case "SMALLMONEY":
+                case "DECIMAL":
+                case "FLOAT":
+                case "NTEXT":
+                case "TEXT":
+                case "IMAGE":
+                case "VARBINARY":
+                case "BINARY":
+                case "TINYUNT":
+                    return false;
+
+            }
+            return false;
         }
 
         /// <summary>
@@ -163,5 +240,33 @@ namespace Fwk.Guidance.Core
             _MappingTypes.Add(new MappingType("varbinary", "System.Byte[]", "System.Data.DbType.Binary", "base64Binary", "[Name] [Type]([Length])"));
         }
 
+        public static string GetTableName(Table table)
+        {
+            
+            if (string.Compare(table.Schema, DBO_SCHEMA, StringComparison.InvariantCultureIgnoreCase) == 0)
+            {
+                return table.Name;
+            }
+            else
+            {
+                return table.Schema + table.Name;
+            }
+        }
+
+        public static Column GetPrimaryKey(TableViewBase table)
+        {
+            foreach (Column c in table.Columns)
+            {
+                if (c.Identity)
+                {
+                    return c;
+                }
+
+            }
+            return null;
+        }
+
+
+       
     }
 }
