@@ -1,6 +1,6 @@
 ﻿<#@ template language="C#" #>
 <#@ output extension=".cs" #>
-<#@ Assembly Name="$(projectdir)\bin\debug\Fwk.Guidance.Core.dll" #>
+<#@ Assembly Name="Fwk.Guidance.Core.dll" #>
 <#@ Assembly Name="System.Data" #>
 <#@ Assembly Name="System.Xml" #>
 <#@ Assembly Name="System.Core.dll" #>
