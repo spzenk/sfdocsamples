@@ -42,7 +42,11 @@ private string GetNullable(Microsoft.SqlServer.Management.Smo.Column column)
 }
 private string GetPK(Microsoft.SqlServer.Management.Smo.Table table)
 {
-	return "pepe";
+	Microsoft.SqlServer.Management.Smo.Column column = Fwk.Guidance.Core.FwkGenerator.GetPrimaryKey(table);
+	if(column!=null)
+	return column.Name;
+	else
+		return string.Empty;
 }
 
 private void Init(string templatespath)
