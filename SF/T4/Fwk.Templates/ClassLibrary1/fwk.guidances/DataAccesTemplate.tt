@@ -78,7 +78,7 @@ namespace <#= TargetNamespace #>.DAC{
 				<# } #>
 			
 			
-			p<#= EntityName #>.
+			p<#= EntityName #>.<#= GetPK(t) #>
 			}
             catch (Exception ex)
             {
