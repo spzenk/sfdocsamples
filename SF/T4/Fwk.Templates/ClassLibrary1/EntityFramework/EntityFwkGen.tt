@@ -52,7 +52,8 @@ using System.Runtime.Serialization;
 
 
 namespace <#=namespaceName#>
-{<#
+{
+<#
         PushIndent(CodeRegion.GetIndent(1));
 
     ////////
@@ -61,16 +62,12 @@ namespace <#=namespaceName#>
     region.Begin(GetResourceString("Template_RegionEntities"));
     foreach (EntityType entity in GetSourceSchemaTypes<EntityType>().OrderBy(e => e.Name))
     {
-#>
-
-
-
-<#
+#><#
         foreach (EntityType subType in ItemCollection.GetItems<EntityType>().Where(b => b.BaseType == entity))
         {
-#>
-[KnownTypeAttribute(typeof(<#=MultiSchemaEscape(subType, code)#>))]
-<#
+			#>
+			[KnownTypeAttribute(typeof(<#=MultiSchemaEscape(subType, code)#>))]
+			<#
         }
 		////////  Write Entity Collection.
 #>
