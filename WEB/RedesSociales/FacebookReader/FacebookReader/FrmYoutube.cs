@@ -20,7 +20,7 @@ namespace Fwk.SocialNetworks.Data
 {
     public partial class FrmYoutube : Form
     {
-        string developerKey = "AI39si4vdjfNiGLb-a_6bys-gi_eyyWcDb9uOg_mWvUNYlFbd1fHYBs00yiACHhq8JhNktfNmjRGcftD7pnVN9m2qJ5rzmTvWw";
+        static string developerKey = "AI39si4vdjfNiGLb-a_6bys-gi_eyyWcDb9uOg_mWvUNYlFbd1fHYBs00yiACHhq8JhNktfNmjRGcftD7pnVN9m2qJ5rzmTvWw";
         public FrmYoutube()
         {
             InitializeComponent();
@@ -71,54 +71,100 @@ namespace Fwk.SocialNetworks.Data
             { MessageBox.Show(e.Message); }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         YouTubeRequest GetYouTubeRequest(string userName, string password)
         {
-            string authSubUrl = AuthSubUtil.getRequestUrl(@"http://www.allus.com", "http://gdata.youtube.com", false, false);
+            string authSubUrl = AuthSubUtil.getRequestUrl("http://www.allus.com", "http://gdata.youtube.com", false, true);
+           //http://www.allus.com/?token=1/-PrMunnSjR9rgZMV5PCGvqWgPotjTEGM88QKM2Ja6QI
+          
+            Init();
 
-            //http://www.allus.com/?token=1/jWsaQjdCeZQKYQc3HKQ0Pzy5Oxm8VUiPLVsexE7Wp0A
-            //http://www.allus.com/?token=1/4dfiL65QdZmpvOmUr-CJfIwvhK0XE3mcEgFljwBPAxQ
-            YouTubeRequestSettings settings = null;// new YouTubeRequestSettings("pelsoft", developerKey, userName, password);
+          
+            return null;
+        }
+        static string Token = "OM6EQdR00weJ7ijwqFMpFDJ42OFfRrRj4gJGxZfe4P8";
+        void Init()
+        {
+            GAuthSubRequestFactory authFactory = new GAuthSubRequestFactory(ServiceNames.YouTube, "YouTubeAspSample");
+            YouTubeService service = new YouTubeService(authFactory.ApplicationName,
+              "ytapi-FrankMantek-TestaccountforGD-sjgv537n-0",
+              developerKey
+              );
 
-            settings = new YouTubeRequestSettings("http://www.allus.com", developerKey, "4dfiL65QdZmpvOmUr-CJfIwvhK0XE3mcEgFljwBPAxQ");
+            authFactory.Token = Token;
+            service.RequestFactory = authFactory;
+
+           var videos = GetVideos(YouTubeQuery.DefaultUploads);
+                     
+        }
+
+        static   IEnumerable<Video> GetVideos(string videofeed)
+        {
+            YouTubeQuery query = new YouTubeQuery(videofeed);
+            return GetVideos(query);
+        }
+        private static IEnumerable<Video> GetVideos(YouTubeQuery q)
+        {
+            YouTubeRequest request = GetRequest();
+            Feed<Video> feed = null;
+
+
+            try
+            {
+                feed = request.Get<Video>(q);
+            }
+            catch (GDataRequestException gdre)
+            {
+                HttpWebResponse response = (HttpWebResponse)gdre.Response;
+            }
+            return feed != null ? feed.Entries : null;
+        }
+        public static IEnumerable<Playlist> PlayLists()
+        {
+            Feed<Playlist> feed = null;
+            YouTubeRequest request = GetRequest();
+
+
+            try
+            {
+                feed = request.GetPlaylistsFeed(null);
+            }
+            catch (GDataRequestException gdre)
+            {
+                HttpWebResponse response = (HttpWebResponse)gdre.Response;
+            }
+            return feed != null ? feed.Entries : null;
+        }
+
+        public static  YouTubeRequest GetRequest()
+        {
+            YouTubeRequestSettings settings = new YouTubeRequestSettings("YouTubeAspSample", developerKey, Token);
             settings.Timeout = 1000000;
+            settings.AutoPaging = true;
             YouTubeRequest wYouTubeRequest = new YouTubeRequest(settings);
             wYouTubeRequest.Proxy = YoutubeWrapper.Proxy;
 
-            return wYouTubeRequest;
-        }
+            
+            
+                
+                
 
+
+                return wYouTubeRequest;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-
             // Authenticate("moviedomof","lincelince");
             YouTubeRequest request = GetYouTubeRequest("moviedomof", "lincelince");
-
-            //request.GetComments(
-            //http://gdata.youtube.com/feeds/api/videos
-
-
-            string s = YoutubeWrapper.FetchingReqToken();
-            //Authorization: OAuth o
-            //auth_version="1.0",
-            //oauth_nonce="77d5b9ce50f34ab8a36da1288d9ed800",
-            //oauth_timestamp="1314909000",
-            //oauth_consumer_key="pelsoft",
-            //oauth_signature_method="HMAC-SHA1",
-            //oauth_signature="a%2BH3lyDwMVPzUWJBQk3nCJv1s%2FY%3D"
-
-
+            //string s = YoutubeWrapper.FetchingReqToken();
             //Displaying a feed of videos
             Feed<Video> videoFeed = request.Get<Video>(new Uri(YoutubeWrapper.Get_Video()));
-
             txtRes.Text = YoutubeWrapper.PrintVideoFeed(videoFeed);
-
-
         }
-
-
-
-
-
-
     }
 }
