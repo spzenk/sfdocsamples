@@ -7,6 +7,8 @@ using Google.GData.Extensions.MediaRss;
 using Google.GData.Client;
 
 using System.Net;
+using System.Security.Cryptography;
+using Google.GData.Calendar;
 
 namespace Fwk.SocialNetworks.Youtube
 {
@@ -134,7 +136,7 @@ namespace Fwk.SocialNetworks.Youtube
 
             feedUrl = String.Format(feeds_uploads,"moviedomof");
 
-        ///http://gdata.youtube.com/feeds/api/users/GoogleDevelopers/uploads
+            ///http://gdata.youtube.com/feeds/api/users/GoogleDevelopers/uploads
             return feedUrl ;
         }
 
@@ -143,9 +145,7 @@ namespace Fwk.SocialNetworks.Youtube
 
             string feedUrl = "http://gdata.youtube.com/feeds/api/users/GoogleDevelopers/uploads";
 
-
-
-      
+            feedUrl = "http://gdata.youtube.com/feeds/api/users/moviedomof/playlists?v=2";
             return feedUrl;
         }
 
@@ -154,7 +154,16 @@ namespace Fwk.SocialNetworks.Youtube
         /// OAuth in the Google Data Protocol Client Libraries 
         /// http://code.google.com/intl/es-AR/apis/gdata/docs/auth/oauth.html
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// 
+        /// Authorization: OAuth o
+        ///auth_version="1.0",
+        ///oauth_nonce="77d5b9ce50f34ab8a36da1288d9ed800",
+        ///oauth_timestamp="1314909000",
+        ///oauth_consumer_key="pelsoft",
+        ///oauth_signature_method="HMAC-SHA1",
+        ///oauth_signature="a%2BH3lyDwMVPzUWJBQk3nCJv1s%2FY%3D"
+        /// </returns>
         internal static string FetchingReqToken()
         { 
          
@@ -173,7 +182,20 @@ namespace Fwk.SocialNetworks.Youtube
             Uri u = new Uri(@"http://www.muniadelia.com/access_token");
             string str = OAuthUtil.GenerateHeader(u, CONSUMER_KEY, CONSUMER_SECRET, "HMAC-SHA1");
 
+            //string authorizationUrl = AuthSubUtil.exchangeForSessionToken("");
+
             return str;
+        }
+
+        internal void s(string token, AsymmetricAlgorithm rsaKey)
+        {
+            
+             token = AuthSubUtil.exchangeForSessionToken(token, rsaKey).ToString();
+
+           
+
+            
+
         }
     }
 }
