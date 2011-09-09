@@ -59,13 +59,20 @@ namespace EntityFramework
         private void button3_Click(object sender, EventArgs e)
         {
             StringBuilder s= new StringBuilder();
+
             AdventureWorksEntities dc = new AdventureWorksEntities();
 
             int ID = Convert.ToInt32(txtId.Text);
+
+            //Lamda
             Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
-            var o = from a in dc.Product where a.ProductID.Equals(ID) select a;
-            var prod2 = o.First();
+            //LinQ
+            var wProduct = from a in dc.Product where a.ProductID.Equals(ID) select a;
+
+            var prod2 = wProduct.First();
+
             s.AppendLine(string.Concat("Name ", product.Name));
+
             if (product.ProductModel != null)
                 s.AppendLine(string.Concat("ProductModel ", product.ProductModel.Name));
 
@@ -103,6 +110,7 @@ namespace EntityFramework
         private void button4_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(txtId.Text);
+
             AdventureWorksEntities dc = new AdventureWorksEntities();
             Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
 
@@ -127,20 +135,20 @@ namespace EntityFramework
         {
             using (AdventureWorksEntities dc = new AdventureWorksEntities())
             {
-                
-                 dc.Connection.Open();
-                 DbTransaction tr = dc.Connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+
+                dc.Connection.Open();
+                DbTransaction tr = dc.Connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
                 var products = from p in dc.Product where p.Class.Equals("M") select p;
                 Int16 level = 1;
-               
-               
+
+
                 UpdateProducts(products.ToList<Product>(), level);
                 dc.SaveChanges(System.Data.Objects.SaveOptions.DetectChangesBeforeSave);
-                
-               // throw new Exception();
+
+                // throw new Exception();
                 tr.Commit();
                 //tr.Rollback();
-                
+
             }
 
         }
