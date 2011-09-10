@@ -6,12 +6,13 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-
 using System.Data.Entity;
 using Fwk.Exceptions;
 using Newtonsoft.Json;
 using System.Data.Common;
 using System.Transactions;
+using EntityFramework.Entities;
+
 namespace EntityFramework
 {
     public partial class Form1 : Form
@@ -21,31 +22,21 @@ namespace EntityFramework
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            AdventureWorksEntities dc = new AdventureWorksEntities();
-            
-            var list = from a in dc.Address   where a.City.StartsWith("b") select a;
+      
 
-
-            List<Address> list2 = list.ToList<Address>();
-            //contexto dc2 = new contexto("AdventureWorksEntities");
-            //Address dire = dc2.Addresses.Find(2);
-
-
-            var query = (System.Data.Objects.ObjectQuery<Address>)list;
-
-            textBox1.Text = query.ToTraceString();
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Product p = new Product();
+            Product Product_EF =null;
+            EntityFramework.Entities.Common.BE.Product Product_Fwk = new EntityFramework.Entities.Common.BE.Product();
 
             try
             {
-                p.Name = "";
+                AdventureWorksEntities dc = new AdventureWorksEntities();
+                Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(Convert.ToInt32(txtId.Text)));
+
+               string json =  JsonConvert.SerializeObject(Product_EF, Formatting.Indented);
+               textBox1.Text = json;
             }
             catch (Exception ex)
             {
@@ -59,6 +50,8 @@ namespace EntityFramework
         private void button3_Click(object sender, EventArgs e)
         {
             StringBuilder s= new StringBuilder();
+            //EntityFramework.Entities.Prod.AdventureWorksProducts j = new Entities.Prod.AdventureWorksProducts();
+
 
             AdventureWorksEntities dc = new AdventureWorksEntities();
 
@@ -66,6 +59,11 @@ namespace EntityFramework
 
             //Lamda
             Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
+
+
+            //Lamda
+           // var x = j.ProductDescriptions.First<EntityFramework.Entities.Prod.ProductDescription>(p => p.ProductDescriptionID.Equals(ID));
+
             //LinQ
             var wProduct = from a in dc.Product where a.ProductID.Equals(ID) select a;
 
@@ -189,10 +187,5 @@ namespace EntityFramework
 
     }
 
-    public class contexto : DbContext
-    {
-        public contexto(string cnnStringNAme) : base(cnnStringNAme) { }
-
-        public DbSet<Address> Addresses { get; set; }
-    }
+ 
 }

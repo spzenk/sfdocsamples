@@ -8,15 +8,15 @@ using System.IO;
 
 namespace EntityFramework
 {
-    partial class Product
-    {
-        partial void OnNameChanging(string value)
-        {
-            if(string.IsNullOrEmpty(value))
-                throw new Fwk.Exceptions.FunctionalException(1000,"Nomnre no puede ser nulo");
-        }
+    //partial class Product
+    //{
+    //    partial void OnNameChanging(string value)
+    //    {
+    //        if(string.IsNullOrEmpty(value))
+    //            throw new Fwk.Exceptions.FunctionalException(1000,"Nomnre no puede ser nulo");
+    //    }
         
-    }
+    //}
 
     public class Helper
     {
