@@ -31,6 +31,7 @@ namespace EntityFramework
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Clear();
             StringBuilder s= new StringBuilder();
             //EntityFramework.Entities.Prod.AdventureWorksProducts j = new Entities.Prod.AdventureWorksProducts();
 
@@ -40,7 +41,7 @@ namespace EntityFramework
             int ID = Convert.ToInt32(txtId.Text);
 
             //Lamda
-            Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
+            _Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
 
 
             //Lamda
@@ -51,44 +52,37 @@ namespace EntityFramework
 
             var prod2 = wProduct.First();
 
-            s.AppendLine(string.Concat("Name ", product.Name));
+            s.AppendLine(string.Concat("Name ", _Product_EF.Name));
 
-            if (product.ProductModel != null)
-                s.AppendLine(string.Concat("ProductModel ", product.ProductModel.Name));
+            if (_Product_EF.ProductModel != null)
+                s.AppendLine(string.Concat("ProductModel ", _Product_EF.ProductModel.Name));
 
 
-            textBox1.Text = s.ToString();
+            txtProduct_EDM.Text = s.ToString();
         }
 
         private void btnGetXml_Click(object sender, EventArgs e)
         {
+            Clear();
             AdventureWorksEntities dc = new AdventureWorksEntities();
 
             int ID = Convert.ToInt32(txtId.Text);
             Product product = dc.Product.First<Product>(p => p.ProductID.Equals(ID));
 
-            ProductMapp wProductMapp = new ProductMapp();
-            wProductMapp.MakeFlag = product.MakeFlag;
-            wProductMapp.Name = product.Name;
-            wProductMapp.ProductID = product.ProductID;
+            
+            _Product_Fwk.MakeFlag = product.MakeFlag;
+            _Product_Fwk.Name = product.Name;
+            _Product_Fwk.ProductID = product.ProductID;
 
-            wProductMapp.SellStartDate = product.SellStartDate;
+            _Product_Fwk.SellStartDate = product.SellStartDate;
 
-            string json = JsonConvert.SerializeObject(wProductMapp, Formatting.Indented);
 
-            //            {
-            //  "ProductID": 680,
-            //  "Name": "HL Road Frame - Black, 57",
-            //  "ProductNumber": null,
-            //  "MakeFlag": true,
-            //  "SellStartDate": "\/Date(896670000000-0300)\/"
-            //}
-
-            textBox1.Text = json;
+            JsonString_Fwk(true);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            Clear();
             int ID = Convert.ToInt32(txtId.Text);
 
             AdventureWorksEntities dc = new AdventureWorksEntities();
@@ -113,6 +107,7 @@ namespace EntityFramework
 
         private void button5_Click(object sender, EventArgs e)
         {
+            Clear();
             using (AdventureWorksEntities dc = new AdventureWorksEntities())
             {
 
@@ -170,21 +165,22 @@ namespace EntityFramework
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Product Product_EF = null;
+            Clear();
+           
             int id = Convert.ToInt32(txtId.Text);
-            Fwk.Entities.Common.BE.ProductBE Product_Fwk = new Fwk.Entities.Common.BE.ProductBE();
+           
 
             try
             {
                 AdventureWorksEntities dc = new AdventureWorksEntities();
-                Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
-                string xml = Fwk.HelperFunctions.SerializationFunctions.SerializeToXml(Product_EF);
+                _Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
+                string xml = Fwk.HelperFunctions.SerializationFunctions.SerializeToXml(_Product_EF);
                 
                 
-                Product_Fwk.SetXml(xml);
+                _Product_Fwk.SetXml(xml);
 
 
-                textBox1.Text = xml;
+                txtProduct_Fwk.Text = xml;
 
 
             }
@@ -199,18 +195,22 @@ namespace EntityFramework
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Product Product_EF = null;
+            Clear();
             int id = Convert.ToInt32(txtId.Text);
-            Fwk.Entities.Common.BE.ProductBE Product_Fwk = new Fwk.Entities.Common.BE.ProductBE();
+   
 
             try
             {
                 AdventureWorksEntities dc = new AdventureWorksEntities();
-                Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
-                
-                string json = JsonConvert.SerializeObject(Product_EF, Formatting.Indented);
-                textBox1.Text = json;
+                _Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
+                JsonSerializerSettings s = new JsonSerializerSettings ();
+                s.PreserveReferencesHandling =  PreserveReferencesHandling.None;
 
+                string json = JsonConvert.SerializeObject(_Product_EF, Formatting.None);
+
+                _Product_Fwk = (Fwk.Entities.Common.BE.ProductBE)JsonConvert.DeserializeObject(json, typeof(Fwk.Entities.Common.BE.ProductBE));
+
+                txtProduct_EDM.Text = json;
 
             }
             catch (Exception ex)
@@ -220,24 +220,30 @@ namespace EntityFramework
             }
 
         }
+        Fwk.Entities.Common.BE.ProductBE _Product_Fwk;
+        Product _Product_EF;
 
-
+       
+        /// <summary>
+        /// using mapping overload
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button5_Click_1(object sender, EventArgs e)
         {
-
+            Clear();
             int id = Convert.ToInt32(txtId.Text);
-            Fwk.Entities.Common.BE.ProductBE Product_Fwk = new Fwk.Entities.Common.BE.ProductBE();
+            
 
             try
             {
                 AdventureWorksEntities dc = new AdventureWorksEntities();
                
-                Product Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
+                 _Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
 
-                //Product_Fwk = prod.First<Fwk.Entities.Common.BE.ProductBE>();
-                Product_Fwk = (Fwk.Entities.Common.BE.ProductBE)Product_EF;
+                 _Product_Fwk = (Fwk.Entities.Common.BE.ProductBE)_Product_EF;
 
-                textBox1.Text = JsonConvert.SerializeObject(Product_Fwk, Formatting.Indented); 
+                JsonString_Fwk(true);
 
 
             }
@@ -248,6 +254,47 @@ namespace EntityFramework
             }
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            JsonString_Edm(true);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            JsonString_Fwk(true);
+
+        }
+        void JsonString_Fwk(bool indented)
+        {
+
+            if (indented)
+                txtProduct_Fwk.Text = JsonConvert.SerializeObject(_Product_Fwk, Formatting.Indented);
+            else
+                txtProduct_Fwk.Text = JsonConvert.SerializeObject(_Product_Fwk, Formatting.None);
+
+        }
+
+        void JsonString_Edm(bool indented)
+        {
+           
+
+            if (indented)
+                txtProduct_EDM.Text = JsonConvert.SerializeObject(_Product_EF, Formatting.Indented);
+            else
+                txtProduct_EDM.Text = JsonConvert.SerializeObject(_Product_EF, Formatting.None);
+
+
+        }
+        void Clear()
+        {
+            _Product_Fwk = new Fwk.Entities.Common.BE.ProductBE();
+
+            txtProduct_EDM.Clear();
+            txtProduct_Fwk.Clear();
+        }
+
+
     }
 
  

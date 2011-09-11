@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtProduct_EDM = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.txtId = new System.Windows.Forms.TextBox();
@@ -43,20 +43,25 @@
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button5 = new System.Windows.Forms.Button();
+            this.txtProduct_Fwk = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtProduct_EDM
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtProduct_EDM.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(352, 13);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(546, 668);
-            this.textBox1.TabIndex = 1;
+            this.txtProduct_EDM.Location = new System.Drawing.Point(352, 39);
+            this.txtProduct_EDM.Margin = new System.Windows.Forms.Padding(4);
+            this.txtProduct_EDM.Multiline = true;
+            this.txtProduct_EDM.Name = "txtProduct_EDM";
+            this.txtProduct_EDM.Size = new System.Drawing.Size(433, 642);
+            this.txtProduct_EDM.TabIndex = 1;
             // 
             // button2
             // 
@@ -206,11 +211,67 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click_1);
             // 
+            // txtProduct_Fwk
+            // 
+            this.txtProduct_Fwk.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtProduct_Fwk.Location = new System.Drawing.Point(793, 39);
+            this.txtProduct_Fwk.Margin = new System.Windows.Forms.Padding(4);
+            this.txtProduct_Fwk.Multiline = true;
+            this.txtProduct_Fwk.Name = "txtProduct_Fwk";
+            this.txtProduct_Fwk.Size = new System.Drawing.Size(442, 648);
+            this.txtProduct_Fwk.TabIndex = 17;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(349, 15);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(165, 17);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Entity framework Product";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(790, 14);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(154, 17);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Fwk framework Product";
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(535, 8);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(60, 28);
+            this.button6.TabIndex = 20;
+            this.button6.Text = "View";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(970, 9);
+            this.button7.Margin = new System.Windows.Forms.Padding(4);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(60, 28);
+            this.button7.TabIndex = 21;
+            this.button7.Text = "View";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(902, 694);
+            this.ClientSize = new System.Drawing.Size(1248, 694);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtProduct_Fwk);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Id);
@@ -221,7 +282,7 @@
             this.Controls.Add(this.btnGet_json);
             this.Controls.Add(this.txtId);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtProduct_EDM);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Entity Framework & Serializacion xml/json";
@@ -234,7 +295,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtProduct_EDM;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox txtId;
@@ -249,6 +310,11 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox txtProduct_Fwk;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }
 
