@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandBar">
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\CommandBar.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <ExecutableExtension>.exe</ExecutableExtension>
@@ -42,6 +45,10 @@
     </Reference>
     <Reference Include="Fwk.Bases">
       <HintPath>..\..\..\..\FWK-TOOLS\libs\Fwk.Bases.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Microsoft.VisualStudio.DebuggerVisualizers.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json.Net35">
       <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Newtonsoft.Json.Net35.dll</HintPath>
@@ -84,6 +91,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FwkProduct.cs" />
     <Compile Include="modelo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +130,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Modelaso.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Entities\Template1.tt" />
     <None Include="Properties\DataSources\AdventureWorksEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
