@@ -20,32 +20,14 @@ namespace EntityFramework
         public Form1()
         {
             InitializeComponent();
+
+
+         
         }
 
       
 
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Product Product_EF =null;
-            EntityFramework.Entities.Common.BE.Product Product_Fwk = new EntityFramework.Entities.Common.BE.Product();
-
-            try
-            {
-                AdventureWorksEntities dc = new AdventureWorksEntities();
-                Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(Convert.ToInt32(txtId.Text)));
-
-               string json =  JsonConvert.SerializeObject(Product_EF, Formatting.Indented);
-               textBox1.Text = json;
-            }
-            catch (Exception ex)
-            {
-             
-                MessageBox.Show(Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex));
-            }
-
-            
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -185,6 +167,87 @@ namespace EntityFramework
         }
 
 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Product Product_EF = null;
+            int id = Convert.ToInt32(txtId.Text);
+            Fwk.Entities.Common.BE.ProductBE Product_Fwk = new Fwk.Entities.Common.BE.ProductBE();
+
+            try
+            {
+                AdventureWorksEntities dc = new AdventureWorksEntities();
+                Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
+                string xml = Fwk.HelperFunctions.SerializationFunctions.SerializeToXml(Product_EF);
+                
+                
+                Product_Fwk.SetXml(xml);
+
+
+                textBox1.Text = xml;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex));
+            }
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Product Product_EF = null;
+            int id = Convert.ToInt32(txtId.Text);
+            Fwk.Entities.Common.BE.ProductBE Product_Fwk = new Fwk.Entities.Common.BE.ProductBE();
+
+            try
+            {
+                AdventureWorksEntities dc = new AdventureWorksEntities();
+                Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
+                
+                string json = JsonConvert.SerializeObject(Product_EF, Formatting.Indented);
+                textBox1.Text = json;
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex));
+            }
+
+        }
+
+
+        private void button5_Click_1(object sender, EventArgs e)
+        {
+
+            int id = Convert.ToInt32(txtId.Text);
+            Fwk.Entities.Common.BE.ProductBE Product_Fwk = new Fwk.Entities.Common.BE.ProductBE();
+
+            try
+            {
+                AdventureWorksEntities dc = new AdventureWorksEntities();
+               
+                Product Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
+
+                //Product_Fwk = prod.First<Fwk.Entities.Common.BE.ProductBE>();
+                Product_Fwk = (Fwk.Entities.Common.BE.ProductBE)Product_EF;
+
+                textBox1.Text = JsonConvert.SerializeObject(Product_Fwk, Formatting.Indented); 
+
+
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex));
+            }
+
+        }
     }
 
  
