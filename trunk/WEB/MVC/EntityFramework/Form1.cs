@@ -195,6 +195,8 @@ namespace EntityFramework
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+
             Clear();
             int id = Convert.ToInt32(txtId.Text);
    
@@ -202,12 +204,13 @@ namespace EntityFramework
             try
             {
                 AdventureWorksEntities dc = new AdventureWorksEntities();
+                
                 _Product_EF = dc.Product.First<Product>(p => p.ProductID.Equals(id));
                 JsonSerializerSettings s = new JsonSerializerSettings ();
                 s.PreserveReferencesHandling =  PreserveReferencesHandling.None;
-
-                string json = JsonConvert.SerializeObject(_Product_EF, Formatting.None);
-
+    
+                //string json = JsonConvert.SerializeObject(_Product_EF, Formatting.None);
+                string json = JsonHelper.Serialize(_Product_EF);
                 _Product_Fwk = (Fwk.Entities.Common.BE.ProductBE)JsonConvert.DeserializeObject(json, typeof(Fwk.Entities.Common.BE.ProductBE));
 
                 txtProduct_EDM.Text = json;
