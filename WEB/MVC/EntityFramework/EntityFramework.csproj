@@ -92,6 +92,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FwkProduct.cs" />
+    <Compile Include="JsonHelper.cs" />
     <Compile Include="modelo.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

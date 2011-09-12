@@ -22,19 +22,19 @@ using System.Runtime.Serialization;
 namespace EntityFramework.Entities.Common.BE
 {
     #region Entities
-
-
-
-
-
+    
+    
+    
+    
+    
     [XmlRoot("ContactList"), SerializableAttribute]
-    public class ContactList : Fwk.Bases.Entities<ContactBE> { }
-
-    [XmlInclude(typeof(Contact)), Serializable]
+    public class ContactList : Fwk.Bases.Entities< ContactBE >{}
+    
+       [XmlInclude(typeof(Contact)), Serializable]
     public partial class ContactBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -45,15 +45,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ContactID;
             }
             set
-            {
-                _ContactID = value;
-            }
-        }
-
-        private global::System.Int32 _ContactID;
-
-
-
+            { _ContactID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ContactID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -64,15 +63,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _NameStyle;
             }
             set
-            {
-                _NameStyle = value;
-            }
-        }
-
-        private global::System.Boolean _NameStyle;
-
-
-
+            { _NameStyle = value;
+    		}
+    	}
+    	
+    	    private global::System.Boolean _NameStyle;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -83,15 +81,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Title;
             }
             set
-            {
-                _Title = value;
-            }
-        }
-
-        private global::System.String _Title;
-
-
-
+            { _Title = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Title;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -102,15 +99,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _FirstName;
             }
             set
-            {
-                _FirstName = value;
-            }
-        }
-
-        private global::System.String _FirstName;
-
-
-
+            { _FirstName = value;
+    		}
+    	}
+    	
+    	    private global::System.String _FirstName;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -121,15 +117,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _MiddleName;
             }
             set
-            {
-                _MiddleName = value;
-            }
-        }
-
-        private global::System.String _MiddleName;
-
-
-
+            { _MiddleName = value;
+    		}
+    	}
+    	
+    	    private global::System.String _MiddleName;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -140,15 +135,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _LastName;
             }
             set
-            {
-                _LastName = value;
-            }
-        }
-
-        private global::System.String _LastName;
-
-
-
+            { _LastName = value;
+    		}
+    	}
+    	
+    	    private global::System.String _LastName;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -159,15 +153,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Suffix;
             }
             set
-            {
-                _Suffix = value;
-            }
-        }
-
-        private global::System.String _Suffix;
-
-
-
+            { _Suffix = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Suffix;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -178,15 +171,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _EmailAddress;
             }
             set
-            {
-                _EmailAddress = value;
-            }
-        }
-
-        private global::System.String _EmailAddress;
-
-
-
+            { _EmailAddress = value;
+    		}
+    	}
+    	
+    	    private global::System.String _EmailAddress;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -197,15 +189,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _EmailPromotion;
             }
             set
-            {
-                _EmailPromotion = value;
-            }
-        }
-
-        private global::System.Int32 _EmailPromotion;
-
-
-
+            { _EmailPromotion = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _EmailPromotion;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -216,15 +207,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Phone;
             }
             set
-            {
-                _Phone = value;
-            }
-        }
-
-        private global::System.String _Phone;
-
-
-
+            { _Phone = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Phone;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -235,15 +225,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _PasswordHash;
             }
             set
-            {
-                _PasswordHash = value;
-            }
-        }
-
-        private global::System.String _PasswordHash;
-
-
-
+            { _PasswordHash = value;
+    		}
+    	}
+    	
+    	    private global::System.String _PasswordHash;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -254,15 +243,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _PasswordSalt;
             }
             set
-            {
-                _PasswordSalt = value;
-            }
-        }
-
-        private global::System.String _PasswordSalt;
-
-
-
+            { _PasswordSalt = value;
+    		}
+    	}
+    	
+    	    private global::System.String _PasswordSalt;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -273,15 +261,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _AdditionalContactInfo;
             }
             set
-            {
-                _AdditionalContactInfo = value;
-            }
-        }
-
-        private global::System.String _AdditionalContactInfo;
-
-
-
+            { _AdditionalContactInfo = value;
+    		}
+    	}
+    	
+    	    private global::System.String _AdditionalContactInfo;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -292,15 +279,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -311,71 +297,70 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ContactBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pContact">Edm Model BE</param>
-        public ContactBE(Contact pContact)
-        {
-            _ContactID = pContact.ContactID;
-            _NameStyle = pContact.NameStyle;
-            _Title = pContact.Title;
-            _FirstName = pContact.FirstName;
-            _MiddleName = pContact.MiddleName;
-            _LastName = pContact.LastName;
-            _Suffix = pContact.Suffix;
-            _EmailAddress = pContact.EmailAddress;
-            _EmailPromotion = pContact.EmailPromotion;
-            _Phone = pContact.Phone;
-            _PasswordHash = pContact.PasswordHash;
-            _PasswordSalt = pContact.PasswordSalt;
-            _AdditionalContactInfo = pContact.AdditionalContactInfo;
-            _rowguid = pContact.rowguid;
-            _ModifiedDate = pContact.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pContact">Edm Model BE</param>
-        public static explicit operator ContactBE(Contact pContact)
-        {
-            return new ContactBE(pContact);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ContactBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pContact">Edm Model BE</param>
+            public ContactBE(Contact pContact)
+            {
+            	_ContactID =	pContact.ContactID ;
+            		_NameStyle =	pContact.NameStyle ;
+            		_Title =	pContact.Title ;
+            		_FirstName =	pContact.FirstName ;
+            		_MiddleName =	pContact.MiddleName ;
+            		_LastName =	pContact.LastName ;
+            		_Suffix =	pContact.Suffix ;
+            		_EmailAddress =	pContact.EmailAddress ;
+            		_EmailPromotion =	pContact.EmailPromotion ;
+            		_Phone =	pContact.Phone ;
+            		_PasswordHash =	pContact.PasswordHash ;
+            		_PasswordSalt =	pContact.PasswordSalt ;
+            		_AdditionalContactInfo =	pContact.AdditionalContactInfo ;
+            		_rowguid =	pContact.rowguid ;
+            		_ModifiedDate =	pContact.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pContact">Edm Model BE</param>
+            public static explicit operator ContactBE(Contact pContact)
+             {
+              return  new  ContactBE(pContact);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ContactCreditCardList"), SerializableAttribute]
-    public class ContactCreditCardList : Fwk.Bases.Entities<ContactCreditCardBE> { }
-
-    [XmlInclude(typeof(ContactCreditCard)), Serializable]
+    public class ContactCreditCardList : Fwk.Bases.Entities< ContactCreditCardBE >{}
+    
+       [XmlInclude(typeof(ContactCreditCard)), Serializable]
     public partial class ContactCreditCardBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -386,15 +371,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ContactID;
             }
             set
-            {
-                _ContactID = value;
-            }
-        }
-
-        private global::System.Int32 _ContactID;
-
-
-
+            { _ContactID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ContactID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -405,15 +389,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CreditCardID;
             }
             set
-            {
-                _CreditCardID = value;
-            }
-        }
-
-        private global::System.Int32 _CreditCardID;
-
-
-
+            { _CreditCardID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _CreditCardID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -424,59 +407,58 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ContactCreditCardBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pContactCreditCard">Edm Model BE</param>
-        public ContactCreditCardBE(ContactCreditCard pContactCreditCard)
-        {
-            _ContactID = pContactCreditCard.ContactID;
-            _CreditCardID = pContactCreditCard.CreditCardID;
-            _ModifiedDate = pContactCreditCard.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pContactCreditCard">Edm Model BE</param>
-        public static explicit operator ContactCreditCardBE(ContactCreditCard pContactCreditCard)
-        {
-            return new ContactCreditCardBE(pContactCreditCard);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ContactCreditCardBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pContactCreditCard">Edm Model BE</param>
+            public ContactCreditCardBE(ContactCreditCard pContactCreditCard)
+            {
+            	_ContactID =	pContactCreditCard.ContactID ;
+            		_CreditCardID =	pContactCreditCard.CreditCardID ;
+            		_ModifiedDate =	pContactCreditCard.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pContactCreditCard">Edm Model BE</param>
+            public static explicit operator ContactCreditCardBE(ContactCreditCard pContactCreditCard)
+             {
+              return  new  ContactCreditCardBE(pContactCreditCard);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ContactTypeList"), SerializableAttribute]
-    public class ContactTypeList : Fwk.Bases.Entities<ContactTypeBE> { }
-
-    [XmlInclude(typeof(ContactType)), Serializable]
+    public class ContactTypeList : Fwk.Bases.Entities< ContactTypeBE >{}
+    
+       [XmlInclude(typeof(ContactType)), Serializable]
     public partial class ContactTypeBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -487,15 +469,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ContactTypeID;
             }
             set
-            {
-                _ContactTypeID = value;
-            }
-        }
-
-        private global::System.Int32 _ContactTypeID;
-
-
-
+            { _ContactTypeID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ContactTypeID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -506,15 +487,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -525,59 +505,58 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ContactTypeBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pContactType">Edm Model BE</param>
-        public ContactTypeBE(ContactType pContactType)
-        {
-            _ContactTypeID = pContactType.ContactTypeID;
-            _Name = pContactType.Name;
-            _ModifiedDate = pContactType.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pContactType">Edm Model BE</param>
-        public static explicit operator ContactTypeBE(ContactType pContactType)
-        {
-            return new ContactTypeBE(pContactType);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ContactTypeBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pContactType">Edm Model BE</param>
+            public ContactTypeBE(ContactType pContactType)
+            {
+            	_ContactTypeID =	pContactType.ContactTypeID ;
+            		_Name =	pContactType.Name ;
+            		_ModifiedDate =	pContactType.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pContactType">Edm Model BE</param>
+            public static explicit operator ContactTypeBE(ContactType pContactType)
+             {
+              return  new  ContactTypeBE(pContactType);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("CountryRegionCurrencyList"), SerializableAttribute]
-    public class CountryRegionCurrencyList : Fwk.Bases.Entities<CountryRegionCurrencyBE> { }
-
-    [XmlInclude(typeof(CountryRegionCurrency)), Serializable]
+    public class CountryRegionCurrencyList : Fwk.Bases.Entities< CountryRegionCurrencyBE >{}
+    
+       [XmlInclude(typeof(CountryRegionCurrency)), Serializable]
     public partial class CountryRegionCurrencyBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -588,15 +567,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CountryRegionCode;
             }
             set
-            {
-                _CountryRegionCode = value;
-            }
-        }
-
-        private global::System.String _CountryRegionCode;
-
-
-
+            { _CountryRegionCode = value;
+    		}
+    	}
+    	
+    	    private global::System.String _CountryRegionCode;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -607,15 +585,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CurrencyCode;
             }
             set
-            {
-                _CurrencyCode = value;
-            }
-        }
-
-        private global::System.String _CurrencyCode;
-
-
-
+            { _CurrencyCode = value;
+    		}
+    	}
+    	
+    	    private global::System.String _CurrencyCode;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -626,59 +603,58 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public CountryRegionCurrencyBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pCountryRegionCurrency">Edm Model BE</param>
-        public CountryRegionCurrencyBE(CountryRegionCurrency pCountryRegionCurrency)
-        {
-            _CountryRegionCode = pCountryRegionCurrency.CountryRegionCode;
-            _CurrencyCode = pCountryRegionCurrency.CurrencyCode;
-            _ModifiedDate = pCountryRegionCurrency.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pCountryRegionCurrency">Edm Model BE</param>
-        public static explicit operator CountryRegionCurrencyBE(CountryRegionCurrency pCountryRegionCurrency)
-        {
-            return new CountryRegionCurrencyBE(pCountryRegionCurrency);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public CountryRegionCurrencyBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pCountryRegionCurrency">Edm Model BE</param>
+            public CountryRegionCurrencyBE(CountryRegionCurrency pCountryRegionCurrency)
+            {
+            	_CountryRegionCode =	pCountryRegionCurrency.CountryRegionCode ;
+            		_CurrencyCode =	pCountryRegionCurrency.CurrencyCode ;
+            		_ModifiedDate =	pCountryRegionCurrency.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pCountryRegionCurrency">Edm Model BE</param>
+            public static explicit operator CountryRegionCurrencyBE(CountryRegionCurrency pCountryRegionCurrency)
+             {
+              return  new  CountryRegionCurrencyBE(pCountryRegionCurrency);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("CreditCardList"), SerializableAttribute]
-    public class CreditCardList : Fwk.Bases.Entities<CreditCardBE> { }
-
-    [XmlInclude(typeof(CreditCard)), Serializable]
+    public class CreditCardList : Fwk.Bases.Entities< CreditCardBE >{}
+    
+       [XmlInclude(typeof(CreditCard)), Serializable]
     public partial class CreditCardBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -689,15 +665,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CreditCardID;
             }
             set
-            {
-                _CreditCardID = value;
-            }
-        }
-
-        private global::System.Int32 _CreditCardID;
-
-
-
+            { _CreditCardID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _CreditCardID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -708,15 +683,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CardType;
             }
             set
-            {
-                _CardType = value;
-            }
-        }
-
-        private global::System.String _CardType;
-
-
-
+            { _CardType = value;
+    		}
+    	}
+    	
+    	    private global::System.String _CardType;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -727,15 +701,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CardNumber;
             }
             set
-            {
-                _CardNumber = value;
-            }
-        }
-
-        private global::System.String _CardNumber;
-
-
-
+            { _CardNumber = value;
+    		}
+    	}
+    	
+    	    private global::System.String _CardNumber;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -746,15 +719,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ExpMonth;
             }
             set
-            {
-                _ExpMonth = value;
-            }
-        }
-
-        private global::System.Byte _ExpMonth;
-
-
-
+            { _ExpMonth = value;
+    		}
+    	}
+    	
+    	    private global::System.Byte _ExpMonth;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -765,15 +737,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ExpYear;
             }
             set
-            {
-                _ExpYear = value;
-            }
-        }
-
-        private global::System.Int16 _ExpYear;
-
-
-
+            { _ExpYear = value;
+    		}
+    	}
+    	
+    	    private global::System.Int16 _ExpYear;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -784,62 +755,61 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public CreditCardBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pCreditCard">Edm Model BE</param>
-        public CreditCardBE(CreditCard pCreditCard)
-        {
-            _CreditCardID = pCreditCard.CreditCardID;
-            _CardType = pCreditCard.CardType;
-            _CardNumber = pCreditCard.CardNumber;
-            _ExpMonth = pCreditCard.ExpMonth;
-            _ExpYear = pCreditCard.ExpYear;
-            _ModifiedDate = pCreditCard.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pCreditCard">Edm Model BE</param>
-        public static explicit operator CreditCardBE(CreditCard pCreditCard)
-        {
-            return new CreditCardBE(pCreditCard);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public CreditCardBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pCreditCard">Edm Model BE</param>
+            public CreditCardBE(CreditCard pCreditCard)
+            {
+            	_CreditCardID =	pCreditCard.CreditCardID ;
+            		_CardType =	pCreditCard.CardType ;
+            		_CardNumber =	pCreditCard.CardNumber ;
+            		_ExpMonth =	pCreditCard.ExpMonth ;
+            		_ExpYear =	pCreditCard.ExpYear ;
+            		_ModifiedDate =	pCreditCard.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pCreditCard">Edm Model BE</param>
+            public static explicit operator CreditCardBE(CreditCard pCreditCard)
+             {
+              return  new  CreditCardBE(pCreditCard);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("CustomerAddressList"), SerializableAttribute]
-    public class CustomerAddressList : Fwk.Bases.Entities<CustomerAddressBE> { }
-
-    [XmlInclude(typeof(CustomerAddress)), Serializable]
+    public class CustomerAddressList : Fwk.Bases.Entities< CustomerAddressBE >{}
+    
+       [XmlInclude(typeof(CustomerAddress)), Serializable]
     public partial class CustomerAddressBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -850,15 +820,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CustomerID;
             }
             set
-            {
-                _CustomerID = value;
-            }
-        }
-
-        private global::System.Int32 _CustomerID;
-
-
-
+            { _CustomerID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _CustomerID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -869,15 +838,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _AddressID;
             }
             set
-            {
-                _AddressID = value;
-            }
-        }
-
-        private global::System.Int32 _AddressID;
-
-
-
+            { _AddressID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _AddressID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -888,15 +856,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _AddressTypeID;
             }
             set
-            {
-                _AddressTypeID = value;
-            }
-        }
-
-        private global::System.Int32 _AddressTypeID;
-
-
-
+            { _AddressTypeID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _AddressTypeID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -907,15 +874,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -926,61 +892,60 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public CustomerAddressBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pCustomerAddress">Edm Model BE</param>
-        public CustomerAddressBE(CustomerAddress pCustomerAddress)
-        {
-            _CustomerID = pCustomerAddress.CustomerID;
-            _AddressID = pCustomerAddress.AddressID;
-            _AddressTypeID = pCustomerAddress.AddressTypeID;
-            _rowguid = pCustomerAddress.rowguid;
-            _ModifiedDate = pCustomerAddress.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pCustomerAddress">Edm Model BE</param>
-        public static explicit operator CustomerAddressBE(CustomerAddress pCustomerAddress)
-        {
-            return new CustomerAddressBE(pCustomerAddress);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public CustomerAddressBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pCustomerAddress">Edm Model BE</param>
+            public CustomerAddressBE(CustomerAddress pCustomerAddress)
+            {
+            	_CustomerID =	pCustomerAddress.CustomerID ;
+            		_AddressID =	pCustomerAddress.AddressID ;
+            		_AddressTypeID =	pCustomerAddress.AddressTypeID ;
+            		_rowguid =	pCustomerAddress.rowguid ;
+            		_ModifiedDate =	pCustomerAddress.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pCustomerAddress">Edm Model BE</param>
+            public static explicit operator CustomerAddressBE(CustomerAddress pCustomerAddress)
+             {
+              return  new  CustomerAddressBE(pCustomerAddress);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("EmployeeAddressList"), SerializableAttribute]
-    public class EmployeeAddressList : Fwk.Bases.Entities<EmployeeAddressBE> { }
-
-    [XmlInclude(typeof(EmployeeAddress)), Serializable]
+    public class EmployeeAddressList : Fwk.Bases.Entities< EmployeeAddressBE >{}
+    
+       [XmlInclude(typeof(EmployeeAddress)), Serializable]
     public partial class EmployeeAddressBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -991,15 +956,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _EmployeeID;
             }
             set
-            {
-                _EmployeeID = value;
-            }
-        }
-
-        private global::System.Int32 _EmployeeID;
-
-
-
+            { _EmployeeID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _EmployeeID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1010,15 +974,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _AddressID;
             }
             set
-            {
-                _AddressID = value;
-            }
-        }
-
-        private global::System.Int32 _AddressID;
-
-
-
+            { _AddressID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _AddressID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1029,15 +992,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1048,60 +1010,59 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public EmployeeAddressBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pEmployeeAddress">Edm Model BE</param>
-        public EmployeeAddressBE(EmployeeAddress pEmployeeAddress)
-        {
-            _EmployeeID = pEmployeeAddress.EmployeeID;
-            _AddressID = pEmployeeAddress.AddressID;
-            _rowguid = pEmployeeAddress.rowguid;
-            _ModifiedDate = pEmployeeAddress.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pEmployeeAddress">Edm Model BE</param>
-        public static explicit operator EmployeeAddressBE(EmployeeAddress pEmployeeAddress)
-        {
-            return new EmployeeAddressBE(pEmployeeAddress);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public EmployeeAddressBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pEmployeeAddress">Edm Model BE</param>
+            public EmployeeAddressBE(EmployeeAddress pEmployeeAddress)
+            {
+            	_EmployeeID =	pEmployeeAddress.EmployeeID ;
+            		_AddressID =	pEmployeeAddress.AddressID ;
+            		_rowguid =	pEmployeeAddress.rowguid ;
+            		_ModifiedDate =	pEmployeeAddress.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pEmployeeAddress">Edm Model BE</param>
+            public static explicit operator EmployeeAddressBE(EmployeeAddress pEmployeeAddress)
+             {
+              return  new  EmployeeAddressBE(pEmployeeAddress);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("IllustrationList"), SerializableAttribute]
-    public class IllustrationList : Fwk.Bases.Entities<IllustrationBE> { }
-
-    [XmlInclude(typeof(Illustration)), Serializable]
+    public class IllustrationList : Fwk.Bases.Entities< IllustrationBE >{}
+    
+       [XmlInclude(typeof(Illustration)), Serializable]
     public partial class IllustrationBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1112,15 +1073,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _IllustrationID;
             }
             set
-            {
-                _IllustrationID = value;
-            }
-        }
-
-        private global::System.Int32 _IllustrationID;
-
-
-
+            { _IllustrationID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _IllustrationID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1131,15 +1091,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Diagram;
             }
             set
-            {
-                _Diagram = value;
-            }
-        }
-
-        private global::System.String _Diagram;
-
-
-
+            { _Diagram = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Diagram;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1150,59 +1109,58 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public IllustrationBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pIllustration">Edm Model BE</param>
-        public IllustrationBE(Illustration pIllustration)
-        {
-            _IllustrationID = pIllustration.IllustrationID;
-            _Diagram = pIllustration.Diagram;
-            _ModifiedDate = pIllustration.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pIllustration">Edm Model BE</param>
-        public static explicit operator IllustrationBE(Illustration pIllustration)
-        {
-            return new IllustrationBE(pIllustration);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public IllustrationBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pIllustration">Edm Model BE</param>
+            public IllustrationBE(Illustration pIllustration)
+            {
+            	_IllustrationID =	pIllustration.IllustrationID ;
+            		_Diagram =	pIllustration.Diagram ;
+            		_ModifiedDate =	pIllustration.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pIllustration">Edm Model BE</param>
+            public static explicit operator IllustrationBE(Illustration pIllustration)
+             {
+              return  new  IllustrationBE(pIllustration);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductList"), SerializableAttribute]
-    public class ProductList : Fwk.Bases.Entities<ProductBE> { }
-
-    [XmlInclude(typeof(Product)), Serializable]
+    public class ProductList : Fwk.Bases.Entities< ProductBE >{}
+    
+       [XmlInclude(typeof(Product)), Serializable]
     public partial class ProductBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1213,15 +1171,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductID;
             }
             set
-            {
-                _ProductID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductID;
-
-
-
+            { _ProductID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1232,15 +1189,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1251,15 +1207,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductNumber;
             }
             set
-            {
-                _ProductNumber = value;
-            }
-        }
-
-        private global::System.String _ProductNumber;
-
-
-
+            { _ProductNumber = value;
+    		}
+    	}
+    	
+    	    private global::System.String _ProductNumber;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1270,15 +1225,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _MakeFlag;
             }
             set
-            {
-                _MakeFlag = value;
-            }
-        }
-
-        private global::System.Boolean _MakeFlag;
-
-
-
+            { _MakeFlag = value;
+    		}
+    	}
+    	
+    	    private global::System.Boolean _MakeFlag;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1289,15 +1243,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _FinishedGoodsFlag;
             }
             set
-            {
-                _FinishedGoodsFlag = value;
-            }
-        }
-
-        private global::System.Boolean _FinishedGoodsFlag;
-
-
-
+            { _FinishedGoodsFlag = value;
+    		}
+    	}
+    	
+    	    private global::System.Boolean _FinishedGoodsFlag;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1308,15 +1261,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Color;
             }
             set
-            {
-                _Color = value;
-            }
-        }
-
-        private global::System.String _Color;
-
-
-
+            { _Color = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Color;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1327,15 +1279,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SafetyStockLevel;
             }
             set
-            {
-                _SafetyStockLevel = value;
-            }
-        }
-
-        private global::System.Int16 _SafetyStockLevel;
-
-
-
+            { _SafetyStockLevel = value;
+    		}
+    	}
+    	
+    	    private global::System.Int16 _SafetyStockLevel;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1346,15 +1297,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ReorderPoint;
             }
             set
-            {
-                _ReorderPoint = value;
-            }
-        }
-
-        private global::System.Int16 _ReorderPoint;
-
-
-
+            { _ReorderPoint = value;
+    		}
+    	}
+    	
+    	    private global::System.Int16 _ReorderPoint;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1365,15 +1315,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _StandardCost;
             }
             set
-            {
-                _StandardCost = value;
-            }
-        }
-
-        private global::System.Decimal _StandardCost;
-
-
-
+            { _StandardCost = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _StandardCost;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1384,15 +1333,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ListPrice;
             }
             set
-            {
-                _ListPrice = value;
-            }
-        }
-
-        private global::System.Decimal _ListPrice;
-
-
-
+            { _ListPrice = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _ListPrice;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1403,15 +1351,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Size;
             }
             set
-            {
-                _Size = value;
-            }
-        }
-
-        private global::System.String _Size;
-
-
-
+            { _Size = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Size;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1422,15 +1369,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SizeUnitMeasureCode;
             }
             set
-            {
-                _SizeUnitMeasureCode = value;
-            }
-        }
-
-        private global::System.String _SizeUnitMeasureCode;
-
-
-
+            { _SizeUnitMeasureCode = value;
+    		}
+    	}
+    	
+    	    private global::System.String _SizeUnitMeasureCode;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1441,15 +1387,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _WeightUnitMeasureCode;
             }
             set
-            {
-                _WeightUnitMeasureCode = value;
-            }
-        }
-
-        private global::System.String _WeightUnitMeasureCode;
-
-
-
+            { _WeightUnitMeasureCode = value;
+    		}
+    	}
+    	
+    	    private global::System.String _WeightUnitMeasureCode;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1460,15 +1405,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Weight;
             }
             set
-            {
-                _Weight = value;
-            }
-        }
-
-        private Nullable<global::System.Decimal> _Weight;
-
-
-
+            { _Weight = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.Decimal> _Weight;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1479,15 +1423,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _DaysToManufacture;
             }
             set
-            {
-                _DaysToManufacture = value;
-            }
-        }
-
-        private global::System.Int32 _DaysToManufacture;
-
-
-
+            { _DaysToManufacture = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _DaysToManufacture;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1498,15 +1441,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductLine;
             }
             set
-            {
-                _ProductLine = value;
-            }
-        }
-
-        private global::System.String _ProductLine;
-
-
-
+            { _ProductLine = value;
+    		}
+    	}
+    	
+    	    private global::System.String _ProductLine;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1517,15 +1459,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Class;
             }
             set
-            {
-                _Class = value;
-            }
-        }
-
-        private global::System.String _Class;
-
-
-
+            { _Class = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Class;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1536,15 +1477,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Style;
             }
             set
-            {
-                _Style = value;
-            }
-        }
-
-        private global::System.String _Style;
-
-
-
+            { _Style = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Style;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1555,15 +1495,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductSubcategoryID;
             }
             set
-            {
-                _ProductSubcategoryID = value;
-            }
-        }
-
-        private Nullable<global::System.Int32> _ProductSubcategoryID;
-
-
-
+            { _ProductSubcategoryID = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.Int32> _ProductSubcategoryID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1574,15 +1513,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductModelID;
             }
             set
-            {
-                _ProductModelID = value;
-            }
-        }
-
-        private Nullable<global::System.Int32> _ProductModelID;
-
-
-
+            { _ProductModelID = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.Int32> _ProductModelID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1593,15 +1531,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SellStartDate;
             }
             set
-            {
-                _SellStartDate = value;
-            }
-        }
-
-        private global::System.DateTime _SellStartDate;
-
-
-
+            { _SellStartDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _SellStartDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1612,15 +1549,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SellEndDate;
             }
             set
-            {
-                _SellEndDate = value;
-            }
-        }
-
-        private Nullable<global::System.DateTime> _SellEndDate;
-
-
-
+            { _SellEndDate = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.DateTime> _SellEndDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1631,15 +1567,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _DiscontinuedDate;
             }
             set
-            {
-                _DiscontinuedDate = value;
-            }
-        }
-
-        private Nullable<global::System.DateTime> _DiscontinuedDate;
-
-
-
+            { _DiscontinuedDate = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.DateTime> _DiscontinuedDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1650,15 +1585,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1669,81 +1603,80 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProduct">Edm Model BE</param>
-        public ProductBE(Product pProduct)
-        {
-            _ProductID = pProduct.ProductID;
-            _Name = pProduct.Name;
-            _ProductNumber = pProduct.ProductNumber;
-            _MakeFlag = pProduct.MakeFlag;
-            _FinishedGoodsFlag = pProduct.FinishedGoodsFlag;
-            _Color = pProduct.Color;
-            _SafetyStockLevel = pProduct.SafetyStockLevel;
-            _ReorderPoint = pProduct.ReorderPoint;
-            _StandardCost = pProduct.StandardCost;
-            _ListPrice = pProduct.ListPrice;
-            _Size = pProduct.Size;
-            _SizeUnitMeasureCode = pProduct.SizeUnitMeasureCode;
-            _WeightUnitMeasureCode = pProduct.WeightUnitMeasureCode;
-            _Weight = pProduct.Weight;
-            _DaysToManufacture = pProduct.DaysToManufacture;
-            _ProductLine = pProduct.ProductLine;
-            _Class = pProduct.Class;
-            _Style = pProduct.Style;
-            _ProductSubcategoryID = pProduct.ProductSubcategoryID;
-            _ProductModelID = pProduct.ProductModelID;
-            _SellStartDate = pProduct.SellStartDate;
-            _SellEndDate = pProduct.SellEndDate;
-            _DiscontinuedDate = pProduct.DiscontinuedDate;
-            _rowguid = pProduct.rowguid;
-            _ModifiedDate = pProduct.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProduct">Edm Model BE</param>
-        public static explicit operator ProductBE(Product pProduct)
-        {
-            return new ProductBE(pProduct);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProduct">Edm Model BE</param>
+            public ProductBE(Product pProduct)
+            {
+            	_ProductID =	pProduct.ProductID ;
+            		_Name =	pProduct.Name ;
+            		_ProductNumber =	pProduct.ProductNumber ;
+            		_MakeFlag =	pProduct.MakeFlag ;
+            		_FinishedGoodsFlag =	pProduct.FinishedGoodsFlag ;
+            		_Color =	pProduct.Color ;
+            		_SafetyStockLevel =	pProduct.SafetyStockLevel ;
+            		_ReorderPoint =	pProduct.ReorderPoint ;
+            		_StandardCost =	pProduct.StandardCost ;
+            		_ListPrice =	pProduct.ListPrice ;
+            		_Size =	pProduct.Size ;
+            		_SizeUnitMeasureCode =	pProduct.SizeUnitMeasureCode ;
+            		_WeightUnitMeasureCode =	pProduct.WeightUnitMeasureCode ;
+            		_Weight =	pProduct.Weight ;
+            		_DaysToManufacture =	pProduct.DaysToManufacture ;
+            		_ProductLine =	pProduct.ProductLine ;
+            		_Class =	pProduct.Class ;
+            		_Style =	pProduct.Style ;
+            		_ProductSubcategoryID =	pProduct.ProductSubcategoryID ;
+            		_ProductModelID =	pProduct.ProductModelID ;
+            		_SellStartDate =	pProduct.SellStartDate ;
+            		_SellEndDate =	pProduct.SellEndDate ;
+            		_DiscontinuedDate =	pProduct.DiscontinuedDate ;
+            		_rowguid =	pProduct.rowguid ;
+            		_ModifiedDate =	pProduct.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProduct">Edm Model BE</param>
+            public static explicit operator ProductBE(Product pProduct)
+             {
+              return  new  ProductBE(pProduct);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductCategoryList"), SerializableAttribute]
-    public class ProductCategoryList : Fwk.Bases.Entities<ProductCategoryBE> { }
-
-    [XmlInclude(typeof(ProductCategory)), Serializable]
+    public class ProductCategoryList : Fwk.Bases.Entities< ProductCategoryBE >{}
+    
+       [XmlInclude(typeof(ProductCategory)), Serializable]
     public partial class ProductCategoryBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1754,15 +1687,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductCategoryID;
             }
             set
-            {
-                _ProductCategoryID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductCategoryID;
-
-
-
+            { _ProductCategoryID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductCategoryID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1773,15 +1705,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1792,15 +1723,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1811,60 +1741,59 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductCategoryBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductCategory">Edm Model BE</param>
-        public ProductCategoryBE(ProductCategory pProductCategory)
-        {
-            _ProductCategoryID = pProductCategory.ProductCategoryID;
-            _Name = pProductCategory.Name;
-            _rowguid = pProductCategory.rowguid;
-            _ModifiedDate = pProductCategory.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductCategory">Edm Model BE</param>
-        public static explicit operator ProductCategoryBE(ProductCategory pProductCategory)
-        {
-            return new ProductCategoryBE(pProductCategory);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductCategoryBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductCategory">Edm Model BE</param>
+            public ProductCategoryBE(ProductCategory pProductCategory)
+            {
+            	_ProductCategoryID =	pProductCategory.ProductCategoryID ;
+            		_Name =	pProductCategory.Name ;
+            		_rowguid =	pProductCategory.rowguid ;
+            		_ModifiedDate =	pProductCategory.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductCategory">Edm Model BE</param>
+            public static explicit operator ProductCategoryBE(ProductCategory pProductCategory)
+             {
+              return  new  ProductCategoryBE(pProductCategory);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductDescriptionList"), SerializableAttribute]
-    public class ProductDescriptionList : Fwk.Bases.Entities<ProductDescriptionBE> { }
-
-    [XmlInclude(typeof(ProductDescription)), Serializable]
+    public class ProductDescriptionList : Fwk.Bases.Entities< ProductDescriptionBE >{}
+    
+       [XmlInclude(typeof(ProductDescription)), Serializable]
     public partial class ProductDescriptionBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1875,15 +1804,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductDescriptionID;
             }
             set
-            {
-                _ProductDescriptionID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductDescriptionID;
-
-
-
+            { _ProductDescriptionID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductDescriptionID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1894,15 +1822,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Description;
             }
             set
-            {
-                _Description = value;
-            }
-        }
-
-        private global::System.String _Description;
-
-
-
+            { _Description = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Description;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1913,15 +1840,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1932,60 +1858,59 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductDescriptionBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductDescription">Edm Model BE</param>
-        public ProductDescriptionBE(ProductDescription pProductDescription)
-        {
-            _ProductDescriptionID = pProductDescription.ProductDescriptionID;
-            _Description = pProductDescription.Description;
-            _rowguid = pProductDescription.rowguid;
-            _ModifiedDate = pProductDescription.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductDescription">Edm Model BE</param>
-        public static explicit operator ProductDescriptionBE(ProductDescription pProductDescription)
-        {
-            return new ProductDescriptionBE(pProductDescription);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductDescriptionBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductDescription">Edm Model BE</param>
+            public ProductDescriptionBE(ProductDescription pProductDescription)
+            {
+            	_ProductDescriptionID =	pProductDescription.ProductDescriptionID ;
+            		_Description =	pProductDescription.Description ;
+            		_rowguid =	pProductDescription.rowguid ;
+            		_ModifiedDate =	pProductDescription.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductDescription">Edm Model BE</param>
+            public static explicit operator ProductDescriptionBE(ProductDescription pProductDescription)
+             {
+              return  new  ProductDescriptionBE(pProductDescription);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductDocumentList"), SerializableAttribute]
-    public class ProductDocumentList : Fwk.Bases.Entities<ProductDocumentBE> { }
-
-    [XmlInclude(typeof(ProductDocument)), Serializable]
+    public class ProductDocumentList : Fwk.Bases.Entities< ProductDocumentBE >{}
+    
+       [XmlInclude(typeof(ProductDocument)), Serializable]
     public partial class ProductDocumentBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -1996,15 +1921,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductID;
             }
             set
-            {
-                _ProductID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductID;
-
-
-
+            { _ProductID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2015,15 +1939,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _DocumentID;
             }
             set
-            {
-                _DocumentID = value;
-            }
-        }
-
-        private global::System.Int32 _DocumentID;
-
-
-
+            { _DocumentID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _DocumentID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2034,59 +1957,58 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductDocumentBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductDocument">Edm Model BE</param>
-        public ProductDocumentBE(ProductDocument pProductDocument)
-        {
-            _ProductID = pProductDocument.ProductID;
-            _DocumentID = pProductDocument.DocumentID;
-            _ModifiedDate = pProductDocument.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductDocument">Edm Model BE</param>
-        public static explicit operator ProductDocumentBE(ProductDocument pProductDocument)
-        {
-            return new ProductDocumentBE(pProductDocument);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductDocumentBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductDocument">Edm Model BE</param>
+            public ProductDocumentBE(ProductDocument pProductDocument)
+            {
+            	_ProductID =	pProductDocument.ProductID ;
+            		_DocumentID =	pProductDocument.DocumentID ;
+            		_ModifiedDate =	pProductDocument.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductDocument">Edm Model BE</param>
+            public static explicit operator ProductDocumentBE(ProductDocument pProductDocument)
+             {
+              return  new  ProductDocumentBE(pProductDocument);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductInventoryList"), SerializableAttribute]
-    public class ProductInventoryList : Fwk.Bases.Entities<ProductInventoryBE> { }
-
-    [XmlInclude(typeof(ProductInventory)), Serializable]
+    public class ProductInventoryList : Fwk.Bases.Entities< ProductInventoryBE >{}
+    
+       [XmlInclude(typeof(ProductInventory)), Serializable]
     public partial class ProductInventoryBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2097,15 +2019,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductID;
             }
             set
-            {
-                _ProductID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductID;
-
-
-
+            { _ProductID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2116,15 +2037,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _LocationID;
             }
             set
-            {
-                _LocationID = value;
-            }
-        }
-
-        private global::System.Int16 _LocationID;
-
-
-
+            { _LocationID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int16 _LocationID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2135,15 +2055,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Shelf;
             }
             set
-            {
-                _Shelf = value;
-            }
-        }
-
-        private global::System.String _Shelf;
-
-
-
+            { _Shelf = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Shelf;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2154,15 +2073,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Bin;
             }
             set
-            {
-                _Bin = value;
-            }
-        }
-
-        private global::System.Byte _Bin;
-
-
-
+            { _Bin = value;
+    		}
+    	}
+    	
+    	    private global::System.Byte _Bin;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2173,15 +2091,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Quantity;
             }
             set
-            {
-                _Quantity = value;
-            }
-        }
-
-        private global::System.Int16 _Quantity;
-
-
-
+            { _Quantity = value;
+    		}
+    	}
+    	
+    	    private global::System.Int16 _Quantity;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2192,15 +2109,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2211,63 +2127,62 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductInventoryBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductInventory">Edm Model BE</param>
-        public ProductInventoryBE(ProductInventory pProductInventory)
-        {
-            _ProductID = pProductInventory.ProductID;
-            _LocationID = pProductInventory.LocationID;
-            _Shelf = pProductInventory.Shelf;
-            _Bin = pProductInventory.Bin;
-            _Quantity = pProductInventory.Quantity;
-            _rowguid = pProductInventory.rowguid;
-            _ModifiedDate = pProductInventory.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductInventory">Edm Model BE</param>
-        public static explicit operator ProductInventoryBE(ProductInventory pProductInventory)
-        {
-            return new ProductInventoryBE(pProductInventory);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductInventoryBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductInventory">Edm Model BE</param>
+            public ProductInventoryBE(ProductInventory pProductInventory)
+            {
+            	_ProductID =	pProductInventory.ProductID ;
+            		_LocationID =	pProductInventory.LocationID ;
+            		_Shelf =	pProductInventory.Shelf ;
+            		_Bin =	pProductInventory.Bin ;
+            		_Quantity =	pProductInventory.Quantity ;
+            		_rowguid =	pProductInventory.rowguid ;
+            		_ModifiedDate =	pProductInventory.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductInventory">Edm Model BE</param>
+            public static explicit operator ProductInventoryBE(ProductInventory pProductInventory)
+             {
+              return  new  ProductInventoryBE(pProductInventory);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductListPriceHistoryList"), SerializableAttribute]
-    public class ProductListPriceHistoryList : Fwk.Bases.Entities<ProductListPriceHistoryBE> { }
-
-    [XmlInclude(typeof(ProductListPriceHistory)), Serializable]
+    public class ProductListPriceHistoryList : Fwk.Bases.Entities< ProductListPriceHistoryBE >{}
+    
+       [XmlInclude(typeof(ProductListPriceHistory)), Serializable]
     public partial class ProductListPriceHistoryBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2278,15 +2193,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductID;
             }
             set
-            {
-                _ProductID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductID;
-
-
-
+            { _ProductID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2297,15 +2211,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _StartDate;
             }
             set
-            {
-                _StartDate = value;
-            }
-        }
-
-        private global::System.DateTime _StartDate;
-
-
-
+            { _StartDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _StartDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2316,15 +2229,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _EndDate;
             }
             set
-            {
-                _EndDate = value;
-            }
-        }
-
-        private Nullable<global::System.DateTime> _EndDate;
-
-
-
+            { _EndDate = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.DateTime> _EndDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2335,15 +2247,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ListPrice;
             }
             set
-            {
-                _ListPrice = value;
-            }
-        }
-
-        private global::System.Decimal _ListPrice;
-
-
-
+            { _ListPrice = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _ListPrice;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2354,61 +2265,60 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductListPriceHistoryBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductListPriceHistory">Edm Model BE</param>
-        public ProductListPriceHistoryBE(ProductListPriceHistory pProductListPriceHistory)
-        {
-            _ProductID = pProductListPriceHistory.ProductID;
-            _StartDate = pProductListPriceHistory.StartDate;
-            _EndDate = pProductListPriceHistory.EndDate;
-            _ListPrice = pProductListPriceHistory.ListPrice;
-            _ModifiedDate = pProductListPriceHistory.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductListPriceHistory">Edm Model BE</param>
-        public static explicit operator ProductListPriceHistoryBE(ProductListPriceHistory pProductListPriceHistory)
-        {
-            return new ProductListPriceHistoryBE(pProductListPriceHistory);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductListPriceHistoryBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductListPriceHistory">Edm Model BE</param>
+            public ProductListPriceHistoryBE(ProductListPriceHistory pProductListPriceHistory)
+            {
+            	_ProductID =	pProductListPriceHistory.ProductID ;
+            		_StartDate =	pProductListPriceHistory.StartDate ;
+            		_EndDate =	pProductListPriceHistory.EndDate ;
+            		_ListPrice =	pProductListPriceHistory.ListPrice ;
+            		_ModifiedDate =	pProductListPriceHistory.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductListPriceHistory">Edm Model BE</param>
+            public static explicit operator ProductListPriceHistoryBE(ProductListPriceHistory pProductListPriceHistory)
+             {
+              return  new  ProductListPriceHistoryBE(pProductListPriceHistory);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductModelList"), SerializableAttribute]
-    public class ProductModelList : Fwk.Bases.Entities<ProductModelBE> { }
-
-    [XmlInclude(typeof(ProductModel)), Serializable]
+    public class ProductModelList : Fwk.Bases.Entities< ProductModelBE >{}
+    
+       [XmlInclude(typeof(ProductModel)), Serializable]
     public partial class ProductModelBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2419,15 +2329,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductModelID;
             }
             set
-            {
-                _ProductModelID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductModelID;
-
-
-
+            { _ProductModelID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductModelID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2438,15 +2347,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2457,15 +2365,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CatalogDescription;
             }
             set
-            {
-                _CatalogDescription = value;
-            }
-        }
-
-        private global::System.String _CatalogDescription;
-
-
-
+            { _CatalogDescription = value;
+    		}
+    	}
+    	
+    	    private global::System.String _CatalogDescription;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2476,15 +2383,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Instructions;
             }
             set
-            {
-                _Instructions = value;
-            }
-        }
-
-        private global::System.String _Instructions;
-
-
-
+            { _Instructions = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Instructions;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2495,15 +2401,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2514,62 +2419,61 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductModelBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductModel">Edm Model BE</param>
-        public ProductModelBE(ProductModel pProductModel)
-        {
-            _ProductModelID = pProductModel.ProductModelID;
-            _Name = pProductModel.Name;
-            _CatalogDescription = pProductModel.CatalogDescription;
-            _Instructions = pProductModel.Instructions;
-            _rowguid = pProductModel.rowguid;
-            _ModifiedDate = pProductModel.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductModel">Edm Model BE</param>
-        public static explicit operator ProductModelBE(ProductModel pProductModel)
-        {
-            return new ProductModelBE(pProductModel);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductModelBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductModel">Edm Model BE</param>
+            public ProductModelBE(ProductModel pProductModel)
+            {
+            	_ProductModelID =	pProductModel.ProductModelID ;
+            		_Name =	pProductModel.Name ;
+            		_CatalogDescription =	pProductModel.CatalogDescription ;
+            		_Instructions =	pProductModel.Instructions ;
+            		_rowguid =	pProductModel.rowguid ;
+            		_ModifiedDate =	pProductModel.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductModel">Edm Model BE</param>
+            public static explicit operator ProductModelBE(ProductModel pProductModel)
+             {
+              return  new  ProductModelBE(pProductModel);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductModelIllustrationList"), SerializableAttribute]
-    public class ProductModelIllustrationList : Fwk.Bases.Entities<ProductModelIllustrationBE> { }
-
-    [XmlInclude(typeof(ProductModelIllustration)), Serializable]
+    public class ProductModelIllustrationList : Fwk.Bases.Entities< ProductModelIllustrationBE >{}
+    
+       [XmlInclude(typeof(ProductModelIllustration)), Serializable]
     public partial class ProductModelIllustrationBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2580,15 +2484,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductModelID;
             }
             set
-            {
-                _ProductModelID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductModelID;
-
-
-
+            { _ProductModelID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductModelID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2599,15 +2502,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _IllustrationID;
             }
             set
-            {
-                _IllustrationID = value;
-            }
-        }
-
-        private global::System.Int32 _IllustrationID;
-
-
-
+            { _IllustrationID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _IllustrationID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2618,59 +2520,58 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductModelIllustrationBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductModelIllustration">Edm Model BE</param>
-        public ProductModelIllustrationBE(ProductModelIllustration pProductModelIllustration)
-        {
-            _ProductModelID = pProductModelIllustration.ProductModelID;
-            _IllustrationID = pProductModelIllustration.IllustrationID;
-            _ModifiedDate = pProductModelIllustration.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductModelIllustration">Edm Model BE</param>
-        public static explicit operator ProductModelIllustrationBE(ProductModelIllustration pProductModelIllustration)
-        {
-            return new ProductModelIllustrationBE(pProductModelIllustration);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductModelIllustrationBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductModelIllustration">Edm Model BE</param>
+            public ProductModelIllustrationBE(ProductModelIllustration pProductModelIllustration)
+            {
+            	_ProductModelID =	pProductModelIllustration.ProductModelID ;
+            		_IllustrationID =	pProductModelIllustration.IllustrationID ;
+            		_ModifiedDate =	pProductModelIllustration.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductModelIllustration">Edm Model BE</param>
+            public static explicit operator ProductModelIllustrationBE(ProductModelIllustration pProductModelIllustration)
+             {
+              return  new  ProductModelIllustrationBE(pProductModelIllustration);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductModelProductDescriptionCultureList"), SerializableAttribute]
-    public class ProductModelProductDescriptionCultureList : Fwk.Bases.Entities<ProductModelProductDescriptionCultureBE> { }
-
-    [XmlInclude(typeof(ProductModelProductDescriptionCulture)), Serializable]
+    public class ProductModelProductDescriptionCultureList : Fwk.Bases.Entities< ProductModelProductDescriptionCultureBE >{}
+    
+       [XmlInclude(typeof(ProductModelProductDescriptionCulture)), Serializable]
     public partial class ProductModelProductDescriptionCultureBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2681,15 +2582,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductModelID;
             }
             set
-            {
-                _ProductModelID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductModelID;
-
-
-
+            { _ProductModelID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductModelID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2700,15 +2600,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductDescriptionID;
             }
             set
-            {
-                _ProductDescriptionID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductDescriptionID;
-
-
-
+            { _ProductDescriptionID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductDescriptionID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2719,15 +2618,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CultureID;
             }
             set
-            {
-                _CultureID = value;
-            }
-        }
-
-        private global::System.String _CultureID;
-
-
-
+            { _CultureID = value;
+    		}
+    	}
+    	
+    	    private global::System.String _CultureID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2738,60 +2636,59 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductModelProductDescriptionCultureBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductModelProductDescriptionCulture">Edm Model BE</param>
-        public ProductModelProductDescriptionCultureBE(ProductModelProductDescriptionCulture pProductModelProductDescriptionCulture)
-        {
-            _ProductModelID = pProductModelProductDescriptionCulture.ProductModelID;
-            _ProductDescriptionID = pProductModelProductDescriptionCulture.ProductDescriptionID;
-            _CultureID = pProductModelProductDescriptionCulture.CultureID;
-            _ModifiedDate = pProductModelProductDescriptionCulture.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductModelProductDescriptionCulture">Edm Model BE</param>
-        public static explicit operator ProductModelProductDescriptionCultureBE(ProductModelProductDescriptionCulture pProductModelProductDescriptionCulture)
-        {
-            return new ProductModelProductDescriptionCultureBE(pProductModelProductDescriptionCulture);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductModelProductDescriptionCultureBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductModelProductDescriptionCulture">Edm Model BE</param>
+            public ProductModelProductDescriptionCultureBE(ProductModelProductDescriptionCulture pProductModelProductDescriptionCulture)
+            {
+            	_ProductModelID =	pProductModelProductDescriptionCulture.ProductModelID ;
+            		_ProductDescriptionID =	pProductModelProductDescriptionCulture.ProductDescriptionID ;
+            		_CultureID =	pProductModelProductDescriptionCulture.CultureID ;
+            		_ModifiedDate =	pProductModelProductDescriptionCulture.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductModelProductDescriptionCulture">Edm Model BE</param>
+            public static explicit operator ProductModelProductDescriptionCultureBE(ProductModelProductDescriptionCulture pProductModelProductDescriptionCulture)
+             {
+              return  new  ProductModelProductDescriptionCultureBE(pProductModelProductDescriptionCulture);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductPhotoList"), SerializableAttribute]
-    public class ProductPhotoList : Fwk.Bases.Entities<ProductPhotoBE> { }
-
-    [XmlInclude(typeof(ProductPhoto)), Serializable]
+    public class ProductPhotoList : Fwk.Bases.Entities< ProductPhotoBE >{}
+    
+       [XmlInclude(typeof(ProductPhoto)), Serializable]
     public partial class ProductPhotoBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2802,15 +2699,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductPhotoID;
             }
             set
-            {
-                _ProductPhotoID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductPhotoID;
-
-
-
+            { _ProductPhotoID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductPhotoID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2818,19 +2714,18 @@ namespace EntityFramework.Entities.Common.BE
         {
             get
             {
-                // return StructuralObject.GetValidValue(_ThumbNailPhoto);
-                return _ThumbNailPhoto;
+               // return StructuralObject.GetValidValue(_ThumbNailPhoto);
+    		    return _ThumbNailPhoto;
             }
             set
-            {
-                _ThumbNailPhoto = value;
-            }
-        }
-
-        private global::System.Byte[] _ThumbNailPhoto;
-
-
-
+            { _ThumbNailPhoto = value;
+    		}
+    	}
+    	
+    	    private global::System.Byte[] _ThumbNailPhoto;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2841,15 +2736,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ThumbnailPhotoFileName;
             }
             set
-            {
-                _ThumbnailPhotoFileName = value;
-            }
-        }
-
-        private global::System.String _ThumbnailPhotoFileName;
-
-
-
+            { _ThumbnailPhotoFileName = value;
+    		}
+    	}
+    	
+    	    private global::System.String _ThumbnailPhotoFileName;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2857,19 +2751,18 @@ namespace EntityFramework.Entities.Common.BE
         {
             get
             {
-                // return StructuralObject.GetValidValue(_LargePhoto);
-                return _LargePhoto;
+               // return StructuralObject.GetValidValue(_LargePhoto);
+    		    return _LargePhoto;
             }
             set
-            {
-                _LargePhoto = value;
-            }
-        }
-
-        private global::System.Byte[] _LargePhoto;
-
-
-
+            { _LargePhoto = value;
+    		}
+    	}
+    	
+    	    private global::System.Byte[] _LargePhoto;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2880,15 +2773,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _LargePhotoFileName;
             }
             set
-            {
-                _LargePhotoFileName = value;
-            }
-        }
-
-        private global::System.String _LargePhotoFileName;
-
-
-
+            { _LargePhotoFileName = value;
+    		}
+    	}
+    	
+    	    private global::System.String _LargePhotoFileName;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2899,62 +2791,61 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductPhotoBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductPhoto">Edm Model BE</param>
-        public ProductPhotoBE(ProductPhoto pProductPhoto)
-        {
-            _ProductPhotoID = pProductPhoto.ProductPhotoID;
-            _ThumbNailPhoto = pProductPhoto.ThumbNailPhoto;
-            _ThumbnailPhotoFileName = pProductPhoto.ThumbnailPhotoFileName;
-            _LargePhoto = pProductPhoto.LargePhoto;
-            _LargePhotoFileName = pProductPhoto.LargePhotoFileName;
-            _ModifiedDate = pProductPhoto.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductPhoto">Edm Model BE</param>
-        public static explicit operator ProductPhotoBE(ProductPhoto pProductPhoto)
-        {
-            return new ProductPhotoBE(pProductPhoto);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductPhotoBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductPhoto">Edm Model BE</param>
+            public ProductPhotoBE(ProductPhoto pProductPhoto)
+            {
+            	_ProductPhotoID =	pProductPhoto.ProductPhotoID ;
+            		_ThumbNailPhoto =	pProductPhoto.ThumbNailPhoto ;
+            		_ThumbnailPhotoFileName =	pProductPhoto.ThumbnailPhotoFileName ;
+            		_LargePhoto =	pProductPhoto.LargePhoto ;
+            		_LargePhotoFileName =	pProductPhoto.LargePhotoFileName ;
+            		_ModifiedDate =	pProductPhoto.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductPhoto">Edm Model BE</param>
+            public static explicit operator ProductPhotoBE(ProductPhoto pProductPhoto)
+             {
+              return  new  ProductPhotoBE(pProductPhoto);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductProductPhotoList"), SerializableAttribute]
-    public class ProductProductPhotoList : Fwk.Bases.Entities<ProductProductPhotoBE> { }
-
-    [XmlInclude(typeof(ProductProductPhoto)), Serializable]
+    public class ProductProductPhotoList : Fwk.Bases.Entities< ProductProductPhotoBE >{}
+    
+       [XmlInclude(typeof(ProductProductPhoto)), Serializable]
     public partial class ProductProductPhotoBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2965,15 +2856,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductID;
             }
             set
-            {
-                _ProductID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductID;
-
-
-
+            { _ProductID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -2984,15 +2874,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductPhotoID;
             }
             set
-            {
-                _ProductPhotoID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductPhotoID;
-
-
-
+            { _ProductPhotoID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductPhotoID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3003,15 +2892,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Primary;
             }
             set
-            {
-                _Primary = value;
-            }
-        }
-
-        private global::System.Boolean _Primary;
-
-
-
+            { _Primary = value;
+    		}
+    	}
+    	
+    	    private global::System.Boolean _Primary;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3022,60 +2910,59 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductProductPhotoBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductProductPhoto">Edm Model BE</param>
-        public ProductProductPhotoBE(ProductProductPhoto pProductProductPhoto)
-        {
-            _ProductID = pProductProductPhoto.ProductID;
-            _ProductPhotoID = pProductProductPhoto.ProductPhotoID;
-            _Primary = pProductProductPhoto.Primary;
-            _ModifiedDate = pProductProductPhoto.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductProductPhoto">Edm Model BE</param>
-        public static explicit operator ProductProductPhotoBE(ProductProductPhoto pProductProductPhoto)
-        {
-            return new ProductProductPhotoBE(pProductProductPhoto);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductProductPhotoBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductProductPhoto">Edm Model BE</param>
+            public ProductProductPhotoBE(ProductProductPhoto pProductProductPhoto)
+            {
+            	_ProductID =	pProductProductPhoto.ProductID ;
+            		_ProductPhotoID =	pProductProductPhoto.ProductPhotoID ;
+            		_Primary =	pProductProductPhoto.Primary ;
+            		_ModifiedDate =	pProductProductPhoto.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductProductPhoto">Edm Model BE</param>
+            public static explicit operator ProductProductPhotoBE(ProductProductPhoto pProductProductPhoto)
+             {
+              return  new  ProductProductPhotoBE(pProductProductPhoto);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ProductSubcategoryList"), SerializableAttribute]
-    public class ProductSubcategoryList : Fwk.Bases.Entities<ProductSubcategoryBE> { }
-
-    [XmlInclude(typeof(ProductSubcategory)), Serializable]
+    public class ProductSubcategoryList : Fwk.Bases.Entities< ProductSubcategoryBE >{}
+    
+       [XmlInclude(typeof(ProductSubcategory)), Serializable]
     public partial class ProductSubcategoryBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3086,15 +2973,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductSubcategoryID;
             }
             set
-            {
-                _ProductSubcategoryID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductSubcategoryID;
-
-
-
+            { _ProductSubcategoryID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductSubcategoryID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3105,15 +2991,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductCategoryID;
             }
             set
-            {
-                _ProductCategoryID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductCategoryID;
-
-
-
+            { _ProductCategoryID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductCategoryID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3124,15 +3009,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3143,15 +3027,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3162,61 +3045,60 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ProductSubcategoryBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductSubcategory">Edm Model BE</param>
-        public ProductSubcategoryBE(ProductSubcategory pProductSubcategory)
-        {
-            _ProductSubcategoryID = pProductSubcategory.ProductSubcategoryID;
-            _ProductCategoryID = pProductSubcategory.ProductCategoryID;
-            _Name = pProductSubcategory.Name;
-            _rowguid = pProductSubcategory.rowguid;
-            _ModifiedDate = pProductSubcategory.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pProductSubcategory">Edm Model BE</param>
-        public static explicit operator ProductSubcategoryBE(ProductSubcategory pProductSubcategory)
-        {
-            return new ProductSubcategoryBE(pProductSubcategory);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ProductSubcategoryBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductSubcategory">Edm Model BE</param>
+            public ProductSubcategoryBE(ProductSubcategory pProductSubcategory)
+            {
+            	_ProductSubcategoryID =	pProductSubcategory.ProductSubcategoryID ;
+            		_ProductCategoryID =	pProductSubcategory.ProductCategoryID ;
+            		_Name =	pProductSubcategory.Name ;
+            		_rowguid =	pProductSubcategory.rowguid ;
+            		_ModifiedDate =	pProductSubcategory.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pProductSubcategory">Edm Model BE</param>
+            public static explicit operator ProductSubcategoryBE(ProductSubcategory pProductSubcategory)
+             {
+              return  new  ProductSubcategoryBE(pProductSubcategory);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("SalesOrderHeaderList"), SerializableAttribute]
-    public class SalesOrderHeaderList : Fwk.Bases.Entities<SalesOrderHeaderBE> { }
-
-    [XmlInclude(typeof(SalesOrderHeader)), Serializable]
+    public class SalesOrderHeaderList : Fwk.Bases.Entities< SalesOrderHeaderBE >{}
+    
+       [XmlInclude(typeof(SalesOrderHeader)), Serializable]
     public partial class SalesOrderHeaderBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3227,15 +3109,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesOrderID;
             }
             set
-            {
-                _SalesOrderID = value;
-            }
-        }
-
-        private global::System.Int32 _SalesOrderID;
-
-
-
+            { _SalesOrderID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _SalesOrderID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3246,15 +3127,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _RevisionNumber;
             }
             set
-            {
-                _RevisionNumber = value;
-            }
-        }
-
-        private global::System.Byte _RevisionNumber;
-
-
-
+            { _RevisionNumber = value;
+    		}
+    	}
+    	
+    	    private global::System.Byte _RevisionNumber;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3265,15 +3145,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _OrderDate;
             }
             set
-            {
-                _OrderDate = value;
-            }
-        }
-
-        private global::System.DateTime _OrderDate;
-
-
-
+            { _OrderDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _OrderDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3284,15 +3163,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _DueDate;
             }
             set
-            {
-                _DueDate = value;
-            }
-        }
-
-        private global::System.DateTime _DueDate;
-
-
-
+            { _DueDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _DueDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3303,15 +3181,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ShipDate;
             }
             set
-            {
-                _ShipDate = value;
-            }
-        }
-
-        private Nullable<global::System.DateTime> _ShipDate;
-
-
-
+            { _ShipDate = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.DateTime> _ShipDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3322,15 +3199,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Status;
             }
             set
-            {
-                _Status = value;
-            }
-        }
-
-        private global::System.Byte _Status;
-
-
-
+            { _Status = value;
+    		}
+    	}
+    	
+    	    private global::System.Byte _Status;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3341,15 +3217,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _OnlineOrderFlag;
             }
             set
-            {
-                _OnlineOrderFlag = value;
-            }
-        }
-
-        private global::System.Boolean _OnlineOrderFlag;
-
-
-
+            { _OnlineOrderFlag = value;
+    		}
+    	}
+    	
+    	    private global::System.Boolean _OnlineOrderFlag;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3360,15 +3235,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesOrderNumber;
             }
             set
-            {
-                _SalesOrderNumber = value;
-            }
-        }
-
-        private global::System.String _SalesOrderNumber;
-
-
-
+            { _SalesOrderNumber = value;
+    		}
+    	}
+    	
+    	    private global::System.String _SalesOrderNumber;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3379,15 +3253,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _PurchaseOrderNumber;
             }
             set
-            {
-                _PurchaseOrderNumber = value;
-            }
-        }
-
-        private global::System.String _PurchaseOrderNumber;
-
-
-
+            { _PurchaseOrderNumber = value;
+    		}
+    	}
+    	
+    	    private global::System.String _PurchaseOrderNumber;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3398,15 +3271,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _AccountNumber;
             }
             set
-            {
-                _AccountNumber = value;
-            }
-        }
-
-        private global::System.String _AccountNumber;
-
-
-
+            { _AccountNumber = value;
+    		}
+    	}
+    	
+    	    private global::System.String _AccountNumber;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3417,15 +3289,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CustomerID;
             }
             set
-            {
-                _CustomerID = value;
-            }
-        }
-
-        private global::System.Int32 _CustomerID;
-
-
-
+            { _CustomerID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _CustomerID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3436,15 +3307,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ContactID;
             }
             set
-            {
-                _ContactID = value;
-            }
-        }
-
-        private global::System.Int32 _ContactID;
-
-
-
+            { _ContactID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ContactID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3455,15 +3325,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesPersonID;
             }
             set
-            {
-                _SalesPersonID = value;
-            }
-        }
-
-        private Nullable<global::System.Int32> _SalesPersonID;
-
-
-
+            { _SalesPersonID = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.Int32> _SalesPersonID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3474,15 +3343,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _TerritoryID;
             }
             set
-            {
-                _TerritoryID = value;
-            }
-        }
-
-        private Nullable<global::System.Int32> _TerritoryID;
-
-
-
+            { _TerritoryID = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.Int32> _TerritoryID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3493,15 +3361,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _BillToAddressID;
             }
             set
-            {
-                _BillToAddressID = value;
-            }
-        }
-
-        private global::System.Int32 _BillToAddressID;
-
-
-
+            { _BillToAddressID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _BillToAddressID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3512,15 +3379,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ShipToAddressID;
             }
             set
-            {
-                _ShipToAddressID = value;
-            }
-        }
-
-        private global::System.Int32 _ShipToAddressID;
-
-
-
+            { _ShipToAddressID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ShipToAddressID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3531,15 +3397,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ShipMethodID;
             }
             set
-            {
-                _ShipMethodID = value;
-            }
-        }
-
-        private global::System.Int32 _ShipMethodID;
-
-
-
+            { _ShipMethodID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ShipMethodID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3550,15 +3415,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CreditCardID;
             }
             set
-            {
-                _CreditCardID = value;
-            }
-        }
-
-        private Nullable<global::System.Int32> _CreditCardID;
-
-
-
+            { _CreditCardID = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.Int32> _CreditCardID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3569,15 +3433,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CreditCardApprovalCode;
             }
             set
-            {
-                _CreditCardApprovalCode = value;
-            }
-        }
-
-        private global::System.String _CreditCardApprovalCode;
-
-
-
+            { _CreditCardApprovalCode = value;
+    		}
+    	}
+    	
+    	    private global::System.String _CreditCardApprovalCode;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3588,15 +3451,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CurrencyRateID;
             }
             set
-            {
-                _CurrencyRateID = value;
-            }
-        }
-
-        private Nullable<global::System.Int32> _CurrencyRateID;
-
-
-
+            { _CurrencyRateID = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.Int32> _CurrencyRateID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3607,15 +3469,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SubTotal;
             }
             set
-            {
-                _SubTotal = value;
-            }
-        }
-
-        private global::System.Decimal _SubTotal;
-
-
-
+            { _SubTotal = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _SubTotal;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3626,15 +3487,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _TaxAmt;
             }
             set
-            {
-                _TaxAmt = value;
-            }
-        }
-
-        private global::System.Decimal _TaxAmt;
-
-
-
+            { _TaxAmt = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _TaxAmt;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3645,15 +3505,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Freight;
             }
             set
-            {
-                _Freight = value;
-            }
-        }
-
-        private global::System.Decimal _Freight;
-
-
-
+            { _Freight = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _Freight;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3664,15 +3523,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _TotalDue;
             }
             set
-            {
-                _TotalDue = value;
-            }
-        }
-
-        private global::System.Decimal _TotalDue;
-
-
-
+            { _TotalDue = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _TotalDue;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3683,15 +3541,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Comment;
             }
             set
-            {
-                _Comment = value;
-            }
-        }
-
-        private global::System.String _Comment;
-
-
-
+            { _Comment = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Comment;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3702,15 +3559,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3721,83 +3577,82 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public SalesOrderHeaderBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesOrderHeader">Edm Model BE</param>
-        public SalesOrderHeaderBE(SalesOrderHeader pSalesOrderHeader)
-        {
-            _SalesOrderID = pSalesOrderHeader.SalesOrderID;
-            _RevisionNumber = pSalesOrderHeader.RevisionNumber;
-            _OrderDate = pSalesOrderHeader.OrderDate;
-            _DueDate = pSalesOrderHeader.DueDate;
-            _ShipDate = pSalesOrderHeader.ShipDate;
-            _Status = pSalesOrderHeader.Status;
-            _OnlineOrderFlag = pSalesOrderHeader.OnlineOrderFlag;
-            _SalesOrderNumber = pSalesOrderHeader.SalesOrderNumber;
-            _PurchaseOrderNumber = pSalesOrderHeader.PurchaseOrderNumber;
-            _AccountNumber = pSalesOrderHeader.AccountNumber;
-            _CustomerID = pSalesOrderHeader.CustomerID;
-            _ContactID = pSalesOrderHeader.ContactID;
-            _SalesPersonID = pSalesOrderHeader.SalesPersonID;
-            _TerritoryID = pSalesOrderHeader.TerritoryID;
-            _BillToAddressID = pSalesOrderHeader.BillToAddressID;
-            _ShipToAddressID = pSalesOrderHeader.ShipToAddressID;
-            _ShipMethodID = pSalesOrderHeader.ShipMethodID;
-            _CreditCardID = pSalesOrderHeader.CreditCardID;
-            _CreditCardApprovalCode = pSalesOrderHeader.CreditCardApprovalCode;
-            _CurrencyRateID = pSalesOrderHeader.CurrencyRateID;
-            _SubTotal = pSalesOrderHeader.SubTotal;
-            _TaxAmt = pSalesOrderHeader.TaxAmt;
-            _Freight = pSalesOrderHeader.Freight;
-            _TotalDue = pSalesOrderHeader.TotalDue;
-            _Comment = pSalesOrderHeader.Comment;
-            _rowguid = pSalesOrderHeader.rowguid;
-            _ModifiedDate = pSalesOrderHeader.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesOrderHeader">Edm Model BE</param>
-        public static explicit operator SalesOrderHeaderBE(SalesOrderHeader pSalesOrderHeader)
-        {
-            return new SalesOrderHeaderBE(pSalesOrderHeader);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public SalesOrderHeaderBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesOrderHeader">Edm Model BE</param>
+            public SalesOrderHeaderBE(SalesOrderHeader pSalesOrderHeader)
+            {
+            	_SalesOrderID =	pSalesOrderHeader.SalesOrderID ;
+            		_RevisionNumber =	pSalesOrderHeader.RevisionNumber ;
+            		_OrderDate =	pSalesOrderHeader.OrderDate ;
+            		_DueDate =	pSalesOrderHeader.DueDate ;
+            		_ShipDate =	pSalesOrderHeader.ShipDate ;
+            		_Status =	pSalesOrderHeader.Status ;
+            		_OnlineOrderFlag =	pSalesOrderHeader.OnlineOrderFlag ;
+            		_SalesOrderNumber =	pSalesOrderHeader.SalesOrderNumber ;
+            		_PurchaseOrderNumber =	pSalesOrderHeader.PurchaseOrderNumber ;
+            		_AccountNumber =	pSalesOrderHeader.AccountNumber ;
+            		_CustomerID =	pSalesOrderHeader.CustomerID ;
+            		_ContactID =	pSalesOrderHeader.ContactID ;
+            		_SalesPersonID =	pSalesOrderHeader.SalesPersonID ;
+            		_TerritoryID =	pSalesOrderHeader.TerritoryID ;
+            		_BillToAddressID =	pSalesOrderHeader.BillToAddressID ;
+            		_ShipToAddressID =	pSalesOrderHeader.ShipToAddressID ;
+            		_ShipMethodID =	pSalesOrderHeader.ShipMethodID ;
+            		_CreditCardID =	pSalesOrderHeader.CreditCardID ;
+            		_CreditCardApprovalCode =	pSalesOrderHeader.CreditCardApprovalCode ;
+            		_CurrencyRateID =	pSalesOrderHeader.CurrencyRateID ;
+            		_SubTotal =	pSalesOrderHeader.SubTotal ;
+            		_TaxAmt =	pSalesOrderHeader.TaxAmt ;
+            		_Freight =	pSalesOrderHeader.Freight ;
+            		_TotalDue =	pSalesOrderHeader.TotalDue ;
+            		_Comment =	pSalesOrderHeader.Comment ;
+            		_rowguid =	pSalesOrderHeader.rowguid ;
+            		_ModifiedDate =	pSalesOrderHeader.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesOrderHeader">Edm Model BE</param>
+            public static explicit operator SalesOrderHeaderBE(SalesOrderHeader pSalesOrderHeader)
+             {
+              return  new  SalesOrderHeaderBE(pSalesOrderHeader);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("SalesOrderHeaderSalesReasonList"), SerializableAttribute]
-    public class SalesOrderHeaderSalesReasonList : Fwk.Bases.Entities<SalesOrderHeaderSalesReasonBE> { }
-
-    [XmlInclude(typeof(SalesOrderHeaderSalesReason)), Serializable]
+    public class SalesOrderHeaderSalesReasonList : Fwk.Bases.Entities< SalesOrderHeaderSalesReasonBE >{}
+    
+       [XmlInclude(typeof(SalesOrderHeaderSalesReason)), Serializable]
     public partial class SalesOrderHeaderSalesReasonBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3808,15 +3663,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesOrderID;
             }
             set
-            {
-                _SalesOrderID = value;
-            }
-        }
-
-        private global::System.Int32 _SalesOrderID;
-
-
-
+            { _SalesOrderID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _SalesOrderID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3827,15 +3681,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesReasonID;
             }
             set
-            {
-                _SalesReasonID = value;
-            }
-        }
-
-        private global::System.Int32 _SalesReasonID;
-
-
-
+            { _SalesReasonID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _SalesReasonID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3846,59 +3699,58 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public SalesOrderHeaderSalesReasonBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesOrderHeaderSalesReason">Edm Model BE</param>
-        public SalesOrderHeaderSalesReasonBE(SalesOrderHeaderSalesReason pSalesOrderHeaderSalesReason)
-        {
-            _SalesOrderID = pSalesOrderHeaderSalesReason.SalesOrderID;
-            _SalesReasonID = pSalesOrderHeaderSalesReason.SalesReasonID;
-            _ModifiedDate = pSalesOrderHeaderSalesReason.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesOrderHeaderSalesReason">Edm Model BE</param>
-        public static explicit operator SalesOrderHeaderSalesReasonBE(SalesOrderHeaderSalesReason pSalesOrderHeaderSalesReason)
-        {
-            return new SalesOrderHeaderSalesReasonBE(pSalesOrderHeaderSalesReason);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public SalesOrderHeaderSalesReasonBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesOrderHeaderSalesReason">Edm Model BE</param>
+            public SalesOrderHeaderSalesReasonBE(SalesOrderHeaderSalesReason pSalesOrderHeaderSalesReason)
+            {
+            	_SalesOrderID =	pSalesOrderHeaderSalesReason.SalesOrderID ;
+            		_SalesReasonID =	pSalesOrderHeaderSalesReason.SalesReasonID ;
+            		_ModifiedDate =	pSalesOrderHeaderSalesReason.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesOrderHeaderSalesReason">Edm Model BE</param>
+            public static explicit operator SalesOrderHeaderSalesReasonBE(SalesOrderHeaderSalesReason pSalesOrderHeaderSalesReason)
+             {
+              return  new  SalesOrderHeaderSalesReasonBE(pSalesOrderHeaderSalesReason);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("SalesReasonList"), SerializableAttribute]
-    public class SalesReasonList : Fwk.Bases.Entities<SalesReasonBE> { }
-
-    [XmlInclude(typeof(SalesReason)), Serializable]
+    public class SalesReasonList : Fwk.Bases.Entities< SalesReasonBE >{}
+    
+       [XmlInclude(typeof(SalesReason)), Serializable]
     public partial class SalesReasonBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3909,15 +3761,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesReasonID;
             }
             set
-            {
-                _SalesReasonID = value;
-            }
-        }
-
-        private global::System.Int32 _SalesReasonID;
-
-
-
+            { _SalesReasonID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _SalesReasonID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3928,15 +3779,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3947,15 +3797,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ReasonType;
             }
             set
-            {
-                _ReasonType = value;
-            }
-        }
-
-        private global::System.String _ReasonType;
-
-
-
+            { _ReasonType = value;
+    		}
+    	}
+    	
+    	    private global::System.String _ReasonType;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -3966,60 +3815,59 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public SalesReasonBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesReason">Edm Model BE</param>
-        public SalesReasonBE(SalesReason pSalesReason)
-        {
-            _SalesReasonID = pSalesReason.SalesReasonID;
-            _Name = pSalesReason.Name;
-            _ReasonType = pSalesReason.ReasonType;
-            _ModifiedDate = pSalesReason.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesReason">Edm Model BE</param>
-        public static explicit operator SalesReasonBE(SalesReason pSalesReason)
-        {
-            return new SalesReasonBE(pSalesReason);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public SalesReasonBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesReason">Edm Model BE</param>
+            public SalesReasonBE(SalesReason pSalesReason)
+            {
+            	_SalesReasonID =	pSalesReason.SalesReasonID ;
+            		_Name =	pSalesReason.Name ;
+            		_ReasonType =	pSalesReason.ReasonType ;
+            		_ModifiedDate =	pSalesReason.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesReason">Edm Model BE</param>
+            public static explicit operator SalesReasonBE(SalesReason pSalesReason)
+             {
+              return  new  SalesReasonBE(pSalesReason);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("SalesTaxRateList"), SerializableAttribute]
-    public class SalesTaxRateList : Fwk.Bases.Entities<SalesTaxRateBE> { }
-
-    [XmlInclude(typeof(SalesTaxRate)), Serializable]
+    public class SalesTaxRateList : Fwk.Bases.Entities< SalesTaxRateBE >{}
+    
+       [XmlInclude(typeof(SalesTaxRate)), Serializable]
     public partial class SalesTaxRateBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4030,15 +3878,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesTaxRateID;
             }
             set
-            {
-                _SalesTaxRateID = value;
-            }
-        }
-
-        private global::System.Int32 _SalesTaxRateID;
-
-
-
+            { _SalesTaxRateID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _SalesTaxRateID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4049,15 +3896,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _StateProvinceID;
             }
             set
-            {
-                _StateProvinceID = value;
-            }
-        }
-
-        private global::System.Int32 _StateProvinceID;
-
-
-
+            { _StateProvinceID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _StateProvinceID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4068,15 +3914,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _TaxType;
             }
             set
-            {
-                _TaxType = value;
-            }
-        }
-
-        private global::System.Byte _TaxType;
-
-
-
+            { _TaxType = value;
+    		}
+    	}
+    	
+    	    private global::System.Byte _TaxType;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4087,15 +3932,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _TaxRate;
             }
             set
-            {
-                _TaxRate = value;
-            }
-        }
-
-        private global::System.Decimal _TaxRate;
-
-
-
+            { _TaxRate = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _TaxRate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4106,15 +3950,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4125,15 +3968,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4144,63 +3986,62 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public SalesTaxRateBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesTaxRate">Edm Model BE</param>
-        public SalesTaxRateBE(SalesTaxRate pSalesTaxRate)
-        {
-            _SalesTaxRateID = pSalesTaxRate.SalesTaxRateID;
-            _StateProvinceID = pSalesTaxRate.StateProvinceID;
-            _TaxType = pSalesTaxRate.TaxType;
-            _TaxRate = pSalesTaxRate.TaxRate;
-            _Name = pSalesTaxRate.Name;
-            _rowguid = pSalesTaxRate.rowguid;
-            _ModifiedDate = pSalesTaxRate.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesTaxRate">Edm Model BE</param>
-        public static explicit operator SalesTaxRateBE(SalesTaxRate pSalesTaxRate)
-        {
-            return new SalesTaxRateBE(pSalesTaxRate);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public SalesTaxRateBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesTaxRate">Edm Model BE</param>
+            public SalesTaxRateBE(SalesTaxRate pSalesTaxRate)
+            {
+            	_SalesTaxRateID =	pSalesTaxRate.SalesTaxRateID ;
+            		_StateProvinceID =	pSalesTaxRate.StateProvinceID ;
+            		_TaxType =	pSalesTaxRate.TaxType ;
+            		_TaxRate =	pSalesTaxRate.TaxRate ;
+            		_Name =	pSalesTaxRate.Name ;
+            		_rowguid =	pSalesTaxRate.rowguid ;
+            		_ModifiedDate =	pSalesTaxRate.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesTaxRate">Edm Model BE</param>
+            public static explicit operator SalesTaxRateBE(SalesTaxRate pSalesTaxRate)
+             {
+              return  new  SalesTaxRateBE(pSalesTaxRate);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("SalesTerritoryHistoryList"), SerializableAttribute]
-    public class SalesTerritoryHistoryList : Fwk.Bases.Entities<SalesTerritoryHistoryBE> { }
-
-    [XmlInclude(typeof(SalesTerritoryHistory)), Serializable]
+    public class SalesTerritoryHistoryList : Fwk.Bases.Entities< SalesTerritoryHistoryBE >{}
+    
+       [XmlInclude(typeof(SalesTerritoryHistory)), Serializable]
     public partial class SalesTerritoryHistoryBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4211,15 +4052,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SalesPersonID;
             }
             set
-            {
-                _SalesPersonID = value;
-            }
-        }
-
-        private global::System.Int32 _SalesPersonID;
-
-
-
+            { _SalesPersonID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _SalesPersonID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4230,15 +4070,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _TerritoryID;
             }
             set
-            {
-                _TerritoryID = value;
-            }
-        }
-
-        private global::System.Int32 _TerritoryID;
-
-
-
+            { _TerritoryID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _TerritoryID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4249,15 +4088,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _StartDate;
             }
             set
-            {
-                _StartDate = value;
-            }
-        }
-
-        private global::System.DateTime _StartDate;
-
-
-
+            { _StartDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _StartDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4268,15 +4106,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _EndDate;
             }
             set
-            {
-                _EndDate = value;
-            }
-        }
-
-        private Nullable<global::System.DateTime> _EndDate;
-
-
-
+            { _EndDate = value;
+    		}
+    	}
+    	
+    	    private Nullable<global::System.DateTime> _EndDate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4287,15 +4124,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4306,62 +4142,61 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public SalesTerritoryHistoryBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesTerritoryHistory">Edm Model BE</param>
-        public SalesTerritoryHistoryBE(SalesTerritoryHistory pSalesTerritoryHistory)
-        {
-            _SalesPersonID = pSalesTerritoryHistory.SalesPersonID;
-            _TerritoryID = pSalesTerritoryHistory.TerritoryID;
-            _StartDate = pSalesTerritoryHistory.StartDate;
-            _EndDate = pSalesTerritoryHistory.EndDate;
-            _rowguid = pSalesTerritoryHistory.rowguid;
-            _ModifiedDate = pSalesTerritoryHistory.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pSalesTerritoryHistory">Edm Model BE</param>
-        public static explicit operator SalesTerritoryHistoryBE(SalesTerritoryHistory pSalesTerritoryHistory)
-        {
-            return new SalesTerritoryHistoryBE(pSalesTerritoryHistory);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public SalesTerritoryHistoryBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesTerritoryHistory">Edm Model BE</param>
+            public SalesTerritoryHistoryBE(SalesTerritoryHistory pSalesTerritoryHistory)
+            {
+            	_SalesPersonID =	pSalesTerritoryHistory.SalesPersonID ;
+            		_TerritoryID =	pSalesTerritoryHistory.TerritoryID ;
+            		_StartDate =	pSalesTerritoryHistory.StartDate ;
+            		_EndDate =	pSalesTerritoryHistory.EndDate ;
+            		_rowguid =	pSalesTerritoryHistory.rowguid ;
+            		_ModifiedDate =	pSalesTerritoryHistory.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pSalesTerritoryHistory">Edm Model BE</param>
+            public static explicit operator SalesTerritoryHistoryBE(SalesTerritoryHistory pSalesTerritoryHistory)
+             {
+              return  new  SalesTerritoryHistoryBE(pSalesTerritoryHistory);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("ShipMethodList"), SerializableAttribute]
-    public class ShipMethodList : Fwk.Bases.Entities<ShipMethodBE> { }
-
-    [XmlInclude(typeof(ShipMethod)), Serializable]
+    public class ShipMethodList : Fwk.Bases.Entities< ShipMethodBE >{}
+    
+       [XmlInclude(typeof(ShipMethod)), Serializable]
     public partial class ShipMethodBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4372,15 +4207,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ShipMethodID;
             }
             set
-            {
-                _ShipMethodID = value;
-            }
-        }
-
-        private global::System.Int32 _ShipMethodID;
-
-
-
+            { _ShipMethodID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ShipMethodID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4391,15 +4225,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _Name;
             }
             set
-            {
-                _Name = value;
-            }
-        }
-
-        private global::System.String _Name;
-
-
-
+            { _Name = value;
+    		}
+    	}
+    	
+    	    private global::System.String _Name;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4410,15 +4243,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ShipBase;
             }
             set
-            {
-                _ShipBase = value;
-            }
-        }
-
-        private global::System.Decimal _ShipBase;
-
-
-
+            { _ShipBase = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _ShipBase;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4429,15 +4261,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ShipRate;
             }
             set
-            {
-                _ShipRate = value;
-            }
-        }
-
-        private global::System.Decimal _ShipRate;
-
-
-
+            { _ShipRate = value;
+    		}
+    	}
+    	
+    	    private global::System.Decimal _ShipRate;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4448,15 +4279,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4467,62 +4297,61 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public ShipMethodBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pShipMethod">Edm Model BE</param>
-        public ShipMethodBE(ShipMethod pShipMethod)
-        {
-            _ShipMethodID = pShipMethod.ShipMethodID;
-            _Name = pShipMethod.Name;
-            _ShipBase = pShipMethod.ShipBase;
-            _ShipRate = pShipMethod.ShipRate;
-            _rowguid = pShipMethod.rowguid;
-            _ModifiedDate = pShipMethod.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pShipMethod">Edm Model BE</param>
-        public static explicit operator ShipMethodBE(ShipMethod pShipMethod)
-        {
-            return new ShipMethodBE(pShipMethod);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public ShipMethodBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pShipMethod">Edm Model BE</param>
+            public ShipMethodBE(ShipMethod pShipMethod)
+            {
+            	_ShipMethodID =	pShipMethod.ShipMethodID ;
+            		_Name =	pShipMethod.Name ;
+            		_ShipBase =	pShipMethod.ShipBase ;
+            		_ShipRate =	pShipMethod.ShipRate ;
+            		_rowguid =	pShipMethod.rowguid ;
+            		_ModifiedDate =	pShipMethod.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pShipMethod">Edm Model BE</param>
+            public static explicit operator ShipMethodBE(ShipMethod pShipMethod)
+             {
+              return  new  ShipMethodBE(pShipMethod);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("SpecialOfferProductList"), SerializableAttribute]
-    public class SpecialOfferProductList : Fwk.Bases.Entities<SpecialOfferProductBE> { }
-
-    [XmlInclude(typeof(SpecialOfferProduct)), Serializable]
+    public class SpecialOfferProductList : Fwk.Bases.Entities< SpecialOfferProductBE >{}
+    
+       [XmlInclude(typeof(SpecialOfferProduct)), Serializable]
     public partial class SpecialOfferProductBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4533,15 +4362,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _SpecialOfferID;
             }
             set
-            {
-                _SpecialOfferID = value;
-            }
-        }
-
-        private global::System.Int32 _SpecialOfferID;
-
-
-
+            { _SpecialOfferID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _SpecialOfferID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4552,15 +4380,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ProductID;
             }
             set
-            {
-                _ProductID = value;
-            }
-        }
-
-        private global::System.Int32 _ProductID;
-
-
-
+            { _ProductID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ProductID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4571,15 +4398,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4590,60 +4416,59 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public SpecialOfferProductBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pSpecialOfferProduct">Edm Model BE</param>
-        public SpecialOfferProductBE(SpecialOfferProduct pSpecialOfferProduct)
-        {
-            _SpecialOfferID = pSpecialOfferProduct.SpecialOfferID;
-            _ProductID = pSpecialOfferProduct.ProductID;
-            _rowguid = pSpecialOfferProduct.rowguid;
-            _ModifiedDate = pSpecialOfferProduct.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pSpecialOfferProduct">Edm Model BE</param>
-        public static explicit operator SpecialOfferProductBE(SpecialOfferProduct pSpecialOfferProduct)
-        {
-            return new SpecialOfferProductBE(pSpecialOfferProduct);
-        }
-    }
-
-
-
-
-
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public SpecialOfferProductBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pSpecialOfferProduct">Edm Model BE</param>
+            public SpecialOfferProductBE(SpecialOfferProduct pSpecialOfferProduct)
+            {
+            	_SpecialOfferID =	pSpecialOfferProduct.SpecialOfferID ;
+            		_ProductID =	pSpecialOfferProduct.ProductID ;
+            		_rowguid =	pSpecialOfferProduct.rowguid ;
+            		_ModifiedDate =	pSpecialOfferProduct.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pSpecialOfferProduct">Edm Model BE</param>
+            public static explicit operator SpecialOfferProductBE(SpecialOfferProduct pSpecialOfferProduct)
+             {
+              return  new  SpecialOfferProductBE(pSpecialOfferProduct);
+            }
+            }
+    
+    
+    
+    
+    
     [XmlRoot("StoreContactList"), SerializableAttribute]
-    public class StoreContactList : Fwk.Bases.Entities<StoreContactBE> { }
-
-    [XmlInclude(typeof(StoreContact)), Serializable]
+    public class StoreContactList : Fwk.Bases.Entities< StoreContactBE >{}
+    
+       [XmlInclude(typeof(StoreContact)), Serializable]
     public partial class StoreContactBE : Fwk.Bases.Entity
     {
         #region Primitive Properties
-
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4654,15 +4479,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _CustomerID;
             }
             set
-            {
-                _CustomerID = value;
-            }
-        }
-
-        private global::System.Int32 _CustomerID;
-
-
-
+            { _CustomerID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _CustomerID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4673,15 +4497,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ContactID;
             }
             set
-            {
-                _ContactID = value;
-            }
-        }
-
-        private global::System.Int32 _ContactID;
-
-
-
+            { _ContactID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ContactID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4692,15 +4515,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _ContactTypeID;
             }
             set
-            {
-                _ContactTypeID = value;
-            }
-        }
-
-        private global::System.Int32 _ContactTypeID;
-
-
-
+            { _ContactTypeID = value;
+    		}
+    	}
+    	
+    	    private global::System.Int32 _ContactTypeID;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4711,15 +4533,14 @@ namespace EntityFramework.Entities.Common.BE
                 return _rowguid;
             }
             set
-            {
-                _rowguid = value;
-            }
-        }
-
-        private global::System.Guid _rowguid;
-
-
-
+            { _rowguid = value;
+    		}
+    	}
+    	
+    	    private global::System.Guid _rowguid;
+       
+       
+    
         /// <summary>
         /// 
         /// </summary>
@@ -4730,49 +4551,48 @@ namespace EntityFramework.Entities.Common.BE
                 return _ModifiedDate;
             }
             set
-            {
-                _ModifiedDate = value;
-            }
-        }
-
-        private global::System.DateTime _ModifiedDate;
-
-
+            { _ModifiedDate = value;
+    		}
+    	}
+    	
+    	    private global::System.DateTime _ModifiedDate;
+       
+       
 
         #endregion
-
-
-        /// <summary>
-        /// Empty Constructor
-        /// </summary>
-        public StoreContactBE() { }
-
-        /// <summary>
-        /// Constructor from Model Entity
-        /// Framework BE --> Edm Entity Model 
-        /// </summary>
-        /// <param name="pStoreContact">Edm Model BE</param>
-        public StoreContactBE(StoreContact pStoreContact)
-        {
-            _CustomerID = pStoreContact.CustomerID;
-            _ContactID = pStoreContact.ContactID;
-            _ContactTypeID = pStoreContact.ContactTypeID;
-            _rowguid = pStoreContact.rowguid;
-            _ModifiedDate = pStoreContact.ModifiedDate;
-        }
-
-
-        /// <summary>
-        /// Overload equal operator
-        /// Framework BE = Edm Entity Model 
-        /// </summary>
-        /// <param name="pStoreContact">Edm Model BE</param>
-        public static explicit operator StoreContactBE(StoreContact pStoreContact)
-        {
-            return new StoreContactBE(pStoreContact);
-        }
-    }
+            
+            
+            /// <summary>
+            /// Empty Constructor
+            /// </summary>
+            public StoreContactBE(){}
+            
+            /// <summary>
+            /// Constructor from Model Entity
+            /// Framework BE --> Edm Entity Model 
+            /// </summary>
+            /// <param name="pStoreContact">Edm Model BE</param>
+            public StoreContactBE(StoreContact pStoreContact)
+            {
+            	_CustomerID =	pStoreContact.CustomerID ;
+            		_ContactID =	pStoreContact.ContactID ;
+            		_ContactTypeID =	pStoreContact.ContactTypeID ;
+            		_rowguid =	pStoreContact.rowguid ;
+            		_ModifiedDate =	pStoreContact.ModifiedDate ;
+            	}
+            
+            
+            /// <summary>
+            /// Overload equal operator
+            /// Framework BE = Edm Entity Model 
+            /// </summary>
+            /// <param name="pStoreContact">Edm Model BE</param>
+            public static explicit operator StoreContactBE(StoreContact pStoreContact)
+             {
+              return  new  StoreContactBE(pStoreContact);
+            }
+            }
 
     #endregion
-
+    
 }
