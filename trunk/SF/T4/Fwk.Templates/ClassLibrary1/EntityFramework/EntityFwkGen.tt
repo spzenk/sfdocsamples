@@ -1,4 +1,5 @@
 ﻿
+//Use TextTemplatingFileGenerator on Custom tool tt file propertie
 <#@ template language="C#" debug="false" hostspecific="true"#>
 <#@ include file="EF.Utility.CS.ttinclude"#>
 <#@ include file="EntityFwkGen_helper.tt"#><#@
@@ -28,8 +29,10 @@ CodeGenerationTools code = new CodeGenerationTools(this){FullyQualifySystemTypes
 
 ItemCollection = loader.CreateEdmItemCollection(SourceCsdlPath, ReferenceCsdlPaths.ToArray());
 ModelNamespace = loader.GetModelNamespace(SourceCsdlPath);
-string namespaceName = code.VsNamespaceSuggestion();
-UpdateObjectNamespaceMap(namespaceName);
+string namespaceNameBE = code.VsNamespaceSuggestion().Replace("Backend","Common");
+string namespaceNameBackend = code.VsNamespaceSuggestion();
+
+UpdateObjectNamespaceMap(namespaceNameBackend);
 
 #>
 //------------------------------------------------------------------------------
@@ -49,9 +52,9 @@ using System.Linq;
 using System.ComponentModel;
 using System.Xml.Serialization;
 using System.Runtime.Serialization;
+using <#=namespaceNameBackend#>;
 
-
-namespace <#=namespaceName#>
+namespace <#=namespaceNameBE#>
 {
 <#
         PushIndent(CodeRegion.GetIndent(1));
@@ -62,24 +65,28 @@ namespace <#=namespaceName#>
     region.Begin(GetResourceString("Template_RegionEntities"));
     foreach (EntityType entity in GetSourceSchemaTypes<EntityType>().OrderBy(e => e.Name))
     {
-#><#
+#>
+
+
+
+<#
         foreach (EntityType subType in ItemCollection.GetItems<EntityType>().Where(b => b.BaseType == entity))
         {
-			#>
-			[KnownTypeAttribute(typeof(<#=MultiSchemaEscape(subType, code)#>))]
-			<#
+#>
+[KnownTypeAttribute(typeof(<#=MultiSchemaEscape(subType, code)#>))]
+<#
         }
 		////////  Write Entity Collection.
 #>
 
 
 [XmlRoot("<#=code.Escape(entity)#>List"), SerializableAttribute]
-<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>class <#=code.Escape(entity)#>List : Fwk.Bases.Entities< <#=code.Escape(entity)#> >{}
+<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>class <#=code.Escape(entity)#>List : Fwk.Bases.Entities< <#=code.Escape(entity)#>BE >{}
 
    <# ////////  Write Entity. 
 #>
 [XmlInclude(typeof(<#=code.Escape(entity)#>)), Serializable]
-<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>partial class <#=code.Escape(entity)#> : Fwk.Bases.Entity
+<#=Accessibility.ForType(entity)#> <#=code.SpaceAfter(code.AbstractOption(entity))#>partial class <#=code.Escape(entity)#>BE : Fwk.Bases.Entity
 {
 <#
         //if (!entity.Abstract)
@@ -102,12 +109,43 @@ namespace <#=namespaceName#>
            // WriteComplexTypeProperty(property, code);
         //}
         //region.End();
+		
+ PushIndent(CodeRegion.GetIndent(2));
 #>
 
 
+/// <summary>
+/// Empty Constructor
+/// </summary>
+public <#=code.Escape(entity)#>BE(){}
+
+/// <summary>
+/// Constructor from Model Entity
+/// Framework BE --> Edm Entity Model 
+/// </summary>
+/// <param name="p<#=code.Escape(entity)#>">Edm Model BE</param>
+public <#=code.Escape(entity)#>BE(<#=code.Escape(entity)#> p<#=code.Escape(entity)#>)
+{
+<#   foreach (EdmProperty property in entity.Properties.Where(p => p.DeclaringType == entity && p.TypeUsage.EdmType is PrimitiveType))
+      		{#>
+	<#=code.FieldName(property)#> =	p<#=code.Escape(entity)#>.<#=code.Escape(property)#> ;
+	<#}#>}
+
+
+/// <summary>
+/// Overload equal operator
+/// Framework BE = Edm Entity Model 
+/// </summary>
+/// <param name="p<#=code.Escape(entity)#>">Edm Model BE</param>
+public static explicit operator <#=code.Escape(entity)#>BE(<#=code.Escape(entity)#> p<#=code.Escape(entity)#>)
+ {
+  return  new  <#=code.Escape(entity)#>BE(p<#=code.Escape(entity)#>);
+}
 }
 <#
+				PopIndent();
     }
+
     region.End();
 
     ////////
@@ -121,7 +159,7 @@ namespace <#=namespaceName#>
 /// <summary>
 /// <#=SummaryComment(complex)#>
 /// </summary><#=LongDescriptionCommentElement(complex, region.CurrentIndentLevel)#>
-[EdmComplexTypeAttribute(NamespaceName="<#=complex.NamespaceName#>", Name="<#=complex.Name#>")]
+[EdmComplexTypeAttribute(namespaceNameBE="<#=complex.NamespaceName#>", Name="<#=complex.Name#>")]
 [DataContractAttribute(IsReference=true)]
 [Serializable()]
 <#=Accessibility.ForType(complex)#> partial class <#=code.Escape(complex)#> : ComplexObject
@@ -150,7 +188,7 @@ namespace <#=namespaceName#>
 #>
 
 <#
-    if (!String.IsNullOrEmpty(namespaceName))
+    if (!String.IsNullOrEmpty(namespaceNameBE))
     {
         PopIndent();
 #>
