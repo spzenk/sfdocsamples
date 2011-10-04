@@ -1,449 +1,444 @@
-﻿using System;
-using System.Collections.Generic;
+﻿//using System;
+//using System.Collections.Generic;
 
-using Fwk.SocialNetworks.Config;
-using System.Net;
-using System.Linq;
-using System.Text;
-using Twitterizer;
+//using Fwk.SocialNetworks.Config;
+//using System.Net;
+//using System.Linq;
+//using System.Text;
+//using TweetSharp.Twitter.Fluent;
+//using TweetSharp.Twitter.Model;
+//using TweetSharp.Extensions;
+//using TweetSharp.Twitter.Extensions;
+//using TweetSharp;
 
-namespace Fwk.SocialNetworks.Twitter
-{
-    public class TwitterWrapper
-    {
-        #region [Members]
+//namespace Fwk.SocialNetworks.Twitter
+//{
+//    public class TwitterWrapper
+//    {
+//        #region [Members]
 
 
-        /// <summary>
-        /// Proxy de la red para hacer el request HTTP, puede estar en null
-        /// </summary>
-        public static WebProxy Proxy = null;
+//        /// <summary>
+//        /// Proxy de la red para hacer el request HTTP, puede estar en null
+//        /// </summary>
+//        public static WebProxy Proxy = null;
 
         
-       static TwitterConfig configSection;
+//       static TwitterConfig configSection;
 
 
-        public static TwitterConfig Config
-        {
-            get { return configSection; }
-        }
+//        public static TwitterConfig Config
+//        {
+//            get { return configSection; }
+//        }
 
-        static TwitterWrapper()
-        {
+//        static TwitterWrapper()
+//        {
             
-            try
-            {
-                configSection = (System.Configuration.ConfigurationManager.GetSection("TwitterConfig") as TwitterConfig);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Error al intentar levantar la configuración de la seccion [TwitterConfig] de Twitter", ex);
-            }
+//            try
+//            {
+//                configSection = (System.Configuration.ConfigurationManager.GetSection("TwitterConfig") as TwitterConfig);
+//            }
+//            catch (Exception ex)
+//            {
+//                throw new Exception("Error al intentar levantar la configuración de la seccion [TwitterConfig] de Twitter", ex);
+//            }
 
-            if (configSection.Proxy != null)
-            {
-                if (configSection.Proxy.IsBypassed)
-                {
-                    WebProxy wWebProxy = new WebProxy(configSection.Proxy.Name, configSection.Proxy.Port);
+//            if (configSection.Proxy != null)
+//            {
+//                if (configSection.Proxy.IsBypassed)
+//                {
+//                    WebProxy wWebProxy = new WebProxy(configSection.Proxy.Name, configSection.Proxy.Port);
 
-                    wWebProxy.Credentials = new System.Net.NetworkCredential(configSection.Proxy.UserName, configSection.Proxy.Password, configSection.Proxy.Domain);
+//                    wWebProxy.Credentials = new System.Net.NetworkCredential(configSection.Proxy.UserName, configSection.Proxy.Password, configSection.Proxy.Domain);
 
 
-                    TwitterWrapper.Proxy = wWebProxy;
-                }
-            }
-        }
-        #endregion
+//                    TwitterWrapper.Proxy = wWebProxy;
+//                }
+//            }
+//        }
+//        #endregion
 
  
 
     
 
-        public TwitterWrapper()
-        {
-            this.InitializeClass();
-        }
+      
 
 
+//        #region [Private Methods]
 
-        #region [Private Methods]
+//        private static TwitterStatusCollection GetStatuses(decimal? pSinceStatusId, decimal? pMaxStatusId,string providerName)
+//        {
+//            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
+//            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
+//            if (HasExceededLimit(providerName)) { return new TwitterStatusCollection(); }
 
-        private static TwitterStatusCollection GetStatuses(decimal? pSinceStatusId, decimal? pMaxStatusId,string providerName)
-        {
-            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
-            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (HasExceededLimit(providerName)) { return new TwitterStatusCollection(); }
+//            TimelineOptions wTimelineOptions = new TimelineOptions();
+//            wTimelineOptions.Count = configSection.StatusesCount;
+//            wTimelineOptions.IncludeRetweets = true;
+//            wTimelineOptions.Proxy = Proxy;
 
-            TimelineOptions wTimelineOptions = new TimelineOptions();
-            wTimelineOptions.Count = configSection.StatusesCount;
-            wTimelineOptions.IncludeRetweets = true;
-            wTimelineOptions.Proxy = Proxy;
+//            if (pMaxStatusId.HasValue)
+//            {
+//                wTimelineOptions.MaxStatusId = pMaxStatusId.Value;
+//            }
 
-            if (pMaxStatusId.HasValue)
-            {
-                wTimelineOptions.MaxStatusId = pMaxStatusId.Value;
-            }
+//            if (pSinceStatusId.HasValue)
+//            {
+//                wTimelineOptions.SinceStatusId = pSinceStatusId.Value;
+//            }
 
-            if (pSinceStatusId.HasValue)
-            {
-                wTimelineOptions.SinceStatusId = pSinceStatusId.Value;
-            }
+//            TwitterStatusCollection result = TwitterTimeline.UserTimeline(configSection.GetOAuthTokens(providerName), wTimelineOptions);
 
-            TwitterStatusCollection result = TwitterTimeline.UserTimeline(configSection.GetOAuthTokens(providerName), wTimelineOptions);
+//            if (result == null) {CheckForErrors(); }
 
-            if (result == null) {CheckForErrors(); }
+//            return result;
+//        }
 
-            return result;
-        }
+//        private static TwitterStatusCollection GetMentions(decimal? pSinceStatusId, decimal? pMaxStatusId, string providerName)
+//        {
+//            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
+//            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
+//            if (HasExceededLimit(providerName)) { return new TwitterStatusCollection(); }
 
-        private static TwitterStatusCollection GetMentions(decimal? pSinceStatusId, decimal? pMaxStatusId, string providerName)
-        {
-            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
-            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (HasExceededLimit(providerName)) { return new TwitterStatusCollection(); }
+//            TimelineOptions wTimelineOptions = new TimelineOptions();
+//            wTimelineOptions.Count = configSection.StatusesCount;
+//            wTimelineOptions.IncludeRetweets = true;
+//            wTimelineOptions.Proxy = Proxy;
 
-            TimelineOptions wTimelineOptions = new TimelineOptions();
-            wTimelineOptions.Count = configSection.StatusesCount;
-            wTimelineOptions.IncludeRetweets = true;
-            wTimelineOptions.Proxy = Proxy;
+//            if (pMaxStatusId.HasValue)
+//            {
+//                wTimelineOptions.MaxStatusId = pMaxStatusId.Value;
+//            }
 
-            if (pMaxStatusId.HasValue)
-            {
-                wTimelineOptions.MaxStatusId = pMaxStatusId.Value;
-            }
+//            if (pSinceStatusId.HasValue)
+//            {
+//                wTimelineOptions.SinceStatusId = pSinceStatusId.Value;
+//            }
 
-            if (pSinceStatusId.HasValue)
-            {
-                wTimelineOptions.SinceStatusId = pSinceStatusId.Value;
-            }
+//            TwitterStatusCollection result = TwitterTimeline.Mentions(configSection.GetOAuthTokens(providerName), wTimelineOptions);
 
-            TwitterStatusCollection result = TwitterTimeline.Mentions(configSection.GetOAuthTokens(providerName), wTimelineOptions);
+//            if (result == null) {CheckForErrors(); }
 
-            if (result == null) {CheckForErrors(); }
+//            return result;
+//        }
 
-            return result;
-        }
+//        private static TwitterDirectMessageCollection GetDirectMessages(decimal? pSinceStatusId, decimal? pMaxStatusId, string providerName)
+//        {
+//            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
+//            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
+//            if (HasExceededLimit(providerName)) { return new TwitterDirectMessageCollection(); }
 
-        private static TwitterDirectMessageCollection GetDirectMessages(decimal? pSinceStatusId, decimal? pMaxStatusId, string providerName)
-        {
-            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
-            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (HasExceededLimit(providerName)) { return new TwitterDirectMessageCollection(); }
+//            DirectMessagesOptions wDirectMessagesOptions = new DirectMessagesOptions() { Proxy = Proxy };
 
-            DirectMessagesOptions wDirectMessagesOptions = new DirectMessagesOptions() { Proxy = Proxy };
+//            if (pMaxStatusId.HasValue)
+//            {
+//                wDirectMessagesOptions.MaxStatusId = pMaxStatusId.Value;
+//            }
 
-            if (pMaxStatusId.HasValue)
-            {
-                wDirectMessagesOptions.MaxStatusId = pMaxStatusId.Value;
-            }
+//            if (pSinceStatusId.HasValue)
+//            {
+//                wDirectMessagesOptions.SinceStatusId = pSinceStatusId.Value;
+//            }
 
-            if (pSinceStatusId.HasValue)
-            {
-                wDirectMessagesOptions.SinceStatusId = pSinceStatusId.Value;
-            }
+//            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessages(configSection.GetOAuthTokens(providerName), wDirectMessagesOptions);
 
-            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessages(configSection.GetOAuthTokens(providerName), wDirectMessagesOptions);
+//            if (result == null) { CheckForErrors(); }
 
-            if (result == null) { CheckForErrors(); }
+//            return result;
+//        }
 
-            return result;
-        }
+//        private static TwitterDirectMessageCollection GetDirectMessagesSent(decimal? pSinceStatusId, decimal? pMaxStatusId,string providerName)
+//        {
+//            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
+//            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
+//            if (HasExceededLimit(providerName)) { return new TwitterDirectMessageCollection(); }
 
-        private static TwitterDirectMessageCollection GetDirectMessagesSent(decimal? pSinceStatusId, decimal? pMaxStatusId,string providerName)
-        {
-            //Verifica si el restante de consultas permitidas es menor al minimo configurado.
-            //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
-            if (HasExceededLimit(providerName)) { return new TwitterDirectMessageCollection(); }
+//            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = Proxy };
 
-            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = Proxy };
+//            if (pMaxStatusId.HasValue)
+//            {
+//                wDirectMessagesSentOptions.MaxStatusId = pMaxStatusId.Value;
+//            }
 
-            if (pMaxStatusId.HasValue)
-            {
-                wDirectMessagesSentOptions.MaxStatusId = pMaxStatusId.Value;
-            }
+//            if (pSinceStatusId.HasValue)
+//            {
+//                wDirectMessagesSentOptions.SinceStatusId = pSinceStatusId.Value;
+//            }
 
-            if (pSinceStatusId.HasValue)
-            {
-                wDirectMessagesSentOptions.SinceStatusId = pSinceStatusId.Value;
-            }
+//            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessagesSent(configSection.GetOAuthTokens(providerName), wDirectMessagesSentOptions);
 
-            TwitterDirectMessageCollection result = TwitterDirectMessage.DirectMessagesSent(configSection.GetOAuthTokens(providerName), wDirectMessagesSentOptions);
+//            if (result == null) { CheckForErrors(); }
 
-            if (result == null) { CheckForErrors(); }
+//            return result;
+//        }
 
-            return result;
-        }
+//        private static bool HasExceededLimit(string providerName)
+//        {
+//            return (GetRateLimitStatus(providerName).RemainingHits < configSection.MinRemainingHits);
+//        }
 
-        private static bool HasExceededLimit(string providerName)
-        {
-            return (GetRateLimitStatus(providerName).RemainingHits < configSection.MinRemainingHits);
-        }
+       
 
-        private void InitializeClass()
-        {
-            
+//        #endregion
 
+//        #region [Public Methods]
 
-        }
+//        public static TwitterUser GetUser(decimal userId,string providerName)
+//        {
+//            OptionalProperties wOptionalProperties;
+//            wOptionalProperties = new OptionalProperties();
+//            wOptionalProperties.Proxy = Proxy;
 
-        #endregion
+//            TwitterUser wTwitterUser = TwitterUser.Show(configSection.GetOAuthTokens(providerName), userId, wOptionalProperties);
 
-        #region [Public Methods]
+//            if (wTwitterUser == null) { CheckForErrors(); }
 
-        public static TwitterUser GetUser(decimal userId,string providerName)
-        {
-            OptionalProperties wOptionalProperties;
-            wOptionalProperties = new OptionalProperties();
-            wOptionalProperties.Proxy = Proxy;
+//            return wTwitterUser;
+//        }
 
-            TwitterUser wTwitterUser = TwitterUser.Show(configSection.GetOAuthTokens(providerName), userId, wOptionalProperties);
+//        public static TwitterUser GetUser(string userName,string providerName)
+//        {
+//            OptionalProperties wOptionalProperties;
+//            wOptionalProperties = new OptionalProperties();
+//            wOptionalProperties.Proxy = Proxy;
 
-            if (wTwitterUser == null) { CheckForErrors(); }
+//            TwitterUser wTwitterUser = TwitterUser.Show(configSection.GetOAuthTokens(providerName), userName, wOptionalProperties);
 
-            return wTwitterUser;
-        }
+//            if (wTwitterUser == null) { CheckForErrors(); }
 
-        public static TwitterUser GetUser(string userName,string providerName)
-        {
-            OptionalProperties wOptionalProperties;
-            wOptionalProperties = new OptionalProperties();
-            wOptionalProperties.Proxy = Proxy;
+//            return wTwitterUser;
+//        }
 
-            TwitterUser wTwitterUser = TwitterUser.Show(configSection.GetOAuthTokens(providerName), userName, wOptionalProperties);
+//        public static List<TwitterStatus> GetAllUserMentions(decimal? pSinceStatusId, DateTime logSince, string providerName)
+//        {
+//            TwitterStatusCollection wTwitterStatusCollection;
+//            List<TwitterStatus> wList = new List<TwitterStatus>();
+//            List<TwitterStatus> wTempList = new List<TwitterStatus>();
 
-            if (wTwitterUser == null) { CheckForErrors(); }
+//            wTwitterStatusCollection = GetMentions(pSinceStatusId, null, providerName);
 
-            return wTwitterUser;
-        }
+//            if (wTwitterStatusCollection != null)
+//            {
+//                wTempList.AddRange(wTwitterStatusCollection);
+//            }
 
-        public static List<TwitterStatus> GetAllUserMentions(decimal? pSinceStatusId, DateTime logSince, string providerName)
-        {
-            TwitterStatusCollection wTwitterStatusCollection;
-            List<TwitterStatus> wList = new List<TwitterStatus>();
-            List<TwitterStatus> wTempList = new List<TwitterStatus>();
+//            while (wTempList.Count > 0)
+//            {
+//                wList.AddRange(wTempList);
 
-            wTwitterStatusCollection = GetMentions(pSinceStatusId, null, providerName);
+//                decimal wMaxStatusId = wTempList.Last().Id;
 
-            if (wTwitterStatusCollection != null)
-            {
-                wTempList.AddRange(wTwitterStatusCollection);
-            }
+//                wTempList.Clear();
 
-            while (wTempList.Count > 0)
-            {
-                wList.AddRange(wTempList);
+//                wTwitterStatusCollection = GetMentions(pSinceStatusId, wMaxStatusId, providerName);
 
-                decimal wMaxStatusId = wTempList.Last().Id;
+//                if (wTwitterStatusCollection != null && wTwitterStatusCollection.Count > 0)
+//                {
+//                    wTempList.AddRange(wTwitterStatusCollection);
 
-                wTempList.Clear();
+//                    wTempList.Remove(wTempList.First());
 
-                wTwitterStatusCollection = GetMentions(pSinceStatusId, wMaxStatusId, providerName);
+//                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
+//                }
+//            }
 
-                if (wTwitterStatusCollection != null && wTwitterStatusCollection.Count > 0)
-                {
-                    wTempList.AddRange(wTwitterStatusCollection);
+//            return wList;
+//        }
 
-                    wTempList.Remove(wTempList.First());
+//        public static List<TwitterStatus> GetAllUserStatuses(decimal? pSinceStatusId, DateTime logSince, string providerName)
+//        {
+//            TwitterStatusCollection wTwitterStatusCollection;
+//            List<TwitterStatus> wList = new List<TwitterStatus>();
+//            List<TwitterStatus> wTempList = new List<TwitterStatus>();
 
-                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
-                }
-            }
+//            wTwitterStatusCollection = GetStatuses(pSinceStatusId, null, providerName);
 
-            return wList;
-        }
+//            if (wTwitterStatusCollection != null)
+//            {
+//                wTempList.AddRange(wTwitterStatusCollection);
+//            }
 
-        public static List<TwitterStatus> GetAllUserStatuses(decimal? pSinceStatusId, DateTime logSince, string providerName)
-        {
-            TwitterStatusCollection wTwitterStatusCollection;
-            List<TwitterStatus> wList = new List<TwitterStatus>();
-            List<TwitterStatus> wTempList = new List<TwitterStatus>();
+//            while (wTempList.Count > 0)
+//            {
+//                wList.AddRange(wTempList);
 
-            wTwitterStatusCollection = GetStatuses(pSinceStatusId, null, providerName);
+//                decimal wMaxStatusId = wTempList.Last().Id;
 
-            if (wTwitterStatusCollection != null)
-            {
-                wTempList.AddRange(wTwitterStatusCollection);
-            }
+//                wTempList.Clear();
 
-            while (wTempList.Count > 0)
-            {
-                wList.AddRange(wTempList);
+//                wTwitterStatusCollection = GetStatuses(pSinceStatusId, wMaxStatusId, providerName);
 
-                decimal wMaxStatusId = wTempList.Last().Id;
+//                if (wTwitterStatusCollection != null && wTwitterStatusCollection.Count > 0)
+//                {
+//                    wTempList.AddRange(wTwitterStatusCollection);
 
-                wTempList.Clear();
+//                    wTempList.Remove(wTempList.First());
 
-                wTwitterStatusCollection = GetStatuses(pSinceStatusId, wMaxStatusId, providerName);
+//                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
+//                }
+//            }
 
-                if (wTwitterStatusCollection != null && wTwitterStatusCollection.Count > 0)
-                {
-                    wTempList.AddRange(wTwitterStatusCollection);
+//            return wList;
+//        }
 
-                    wTempList.Remove(wTempList.First());
+//        public static List<TwitterDirectMessage> GetAllUserMessages(decimal? pSinceStatusId, DateTime logSince,string providerName)
+//        {
+//            TwitterDirectMessageCollection wTwitterDirectMessageCollection;
+//            List<TwitterDirectMessage> wList = new List<TwitterDirectMessage>();
+//            List<TwitterDirectMessage> wTempList = new List<TwitterDirectMessage>();
 
-                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
-                }
-            }
+//            wTwitterDirectMessageCollection = GetDirectMessages(pSinceStatusId, null, providerName);
 
-            return wList;
-        }
+//            if (wTwitterDirectMessageCollection != null)
+//            {
+//                wTempList.AddRange(wTwitterDirectMessageCollection);
+//            }
 
-        public static List<TwitterDirectMessage> GetAllUserMessages(decimal? pSinceStatusId, DateTime logSince,string providerName)
-        {
-            TwitterDirectMessageCollection wTwitterDirectMessageCollection;
-            List<TwitterDirectMessage> wList = new List<TwitterDirectMessage>();
-            List<TwitterDirectMessage> wTempList = new List<TwitterDirectMessage>();
+//            while (wTempList.Count > 0)
+//            {
+//                wList.AddRange(wTempList);
 
-            wTwitterDirectMessageCollection = GetDirectMessages(pSinceStatusId, null, providerName);
+//                decimal wMaxStatusId = wTempList.Last().Id;
 
-            if (wTwitterDirectMessageCollection != null)
-            {
-                wTempList.AddRange(wTwitterDirectMessageCollection);
-            }
+//                wTempList.Clear();
 
-            while (wTempList.Count > 0)
-            {
-                wList.AddRange(wTempList);
+//                wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, wMaxStatusId, providerName);
 
-                decimal wMaxStatusId = wTempList.Last().Id;
+//                if (wTwitterDirectMessageCollection != null && wTwitterDirectMessageCollection.Count > 0)
+//                {
+//                    wTempList.AddRange(wTwitterDirectMessageCollection);
 
-                wTempList.Clear();
+//                    wTempList.Remove(wTempList.First());
 
-                wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, wMaxStatusId, providerName);
+//                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
+//                }
+//            }
 
-                if (wTwitterDirectMessageCollection != null && wTwitterDirectMessageCollection.Count > 0)
-                {
-                    wTempList.AddRange(wTwitterDirectMessageCollection);
+//            return wList;
+//        }
 
-                    wTempList.Remove(wTempList.First());
+//        public static List<TwitterDirectMessage> GetAllUserMessagesSent(decimal? pSinceStatusId, DateTime logSince,string providerName)
+//        {
+//            TwitterDirectMessageCollection wTwitterDirectMessageCollection;
+//            List<TwitterDirectMessage> wList = new List<TwitterDirectMessage>();
+//            List<TwitterDirectMessage> wTempList = new List<TwitterDirectMessage>();
 
-                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
-                }
-            }
+//            wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, null, providerName);
 
-            return wList;
-        }
+//            if (wTwitterDirectMessageCollection != null)
+//            {
+//                wTempList.AddRange(wTwitterDirectMessageCollection);
+//            }
 
-        public static List<TwitterDirectMessage> GetAllUserMessagesSent(decimal? pSinceStatusId, DateTime logSince,string providerName)
-        {
-            TwitterDirectMessageCollection wTwitterDirectMessageCollection;
-            List<TwitterDirectMessage> wList = new List<TwitterDirectMessage>();
-            List<TwitterDirectMessage> wTempList = new List<TwitterDirectMessage>();
+//            while (wTempList.Count > 0)
+//            {
+//                wList.AddRange(wTempList);
 
-            wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, null, providerName);
+//                decimal wMaxStatusId = wTempList.Last().Id;
 
-            if (wTwitterDirectMessageCollection != null)
-            {
-                wTempList.AddRange(wTwitterDirectMessageCollection);
-            }
+//                wTempList.Clear();
 
-            while (wTempList.Count > 0)
-            {
-                wList.AddRange(wTempList);
+//                wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, wMaxStatusId,providerName);
 
-                decimal wMaxStatusId = wTempList.Last().Id;
+//                if (wTwitterDirectMessageCollection != null && wTwitterDirectMessageCollection.Count > 0)
+//                {
+//                    wTempList.AddRange(wTwitterDirectMessageCollection);
 
-                wTempList.Clear();
+//                    wTempList.Remove(wTempList.First());
 
-                wTwitterDirectMessageCollection = GetDirectMessagesSent(pSinceStatusId, wMaxStatusId,providerName);
+//                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
+//                }
+//            }
 
-                if (wTwitterDirectMessageCollection != null && wTwitterDirectMessageCollection.Count > 0)
-                {
-                    wTempList.AddRange(wTwitterDirectMessageCollection);
+//            return wList;
+//        }
 
-                    wTempList.Remove(wTempList.First());
+//        public static TwitterRateLimitStatus GetRateLimitStatus(string providerName)
+//        {
+//            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
+//            return TwitterRateLimitStatus.GetStatus(configSection.GetOAuthTokens(providerName), wOptionalProperties);
+//        }
 
-                    wTempList.RemoveAll(r => r.CreatedDate < logSince);
-                }
-            }
+//        public static void CheckForErrors()
+//        {
+//            if (global::Twitterizer.RequestStatus.LastRequestStatus.Status != RequestResult.Success)
+//            {
+//                string errorMessage = null;
 
-            return wList;
-        }
+//                string status = global::Twitterizer.RequestStatus.LastRequestStatus.Status.ToString();
 
-        public static TwitterRateLimitStatus GetRateLimitStatus(string providerName)
-        {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
-            return TwitterRateLimitStatus.GetStatus(configSection.GetOAuthTokens(providerName), wOptionalProperties);
-        }
+//                if (global::Twitterizer.RequestStatus.LastRequestStatus.ErrorDetails != null)
+//                {
+//                    errorMessage = global::Twitterizer.RequestStatus.LastRequestStatus.ErrorDetails.ErrorMessage;
+//                }
 
-        public static void CheckForErrors()
-        {
-            if (global::Twitterizer.RequestStatus.LastRequestStatus.Status != RequestResult.Success)
-            {
-                string errorMessage = null;
+//                throw new Exception(string.Format("{0}: {1}", status, errorMessage));
+//            }
+//        }
 
-                string status = global::Twitterizer.RequestStatus.LastRequestStatus.Status.ToString();
+//        /// <summary>
+//        /// Actualiza el status del usuario autenticado.
+//        /// </summary>
+//        /// <param name="pText">Texto del status, inferior a 140 caracteres.</param>
+//        /// <param name="pInReplayToStatudId">Opcional: Identificador del status padre a responder.</param>
+//        /// <remarks>
+//        /// Si el status es una respuesta, ademas del identificador del status padre a 
+//        /// responder, debe contener la mencion del usuario remitente del mensaje padre.
+//        /// </remarks>
+//        /// <returns>El status creado.</returns>
+//        public static TwitterStatus Update(string pText, decimal? pInReplayToStatudId, string providerName)
+//        {
+//            StatusUpdateOptions wStatusUpdateOptions = new StatusUpdateOptions() { Proxy = Proxy };
 
-                if (global::Twitterizer.RequestStatus.LastRequestStatus.ErrorDetails != null)
-                {
-                    errorMessage = global::Twitterizer.RequestStatus.LastRequestStatus.ErrorDetails.ErrorMessage;
-                }
+//            if (pInReplayToStatudId.HasValue)
+//            {
 
-                throw new Exception(string.Format("{0}: {1}", status, errorMessage));
-            }
-        }
+//                wStatusUpdateOptions.InReplyToStatusId = pInReplayToStatudId.Value;
+//            }
 
-        /// <summary>
-        /// Actualiza el status del usuario autenticado.
-        /// </summary>
-        /// <param name="pText">Texto del status, inferior a 140 caracteres.</param>
-        /// <param name="pInReplayToStatudId">Opcional: Identificador del status padre a responder.</param>
-        /// <remarks>
-        /// Si el status es una respuesta, ademas del identificador del status padre a 
-        /// responder, debe contener la mencion del usuario remitente del mensaje padre.
-        /// </remarks>
-        /// <returns>El status creado.</returns>
-        public static TwitterStatus Update(string pText, decimal? pInReplayToStatudId, string providerName)
-        {
-            StatusUpdateOptions wStatusUpdateOptions = new StatusUpdateOptions() { Proxy = Proxy };
+//            TwitterStatus wTwitterStatus = TwitterStatus.Update(configSection.GetOAuthTokens(providerName), pText, wStatusUpdateOptions);
 
-            if (pInReplayToStatudId.HasValue)
-            {
+//            CheckForErrors();
 
-                wStatusUpdateOptions.InReplyToStatusId = pInReplayToStatudId.Value;
-            }
+//            return wTwitterStatus;
+//        }
 
-            TwitterStatus wTwitterStatus = TwitterStatus.Update(configSection.GetOAuthTokens(providerName), pText, wStatusUpdateOptions);
+//        /// <summary>
+//        /// Envia un mensaje directo al identificador del usuario recibido por parametro
+//        /// </summary>
+//        /// <param name="pUserId">Identificador del usuario</param>
+//        /// <param name="pText">Texto del mensaje, inferior a 140 caracteres.</param>
+//        /// <returns>El mensaje directo enviado.</returns>
+//        public static TwitterDirectMessage SendDirectMessage(decimal pUserId, string pText,string providerName)
+//        {
+//            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
 
-            CheckForErrors();
+//            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(configSection.GetOAuthTokens(providerName), pUserId, pText, wOptionalProperties);
 
-            return wTwitterStatus;
-        }
+//            CheckForErrors();
 
-        /// <summary>
-        /// Envia un mensaje directo al identificador del usuario recibido por parametro
-        /// </summary>
-        /// <param name="pUserId">Identificador del usuario</param>
-        /// <param name="pText">Texto del mensaje, inferior a 140 caracteres.</param>
-        /// <returns>El mensaje directo enviado.</returns>
-        public static TwitterDirectMessage SendDirectMessage(decimal pUserId, string pText,string providerName)
-        {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
+//            return wTwitterDirectMessage;
+//        }
 
-            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(configSection.GetOAuthTokens(providerName), pUserId, pText, wOptionalProperties);
+//        /// <summary>
+//        /// Envia un mensaje directo al screen name del usuario recibido por parametro.
+//        /// </summary>
+//        /// <param name="pScreenName">Screen Name del usuario</param>
+//        /// <param name="pText">Texto del mensaje, inferior a 140 caracteres.</param>        
+//        /// <returns>El mensaje directo enviado.</returns>
+//        public static TwitterDirectMessage SendDirectMessage(string pScreenName, string pText,string providerName)
+//        {
+//            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
 
-            CheckForErrors();
+//            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(configSection.GetOAuthTokens(providerName), pScreenName, pText, wOptionalProperties);
 
-            return wTwitterDirectMessage;
-        }
+//            CheckForErrors();
 
-        /// <summary>
-        /// Envia un mensaje directo al screen name del usuario recibido por parametro.
-        /// </summary>
-        /// <param name="pScreenName">Screen Name del usuario</param>
-        /// <param name="pText">Texto del mensaje, inferior a 140 caracteres.</param>        
-        /// <returns>El mensaje directo enviado.</returns>
-        public static TwitterDirectMessage SendDirectMessage(string pScreenName, string pText,string providerName)
-        {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Proxy };
+//            return wTwitterDirectMessage;
+//        }
 
-            TwitterDirectMessage wTwitterDirectMessage = TwitterDirectMessage.Send(configSection.GetOAuthTokens(providerName), pScreenName, pText, wOptionalProperties);
-
-            CheckForErrors();
-
-            return wTwitterDirectMessage;
-        }
-
-        #endregion
-    }
-}
+//        #endregion
+//    }
+//}
