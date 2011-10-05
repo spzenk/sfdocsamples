@@ -198,12 +198,8 @@ namespace Fwk.SocialNetworks.Twitter
           
           
 
-            _OAuthTokens = new OAuthTokens();
-            _OAuthTokens.AccessToken = Twitterizer.Config.DefaultProvider.AccessToken;
-            _OAuthTokens.AccessTokenSecret = Twitterizer.Config.DefaultProvider.AccessTokenSecret;
-
-            _OAuthTokens.ConsumerKey = Twitterizer.Config.ConsumerKey;
-            _OAuthTokens.ConsumerSecret = Twitterizer.Config.ConsumerSecret;
+            _OAuthTokens  = Twitterizer.Config.GetOAuthTokens(Twitterizer.Config.DefaultProvider.Name);
+        
         }
 
         #endregion

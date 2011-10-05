@@ -67,13 +67,19 @@ namespace Fwk.SocialNetworks.Config
             }
         }
 
+       
         public TwitterConfigElement GetProvider(string name)
         {
+            if (string.IsNullOrEmpty(name))
+                return this.DefaultProvider;
             foreach (TwitterConfigElement wElement in this.Providers)
             {
-                if (name.CompareTo(wElement.Name) == 0) { return wElement; }
-            }
+                if (name.CompareTo(wElement.Name) == 0)
+                {
+                    return wElement;
+                }
 
+            }
             return null;
         }
 
@@ -86,9 +92,10 @@ namespace Fwk.SocialNetworks.Config
 
         public OAuthTokens GetOAuthTokens(string providerName)
         {
+            TwitterConfigElement provider = this.GetProvider(providerName)
             OAuthTokens wOAuthTokens = new OAuthTokens();
-            wOAuthTokens.AccessToken = this.Providers[providerName].AccessToken;
-            wOAuthTokens.AccessTokenSecret = this.Providers[providerName].AccessTokenSecret;
+            wOAuthTokens.AccessToken = provider.AccessToken;
+            wOAuthTokens.AccessTokenSecret = provider.AccessTokenSecret;
 
             wOAuthTokens.ConsumerKey = this.ConsumerKey;
             wOAuthTokens.ConsumerSecret = this.ConsumerSecret;
