@@ -13,21 +13,6 @@ namespace Fwk.SocialNetworks.Twitter
     public class Twitterizer
     {
         #region [Members]
-        OAuthTokens _OAuthTokens;
-        #endregion
-
-        #region [Constructors]
-
-        public Twitterizer()
-        {
-            this.InitializeClass();
-        }
-
-       
-
-        #endregion
-
-        #region [Members]
 
 
         /// <summary>
@@ -69,10 +54,22 @@ namespace Fwk.SocialNetworks.Twitter
                 }
             }
         }
+        OAuthTokens _OAuthTokens;
+        
         #endregion
 
+        #region [Constructors]
 
+        public Twitterizer()
+        {
+            _OAuthTokens = Twitterizer.Config.GetOAuthTokens(Twitterizer.Config.DefaultProvider.Name);
+        }
 
+       
+
+        #endregion
+
+        
 
         #region [Private Methods]
 
@@ -188,19 +185,35 @@ namespace Fwk.SocialNetworks.Twitter
             return result;
         }
 
+        public List<TwitterSavedSearch> Get_SavedSearches()
+        {
+            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = Twitterizer.Proxy };
+            TwitterResponse<TwitterSavedSearchCollection> result = TwitterSavedSearch.SavedSearches(_OAuthTokens, wDirectMessagesSentOptions);
+            if (result == null) { this.CheckForErrors(); }
+            return result.ResponseObject.ToList<TwitterSavedSearch>();
+        }
+        public List<TwitterSearchResult> Get_SavedSearches(string query, long? sinceId, long? pMaxId)
+        {
+            SearchOptions opt = new SearchOptions() { Proxy = Twitterizer.Proxy };
+
+            if (sinceId.HasValue)
+                opt.SinceId = sinceId.Value;
+
+            if (pMaxId.HasValue)
+                opt.MaxId = pMaxId.Value;
+
+            TwitterResponse<TwitterSearchResultCollection> result = TwitterSearch.Search(_OAuthTokens, query, opt);
+
+            if (result == null) { this.CheckForErrors(); }
+
+            return result.ResponseObject.ToList<TwitterSearchResult>();
+        }
         private bool HasExceededLimit()
         {
             return (this.GetRateLimitStatus().RemainingHits < Twitterizer.Config.MinRemainingHits);
         }
 
-        private void InitializeClass()
-        {
-          
-          
-
-            _OAuthTokens  = Twitterizer.Config.GetOAuthTokens(Twitterizer.Config.DefaultProvider.Name);
-        
-        }
+       
 
         #endregion
 
@@ -231,7 +244,7 @@ namespace Fwk.SocialNetworks.Twitter
 
             return wTwitterUser;
         }
-
+        
         public List<TwitterStatus> GetAllUserMentions(decimal? pSinceStatusId, DateTime logSince)
         {
             TwitterStatusCollection wTwitterStatusCollection;
@@ -375,7 +388,8 @@ namespace Fwk.SocialNetworks.Twitter
 
             return wList;
         }
-
+           
+        
         public TwitterRateLimitStatus GetRateLimitStatus()
         {
             OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Twitterizer.Proxy };

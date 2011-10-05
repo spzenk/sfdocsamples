@@ -15,7 +15,7 @@ namespace Fwk.SocialNetworks.Data
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmYoutube());
+            Application.Run(new FrmTwitter());
         }
     }
 }
