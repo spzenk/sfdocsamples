@@ -8,7 +8,7 @@
     <ProjectGuid>{C22DFD3B-3000-4B22-8C4C-2B9C7B6AB3E2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Fwk.SocialNetworks.Data</RootNamespace>
+    <RootNamespace>Fwk.SocialNetworks</RootNamespace>
     <AssemblyName>Fwk.SocialNetworks</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -104,10 +104,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\Archivos de programa\Google\Google Data API SDK\Samples\Google.GData.YouTube.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\sfimplementations\Company\Allus.SocialNetworks\trunk\src\StaticLibs\Newtonsoft.Json.dll</HintPath>
-    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="OAuthLibrary, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -131,11 +129,10 @@
     <Reference Include="TweetSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL" />
     <Reference Include="TweetSharp.Twitter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL" />
     <Reference Include="TweetSharp.Yammer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL" />
-    <Reference Include="Twitterizer.Data, Version=1.0.3897.27895, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Twitterizer.Data, Version=1.0.3884.32086, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="Twitterizer2, Version=2.3.2.30114, Culture=neutral, PublicKeyToken=69d1469eac671567, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-    </Reference>
-    <Reference Include="Twitterizer2, Version=2.1.0.27894, Culture=neutral, PublicKeyToken=69d1469eac671567, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\libs\Twitterizer2.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -210,8 +207,8 @@
     <None Include="Facebook\Schema\ErrorSchema.xsd" />
     <None Include="Facebook\Schema\StreamSchema.bat" />
     <None Include="Facebook\Schema\StreamSchema.xsd" />
-    <None Include="Tweeter\Schemas\StreamSchema.xsd" />
-    <None Include="Tweeter\Schemas\UserSchema.xsd" />
+    <None Include="Twitter\Schemas\StreamSchema.xsd" />
+    <None Include="Twitter\Schemas\UserSchema.xsd" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -225,21 +222,21 @@
       <DependentUpon>StreamSchema.xsd</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
-    <Compile Include="Tweeter\Configuration\TwitterConfigSection.cs" />
-    <Compile Include="Tweeter\Configuration\TwitterConfigElement.cs" />
-    <Compile Include="Tweeter\Configuration\TwitterConfigElementCollection.cs" />
-    <Compile Include="Tweeter\Entities\Status.cs" />
-    <Compile Include="Tweeter\Entities\User.cs" />
-    <Compile Include="Tweeter\Schemas\StreamSchema.cs">
+    <Compile Include="Twitter\Configuration\TwitterConfigSection.cs" />
+    <Compile Include="Twitter\Configuration\TwitterConfigElement.cs" />
+    <Compile Include="Twitter\Configuration\TwitterConfigElementCollection.cs" />
+    <Compile Include="Twitter\Entities\Status.cs" />
+    <Compile Include="Twitter\Entities\User.cs" />
+    <Compile Include="Twitter\Schemas\StreamSchema.cs">
       <DependentUpon>StreamSchema.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Tweeter\Schemas\UserSchema.cs">
+    <Compile Include="Twitter\Schemas\UserSchema.cs">
       <DependentUpon>UserSchema.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Tweeter\TweetSharp.cs" />
-    <Compile Include="Tweeter\Twitterizer.cs" />
-    <Compile Include="Tweeter\TwitterProcessor.cs" />
-    <Compile Include="Tweeter\TwitterWrapper.cs" />
+    <Compile Include="Twitter\TweetSharp.cs" />
+    <Compile Include="Twitter\Twitterizer.cs" />
+    <Compile Include="Twitter\TwitterProcessor.cs" />
+    <Compile Include="Twitter\TwitterWrapper.cs" />
     <Compile Include="Youtube\YoutubeWrapper.cs" />
   </ItemGroup>
   <ItemGroup>

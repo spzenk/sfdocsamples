@@ -92,7 +92,7 @@ namespace Fwk.SocialNetworks.Config
 
         public OAuthTokens GetOAuthTokens(string providerName)
         {
-            TwitterConfigElement provider = this.GetProvider(providerName)
+            TwitterConfigElement provider = this.GetProvider(providerName);
             OAuthTokens wOAuthTokens = new OAuthTokens();
             wOAuthTokens.AccessToken = provider.AccessToken;
             wOAuthTokens.AccessTokenSecret = provider.AccessTokenSecret;
