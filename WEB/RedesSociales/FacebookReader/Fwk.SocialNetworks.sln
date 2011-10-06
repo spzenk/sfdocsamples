@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 10.00
 # Visual Studio 2008
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fwk.SocialNetworks", "FacebookReader\Fwk.SocialNetworks.csproj", "{C22DFD3B-3000-4B22-8C4C-2B9C7B6AB3E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fwk.SocialNetworks.Test", "Fwk.SocialNetworks.Test\Fwk.SocialNetworks.Test.csproj", "{A98B559F-49E5-4B9C-A7BA-46C54E4CEAAD}"
+EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution
 		Svn-Managed = True
@@ -17,6 +19,10 @@ Global
 		{C22DFD3B-3000-4B22-8C4C-2B9C7B6AB3E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C22DFD3B-3000-4B22-8C4C-2B9C7B6AB3E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C22DFD3B-3000-4B22-8C4C-2B9C7B6AB3E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A98B559F-49E5-4B9C-A7BA-46C54E4CEAAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A98B559F-49E5-4B9C-A7BA-46C54E4CEAAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A98B559F-49E5-4B9C-A7BA-46C54E4CEAAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A98B559F-49E5-4B9C-A7BA-46C54E4CEAAD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -62,7 +62,7 @@ namespace Fwk.SocialNetworks.Data
 
         internal static readonly String Cnnstring = ConfigurationManager.ConnectionStrings["socialnet"].ConnectionString;
 
-        internal static readonly DateTime LogSince = new DateTime(2010, 8, 20);
+        public  static readonly DateTime LogSince = new DateTime(2010, 8, 20);
     }
     public class Enums
     {
