@@ -23,7 +23,7 @@ namespace Fwk.SocialNetworks
        
 
         #region [Members & Constructor]
-        Timer _Timer;
+        
         SocialNetwork socialNetwork = null;
      
       
