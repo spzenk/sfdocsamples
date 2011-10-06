@@ -214,7 +214,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ProxyFactory.cs" />
     <Compile Include="Facebook\Schema\ErrorSchema.cs">
       <DependentUpon>ErrorSchema.xsd</DependentUpon>
     </Compile>
