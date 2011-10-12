@@ -1,4 +1,4 @@
-﻿namespace Fwk.SocialNetworks.Data
+﻿namespace Fwk.SocialNetworks
 {
     partial class FrmTwitter
     {
@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btn_Twitterizer_GetAllUserMessages = new System.Windows.Forms.Button();
             this.txtMentions = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,11 +37,13 @@
             this.txtSavedSearches = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.enjine1 = new Fwk.SocialNetworks.Twitter.Enjine(this.components);
             this.SuspendLayout();
             // 
             // btn_Twitterizer_GetAllUserMessages
             // 
-            this.btn_Twitterizer_GetAllUserMessages.Location = new System.Drawing.Point(29, 13);
+            this.btn_Twitterizer_GetAllUserMessages.Location = new System.Drawing.Point(954, 191);
             this.btn_Twitterizer_GetAllUserMessages.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Twitterizer_GetAllUserMessages.Name = "btn_Twitterizer_GetAllUserMessages";
             this.btn_Twitterizer_GetAllUserMessages.Size = new System.Drawing.Size(256, 43);
@@ -106,7 +109,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(29, 64);
+            this.button1.Location = new System.Drawing.Point(954, 242);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(256, 43);
@@ -115,11 +118,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(34, 13);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(256, 43);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "Start log service";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // FrmTwitter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 613);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSavedSearches);
@@ -145,5 +160,7 @@
         private System.Windows.Forms.TextBox txtSavedSearches;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private Fwk.SocialNetworks.Twitter.Enjine enjine1;
     }
 }
