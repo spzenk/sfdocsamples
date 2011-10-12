@@ -7,28 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Fwk.SocialNetworks.Data
+namespace Fwk.SocialNetworks
 {
     public partial class FrmTwitter : Form
     {
+        Timer _Timer;
+        Fwk.SocialNetworks.Twitter.Twitterizer _Twitterizer = null;
+
         public FrmTwitter()
         {
             InitializeComponent();
+            _Twitterizer = new Fwk.SocialNetworks.Twitter.Twitterizer();
         }
 
         private void btn_Twitterizer_GetAllUserMessages_Click(object sender, EventArgs e)
         {
-            Fwk.SocialNetworks.Twitter.Twitterizer wTwitterizer = new Fwk.SocialNetworks.Twitter.Twitterizer();
-            List<Twitterizer.TwitterDirectMessage> list = wTwitterizer.GetAllUserMessages(0, Constants.LogSince);
+            
+            List<Twitterizer.TwitterDirectMessage> list = _Twitterizer.GetAllUserMessages(0, Constants.LogSince);
 
-            List<Twitterizer.TwitterStatus> listMen = wTwitterizer.GetAllUserMentions(0, Constants.LogSince);
+            List<Twitterizer.TwitterStatus> listMen = _Twitterizer.GetAllUserMentions(0, Constants.LogSince);
             Print(txtMentions, listMen);
 
-            List<Twitterizer.TwitterStatus> listStatus = wTwitterizer.GetAllUserStatuses(2743256109, Constants.LogSince);
+            List<Twitterizer.TwitterStatus> listStatus = _Twitterizer.GetAllUserStatuses(2743256109, Constants.LogSince);
             Print(txtStatuses, listStatus);
 
-            List<Twitterizer.TwitterSavedSearch> listTwitterSavedSearch= wTwitterizer.Get_SavedSearches();
-            Print(txtSavedSearches, listTwitterSavedSearch);
+
         }
 
 
@@ -68,10 +71,23 @@ namespace Fwk.SocialNetworks.Data
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            List<Twitterizer.TwitterSavedSearch> listTwitterSavedSearch = _Twitterizer.Get_SavedSearches();
+            Print(txtSavedSearches, listTwitterSavedSearch);
         }
 
 
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //Fwk.SocialNetworks.Twitter.TwitterProcessor proc = new Fwk.SocialNetworks.Twitter.TwitterProcessor();
+
+            //proc.LogMessages();
+            //proc.LogSavedSearches();
+
+            enjine1.Start_Twitter_WithoutTimer();
+        }
+
+
+      
     }
 }
