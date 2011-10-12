@@ -19,7 +19,7 @@ namespace Fwk.SocialNetworks.Data
         FacebookProcessor fp = null;
         private void button1_Click(object sender, EventArgs e)
         {
-            txtRes.Text = fp.GetwMessagesList(DateTime.Now.AddDays(-275), comboBox1.SelectedItem.ToString());
+            txtRes.Text = fp.GetwMessagesList(DateTime.Now.AddDays(-275));
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -29,9 +29,10 @@ namespace Fwk.SocialNetworks.Data
 
         private void button2_Click(object sender, EventArgs e)
         {
-            FacebookProcessor fp = new FacebookProcessor();
-            fp.InitSettings();
-            User user = fp.GetUser_From_Facebook(textBox1.Text, comboBox1.SelectedItem.ToString());
+            FacebookProcessor fp = new FacebookProcessor(comboBox1.SelectedItem.ToString());
+            
+            
+            User user = fp.GetUser_From_Facebook(textBox1.Text);
             StringBuilder s = new StringBuilder(user.UserName);
 
 
@@ -45,8 +46,8 @@ namespace Fwk.SocialNetworks.Data
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            fp = new FacebookProcessor();
-            fp.InitSettings();
+            fp = new FacebookProcessor(comboBox1.SelectedItem.ToString());
+         
             //StringBuilder s = new StringBuilder(string.Concat("provider   = ", fp.FacebookConfig.DefaultProvider.Name,"\r\n"));
 
             
