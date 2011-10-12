@@ -12,15 +12,7 @@ namespace Fwk.SocialNetworks.Data
     public class DataCore
     {
 
-        public static void CreateUser(User pUser, CoreDataContext dc)
-        {
-            //using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            //{   
-                
-                dc.Users.InsertOnSubmit(pUser);
-                dc.SubmitChanges();
-            //}
-        }
+        
         /// <summary>
         /// Busca el usuario que se corresponde con el identificador recibido por parametro de la red social recibida por parametro.
         /// </summary>
@@ -28,7 +20,7 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="pCoreDataContext">DataContext</param>
         /// <param name="pSocialNetwork">Red Social a la que pertence el usuario</param>
         /// <returns></returns>
-        public static User GetUser(String pSourceUserId, Enums.SocialNetwork pSocialNetwork, CoreDataContext dc)
+        public static User GetUser(String pSourceUserId, Enums.SocialNetworkEnum pSocialNetwork, CoreDataContext dc)
         {
             User wUser = null;
             //using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
@@ -52,7 +44,7 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="pSourcePostID">Identificador del Post</param>
         /// <param name="pCoreDataContext">DataContext</param>
         /// <returns></returns>
-        public static Post GetPost(String pSourcePostID, Enums.SocialNetwork pSocialNetwork, CoreDataContext dc)
+        public static Post GetPost(String pSourcePostID, Enums.SocialNetworkEnum pSocialNetwork, CoreDataContext dc)
         {
             Post wPost = null;
             //using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
@@ -76,7 +68,7 @@ namespace Fwk.SocialNetworks.Data
         ///<param name="pCoreDataContext">DataContext</param>
         /// <param name="pSocialNetwork">Red social</param>
         /// <returns></returns>
-        public static SocialNetwork GetSocialNetwork(Enums.SocialNetwork pSocialNetwork, CoreDataContext dc)
+        public static SocialNetwork GetSocialNetwork(Enums.SocialNetworkEnum pSocialNetwork, CoreDataContext dc)
         {
             SocialNetwork wSocialNetwork = null;
             //using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
@@ -102,7 +94,7 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="pSocialNetwork">Red social</param>
         /// <param name="pCoreDataContext">DataContext</param>
         /// <returns></returns>
-        public static string GetLastStoredSourcePostId(Enums.SocialNetwork pSocialNetwork)
+        public static string GetLastStoredSourcePostId(Enums.SocialNetworkEnum pSocialNetwork)
         {
             String wRetSourcePostId = null;
             using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
@@ -130,7 +122,7 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="pSocialNetwork">Red social</param>
         /// <param name="pCoreDataContext">DataContext</param>
         /// <returns></returns>
-        public static string GetLastStoredMessageId(Enums.SocialNetwork pSocialNetwork)
+        public static string GetLastStoredMessageId(Enums.SocialNetworkEnum pSocialNetwork)
         {
             String wRetSourceMessageID = null;
             using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
@@ -159,7 +151,7 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="pSocialNetwork">Red social</param>
         /// <param name="pCoreDataContext">DataContext</param>
         /// <returns></returns>
-        public static Int64 GetLastStoredPostTimestamp(Enums.SocialNetwork pSocialNetwork)
+        public static Int64 GetLastStoredPostTimestamp(Enums.SocialNetworkEnum pSocialNetwork)
         {
             using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
             {
@@ -183,7 +175,7 @@ namespace Fwk.SocialNetworks.Data
         /// </summary>
         /// <param name="pSocialNetwork">Red social</param>
         /// <returns></returns>
-        public static Int64 GetLastStoredMessageTimestamp(Enums.SocialNetwork pSocialNetwork)
+        public static Int64 GetLastStoredMessageTimestamp(Enums.SocialNetworkEnum pSocialNetwork)
         {
             using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
             {
@@ -203,7 +195,7 @@ namespace Fwk.SocialNetworks.Data
         #region [Transactionals Methods]
 
         internal static void AddComment(Post pPost, 
-            comment pItemComment,User userFrom , SocialNetwork pSocialNetwork, CoreDataContext dc)
+            comment pItemComment,User userFrom , Fwk.SocialNetworks.Enums.SocialNetworkEnum pSocialNetwork, CoreDataContext dc)
         {
            
                 Post pc = ParsePostFromFBComment(pItemComment, userFrom ,pSocialNetwork);
@@ -275,7 +267,7 @@ namespace Fwk.SocialNetworks.Data
         internal static Int64 GetLastPost()
         {
             Int64 wLastStoredPostTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(Constants.LogSince);
-            Int64 wLastStoredInDB = DataCore.GetLastStoredPostTimestamp(Enums.SocialNetwork.Facebook);
+            Int64 wLastStoredInDB = DataCore.GetLastStoredPostTimestamp(Enums.SocialNetworkEnum.Facebook);
 
             if (wLastStoredInDB > 0)
             {
@@ -290,7 +282,7 @@ namespace Fwk.SocialNetworks.Data
         /// </summary>
         /// <param name="pCoreDataContext"></param>
         /// <returns></returns>
-        internal static Int64 GetLastMessage(Enums.SocialNetwork pSocialNetwork)
+        internal static Int64 GetLastMessage(Enums.SocialNetworkEnum pSocialNetwork)
         {
             Int64 wLastStoredMessageTimeStamp = DateFunctions.DateTimeToUnixTimeStamp(Constants.LogSince);
             Int64 wLastStoredInDB = DataCore.GetLastStoredMessageTimestamp(pSocialNetwork);
@@ -310,14 +302,14 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="dc"></param>
         /// <param name="itemcomment"></param>
         /// <returns></returns>
-        private static Post ParsePostFromFBComment(comment pItemComment,User user, SocialNetwork pSocialNetwork)
+        private static Post ParsePostFromFBComment(comment pItemComment, User user, Fwk.SocialNetworks.Enums.SocialNetworkEnum pSocialNetwork)
         {
             Post wPost = new Post()
             {
                 CreationDate = DateFunctions.UnixTimeStampToDateTime(Convert.ToInt64(pItemComment.time)),
                 From = user,
                 Message = pItemComment.text,
-                SocialNetwork = pSocialNetwork,
+                SocialNetworkID =(int) pSocialNetwork,
                 SourcePostID = pItemComment.id
             };
 

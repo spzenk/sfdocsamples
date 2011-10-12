@@ -20,18 +20,7 @@ namespace Fwk.SocialNetworks.Twitter
 {
     internal class TweetSharp
     {
-        ///// <summary>
-        ///// Pertenece a la aplicacion 
-        ///// </summary>
-        //string _ConsumerKey = "9a7S21L9kIEQminDtAl6A";
-        // /// <summary>
-        ///// Pertenece a la aplicacion 
-        ///// </summary>
-        //string _ConsumerSecret = "2o5eAeVwb2DeofJIieeOxRBIDRSaJASQs7L5PDLR8";
-
-        //string _AccessToken = "183244012-bkfiuFXXMDAtJtoOju2HsD99S8XorzTsoZfRNJyK";
-        //string _AccessTokenSecret = "1tky2wvX3OMd7w25CDSNHveo1q2gVUNIsvC7unInk";
-
+      
 
 
 

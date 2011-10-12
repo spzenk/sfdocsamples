@@ -175,6 +175,6 @@ namespace Fwk.SocialNetworks
     }
     public class Enums
     {
-        public enum SocialNetwork { Facebook = 1, Twitter = 2 }
+        public enum SocialNetworkEnum { Facebook = 1, Twitter = 2 }
     }
 }
