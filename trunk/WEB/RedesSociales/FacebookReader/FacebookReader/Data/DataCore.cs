@@ -6,19 +6,20 @@ using Fwk.HelperFunctions;
 using Fwk.SocialNetworks.Data;
 using System.Data.Common;
 using System.Data;
+using System.Data.Linq;
 namespace Fwk.SocialNetworks.Data
 {
     public class DataCore
     {
 
-        public static void CreateUser(User pUser)
+        public static void CreateUser(User pUser, CoreDataContext dc)
         {
-            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            {   
+            //using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
+            //{   
                 
                 dc.Users.InsertOnSubmit(pUser);
                 dc.SubmitChanges();
-            }
+            //}
         }
         /// <summary>
         /// Busca el usuario que se corresponde con el identificador recibido por parametro de la red social recibida por parametro.
@@ -27,12 +28,12 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="pCoreDataContext">DataContext</param>
         /// <param name="pSocialNetwork">Red Social a la que pertence el usuario</param>
         /// <returns></returns>
-        public static User GetUser(String pSourceUserId, Enums.SocialNetwork pSocialNetwork)
+        public static User GetUser(String pSourceUserId, Enums.SocialNetwork pSocialNetwork, CoreDataContext dc)
         {
             User wUser = null;
-            using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
-            {
-                var wData = from user in wCoreDataContext.Users
+            //using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
+            //{
+                var wData = from user in dc.Users
                             where user.SourceUserID == pSourceUserId & user.SocialNetworkID == (int)pSocialNetwork
                             select user;
 
@@ -42,7 +43,7 @@ namespace Fwk.SocialNetworks.Data
                 }
 
                 return wUser;
-            }
+            //}
         }
 
         /// <summary>
@@ -51,12 +52,12 @@ namespace Fwk.SocialNetworks.Data
         /// <param name="pSourcePostID">Identificador del Post</param>
         /// <param name="pCoreDataContext">DataContext</param>
         /// <returns></returns>
-        public static Post GetPost(String pSourcePostID, Enums.SocialNetwork pSocialNetwork)
+        public static Post GetPost(String pSourcePostID, Enums.SocialNetwork pSocialNetwork, CoreDataContext dc)
         {
             Post wPost = null;
-            using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
-            {
-                var wData = from p in wCoreDataContext.Posts
+            //using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
+            //{
+                var wData = from p in dc.Posts
                             where p.SourcePostID == pSourcePostID & p.SocialNetworkID == (int)pSocialNetwork
                             select p;
 
@@ -66,7 +67,7 @@ namespace Fwk.SocialNetworks.Data
                 }
 
                 return wPost;
-            }
+            //}
         }
 
         /// <summary>
@@ -75,14 +76,14 @@ namespace Fwk.SocialNetworks.Data
         ///<param name="pCoreDataContext">DataContext</param>
         /// <param name="pSocialNetwork">Red social</param>
         /// <returns></returns>
-        public static SocialNetwork GetSocialNetwork(Enums.SocialNetwork pSocialNetwork)
+        public static SocialNetwork GetSocialNetwork(Enums.SocialNetwork pSocialNetwork, CoreDataContext dc)
         {
             SocialNetwork wSocialNetwork = null;
-            using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
-            {
+            //using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
+            //{
                 
 
-                var wData = from sn in wCoreDataContext.SocialNetworks
+                var wData = from sn in dc.SocialNetworks
                             where sn.SocialNetworkID == (int)pSocialNetwork
                             select sn;
 
@@ -92,7 +93,7 @@ namespace Fwk.SocialNetworks.Data
                 }
 
                 return wSocialNetwork;
-            }
+            //}
         }
 
         /// <summary>
@@ -104,15 +105,15 @@ namespace Fwk.SocialNetworks.Data
         public static string GetLastStoredSourcePostId(Enums.SocialNetwork pSocialNetwork)
         {
             String wRetSourcePostId = null;
-            using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
+            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
             {
-                Int32? wPostId = (from sn in wCoreDataContext.Posts
+                Int32? wPostId = (from sn in dc.Posts
                                   where sn.SocialNetworkID == (int)pSocialNetwork
                                   select (Nullable<Int32>)sn.PostID).Max();
 
                 if (wPostId.HasValue)
                 {
-                    System.Linq.IQueryable<String> wSourcePostID = (from sn in wCoreDataContext.Posts
+                    System.Linq.IQueryable<String> wSourcePostID = (from sn in dc.Posts
                                                                     where sn.PostID == wPostId.Value
                                                                     select sn.SourcePostID);
 
@@ -132,15 +133,15 @@ namespace Fwk.SocialNetworks.Data
         public static string GetLastStoredMessageId(Enums.SocialNetwork pSocialNetwork)
         {
             String wRetSourceMessageID = null;
-            using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
+            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
             {
-                Int32? wMessageID = (from sn in wCoreDataContext.Messages
+                Int32? wMessageID = (from sn in dc.Messages
                                      where sn.SocialNetworkID == (int)pSocialNetwork
                                      select (Nullable<Int32>)sn.MessageID).Max();
 
                 if (wMessageID.HasValue)
                 {
-                    System.Linq.IQueryable<String> wSourceMessageID = (from sn in wCoreDataContext.Messages
+                    System.Linq.IQueryable<String> wSourceMessageID = (from sn in dc.Messages
                                                                        where sn.MessageID == wMessageID.Value
                                                                        select sn.SourceMessageID);
 
@@ -175,6 +176,8 @@ namespace Fwk.SocialNetworks.Data
             }
         }
 
+     
+
         /// <summary>
         /// Obtiene la fecha de creación del ultimo mensaje logueado en la base de datos de la red social recibida por parámetro.
         /// </summary>
@@ -199,100 +202,64 @@ namespace Fwk.SocialNetworks.Data
 
         #region [Transactionals Methods]
 
-        internal static void AddComment(Post pPost, comment pItemComment,User userFrom , SocialNetwork pSocialNetwork)
+        internal static void AddComment(Post pPost, 
+            comment pItemComment,User userFrom , SocialNetwork pSocialNetwork, CoreDataContext dc)
         {
            
-            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            {
                 Post pc = ParsePostFromFBComment(pItemComment, userFrom ,pSocialNetwork);
                 pc.ParentPost = pPost;
                 dc.Posts.InsertOnSubmit(pc);
-                dc.SubmitChanges();
-            }
+                //dc.SubmitChanges();
+            
         }
 
         /// <summary>
         /// Inserta lote de posts en una transaccion ReadCommitted
         /// </summary>
         /// <param name="posts"></param>
-        internal static void CreatePost(List<Post> posts)
+        internal static void CreatePost(List<Post> posts, CoreDataContext dc)
         {
-
-            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            using (DbTransaction transaction = dc.Connection.BeginTransaction(IsolationLevel.ReadCommitted))
+            foreach (Post wPost in posts)
             {
-                try
-                {
-                    foreach (Post wPost in posts)
-                    {
-                        dc.Posts.InsertOnSubmit(wPost);
-                    }
-                    dc.SubmitChanges();
-                    dc.Transaction.Commit();
-                }
-                catch (Exception)
-                {
-                    dc.Transaction.Rollback();
-                }
+                dc.Posts.InsertOnSubmit(wPost);
             }
-
 
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="post"></param>
-        internal static void CreatePost(Post post)
-        {
-            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            {
-                dc.Posts.InsertOnSubmit(post);
-                dc.SubmitChanges();
-            }
-        }
 
 
-        internal void SaveMessages(List<Message> pList)
+        internal void SaveMessages(List<Message> pList, CoreDataContext dc)
         {
-            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            using (DbTransaction transaction = dc.Connection.BeginTransaction(IsolationLevel.ReadCommitted))
-            {
-                try
-                {
+            //using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
+            //using (DbTransaction transaction = dc.Connection.BeginTransaction(IsolationLevel.ReadCommitted))
+            //{
+            //    try
+            //    {
                     foreach (Message wPost in pList)
                     {
                         dc.Messages.InsertOnSubmit(wPost);
                     }
                     dc.SubmitChanges();
                     dc.Transaction.Commit();
-                }
-                catch (Exception)
-                {
-                    dc.Transaction.Rollback();
-                }
-            }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        dc.Transaction.Rollback();
+            //    }
+            //}
 
 
         }
 
-        internal static void CreateMessage(Message pMessage)
+      
+        internal static void CreateRecipients(Recipient pRecipient, CoreDataContext dc)
         {
-            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            {
-
-                dc.Messages.InsertOnSubmit(pMessage);
-                dc.SubmitChanges();
-            }
-        }
-        internal static void CreateRecipients(Recipient pRecipient)
-        {
-            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
-            {
+            //using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
+            //{
 
                 dc.Recipients.InsertOnSubmit(pRecipient);
                 dc.SubmitChanges();
-            }
+            //}
         }
         
 

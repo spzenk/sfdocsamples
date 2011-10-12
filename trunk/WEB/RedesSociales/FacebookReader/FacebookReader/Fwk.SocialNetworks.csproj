@@ -152,53 +152,26 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\PostBE.cs" />
     <Compile Include="Facebook\Configuration\FacebookConfigElement.cs" />
     <Compile Include="Facebook\Configuration\FacebookConfigElementCollection.cs" />
     <Compile Include="Facebook\Configuration\FacebookConfigSection.cs">
       <DependentUpon>FacebookConfigSection.xsd</DependentUpon>
     </Compile>
     <Compile Include="Facebook\Configuration\ProxyElement.cs" />
-    <Compile Include="Core.designer.cs">
+    <Compile Include="Data\Core.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Core.dbml</DependentUpon>
     </Compile>
-    <Compile Include="DataCore.cs" />
+    <Compile Include="Data\DataCore.cs" />
     <Compile Include="Facebook\FacebookWrapper.cs" />
     <Compile Include="Facebook\FacebookProcessor.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmTwitter.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmTwitter.Designer.cs">
-      <DependentUpon>FrmTwitter.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmYoutube.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmYoutube.Designer.cs">
-      <DependentUpon>FrmYoutube.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="App.config" />
-    <None Include="Core.dbml.layout">
+    <None Include="Data\Core.dbml.layout">
       <DependentUpon>Core.dbml</DependentUpon>
     </None>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmTwitter.resx">
-      <DependentUpon>FrmTwitter.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmYoutube.resx">
-      <DependentUpon>FrmYoutube.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -210,7 +183,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Facebook\Configuration\FacebookConfigSection.xsd" />
-    <None Include="Core.dbml">
+    <None Include="Data\Core.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>Core.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
@@ -236,7 +209,7 @@
     <Compile Include="Facebook\Schema\StreamSchema.cs">
       <DependentUpon>StreamSchema.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Helper.cs" />
+    <Compile Include="Data\Helper.cs" />
     <Compile Include="Twitter\Configuration\TwitterConfigSection.cs" />
     <Compile Include="Twitter\Configuration\TwitterConfigElement.cs" />
     <Compile Include="Twitter\Configuration\TwitterConfigElementCollection.cs" />
@@ -297,9 +270,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
