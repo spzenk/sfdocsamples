@@ -42,6 +42,13 @@ namespace Fwk.SocialNetworks.Twitter
             
         }
 
+        /// <summary>
+        /// Perform twitter logs only
+        /// </summary>
+        public void Start_Twitter_WithoutTimer()
+        {
+            this.LogTwitter();
+        }
         public void Stop()
         {
             _Timer.Stop();
@@ -80,16 +87,17 @@ namespace Fwk.SocialNetworks.Twitter
             }
             catch (Exception ex)
             {
-                this.HandleException("SocialNetworkLogService - Facebook Posts", ex);
+                Helper.Log("Facebook Posts", ex);
             }
 
             try
             {
-                //wFacebookFactory.StoreNewMessages();
+                wFacebookFactory.StoreNewMessages();
             }
             catch (Exception ex)
             {
-                this.HandleException("SocialNetworkLogService - Facebook Messages", ex);
+
+                Helper.Log("Facebook Messages", ex);
             }
         }
 
@@ -102,101 +110,26 @@ namespace Fwk.SocialNetworks.Twitter
 
             try
             {
-                
-                
-                    wTwitterFactory.LogStatuses();
-                
+                wTwitterFactory.LogStatuses();
             }
             catch (Exception ex)
             {
-                this.HandleException("SocialNetworkLogService - Twitter Statuses", ex);
+                Helper.Log("Twitter LogStatuses", ex);
             }
 
             try
             {
-              
-                    wTwitterFactory.LogMessages();
-               
+               wTwitterFactory.LogMessages();
             }
             catch (Exception ex)
             {
-                this.HandleException("SocialNetworkLogService - Twitter Messages", ex);
+                Helper.Log("Twitter LogMessages", ex);
             }
         }
 
-        /// <summary>
-        /// Obtiene el detalle del error, escribe una entrada en registro de sucesoa y lo envia por mail.
-        /// </summary>
-        /// <param name="source">Origen del error</param>
-        /// <param name="ex">Excepcion producida</param>
-        private void HandleException(string source, Exception ex)
-        {
-            StringBuilder wError;
-
-            wError = new StringBuilder();
-            wError.AppendLine("Error message:");
-            wError.AppendLine(Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex));
-            wError.AppendLine("StackTrace:");
-            wError.AppendLine(ex.StackTrace);
-
-            //this.CheckInnerException(ex, ref wError);
-
-            this.WriteLog(source, wError.ToString());
-
-            this.SendMail(source, wError.ToString());
-        }
-
-        ///// <summary>
-        ///// Comprueba si la excepcion contiene excepciones internas y las agrega al <paramref name="error"/> recibido.
-        ///// </summary>
-        ///// <param name="ex">Excepcion a controlar.</param>
-        ///// <param name="error">Por referencia: detalle del error.</param>
-        //private void CheckInnerException(Exception ex, ref StringBuilder error)
-        //{
-        //    if (ex.InnerException != null)
-        //    {
-        //        error.AppendLine("---[Inner Exception]---");
-        //        error.AppendLine(ex.InnerException.Message);
-        //        error.AppendLine(ex.InnerException.StackTrace);
-        //        this.CheckInnerException(ex.InnerException, ref error);
-        //    }
-        //}
-
-        /// <summary>
-        /// Escribe el error en el registro de sucesos.
-        /// </summary>
-        /// <param name="source">Origen del error</param>
-        /// <param name="error">Detalle del error</param>
-        private void WriteLog(string source, string error)
-        {
-            //eventLog1.Source = string.Format("{0} - {1}", source, Properties.Settings.Default.Implementation);
-
-            //eventLog1.WriteEntry(error, EventLogEntryType.Error);
-        }
-
-        /// <summary>
-        /// Envia el error por mail de acuerdo a las direcciones configuradas.
-        /// </summary>
-        /// <param name="source">Origen del error</param>
-        /// <param name="error">Detalle del error</param>
-        private void SendMail(string source, string error)
-        {
-            ////Crea el nuevo correo electronico con el cuerpo del mensaje y el asutno.
-            //MailMessage wMailMessage = new MailMessage() { Body = error, Subject = source };
-            ////Asigna el remitente del mensaje de acuerdo a direccion obtenida en el archivo de configuracion.
-            //wMailMessage.From = new MailAddress(Properties.Settings.Default.MailSender);
-            ////Asigna los destinatarios del mensaje de acuerdo a las direcciones obtenidas en el archivo de configuracion.
-            //foreach (string recipient in Properties.Settings.Default.MailRecipients)
-            //{
-            //    wMailMessage.To.Add(new MailAddress(recipient));
-            //}
-            ////Inicializa un nuevo cliente smtp de acuerdo a las configuraciones 
-            ////obtenidas en la seccion mailSettings del archivo de configuracion.
-            //SmtpClient wSmtpClient = new SmtpClient();
-            //Envia el correo electronico.
-            //wSmtpClient.Send(wMailMessage);
-        }
-
+       
+ 
+     
         #endregion
     }
 }

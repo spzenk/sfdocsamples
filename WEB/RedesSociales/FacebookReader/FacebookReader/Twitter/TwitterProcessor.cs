@@ -24,33 +24,32 @@ namespace Fwk.SocialNetworks.Twitter
         #region [Members]
 
         SocialNetwork _SocialNetwork;
-        CoreDataContext _CoreDataContext;
+        
         #endregion
 
         #region [Constructor]
-
+        CoreDataContext _CoreDataContext;
         public TwitterProcessor()
         {
+            
             if (_SocialNetwork == null)
             {
-                //Busca la red social correspondiente.
-                _SocialNetwork = DataCore.GetSocialNetwork(Enums.SocialNetwork.Twitter);
+                using (_CoreDataContext = new CoreDataContext(Constants.Cnnstring))
+                {
+                    //Busca la red social correspondiente.
+                    _SocialNetwork = DataCore.GetSocialNetwork(Enums.SocialNetwork.Twitter, _CoreDataContext);
+                }
             }
         }
 
-       
-
-       
-  
-
         #endregion
 
-        #region [CoreDataContext Methods]
+        #region [Get User Methods]
 
         private User GetTwitterizerUser(decimal pUserId, string pScreenName)
         {
             //Busca el usuario en DB.
-            User wUser = DataCore.GetUser(pUserId.ToString(), Enums.SocialNetwork.Twitter);
+            User wUser = DataCore.GetUser(pUserId.ToString(), Enums.SocialNetwork.Twitter, _CoreDataContext);
 
             if (wUser == null)
             {
@@ -70,7 +69,7 @@ namespace Fwk.SocialNetworks.Twitter
                         ImageUrl = wTwitterUser.ProfileImageLocation,
                         CreationDate = wTwitterUser.CreatedDate.Value,
                         Followers = (int)wTwitterUser.NumberOfFollowers,
-                        SocialNetwork = _SocialNetwork
+                        SocialNetworkID = 2,//_SocialNetwork,
                     };
                 }
                 else
@@ -83,13 +82,13 @@ namespace Fwk.SocialNetworks.Twitter
                         UserName = pScreenName,
                         SourceUserID = pUserId.ToString(),
                         CreationDate = DateTime.Today,
-                        SocialNetwork = _SocialNetwork,
+                       SocialNetworkID = 2,//_SocialNetwork,
                         ImageUrl = string.Empty,
                         Followers = 0
                     };
                 }
 
-                _CoreDataContext.Users.InsertOnSubmit(wUser);
+                DataCore.CreateUser(wUser,_CoreDataContext);
             }
             else
             {
@@ -105,7 +104,7 @@ namespace Fwk.SocialNetworks.Twitter
         private User GetTwitterizerUser(global::Twitterizer.TwitterUser pTwitterUser)
         {
             //Busca el usuario en la DB.
-            User wUser = DataCore.GetUser(pTwitterUser.Id.ToString(), Enums.SocialNetwork.Twitter);
+            User wUser = DataCore.GetUser(pTwitterUser.Id.ToString(), Enums.SocialNetwork.Twitter,_CoreDataContext);
 
             if (wUser == null)
             {
@@ -119,10 +118,10 @@ namespace Fwk.SocialNetworks.Twitter
                     ImageUrl = pTwitterUser.ProfileImageLocation,
                     CreationDate = pTwitterUser.CreatedDate.Value,
                     Followers = (int)pTwitterUser.NumberOfFollowers,
-                    SocialNetwork = _SocialNetwork
+                    SocialNetworkID = 2,//_SocialNetwork
                 };
-
                 _CoreDataContext.Users.InsertOnSubmit(wUser);
+                //DataCore.CreateUser(wUser,_CoreDataContext);
             }
             else
             {
@@ -146,10 +145,10 @@ namespace Fwk.SocialNetworks.Twitter
 
         private User GetTweetSharpUser(String userId)
         {
-            User wUser = DataCore.GetUser(userId, Enums.SocialNetwork.Twitter);
+            User wUser = DataCore.GetUser(userId, Enums.SocialNetwork.Twitter, _CoreDataContext);
 
             if (wUser == null)
-            {
+            {   
                 TweetSharp wTweetSharp = new TweetSharp();
                 UserSchema.user wuser = wTweetSharp.GetUser(userId);
 
@@ -160,59 +159,68 @@ namespace Fwk.SocialNetworks.Twitter
                     SourceUserID = wuser.id,
                     ImageUrl = wuser.profile_image_url,
                     CreationDate = DateTime.Parse(wuser.created_at),
-                    SocialNetwork = _SocialNetwork,
+                    SocialNetworkID =2,// _SocialNetwork,
                 };
 
-                _CoreDataContext.Users.InsertOnSubmit(wUser);
+                DataCore.CreateUser(wUser, _CoreDataContext);
             }
 
             return wUser;
         }
 
-        private Post ParseStatus(StreamSchema.status pstatus)
+     
+
+        private Post CastPost(StreamSchema.status pstatus)
         {
             Post wPost = new Post()
             {
                 Message = pstatus.text,
                 SourcePostID = pstatus.id,
-                SocialNetwork = _SocialNetwork,
+                SocialNetworkID = 2,//_SocialNetwork,
                 CreationDate = DateTime.Parse(pstatus.created_at),
-                To = this.GetTweetSharpUser(pstatus.in_reply_to_user_id),
-                From = this.GetTweetSharpUser(pstatus.user.id),
+                ToUserID = this.GetTweetSharpUser(pstatus.in_reply_to_user_id).UserID,
+                FromUserID = this.GetTweetSharpUser(pstatus.user.id).UserID,
                 Permlink = string.Format(@"http://twitter.com/{0}/status/{1}", pstatus.user.screen_name, pstatus.id)
             };
 
             if (string.IsNullOrEmpty(pstatus.in_reply_to_status_id) == false)
             {
-                wPost.ParentPost = DataCore.GetPost(pstatus.in_reply_to_status_id, Enums.SocialNetwork.Twitter);
+                wPost.ParentPost = DataCore.GetPost(pstatus.in_reply_to_status_id, Enums.SocialNetwork.Twitter,_CoreDataContext);
             }
 
             return wPost;
         }
 
-        private Post ParseStatus(global::Twitterizer.TwitterStatus pTwitterStatus)
+
+        #endregion
+
+   
+        #region [Entities Methods]
+        private Post CastPost(global::Twitterizer.TwitterStatus pTwitterStatus)
         {
             Post wPost = new Post();
 
             wPost.Message = pTwitterStatus.Text;
             wPost.SourcePostID = pTwitterStatus.Id.ToString();
-            wPost.SocialNetwork = _SocialNetwork;
+            wPost.SocialNetworkID = 2;// _SocialNetwork.SocialNetworkID;
             wPost.CreationDate = pTwitterStatus.CreatedDate;
-            wPost.From = this.GetTwitterizerUser(pTwitterStatus.User);
+            wPost.FromUserID = this.GetTwitterizerUser(pTwitterStatus.User).UserID;
             wPost.Permlink = string.Format(@"http://twitter.com/{0}/status/{1}", pTwitterStatus.User.ScreenName, pTwitterStatus.Id.ToString());
 
             if (pTwitterStatus.InReplyToStatusId.HasValue)
             {
-                wPost.ParentPost = DataCore.GetPost(pTwitterStatus.InReplyToStatusId.Value.ToString(), Enums.SocialNetwork.Twitter);
+                wPost.ParentPost = DataCore.GetPost(pTwitterStatus.InReplyToStatusId.Value.ToString(), Enums.SocialNetwork.Twitter,_CoreDataContext);
             }
 
             if (pTwitterStatus.InReplyToUserId.HasValue)
             {
-                wPost.To = this.GetTwitterizerUser(pTwitterStatus.InReplyToUserId.Value, pTwitterStatus.InReplyToScreenName);
+                wPost.ToUserID = this.GetTwitterizerUser(pTwitterStatus.InReplyToUserId.Value, pTwitterStatus.InReplyToScreenName).UserID;
+                
             }
 
             return wPost;
         }
+      
 
         private Message ParseDirectMessage(global::Twitterizer.TwitterDirectMessage pTwitterDirectMessage)
         {
@@ -221,18 +229,13 @@ namespace Fwk.SocialNetworks.Twitter
             wMessage.Text = pTwitterDirectMessage.Text;
             wMessage.CreatedDate = pTwitterDirectMessage.CreatedDate;
             wMessage.SourceMessageID = pTwitterDirectMessage.Id.ToString();
-            wMessage.SocialNetwork = _SocialNetwork;
+            wMessage.SocialNetworkID = 2;// _SocialNetwork;
             wMessage.MailboxUserID = Twitterizer.Config.DefaultProvider.UserId;
             wMessage.SenderUser = this.GetTwitterizerUser(pTwitterDirectMessage.Sender);
             wRecipient.RecipientUser = this.GetTwitterizerUser(pTwitterDirectMessage.Recipient);
             wMessage.Recipients.Add(wRecipient);
             return wMessage;
         }
-
-        #endregion
-
-        #region [Entities Methods]
-
         public Entities.Statuses GetStatuses(string userName, long? beforeId)
         {
             IFluentTwitter request = FluentTwitter.CreateRequest();
@@ -316,8 +319,15 @@ namespace Fwk.SocialNetworks.Twitter
 
         #region TweetSharp
 
+        //TODO: Ver si se usa StoreNewStream
+/*
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userName"></param>
         public void StoreNewStream(string userName)
         {
+            
             //TO DO: unificar las funciones.
             List<StreamSchema.status> wList = new List<StreamSchema.status>();
             List<StreamSchema.status> wTempList = new List<StreamSchema.status>();
@@ -338,10 +348,7 @@ namespace Fwk.SocialNetworks.Twitter
                 wTempList.Remove(wTempList.Last());
             }
 
-            using (CoreDataContext wCoreDataContext = new CoreDataContext(Constants.Cnnstring))
-            {
-
-            }
+           
         }
 
         /// <summary>
@@ -358,41 +365,47 @@ namespace Fwk.SocialNetworks.Twitter
             wList.AddRange(wTweetSharp.GetAllUserMentions(Constants.LogSince));
 
             wList.AddRange(wTweetSharp.GetAllUserStatuses(Constants.LogSince));
-
-            try
+            Post wPost;
+            List<Post> wPostList = new List<Post>();
+            using (_CoreDataContext = new CoreDataContext(Constants.Cnnstring))
             {
-                Post wPost;
-
-                _CoreDataContext.Connection.Open();
-
-                _CoreDataContext.Transaction = _CoreDataContext.Connection.BeginTransaction();
-
-                foreach (StreamSchema.status item in wList.OrderBy(r => r.id))
+                try
                 {
-                    wPost = this.ParseStatus(item);
 
-                    _CoreDataContext.Posts.InsertOnSubmit(wPost);
+                    _CoreDataContext.Connection.Open();
+
+                    _CoreDataContext.Transaction = _CoreDataContext.Connection.BeginTransaction();
+
+                    foreach (StreamSchema.status item in wList.OrderBy(r => r.id))
+                    {
+                        wPost = this.ParseStatus(item);
+                        wPostList.Add(wPost);
+                        _CoreDataContext.Posts.InsertOnSubmit(wPost);
+                    }
+                    DataCore.CreatePost(wPostList, _CoreDataContext);
+                    _CoreDataContext.SubmitChanges();
+
+                    _CoreDataContext.Transaction.Commit();
                 }
-
-                _CoreDataContext.SubmitChanges();
-
-                _CoreDataContext.Transaction.Commit();
+                catch (Exception)
+                {
+                    _CoreDataContext.Transaction.Rollback();
+                }
             }
-            catch (Exception)
-            {
-                _CoreDataContext.Transaction.Rollback();
-            }
+
         }
-
+        */
         #endregion
 
         #region Twiterizer
 
         /// <summary>
-        /// 
+        /// Busca y almacena nuevos Statuses y Mentions
         /// </summary>
         public void LogStatuses()
         {
+            
+
             //Verifica si el proveedor por defecto esta habilitado y si no lo esta no loguea.
             if (Twitterizer.Config.DefaultProvider.Enabled == false) { return; }
 
@@ -402,61 +415,70 @@ namespace Fwk.SocialNetworks.Twitter
 
             decimal? wSinceStatusId = null;
 
+            //Busca el ultimo Post en la base de datos para twitter
             string wMaxSourcePostId = DataCore.GetLastStoredSourcePostId(Enums.SocialNetwork.Twitter);
 
-            if (wMaxSourcePostId != null)
-            {
+            if (!string.IsNullOrEmpty(wMaxSourcePostId))
                 wSinceStatusId = Convert.ToDecimal(wMaxSourcePostId);
-            }
+            else
+                wSinceStatusId = 0;
 
             wList.AddRange(wTwitterizer.GetAllUserMentions(wSinceStatusId, Constants.LogSince));
-
-            wList.AddRange(wTwitterizer.GetAllUserStatuses(wSinceStatusId, Constants.LogSince));
+            //wList.AddRange(wTwitterizer.GetAllUserStatuses(wSinceStatusId, Constants.LogSince));
 
             if (wList.Count > 0)
             {
                 this.SaveStatuses(wList);
             }
+
+                
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pList"></param>
         private void SaveStatuses(List<global::Twitterizer.TwitterStatus> pList)
         {
-            _CoreDataContext.Connection.Open();
+            Post wPost = null;
 
-            try
-            {
-                foreach (global::Twitterizer.TwitterStatus item in pList.OrderBy(r => r.Id))
+            List<Post> postList = new List<Post>();
+            //using (_CoreDataContext = new CoreDataContext(Constants.Cnnstring))
+            //{
+            _CoreDataContext = new CoreDataContext(Constants.Cnnstring);
+                try
                 {
-                    this.SaveStatus(item);
+                    //_CoreDataContext.Connection.Open();
+                    _CoreDataContext.Transaction = _CoreDataContext.Connection.BeginTransaction();
+
+                    //TODO: Ver por que es necesario para cada post buscar el usuario 
+                    foreach (global::Twitterizer.TwitterStatus item in pList.OrderBy(r => r.Id))
+                    {
+                        wPost = this.CastPost(item);
+                        _CoreDataContext.Posts.InsertOnSubmit(wPost);
+                        //postList.Add(wPost);
+
+                    }
+                    _CoreDataContext.SubmitChanges();
+
+                    _CoreDataContext.Transaction.Commit();
+
                 }
-            }
-            finally
-            {
-                _CoreDataContext.Connection.Close();
-            }
+                catch (Exception ex)
+                {
+                    _CoreDataContext.Transaction.Rollback();
+
+                    throw new Exception("Error en la transacción de datos al grabar los tweets.", ex);
+                }
+                finally
+                {
+                    _CoreDataContext.Connection.Close();
+                }
+            //}
+
         }
 
-        private void SaveStatus(global::Twitterizer.TwitterStatus wTwitterStatus)
-        {
-            try
-            {
-                _CoreDataContext.Transaction = _CoreDataContext.Connection.BeginTransaction();
-
-                Post wPost = this.ParseStatus(wTwitterStatus);
-
-                _CoreDataContext.Posts.InsertOnSubmit(wPost);
-
-                _CoreDataContext.SubmitChanges();
-
-                _CoreDataContext.Transaction.Commit();
-            }
-            catch (Exception ex)
-            {
-                _CoreDataContext.Transaction.Rollback();
-
-                throw new Exception("Error en la transacción de datos al grabar los tweets.", ex);
-            }
-        }
+       
 
         #endregion
 
@@ -477,13 +499,13 @@ namespace Fwk.SocialNetworks.Twitter
 
             string wMaxSourceMessageId = DataCore.GetLastStoredMessageId(Enums.SocialNetwork.Twitter);
 
-            if (wMaxSourceMessageId != null)
-            {
+            if (!string.IsNullOrEmpty(wMaxSourceMessageId))
                 wSinceStatusId = Convert.ToDecimal(wMaxSourceMessageId);
-            }
+            else
+                wSinceStatusId = 0;
+
 
             wList.AddRange(wTwitterizer.GetAllUserMessages(wSinceStatusId, Constants.LogSince));
-
             wList.AddRange(wTwitterizer.GetAllUserMessagesSent(wSinceStatusId, Constants.LogSince));
 
             if (wList.Count > 0)
@@ -494,41 +516,31 @@ namespace Fwk.SocialNetworks.Twitter
 
         private void SaveMessages(List<global::Twitterizer.TwitterDirectMessage> pList)
         {
-            _CoreDataContext.Connection.Open();
-
-            try
+            using (_CoreDataContext = new CoreDataContext(Constants.Cnnstring))
             {
-                foreach (global::Twitterizer.TwitterDirectMessage item in pList.OrderBy(r => r.Id))
+                try
                 {
-                    this.SaveMessage(item);
+                    _CoreDataContext.Transaction = _CoreDataContext.Connection.BeginTransaction();
+
+                    foreach (global::Twitterizer.TwitterDirectMessage item in pList.OrderBy(r => r.Id))
+                    {
+                        Message wMessage = this.ParseDirectMessage(item);
+                        _CoreDataContext.Messages.InsertOnSubmit(wMessage);
+                    }
+                    _CoreDataContext.SubmitChanges();
+                    _CoreDataContext.Transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    _CoreDataContext.Transaction.Rollback();
+
+                    throw new Exception("Error en la transacción de datos al grabar los tweets.", ex);
                 }
             }
-            finally
-            {
-                _CoreDataContext.Connection.Close();
-            }
         }
-
-        private void SaveMessage(global::Twitterizer.TwitterDirectMessage item)
+        public void LogSavedSearches()
         {
-            try
-            {
-                _CoreDataContext.Transaction = _CoreDataContext.Connection.BeginTransaction();
 
-                Message wMessage = this.ParseDirectMessage(item);
-
-                _CoreDataContext.Messages.InsertOnSubmit(wMessage);
-
-                _CoreDataContext.SubmitChanges();
-
-                _CoreDataContext.Transaction.Commit();
-            }
-            catch (Exception ex)
-            {
-                _CoreDataContext.Transaction.Rollback();
-
-                throw new Exception("Error en la transacción de datos al grabar los mensajes directos.", ex);
-            }
         }
 
         #endregion
