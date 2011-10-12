@@ -114,6 +114,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
@@ -131,6 +132,15 @@
       <Project>{C22DFD3B-3000-4B22-8C4C-2B9C7B6AB3E2}</Project>
       <Name>Fwk.SocialNetworks</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twitter-t.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twitter-t1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\twitter.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
