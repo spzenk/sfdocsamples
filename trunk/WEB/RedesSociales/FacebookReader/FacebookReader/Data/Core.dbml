@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Database Name="PortalMovistar" Class="CoreDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=CORRSF71DES01;Initial Catalog=PortalMovistar;Persist Security Info=True;User ID=PortalMovistar;Password=PortalMovistar" Provider="System.Data.SqlClient" />
+<Database Name="RedesSociales" Class="CoreDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=SANTANA\SQLEXPRESS;Initial Catalog=RedesSociales;Integrated Security=True" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Post" Member="Posts">
     <Type Name="Post">
       <Column Name="PostID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -69,6 +69,20 @@
       <Association Name="Message_Recipient" Member="Recipients" ThisKey="MessageID" OtherKey="MessageID" Type="Recipient" />
       <Association Name="SocialNetwork_Message" Member="SocialNetwork" ThisKey="SocialNetworkID" OtherKey="SocialNetworkID" Type="SocialNetwork" IsForeignKey="true" />
       <Association Name="User_Message" Member="SenderUser" Storage="_User" ThisKey="SenderUserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Searches" Member="Searches">
+    <Type Name="Search">
+      <Column Name="SearchId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SourceSearchId" Type="System.String" DbType="Char(100)" CanBeNull="true" />
+      <Column Name="Message" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreationDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="FromUserID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ToUserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SocialNetworkID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AppSourceID" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ParentPostID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Query" Type="System.String" DbType="Char(30)" CanBeNull="true" />
     </Type>
   </Table>
 </Database>

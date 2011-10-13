@@ -22,7 +22,7 @@ namespace Fwk.SocialNetworks.Data
 	using System;
 	
 	
-	[System.Data.Linq.Mapping.DatabaseAttribute(Name="PortalMovistar")]
+	[System.Data.Linq.Mapping.DatabaseAttribute(Name="RedesSociales")]
 	public partial class CoreDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -45,11 +45,14 @@ namespace Fwk.SocialNetworks.Data
     partial void InsertMessage(Message instance);
     partial void UpdateMessage(Message instance);
     partial void DeleteMessage(Message instance);
+    partial void InsertSearch(Search instance);
+    partial void UpdateSearch(Search instance);
+    partial void DeleteSearch(Search instance);
     #endregion
 		
 		public CoreDataContext() : 
-				base("Data Source=CORRSF71DES01;Initial Catalog=PortalMovistar;Persist Security Info=Tr" +
-						"ue;User ID=PortalMovistar;Password=PortalMovistar", mappingSource)
+				base("Data Source=SANTANA\\SQLEXPRESS;Initial Catalog=RedesSociales;Integrated Security=" +
+						"True", mappingSource)
 		{
 			OnCreated();
 		}
@@ -115,6 +118,14 @@ namespace Fwk.SocialNetworks.Data
 			get
 			{
 				return this.GetTable<Message>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Search> Searches
+		{
+			get
+			{
+				return this.GetTable<Search>();
 			}
 		}
 	}
@@ -1695,6 +1706,284 @@ namespace Fwk.SocialNetworks.Data
 		{
 			this.SendPropertyChanging();
 			entity.Message = null;
+		}
+	}
+	
+	[Table(Name="dbo.Searches")]
+	public partial class Search : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _SearchId;
+		
+		private string _SourceSearchId;
+		
+		private string _Message;
+		
+		private System.DateTime _CreationDate;
+		
+		private int _FromUserID;
+		
+		private System.Nullable<int> _ToUserID;
+		
+		private int _SocialNetworkID;
+		
+		private string _AppSourceID;
+		
+		private System.Nullable<int> _ParentPostID;
+		
+		private string _Query;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnSearchIdChanging(int value);
+    partial void OnSearchIdChanged();
+    partial void OnSourceSearchIdChanging(string value);
+    partial void OnSourceSearchIdChanged();
+    partial void OnMessageChanging(string value);
+    partial void OnMessageChanged();
+    partial void OnCreationDateChanging(System.DateTime value);
+    partial void OnCreationDateChanged();
+    partial void OnFromUserIDChanging(int value);
+    partial void OnFromUserIDChanged();
+    partial void OnToUserIDChanging(System.Nullable<int> value);
+    partial void OnToUserIDChanged();
+    partial void OnSocialNetworkIDChanging(int value);
+    partial void OnSocialNetworkIDChanged();
+    partial void OnAppSourceIDChanging(string value);
+    partial void OnAppSourceIDChanged();
+    partial void OnParentPostIDChanging(System.Nullable<int> value);
+    partial void OnParentPostIDChanged();
+    partial void OnQueryChanging(string value);
+    partial void OnQueryChanged();
+    #endregion
+		
+		public Search()
+		{
+			OnCreated();
+		}
+		
+		[Column(Storage="_SearchId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int SearchId
+		{
+			get
+			{
+				return this._SearchId;
+			}
+			set
+			{
+				if ((this._SearchId != value))
+				{
+					this.OnSearchIdChanging(value);
+					this.SendPropertyChanging();
+					this._SearchId = value;
+					this.SendPropertyChanged("SearchId");
+					this.OnSearchIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_SourceSearchId", DbType="Char(100)")]
+		public string SourceSearchId
+		{
+			get
+			{
+				return this._SourceSearchId;
+			}
+			set
+			{
+				if ((this._SourceSearchId != value))
+				{
+					this.OnSourceSearchIdChanging(value);
+					this.SendPropertyChanging();
+					this._SourceSearchId = value;
+					this.SendPropertyChanged("SourceSearchId");
+					this.OnSourceSearchIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Message", DbType="VarChar(MAX)")]
+		public string Message
+		{
+			get
+			{
+				return this._Message;
+			}
+			set
+			{
+				if ((this._Message != value))
+				{
+					this.OnMessageChanging(value);
+					this.SendPropertyChanging();
+					this._Message = value;
+					this.SendPropertyChanged("Message");
+					this.OnMessageChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_CreationDate", DbType="DateTime NOT NULL")]
+		public System.DateTime CreationDate
+		{
+			get
+			{
+				return this._CreationDate;
+			}
+			set
+			{
+				if ((this._CreationDate != value))
+				{
+					this.OnCreationDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreationDate = value;
+					this.SendPropertyChanged("CreationDate");
+					this.OnCreationDateChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_FromUserID", DbType="Int NOT NULL")]
+		public int FromUserID
+		{
+			get
+			{
+				return this._FromUserID;
+			}
+			set
+			{
+				if ((this._FromUserID != value))
+				{
+					this.OnFromUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._FromUserID = value;
+					this.SendPropertyChanged("FromUserID");
+					this.OnFromUserIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ToUserID", DbType="Int")]
+		public System.Nullable<int> ToUserID
+		{
+			get
+			{
+				return this._ToUserID;
+			}
+			set
+			{
+				if ((this._ToUserID != value))
+				{
+					this.OnToUserIDChanging(value);
+					this.SendPropertyChanging();
+					this._ToUserID = value;
+					this.SendPropertyChanged("ToUserID");
+					this.OnToUserIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_SocialNetworkID", DbType="Int NOT NULL")]
+		public int SocialNetworkID
+		{
+			get
+			{
+				return this._SocialNetworkID;
+			}
+			set
+			{
+				if ((this._SocialNetworkID != value))
+				{
+					this.OnSocialNetworkIDChanging(value);
+					this.SendPropertyChanging();
+					this._SocialNetworkID = value;
+					this.SendPropertyChanged("SocialNetworkID");
+					this.OnSocialNetworkIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_AppSourceID", DbType="VarChar(100)")]
+		public string AppSourceID
+		{
+			get
+			{
+				return this._AppSourceID;
+			}
+			set
+			{
+				if ((this._AppSourceID != value))
+				{
+					this.OnAppSourceIDChanging(value);
+					this.SendPropertyChanging();
+					this._AppSourceID = value;
+					this.SendPropertyChanged("AppSourceID");
+					this.OnAppSourceIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ParentPostID", DbType="Int")]
+		public System.Nullable<int> ParentPostID
+		{
+			get
+			{
+				return this._ParentPostID;
+			}
+			set
+			{
+				if ((this._ParentPostID != value))
+				{
+					this.OnParentPostIDChanging(value);
+					this.SendPropertyChanging();
+					this._ParentPostID = value;
+					this.SendPropertyChanged("ParentPostID");
+					this.OnParentPostIDChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Query", DbType="Char(30)")]
+		public string Query
+		{
+			get
+			{
+				return this._Query;
+			}
+			set
+			{
+				if ((this._Query != value))
+				{
+					this.OnQueryChanging(value);
+					this.SendPropertyChanging();
+					this._Query = value;
+					this.SendPropertyChanged("Query");
+					this.OnQueryChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

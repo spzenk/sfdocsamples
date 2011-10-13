@@ -348,7 +348,6 @@ namespace Fwk.SocialNetworks
             wPost.AppSourceID = pItem.app_id;
             wPost.Message = pItem.message;
             wPost.Permlink = pItem.permalink;
-            wPost.SocialNetworkID = Constants.SocialNetworkID;
             wPost.SourcePostID = pItem.post_id;
             wPost.CreationDate = DateFunctions.UnixTimeStampToDateTime(Convert.ToInt64(pItem.created_time));
             wPost.SocialNetworkID = (int)_SocialNetwork;
