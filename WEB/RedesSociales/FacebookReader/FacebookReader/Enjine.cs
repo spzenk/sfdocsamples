@@ -13,8 +13,9 @@ namespace Fwk.SocialNetworks.Twitter
     public partial class Enjine : Component
     {
 
-        Timer _Timer; 
-
+        Timer _Timer;
+        bool twitter = true;
+        bool facebook = true;
         public Enjine()
         {
             InitializeComponent();
@@ -43,32 +44,44 @@ namespace Fwk.SocialNetworks.Twitter
         }
 
         /// <summary>
-        /// Perform twitter logs only
+        /// Perform twitter logs only whithout timmer .-
         /// </summary>
         public void Start_Twitter_WithoutTimer()
         {
             this.LogTwitter();
         }
+        /// <summary>
+        /// Perform twitter logs only .-
+        /// </summary>
+        public void Start_Twitter()
+        {
+            facebook = false;
+            Start();
+        }
+        /// <summary>
+        /// 
+        /// </summary>
         public void Stop()
         {
             _Timer.Stop();
-           // _Timer.Elapsed -=       
+            _Timer.Dispose();
         }
 
 
         private void _Timer_Elapsed(object sender, ElapsedEventArgs e)
         {
-            _Timer.Enabled = false;
+            _Timer.Stop();
 
             try
             {
-                this.LogFacebook();
-
-                this.LogTwitter();
+                if (facebook)
+                    this.LogFacebook();
+                if(twitter)
+                    this.LogTwitter();
             }
             finally
             {
-                _Timer.Enabled = true;
+                _Timer.Start();
             }
         }
 

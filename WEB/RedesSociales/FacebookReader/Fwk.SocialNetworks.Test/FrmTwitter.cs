@@ -11,7 +11,7 @@ namespace Fwk.SocialNetworks
 {
     public partial class FrmTwitter : Form
     {
-        Timer _Timer;
+        
         Fwk.SocialNetworks.Twitter.Twitterizer _Twitterizer = null;
 
         public FrmTwitter()
@@ -79,12 +79,9 @@ namespace Fwk.SocialNetworks
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Fwk.SocialNetworks.Twitter.TwitterProcessor proc = new Fwk.SocialNetworks.Twitter.TwitterProcessor();
-
-            //proc.LogMessages();
-            //proc.LogSavedSearches();
-
-            enjine1.Start_Twitter_WithoutTimer();
+         
+            //enjine1.Start_Twitter_WithoutTimer();
+            enjine1.Start_Twitter();
         }
 
 
