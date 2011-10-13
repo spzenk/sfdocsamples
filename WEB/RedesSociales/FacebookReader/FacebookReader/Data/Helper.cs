@@ -167,7 +167,7 @@ namespace Fwk.SocialNetworks
     }
     public class Constants
     {
-        internal static readonly Int32 SocialNetworkID = 1;
+        
 
         internal static readonly String Cnnstring = ConfigurationManager.ConnectionStrings["socialnet"].ConnectionString;
 

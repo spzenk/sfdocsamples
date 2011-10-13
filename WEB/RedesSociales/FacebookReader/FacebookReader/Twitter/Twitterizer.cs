@@ -10,7 +10,7 @@ using Twitterizer;
 
 namespace Fwk.SocialNetworks.Twitter
 {
-    public class Twitterizer
+    public class TwitterizerWrap
     {
         #region [Members]
 
@@ -29,7 +29,7 @@ namespace Fwk.SocialNetworks.Twitter
             get { return configSection; }
         }
 
-        static Twitterizer()
+        static TwitterizerWrap()
         {
             
             try
@@ -60,9 +60,9 @@ namespace Fwk.SocialNetworks.Twitter
 
         #region [Constructors]
 
-        public Twitterizer()
+        public TwitterizerWrap()
         {
-            _OAuthTokens = Twitterizer.Config.GetOAuthTokens(Twitterizer.Config.DefaultProvider.Name);
+            _OAuthTokens = TwitterizerWrap.Config.GetOAuthTokens(TwitterizerWrap.Config.DefaultProvider.Name);
         }
 
        
@@ -81,9 +81,9 @@ namespace Fwk.SocialNetworks.Twitter
            
 
             UserTimelineOptions wUserTimelineOptions = new UserTimelineOptions();
-            wUserTimelineOptions.Count = Twitterizer.Config.StatusesCount;
+            wUserTimelineOptions.Count = TwitterizerWrap.Config.StatusesCount;
             wUserTimelineOptions.IncludeRetweets = true;
-            wUserTimelineOptions.Proxy = Twitterizer.Proxy;
+            wUserTimelineOptions.Proxy = TwitterizerWrap.Proxy;
 
             if (pMaxStatusId.HasValue)
             {
@@ -109,9 +109,9 @@ namespace Fwk.SocialNetworks.Twitter
             if (this.HasExceededLimit()) { return new TwitterStatusCollection(); }
 
             TimelineOptions wTimelineOptions = new TimelineOptions();
-            wTimelineOptions.Count = Twitterizer.Config.StatusesCount;
+            wTimelineOptions.Count = TwitterizerWrap.Config.StatusesCount;
             wTimelineOptions.IncludeRetweets = true;
-            wTimelineOptions.Proxy = Twitterizer.Proxy;
+            wTimelineOptions.Proxy = TwitterizerWrap.Proxy;
 
             if (pMaxStatusId.HasValue)
             {
@@ -142,7 +142,7 @@ namespace Fwk.SocialNetworks.Twitter
             //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
             if (this.HasExceededLimit()) { return new TwitterDirectMessageCollection(); }
 
-            DirectMessagesOptions wDirectMessagesOptions = new DirectMessagesOptions() { Proxy = Twitterizer.Proxy };
+            DirectMessagesOptions wDirectMessagesOptions = new DirectMessagesOptions() { Proxy = TwitterizerWrap.Proxy };
 
             if (pMaxStatusId.HasValue)
             {
@@ -166,7 +166,7 @@ namespace Fwk.SocialNetworks.Twitter
             //Y es menor. Deja de consultar y devuelve una colección vacia para que deje de buscar.
             if (this.HasExceededLimit()) { return new TwitterDirectMessageCollection(); }
 
-            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = Twitterizer.Proxy };
+            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = TwitterizerWrap.Proxy };
 
             if (pMaxStatusId.HasValue)
             {
@@ -187,20 +187,28 @@ namespace Fwk.SocialNetworks.Twitter
 
         public List<TwitterSavedSearch> Get_SavedSearches()
         {
-            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = Twitterizer.Proxy };
+            DirectMessagesSentOptions wDirectMessagesSentOptions = new DirectMessagesSentOptions() { Proxy = TwitterizerWrap.Proxy };
             TwitterResponse<TwitterSavedSearchCollection> result = TwitterSavedSearch.SavedSearches(_OAuthTokens, wDirectMessagesSentOptions);
             if (result == null) { this.CheckForErrors(); }
             return result.ResponseObject.ToList<TwitterSavedSearch>();
         }
-        public List<TwitterSearchResult> Get_SavedSearches(string query, long? sinceId, long? pMaxId)
+
+        /// <summary>
+        /// sample: _Twitterizer.Search(txtSearch.Text, 124444492202909696, null);
+        /// </summary>
+        /// <param name="query"></param>
+        /// <param name="sinceId"></param>
+        /// <param name="pMaxId"></param>
+        /// <returns></returns>
+        public List<TwitterSearchResult> Search(string query, decimal? sinceId, decimal? pMaxId)
         {
-            SearchOptions opt = new SearchOptions() { Proxy = Twitterizer.Proxy };
+            SearchOptions opt = new SearchOptions() { Proxy = TwitterizerWrap.Proxy };
 
             if (sinceId.HasValue)
-                opt.SinceId = sinceId.Value;
+                opt.SinceId = (long)sinceId.Value;
 
             if (pMaxId.HasValue)
-                opt.MaxId = pMaxId.Value;
+                opt.MaxId = (long)pMaxId.Value;
 
             TwitterResponse<TwitterSearchResultCollection> result = TwitterSearch.Search(_OAuthTokens, query, opt);
 
@@ -210,7 +218,7 @@ namespace Fwk.SocialNetworks.Twitter
         }
         private bool HasExceededLimit()
         {
-            return (this.GetRateLimitStatus().RemainingHits < Twitterizer.Config.MinRemainingHits);
+            return (this.GetRateLimitStatus().RemainingHits < TwitterizerWrap.Config.MinRemainingHits);
         }
 
        
@@ -223,7 +231,7 @@ namespace Fwk.SocialNetworks.Twitter
         {
             OptionalProperties wOptionalProperties;
             wOptionalProperties = new OptionalProperties();
-            wOptionalProperties.Proxy = Twitterizer.Proxy;
+            wOptionalProperties.Proxy = TwitterizerWrap.Proxy;
 
             TwitterUser wTwitterUser = TwitterUser.Show(_OAuthTokens, userId, wOptionalProperties).ResponseObject;
 
@@ -236,7 +244,7 @@ namespace Fwk.SocialNetworks.Twitter
         {
             OptionalProperties wOptionalProperties;
             wOptionalProperties = new OptionalProperties();
-            wOptionalProperties.Proxy = Twitterizer.Proxy;
+            wOptionalProperties.Proxy = TwitterizerWrap.Proxy;
 
             TwitterUser wTwitterUser = TwitterUser.Show(_OAuthTokens, userName, wOptionalProperties).ResponseObject;
 
@@ -392,7 +400,7 @@ namespace Fwk.SocialNetworks.Twitter
         
         public TwitterRateLimitStatus GetRateLimitStatus()
         {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Twitterizer.Proxy };
+            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = TwitterizerWrap.Proxy };
             return TwitterRateLimitStatus.GetStatus(_OAuthTokens, wOptionalProperties).ResponseObject;
         }
 
@@ -431,7 +439,7 @@ namespace Fwk.SocialNetworks.Twitter
         /// <returns>El status creado.</returns>
         public TwitterStatus Update(string pText, decimal? pInReplayToStatudId)
         {
-            StatusUpdateOptions wStatusUpdateOptions = new StatusUpdateOptions() { Proxy = Twitterizer.Proxy };
+            StatusUpdateOptions wStatusUpdateOptions = new StatusUpdateOptions() { Proxy = TwitterizerWrap.Proxy };
 
             if (pInReplayToStatudId.HasValue)
             {
@@ -454,7 +462,7 @@ namespace Fwk.SocialNetworks.Twitter
         /// <returns>El mensaje directo enviado.</returns>
         public TwitterDirectMessage SendDirectMessage(decimal pUserId, string pText)
         {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Twitterizer.Proxy };
+            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = TwitterizerWrap.Proxy };
 
             TwitterResponse<TwitterDirectMessage> wTwitterDirectMessage = TwitterDirectMessage.Send(_OAuthTokens, pUserId, pText, wOptionalProperties);
 
@@ -471,7 +479,7 @@ namespace Fwk.SocialNetworks.Twitter
         /// <returns>El mensaje directo enviado.</returns>
         public TwitterDirectMessage SendDirectMessage(string pScreenName, string pText)
         {
-            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = Twitterizer.Proxy };
+            OptionalProperties wOptionalProperties = new OptionalProperties() { Proxy = TwitterizerWrap.Proxy };
 
             TwitterResponse<TwitterDirectMessage> wTwitterDirectMessage = TwitterDirectMessage.Send(_OAuthTokens, pScreenName, pText, wOptionalProperties);
 

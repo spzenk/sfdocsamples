@@ -11,13 +11,13 @@ namespace Fwk.SocialNetworks
 {
     public partial class FrmTwitter : Form
     {
-        
-        Fwk.SocialNetworks.Twitter.Twitterizer _Twitterizer = null;
+
+        Fwk.SocialNetworks.Twitter.TwitterizerWrap _Twitterizer = null;
 
         public FrmTwitter()
         {
             InitializeComponent();
-            _Twitterizer = new Fwk.SocialNetworks.Twitter.Twitterizer();
+            _Twitterizer = new Fwk.SocialNetworks.Twitter.TwitterizerWrap();
         }
 
         private void btn_Twitterizer_GetAllUserMessages_Click(object sender, EventArgs e)
@@ -69,6 +69,25 @@ namespace Fwk.SocialNetworks
 
         }
 
+
+
+        void Print(TextBox t, List<Twitterizer.TwitterSearchResult> l)
+        {
+            StringBuilder str = new StringBuilder();
+            foreach (Twitterizer.TwitterSearchResult s in l)
+            {
+
+                str.AppendLine(string.Concat("Id:  ", s.Id));
+                str.AppendLine(string.Concat("CreatedDate:  ", s.CreatedDate));
+                str.AppendLine(string.Concat("Source:   ", s.Source));
+                str.AppendLine(s.Text);
+                str.AppendLine("-------------------------------------------------------------");
+            }
+
+            t.Text = str.ToString();
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
             List<Twitterizer.TwitterSavedSearch> listTwitterSavedSearch = _Twitterizer.Get_SavedSearches();
@@ -82,6 +101,13 @@ namespace Fwk.SocialNetworks
          
             //enjine1.Start_Twitter_WithoutTimer();
             enjine1.Start_Twitter();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            List<Twitterizer.TwitterSearchResult> listTwitterSearchResult = _Twitterizer.Search(txtSearch.Text, 124444492202909696, null);
+            Print(txtSearchs, listTwitterSearchResult);
+
         }
 
 

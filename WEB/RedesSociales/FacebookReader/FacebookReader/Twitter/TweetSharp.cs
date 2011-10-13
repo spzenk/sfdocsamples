@@ -27,8 +27,8 @@ namespace Fwk.SocialNetworks.Twitter
         string proxyUrl;
         internal TweetSharp()
         {
-            if (Fwk.SocialNetworks.Twitter.Twitterizer.Proxy!=null)
-                proxyUrl = Fwk.SocialNetworks.Twitter.Twitterizer.Proxy.Address.ToString(); ;
+            if (Fwk.SocialNetworks.Twitter.TwitterizerWrap.Proxy!=null)
+                proxyUrl = Fwk.SocialNetworks.Twitter.TwitterizerWrap.Proxy.Address.ToString(); ;
         }
 
 
@@ -90,10 +90,10 @@ namespace Fwk.SocialNetworks.Twitter
         public StreamSchema.statuses GetUserMentions(long? beforeId)
         {
             //IFluentTwitter request = FluentTwitter.CreateRequest().AuthenticateAs(userName, password);            
-            IFluentTwitter request = FluentTwitter.CreateRequest().AuthenticateWith(Fwk.SocialNetworks.Twitter.Twitterizer.Config.ConsumerKey,
-                                                                                           Fwk.SocialNetworks.Twitter.Twitterizer.Config.ConsumerSecret,
-                                                                                           Fwk.SocialNetworks.Twitter.Twitterizer.Config.DefaultProvider.AccessToken,
-                                                                                           Fwk.SocialNetworks.Twitter.Twitterizer.Config.DefaultProvider.AccessTokenSecret);
+            IFluentTwitter request = FluentTwitter.CreateRequest().AuthenticateWith(Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.ConsumerKey,
+                                                                                           Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.ConsumerSecret,
+                                                                                           Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.DefaultProvider.AccessToken,
+                                                                                           Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.DefaultProvider.AccessTokenSecret);
 
 
             ITwitterStatuses statuses = request.Statuses();
@@ -131,10 +131,10 @@ namespace Fwk.SocialNetworks.Twitter
         public StreamSchema.statuses GetUserStatuses(long? beforeId)
         {
             //IFluentTwitter request = FluentTwitter.CreateRequest().AuthenticateAs(userName, password);
-            IFluentTwitter request = FluentTwitter.CreateRequest().AuthenticateWith(Fwk.SocialNetworks.Twitter.Twitterizer.Config.ConsumerKey,
-                                                                                       Fwk.SocialNetworks.Twitter.Twitterizer.Config.ConsumerSecret,
-                                                                                       Fwk.SocialNetworks.Twitter.Twitterizer.Config.DefaultProvider.AccessToken,
-                                                                                       Fwk.SocialNetworks.Twitter.Twitterizer.Config.DefaultProvider.AccessTokenSecret);
+            IFluentTwitter request = FluentTwitter.CreateRequest().AuthenticateWith(Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.ConsumerKey,
+                                                                                       Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.ConsumerSecret,
+                                                                                       Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.DefaultProvider.AccessToken,
+                                                                                       Fwk.SocialNetworks.Twitter.TwitterizerWrap.Config.DefaultProvider.AccessTokenSecret);
 
 
             ITwitterStatuses statuses = request.Statuses();

@@ -143,7 +143,33 @@ namespace Fwk.SocialNetworks.Data
                 return wRetSourceMessageID;
             }
         }
+        /// <summary>
+        /// Obtiene el identificador del ultimo mensaje logueado en la DB de la red social recibida por parametro.
+        /// </summary>
+        /// <param name="pSocialNetwork">Red social</param>
+        /// <param name="pCoreDataContext">DataContext</param>
+        /// <returns></returns>
+        public static string GetLastSearchId(Enums.SocialNetworkEnum pSocialNetwork)
+        {
+            String wRetSourceSearchID = null;
+            using (CoreDataContext dc = new CoreDataContext(Constants.Cnnstring))
+            {
+                Int32? wID = (from sn in dc.Searches
+                                     where sn.SocialNetworkID == (int)pSocialNetwork
+                                     select (Nullable<Int32>)sn.SearchId).Max();
 
+                if (wID.HasValue)
+                {
+                    System.Linq.IQueryable<String> wSourceMessageID = (from sn in dc.Searches
+                                                                       where sn.SearchId == wID.Value
+                                                                       select sn.SourceSearchId);
+
+                    wRetSourceSearchID = wSourceMessageID.First<String>();
+                }
+
+                return wRetSourceSearchID;
+            }
+        }
 
         /// <summary>
         /// Obtiene la fecha de creación del ultimo post logueado en la base de datos de la red social recibida por parámetro.

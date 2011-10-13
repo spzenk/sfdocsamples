@@ -119,7 +119,7 @@ namespace Fwk.SocialNetworks.Youtube
 
         }
 
-        static string feed_video_q_starti_max_v = " http://gdata.youtube.com/feeds/api/videos?q={0}&start-index={1}&max-results={2}&v={3}";
+        //static string feed_video_q_starti_max_v = " http://gdata.youtube.com/feeds/api/videos?q={0}&start-index={1}&max-results={2}&v={3}";
         static string feeds_uploads = "http://gdata.youtube.com/feeds/api/users/{0}/uploads";
         /// <summary>
         /// Un feed de vídeos puede contener un máximo de 999 entradas
@@ -169,7 +169,7 @@ namespace Fwk.SocialNetworks.Youtube
          
             string CONSUMER_KEY = "pelsoft";
             string CONSUMER_SECRET = "lincelince"; 
-            string SCOPE ="http://gdata.youtube.com";
+            //string SCOPE ="http://gdata.youtube.com";
             // Multi-scoped token. string SCOPE = "https://www.google.com/calendar/feeds/ https://www.google.com/m8/feeds/";
             //OAuthParameters parameters = new OAuthParameters()
             //{

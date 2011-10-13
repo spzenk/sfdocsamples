@@ -132,7 +132,17 @@ namespace Fwk.SocialNetworks.Twitter
 
             try
             {
-               wTwitterFactory.LogMessages();
+                wTwitterFactory.LogMessages();
+            }
+            catch (Exception ex)
+            {
+                Helper.Log("Twitter LogMessages", ex);
+            }
+
+
+            try
+            {
+                wTwitterFactory.LogSavedSearches();
             }
             catch (Exception ex)
             {
