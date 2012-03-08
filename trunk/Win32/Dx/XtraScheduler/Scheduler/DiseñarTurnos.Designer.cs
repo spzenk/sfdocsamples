@@ -265,7 +265,7 @@
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.durationEdit1);
             this.Name = "DiseñarTurnos";
-            this.Text = "DiseñarTurnos";
+            this.Text = "Resource Scheduling";
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerShiftBindingSource)).EndInit();

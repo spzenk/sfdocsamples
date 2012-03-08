@@ -12,8 +12,8 @@ namespace Scheduler
 {
     public partial class DiseñarTurnos : Form
     {
-        SchedulerShift _SchedulerShift = new SchedulerShift();
-        List<SchedulerShift> list = new List<SchedulerShift>();
+        ResourceSchedulingBE _ResourceScheduling = new ResourceSchedulingBE();
+        List<ResourceSchedulingBE> list = new List<ResourceSchedulingBE>();
         public DiseñarTurnos()
         {
             InitializeComponent();
@@ -24,23 +24,24 @@ namespace Scheduler
 
         void Set_SchedulerShift()
         {
-            _SchedulerShift = new SchedulerShift();
-            _SchedulerShift.Duration = (int)Convert.ToInt32(durationEdit1.Duration.TotalMinutes);
-            _SchedulerShift.WeekDays = (int)weeklyRecurrenceControl1.RecurrenceInfo.WeekDays;
+
+            _ResourceScheduling = new ResourceSchedulingBE();
+            _ResourceScheduling.Duration = (int)Convert.ToInt32(durationEdit1.Duration.TotalMinutes);
+            _ResourceScheduling.WeekDays = (int)weeklyRecurrenceControl1.RecurrenceInfo.WeekDays;
             DateTime d = Convert.ToDateTime(timeEdit_From.EditValue);
             //_SchedulerShift.Star =  System.TimeSpan.Parse(String.Format"{0}:{0}:{0}")
-            _SchedulerShift.Star = d.TimeOfDay;
+            _ResourceScheduling.TimeStart = d.TimeOfDay;
             d = Convert.ToDateTime(timeEdit_To.EditValue);
-            _SchedulerShift.End = d.TimeOfDay;
+            _ResourceScheduling.TimeEnd = d.TimeOfDay;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Set_SchedulerShift();
-            list.Add(_SchedulerShift);
+            list.Add(_ResourceScheduling);
             schedulerShiftBindingSource.DataSource = list;
             gridControl1.RefreshDataSource();
-            bool x = _SchedulerShift.Date_IsContained(dateEdit1.DateTime);
+            bool x = _ResourceScheduling.Date_IsContained(dateEdit1.DateTime);
         }
 
         private void dateEdit1_EditValueChanged(object sender, EventArgs e)
@@ -51,25 +52,36 @@ namespace Scheduler
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            List<TimespamView> s = _SchedulerShift.Get_ArrayOfTimes(System.DateTime.Now);
+            List<TimespamView> s = _ResourceScheduling.Get_ArrayOfTimes(System.DateTime.Now);
             timespamViewBindingSource.DataSource = s;
             gridControl2.RefreshDataSource();
         }
     }
 
-    public class SchedulerShift
+    public class ResourceSchedulingBE
     {
+        public ResourceSchedulingBE()
+        {}
+        public ResourceSchedulingBE(ResourceScheduling obj)
+        {
+            Nombre = obj.Description;
+            this.TimeStart = TimeSpan.Parse(obj.TimeStart);//"14:34"
+            this.TimeEnd = TimeSpan.Parse(obj.TimeEnd);//"14:34"
+            this.Duration = (decimal)obj.Duration;
+            this.WeekOfMonth = obj.WeekOfMonth;
+            this.WeekDays = obj.WeekDays;
+        }
         public string Nombre { get; set; }
-
-        public int Duration { get; set; }
-        public int WeekDays { get; set; }
+        public int? WeekOfMonth { get; set; }
+        public decimal Duration { get; set; }
+        public int? WeekDays { get; set; }
         public String WeekDays_List
         {
             get { return GetDayNames(); }
             set { }
         }
-        public TimeSpan Star { get; set; }
-        public TimeSpan End { get; set; }
+        public TimeSpan TimeStart { get; set; }
+        public TimeSpan TimeEnd { get; set; }
 
         public bool Date_IsContained(DateTime date)
         {
@@ -165,6 +177,11 @@ namespace Scheduler
             return false;
         }
 
+       
+          public static explicit operator ResourceSchedulingBE(ResourceScheduling obj)
+        {
+            return new ResourceSchedulingBE(obj);
+        }
         /// <summary>
         /// Crea vector booleano y rellena hasta 7 con false en caso de no existir
         /// </summary>
@@ -198,14 +215,14 @@ namespace Scheduler
             
             List<TimespamView> times = new List<TimespamView>();
             currentDate = Fwk.HelperFunctions.DateFunctions.GetStartDateTime(currentDate);
-            TimeSpan t = this.Star;
+            TimeSpan t = this.TimeStart;
             TimespamView wTimespamView ;
             while (true)
             {
                 wTimespamView = new TimespamView ();
                 wTimespamView.Time= t;
                 times.Add(wTimespamView);
-                if ((this.End - t).TotalMinutes >= 0)
+                if ((this.TimeEnd - t).TotalMinutes >= 0)
                     t = t.Add(TimeSpan.FromMinutes(Duration));
                 else
                     break;

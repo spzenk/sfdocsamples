@@ -42,6 +42,9 @@ namespace Scheduler
     partial void InsertAppointment(Appointment instance);
     partial void UpdateAppointment(Appointment instance);
     partial void DeleteAppointment(Appointment instance);
+    partial void InsertResourceScheduling(ResourceScheduling instance);
+    partial void UpdateResourceScheduling(ResourceScheduling instance);
+    partial void DeleteResourceScheduling(ResourceScheduling instance);
     #endregion
 		
 		public DataClasses1DataContext() : 
@@ -103,6 +106,14 @@ namespace Scheduler
 			get
 			{
 				return this.GetTable<Appointment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<ResourceScheduling> ResourceSchedulings
+		{
+			get
+			{
+				return this.GetTable<ResourceScheduling>();
 			}
 		}
 	}
@@ -1428,6 +1439,404 @@ namespace Scheduler
 					this._Month = value;
 					this.SendPropertyChanged("Month");
 					this.OnMonthChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ResourceScheduling")]
+	public partial class ResourceScheduling : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _IdSheduler;
+		
+		private System.Nullable<System.DateTime> _DateStart;
+		
+		private System.Nullable<System.DateTime> _DateEnd;
+		
+		private string _Description;
+		
+		private System.Nullable<int> _ResourceId;
+		
+		private System.Nullable<int> _WeekOfMonth;
+		
+		private System.Nullable<int> _WeekDays;
+		
+		private System.Nullable<double> _Duration;
+		
+		private System.Nullable<System.Guid> _CreationUserId;
+		
+		private System.Nullable<System.Guid> _UpdateUserId;
+		
+		private System.Nullable<System.DateTime> _CreationDate;
+		
+		private System.Nullable<System.DateTime> _UpdatedDate;
+		
+		private System.Nullable<int> _ResourceType;
+		
+		private string _TimeStart;
+		
+		private string _TimeEnd;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdShedulerChanging(string value);
+    partial void OnIdShedulerChanged();
+    partial void OnDateStartChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateStartChanged();
+    partial void OnDateEndChanging(System.Nullable<System.DateTime> value);
+    partial void OnDateEndChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnResourceIdChanging(System.Nullable<int> value);
+    partial void OnResourceIdChanged();
+    partial void OnWeekOfMonthChanging(System.Nullable<int> value);
+    partial void OnWeekOfMonthChanged();
+    partial void OnWeekDaysChanging(System.Nullable<int> value);
+    partial void OnWeekDaysChanged();
+    partial void OnDurationChanging(System.Nullable<double> value);
+    partial void OnDurationChanged();
+    partial void OnCreationUserIdChanging(System.Nullable<System.Guid> value);
+    partial void OnCreationUserIdChanged();
+    partial void OnUpdateUserIdChanging(System.Nullable<System.Guid> value);
+    partial void OnUpdateUserIdChanged();
+    partial void OnCreationDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreationDateChanged();
+    partial void OnUpdatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnUpdatedDateChanged();
+    partial void OnResourceTypeChanging(System.Nullable<int> value);
+    partial void OnResourceTypeChanged();
+    partial void OnTimeStartChanging(string value);
+    partial void OnTimeStartChanged();
+    partial void OnTimeEndChanging(string value);
+    partial void OnTimeEndChanged();
+    #endregion
+		
+		public ResourceScheduling()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdSheduler", DbType="NChar(10) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string IdSheduler
+		{
+			get
+			{
+				return this._IdSheduler;
+			}
+			set
+			{
+				if ((this._IdSheduler != value))
+				{
+					this.OnIdShedulerChanging(value);
+					this.SendPropertyChanging();
+					this._IdSheduler = value;
+					this.SendPropertyChanged("IdSheduler");
+					this.OnIdShedulerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateStart", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateStart
+		{
+			get
+			{
+				return this._DateStart;
+			}
+			set
+			{
+				if ((this._DateStart != value))
+				{
+					this.OnDateStartChanging(value);
+					this.SendPropertyChanging();
+					this._DateStart = value;
+					this.SendPropertyChanged("DateStart");
+					this.OnDateStartChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateEnd", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateEnd
+		{
+			get
+			{
+				return this._DateEnd;
+			}
+			set
+			{
+				if ((this._DateEnd != value))
+				{
+					this.OnDateEndChanging(value);
+					this.SendPropertyChanging();
+					this._DateEnd = value;
+					this.SendPropertyChanged("DateEnd");
+					this.OnDateEndChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="VarChar(300)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResourceId", DbType="Int")]
+		public System.Nullable<int> ResourceId
+		{
+			get
+			{
+				return this._ResourceId;
+			}
+			set
+			{
+				if ((this._ResourceId != value))
+				{
+					this.OnResourceIdChanging(value);
+					this.SendPropertyChanging();
+					this._ResourceId = value;
+					this.SendPropertyChanged("ResourceId");
+					this.OnResourceIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeekOfMonth", DbType="Int")]
+		public System.Nullable<int> WeekOfMonth
+		{
+			get
+			{
+				return this._WeekOfMonth;
+			}
+			set
+			{
+				if ((this._WeekOfMonth != value))
+				{
+					this.OnWeekOfMonthChanging(value);
+					this.SendPropertyChanging();
+					this._WeekOfMonth = value;
+					this.SendPropertyChanged("WeekOfMonth");
+					this.OnWeekOfMonthChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WeekDays", DbType="Int")]
+		public System.Nullable<int> WeekDays
+		{
+			get
+			{
+				return this._WeekDays;
+			}
+			set
+			{
+				if ((this._WeekDays != value))
+				{
+					this.OnWeekDaysChanging(value);
+					this.SendPropertyChanging();
+					this._WeekDays = value;
+					this.SendPropertyChanged("WeekDays");
+					this.OnWeekDaysChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Duration", DbType="Float")]
+		public System.Nullable<double> Duration
+		{
+			get
+			{
+				return this._Duration;
+			}
+			set
+			{
+				if ((this._Duration != value))
+				{
+					this.OnDurationChanging(value);
+					this.SendPropertyChanging();
+					this._Duration = value;
+					this.SendPropertyChanged("Duration");
+					this.OnDurationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreationUserId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> CreationUserId
+		{
+			get
+			{
+				return this._CreationUserId;
+			}
+			set
+			{
+				if ((this._CreationUserId != value))
+				{
+					this.OnCreationUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._CreationUserId = value;
+					this.SendPropertyChanged("CreationUserId");
+					this.OnCreationUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateUserId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> UpdateUserId
+		{
+			get
+			{
+				return this._UpdateUserId;
+			}
+			set
+			{
+				if ((this._UpdateUserId != value))
+				{
+					this.OnUpdateUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._UpdateUserId = value;
+					this.SendPropertyChanged("UpdateUserId");
+					this.OnUpdateUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreationDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreationDate
+		{
+			get
+			{
+				return this._CreationDate;
+			}
+			set
+			{
+				if ((this._CreationDate != value))
+				{
+					this.OnCreationDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreationDate = value;
+					this.SendPropertyChanged("CreationDate");
+					this.OnCreationDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdatedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> UpdatedDate
+		{
+			get
+			{
+				return this._UpdatedDate;
+			}
+			set
+			{
+				if ((this._UpdatedDate != value))
+				{
+					this.OnUpdatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._UpdatedDate = value;
+					this.SendPropertyChanged("UpdatedDate");
+					this.OnUpdatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResourceType", DbType="Int")]
+		public System.Nullable<int> ResourceType
+		{
+			get
+			{
+				return this._ResourceType;
+			}
+			set
+			{
+				if ((this._ResourceType != value))
+				{
+					this.OnResourceTypeChanging(value);
+					this.SendPropertyChanging();
+					this._ResourceType = value;
+					this.SendPropertyChanged("ResourceType");
+					this.OnResourceTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeStart", DbType="VarChar(5)")]
+		public string TimeStart
+		{
+			get
+			{
+				return this._TimeStart;
+			}
+			set
+			{
+				if ((this._TimeStart != value))
+				{
+					this.OnTimeStartChanging(value);
+					this.SendPropertyChanging();
+					this._TimeStart = value;
+					this.SendPropertyChanged("TimeStart");
+					this.OnTimeStartChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TimeEnd", DbType="VarChar(5)")]
+		public string TimeEnd
+		{
+			get
+			{
+				return this._TimeEnd;
+			}
+			set
+			{
+				if ((this._TimeEnd != value))
+				{
+					this.OnTimeEndChanging(value);
+					this.SendPropertyChanging();
+					this._TimeEnd = value;
+					this.SendPropertyChanged("TimeEnd");
+					this.OnTimeEndChanged();
 				}
 			}
 		}
