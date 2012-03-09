@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.durationEdit1 = new DevExpress.XtraScheduler.UI.DurationEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.schedulerShiftBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -40,17 +39,13 @@
             this.colWeekDays_List = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.dateEdit1 = new DevExpress.XtraEditors.DateEdit();
-            this.weeklyRecurrenceControl1 = new DevExpress.XtraScheduler.UI.WeeklyRecurrenceControl();
             this.dateEdit2 = new DevExpress.XtraEditors.DateEdit();
-            this.timeEdit_From = new DevExpress.XtraEditors.TimeEdit();
-            this.timeEdit_To = new DevExpress.XtraEditors.TimeEdit();
             this.gridControl2 = new DevExpress.XtraGrid.GridControl();
             this.timespamViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerShiftBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -58,37 +53,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.VistaTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_From.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_To.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             this.SuspendLayout();
             // 
-            // durationEdit1
-            // 
-            this.durationEdit1.EditValue = "30";
-            this.durationEdit1.Location = new System.Drawing.Point(12, 27);
-            this.durationEdit1.Name = "durationEdit1";
-            this.durationEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.durationEdit1.Size = new System.Drawing.Size(197, 22);
-            this.durationEdit1.TabIndex = 0;
-            // 
             // gridControl1
             // 
             this.gridControl1.DataSource = this.schedulerShiftBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(364, 58);
+            this.gridControl1.Location = new System.Drawing.Point(12, 101);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(569, 434);
+            this.gridControl1.Size = new System.Drawing.Size(808, 434);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
             // schedulerShiftBindingSource
             // 
-            this.schedulerShiftBindingSource.DataSource = typeof(Scheduler.SchedulerShift);
+            this.schedulerShiftBindingSource.DataSource = typeof(Scheduler.ResourceSchedulingBE);
             // 
             // gridView1
             // 
@@ -140,7 +123,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(8, 336);
+            this.simpleButton1.Location = new System.Drawing.Point(12, 33);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(197, 37);
             this.simpleButton1.TabIndex = 2;
@@ -150,7 +133,7 @@
             // dateEdit1
             // 
             this.dateEdit1.EditValue = null;
-            this.dateEdit1.Location = new System.Drawing.Point(16, 406);
+            this.dateEdit1.Location = new System.Drawing.Point(529, 9);
             this.dateEdit1.Name = "dateEdit1";
             this.dateEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -160,19 +143,10 @@
             this.dateEdit1.TabIndex = 3;
             this.dateEdit1.EditValueChanged += new System.EventHandler(this.dateEdit1_EditValueChanged);
             // 
-            // weeklyRecurrenceControl1
-            // 
-            this.weeklyRecurrenceControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.weeklyRecurrenceControl1.Appearance.Options.UseBackColor = true;
-            this.weeklyRecurrenceControl1.Location = new System.Drawing.Point(12, 58);
-            this.weeklyRecurrenceControl1.Name = "weeklyRecurrenceControl1";
-            this.weeklyRecurrenceControl1.Size = new System.Drawing.Size(346, 96);
-            this.weeklyRecurrenceControl1.TabIndex = 7;
-            // 
             // dateEdit2
             // 
             this.dateEdit2.EditValue = null;
-            this.dateEdit2.Location = new System.Drawing.Point(12, 184);
+            this.dateEdit2.Location = new System.Drawing.Point(752, 9);
             this.dateEdit2.Name = "dateEdit2";
             this.dateEdit2.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -180,28 +154,6 @@
             new DevExpress.XtraEditors.Controls.EditorButton()});
             this.dateEdit2.Size = new System.Drawing.Size(193, 22);
             this.dateEdit2.TabIndex = 8;
-            // 
-            // timeEdit_From
-            // 
-            this.timeEdit_From.EditValue = new System.DateTime(2012, 3, 6, 0, 0, 0, 0);
-            this.timeEdit_From.Location = new System.Drawing.Point(16, 249);
-            this.timeEdit_From.Name = "timeEdit_From";
-            this.timeEdit_From.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.timeEdit_From.Properties.Mask.EditMask = "t";
-            this.timeEdit_From.Size = new System.Drawing.Size(134, 22);
-            this.timeEdit_From.TabIndex = 9;
-            // 
-            // timeEdit_To
-            // 
-            this.timeEdit_To.EditValue = new System.DateTime(2012, 3, 6, 0, 0, 0, 0);
-            this.timeEdit_To.Location = new System.Drawing.Point(189, 249);
-            this.timeEdit_To.Name = "timeEdit_To";
-            this.timeEdit_To.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.timeEdit_To.Properties.Mask.EditMask = "t";
-            this.timeEdit_To.Size = new System.Drawing.Size(100, 22);
-            this.timeEdit_To.TabIndex = 10;
             // 
             // gridControl2
             // 
@@ -253,20 +205,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1274, 504);
+            this.ClientSize = new System.Drawing.Size(1274, 608);
             this.Controls.Add(this.simpleButton2);
             this.Controls.Add(this.gridControl2);
-            this.Controls.Add(this.timeEdit_To);
-            this.Controls.Add(this.timeEdit_From);
             this.Controls.Add(this.dateEdit2);
-            this.Controls.Add(this.weeklyRecurrenceControl1);
             this.Controls.Add(this.dateEdit1);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.gridControl1);
-            this.Controls.Add(this.durationEdit1);
             this.Name = "DiseñarTurnos";
             this.Text = "Resource Scheduling";
-            ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerShiftBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -274,8 +221,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties.VistaTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dateEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_From.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_To.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
@@ -285,15 +230,11 @@
 
         #endregion
 
-        private DevExpress.XtraScheduler.UI.DurationEdit durationEdit1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.XtraEditors.DateEdit dateEdit1;
-        private DevExpress.XtraScheduler.UI.WeeklyRecurrenceControl weeklyRecurrenceControl1;
         private DevExpress.XtraEditors.DateEdit dateEdit2;
-        private DevExpress.XtraEditors.TimeEdit timeEdit_From;
-        private DevExpress.XtraEditors.TimeEdit timeEdit_To;
         private System.Windows.Forms.BindingSource schedulerShiftBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colDuration;
         private DevExpress.XtraGrid.Columns.GridColumn colWeekDays;
