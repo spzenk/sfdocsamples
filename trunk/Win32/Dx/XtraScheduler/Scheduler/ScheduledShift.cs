@@ -23,6 +23,7 @@ namespace Scheduler
         public int? WeekOfMonth { get; set; }
         public decimal Duration { get; set; }
 
+       
         /// <summary>
         /// Combinacion en base 64 de dias de la semana
         /// EJ: 
@@ -180,20 +181,40 @@ namespace Scheduler
 
         }
 
-        public List<TimespamView> Get_ArrayOfTimes(DateTime currentDate)
+        public List<TimespamView> Get_ArrayOfTimes(DateTime date)
         {
 
+            //List<TimespamView> times = new List<TimespamView>();
+            //currentDate = Fwk.HelperFunctions.DateFunctions.GetStartDateTime(currentDate);
+            //TimeSpan t = this.TimeStart;
+            //TimespamView wTimespamView;
+            //while (true)
+            //{
+            //    wTimespamView = new TimespamView();
+            //    wTimespamView.Time = t;
+            //    times.Add(wTimespamView);
+            //    if ((this.TimeEnd - t).TotalMinutes >= 0)
+            //        t = t.Add(TimeSpan.FromMinutes((Double)Duration));
+            //    else
+            //        break;
+            //}
+            return ResourceSchedulingBE.Get_ArrayOfTimes(date, this.TimeStart, this.TimeEnd, (double)this.Duration);
+        }
+
+        public static List<TimespamView> Get_ArrayOfTimes(DateTime currentDate,TimeSpan start ,TimeSpan end,Double duration)
+        {
             List<TimespamView> times = new List<TimespamView>();
             currentDate = Fwk.HelperFunctions.DateFunctions.GetStartDateTime(currentDate);
-            TimeSpan t = this.TimeStart;
+            TimeSpan t = start;
             TimespamView wTimespamView;
             while (true)
             {
                 wTimespamView = new TimespamView();
                 wTimespamView.Time = t;
+                wTimespamView.Description = "";
                 times.Add(wTimespamView);
-                if ((this.TimeEnd - t).TotalMinutes >= 0)
-                    t = t.Add(TimeSpan.FromMinutes((Double)Duration));
+                if ((end - t).TotalMinutes >= 0)
+                    t = t.Add(TimeSpan.FromMinutes(duration));
                 else
                     break;
             }
@@ -205,13 +226,42 @@ namespace Scheduler
             return new ResourceSchedulingBE(obj);
         }
 
-
+       
     }
 
     public class TimespamView
     {
+        public TimespamView()
+        { }
+        public TimespamView(DateTime date)
+        {
+            //this.Time = new DateTime(date.Ticks);
+        }
+        public TimespamView(string value)
+        {
+            //this.Time =  System.TimeSpan.Parse(String.Format("{0}:{0}",)
+        }
+
         public TimeSpan Time { get; set; }
         public String Description { get; set; }
+
+        public string TimeString
+        {
+            get 
+            {
+                return String.Concat( Time.ToString("hh"),":" ,Time.ToString("mm"))  ;
+            }
+            
+        }
+
+        public static explicit operator TimespamView(string obj)
+        {
+            return new TimespamView(obj);
+        }
+        public static explicit operator TimespamView(DateTime date)
+        {
+            return new TimespamView(date);
+        }
 
     }
 

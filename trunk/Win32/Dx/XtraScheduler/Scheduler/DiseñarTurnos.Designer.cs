@@ -46,6 +46,7 @@
             this.colTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerShiftBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -64,7 +65,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 101);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(808, 434);
+            this.gridControl1.Size = new System.Drawing.Size(804, 461);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -76,6 +77,7 @@
             // gridView1
             // 
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colNombre,
             this.colDuration,
             this.colWeekDays,
             this.colStar,
@@ -88,6 +90,8 @@
             // 
             // colDuration
             // 
+            this.colDuration.Caption = "Duracion de turnos";
+            this.colDuration.DisplayFormat.FormatString = "{0} minutos";
             this.colDuration.FieldName = "Duration";
             this.colDuration.Name = "colDuration";
             this.colDuration.Visible = true;
@@ -102,14 +106,14 @@
             // 
             // colStar
             // 
-            this.colStar.FieldName = "Star";
+            this.colStar.FieldName = "TimeStart";
             this.colStar.Name = "colStar";
             this.colStar.Visible = true;
             this.colStar.VisibleIndex = 2;
             // 
             // colEnd
             // 
-            this.colEnd.FieldName = "End";
+            this.colEnd.FieldName = "TimeEnd";
             this.colEnd.Name = "colEnd";
             this.colEnd.Visible = true;
             this.colEnd.VisibleIndex = 3;
@@ -123,7 +127,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(12, 33);
+            this.simpleButton1.Location = new System.Drawing.Point(12, 58);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(197, 37);
             this.simpleButton1.TabIndex = 2;
@@ -201,6 +205,13 @@
             this.simpleButton2.Text = "Add new";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
+            // colNombre
+            // 
+            this.colNombre.FieldName = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.Visible = true;
+            this.colNombre.VisibleIndex = 5;
+            // 
             // DiseñarTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -247,5 +258,6 @@
         private System.Windows.Forms.BindingSource timespamViewBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colTime;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colNombre;
     }
 }

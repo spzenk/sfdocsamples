@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.timeEdit_To = new DevExpress.XtraEditors.TimeEdit();
             this.timeEdit_From = new DevExpress.XtraEditors.TimeEdit();
             this.weeklyRecurrenceControl1 = new DevExpress.XtraScheduler.UI.WeeklyRecurrenceControl();
@@ -39,16 +40,24 @@
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.cmbTimeStart = new DevExpress.XtraEditors.LookUpEdit();
+            this.cmbTimeEnd = new DevExpress.XtraEditors.LookUpEdit();
+            this.timespamViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit_To.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit_From.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // timeEdit_To
             // 
             this.timeEdit_To.EditValue = new System.DateTime(2012, 3, 6, 0, 0, 0, 0);
-            this.timeEdit_To.Location = new System.Drawing.Point(210, 343);
+            this.timeEdit_To.Location = new System.Drawing.Point(129, 436);
             this.timeEdit_To.Name = "timeEdit_To";
             this.timeEdit_To.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -59,7 +68,7 @@
             // timeEdit_From
             // 
             this.timeEdit_From.EditValue = new System.DateTime(2012, 3, 6, 0, 0, 0, 0);
-            this.timeEdit_From.Location = new System.Drawing.Point(210, 305);
+            this.timeEdit_From.Location = new System.Drawing.Point(11, 436);
             this.timeEdit_From.Name = "timeEdit_From";
             this.timeEdit_From.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -85,6 +94,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.durationEdit1.Size = new System.Drawing.Size(127, 22);
             this.durationEdit1.TabIndex = 11;
+            this.durationEdit1.SelectedIndexChanged += new System.EventHandler(this.durationEdit1_SelectedIndexChanged);
             // 
             // labelControl1
             // 
@@ -152,11 +162,52 @@
             this.btnOk.Text = "Aceptar";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
+            // cmbTimeStart
+            // 
+            this.cmbTimeStart.Location = new System.Drawing.Point(216, 307);
+            this.cmbTimeStart.Name = "cmbTimeStart";
+            this.cmbTimeStart.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cmbTimeStart.Properties.Appearance.Options.UseFont = true;
+            this.cmbTimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTimeStart.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TimeString", "Hora", 77, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.False)});
+            this.cmbTimeStart.Properties.DataSource = this.timespamViewBindingSource;
+            this.cmbTimeStart.Properties.DisplayMember = "TimeString";
+            this.cmbTimeStart.Properties.ValueMember = "Time";
+            this.cmbTimeStart.Size = new System.Drawing.Size(149, 25);
+            this.cmbTimeStart.TabIndex = 31;
+            // 
+            // cmbTimeEnd
+            // 
+            this.cmbTimeEnd.Location = new System.Drawing.Point(216, 345);
+            this.cmbTimeEnd.Name = "cmbTimeEnd";
+            this.cmbTimeEnd.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.cmbTimeEnd.Properties.Appearance.Options.UseFont = true;
+            this.cmbTimeEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbTimeEnd.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TimeString", "Hora", 77, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.False)});
+            this.cmbTimeEnd.Properties.DataSource = this.timespamViewBindingSource;
+            this.cmbTimeEnd.Properties.DisplayMember = "TimeString";
+            this.cmbTimeEnd.Size = new System.Drawing.Size(149, 25);
+            this.cmbTimeEnd.TabIndex = 32;
+            // 
+            // timespamViewBindingSource
+            // 
+            this.timespamViewBindingSource.DataSource = typeof(Scheduler.TimespamView);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Scheduler.TimespamView);
+            // 
             // frmResouceScheduling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 470);
+            this.ClientSize = new System.Drawing.Size(637, 470);
+            this.Controls.Add(this.cmbTimeEnd);
+            this.Controls.Add(this.cmbTimeStart);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.txtNombre);
             this.Controls.Add(this.labelControl5);
@@ -170,10 +221,15 @@
             this.Controls.Add(this.durationEdit1);
             this.Name = "frmResouceScheduling";
             this.Text = "frmResouceScheduling";
+            this.Load += new System.EventHandler(this.frmResouceScheduling_Load);
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit_To.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timeEdit_From.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +248,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.TextEdit txtNombre;
         private DevExpress.XtraEditors.SimpleButton btnOk;
+        private DevExpress.XtraEditors.LookUpEdit cmbTimeStart;
+        private System.Windows.Forms.BindingSource timespamViewBindingSource;
+        private DevExpress.XtraEditors.LookUpEdit cmbTimeEnd;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }
