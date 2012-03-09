@@ -38,7 +38,7 @@ namespace Scheduler
             //SchedulerShift.TimeStart = d.TimeOfDay;
             //d = Convert.ToDateTime(timeEdit_To.EditValue);
             //SchedulerShift.TimeEnd = d.TimeOfDay;
-            SchedulerShift.TimeEnd = (TimeSpan)cmbTimeStart.EditValue;
+            SchedulerShift.TimeEnd = (TimeSpan)cmbTimeEnd.EditValue;
         }
 
         private void btnOk_Click(object sender, EventArgs e)

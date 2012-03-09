@@ -32,8 +32,8 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.schedulerShiftBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDuration = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWeekDays = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colStar = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEnd = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWeekDays_List = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -46,7 +46,6 @@
             this.colTime = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
-            this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.schedulerShiftBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -79,7 +78,6 @@
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colNombre,
             this.colDuration,
-            this.colWeekDays,
             this.colStar,
             this.colEnd,
             this.colWeekDays_List});
@@ -88,42 +86,55 @@
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
+            // colNombre
+            // 
+            this.colNombre.FieldName = "Nombre";
+            this.colNombre.Name = "colNombre";
+            this.colNombre.OptionsColumn.AllowEdit = false;
+            this.colNombre.OptionsColumn.ReadOnly = true;
+            this.colNombre.Visible = true;
+            this.colNombre.VisibleIndex = 0;
+            // 
             // colDuration
             // 
             this.colDuration.Caption = "Duracion de turnos";
             this.colDuration.DisplayFormat.FormatString = "{0} minutos";
             this.colDuration.FieldName = "Duration";
             this.colDuration.Name = "colDuration";
+            this.colDuration.OptionsColumn.AllowEdit = false;
+            this.colDuration.OptionsColumn.ReadOnly = true;
             this.colDuration.Visible = true;
-            this.colDuration.VisibleIndex = 0;
-            // 
-            // colWeekDays
-            // 
-            this.colWeekDays.FieldName = "WeekDays";
-            this.colWeekDays.Name = "colWeekDays";
-            this.colWeekDays.Visible = true;
-            this.colWeekDays.VisibleIndex = 1;
+            this.colDuration.VisibleIndex = 4;
             // 
             // colStar
             // 
+            this.colStar.Caption = "Hora inicio";
             this.colStar.FieldName = "TimeStart";
             this.colStar.Name = "colStar";
+            this.colStar.OptionsColumn.AllowEdit = false;
+            this.colStar.OptionsColumn.ReadOnly = true;
             this.colStar.Visible = true;
-            this.colStar.VisibleIndex = 2;
+            this.colStar.VisibleIndex = 1;
             // 
             // colEnd
             // 
+            this.colEnd.Caption = "Hora fin";
             this.colEnd.FieldName = "TimeEnd";
             this.colEnd.Name = "colEnd";
+            this.colEnd.OptionsColumn.AllowEdit = false;
+            this.colEnd.OptionsColumn.ReadOnly = true;
             this.colEnd.Visible = true;
-            this.colEnd.VisibleIndex = 3;
+            this.colEnd.VisibleIndex = 2;
             // 
             // colWeekDays_List
             // 
+            this.colWeekDays_List.Caption = "Dias";
             this.colWeekDays_List.FieldName = "WeekDays_List";
             this.colWeekDays_List.Name = "colWeekDays_List";
+            this.colWeekDays_List.OptionsColumn.AllowEdit = false;
+            this.colWeekDays_List.OptionsColumn.ReadOnly = true;
             this.colWeekDays_List.Visible = true;
-            this.colWeekDays_List.VisibleIndex = 4;
+            this.colWeekDays_List.VisibleIndex = 3;
             // 
             // simpleButton1
             // 
@@ -205,13 +216,6 @@
             this.simpleButton2.Text = "Add new";
             this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
-            // colNombre
-            // 
-            this.colNombre.FieldName = "Nombre";
-            this.colNombre.Name = "colNombre";
-            this.colNombre.Visible = true;
-            this.colNombre.VisibleIndex = 5;
-            // 
             // DiseñarTurnos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -248,7 +252,6 @@
         private DevExpress.XtraEditors.DateEdit dateEdit2;
         private System.Windows.Forms.BindingSource schedulerShiftBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colDuration;
-        private DevExpress.XtraGrid.Columns.GridColumn colWeekDays;
         private DevExpress.XtraGrid.Columns.GridColumn colStar;
         private DevExpress.XtraGrid.Columns.GridColumn colEnd;
         private DevExpress.XtraGrid.Columns.GridColumn colWeekDays_List;
