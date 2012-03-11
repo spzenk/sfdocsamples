@@ -67,8 +67,8 @@ namespace Scheduler
 
         void UpdateCombo(double duration)
         {
-          
-            var x = ResourceSchedulingBE.Get_ArrayOfTimes(DateTime.Now, TimeSpan.Parse("00:00"), TimeSpan.Parse("24:0:0"), (double)duration);
+
+            var x = ResourceSchedulingBE.Get_ArrayOfTimes(DateTime.Now, TimeSpan.Parse("00:00"), TimeSpan.Parse("24:0:0"), (double)duration, "Turno tarde");
             timespamViewBindingSource.DataSource = x;
             bindingSource1.DataSource = x;
             cmbTimeStart.Refresh();

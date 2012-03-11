@@ -7,17 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraScheduler;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 
 namespace Scheduler
 {
     public partial class DiseñarTurnos : Form
     {
-        ResourceSchedulingBE _ResourceScheduling =null;
+
+        ResourceSchedulingBE currentShiftSheduling;
         List<ResourceSchedulingBE> list = new List<ResourceSchedulingBE>();
         public DiseñarTurnos()
         {
             InitializeComponent();
-            dateEdit1.DateTime = System.DateTime.Now;
+            
 
 
         }
@@ -48,9 +50,31 @@ namespace Scheduler
 
         private void simpleButton2_Click(object sender, EventArgs e)
         {
-            List<TimespamView> s = _ResourceScheduling.Get_ArrayOfTimes(System.DateTime.Now);
-            timespamViewBindingSource.DataSource = s;
-            gridControl2.RefreshDataSource();
+            using (frmShiftsControls frm = new frmShiftsControls())
+            {
+                frm.ShiftSchedulingList = list;
+                frm.ShowDialog();
+            }
+          
+        }
+
+        GridHitInfo _HitInfo = null;
+        private void gridView1_MouseDown(object sender, MouseEventArgs e)
+        {
+
+            //  if (e.Button != MouseButtons.Right) return;
+            _HitInfo = gridView1.CalcHitInfo(new Point(e.X, e.Y));
+            currentShiftSheduling = ((ResourceSchedulingBE)gridView1.GetRow(_HitInfo.RowHandle));
+    
+        }
+
+        private void gridView1_DoubleClick(object sender, EventArgs e)
+        {
+            using (frmShiftsControls frm = new frmShiftsControls())
+            {
+                frm.ShiftSchedulingList = list;
+                frm.ShowDialog();
+            }
         }
     }
 
