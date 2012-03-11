@@ -42,10 +42,7 @@ namespace Scheduler
 
         bool[] weekDays_BinArray;
           
-        public ResourceSchedulingBE()
-        {
-            
-        }
+       
         
        
         /// <summary>
@@ -145,8 +142,7 @@ namespace Scheduler
         /// <returns></returns>
         public bool HasDaysInCommon(  bool[] weekDays_array )
         {
-       
-            return !Math(weekDays_array, WeekDays_BinArray);
+            return Math(weekDays_array, WeekDays_BinArray);
         }
         string GetDayNames()
         {
