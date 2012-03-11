@@ -27,6 +27,7 @@ namespace Scheduler
         {
             using (frmResouceScheduling frm = new frmResouceScheduling())
             {
+                frm.ResourceSchedulingBEList = list;
                 if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     list.Add(frm.SchedulerShift);

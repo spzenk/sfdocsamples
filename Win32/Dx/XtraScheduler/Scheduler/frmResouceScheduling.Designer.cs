@@ -28,10 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.timeEdit_To = new DevExpress.XtraEditors.TimeEdit();
-            this.timeEdit_From = new DevExpress.XtraEditors.TimeEdit();
-            this.weeklyRecurrenceControl1 = new DevExpress.XtraScheduler.UI.WeeklyRecurrenceControl();
             this.durationEdit1 = new DevExpress.XtraScheduler.UI.DurationEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -41,49 +37,20 @@
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbTimeStart = new DevExpress.XtraEditors.LookUpEdit();
+            this.timespamViewBindingSource = new System.Windows.Forms.BindingSource();
             this.cmbTimeEnd = new DevExpress.XtraEditors.LookUpEdit();
-            this.timespamViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_To.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_From.Properties)).BeginInit();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource();
+            this.weekDaysCheckEdit1 = new DevExpress.XtraScheduler.UI.WeekDaysCheckEdit();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weekDaysCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // timeEdit_To
-            // 
-            this.timeEdit_To.EditValue = new System.DateTime(2012, 3, 6, 0, 0, 0, 0);
-            this.timeEdit_To.Location = new System.Drawing.Point(129, 436);
-            this.timeEdit_To.Name = "timeEdit_To";
-            this.timeEdit_To.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.timeEdit_To.Properties.Mask.EditMask = "t";
-            this.timeEdit_To.Size = new System.Drawing.Size(112, 22);
-            this.timeEdit_To.TabIndex = 14;
-            // 
-            // timeEdit_From
-            // 
-            this.timeEdit_From.EditValue = new System.DateTime(2012, 3, 6, 0, 0, 0, 0);
-            this.timeEdit_From.Location = new System.Drawing.Point(11, 436);
-            this.timeEdit_From.Name = "timeEdit_From";
-            this.timeEdit_From.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.timeEdit_From.Properties.Mask.EditMask = "t";
-            this.timeEdit_From.Size = new System.Drawing.Size(112, 22);
-            this.timeEdit_From.TabIndex = 13;
-            // 
-            // weeklyRecurrenceControl1
-            // 
-            this.weeklyRecurrenceControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.weeklyRecurrenceControl1.Appearance.Options.UseBackColor = true;
-            this.weeklyRecurrenceControl1.Location = new System.Drawing.Point(13, 168);
-            this.weeklyRecurrenceControl1.Name = "weeklyRecurrenceControl1";
-            this.weeklyRecurrenceControl1.Size = new System.Drawing.Size(614, 96);
-            this.weeklyRecurrenceControl1.TabIndex = 12;
             // 
             // durationEdit1
             // 
@@ -168,6 +135,7 @@
             this.cmbTimeStart.Name = "cmbTimeStart";
             this.cmbTimeStart.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cmbTimeStart.Properties.Appearance.Options.UseFont = true;
+            this.cmbTimeStart.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.cmbTimeStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbTimeStart.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
@@ -175,8 +143,12 @@
             this.cmbTimeStart.Properties.DataSource = this.timespamViewBindingSource;
             this.cmbTimeStart.Properties.DisplayMember = "TimeString";
             this.cmbTimeStart.Properties.ValueMember = "Time";
-            this.cmbTimeStart.Size = new System.Drawing.Size(149, 25);
+            this.cmbTimeStart.Size = new System.Drawing.Size(149, 27);
             this.cmbTimeStart.TabIndex = 31;
+            // 
+            // timespamViewBindingSource
+            // 
+            this.timespamViewBindingSource.DataSource = typeof(Scheduler.TimespamView);
             // 
             // cmbTimeEnd
             // 
@@ -184,28 +156,40 @@
             this.cmbTimeEnd.Name = "cmbTimeEnd";
             this.cmbTimeEnd.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9F);
             this.cmbTimeEnd.Properties.Appearance.Options.UseFont = true;
+            this.cmbTimeEnd.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
             this.cmbTimeEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbTimeEnd.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TimeString", "Hora", 77, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.False)});
             this.cmbTimeEnd.Properties.DataSource = this.timespamViewBindingSource;
             this.cmbTimeEnd.Properties.DisplayMember = "TimeString";
-            this.cmbTimeEnd.Size = new System.Drawing.Size(149, 25);
+            this.cmbTimeEnd.Properties.ValueMember = "Time";
+            this.cmbTimeEnd.Size = new System.Drawing.Size(149, 27);
             this.cmbTimeEnd.TabIndex = 32;
-            // 
-            // timespamViewBindingSource
-            // 
-            this.timespamViewBindingSource.DataSource = typeof(Scheduler.TimespamView);
             // 
             // bindingSource1
             // 
             this.bindingSource1.DataSource = typeof(Scheduler.TimespamView);
+            // 
+            // weekDaysCheckEdit1
+            // 
+            this.weekDaysCheckEdit1.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.weekDaysCheckEdit1.Appearance.Options.UseBackColor = true;
+            this.weekDaysCheckEdit1.Location = new System.Drawing.Point(24, 191);
+            this.weekDaysCheckEdit1.Name = "weekDaysCheckEdit1";
+            this.weekDaysCheckEdit1.Size = new System.Drawing.Size(424, 69);
+            this.weekDaysCheckEdit1.TabIndex = 33;
+            // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
             // 
             // frmResouceScheduling
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(637, 470);
+            this.Controls.Add(this.weekDaysCheckEdit1);
             this.Controls.Add(this.cmbTimeEnd);
             this.Controls.Add(this.cmbTimeStart);
             this.Controls.Add(this.btnOk);
@@ -215,21 +199,18 @@
             this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
-            this.Controls.Add(this.timeEdit_To);
-            this.Controls.Add(this.timeEdit_From);
-            this.Controls.Add(this.weeklyRecurrenceControl1);
             this.Controls.Add(this.durationEdit1);
             this.Name = "frmResouceScheduling";
-            this.Text = "frmResouceScheduling";
+            this.Text = "Plan de turnos";
             this.Load += new System.EventHandler(this.frmResouceScheduling_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_To.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timeEdit_From.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.weekDaysCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -237,9 +218,6 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.TimeEdit timeEdit_To;
-        private DevExpress.XtraEditors.TimeEdit timeEdit_From;
-        private DevExpress.XtraScheduler.UI.WeeklyRecurrenceControl weeklyRecurrenceControl1;
         private DevExpress.XtraScheduler.UI.DurationEdit durationEdit1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -252,5 +230,7 @@
         private System.Windows.Forms.BindingSource timespamViewBindingSource;
         private DevExpress.XtraEditors.LookUpEdit cmbTimeEnd;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private DevExpress.XtraScheduler.UI.WeekDaysCheckEdit weekDaysCheckEdit1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
     }
 }

@@ -29,7 +29,7 @@ namespace Scheduler
                 scales.Add(new CustomTimeScaleDay());
                 scales.Add(new CustomTimeScaleHour());
                 schedulerControl1.DayView.TimeScale = TimeSpan.FromMinutes(12);
-            
+
                 this.schedulerStorage1.Appointments.Mappings.Description = "Requester";
                 this.schedulerStorage1.Appointments.Mappings.End = "fecha Fin";
                 this.schedulerStorage1.Appointments.Mappings.Label = "Tipo";
@@ -60,6 +60,9 @@ namespace Scheduler
                 //cooll.Add(interva2);
                 //schedulerControl1.DayView.SetVisibleIntervals(cooll);
 
+
+               
+
                 printProperties();
                 FillData();
             }
@@ -73,6 +76,12 @@ namespace Scheduler
 
 
         }
+        //bool IsIntervalAllowed(TimeInterval interval, DateTime dayStart)
+        //{
+        //    TimeInterval lunchTime = new TimeInterval(dayStart.Add(restrictedArea.Start),
+        //        dayStart.Add(restrictedArea.End));
+        //    return !interval.IntersectsWithExcludingBounds(lunchTime);
+        //}    
 
         void FillData()
         {

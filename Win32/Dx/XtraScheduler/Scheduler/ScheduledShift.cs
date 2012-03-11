@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.InteropServices;
 
 namespace Scheduler
 {
@@ -127,7 +128,7 @@ namespace Scheduler
         public static string Get_DayName_Spanish(int index)
         {
 
-            DaynName_Spanish h = (DaynName_Spanish)index;
+            DayNamesIndex_ES h = (DayNamesIndex_ES)index;
 
             return h.ToString();
         }
@@ -183,21 +184,6 @@ namespace Scheduler
 
         public List<TimespamView> Get_ArrayOfTimes(DateTime date)
         {
-
-            //List<TimespamView> times = new List<TimespamView>();
-            //currentDate = Fwk.HelperFunctions.DateFunctions.GetStartDateTime(currentDate);
-            //TimeSpan t = this.TimeStart;
-            //TimespamView wTimespamView;
-            //while (true)
-            //{
-            //    wTimespamView = new TimespamView();
-            //    wTimespamView.Time = t;
-            //    times.Add(wTimespamView);
-            //    if ((this.TimeEnd - t).TotalMinutes >= 0)
-            //        t = t.Add(TimeSpan.FromMinutes((Double)Duration));
-            //    else
-            //        break;
-            //}
             return ResourceSchedulingBE.Get_ArrayOfTimes(date, this.TimeStart, this.TimeEnd, (double)this.Duration);
         }
 
@@ -264,11 +250,11 @@ namespace Scheduler
         }
 
     }
-
-    public enum DaynName_Spanish
+    [Serializable]
+    [ComVisible(true)]
+    public enum DayNamesIndex_ES
     {
         //SAB	VIE	JUE	MIE	MAR	LUN	DOM
-
         Sabado = 0,
         Viernes = 1,
         Juevaes = 2,
@@ -276,7 +262,6 @@ namespace Scheduler
         Martes = 4,
         Lunes = 5,
         Domingo = 6
-
-
     }
+    
 }
