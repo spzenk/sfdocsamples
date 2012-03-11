@@ -30,8 +30,10 @@ namespace Scheduler
             SchedulerShift.Nombre = txtNombre.Text;
             SchedulerShift.Duration = Convert.ToDecimal(durationEdit1.Duration.TotalMinutes);
             SchedulerShift.WeekDays = (int)weekDaysCheckEdit1.WeekDays;
-            SchedulerShift.TimeStart = (TimeSpan)cmbTimeStart.EditValue;
-            SchedulerShift.TimeEnd = (TimeSpan)cmbTimeEnd.EditValue;
+            //SchedulerShift.TimeStart = (TimeSpan)cmbTimeStart.EditValue;
+            //SchedulerShift.TimeEnd = (TimeSpan)cmbTimeEnd.EditValue;
+            SchedulerShift.TimeStart = TimeSpan.Parse(cmbTimeStart.Text);
+            SchedulerShift.TimeEnd = TimeSpan.Parse(cmbTimeEnd.Text); 
 
             //SchedulerShift.TimeStart = d.TimeOfDay;
             //d = Convert.ToDateTime(timeEdit_To.EditValue);
@@ -82,6 +84,12 @@ namespace Scheduler
         }
         void ValidateControls(ResourceSchedulingBE pResourceSchedulingBE)
         {
+            dxErrorProvider1.ClearErrors();
+            if (String.IsNullOrEmpty(pResourceSchedulingBE.Nombre))
+            {
+                dxErrorProvider1.SetErrorType(txtNombre, DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical);
+                   dxErrorProvider1.SetError(txtNombre, "Valor requerido");
+            }
             if (pResourceSchedulingBE.TimeStart > pResourceSchedulingBE.TimeEnd)
             {
                 dxErrorProvider1.SetErrorType(cmbTimeStart, DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical);
