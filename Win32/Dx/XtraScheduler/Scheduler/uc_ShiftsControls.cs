@@ -46,5 +46,15 @@ namespace Scheduler
             }
             return array;
         }
+
+        private void gridView2_MouseDown(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void gridView2_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
