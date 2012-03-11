@@ -11,12 +11,15 @@ namespace Scheduler
 {
     public partial class uc_ShiftsControls : UserControl
     {
+
+
         internal List<ResourceSchedulingBE> ShiftSchedulingList { get; set; }
         public uc_ShiftsControls()
         {
             InitializeComponent();
             dateEdit1.DateTime = System.DateTime.Now;
         }
+
 
         public override void Refresh()
         {
@@ -55,6 +58,14 @@ namespace Scheduler
         private void gridView2_DoubleClick(object sender, EventArgs e)
         {
 
+        }
+
+        public List<ResourceSchedulingBE> GetSelectedShifts()
+        {
+            foreach(int in  gridView2.GetSelectedRows())
+            {
+
+            }
         }
     }
 }
