@@ -184,10 +184,18 @@ namespace Scheduler
 
         public List<TimespamView> Get_ArrayOfTimes(DateTime date)
         {
-            return ResourceSchedulingBE.Get_ArrayOfTimes(date, this.TimeStart, this.TimeEnd, (double)this.Duration);
+            return ResourceSchedulingBE.Get_ArrayOfTimes(date, this.TimeStart, this.TimeEnd, (double)this.Duration, this.Nombre);
         }
-
-        public static List<TimespamView> Get_ArrayOfTimes(DateTime currentDate,TimeSpan start ,TimeSpan end,Double duration)
+        public List<TimespamView> Get_ArrayOfTimes(DateTime date,Boolean chekWith)
+        {
+            if (chekWith)
+            {
+                if (!Date_IsContained(date))
+                    return null;
+            }
+            return ResourceSchedulingBE.Get_ArrayOfTimes(date, this.TimeStart, this.TimeEnd, (double)this.Duration,this.Nombre);
+        }
+        public static List<TimespamView> Get_ArrayOfTimes(DateTime currentDate,TimeSpan start ,TimeSpan end,Double duration,string name)
         {
             List<TimespamView> times = new List<TimespamView>();
             currentDate = Fwk.HelperFunctions.DateFunctions.GetStartDateTime(currentDate);
@@ -197,7 +205,7 @@ namespace Scheduler
             {
                 wTimespamView = new TimespamView();
                 wTimespamView.Time = t;
-                wTimespamView.Description = "";
+                wTimespamView.Description = name;
                 times.Add(wTimespamView);
                 if ((end - t).TotalMinutes >= 0)
                     t = t.Add(TimeSpan.FromMinutes(duration));
