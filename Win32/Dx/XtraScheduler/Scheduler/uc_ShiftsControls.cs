@@ -62,10 +62,15 @@ namespace Scheduler
 
         public List<ResourceSchedulingBE> GetSelectedShifts()
         {
-            foreach(int in  gridView2.GetSelectedRows())
+            List<ResourceSchedulingBE> list=new List<ResourceSchedulingBE> ();
+            ResourceSchedulingBE shift;
+            foreach(int i in  gridView2.GetSelectedRows())
             {
+                shift = ((ResourceSchedulingBE)gridView2.GetRow(i));
 
+                list.Add(shift);
             }
+            return list;
         }
     }
 }

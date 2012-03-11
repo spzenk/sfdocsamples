@@ -23,9 +23,16 @@ namespace Scheduler
         public string Nombre { get; set; }
         public int? WeekOfMonth { get; set; }
         public decimal Duration { get; set; }
-
-       
         /// <summary>
+        /// Hora de inicio HH:MM
+        /// </summary>
+        public TimeSpan TimeStart { get; set; }
+        /// <summary>
+        /// Hora Fin HH:MM
+        /// </summary>
+        public TimeSpan TimeEnd { get; set; }
+
+         /// <summary>
         /// Combinacion en base 64 de dias de la semana
         /// EJ: 
         /// 0000000 ningundia = 0
@@ -33,6 +40,27 @@ namespace Scheduler
         /// </summary>
         public int? WeekDays { get; set; }
 
+        bool[] weekDays_BinArray;
+          
+        public ResourceSchedulingBE()
+        {
+            
+        }
+        
+       
+        /// <summary>
+        /// 
+        /// </summary>
+        public bool[] WeekDays_BinArray
+        {
+            get
+            {
+                if (weekDays_BinArray == null)
+                    weekDays_BinArray = CreateBoolArray(this.WeekDays.Value);
+                return weekDays_BinArray;
+            }
+           
+        }
 
         /// <summary>
         /// 
@@ -43,15 +71,7 @@ namespace Scheduler
             set { }
         }
 
-        /// <summary>
-        /// Hora de inicio HH:MM
-        /// </summary>
-        public TimeSpan TimeStart { get; set; }
-        /// <summary>
-        /// Hora Fin HH:MM
-        /// </summary>
-        public TimeSpan TimeEnd { get; set; }
-
+      
         /// <summary>
         /// Determina si el dia de la fecha [date] pertenece a la confuguracion [WeekDays] mediante opoeraciones logicas y binarias
         /// 
@@ -102,11 +122,32 @@ namespace Scheduler
                     }
             }
             bool[] bin1 = CreateBoolArray((int)weekDay);
-            bool[] bin2 = CreateBoolArray(this.WeekDays.Value);
+            //bool[] bin2 = CreateBoolArray(this.WeekDays.Value);
 
-            return Math(bin1, bin2);
+            return Math(bin1, WeekDays_BinArray);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="weekDays"></param>
+        /// <returns></returns>
+        public bool HasDaysInCommon(int weekDays)
+        {
+            bool[] weekDays_array = CreateBoolArray(weekDays);
+
+            return !Math(weekDays_array, WeekDays_BinArray);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="weekDays"></param>
+        /// <returns></returns>
+        public bool HasDaysInCommon(  bool[] weekDays_array )
+        {
+       
+            return !Math(weekDays_array, WeekDays_BinArray);
+        }
         string GetDayNames()
         {
             bool[] weekdays_to_bin_Array = CreateBoolArray(this.WeekDays.Value);
@@ -127,9 +168,7 @@ namespace Scheduler
         /// <param name="index"></param>
         public static string Get_DayName_Spanish(int index)
         {
-
-            DayNamesIndex_ES h = (DayNamesIndex_ES)index;
-
+           DayNamesIndex_ES h = (DayNamesIndex_ES)index;
             return h.ToString();
         }
         /// <summary>

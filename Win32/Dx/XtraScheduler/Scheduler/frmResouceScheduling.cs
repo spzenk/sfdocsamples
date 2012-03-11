@@ -98,6 +98,13 @@ namespace Scheduler
             }
             
         }
+
+        /// <summary>
+        /// Valida la overlaping de horarios
+        /// Si todo esta bien returna True
+        /// </summary>
+        /// <param name="pResourceSchedulingBE"></param>
+        /// <returns></returns>
         Boolean ValidateIntersection(ResourceSchedulingBE pResourceSchedulingBE)
         {
 
@@ -108,9 +115,16 @@ namespace Scheduler
             interva2 = new TimeInterval(
                 Fwk.HelperFunctions.DateFunctions.BeginningOfTimes.AddHours(pResourceSchedulingBE.TimeStart.TotalHours),
                 Fwk.HelperFunctions.DateFunctions.BeginningOfTimes.AddHours(pResourceSchedulingBE.TimeEnd.TotalHours));
+
             foreach (ResourceSchedulingBE r in ResourceSchedulingBEList)
             {
-               
+
+                //Si no hay dias en comun no hay problema
+                if (!r.HasDaysInCommon(pResourceSchedulingBE.WeekDays_BinArray))
+                {
+                    return true;
+                }
+                //Si tienen dias en comun hay que verificar que no se overlapen los horarios
                  interva1 = new TimeInterval(
                      Fwk.HelperFunctions.DateFunctions.BeginningOfTimes.AddHours(r.TimeStart.TotalHours),
                      Fwk.HelperFunctions.DateFunctions.BeginningOfTimes.AddHours(r.TimeEnd.TotalHours));
