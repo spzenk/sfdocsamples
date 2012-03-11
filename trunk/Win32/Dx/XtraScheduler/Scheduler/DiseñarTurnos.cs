@@ -76,6 +76,12 @@ namespace Scheduler
                 frm.ShowDialog();
             }
         }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            
+
+        }
     }
 
     
