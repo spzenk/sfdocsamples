@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.schedulerShiftBindingSource = new System.Windows.Forms.BindingSource();
+            this.schedulerShiftBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colNombre = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDuration = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -181,15 +182,25 @@
             this.colWeekDays_List});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsCustomization.AllowColumnMoving = false;
+            this.gridView1.OptionsCustomization.AllowColumnResizing = false;
+            this.gridView1.OptionsCustomization.AllowFilter = false;
+            this.gridView1.OptionsCustomization.AllowGroup = false;
+            this.gridView1.OptionsCustomization.AllowRowSizing = true;
+            this.gridView1.OptionsCustomization.AllowSort = false;
+            this.gridView1.OptionsFilter.AllowFilterEditor = false;
             this.gridView1.OptionsSelection.MultiSelect = true;
             this.gridView1.OptionsView.EnableAppearanceEvenRow = true;
             this.gridView1.OptionsView.EnableAppearanceOddRow = true;
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.RowHeight = 35;
             this.gridView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gridView1_MouseDown);
             this.gridView1.DoubleClick += new System.EventHandler(this.gridView1_DoubleClick);
             // 
             // colNombre
             // 
+            this.colNombre.AppearanceHeader.Options.UseTextOptions = true;
+            this.colNombre.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colNombre.FieldName = "Nombre";
             this.colNombre.Name = "colNombre";
             this.colNombre.OptionsColumn.AllowEdit = false;
@@ -199,6 +210,8 @@
             // 
             // colDuration
             // 
+            this.colDuration.AppearanceHeader.Options.UseTextOptions = true;
+            this.colDuration.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colDuration.Caption = "Duracion de turnos";
             this.colDuration.DisplayFormat.FormatString = "{0} minutos";
             this.colDuration.FieldName = "Duration";
@@ -210,6 +223,8 @@
             // 
             // colStar
             // 
+            this.colStar.AppearanceHeader.Options.UseTextOptions = true;
+            this.colStar.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colStar.Caption = "Hora inicio";
             this.colStar.FieldName = "TimeStart";
             this.colStar.Name = "colStar";
@@ -220,6 +235,8 @@
             // 
             // colEnd
             // 
+            this.colEnd.AppearanceHeader.Options.UseTextOptions = true;
+            this.colEnd.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colEnd.Caption = "Hora fin";
             this.colEnd.FieldName = "TimeEnd";
             this.colEnd.Name = "colEnd";
@@ -230,6 +247,8 @@
             // 
             // colWeekDays_List
             // 
+            this.colWeekDays_List.AppearanceHeader.Options.UseTextOptions = true;
+            this.colWeekDays_List.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colWeekDays_List.Caption = "Dias";
             this.colWeekDays_List.FieldName = "WeekDays_List";
             this.colWeekDays_List.Name = "colWeekDays_List";
