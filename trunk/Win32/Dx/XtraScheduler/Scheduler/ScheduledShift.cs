@@ -254,8 +254,7 @@ namespace Scheduler
         {
             return new ResourceSchedulingBE(obj);
         }
-
-       
+      
     }
 
     public class TimespamView
@@ -273,14 +272,13 @@ namespace Scheduler
 
         public TimeSpan Time { get; set; }
         public String Description { get; set; }
-
+        public String Name { get; set; }
         public string TimeString
         {
             get 
             {
                 return String.Concat( Time.ToString("hh"),":" ,Time.ToString("mm"))  ;
             }
-            
         }
 
         public static explicit operator TimespamView(string obj)
@@ -291,7 +289,6 @@ namespace Scheduler
         {
             return new TimespamView(date);
         }
-
     }
     [Serializable]
     [ComVisible(true)]
