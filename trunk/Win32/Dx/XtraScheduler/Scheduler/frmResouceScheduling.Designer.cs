@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.durationEdit1 = new DevExpress.XtraScheduler.UI.DurationEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -37,19 +38,19 @@
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbTimeStart = new DevExpress.XtraEditors.LookUpEdit();
-            this.timespamViewBindingSource = new System.Windows.Forms.BindingSource();
             this.cmbTimeEnd = new DevExpress.XtraEditors.LookUpEdit();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource();
             this.weekDaysCheckEdit1 = new DevExpress.XtraScheduler.UI.WeekDaysCheckEdit();
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider();
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.timespamViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weekDaysCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // durationEdit1
@@ -146,10 +147,6 @@
             this.cmbTimeStart.Size = new System.Drawing.Size(149, 27);
             this.cmbTimeStart.TabIndex = 31;
             // 
-            // timespamViewBindingSource
-            // 
-            this.timespamViewBindingSource.DataSource = typeof(Scheduler.TimespamView);
-            // 
             // cmbTimeEnd
             // 
             this.cmbTimeEnd.Location = new System.Drawing.Point(216, 345);
@@ -167,10 +164,6 @@
             this.cmbTimeEnd.Size = new System.Drawing.Size(149, 27);
             this.cmbTimeEnd.TabIndex = 32;
             // 
-            // bindingSource1
-            // 
-            this.bindingSource1.DataSource = typeof(Scheduler.TimespamView);
-            // 
             // weekDaysCheckEdit1
             // 
             this.weekDaysCheckEdit1.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -183,6 +176,14 @@
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
+            // 
+            // timespamViewBindingSource
+            // 
+            this.timespamViewBindingSource.DataSource = typeof(Scheduler.TimespamView);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(Scheduler.TimespamView);
             // 
             // frmResouceScheduling
             // 
@@ -201,16 +202,17 @@
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.durationEdit1);
             this.Name = "frmResouceScheduling";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Plan de turnos";
             this.Load += new System.EventHandler(this.frmResouceScheduling_Load);
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weekDaysCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

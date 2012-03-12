@@ -47,10 +47,10 @@
             // gridControl1
             // 
             this.gridControl1.DataSource = this.schedulerShiftBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 101);
+            this.gridControl1.Location = new System.Drawing.Point(44, 117);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(1250, 479);
+            this.gridControl1.Size = new System.Drawing.Size(839, 479);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
