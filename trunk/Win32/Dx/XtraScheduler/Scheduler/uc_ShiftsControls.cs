@@ -52,7 +52,7 @@ namespace Scheduler
 
         private void gridView2_MouseDown(object sender, MouseEventArgs e)
         {
-
+           
         }
 
         private void gridView2_DoubleClick(object sender, EventArgs e)
@@ -60,13 +60,13 @@ namespace Scheduler
 
         }
 
-        public List<ResourceSchedulingBE> GetSelectedShifts()
+        public List<TimespamView> GetSelectedShifts()
         {
-            List<ResourceSchedulingBE> list=new List<ResourceSchedulingBE> ();
-            ResourceSchedulingBE shift;
+            List<TimespamView> list = new List<TimespamView>();
+            TimespamView shift;
             foreach(int i in  gridView2.GetSelectedRows())
             {
-                shift = ((ResourceSchedulingBE)gridView2.GetRow(i));
+                shift = ((TimespamView)gridView2.GetRow(i));
 
                 list.Add(shift);
             }
