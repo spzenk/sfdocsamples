@@ -38,18 +38,18 @@
             this.txtNombre = new DevExpress.XtraEditors.TextEdit();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.cmbTimeStart = new DevExpress.XtraEditors.LookUpEdit();
+            this.timespamViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cmbTimeEnd = new DevExpress.XtraEditors.LookUpEdit();
             this.weekDaysCheckEdit1 = new DevExpress.XtraScheduler.UI.WeekDaysCheckEdit();
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
-            this.timespamViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.weekDaysCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -123,7 +123,7 @@
             // 
             // btnOk
             // 
-            this.btnOk.Location = new System.Drawing.Point(386, 415);
+            this.btnOk.Location = new System.Drawing.Point(419, 432);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(132, 26);
             this.btnOk.TabIndex = 21;
@@ -146,6 +146,10 @@
             this.cmbTimeStart.Properties.ValueMember = "Time";
             this.cmbTimeStart.Size = new System.Drawing.Size(149, 27);
             this.cmbTimeStart.TabIndex = 31;
+            // 
+            // timespamViewBindingSource
+            // 
+            this.timespamViewBindingSource.DataSource = typeof(Scheduler.TimespamView);
             // 
             // cmbTimeEnd
             // 
@@ -177,10 +181,6 @@
             // 
             this.dxErrorProvider1.ContainerControl = this;
             // 
-            // timespamViewBindingSource
-            // 
-            this.timespamViewBindingSource.DataSource = typeof(Scheduler.TimespamView);
-            // 
             // bindingSource1
             // 
             this.bindingSource1.DataSource = typeof(Scheduler.TimespamView);
@@ -189,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 470);
+            this.ClientSize = new System.Drawing.Size(591, 470);
             this.Controls.Add(this.weekDaysCheckEdit1);
             this.Controls.Add(this.cmbTimeEnd);
             this.Controls.Add(this.cmbTimeStart);
@@ -208,10 +208,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.durationEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtNombre.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeStart.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbTimeEnd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.weekDaysCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.timespamViewBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

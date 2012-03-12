@@ -23,6 +23,16 @@ namespace Scheduler
         public string Nombre { get; set; }
         public int? WeekOfMonth { get; set; }
         public decimal Duration { get; set; }
+        bool[] weekDays_BinArray;
+
+        /// <summary>
+        /// Combinacion en base 64 de dias de la semana
+        /// EJ: 
+        /// 0000000 ningundia = 0
+        /// 0000011  LUN y martes Viernes  = 3
+        /// </summary>
+        public int? WeekDays { get; set; }
+
         /// <summary>
         /// Hora de inicio HH:MM
         /// </summary>
@@ -31,19 +41,7 @@ namespace Scheduler
         /// Hora Fin HH:MM
         /// </summary>
         public TimeSpan TimeEnd { get; set; }
-
-         /// <summary>
-        /// Combinacion en base 64 de dias de la semana
-        /// EJ: 
-        /// 0000000 ningundia = 0
-        /// 0000011  LUN y martes Viernes  = 3
-        /// </summary>
-        public int? WeekDays { get; set; }
-
-        bool[] weekDays_BinArray;
-          
-       
-        
+                
        
         /// <summary>
         /// 
@@ -135,6 +133,7 @@ namespace Scheduler
 
             return !Math(weekDays_array, WeekDays_BinArray);
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -167,6 +166,7 @@ namespace Scheduler
            DayNamesIndex_ES h = (DayNamesIndex_ES)index;
             return h.ToString();
         }
+
         /// <summary>
         /// 0000111
         /// 1000001 return True
@@ -221,6 +221,7 @@ namespace Scheduler
         {
             return ResourceSchedulingBE.Get_ArrayOfTimes(date, this.TimeStart, this.TimeEnd, (double)this.Duration, this.Nombre);
         }
+
         public List<TimespamView> Get_ArrayOfTimes(DateTime date,Boolean chekWith)
         {
             if (chekWith)
@@ -230,6 +231,7 @@ namespace Scheduler
             }
             return ResourceSchedulingBE.Get_ArrayOfTimes(date, this.TimeStart, this.TimeEnd, (double)this.Duration,this.Nombre);
         }
+
         public static List<TimespamView> Get_ArrayOfTimes(DateTime currentDate,TimeSpan start ,TimeSpan end,Double duration,string name)
         {
             List<TimespamView> times = new List<TimespamView>();
@@ -290,6 +292,8 @@ namespace Scheduler
             return new TimespamView(date);
         }
     }
+
+
     [Serializable]
     [ComVisible(true)]
     public enum DayNamesIndex_ES
