@@ -20,5 +20,10 @@ namespace Scheduler
         {
             InitializeComponent();
         }
+
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            List<TimespamView> d = uc_ShiftsControls1.GetSelectedShifts();
+        }
     }
 }
