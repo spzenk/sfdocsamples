@@ -1,0 +1,86 @@
+
+<ConfigurationFile>
+  <Encrypted>false</Encrypted>
+  <FileName>ConfigurationManager2.xml</FileName>
+  <TTL>0</TTL>
+  <ForceUpdate>false</ForceUpdate>
+  <BaseConfigFile>true</BaseConfigFile>
+  <Groups>
+    <Group name="ValidationExceptionMessage">
+      <Keys>
+        <Key name="NullOrEmptyField" encrypted="false">
+          <Value><![CDATA[El campo {0} no puede estar vacio.]]></Value>
+        </Key>
+        <Key name="MaxLenghtField" encrypted="false">
+          <Value><![CDATA[El campo {0} no puede tener un largo mayor a {1} caracteres.]]></Value>
+        </Key>
+        <Key name="RecordSetsNull" encrypted="false">
+          <Value><![CDATA[El Lote no puede estar vacio]]></Value>
+        </Key>
+        <Key name="CampaingNull" encrypted="false">
+          <Value><![CDATA[La Campaña no puede estar vacio]]></Value>
+        </Key>
+        <Key name="RecordSetByZoneGoalNull" encrypted="false">
+          <Value><![CDATA[El Lote de objetivo por zona no puede estar vacio]]></Value>
+        </Key>
+        <Key name="RecordSetAttributesNull" encrypted="false">
+          <Value><![CDATA[Los atributos del lote no pueden estar vacio]]></Value>
+        </Key>
+        <Key name="AssignmentNull" encrypted="false">
+          <Value><![CDATA[Los atributos del lote no pueden estar vacio]]></Value>
+        </Key>
+        <Key name="StartDateBiggerThanEndDate" encrypted="false">
+          <Value><![CDATA[La fecha {0} no puede ser mayor a la fecha {1}.]]></Value>
+        </Key>
+	</Keys>
+    </Group>
+    <Group name="FunctionalExceptionMessage">
+      <Keys>
+        <Key name="fecha_desde_mayor_hasta" encrypted="false">
+          <Value><![CDATA[La fecha hasta no puede ser mayor a la fecha desde.]]></Value>
+        </Key>
+        <Key name="RecordNotFound" encrypted="false">
+          <Value><![CDATA[No existe el lote {0}.]]></Value>
+        </Key>
+      </Keys>
+    </Group>
+    <Group name="ApplicationMenu">
+      <Keys>
+        <Key name="Main" encrypted="false">
+          <Value><![CDATA[\\corrsf71bi01\bigbang\libraries\main.xml]]></Value>
+        </Key>
+        <Key name="CampaingMainToolBar" encrypted="false">
+          <Value><![CDATA[\\corrsf71bi01\bigbang\libraries\CampaingMainToolBar.xml]]></Value>
+        </Key>
+         <Key name="SecurityUserToolbar" encrypted="false">
+          <Value><![CDATA[\\corrsf71bi01\bigbang\libraries\SecurityUserToolbar.xml]]></Value>
+        </Key>
+         <Key name="SecurityRulesToolbar" encrypted="false">
+          <Value><![CDATA[\\corrsf71bi01\bigbang\libraries\SecurityRulesToolbar.xml]]></Value>
+        </Key>
+        <Key name="SecurityRolesToolbar" encrypted="false">
+          <Value><![CDATA[\\corrsf71bi01\bigbang\libraries\SecurityRolesToolbar.xml]]></Value>
+        </Key> 
+      </Keys>
+    </Group>
+    <Group name="BlockingModel">
+      <Keys>
+        <Key name="ConnectionString" encrypted="false">
+          <Value><![CDATA[Initial Catalog = BLOCKING;Data Source=CORRSF71BI01;User ID= sa ;Password= instsql2005]]></Value>
+        </Key>
+        <Key name="PerformBlocking" encrypted="false">
+          <Value><![CDATA[true]]></Value>
+        </Key>
+        <Key name="RetryCount" encrypted="false">
+          <Value><![CDATA[1]]></Value>
+        </Key>
+        <Key name="LotesTTL" encrypted="false">
+          <Value><![CDATA[1]]></Value>
+        </Key>
+        <Key name="ArchivosGraficosBlockingTime" encrypted="false">
+          <Value><![CDATA[1]]></Value>
+        </Key>
+      </Keys>
+    </Group>
+  </Groups>
+</ConfigurationFile>

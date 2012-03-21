@@ -1,0 +1,115 @@
+
+<ArrayOfMenu>
+  <Menu>
+    <Id>ADM</Id>
+    <Caption>Administración</Caption>
+    <ToolTipText />
+    <ButtonGroups>
+      <ButtonsGroup>
+        <Id>TOD</Id>
+        <Caption />
+        <ToolTipText />
+        <Buttons>
+          <SimpleButton>
+            <Id>CAM</Id>
+            <Caption>Campañas</Caption>
+            <ToolTipText />
+            <Enabled>true</Enabled>
+            <AuthorizationRuleName />
+            <Image>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</Image>
+            <Hint />
+            <Shortcut>Ctrl+C</Shortcut>
+            <BeginGroup>false</BeginGroup>
+            <AssemblyInfo>BigBang.FrontEnd.Campaing.UI.CampaingMain, BigBang.FrontEnd.Campaing.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyInfo>
+          </SimpleButton>
+          <SimpleButton>
+            <Id>ENC</Id>
+            <Caption>Encuestas</Caption>
+            <ToolTipText />
+            <Enabled>true</Enabled>
+            <AuthorizationRuleName />
+            <Image>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</Image>
+            <Hint />
+            <Shortcut />
+            <BeginGroup>false</BeginGroup>
+            <AssemblyInfo>BigBang.FrontEnd.Survey.Common.frmSearchSurvey, BigBang.FrontEnd.Survey.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyInfo>
+          </SimpleButton>
+          <SimpleButton>
+            <Id>EQU</Id>
+            <Caption>Equipos</Caption>
+            <ToolTipText />
+            <Enabled>true</Enabled>
+            <AuthorizationRuleName />
+            <Image>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</Image>
+            <Hint />
+            <Shortcut />
+            <BeginGroup>false</BeginGroup>
+            <AssemblyInfo />
+          </SimpleButton>
+        </Buttons>
+      </ButtonsGroup>
+    </ButtonGroups>
+  </Menu>
+  <Menu>
+    <Id>INF</Id>
+    <Caption>Informes</Caption>
+    <ToolTipText />
+    <ButtonGroups />
+  </Menu>
+  <Menu>
+    <Id>CON</Id>
+    <Caption>Configuración</Caption>
+    <ToolTipText />
+    <ButtonGroups>
+      <ButtonsGroup>
+        <Id>SEC</Id>
+        <Caption>Seguridad</Caption>
+        <ToolTipText>Administración y configuración de la Seguridad</ToolTipText>
+        <Buttons>
+          <SimpleButton>
+            <Id>btnUser</Id>
+            <Caption>Usuarios</Caption>
+            <ToolTipText>Administración de Usuarios</ToolTipText>
+            <Enabled>true</Enabled>
+            <AuthorizationRuleName>SecurityUserAdmin</AuthorizationRuleName>
+            <Image>iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAA71JREFUWEftlVlMU1kcxm98MfHJl0l8NS4Y3zQmmihjTMZxCy5BFJfoqGOGxHHDiOKCMRoquITiEkacoCIwQWaEAQUMFIsEI0Viq0BvvUCBblJrC9LWtrd8nv91iRpTDpn7NLHJl5yc/+/7znd6uwjC99cY34F9s4W5LZuEk092Tuw0pk6LkGhNezQbY9zY8A0zhJ9bt03oki4lR32m+/BbdIpo/UK7NmrYOr6LmLGlctLsdsltKT+89LWWAn1lgH4lUDP7vWjN9mhGDLGcsXwYu9V4dnOzq0YLdJ4F6hYAtXO+FO2xGTHEkocvnYPKXCCsEc8uR8T6L9AQH1MRawXE7GUgD0c0H8LCtI6K04CF3b5pcWxZzsBRfoIKaPnSOSgWVuppygfMRwADe96x1JkGT2MOFSjliOZDKMz94ArQdQp4ui62pONw67JUL7C759o2jDiL2Aftl5gaseej52oyFdjNdz0OioXFmQ5OR0CqBLr3A1LKt9W9DwFLEUwHp1CBOI5ofoT90uWaNfGhsKMCcGUDtgNMqR/E1i4NwvZimDPnhYjlT+YkD2iERX/tEgySdhmCXexR+G4Dnj+Y8gBvCYIv/oSU8xOIYexSztjRsQZr6eRFhePqMwpScKlAg8bTiWjdOxViVjz6bmxk2gBL1ny0pU5H85l1yCvMBrHkIe/oJ4xCsJBV2+/ODNUaSlB5rxLtxmcQm++j844WHdfTYL5xCFLVZfQbm2Dv60X9gzoQSx7yqlEgKV2/BC1vipFTdRgdHSJ6e23o73fC4XgJl8sNt9sDj8cHu92J3LvpCkseViBJlQJH9MthiBQiU1yB6uoa2GxOdvAABgZesYO98HoHMTg4BJ2uQWGIJY9qBY7qE/BULoMmMBeXdekwmkzKwT7fIIaGhuH3ByBaRFxpSFcYYsmjWoFj+tV4LlfhXOBHXOhORFltITv4DYaH/QgGgwiFQrhTV6LMiCGWPKoVyNAnQpTrcTG4BBf9S5Hb/Dva29vZwWHIsgxRFJU9mhFDLHlUK3BCnwRJfoi84Mr38q7F3zVF7LnTIxjCP7XFyt7HObHkUbVAj/wIBW/Xf1K+cT9a2h4povXnM2JVL2CNPsat0JZPuundgev3ziui9eczYlUv0B9txe3wb1+oxLUHpK/3iVW9gC3ahvLwHi4Rq3oBZ9SI6kgal4hVvYB3xIpGORt1ckZMEUOsmgUSfq2aFZReG9Hjfc4lYsnDvoYJavwXTFp4UyjeXB6HrRUzuUQseViBSf+5wP8+4B3LI6BxUG/QYgAAAABJRU5ErkJggg==</Image>
+            <Hint />
+            <Shortcut />
+            <BeginGroup>false</BeginGroup>
+            <AssemblyInfo>BigBang.Security.frmUserMain, BigBang.Security, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyInfo>
+          </SimpleButton>
+          <SimpleButton>
+            <Id>btnRoles</Id>
+            <Caption>Roles</Caption>
+            <ToolTipText>Configuración de Roles</ToolTipText>
+            <Enabled>true</Enabled>
+            <AuthorizationRuleName>SecurityUserAdmin</AuthorizationRuleName>
+            <Image>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</Image>
+            <Hint />
+            <Shortcut />
+            <BeginGroup>false</BeginGroup>
+            <AssemblyInfo>BigBang.Security.frmRoleMain, BigBang.Security, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyInfo>
+          </SimpleButton>
+          <SimpleButton>
+            <Id>btnRules</Id>
+            <Caption>Reglas</Caption>
+            <ToolTipText>Configuración de Reglas</ToolTipText>
+            <Enabled>true</Enabled>
+            <AuthorizationRuleName>SecurityUserAdmin</AuthorizationRuleName>
+            <Image>iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAABNFJREFUWEftV2tMG1QY5aeJSmCYER2IY4/I3EOMjx+LZj+Mr+HM4iOazEQTEx8TSYbLom7EzMQ4M82SaYgamS5DsQYYZbxaoEBXHi0wNmBDRmlLe1sopaWF8obj/W65tdJCq8mW/ViTkzbt7T3nO993vkJc3O3HreLAq4Xt25K/1uJm4JiqLyus7jvyKnteLunB5waGPD3D0TaGT1sZjjQzHNYxHLrIkNPEcLCB4X0Nwzt1DG+rGd6sYXijiuGVCwz7lQxZpQzPlTA8UxyOPUUWENJPNrjCBKSerEfBoBf1k0CtD6geByrcQJkLKHYCRQ7gHAMKrMCPZuC0Efi2H/jqGnC8B/isCzjcAWS3AR+0rI0HTukXwwSkfaNBgckHNSev8S6TjwXI/xgOkJ/h5D9w8u+WyU8QeTdw9DInbwdyYiAncZtOtyOigJ8HfYK80gMoOXnJaIC80A78wsl/sgDfDwKnrgMn+oAveOXHOPkRXnmOHjgYpXLpTEQB93ypxrtqY7DvH1PftQwf8b5/yPv+Xj3vey3DWyqGA9UMr1cG+v5SGcNe3vdnI/Q80hzQezToYQ5s/+TMTUkAkT96vChcQF5eHhjjjQ55LC0tYXFxUWBhYQHz8/OYm5sTmJ2dxczMDKanpwWmpqbg9/sxOTmJiYkJ+Hw+Aa/Xi/HxcXg8nuBZ4gpzYDUBUgQJmOaXTbndgpwgiVeSSwGSXAqgc4SYBExx1URGhyU0uYegvPdOlOzYKgRI4miVU/VjY2PifFQBVPEct5HIf9uaDEV2trBekZuL8pS7YcpMwPmUBPi5zU6nGyMjY3A4XLA7RnkLnbCxEVhtwxgacsBiscNsYTCZbBgctAYFr+kA9ZvISzM2wH9gM5p2JkL54l7UbEmCOTMRVRvXCXJCm74PrW1X0dzSi4u6bjRpr6Cx6TI0DV2o13Sitq4D6tp21Kj0qKppiy7AZrOJYSMBBF1mEtz709CxKxHWJ5JQmRaonEBWNjR2/SfIlq3qAAkguwlSROPDybA9tR5V6YmCeKC/X0w7wdBxDXrDVe5EL3eihzvRDV3zFWh1/whr1F7irnQKkABKSUwCKEJSRNF9gcqJnAaKLiHImIVGzc2dI9DQuVwujI6O8llx8lkZCX5vTQGRck7kXn4ZVe00GuHhl1HUVsZsJXEo+fDwsPgOYU0BMuORloy9uxsl+/YJFzy8Msq3zHgo+crKqfqYBFitVrHdCIKEI3QPFD2yE/rNd6GUx5A+CyWPVj0JcDgcom2rOkACaLtJ8pbHk3F2z24xlL++8LwgH9iVgOLtW8QZxjNv45m3Wh0895R5DjPl3gojz73RaMHAgBn91834q98khnBNAUNDQ+IQXa7cnQnPa+kwPr0Bv6ckoSMjHr0PxaNkmZzOxLYHDP/aAzEJ8PMJJ4I/74/HSFYqLE+uh+mxdSjclBJ0hz6nPaBpuIS6+k6o+dJRqQ2o5kunsroVFVUtKK9ohrJch/NKLUrLmmJzQEZMtkHxYCq6+CJSbNsYJJf9/j+LKKoDUgCRSBHndmQEX1O+V2Zc5lwOGg2b3W4Pg/yJjmkRyX0gf/tlPENjKhMj/yaI9iy37KoCVCoVDAbDDUdEAfn5+WdDM38jXysUiupb5R+y2zri/gZq70SP+UFUZAAAAABJRU5ErkJggg==</Image>
+            <Hint />
+            <Shortcut />
+            <BeginGroup>false</BeginGroup>
+            <AssemblyInfo>BigBang.Security.frmRulesMain, BigBang.Security, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</AssemblyInfo>
+          </SimpleButton>
+        </Buttons>
+      </ButtonsGroup>
+    </ButtonGroups>
+  </Menu>
+  <Menu>
+    <Id>AYU</Id>
+    <Caption>Ayuda</Caption>
+    <ToolTipText />
+    <ButtonGroups />
+  </Menu>
+</ArrayOfMenu>

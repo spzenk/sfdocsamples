@@ -1,0 +1,69 @@
+
+<ServiceConfigurationCollection>
+  <ServiceConfiguration name="GetColaboratorDataByParamsService">
+    <Handler>Allus.Cnn.SVC.GetColaboratorDataByParamsService, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Handler>
+    <Request>Allus.Cnn.ISVC.GetColaboratorDataByParams.GetColaboratorDataByParamsRequest, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Request>
+    <Response>Allus.Cnn.ISVC.GetColaboratorDataByParams.GetColaboratorDataByParamsResponse, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Response>
+    <Available>true</Available>
+    <Audit>false</Audit>
+    <TransactionalBehaviour>Suppres</TransactionalBehaviour>
+    <IsolationLevel>ReadCommitted</IsolationLevel>
+    <Timeout>0</Timeout>
+    <Cacheable>false</Cacheable>
+  </ServiceConfiguration>
+  <ServiceConfiguration name="SearchColaboratorsByParamsService">
+    <Handler>Allus.Cnn.SVC.SearchColaboratorsByParamsService, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Handler>
+    <Request>Allus.Cnn.ISVC.SearchColaboratorsByParams.SearchColaboratorsByParamsRequest, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Request>
+    <Response>Allus.Cnn.ISVC.SearchColaboratorsByParams.SearchColaboratorsByParamsResponse, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Response>
+    <Available>true</Available>
+    <Audit>false</Audit>
+    <TransactionalBehaviour>Suppres</TransactionalBehaviour>
+    <IsolationLevel>ReadCommitted</IsolationLevel>
+    <Timeout>0</Timeout>
+    <Cacheable>false</Cacheable>
+  </ServiceConfiguration>
+  <ServiceConfiguration name="GetAllRelatedDomainsService">
+    <Handler>Allus.Cnn.SVC.GetAllRelatedDomainsService, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Handler>
+    <Request>Allus.Cnn.ISVC.GetAllRelatedDomains.GetAllRelatedDomainsRequest, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Request>
+    <Response>Allus.Cnn.ISVC.GetAllRelatedDomains.GetAllRelatedDomainsResponse, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Response>
+    <Available>true</Available>
+    <Audit>false</Audit>
+    <TransactionalBehaviour>Suppres</TransactionalBehaviour>
+    <IsolationLevel>ReadCommitted</IsolationLevel>
+    <Timeout>0</Timeout>
+    <Cacheable>false</Cacheable>
+  </ServiceConfiguration>
+  <ServiceConfiguration name="CreateDomainsService">
+    <Handler>Allus.Cnn.SVC.CreateDomainsService, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Handler>
+    <Request>Allus.Cnn.ISVC.CreateDomains.CreateDomainsRequest, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Request>
+    <Response>Allus.Cnn.ISVC.CreateDomains.CreateDomainsResponse, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Response>
+    <Available>true</Available>
+    <Audit>false</Audit>
+    <TransactionalBehaviour>RequiresNew</TransactionalBehaviour>
+    <IsolationLevel>ReadCommitted</IsolationLevel>
+    <Timeout>0</Timeout>
+    <Cacheable>false</Cacheable>
+  </ServiceConfiguration>
+  <ServiceConfiguration name="DeleteRelatedDomainsService">
+    <Handler>Allus.Cnn.SVC.DeleteRelatedDomainsService, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Handler>
+    <Request>Allus.Cnn.ISVC.DeleteRelatedDomains.DeleteRelatedDomainsRequest, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Request>
+    <Response>Allus.Cnn.ISVC.DeleteRelatedDomains.DeleteRelatedDomainsResponse, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Response>
+    <Available>true</Available>
+    <Audit>false</Audit>
+    <TransactionalBehaviour>RequiresNew</TransactionalBehaviour>
+    <IsolationLevel>ReadCommitted</IsolationLevel>
+    <Timeout>0</Timeout>
+    <Cacheable>false</Cacheable>
+  </ServiceConfiguration>
+  <ServiceConfiguration name="SearchRelatedDomainsByUserService">
+    <Handler>Allus.Cnn.SVC.SearchRelatedDomainsByUserService, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Handler>
+    <Request>Allus.Cnn.ISVC.SearchRelatedDomainsByUser.SearchRelatedDomainsByUserReq, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Request>
+    <Response>Allus.Cnn.ISVC.SearchRelatedDomainsByUser.SearchRelatedDomainsByUserRes, Allus.Cnn.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</Response>
+    <Available>true</Available>
+    <Audit>false</Audit>
+    <TransactionalBehaviour>Suppres</TransactionalBehaviour>
+    <IsolationLevel>ReadCommitted</IsolationLevel>
+    <Timeout>0</Timeout>
+    <Cacheable>false</Cacheable>
+  </ServiceConfiguration>
+</ServiceConfigurationCollection>
