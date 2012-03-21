@@ -6,7 +6,17 @@ namespace AE.Net.Mail {
     public class Pop3Client : TextClient, IMailClient {
         public Pop3Client() { }
 
-        public Pop3Client(WebProxy proxy,string host, string username, string password, int port = 110, bool secure = false, bool skipSslValidation = false)
+        /// <summary>
+        /// http://www.starksoft.com/prod_proxy.html
+        /// </summary>
+        /// <param name="proxy"></param>
+        /// <param name="host"></param>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <param name="port"></param>
+        /// <param name="secure"></param>
+        /// <param name="skipSslValidation"></param>
+        public Pop3Client(ProxyInfo proxy,string host, string username, string password, int port = 110, bool secure = false, bool skipSslValidation = false)
         {
             base.Connect(proxy,host, port, secure, skipSslValidation);
             Login(username, password);
