@@ -104,11 +104,11 @@ namespace AE.Net.Mail
                 IsConnected = true;
                 Host = hostname;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsConnected = false;
                 Utilities.TryDispose(ref _Stream);
-                throw;
+                throw ex;
             }
         }
 
@@ -124,6 +124,7 @@ namespace AE.Net.Mail
                     _Connection = new TcpClient(hostname, port);
                 else
                     _Connection = ConnectViaHTTPProxy();
+
                 _Stream = _Connection.GetStream();
                 if (ssl)
                 {
@@ -141,11 +142,11 @@ namespace AE.Net.Mail
                 IsConnected = true;
                 Host = hostname;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 IsConnected = false;
                 Utilities.TryDispose(ref _Stream);
-                throw;
+                throw ex;
             }
         }
 
@@ -159,7 +160,7 @@ namespace AE.Net.Mail
         {
             // create an instance of the client proxy factory 
             ProxyClientFactory factory = new ProxyClientFactory();
-
+            
             // use the proxy client factory to generically specify the type of proxy to create 
             // the proxy factory method CreateProxyClient returns an IProxyClient object 
             IProxyClient proxy = factory.CreateProxyClient(ProxyType.Http, ProxyInfo.Host, ProxyInfo.Port, ProxyInfo.UserName, ProxyInfo.Password);
