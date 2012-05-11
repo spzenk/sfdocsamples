@@ -12,20 +12,23 @@ namespace WebApplication_ChekSession
     {
 
         public string LIST;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
 
-             StringBuilder str = new StringBuilder();
+            StringBuilder str = new StringBuilder();
 
             foreach (KeyValuePair<string, DateTime> u in activeUsers)
             {
                 str.AppendLine("<DIV>");
-                str.AppendLine(string.Concat(u.Key," inicio:  " , u.Value.ToString()));
+                str.AppendLine(string.Concat(u.Key, " inicio:  ", u.Value.ToString()));
                 str.AppendLine("</DIV>");
             }
 
             LIST = str.ToString();
+
+
         }
     }
 }

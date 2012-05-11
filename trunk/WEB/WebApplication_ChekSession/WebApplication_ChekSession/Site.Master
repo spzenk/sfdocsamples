@@ -32,7 +32,8 @@
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Expedientes"/>
-                        <asp:MenuItem NavigateUrl="~/list.aspx" Text="Quienes estan conectados"/>
+                        <asp:MenuItem NavigateUrl="~/list.aspx" Text="Quienes estan conectados (Aplicacion)"/>
+                        <asp:MenuItem NavigateUrl="~/ContactInfo.aspx" Text="Informacion de contacto (Sesion)"/>
                     </Items>
                 </asp:Menu>
             </div>
