@@ -14,7 +14,7 @@ namespace WebApplication_ChekSession
         
         protected void Page_Load(object sender, EventArgs e)
         { 
-
+            
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -29,8 +29,21 @@ namespace WebApplication_ChekSession
             Label1.Text = "";
             activeUsers.Add(txtUserName.Text.Trim(), System.DateTime.Now);
 
-
+            SetContact(Convert.ToInt32(txtUserName.Text.Trim()));
            
+        }
+        void SetContact(int contactId)
+        {
+            Session["Contact"] = null;
+            using(AdventureWorksEntities dc = new AdventureWorksEntities())
+            {
+
+                Contact c = dc.Contact.Where(p => p.ContactID.Equals(contactId)).FirstOrDefault<Contact>();
+                if (c == null)
+                    Label1.Text =  string.Format("Contact {0} mo existe", contactId);
+                else
+                    Session["Contact"] = c;
+            }
         }
     }
 }

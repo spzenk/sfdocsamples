@@ -12,7 +12,7 @@
         
     </p>
     <p>
-        <asp:Button ID="Button1" runat="server" Text="Iniciar session" 
+        <asp:Button ID="Button1" runat="server" Text="Iniciar session (Id Contacto)" 
             onclick="Button1_Click" />
       <asp:Label
             ID="Label1" runat="server" Font-Bold="True" ForeColor="#CC0000"></asp:Label>
