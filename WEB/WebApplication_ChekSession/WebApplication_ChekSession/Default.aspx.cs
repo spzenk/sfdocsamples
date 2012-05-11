@@ -27,7 +27,7 @@ namespace WebApplication_ChekSession
                 return;
             }
             Label1.Text = "";
-            activeUsers.Add(txtUserName.Text.Trim(), System.DateTime.Now);
+            
 
             SetContact(Convert.ToInt32(txtUserName.Text.Trim()));
            
