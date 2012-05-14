@@ -48,16 +48,16 @@ namespace WebApplication_ChekSession
         void Session_End(object sender, EventArgs e)
         {
             //Si la politica es quitar el usuario una vez finalizada su sesión realizamos lo siguiente
-            MembershipUser user = Membership.GetUser();
-            if (user != null)
-            {
-                Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
+            //MembershipUser user = Membership.GetUser();
+            //if (user != null)
+            //{
+            //    Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
 
-                if (activeUsers.ContainsKey(user.UserName))
-                {
-                    activeUsers.Remove(user.UserName);
-                }
-            }
+            //    if (activeUsers.ContainsKey(user.UserName))
+            //    {
+            //        activeUsers.Remove(user.UserName);
+            //    }
+            //}
         }
 
     }
