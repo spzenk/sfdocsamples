@@ -29,6 +29,8 @@
                 </asp:LoginView>
             </div>
             <div class="clear hideSkiplink">
+                <asp:LoginStatus ID="LoginStatus1" runat="server" 
+                    onloggedout="LoginStatus1_LoggedOut" />
                 <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Expedientes"/>

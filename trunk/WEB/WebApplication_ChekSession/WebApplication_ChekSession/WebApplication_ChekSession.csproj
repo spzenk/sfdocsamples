@@ -33,7 +33,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fwk.Bases">
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Framework\Fwk.Bases.dll</HintPath>
+    </Reference>
+    <Reference Include="Fwk.Security">
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Framework\Fwk.Security.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security">
+      <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
