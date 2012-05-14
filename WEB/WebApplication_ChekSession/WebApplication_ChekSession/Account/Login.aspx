@@ -13,7 +13,8 @@
     </p>
     <asp:Login ID="LoginUser" runat="server" EnableViewState="false" 
         RenderOuterTable="false" onauthenticate="LoginUser_Authenticate" 
-        onloggedin="LoginUser_LoggedIn" onloggingin="LoginUser_LoggingIn">
+        onloggedin="LoginUser_LoggedIn" onloggingin="LoginUser_LoggingIn" 
+    onloginerror="LoginUser_LoginError">
         <LayoutTemplate>
             <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>

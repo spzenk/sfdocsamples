@@ -24,7 +24,7 @@ namespace WebApplication_ChekSession.Account
 //            Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
 
 
-            
+            e.Authenticated = Fwk.Security.FwkMembership.ValidateUser(LoginUser.UserName, LoginUser.Password, "AspNetSqlMembershipProvider");
         }
 
         protected void LoginUser_LoggedIn(object sender, EventArgs e)
@@ -42,7 +42,13 @@ namespace WebApplication_ChekSession.Account
             if (activeUsers.ContainsKey(LoginUser.UserName))
             {
                 this.LoginUser.FailureText = "Ya ingresaste";
+                e.Cancel = true;
             }
+        }
+
+        protected void LoginUser_LoginError(object sender, EventArgs e)
+        {
+
         }
 
     }
