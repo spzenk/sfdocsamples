@@ -27,7 +27,7 @@ namespace WebApplication_ChekSession
         }
 
 
-        bool Any_ActiveSession(string userName)
+        internal static bool Any_ActiveSession(string userName)
         {
             using (SessionsDataDataContext dc = new SessionsDataDataContext("SessionsConnectionString"))
             {
@@ -36,7 +36,7 @@ namespace WebApplication_ChekSession
             }
         }
 
-        static void Reg_ActiveSession(string sessionId, string userName)
+       public  static void Reg_ActiveSession(string sessionId, string userName)
         {
             using (SessionsDataDataContext dc = new SessionsDataDataContext("SessionsConnectionString"))
             {

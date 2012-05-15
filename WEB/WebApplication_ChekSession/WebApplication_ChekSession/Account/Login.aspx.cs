@@ -31,21 +31,27 @@ namespace WebApplication_ChekSession.Account
         protected void LoginUser_LoggedIn(object sender, EventArgs e)
         {
 
-            Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
-            if (!activeUsers.ContainsKey(LoginUser.UserName))
-                activeUsers.Add(LoginUser.UserName, System.DateTime.Now);
+            //Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
+            //if (!activeUsers.ContainsKey(LoginUser.UserName))
+            //    activeUsers.Add(LoginUser.UserName, System.DateTime.Now);
+            if (!SessionMannager.Any_ActiveSession(LoginUser.UserName))
+                SessionMannager.Reg_ActiveSession(this.Session.SessionID, LoginUser.UserName);
             
         }
 
         protected void LoginUser_LoggingIn(object sender, LoginCancelEventArgs e)
         {
-            Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
+            //Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
 
-            if (activeUsers.ContainsKey(LoginUser.UserName))
+            //if (activeUsers.ContainsKey(LoginUser.UserName))
+            //{
+            //    e.Cancel = true;
+            //    this.LoginUser.FailureText = "Ya ingresaste";
+            //}
+            if (SessionMannager.Any_ActiveSession(LoginUser.UserName))
             {
                 e.Cancel = true;
-                this.LoginUser.FailureText = "Ya ingresaste";
-                
+                this.LoginUser.FailureText = "Ya ingresaste desde otra ubicacion";
             }
         }
 
