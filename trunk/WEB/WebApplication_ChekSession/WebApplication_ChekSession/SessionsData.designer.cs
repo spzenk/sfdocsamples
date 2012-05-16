@@ -209,6 +209,8 @@ namespace WebApplication_ChekSession
 		
 		private string _Status;
 		
+		private int _HistoryId;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -221,6 +223,8 @@ namespace WebApplication_ChekSession
     partial void OnStatusDateChanged();
     partial void OnStatusChanging(string value);
     partial void OnStatusChanged();
+    partial void OnHistoryIdChanging(int value);
+    partial void OnHistoryIdChanged();
     #endregion
 		
 		public SessionHistory()
@@ -228,7 +232,7 @@ namespace WebApplication_ChekSession
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SessionID", DbType="NVarChar(80) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SessionID", DbType="NVarChar(80) NOT NULL", CanBeNull=false)]
 		public string SessionID
 		{
 			get
@@ -248,7 +252,7 @@ namespace WebApplication_ChekSession
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserName", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string UserName
 		{
 			get
@@ -288,7 +292,7 @@ namespace WebApplication_ChekSession
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Char(3) NOT NULL", CanBeNull=false)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="Char(7) NOT NULL", CanBeNull=false)]
 		public string Status
 		{
 			get
@@ -304,6 +308,26 @@ namespace WebApplication_ChekSession
 					this._Status = value;
 					this.SendPropertyChanged("Status");
 					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HistoryId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int HistoryId
+		{
+			get
+			{
+				return this._HistoryId;
+			}
+			set
+			{
+				if ((this._HistoryId != value))
+				{
+					this.OnHistoryIdChanging(value);
+					this.SendPropertyChanging();
+					this._HistoryId = value;
+					this.SendPropertyChanged("HistoryId");
+					this.OnHistoryIdChanged();
 				}
 			}
 		}

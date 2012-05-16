@@ -68,7 +68,8 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="list.aspx" />
+    <Content Include="History.aspx" />
+    <Content Include="ActiveSessionsPage.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
@@ -91,17 +92,24 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="History.aspx.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="History.aspx.designer.cs">
+      <DependentUpon>History.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Data.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Data.edmx</DependentUpon>
     </Compile>
-    <Compile Include="list.aspx.cs">
-      <DependentUpon>list.aspx</DependentUpon>
+    <Compile Include="ActiveSessionsPage.aspx.cs">
+      <DependentUpon>ActiveSessionsPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="list.aspx.designer.cs">
-      <DependentUpon>list.aspx</DependentUpon>
+    <Compile Include="ActiveSessionsPage.aspx.designer.cs">
+      <DependentUpon>ActiveSessionsPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
