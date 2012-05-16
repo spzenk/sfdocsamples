@@ -25,12 +25,13 @@ namespace WebApplication_ChekSession
             MembershipUser user = Membership.GetUser();
             if (user != null)
             {
-                Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
+                SessionMannager.Remove_ActiveSession(user.UserName);
+                //Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
 
-                if (activeUsers.ContainsKey(user.UserName))
-                {
-                    activeUsers.Remove(user.UserName);
-                }
+                //if (activeUsers.ContainsKey(user.UserName))
+                //{
+                //    activeUsers.Remove(user.UserName);
+                //}
             }
         }
     }

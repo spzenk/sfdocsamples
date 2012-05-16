@@ -8,8 +8,9 @@
 //------------------------------------------------------------------------------
 
 namespace WebApplication_ChekSession {
-    
-    
-    public partial class About {
+
+
+    public partial class ActiveSessionsPage
+    {
     }
 }

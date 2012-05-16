@@ -9,10 +9,11 @@
   </Table>
   <Table Name="dbo.SessionHistory" Member="SessionHistories">
     <Type Name="SessionHistory">
-      <Column Name="SessionID" Type="System.String" DbType="NVarChar(80) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="SessionID" Type="System.String" DbType="NVarChar(80) NOT NULL" CanBeNull="false" />
+      <Column Name="UserName" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="StatusDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Status" Type="System.String" DbType="Char(3) NOT NULL" CanBeNull="false" />
+      <Column Name="Status" Type="System.String" DbType="Char(7) NOT NULL" CanBeNull="false" />
+      <Column Name="HistoryId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
     </Type>
   </Table>
 </Database>
