@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <h2>
-         Active users Activos <%= LIST.Count() %>
+         Active users  <%= count %>
     </h2>
     <p>
         <%= LIST %>
