@@ -12,7 +12,7 @@ namespace WebApplication_ChekSession
     {
 
         public string LIST;
-        
+        public string count;
         protected void Page_Load(object sender, EventArgs e)
         {
             //Dictionary<string, DateTime> activeUsers = (Dictionary<string, DateTime>)Application["activeUsers"];
@@ -25,7 +25,8 @@ namespace WebApplication_ChekSession
             //    str.AppendLine(string.Concat(u.Key, " inicio:  ", u.Value.ToString()));
             //    str.AppendLine("</DIV>");
             //}
-            foreach (ActiveSession u in SessionMannager.Retrive_ActiveSessions())
+            List<ActiveSession> wSessions = SessionMannager.Retrive_ActiveSessions();
+            foreach (ActiveSession u in wSessions)
             {
                 str.AppendLine("<DIV>");
                 str.AppendLine(string.Concat("User ",u.UserName, " inicio:  ", u.LoggedInDate.ToString()));
@@ -33,7 +34,7 @@ namespace WebApplication_ChekSession
             }
             LIST = str.ToString();
 
-
+            count = wSessions.Count().ToString();
         }
     }
 }
