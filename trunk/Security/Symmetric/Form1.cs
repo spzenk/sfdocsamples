@@ -29,6 +29,9 @@ namespace Symmetric
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
             txtCifrado.Text = FwkSymetricAlg.Encrypt(txtValorOriginal.Text);
+            string key = Fwk.Security.Cryptography.FwkSymetricAlg.GetNewK();
+            
+            
         }
 
         private void btnDEncrypt_Click(object sender, EventArgs e)
