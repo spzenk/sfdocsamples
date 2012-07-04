@@ -1,0 +1,78 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Examples.master.cs" Inherits="Examples" MasterPageFile="~/Main.master" %>
+<%@ Register TagPrefix="wilco" Namespace="Wilco.Web.SyntaxHighlighting" Assembly="Wilco.SyntaxHighlighter" %>
+<asp:Content ID="MainContent" runat="server" ContentPlaceHolderID="MainContent">
+    <div id="Dashboard">
+        <div class="dashboardLink">
+            <asp:Button runat="server" UseSubmitBehavior="false" ID="ViewSourceBtn" CssClass="button" Text="view source code" OnClick="ViewSourceBtnClicked" />
+        </div>
+        <fieldset class="dashboardGroup">
+            <legend>Use Adapters?</legend>
+            <div runat="server" id="EnabledAdaptersWarning" visible="true">
+                <p class="coolWarning">
+                    The adapters are currently turned on. Do you want to keep them enabled?</p>
+            </div>
+            <div runat="server" id="DisabledAdaptersWarning" visible="false">
+                <p class="hotWarning">
+                    The adapters are currently turned off. Do you want to turn them on?</p>
+            </div>
+            <div runat="server" id="BrowserIncompatibility" visible="false">
+                <p class="hotWarning">
+                    The adapters are not configured for use with this browser.</p>
+            </div>
+            <asp:RadioButtonList runat="server" ID="AdaptersEnabled" AutoPostBack="true"  OnSelectedIndexChanged="AdapterUsageChanged">
+                <asp:ListItem Text="Yes" Value="1" />
+                <asp:ListItem Text="No" Value="0" />
+            </asp:RadioButtonList>
+            <p>
+                more about <a runat="server" href="~/WhitePaper.aspx#Samples" onclick="window.open(this.href, '_blank', ''); return false;" onkeypress="window.open(this.href, '_blank', ''); return false;">the adapters</a></p>
+        </fieldset>
+        <fieldset class="dashboardGroup">
+            <legend>Theme Chooser</legend>
+            <p>
+                The examples can use either a "basic" or "enhanced" theme or no theme at all.</p>
+            <asp:RadioButtonList runat="server" ID="ThemeChooser" AutoPostBack="true" OnSelectedIndexChanged="ThemeChanged">
+                <asp:ListItem Text="Enhanced" Value="1" />
+                <asp:ListItem Text="Basic" Value="0" />
+                <asp:ListItem Text="None" Value="-1" />
+            </asp:RadioButtonList>
+            <p>
+                more about <a href="http://msdn2.microsoft.com/en-us/library/ykzx33wh.aspx" onclick="window.open(this.href, '_blank', ''); return false;" onkeypress="window.open(this.href, '_blank', ''); return false;">CSS &amp; themes</a></p>
+        </fieldset>
+    </div>
+    <div id="SampleContent">
+        <h1>
+            <span runat="server" id="ControlName" /> Control Example</h1>
+        <h2>
+            Example Summary and Logic</h2>
+        <div class="SampleProlog">
+            <asp:ContentPlaceHolder runat="server" ID="Prolog">
+            </asp:ContentPlaceHolder>
+        </div>
+        <h2>
+            Working Example</h2>
+        <div class="SampleWorkingExample">
+            <asp:ContentPlaceHolder runat="server" ID="LiveExample">
+            </asp:ContentPlaceHolder>
+        </div>
+    </div>
+    <div id="Snippets">
+        <h2>
+            HTML Snippets</h2>
+        <div id="SnippetGroupParent">
+            <div class="snippetGroup leftCol">
+                <h3>
+                    Snippet of HTML when using the adapters</h3>
+                <asp:Panel runat="server" ID="SnippetWithAdapterContainer" CssClass="snippet">
+                    <wilco:SyntaxHighlighter ID="AdapterResponse" runat="server" Language="ASPX" Mode="Source" />
+                </asp:Panel>
+            </div>
+            <div class="snippetGroup rightCol">
+                <h3>
+                    Snippet of HTML when <span class="hotWarning">not using the adapters</span></h3>
+                <asp:Panel runat="server" ID="SnippetWithoutAdapterContainer" CssClass="snippet">
+                    <wilco:SyntaxHighlighter ID="NativeResponse" runat="server" Language="ASPX" Mode="Source" />
+                </asp:Panel>
+            </div>
+        </div>
+    </div>
+</asp:Content>

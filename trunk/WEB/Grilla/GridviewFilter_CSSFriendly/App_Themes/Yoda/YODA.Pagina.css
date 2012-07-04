@@ -1,0 +1,44 @@
+﻿body
+{
+	font-family: 'trebuchet MS' , Verdana;
+	font-size: 0.8em;
+	color: #333333;
+	margin-left:20px;
+}
+
+
+.hd
+{
+	border: 1px dashed #666666;
+	padding:5px;
+}
+
+.hd .menu
+{
+	background-color: #666666;
+	vertical-align: middle;
+	padding:5px;
+	color: #FFFFFF;
+}
+
+.menu a,
+.menu a:link
+{
+	color: #FFFFFF;
+}
+
+
+.bd
+{
+
+}
+
+
+.ft
+{
+	border-top-style: dashed;
+	border-width: 1px;
+	border-color: #333333;
+	margin-top: 30px;
+	color: #999999;
+}
