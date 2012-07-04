@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode>
+      <siteMapNode url="~/GenericPage.aspx?goto=Products" title="Products" description="Products">
+        <siteMapNode url="~/GenericPage.aspx?goto=ProductsWindows" title="Windows" description="Windows" />
+        <siteMapNode url="~/GenericPage.aspx?goto=ProductsOffice" title="Office" description="Office" />
+        <siteMapNode url="~/GenericPage.aspx?goto=ProductsBusinessSolutions" title="Business Solutions" description="Business Solutions" />
+        <siteMapNode url="~/GenericPage.aspx?goto=ProductsServers" title="Servers" description="Servers" />
+        <siteMapNode url="~/GenericPage.aspx?goto=ProductsDeveloperTools" title="Developer Tools" description="Developer Tools" />
+        <siteMapNode url="~/GenericPage.aspx?goto=ProductSubscriptions" title="Subscriptions" description="Subscriptions">
+          <siteMapNode url="~/GenericPage.aspx?goto=ProductsSubscriptionsSoftware" title="Software" description="Software" />
+          <siteMapNode url="~/GenericPage.aspx?goto=ProductsSubscriptionsManageYourProfile" title="Manage Your Profile" description="Manage Your Profile" />
+        </siteMapNode>
+        <siteMapNode url="~/GenericPage.aspx?goto=ProductsMore" title="More" description="More">
+          <siteMapNode url="~/GenericPage.aspx?goto=ProductsMobileDevices" title="Mobile Devices" description="Mobile Devices" />
+          <siteMapNode url="~/GenericPage.aspx?goto=ProductsGamesXbox" title="Games and Xbox" description="Games and Xbox" />
+          <siteMapNode url="~/GenericPage.aspx?goto=ProductsHardware" title="Hardware" description="Hardware" />
+          <siteMapNode url="~/GenericPage.aspx?goto=ProductsMSN" title="MSN" description="MSN" />
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode url="~/GenericPage.aspx?goto=Legal" title="Legal" description="Legal">
+        <siteMapNode url="~/GenericPage.aspx?goto=LegalLicense" title="License" description="License" />
+        <siteMapNode url="~/GenericPage.aspx?goto=LegalTerms" title="Terms of Use" description="Terms of Use" />
+        <siteMapNode url="~/GenericPage.aspx?goto=LegalPrivacy" title="Privacy" description="Privacy" />
+      </siteMapNode>
+      <siteMapNode url="~/GenericPage.aspx?goto=Support" title="Support" description="Support">
+        <siteMapNode url="~/GenericPage.aspx?goto=SupportLifecyclePolicies" title="Lifecycle and Policies" description="Support Lifecycle and Policies" />
+        <siteMapNode url="~/GenericPage.aspx?goto=SupportContact" title="Contact Support" description="Contact Support" />
+        <siteMapNode url="~/GenericPage.aspx?goto=SupportThirdPartyProviders" title="Third-Party Services" description="Third-Party Services" />
+        <siteMapNode url="~/GenericPage.aspx?goto=Research" title="Research" description="Research">
+          <siteMapNode url="~/GenericPage.aspx?goto=SupportProductCenters" title="Product Info" description="Product Support Centers" />
+          <siteMapNode url="~/GenericPage.aspx?goto=SupportKnowledgeBase" title="Knowledge Base" description="Knowledge Base" />
+          <siteMapNode url="~/GenericPage.aspx?goto=SupportCommunitiesNewsgroups" title="Communities" description="Communities and Newsgroups" />
+          <siteMapNode url="~/GenericPage.aspx?goto=SupportITProfessionals" title="IT Pros" description="Support for IT Professionals" />
+          <siteMapNode url="~/GenericPage.aspx?goto=SupportDevelopers" title="Developers" description="Support for Developers" />
+        </siteMapNode>
+        <siteMapNode url="~/GenericPage.aspx?goto=Downloads" title="Downloads" description="Downloads">
+          <siteMapNode url="~/GenericPage.aspx?goto=DownloadsWindowsUpdate" title="Windows Update" description="Windows Update" />
+          <siteMapNode url="~/GenericPage.aspx?goto=DownloadsOfficeUpdate" title="Office Update" description="Office Update" />
+        </siteMapNode>
+        <siteMapNode url="~/GenericPage.aspx?goto=Learning" title="Learning" description="Learning">
+          <siteMapNode url="~/GenericPage.aspx?goto=LearningBooks" title="Books" description="Books" />
+          <siteMapNode url="~/GenericPage.aspx?goto=LearningTraining" title="Training" description="Training" />
+          <siteMapNode url="~/GenericPage.aspx?goto=LearningCertification" title="Certification" description="Certification" />
+          <siteMapNode url="~/GenericPage.aspx?goto=LearningEvents" title="Events" description="Events" />
+          <siteMapNode url="~/GenericPage.aspx?goto=LearningWebcasts" title="Webcasts" description="Webcasts" />
+          <siteMapNode url="~/GenericPage.aspx?goto=LearningPatternsPractices" title="Patterns and Practices" description="Patterns and Practices" />
+        </siteMapNode>
+        <siteMapNode url="~/GenericPage.aspx?goto=SupportSubscriptions" title="Subscriptions" description="Subscriptions">
+          <siteMapNode url="~/GenericPage.aspx?goto=SupportSubscriptionsNewsletters" title="Newsletters" description="Newsletters" />
+          <siteMapNode url="~/GenericPage.aspx?goto=SupportSubscriptionsManageYourProfile" title="Manage Your Profile" description="Manage Your Profile" />
+        </siteMapNode>
+      </siteMapNode>
+      <siteMapNode url="~/GenericPage.aspx?goto=Just for You" title="Just for You" description="Just for You">
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouHomeUsers" title="Home Users" description="Home Users" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouMacintoshUsers" title="Macintosh Users" description="Macintosh Users" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouITProfessionals" title="IT Professionals" description="IT Professionals (TechNet)" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouDevelopersMSDN" title="Developers (MSDN)" description="Developers (MSDN)" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouPartners" title="Partners" description="Partners" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouSmallBusinesses" title="Small Businesses" description="Small Businesses" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouLargeBusinesses" title="Large Businesses" description="Large Businesses" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouGovernment" title="Government" description="Government" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouEducators" title="Educators" description="Educators" />
+        <siteMapNode url="~/GenericPage.aspx?goto=JustForYouJournalists" title="Journalists" description="Journalists" />
+      </siteMapNode>
+      <siteMapNode url="~/GenericPage.aspx?goto=About" title="About" description="About">
+        <siteMapNode url="~/GenericPage.aspx?goto=AboutAccessibility" title="Accessibility" description="Accessibility" />
+        <siteMapNode url="~/GenericPage.aspx?goto=AboutCareers" title="Careers" description="Careers" />
+        <siteMapNode url="~/GenericPage.aspx?goto=AboutCommunityAffairs" title="Community Affairs" description="Community Affairs" />
+        <siteMapNode url="~/GenericPage.aspx?goto=AboutDiversity" title="Diversity" description="Diversity" />
+        <siteMapNode url="~/GenericPage.aspx?goto=AboutInvestorRelations" title="Investor Relations" description="Investor Relations" />
+        <siteMapNode url="~/GenericPage.aspx?goto=AboutResearch" title="Research" description="Research" />
+        <siteMapNode url="~/GenericPage.aspx?goto=AboutSecurityPrivacy" title="Security and Privacy" description="Security and Privacy" />
+      </siteMapNode>
+    </siteMapNode>
+</siteMap>
