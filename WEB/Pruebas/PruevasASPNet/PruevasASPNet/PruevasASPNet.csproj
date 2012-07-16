@@ -53,6 +53,8 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CallingWebService_AJAX.aspx" />
+    <Content Include="DoPostpack.aspx" />
     <Content Include="HyperLinkDinamico.aspx" />
     <Content Include="js2\tinymce\changelog.txt" />
     <Content Include="js2\tinymce\examples\css\content.css" />
@@ -447,6 +449,20 @@
     <Content Include="WebUserControl1.ascx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CallingWebService_AJAX.aspx.cs">
+      <DependentUpon>CallingWebService_AJAX.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CallingWebService_AJAX.aspx.designer.cs">
+      <DependentUpon>CallingWebService_AJAX.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DoPostpack.aspx.cs">
+      <DependentUpon>DoPostpack.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DoPostpack.aspx.designer.cs">
+      <DependentUpon>DoPostpack.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HyperLinkDinamico.aspx.cs">
       <SubType>ASPXCodeBehind</SubType>
       <DependentUpon>HyperLinkDinamico.aspx</DependentUpon>
