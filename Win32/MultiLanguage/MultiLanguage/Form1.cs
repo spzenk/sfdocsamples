@@ -94,6 +94,24 @@ namespace MultiLanguage
         {
             c.Text = rm.GetString(string.Concat(c.Name, ".Text"), culture);
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<int> i = new List<int>();
+            i.Add(1);
+            i.Add(2);
+            i.Add(3);
+            i.Add(4);
+
+            foreach (int x in i)
+            {
+                if (x == 1)
+                    continue;
+                if (x == 4)
+                    break;
+              
+            }
+        }
       
    
     }
