@@ -41,6 +41,7 @@
             this.colApellido = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDireccion = new DevExpress.XtraGrid.Columns.GridColumn();
             this.lblSaludo = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.personsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -54,7 +55,6 @@
             this.btnSaludo2.TabIndex = 0;
             this.btnSaludo2.Text = "Hola";
             this.btnSaludo2.UseVisualStyleBackColor = true;
-        
             // 
             // btnSaludo
             // 
@@ -64,7 +64,6 @@
             this.btnSaludo.TabIndex = 1;
             this.btnSaludo.Tag = "saludo";
             this.btnSaludo.Text = "Hola";
-            
             // 
             // rnd_Ingles
             // 
@@ -77,7 +76,6 @@
             this.rnd_Ingles.TabIndex = 2;
             this.rnd_Ingles.Text = "Ingles";
             this.rnd_Ingles.UseVisualStyleBackColor = true;
-
             // 
             // rnd_Esp
             // 
@@ -161,11 +159,22 @@
             this.lblSaludo.TabIndex = 6;
             this.lblSaludo.Text = "Prueva en diferentes lenguages";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(81, 258);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 37);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Hola";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(686, 469);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.lblSaludo);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.lblCulture);
@@ -197,6 +206,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colApellido;
         private DevExpress.XtraGrid.Columns.GridColumn colDireccion;
         private System.Windows.Forms.Label lblSaludo;
+        private System.Windows.Forms.Button button1;
     }
 }
 
