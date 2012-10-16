@@ -87,7 +87,7 @@ namespace WebChat.Logic
             tblChatRoom room = new tblChatRoom();
             room.ChatRoomID = Guid.NewGuid();
             room.ChatRoomName = roomName;
-            room.ChatRoomPassword = password;
+            room.CustomerName = password;
             room.IsLock = isLock;
             room.MaxUserNumber = maxUserNumber;
             room.NeedPassword = needPassword;
@@ -128,8 +128,7 @@ namespace WebChat.Logic
             return db.tblChatRooms.ToList();
         }
 
-        public static bool JoinChatRoom(Guid ChatRoomID, HttpContext context,
-            string alias)
+        public static bool JoinChatRoom(Guid ChatRoomID, HttpContext context,     string alias)
         {
             if (!ChatManager.IsRoomFull(ChatRoomID))
             {
