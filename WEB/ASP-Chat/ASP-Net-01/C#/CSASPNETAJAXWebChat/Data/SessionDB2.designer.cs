@@ -30,9 +30,6 @@ namespace WebChat.Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InserttblChatRoom(tblChatRoom instance);
-    partial void UpdatetblChatRoom(tblChatRoom instance);
-    partial void DeletetblChatRoom(tblChatRoom instance);
     partial void InserttblMessagePool(tblMessagePool instance);
     partial void UpdatetblMessagePool(tblMessagePool instance);
     partial void DeletetblMessagePool(tblMessagePool instance);
@@ -42,6 +39,9 @@ namespace WebChat.Data
     partial void InserttblTalker(tblTalker instance);
     partial void UpdatetblTalker(tblTalker instance);
     partial void DeletetblTalker(tblTalker instance);
+    partial void InserttblChatRoom(tblChatRoom instance);
+    partial void UpdatetblChatRoom(tblChatRoom instance);
+    partial void DeletetblChatRoom(tblChatRoom instance);
     #endregion
 		
 		public SessionDBDataContext() : 
@@ -74,14 +74,6 @@ namespace WebChat.Data
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<tblChatRoom> tblChatRooms
-		{
-			get
-			{
-				return this.GetTable<tblChatRoom>();
-			}
-		}
-		
 		public System.Data.Linq.Table<tblMessagePool> tblMessagePools
 		{
 			get
@@ -105,215 +97,13 @@ namespace WebChat.Data
 				return this.GetTable<tblTalker>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblChatRoom")]
-	public partial class tblChatRoom : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private System.Guid _ChatRoomID;
-		
-		private string _ChatRoomPassword;
-		
-		private string _ChatRoomName;
-		
-		private bool _NeedPassword;
-		
-		private int _MaxUserNumber;
-		
-		private bool _IsLock;
-		
-		private EntitySet<tblTalker> _tblTalkers;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnChatRoomIDChanging(System.Guid value);
-    partial void OnChatRoomIDChanged();
-    partial void OnChatRoomPasswordChanging(string value);
-    partial void OnChatRoomPasswordChanged();
-    partial void OnChatRoomNameChanging(string value);
-    partial void OnChatRoomNameChanged();
-    partial void OnNeedPasswordChanging(bool value);
-    partial void OnNeedPasswordChanged();
-    partial void OnMaxUserNumberChanging(int value);
-    partial void OnMaxUserNumberChanged();
-    partial void OnIsLockChanging(bool value);
-    partial void OnIsLockChanged();
-    #endregion
-		
-		public tblChatRoom()
-		{
-			this._tblTalkers = new EntitySet<tblTalker>(new Action<tblTalker>(this.attach_tblTalkers), new Action<tblTalker>(this.detach_tblTalkers));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
-		public System.Guid ChatRoomID
+		public System.Data.Linq.Table<tblChatRoom> tblChatRooms
 		{
 			get
 			{
-				return this._ChatRoomID;
+				return this.GetTable<tblChatRoom>();
 			}
-			set
-			{
-				if ((this._ChatRoomID != value))
-				{
-					this.OnChatRoomIDChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomID = value;
-					this.SendPropertyChanged("ChatRoomID");
-					this.OnChatRoomIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomPassword", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ChatRoomPassword
-		{
-			get
-			{
-				return this._ChatRoomPassword;
-			}
-			set
-			{
-				if ((this._ChatRoomPassword != value))
-				{
-					this.OnChatRoomPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomPassword = value;
-					this.SendPropertyChanged("ChatRoomPassword");
-					this.OnChatRoomPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string ChatRoomName
-		{
-			get
-			{
-				return this._ChatRoomName;
-			}
-			set
-			{
-				if ((this._ChatRoomName != value))
-				{
-					this.OnChatRoomNameChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomName = value;
-					this.SendPropertyChanged("ChatRoomName");
-					this.OnChatRoomNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NeedPassword", DbType="Bit NOT NULL")]
-		public bool NeedPassword
-		{
-			get
-			{
-				return this._NeedPassword;
-			}
-			set
-			{
-				if ((this._NeedPassword != value))
-				{
-					this.OnNeedPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._NeedPassword = value;
-					this.SendPropertyChanged("NeedPassword");
-					this.OnNeedPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxUserNumber", DbType="Int NOT NULL")]
-		public int MaxUserNumber
-		{
-			get
-			{
-				return this._MaxUserNumber;
-			}
-			set
-			{
-				if ((this._MaxUserNumber != value))
-				{
-					this.OnMaxUserNumberChanging(value);
-					this.SendPropertyChanging();
-					this._MaxUserNumber = value;
-					this.SendPropertyChanged("MaxUserNumber");
-					this.OnMaxUserNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLock", DbType="Bit NOT NULL")]
-		public bool IsLock
-		{
-			get
-			{
-				return this._IsLock;
-			}
-			set
-			{
-				if ((this._IsLock != value))
-				{
-					this.OnIsLockChanging(value);
-					this.SendPropertyChanging();
-					this._IsLock = value;
-					this.SendPropertyChanged("IsLock");
-					this.OnIsLockChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblChatRoom_tblTalker", Storage="_tblTalkers", ThisKey="ChatRoomID", OtherKey="ChatRoomID")]
-		public EntitySet<tblTalker> tblTalkers
-		{
-			get
-			{
-				return this._tblTalkers;
-			}
-			set
-			{
-				this._tblTalkers.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_tblTalkers(tblTalker entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblChatRoom = this;
-		}
-		
-		private void detach_tblTalkers(tblTalker entity)
-		{
-			this.SendPropertyChanging();
-			entity.tblChatRoom = null;
 		}
 	}
 	
@@ -672,9 +462,9 @@ namespace WebChat.Data
 		
 		private EntitySet<tblMessagePool> _tblMessagePools;
 		
-		private EntityRef<tblChatRoom> _tblChatRoom;
-		
 		private EntityRef<tblSession> _tblSession;
+		
+		private EntityRef<tblChatRoom> _tblChatRoom;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -695,8 +485,8 @@ namespace WebChat.Data
 		public tblTalker()
 		{
 			this._tblMessagePools = new EntitySet<tblMessagePool>(new Action<tblMessagePool>(this.attach_tblMessagePools), new Action<tblMessagePool>(this.detach_tblMessagePools));
-			this._tblChatRoom = default(EntityRef<tblChatRoom>);
 			this._tblSession = default(EntityRef<tblSession>);
+			this._tblChatRoom = default(EntityRef<tblChatRoom>);
 			OnCreated();
 		}
 		
@@ -821,40 +611,6 @@ namespace WebChat.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblChatRoom_tblTalker", Storage="_tblChatRoom", ThisKey="ChatRoomID", OtherKey="ChatRoomID", IsForeignKey=true)]
-		public tblChatRoom tblChatRoom
-		{
-			get
-			{
-				return this._tblChatRoom.Entity;
-			}
-			set
-			{
-				tblChatRoom previousValue = this._tblChatRoom.Entity;
-				if (((previousValue != value) 
-							|| (this._tblChatRoom.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._tblChatRoom.Entity = null;
-						previousValue.tblTalkers.Remove(this);
-					}
-					this._tblChatRoom.Entity = value;
-					if ((value != null))
-					{
-						value.tblTalkers.Add(this);
-						this._ChatRoomID = value.ChatRoomID;
-					}
-					else
-					{
-						this._ChatRoomID = default(System.Guid);
-					}
-					this.SendPropertyChanged("tblChatRoom");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblSession_tblTalker", Storage="_tblSession", ThisKey="SessionID", OtherKey="UID", IsForeignKey=true)]
 		public tblSession tblSession
 		{
@@ -889,6 +645,40 @@ namespace WebChat.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblChatRoom_tblTalker", Storage="_tblChatRoom", ThisKey="ChatRoomID", OtherKey="ChatRoomID", IsForeignKey=true)]
+		public tblChatRoom tblChatRoom
+		{
+			get
+			{
+				return this._tblChatRoom.Entity;
+			}
+			set
+			{
+				tblChatRoom previousValue = this._tblChatRoom.Entity;
+				if (((previousValue != value) 
+							|| (this._tblChatRoom.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._tblChatRoom.Entity = null;
+						previousValue.tblTalkers.Remove(this);
+					}
+					this._tblChatRoom.Entity = value;
+					if ((value != null))
+					{
+						value.tblTalkers.Add(this);
+						this._ChatRoomID = value.ChatRoomID;
+					}
+					else
+					{
+						this._ChatRoomID = default(System.Guid);
+					}
+					this.SendPropertyChanged("tblChatRoom");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -919,6 +709,216 @@ namespace WebChat.Data
 		{
 			this.SendPropertyChanging();
 			entity.tblTalker = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.tblChatRoom")]
+	public partial class tblChatRoom : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _ChatRoomID;
+		
+		private string _CustomerName;
+		
+		private string _ChatRoomName;
+		
+		private bool _NeedPassword;
+		
+		private int _MaxUserNumber;
+		
+		private bool _IsLock;
+		
+		private EntitySet<tblTalker> _tblTalkers;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnChatRoomIDChanging(System.Guid value);
+    partial void OnChatRoomIDChanged();
+    partial void OnCustomerNameChanging(string value);
+    partial void OnCustomerNameChanged();
+    partial void OnChatRoomNameChanging(string value);
+    partial void OnChatRoomNameChanged();
+    partial void OnNeedPasswordChanging(bool value);
+    partial void OnNeedPasswordChanged();
+    partial void OnMaxUserNumberChanging(int value);
+    partial void OnMaxUserNumberChanged();
+    partial void OnIsLockChanging(bool value);
+    partial void OnIsLockChanged();
+    #endregion
+		
+		public tblChatRoom()
+		{
+			this._tblTalkers = new EntitySet<tblTalker>(new Action<tblTalker>(this.attach_tblTalkers), new Action<tblTalker>(this.detach_tblTalkers));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomID", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid ChatRoomID
+		{
+			get
+			{
+				return this._ChatRoomID;
+			}
+			set
+			{
+				if ((this._ChatRoomID != value))
+				{
+					this.OnChatRoomIDChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomID = value;
+					this.SendPropertyChanged("ChatRoomID");
+					this.OnChatRoomIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this.OnCustomerNameChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerName = value;
+					this.SendPropertyChanged("CustomerName");
+					this.OnCustomerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomName", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ChatRoomName
+		{
+			get
+			{
+				return this._ChatRoomName;
+			}
+			set
+			{
+				if ((this._ChatRoomName != value))
+				{
+					this.OnChatRoomNameChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomName = value;
+					this.SendPropertyChanged("ChatRoomName");
+					this.OnChatRoomNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NeedPassword", DbType="Bit NOT NULL")]
+		public bool NeedPassword
+		{
+			get
+			{
+				return this._NeedPassword;
+			}
+			set
+			{
+				if ((this._NeedPassword != value))
+				{
+					this.OnNeedPasswordChanging(value);
+					this.SendPropertyChanging();
+					this._NeedPassword = value;
+					this.SendPropertyChanged("NeedPassword");
+					this.OnNeedPasswordChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MaxUserNumber", DbType="Int NOT NULL")]
+		public int MaxUserNumber
+		{
+			get
+			{
+				return this._MaxUserNumber;
+			}
+			set
+			{
+				if ((this._MaxUserNumber != value))
+				{
+					this.OnMaxUserNumberChanging(value);
+					this.SendPropertyChanging();
+					this._MaxUserNumber = value;
+					this.SendPropertyChanged("MaxUserNumber");
+					this.OnMaxUserNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLock", DbType="Bit NOT NULL")]
+		public bool IsLock
+		{
+			get
+			{
+				return this._IsLock;
+			}
+			set
+			{
+				if ((this._IsLock != value))
+				{
+					this.OnIsLockChanging(value);
+					this.SendPropertyChanging();
+					this._IsLock = value;
+					this.SendPropertyChanged("IsLock");
+					this.OnIsLockChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="tblChatRoom_tblTalker", Storage="_tblTalkers", ThisKey="ChatRoomID", OtherKey="ChatRoomID")]
+		public EntitySet<tblTalker> tblTalkers
+		{
+			get
+			{
+				return this._tblTalkers;
+			}
+			set
+			{
+				this._tblTalkers.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_tblTalkers(tblTalker entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblChatRoom = this;
+		}
+		
+		private void detach_tblTalkers(tblTalker entity)
+		{
+			this.SendPropertyChanging();
+			entity.tblChatRoom = null;
 		}
 	}
 }
