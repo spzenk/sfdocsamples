@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{53CB3CC4-0C87-4DED-9A28-CE10601D0869}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication\WindowsFormsApplication1.csproj", "{53CB3CC4-0C87-4DED-9A28-CE10601D0869}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
