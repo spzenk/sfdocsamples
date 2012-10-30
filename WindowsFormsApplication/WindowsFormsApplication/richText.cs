@@ -28,16 +28,13 @@ namespace WindowsFormsApplication1
             try
             {
                 richEditControl1.Document.BeginUpdate();
+
                 richEditControl1.Document.Sections[0].Margins.Left = 1;
                 richEditControl1.Document.Sections[0].Margins.Right = 1;
                 richEditControl1.Document.Sections[0].Margins.Top = 1;
                 richEditControl1.ReadOnly = true;
                 richEditControl1.HtmlText = doc;
-              
-
                 richEditControl1.Document.EndUpdate();
-
-
             }
             catch (Exception ex)
             {
@@ -82,10 +79,7 @@ namespace WindowsFormsApplication1
 
             if (!String.IsNullOrEmpty(wMedicalEvent.PMOQuirurgico))
             {
-
-
                 t.Replace("[PMO]", string.Concat(wMedicalEvent.PMOQuirurgico, "<br />"));
-
             }
             else
                 t.Replace("[PMO]", "<br />");
@@ -101,8 +95,6 @@ namespace WindowsFormsApplication1
             wMedicalEvent.IdTipoConsulta = 12;
             if (wMedicalEvent.IdTipoConsulta.HasValue)
             {
-                
-               
                     t.Replace("[TIPOCONSULTA]","lkjAS OIUOISA KDjlÑAS");
 
             }
