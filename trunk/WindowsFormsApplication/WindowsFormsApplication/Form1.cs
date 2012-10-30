@@ -18,8 +18,8 @@ namespace WindowsFormsApplication1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            int[] A = new int[]{1,2,3 };
-            int[] B = new int[] {  2, 3 ,5};
+            int[] A = new int[] { 1, 2, 3 };
+            int[] B = new int[] { 2, 3, 5 };
             StringBuilder str = new StringBuilder();
 
             str.AppendLine(string.Concat("A = ", get_strinh(A)));
@@ -58,28 +58,39 @@ namespace WindowsFormsApplication1
             GetR(fecha);
 
 
-            
+
             textBox1.Text = r.ToString();
 
-            
+
         }
 
 
 
         void GetR(DateTime fecha)
         {
-            
+
             long ticks1 = fecha.Ticks;
             long ticks2 = fecha.AddMinutes(30).Ticks;
             TimeSpan t1 = new TimeSpan(ticks1);
             TimeSpan t2 = new TimeSpan(ticks2);
             TimeSpan now = new TimeSpan(System.DateTime.Now.Ticks);
-            TimeSpan tr = (now- t2);
+            TimeSpan tr = (now - t2);
 
             long rl = System.DateTime.Now.Ticks - ticks2;
 
             r.AppendLine(string.Concat("(ahora - t2) = ", rl.ToString()));
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string str = "Hoa {0} hoy es un gran {1}";
+            MessageBox.Show(String.Format(str, new string[] { "Angelina", "año" }));
+
+            Fwk.Exceptions.FunctionalException fw = new Fwk.Exceptions.FunctionalException(null, "clave", new string[] { "Angelina", "año" });
+            fw.ConfigProviderName = "asdasdsad";
+
+            MessageBox.Show(fw.Message);
         }
     }
 }
