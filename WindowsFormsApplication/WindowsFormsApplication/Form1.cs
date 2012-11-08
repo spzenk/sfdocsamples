@@ -6,6 +6,7 @@ using System.Linq;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using DevExpress.XtraEditors.Controls;
 
 namespace WindowsFormsApplication1
 {
@@ -14,6 +15,23 @@ namespace WindowsFormsApplication1
         public Form1()
         {
             InitializeComponent();
+                 ComboBoxItemCollection items = cmbAlertDiagnosis.Properties.Items;
+            List<Bear> l = new List<Bear>();
+            l.Add(new Bear(870, "Enfermedad relaDevante"));
+            l.Add(new Bear(871, "Enfermedad crónica"));
+            l.Add(new Bear(872, "Dx quirurjicos "));
+            items.BeginUpdate();
+            bearBindingSource.DataSource = l;
+            cmbAlertDiagnosis.Refresh();
+            
+            //items.BeginUpdate();
+            ////items.Add(new Bear(870, "Enfermedad relaDaAASDevante"));
+            ////items.Add(new Bear(871, "Enfermedad crónica"));
+            ////items.Add(new Bear(872, "Dx quirurjicos "));
+            
+
+            items.EndUpdate();
+             
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -88,8 +106,8 @@ namespace WindowsFormsApplication1
             MessageBox.Show(String.Format(str, new string[] { "Angelina", "año" }));
 
             Fwk.Exceptions.FunctionalException fw = new Fwk.Exceptions.FunctionalException(null, "clave", new string[] { "Angelina", "año" });
-            fw.ConfigProviderName = "asdasdsad";
-
+            
+            
             MessageBox.Show(fw.Message);
         }
     }
