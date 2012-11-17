@@ -12,7 +12,7 @@ namespace SecureWcf
     {
         public string GetData(int value)
         {
-            return string.Format("Usted ingreso", value);
+            return string.Format("Usted ingreso {0}", value);
         }
 
         public CompositeType GetDataUsingDataContract(CompositeType composite)
