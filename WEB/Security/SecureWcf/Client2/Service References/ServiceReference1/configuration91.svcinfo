@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="k+/lnL3sAmn63XRqfUYUUlAVawk=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="J4SLwGLOETWhHEAZaJo6UWEn9Eg=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="Basic">
       <properties>
@@ -360,10 +360,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="Basic" contract="ServiceReference1.ICoreSecurity" bindingType="basicHttpBinding" address="http://localhost/SecureWcf/CoreSecurity.svc/basic" bindingConfiguration="Basic">
+    <endpoint name="Basic" contract="ServiceReference1.ICoreSecurity" bindingType="basicHttpBinding" address="http://192.168.1.116/SecureWcf/CoreSecurity.svc/basic" bindingConfiguration="Basic">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost/SecureWcf/CoreSecurity.svc/basic</serializedValue>
+          <serializedValue>http://192.168.1.116/SecureWcf/CoreSecurity.svc/basic</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -445,10 +445,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="ws" contract="ServiceReference1.ICoreSecurity" bindingType="wsHttpBinding" address="http://localhost/SecureWcf/CoreSecurity.svc" bindingConfiguration="ws">
+    <endpoint name="ws" contract="ServiceReference1.ICoreSecurity" bindingType="wsHttpBinding" address="http://192.168.1.116/SecureWcf/CoreSecurity.svc" bindingConfiguration="ws">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost/SecureWcf/CoreSecurity.svc</serializedValue>
+          <serializedValue>http://192.168.1.116/SecureWcf/CoreSecurity.svc</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -474,14 +474,14 @@
         <property path="/identity/userPrincipalName" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.UserPrincipalNameElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.UserPrincipalNameElement</serializedValue>
         </property>
-        <property path="/identity/userPrincipalName/value" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue />
+        <property path="/identity/userPrincipalName/value" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <serializedValue>CPUDEL60578\ASPNET</serializedValue>
         </property>
         <property path="/identity/servicePrincipalName" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.ServicePrincipalNameElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.ServicePrincipalNameElement</serializedValue>
         </property>
-        <property path="/identity/servicePrincipalName/value" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>host/santana</serializedValue>
+        <property path="/identity/servicePrincipalName/value" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+          <serializedValue />
         </property>
         <property path="/identity/dns" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.DnsElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.DnsElement</serializedValue>
@@ -530,10 +530,10 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="mex" contract="ServiceReference1.ICoreSecurity" bindingType="wsHttpBinding" address="http://localhost/SecureWcf/CoreSecurity.svc/mexHttp" bindingConfiguration="mex">
+    <endpoint name="mex" contract="ServiceReference1.ICoreSecurity" bindingType="wsHttpBinding" address="http://192.168.1.116/SecureWcf/CoreSecurity.svc/mexHttp" bindingConfiguration="mex">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost/SecureWcf/CoreSecurity.svc/mexHttp</serializedValue>
+          <serializedValue>http://192.168.1.116/SecureWcf/CoreSecurity.svc/mexHttp</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
