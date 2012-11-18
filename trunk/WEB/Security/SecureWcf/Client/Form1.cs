@@ -22,11 +22,11 @@ namespace Client
             try
             {
                 CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
-                GetDataRequest req = new GetDataRequest();
-                req.value = 123;
-                GetDataResponse res = clientProxy.GetData(req);
+                //GetDataRequest req = new GetDataRequest();
+                //req.value = 123;
+                //GetDataResponse res = clientProxy.GetData(req);
 
-                MessageBox.Show(res.GetDataResult);
+                //MessageBox.Show(res.GetDataResult);
             }
             catch (Exception err) { MessageBox.Show(err.Message); }
         }
