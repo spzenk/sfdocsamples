@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureWcf", "SecureWcf\Secu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{B1C7590D-00E5-4B11-ADDE-5A37D21EFB21}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client2", "Client2\Client2.csproj", "{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{B1C7590D-00E5-4B11-ADDE-5A37D21EFB21}.Release|Mixed Platforms.Build.0 = Release|x86
 		{B1C7590D-00E5-4B11-ADDE-5A37D21EFB21}.Release|x86.ActiveCfg = Release|x86
 		{B1C7590D-00E5-4B11-ADDE-5A37D21EFB21}.Release|x86.Build.0 = Release|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Debug|x86.ActiveCfg = Debug|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Debug|x86.Build.0 = Debug|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|Any CPU.ActiveCfg = Release|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|Mixed Platforms.Build.0 = Release|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|x86.ActiveCfg = Release|x86
+		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
