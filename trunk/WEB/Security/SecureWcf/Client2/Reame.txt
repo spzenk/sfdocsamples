@@ -32,3 +32,17 @@ Solucion para add referense OK
 
 Se dio permisos en el directoio fisico al usuario SecureWCF permisos basicos (no full control)
 ******************************************************************************************************************************
+
+
+******************************************************************************************************************************
+	Acceso Anonimo = true
+	Autenticaion de Windows Integrada = true
+
+Server: 
+	En el SO: Se dio permisos en el directoio fisico al usuario SecureWCF permisos basicos (no full control)
+	En el config: clientCredentialType="Windows" negotiateServiceCredential="true"
+Cliente:
+	Codigo: Debe establecer el proxy ; en ste caso programaticamente WebRequest.DefaultWebProxy = proxy;
+
+	En el Config:
+	useDefaultWebProxy="true"
