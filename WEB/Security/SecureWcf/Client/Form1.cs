@@ -97,8 +97,8 @@ namespace Client
                 clientProxy.Credentials = cr;
                 
 
-
-                string wGetDataResult = clientProxy.GetData(123,true);
+                 
+                string wGetDataResult = clientProxy.GetData(123,false);
 
                 MessageBox.Show(wGetDataResult);
             }

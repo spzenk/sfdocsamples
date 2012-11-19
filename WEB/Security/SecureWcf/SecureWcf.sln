@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecureWcf", "SecureWcf\SecureWcf.csproj", "{6CE262D6-FE3F-4D87-922F-115943BBA993}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{B1C7590D-00E5-4B11-ADDE-5A37D21EFB21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Basic", "Client\Client.Basic.csproj", "{B1C7590D-00E5-4B11-ADDE-5A37D21EFB21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client2", "Client2\Client2.csproj", "{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}"
 EndProject
