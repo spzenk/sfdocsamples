@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Client2.ServiceReference1;
+using System.Net;
 
 namespace Client2
 {
@@ -39,6 +40,15 @@ namespace Client2
                 clientProxy.ClientCredentials.Windows.ClientCredential.UserName = usr;
                 clientProxy.ClientCredentials.Windows.ClientCredential.Password = pwd;
                 clientProxy.ClientCredentials.Windows.ClientCredential.Domain = domain;
+
+                WebProxy proxy = new WebProxy("http://proxy:3128", false);
+                proxy.Credentials = new NetworkCredential("moviedo", "Lincelin4","allus-ar");
+                WebRequest.DefaultWebProxy = proxy;
+                
+                
+                
+                
+                
                 string wGetDataResult = clientProxy.GetData(123);
 
                 MessageBox.Show(wGetDataResult);
