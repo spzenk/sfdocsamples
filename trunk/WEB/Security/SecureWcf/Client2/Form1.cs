@@ -25,6 +25,7 @@ namespace Client2
 
         private void button1_Click(object sender, EventArgs e)
         {
+            textBox1.Text = string.Empty;
             try
             {
                 CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
