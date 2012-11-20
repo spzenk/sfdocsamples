@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client.Basic", "Client\Clie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client2", "Client2\Client2.csproj", "{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFWebSite", "WCFWebSite\WCFWebSite.csproj", "{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|Mixed Platforms.Build.0 = Release|x86
 		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|x86.ActiveCfg = Release|x86
 		{AEAE3F57-BCAE-435E-97D5-9EC6ED459948}.Release|x86.Build.0 = Release|x86
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{268D1047-5CC2-44C3-9AD5-A0D7221FE82E}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
