@@ -49,6 +49,7 @@
     }
 
     function ServiceSucceeded(result) {
+        alert(result.toString());
         alert(result);
         alert(result[0]);
     }
