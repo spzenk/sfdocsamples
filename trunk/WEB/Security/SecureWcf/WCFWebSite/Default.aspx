@@ -40,7 +40,7 @@
 
     function Test_POST_XML() {
         varType = "POST";
-        varUrl = "service/CountryProvinceWCFService.svc/Test_POST_XML";
+        varUrl = "service/CoreSecurityAspnet.svc/Test_POST_XML";
         varData = '{"value": "' + $('#frm_inputtext').val() + '"}';
         varContentType = "application/json; charset=utf-8";
         varDataType = "xml";
