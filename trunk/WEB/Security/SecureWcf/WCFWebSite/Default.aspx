@@ -30,10 +30,10 @@
         });
     }
 
-    function TestJSON_GET() {
+    function Test_WebGet_Json() {
        
         varType = "GET";
-        varUrl = "service/CoreSecurityAspnet.svc/Test_Get?value=" + $('#frm_inputtext').val();
+        varUrl = "service/CoreSecurityAspnet.svc/Test_WebGet_Json?value=" + $('#txtInput').val();
         varContentType = "application/json; charset=utf-8";
         varDataType = "json"; varProcessData = false; CallService();
     }
@@ -41,17 +41,57 @@
     function Test_POST_XML() {
         varType = "POST";
         varUrl = "service/CoreSecurityAspnet.svc/Test_POST_XML";
-        varData = '{"value": "' + $('#frm_inputtext').val() + '"}';
+        varData = '{"value": "' + $('#txtInput').val() + '"}';
         varContentType = "application/json; charset=utf-8";
         varDataType = "xml";
         varProcessData = true;
         CallService();
     }
 
+
+    function Test_POST_Json() {
+        varType = "POST";
+        varUrl = "service/CoreSecurityAspnet.svc/Test_POST_Json";
+        varData = '{"value": "' + $('#txtInput').val() + '"}';
+        varContentType = "application/json; charset=utf-8";
+        varDataType = "json";
+        varProcessData = true;
+        CallService();
+    }
+
+    function Test_GET_REST_Json() {
+        varType = "GET";
+        varUrl = "service/CoreSecurityAspnet.svc/Test_GET_REST_Json/" + $('#txtInput').val();
+        varContentType = "application/json; charset=utf-8";
+        varDataType = "json";
+        varProcessData = false;
+        CallService();
+    }
+
     function ServiceSucceeded(result) {
-        alert(result.toString());
-        alert(result);
-        alert(result[0]);
+        var resultObject = null;
+        if (varDataType == "xml") {
+
+            $(result).find("Test_POST_XMLResult").children().each(function () {
+                alert($(this).text());
+            });
+
+            return;
+        }
+
+        if (varDataType == "json") {
+            if (varType == "GET")
+            { alert('asasas'); resultObject = result; }
+            else {
+
+                resultObject = result.Test_POST_JsonResult;
+                //                    if (resultObject == null) {
+                //                        //WCF Service with multiple output paramaetrs //Button 4
+                //                        resultObject = result.GetProvinceAndBrowserResult.ProvinceInfo;
+            }
+            alert(resultObject);
+            return;
+        }
     }
 
     function ServiceFailed(result) {
@@ -62,14 +102,54 @@
     <h2>
         Test calling WCF from ajax jquery 
     </h2>
+    <br />
+    <br />
     <p>
-        Click to call service
+       Input value to call the service
     </p>
-    <input id="Submit1" type="submit" value="Call WCF GET/REST Ajax" onclick="Test_POST_XML();return false;" />
-    <input class="frm_inputtext"  id="txtAlias" type="text"  style="font-size:14px; width:200px;height:2em;background-color:#FFFFE6;"/>
+ 
+    <input class="frm_inputtext"  id="txtInput" type="text"  style="font-size:14px; width:200px;height:2em;background-color:#FFFFE6;"/>
+       <br />
+    <br />
+ 
     
-    <p>
-        You can also find <a href="http://go.microsoft.com/fwlink/?LinkID=152368&amp;clcid=0x409"
-            title="MSDN ASP.NET Docs">documentation on ASP.NET at MSDN</a>.
-    </p>
+    <table width="100%">
+            <tr class="frm_row" style="margin: 8px">
+                <td style="width: 150px; text-align: left;">
+                    Call WCF wEB gET  Ajax and ret
+                </td>
+                <td style="width: 350px;">
+                    <input id="Submit1" type="submit" value="Call service" onclick="Test_WebGet_Json();return false;" />
+                </td>
+            </tr>
+     <tr class="frm_row" style="margin: 8px">
+                <td style="width: 150px; text-align: left;">
+                    Call WCF POST/REST XML
+                </td>
+                <td style="width: 350px;">
+                    <input id="Submit2" type="submit" value="Call service" onclick="Test_POST_XML();return false;" />
+                </td>
+            </tr>
+  
+            <tr class="frm_row" style="margin: 8px">
+                <td style="width: 150px; text-align: left;">
+                        Call WCF POST/REST JSON
+                </td>
+                <td style="width: 350px;">
+                    <input id="Submit3" type="submit" value="Call service" onclick="Test_POST_Json();return false;" />
+                </td>
+            </tr>
+       </table>
+
+
+       <table width="100%">
+         <tr class="frm_row" style="margin: 8px">
+                <td style="width: 150px; text-align: left;">
+                        Call WCF GET/REST JSON
+                </td>
+                <td style="width: 350px;">
+                    <input id="Submit4" type="submit" value="Call service" onclick="Test_GET_Json();return false;" />
+                </td>
+            </tr>
+       </table>
 </asp:Content>
