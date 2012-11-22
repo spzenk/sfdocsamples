@@ -8,24 +8,25 @@ using System.ServiceModel.Web;
 
 namespace SecureWcf
 {
-
-
-        [ServiceContract]
+    [ServiceContract]
     public interface ICoreSecurityAspnet
     {
-        //WCF service using jQuery[ Get Method] and retrieving data in JSON Format
         [OperationContract]
         [WebGet(ResponseFormat = WebMessageFormat.Json)]
-        string Test_Get(string value);
+        string Test_WebGet_Json(string value);
 
-        [OperationContract]
-        [WebInvoke(Method = "GET", ResponseFormat = WebMessageFormat.Json, UriTemplate = "Test_Get_REST/{Value}",
-       BodyStyle = WebMessageBodyStyle.Bare)]
-        string Test_Get_REST(string value);
 
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Xml)]
+        string Test_POST_XML(string value);
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        string EnviarMensajeDesdeWCF();
+        string Test_POST_Json(string value);
+
+
+
+        [OperationContract]
+        [WebInvoke(Method = "GET", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        String Test_GET_REST_Json(String value);
     }
 }

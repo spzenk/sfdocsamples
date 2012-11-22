@@ -81,7 +81,7 @@
 
         if (varDataType == "json") {
             if (varType == "GET")
-            { alert('asasas'); resultObject = result; }
+            { resultObject = result; }
             else {
 
                 resultObject = result.Test_POST_JsonResult;
@@ -116,7 +116,7 @@
     <table width="100%">
             <tr class="frm_row" style="margin: 8px">
                 <td style="width: 150px; text-align: left;">
-                    Call WCF wEB gET  Ajax and ret
+                    Call WCF WebGet
                 </td>
                 <td style="width: 350px;">
                     <input id="Submit1" type="submit" value="Call service" onclick="Test_WebGet_Json();return false;" />
