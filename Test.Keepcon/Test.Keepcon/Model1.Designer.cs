@@ -437,120 +437,96 @@ namespace Allus.Keepcon
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> DateToNotifyUsers
+        public Nullable<global::System.DateTime> test_keepcon_send_date
         {
             get
             {
-                return _DateToNotifyUsers;
+                return _test_keepcon_send_date;
             }
             set
             {
-                OnDateToNotifyUsersChanging(value);
-                ReportPropertyChanging("DateToNotifyUsers");
-                _DateToNotifyUsers = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("DateToNotifyUsers");
-                OnDateToNotifyUsersChanged();
+                Ontest_keepcon_send_dateChanging(value);
+                ReportPropertyChanging("test_keepcon_send_date");
+                _test_keepcon_send_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("test_keepcon_send_date");
+                Ontest_keepcon_send_dateChanged();
             }
         }
-        private Nullable<global::System.DateTime> _DateToNotifyUsers;
-        partial void OnDateToNotifyUsersChanging(Nullable<global::System.DateTime> value);
-        partial void OnDateToNotifyUsersChanged();
+        private Nullable<global::System.DateTime> _test_keepcon_send_date;
+        partial void Ontest_keepcon_send_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Ontest_keepcon_send_dateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Source
+        public Nullable<global::System.DateTime> test_keepcon_resut_resifved_date
         {
             get
             {
-                return _Source;
+                return _test_keepcon_resut_resifved_date;
             }
             set
             {
-                OnSourceChanging(value);
-                ReportPropertyChanging("Source");
-                _Source = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Source");
-                OnSourceChanged();
+                Ontest_keepcon_resut_resifved_dateChanging(value);
+                ReportPropertyChanging("test_keepcon_resut_resifved_date");
+                _test_keepcon_resut_resifved_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("test_keepcon_resut_resifved_date");
+                Ontest_keepcon_resut_resifved_dateChanged();
             }
         }
-        private global::System.String _Source;
-        partial void OnSourceChanging(global::System.String value);
-        partial void OnSourceChanged();
+        private Nullable<global::System.DateTime> _test_keepcon_resut_resifved_date;
+        partial void Ontest_keepcon_resut_resifved_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Ontest_keepcon_resut_resifved_dateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String Location
+        public global::System.String test_keepcon_status
         {
             get
             {
-                return _Location;
+                return _test_keepcon_status;
             }
             set
             {
-                OnLocationChanging(value);
-                ReportPropertyChanging("Location");
-                _Location = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Location");
-                OnLocationChanged();
+                Ontest_keepcon_statusChanging(value);
+                ReportPropertyChanging("test_keepcon_status");
+                _test_keepcon_status = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("test_keepcon_status");
+                Ontest_keepcon_statusChanged();
             }
         }
-        private global::System.String _Location;
-        partial void OnLocationChanging(global::System.String value);
-        partial void OnLocationChanged();
+        private global::System.String _test_keepcon_status;
+        partial void Ontest_keepcon_statusChanging(global::System.String value);
+        partial void Ontest_keepcon_statusChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ProcessId
+        public global::System.String test_keepcon_result
         {
             get
             {
-                return _ProcessId;
+                return _test_keepcon_result;
             }
             set
             {
-                OnProcessIdChanging(value);
-                ReportPropertyChanging("ProcessId");
-                _ProcessId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ProcessId");
-                OnProcessIdChanged();
+                Ontest_keepcon_resultChanging(value);
+                ReportPropertyChanging("test_keepcon_result");
+                _test_keepcon_result = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("test_keepcon_result");
+                Ontest_keepcon_resultChanged();
             }
         }
-        private Nullable<global::System.Int32> _ProcessId;
-        partial void OnProcessIdChanging(Nullable<global::System.Int32> value);
-        partial void OnProcessIdChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ProcessTypeId
-        {
-            get
-            {
-                return _ProcessTypeId;
-            }
-            set
-            {
-                OnProcessTypeIdChanging(value);
-                ReportPropertyChanging("ProcessTypeId");
-                _ProcessTypeId = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ProcessTypeId");
-                OnProcessTypeIdChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _ProcessTypeId;
-        partial void OnProcessTypeIdChanging(Nullable<global::System.Int32> value);
-        partial void OnProcessTypeIdChanged();
+        private global::System.String _test_keepcon_result;
+        partial void Ontest_keepcon_resultChanging(global::System.String value);
+        partial void Ontest_keepcon_resultChanged();
 
         #endregion
     
