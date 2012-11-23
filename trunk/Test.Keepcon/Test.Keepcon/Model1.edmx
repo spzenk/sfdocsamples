@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BB_MovistarSM_LogsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BB_MovistarSM_LogsModelStoreContainer">
+          <EntitySet Name="Post" EntityType="BB_MovistarSM_LogsModel.Store.Post" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Post_Post" Association="BB_MovistarSM_LogsModel.Store.FK_Post_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Post1" EntitySet="Post" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="FromUserID" Type="int" Nullable="false" />
+          <Property Name="ToUserID" Type="int" />
+          <Property Name="SourcePostID" Type="varchar" Nullable="false" MaxLength="256" />
+          <Property Name="SocialNetworkID" Type="int" Nullable="false" />
+          <Property Name="AppSourceID" Type="varchar" MaxLength="100" />
+          <Property Name="Permlink" Type="varchar(max)" />
+          <Property Name="ParentPostID" Type="int" />
+          <Property Name="CreatedRow" Type="datetime" Nullable="false" />
+          <Property Name="IsBack" Type="bit" />
+          <Property Name="DateToNotifyUsers" Type="smalldatetime" />
+          <Property Name="Source" Type="varchar" MaxLength="256" />
+          <Property Name="Location" Type="varchar" MaxLength="256" />
+          <Property Name="ProcessId" Type="int" />
+          <Property Name="ProcessTypeId" Type="int" />
+        </EntityType>
+        <Association Name="FK_Post_Post">
+          <End Role="Post" Type="BB_MovistarSM_LogsModel.Store.Post" Multiplicity="0..1" />
+          <End Role="Post1" Type="BB_MovistarSM_LogsModel.Store.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Post1">
+              <PropertyRef Name="ParentPostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BB_MovistarSM_LogsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BB_MovistarSM_LogsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Post" EntityType="BB_MovistarSM_LogsModel.Post" />
+          <AssociationSet Name="FK_Post_Post" Association="BB_MovistarSM_LogsModel.FK_Post_Post">
+            <End Role="Post" EntitySet="Post" />
+            <End Role="Post1" EntitySet="Post" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="PostID" />
+          </Key>
+          <Property Name="PostID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" />
+          <Property Name="FromUserID" Type="Int32" Nullable="false" />
+          <Property Name="ToUserID" Type="Int32" />
+          <Property Name="SourcePostID" Type="String" Nullable="false" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="SocialNetworkID" Type="Int32" Nullable="false" />
+          <Property Name="AppSourceID" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Permlink" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ParentPostID" Type="Int32" />
+          <Property Name="CreatedRow" Type="DateTime" Nullable="false" />
+          <Property Name="IsBack" Type="Boolean" />
+          <Property Name="DateToNotifyUsers" Type="DateTime" />
+          <Property Name="Source" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="Location" Type="String" MaxLength="256" Unicode="false" FixedLength="false" />
+          <Property Name="ProcessId" Type="Int32" />
+          <Property Name="ProcessTypeId" Type="Int32" />
+          <NavigationProperty Name="Post1" Relationship="BB_MovistarSM_LogsModel.FK_Post_Post" FromRole="Post" ToRole="Post1" />
+          <NavigationProperty Name="Post2" Relationship="BB_MovistarSM_LogsModel.FK_Post_Post" FromRole="Post1" ToRole="Post" />
+        </EntityType>
+        <Association Name="FK_Post_Post">
+          <End Role="Post" Type="BB_MovistarSM_LogsModel.Post" Multiplicity="0..1" />
+          <End Role="Post1" Type="BB_MovistarSM_LogsModel.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Post">
+              <PropertyRef Name="PostID" />
+            </Principal>
+            <Dependent Role="Post1">
+              <PropertyRef Name="ParentPostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BB_MovistarSM_LogsModelStoreContainer" CdmEntityContainer="BB_MovistarSM_LogsEntities">
+          <EntitySetMapping Name="Post"><EntityTypeMapping TypeName="BB_MovistarSM_LogsModel.Post"><MappingFragment StoreEntitySet="Post">
+            <ScalarProperty Name="PostID" ColumnName="PostID" />
+            <ScalarProperty Name="Message" ColumnName="Message" />
+            <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+            <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
+            <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
+            <ScalarProperty Name="SourcePostID" ColumnName="SourcePostID" />
+            <ScalarProperty Name="SocialNetworkID" ColumnName="SocialNetworkID" />
+            <ScalarProperty Name="AppSourceID" ColumnName="AppSourceID" />
+            <ScalarProperty Name="Permlink" ColumnName="Permlink" />
+            <ScalarProperty Name="ParentPostID" ColumnName="ParentPostID" />
+            <ScalarProperty Name="CreatedRow" ColumnName="CreatedRow" />
+            <ScalarProperty Name="IsBack" ColumnName="IsBack" />
+            <ScalarProperty Name="DateToNotifyUsers" ColumnName="DateToNotifyUsers" />
+            <ScalarProperty Name="Source" ColumnName="Source" />
+            <ScalarProperty Name="Location" ColumnName="Location" />
+            <ScalarProperty Name="ProcessId" ColumnName="ProcessId" />
+            <ScalarProperty Name="ProcessTypeId" ColumnName="ProcessTypeId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1" ZoomLevel="92">
+        <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.Post" Width="1.5" PointX="0.75" PointY="0.75" Height="4.0575162760416656" IsExpanded="true" />
+        <AssociationConnector Association="BB_MovistarSM_LogsModel.FK_Post_Post" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.2819230769230767" PointY="4.8075162760416656" />
+          <ConnectorPoint PointX="1.2819230769230767" PointY="5.0575162760416656" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="5.0575162760416656" />
+          <ConnectorPoint PointX="1.7284615384615383" PointY="4.8075162760416656" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

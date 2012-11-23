@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<import>
+	<contenttype>MovistarPostDemo</contenttype>
+	<contents>
+		<content id="1">
+			<author type="author">1</author>
+			<url_context><![CDATA[]]></url_context>
+			<text>
+				<![CDATA[hola movistar, de vuelta vuelvo a consultar algo, hace unos meses que el credito se me gasta solo, yo no se que hacer tengo 89 pesos y en el mismo dia solo tengo 50 sin llamar ni nada
+]]>
+			</text>
+			<img><![CDATA[]]></img>
+			<video><![CDATA[]]></video>
+			<datetime>129972998518958752</datetime>
+		</content>
+		<content id="3">
+			<author type="author">4</author>
+			<url_context><![CDATA[]]></url_context>
+			<text>
+				<![CDATA[Buenas tardes,estoy desde el lunes sin poder usar Internet en el celular.
+]]>
+			</text>
+			<img><![CDATA[]]></img>
+			<video><![CDATA[]]></video>
+			<datetime>129972998518958752</datetime>
+		</content>
+		<content id="4">
+			<author type="author">5</author>
+			<url_context><![CDATA[]]></url_context>
+			<text><![CDATA[Hola necesito comunicarme con urgencia con ustedes. Por favor Ke alguien atienda]]></text>
+			<img><![CDATA[]]></img>
+			<video><![CDATA[]]></video>
+			<datetime>129972998518958752</datetime>
+		</content>
+	</contents>
+</import>
