@@ -31,7 +31,7 @@ namespace Test.Keepcon
         {
             //<?xml version="1.0" encoding="UTF-8"?><response><status>OK</status><setId>aa8f0d86-2d0d-404d-9aa0-c9644e939d9d</setId></response>
 
-            List<Post> posts = KeepconSvc.RetrivePost_To_Send();
+            List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
 
             Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
             int count = posts.Count();
@@ -98,7 +98,7 @@ namespace Test.Keepcon
         private void button6_Click(object sender, EventArgs e)
         {
 
-            List<Post> posts = KeepconSvc.RetrivePost_To_Send();
+            List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
             Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts[8]);
       
             txtImport.Text = wImport.GetXml();
