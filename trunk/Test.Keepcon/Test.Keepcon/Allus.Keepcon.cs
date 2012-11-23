@@ -33,12 +33,13 @@ namespace Allus.Keepcon
 
         public static string SendContent(Allus.Keepcon.Import.Import import)
         {
+            string result = string.Empty;
             try
             {
                 if (import.Contents.Count == 1)
-                    return HttpPUT(url_send_content_synk, import.GetXml());
+                    result = HttpPUT(url_send_content_synk, import.GetXml());
                 else
-                    return HttpPUT(url_send_content_asynk, import.GetXml());
+                    result = HttpPUT(url_send_content_asynk, import.GetXml());
             }
             catch (Exception ex)
             {
@@ -46,6 +47,8 @@ namespace Allus.Keepcon
             }
 
             Set_SendedTime(import);
+
+            return result;
         }
 
         public static string RetriveResult()
@@ -73,7 +76,7 @@ namespace Allus.Keepcon
             }
             catch (Exception ex)
             {
-                throw new Fwk.Exceptions.ExceptionHelper.(ex);
+                throw ex;
             }
         }
         public static string SendASK(string setId)
@@ -145,12 +148,13 @@ namespace Allus.Keepcon
     #region DATA
 
 
-      public static  List<Post> RetrivePost_To_Send()
+      public static  List<Post> RetrivePost_To_Send(int takeNumber)
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
+
                 var x = from s in dc.Post where s.test_keepcon_send_date.HasValue == false select s;
-                return x.ToList<Post>();
+                return x.Take(takeNumber).ToList<Post>();
 
             }
         }
@@ -175,8 +179,9 @@ namespace Allus.Keepcon
               foreach (Export.Content c in export.Contents)
               {
                   var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
-                  post.test_keepcon_resut_resifved_date = System.DateTime.Now;
-                  post.test_keepcon_result = c.ModerationDecision;
+                  post.test_keepcon_resut_resived_date =  System.DateTime.Now;
+                  post.test_keepcon_moderator_date = new DateTime(c.ModerationDate);
+                  post.test_keepcon_moderator_decision = c.ModerationDecision;
               }
               dc.SaveChanges();
           }

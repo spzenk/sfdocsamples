@@ -29,9 +29,10 @@
           <Property Name="CreatedRow" Type="datetime" Nullable="false" />
           <Property Name="IsBack" Type="bit" />
           <Property Name="test_keepcon_send_date" Type="datetime" />
-          <Property Name="test_keepcon_resut_resifved_date" Type="datetime" />
+          <Property Name="test_keepcon_resut_resived_date" Type="datetime" />
           <Property Name="test_keepcon_status" Type="char" MaxLength="10" />
-          <Property Name="test_keepcon_result" Type="char" MaxLength="10" />
+          <Property Name="test_keepcon_moderator_decision" Type="varchar" MaxLength="200" />
+          <Property Name="test_keepcon_moderator_date" Type="datetime" />
         </EntityType>
         <Association Name="FK_Post_Post">
           <End Role="Post" Type="BB_MovistarSM_LogsModel.Store.Post" Multiplicity="0..1" />
@@ -73,11 +74,12 @@
           <Property Type="DateTime" Name="CreatedRow" Nullable="false" />
           <Property Type="Boolean" Name="IsBack" />
           <Property Type="DateTime" Name="test_keepcon_send_date" />
-          <Property Type="DateTime" Name="test_keepcon_resut_resifved_date" />
           <Property Type="String" Name="test_keepcon_status" MaxLength="10" FixedLength="true" Unicode="false" />
-          <Property Type="String" Name="test_keepcon_result" MaxLength="10" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="Post1" Relationship="BB_MovistarSM_LogsModel.FK_Post_Post" FromRole="Post" ToRole="Post1" />
           <NavigationProperty Name="Post2" Relationship="BB_MovistarSM_LogsModel.FK_Post_Post" FromRole="Post1" ToRole="Post" />
+          <Property Type="String" Name="test_keepcon_moderator_decision" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="test_keepcon_moderator_date" />
+          <Property Type="DateTime" Name="test_keepcon_resut_resived_date" />
         </EntityType>
         <Association Name="FK_Post_Post">
           <End Type="BB_MovistarSM_LogsModel.Post" Role="Post" Multiplicity="0..1" />
@@ -100,9 +102,10 @@
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="BB_MovistarSM_LogsModel.Post">
               <MappingFragment StoreEntitySet="Post">
-                <ScalarProperty Name="test_keepcon_result" ColumnName="test_keepcon_result" />
+                <ScalarProperty Name="test_keepcon_resut_resived_date" ColumnName="test_keepcon_resut_resived_date" />
+                <ScalarProperty Name="test_keepcon_moderator_date" ColumnName="test_keepcon_moderator_date" />
+                <ScalarProperty Name="test_keepcon_moderator_decision" ColumnName="test_keepcon_moderator_decision" />
                 <ScalarProperty Name="test_keepcon_status" ColumnName="test_keepcon_status" />
-                <ScalarProperty Name="test_keepcon_resut_resifved_date" ColumnName="test_keepcon_resut_resifved_date" />
                 <ScalarProperty Name="test_keepcon_send_date" ColumnName="test_keepcon_send_date" />
                 <ScalarProperty Name="IsBack" ColumnName="IsBack" />
                 <ScalarProperty Name="CreatedRow" ColumnName="CreatedRow" />
@@ -140,12 +143,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model1" ZoomLevel="92">
-        <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.Post" Width="1.5" PointX="0.75" PointY="0.75" Height="4.480205078125" />
+        <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.Post" Width="3.875" PointX="0.75" PointY="0.75" Height="4.6725065104166665" />
         <AssociationConnector Association="BB_MovistarSM_LogsModel.FK_Post_Post" >
-          <ConnectorPoint PointX="1.2819230769230767" PointY="5.230205078125" />
-          <ConnectorPoint PointX="1.2819230769230767" PointY="5.480205078125" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="5.480205078125" />
-          <ConnectorPoint PointX="1.7284615384615383" PointY="5.230205078125" />
+          <ConnectorPoint PointX="2.1241346153846155" PointY="5.4225065104166665" />
+          <ConnectorPoint PointX="2.1241346153846155" PointY="5.6725065104166656" />
+          <ConnectorPoint PointX="3.2776923076923077" PointY="5.6725065104166656" />
+          <ConnectorPoint PointX="3.2776923076923077" PointY="5.4225065104166665" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
