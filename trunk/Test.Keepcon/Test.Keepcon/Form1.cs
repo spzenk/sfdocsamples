@@ -27,29 +27,21 @@ namespace Test.Keepcon
 
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSendBath_Click(object sender, EventArgs e)
         {
             //<?xml version="1.0" encoding="UTF-8"?><response><status>OK</status><setId>aa8f0d86-2d0d-404d-9aa0-c9644e939d9d</setId></response>
 
-            List<Post> posts = RetrivePost(2);
+            List<Post> posts = KeepconSvc.RetrivePost_To_Send();
 
             Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
             int count = posts.Count();
             txtImport.Text = wImport.GetXml();
             txtResult.Text = KeepconSvc.SendContent(wImport);
+
+            
         }
 
 
-        List<Post> RetrivePost(int take)
-        {
-            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
-            {
-                //var x = from s in dc.Post.Skip(skip).Take(10) select s;
-                var x = from s in dc.Post.Take(take) select s;
-                return x.ToList<Post>();
-
-            }
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -92,7 +84,10 @@ namespace Test.Keepcon
 
         private void button4_Click(object sender, EventArgs e)
         {
-            txtImport.Text = KeepconSvc.RetriveResult();
+            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
+            txtImport.Text = Fwk.HelperFunctions.SerializationFunctions.SerializeToXml(export);
+            KeepconSvc.SaveResult(export);
+            
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -103,7 +98,7 @@ namespace Test.Keepcon
         private void button6_Click(object sender, EventArgs e)
         {
 
-            List<Post> posts = RetrivePost(9);
+            List<Post> posts = KeepconSvc.RetrivePost_To_Send();
             Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts[8]);
       
             txtImport.Text = wImport.GetXml();
