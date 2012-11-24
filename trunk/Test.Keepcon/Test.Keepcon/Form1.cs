@@ -43,6 +43,37 @@ namespace Test.Keepcon
 
 
 
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
+            if (export != null)
+            {
+                txtImport.Text = export.GetXml();
+                txtSetId.Text = export.SetId;
+                KeepconSvc.SaveResult(export);
+            }
+            
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            txtImport.Text = KeepconSvc.SendASK(txtSetId.Text);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+
+            List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
+            Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts[8]);
+      
+            txtImport.Text = wImport.GetXml();
+
+            txtResult.Text = KeepconSvc.SendContent(wImport);
+        }
+
+        #region chek xml
+
+
         private void button2_Click(object sender, EventArgs e)
         {
 
@@ -81,30 +112,21 @@ namespace Test.Keepcon
 
             txtImport.Text = exp.GetXml();
         }
+        #endregion
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
-            txtImport.Text = Fwk.HelperFunctions.SerializationFunctions.SerializeToXml(export);
-            KeepconSvc.SaveResult(export);
             
+
+            long unixDate = long.Parse(textBox1.Text);
+            DateTime start = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            DateTime date = start.AddMilliseconds(unixDate).ToLocalTime();
+
+            
+
+            MessageBox.Show(date.ToString());
         }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            txtImport.Text = KeepconSvc.SendASK(txtSetId.Text);
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-            List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
-            Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts[8]);
-      
-            txtImport.Text = wImport.GetXml();
-
-            txtResult.Text = KeepconSvc.SendContent(wImport);
-        }
     }
 
     //public partial class Post

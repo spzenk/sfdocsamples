@@ -28,11 +28,13 @@
           <Property Name="ParentPostID" Type="int" />
           <Property Name="CreatedRow" Type="datetime" Nullable="false" />
           <Property Name="IsBack" Type="bit" />
-          <Property Name="test_keepcon_send_date" Type="datetime" />
-          <Property Name="test_keepcon_resut_resived_date" Type="datetime" />
-          <Property Name="test_keepcon_status" Type="char" MaxLength="10" />
-          <Property Name="test_keepcon_moderator_decision" Type="varchar" MaxLength="200" />
-          <Property Name="test_keepcon_moderator_date" Type="datetime" />
+          <Property Name="keepcon_send_date" Type="datetime" />
+          <Property Name="keepcon_result_resived_date" Type="datetime" />
+          <Property Name="keepcon_moderator_decision" Type="varchar" MaxLength="200" />
+          <Property Name="keepcon_moderator_date" Type="datetime" />
+          <Property Name="keepcon_send_setId" Type="uniqueidentifier" />
+          <Property Name="keepcon_result_setId" Type="varchar" MaxLength="300" />
+          <Property Name="keepcon_moderator" Type="varchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_Post_Post">
           <End Role="Post" Type="BB_MovistarSM_LogsModel.Store.Post" Multiplicity="0..1" />
@@ -73,13 +75,15 @@
           <Property Type="Int32" Name="ParentPostID" />
           <Property Type="DateTime" Name="CreatedRow" Nullable="false" />
           <Property Type="Boolean" Name="IsBack" />
-          <Property Type="DateTime" Name="test_keepcon_send_date" />
-          <Property Type="String" Name="test_keepcon_status" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Type="DateTime" Name="keepcon_send_date" />
+          <Property Type="DateTime" Name="keepcon_result_resived_date" />
+          <Property Type="String" Name="keepcon_moderator_decision" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="keepcon_moderator_date" />
+          <Property Type="Guid" Name="keepcon_send_setId" />
+          <Property Type="String" Name="keepcon_result_setId" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="keepcon_moderator" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Post1" Relationship="BB_MovistarSM_LogsModel.FK_Post_Post" FromRole="Post" ToRole="Post1" />
           <NavigationProperty Name="Post2" Relationship="BB_MovistarSM_LogsModel.FK_Post_Post" FromRole="Post1" ToRole="Post" />
-          <Property Type="String" Name="test_keepcon_moderator_decision" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Type="DateTime" Name="test_keepcon_moderator_date" />
-          <Property Type="DateTime" Name="test_keepcon_resut_resived_date" />
         </EntityType>
         <Association Name="FK_Post_Post">
           <End Type="BB_MovistarSM_LogsModel.Post" Role="Post" Multiplicity="0..1" />
@@ -102,11 +106,13 @@
           <EntitySetMapping Name="Post">
             <EntityTypeMapping TypeName="BB_MovistarSM_LogsModel.Post">
               <MappingFragment StoreEntitySet="Post">
-                <ScalarProperty Name="test_keepcon_resut_resived_date" ColumnName="test_keepcon_resut_resived_date" />
-                <ScalarProperty Name="test_keepcon_moderator_date" ColumnName="test_keepcon_moderator_date" />
-                <ScalarProperty Name="test_keepcon_moderator_decision" ColumnName="test_keepcon_moderator_decision" />
-                <ScalarProperty Name="test_keepcon_status" ColumnName="test_keepcon_status" />
-                <ScalarProperty Name="test_keepcon_send_date" ColumnName="test_keepcon_send_date" />
+                <ScalarProperty Name="keepcon_moderator" ColumnName="keepcon_moderator" />
+                <ScalarProperty Name="keepcon_result_setId" ColumnName="keepcon_result_setId" />
+                <ScalarProperty Name="keepcon_send_setId" ColumnName="keepcon_send_setId" />
+                <ScalarProperty Name="keepcon_moderator_date" ColumnName="keepcon_moderator_date" />
+                <ScalarProperty Name="keepcon_moderator_decision" ColumnName="keepcon_moderator_decision" />
+                <ScalarProperty Name="keepcon_result_resived_date" ColumnName="keepcon_result_resived_date" />
+                <ScalarProperty Name="keepcon_send_date" ColumnName="keepcon_send_date" />
                 <ScalarProperty Name="IsBack" ColumnName="IsBack" />
                 <ScalarProperty Name="CreatedRow" ColumnName="CreatedRow" />
                 <ScalarProperty Name="ParentPostID" ColumnName="ParentPostID" />
@@ -143,12 +149,12 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Model1" ZoomLevel="92">
-        <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.Post" Width="3.875" PointX="0.75" PointY="0.75" Height="4.6725065104166665" />
+        <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.Post" Width="3.875" PointX="0.75" PointY="0.75" Height="5.057109375" />
         <AssociationConnector Association="BB_MovistarSM_LogsModel.FK_Post_Post" >
-          <ConnectorPoint PointX="2.1241346153846155" PointY="5.4225065104166665" />
-          <ConnectorPoint PointX="2.1241346153846155" PointY="5.6725065104166656" />
-          <ConnectorPoint PointX="3.2776923076923077" PointY="5.6725065104166656" />
-          <ConnectorPoint PointX="3.2776923076923077" PointY="5.4225065104166665" />
+          <ConnectorPoint PointX="2.1241346153846155" PointY="5.807109375" />
+          <ConnectorPoint PointX="2.1241346153846155" PointY="6.057109375" />
+          <ConnectorPoint PointX="3.2776923076923077" PointY="6.057109375" />
+          <ConnectorPoint PointX="3.2776923076923077" PointY="5.807109375" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
