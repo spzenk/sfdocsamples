@@ -437,120 +437,168 @@ namespace Allus.Keepcon
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> test_keepcon_send_date
+        public Nullable<global::System.DateTime> keepcon_send_date
         {
             get
             {
-                return _test_keepcon_send_date;
+                return _keepcon_send_date;
             }
             set
             {
-                Ontest_keepcon_send_dateChanging(value);
-                ReportPropertyChanging("test_keepcon_send_date");
-                _test_keepcon_send_date = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("test_keepcon_send_date");
-                Ontest_keepcon_send_dateChanged();
+                Onkeepcon_send_dateChanging(value);
+                ReportPropertyChanging("keepcon_send_date");
+                _keepcon_send_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("keepcon_send_date");
+                Onkeepcon_send_dateChanged();
             }
         }
-        private Nullable<global::System.DateTime> _test_keepcon_send_date;
-        partial void Ontest_keepcon_send_dateChanging(Nullable<global::System.DateTime> value);
-        partial void Ontest_keepcon_send_dateChanged();
+        private Nullable<global::System.DateTime> _keepcon_send_date;
+        partial void Onkeepcon_send_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Onkeepcon_send_dateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String test_keepcon_status
+        public Nullable<global::System.DateTime> keepcon_result_resived_date
         {
             get
             {
-                return _test_keepcon_status;
+                return _keepcon_result_resived_date;
             }
             set
             {
-                Ontest_keepcon_statusChanging(value);
-                ReportPropertyChanging("test_keepcon_status");
-                _test_keepcon_status = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("test_keepcon_status");
-                Ontest_keepcon_statusChanged();
+                Onkeepcon_result_resived_dateChanging(value);
+                ReportPropertyChanging("keepcon_result_resived_date");
+                _keepcon_result_resived_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("keepcon_result_resived_date");
+                Onkeepcon_result_resived_dateChanged();
             }
         }
-        private global::System.String _test_keepcon_status;
-        partial void Ontest_keepcon_statusChanging(global::System.String value);
-        partial void Ontest_keepcon_statusChanged();
+        private Nullable<global::System.DateTime> _keepcon_result_resived_date;
+        partial void Onkeepcon_result_resived_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Onkeepcon_result_resived_dateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String test_keepcon_moderator_decision
+        public global::System.String keepcon_moderator_decision
         {
             get
             {
-                return _test_keepcon_moderator_decision;
+                return _keepcon_moderator_decision;
             }
             set
             {
-                Ontest_keepcon_moderator_decisionChanging(value);
-                ReportPropertyChanging("test_keepcon_moderator_decision");
-                _test_keepcon_moderator_decision = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("test_keepcon_moderator_decision");
-                Ontest_keepcon_moderator_decisionChanged();
+                Onkeepcon_moderator_decisionChanging(value);
+                ReportPropertyChanging("keepcon_moderator_decision");
+                _keepcon_moderator_decision = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("keepcon_moderator_decision");
+                Onkeepcon_moderator_decisionChanged();
             }
         }
-        private global::System.String _test_keepcon_moderator_decision;
-        partial void Ontest_keepcon_moderator_decisionChanging(global::System.String value);
-        partial void Ontest_keepcon_moderator_decisionChanged();
+        private global::System.String _keepcon_moderator_decision;
+        partial void Onkeepcon_moderator_decisionChanging(global::System.String value);
+        partial void Onkeepcon_moderator_decisionChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> test_keepcon_moderator_date
+        public Nullable<global::System.DateTime> keepcon_moderator_date
         {
             get
             {
-                return _test_keepcon_moderator_date;
+                return _keepcon_moderator_date;
             }
             set
             {
-                Ontest_keepcon_moderator_dateChanging(value);
-                ReportPropertyChanging("test_keepcon_moderator_date");
-                _test_keepcon_moderator_date = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("test_keepcon_moderator_date");
-                Ontest_keepcon_moderator_dateChanged();
+                Onkeepcon_moderator_dateChanging(value);
+                ReportPropertyChanging("keepcon_moderator_date");
+                _keepcon_moderator_date = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("keepcon_moderator_date");
+                Onkeepcon_moderator_dateChanged();
             }
         }
-        private Nullable<global::System.DateTime> _test_keepcon_moderator_date;
-        partial void Ontest_keepcon_moderator_dateChanging(Nullable<global::System.DateTime> value);
-        partial void Ontest_keepcon_moderator_dateChanged();
+        private Nullable<global::System.DateTime> _keepcon_moderator_date;
+        partial void Onkeepcon_moderator_dateChanging(Nullable<global::System.DateTime> value);
+        partial void Onkeepcon_moderator_dateChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.DateTime> test_keepcon_resut_resived_date
+        public Nullable<global::System.Guid> keepcon_send_setId
         {
             get
             {
-                return _test_keepcon_resut_resived_date;
+                return _keepcon_send_setId;
             }
             set
             {
-                Ontest_keepcon_resut_resived_dateChanging(value);
-                ReportPropertyChanging("test_keepcon_resut_resived_date");
-                _test_keepcon_resut_resived_date = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("test_keepcon_resut_resived_date");
-                Ontest_keepcon_resut_resived_dateChanged();
+                Onkeepcon_send_setIdChanging(value);
+                ReportPropertyChanging("keepcon_send_setId");
+                _keepcon_send_setId = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("keepcon_send_setId");
+                Onkeepcon_send_setIdChanged();
             }
         }
-        private Nullable<global::System.DateTime> _test_keepcon_resut_resived_date;
-        partial void Ontest_keepcon_resut_resived_dateChanging(Nullable<global::System.DateTime> value);
-        partial void Ontest_keepcon_resut_resived_dateChanged();
+        private Nullable<global::System.Guid> _keepcon_send_setId;
+        partial void Onkeepcon_send_setIdChanging(Nullable<global::System.Guid> value);
+        partial void Onkeepcon_send_setIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String keepcon_result_setId
+        {
+            get
+            {
+                return _keepcon_result_setId;
+            }
+            set
+            {
+                Onkeepcon_result_setIdChanging(value);
+                ReportPropertyChanging("keepcon_result_setId");
+                _keepcon_result_setId = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("keepcon_result_setId");
+                Onkeepcon_result_setIdChanged();
+            }
+        }
+        private global::System.String _keepcon_result_setId;
+        partial void Onkeepcon_result_setIdChanging(global::System.String value);
+        partial void Onkeepcon_result_setIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String keepcon_moderator
+        {
+            get
+            {
+                return _keepcon_moderator;
+            }
+            set
+            {
+                Onkeepcon_moderatorChanging(value);
+                ReportPropertyChanging("keepcon_moderator");
+                _keepcon_moderator = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("keepcon_moderator");
+                Onkeepcon_moderatorChanged();
+            }
+        }
+        private global::System.String _keepcon_moderator;
+        partial void Onkeepcon_moderatorChanging(global::System.String value);
+        partial void Onkeepcon_moderatorChanged();
 
         #endregion
     

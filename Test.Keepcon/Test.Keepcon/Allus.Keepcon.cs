@@ -5,6 +5,7 @@ using System.Text;
 using System.Net;
 using System.Security.Cryptography;
 using System.IO;
+using Allus.Keepcon.Import;
 
 namespace Allus.Keepcon
 {
@@ -24,7 +25,7 @@ namespace Allus.Keepcon
         {
             WebProxy wWebProxy = new WebProxy("proxyallus", 3128);
             wWebProxy.Credentials = new System.Net.NetworkCredential("moviedo", "Lincelin4", "allus-ar");
-            Proxy = wWebProxy;
+           // Proxy = wWebProxy;
 
             user = "MovistarPostDemo";
             password = "k33pc0n12112012";
@@ -33,6 +34,7 @@ namespace Allus.Keepcon
 
         public static string SendContent(Allus.Keepcon.Import.Import import)
         {
+            DateTime datetime = System.DateTime.Now;
             string result = string.Empty;
             try
             {
@@ -40,13 +42,16 @@ namespace Allus.Keepcon
                     result = HttpPUT(url_send_content_synk, import.GetXml());
                 else
                     result = HttpPUT(url_send_content_asynk, import.GetXml());
+
+
             }
             catch (Exception ex)
             {
                 return Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
             }
 
-            Set_SendedTime(import);
+            Response response = (Response)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(Response), result);
+            Set_SendedTime(import, response, datetime);
 
             return result;
         }
@@ -69,7 +74,8 @@ namespace Allus.Keepcon
             try
             {
                 string result =  HttpPUT(string.Format(url_get_result, user), string.Empty);
-                import = (Allus.Keepcon.Export.Export)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(Allus.Keepcon.Export.Export), result);
+                if (!String.IsNullOrEmpty(result))
+                    import = Export.Export.SetXml(result);
 
                 return import;
 
@@ -153,7 +159,7 @@ namespace Allus.Keepcon
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
 
-                var x = from s in dc.Post where s.test_keepcon_send_date.HasValue == false select s;
+                var x = from s in dc.Post where s.keepcon_send_date.HasValue == false select s;
                 return x.Take(takeNumber).ToList<Post>();
 
             }
@@ -162,7 +168,7 @@ namespace Allus.Keepcon
       {
           using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
           {
-              var x = from s in dc.Post where s.test_keepcon_send_date.HasValue == false select s;
+              var x = from s in dc.Post where s.keepcon_send_date.HasValue == false select s;
               return x.ToList<Post>();
 
           }
@@ -179,22 +185,27 @@ namespace Allus.Keepcon
               foreach (Export.Content c in export.Contents)
               {
                   var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
-                  post.test_keepcon_resut_resived_date =  System.DateTime.Now;
-                  post.test_keepcon_moderator_date = new DateTime(c.ModerationDate);
-                  post.test_keepcon_moderator_decision = c.ModerationDecision;
+                  post.keepcon_result_resived_date =  System.DateTime.Now;
+                  post.keepcon_moderator_date = Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(c.ModerationDate);
+                  post.keepcon_moderator_decision = c.ModerationDecision;
+                  post.keepcon_result_setId = export.SetId;
+                  post.keepcon_moderator = c.ModeratorName;
+                  
               }
               dc.SaveChanges();
           }
       }
       
-        static void Set_SendedTime(Import.Import import )
+        static void Set_SendedTime(Import.Import import,Response response,DateTime datetime )
       {
+          
           using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
           {
               foreach (Import.Content c in import.Contents)
               {
                   var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
-                  post.test_keepcon_send_date = System.DateTime.Now;
+                  post.keepcon_send_date = datetime;
+                  post.keepcon_send_setId = response.SetGuid;
               }
               dc.SaveChanges();
           }

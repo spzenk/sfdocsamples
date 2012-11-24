@@ -10,7 +10,8 @@ namespace Allus.Keepcon.Export
     [XmlRootAttribute("export")]
     public class Export
     {
-
+        [XmlAttribute("setId")]
+        public String SetId { get; set; }
         public Export()
         {
             this.Contents = new List<Content>();

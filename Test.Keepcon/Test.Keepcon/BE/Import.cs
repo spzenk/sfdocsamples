@@ -6,7 +6,7 @@ using System.Xml.Serialization;
 
 namespace Allus.Keepcon.Import
 {
-  
+
     [Serializable]
     [XmlRootAttribute("import")]
     public class Import
@@ -18,7 +18,7 @@ namespace Allus.Keepcon.Import
             this.Contenttype = "MovistarPostDemo";
 
 
-            Content wContent              = new Content();
+            Content wContent = new Content();
 
             wContent.Author = new Author("author", post.FromUserID.ToString());
 
@@ -53,15 +53,15 @@ namespace Allus.Keepcon.Import
                 //wContent.Date = System.DateTime.Now;
                 wContent.Id = p.PostID;
                 wContent.Text.Text = p.Message;
-               // wContent.Url_Context.Text = "http://allus.com.ar";
+                // wContent.Url_Context.Text = "http://allus.com.ar";
 
 
                 this.Contents.Add(wContent);
             }
-          
-           
-          
-            
+
+
+
+
         }
 
         public Import()
@@ -80,11 +80,11 @@ namespace Allus.Keepcon.Import
             return Fwk.HelperFunctions.SerializationFunctions.SerializeToXml(this);
         }
 
-        
+
     }
 
 
- 
+
 
     public class Content
     {
@@ -141,6 +141,23 @@ namespace Allus.Keepcon.Import
         public string Type { get; set; }
     }
 
-   
+    //<response><status>OK</status><setId>2f08b13e-ec34-412f-a5c3-3def1982ef83</setId></response>
+    [Serializable]
+    [XmlRootAttribute("response")]
+    public class Response
+    {
+        [XmlElement("status")]
+        public String Status { get; set; }
+
+        [XmlElement("setId")]
+        public String SetId { get; set; }
+
+        [XmlIgnore()]
+        public Guid SetGuid
+        {
+            get { return new Guid(SetId); }
+        }
+
+    }
 
 }
