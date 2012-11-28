@@ -7,7 +7,7 @@ using System.ServiceModel.Activation;
 
 namespace SecureWcf
 {
-    [ServiceBehavior(IncludeExceptionDetailInFaults = true)]
+    [ServiceBehavior(IncludeExceptionDetailInFaults = WCFHelper.IncludeExceptionDetailInFaults)]
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class CoreSecurityAspnet : ICoreSecurityAspnet
     {
