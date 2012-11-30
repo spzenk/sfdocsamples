@@ -8,6 +8,8 @@ using System.Text;
 using System.Windows.Forms;
 using Client2.ServiceReference1;
 using System.Net;
+using System.ServiceModel;
+
 
 namespace Client2
 {
@@ -26,9 +28,10 @@ namespace Client2
         private void button1_Click(object sender, EventArgs e)
         {
             textBox1.Text = string.Empty;
+            CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
             try
             {
-                CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
+                
 
                 //clientProxy.ClientCredentials.Windows.AllowedImpersonationLevel = System.Security.Principal.TokenImpersonationLevel.None;
                 // clientProxy.ChannelFactory.Credentials.Windows.ClientCredential.UserName = usr;
@@ -52,13 +55,20 @@ namespace Client2
 
 
                 string wGetDataResult = clientProxy.GetData(123);
-
+                clientProxy.Close();
                 MessageBox.Show(wGetDataResult);
+            }
+            catch (FaultException fx)
+            {
+                textBox1.Text ="FaultException\r\n" + Fwk.Exceptions.ExceptionHelper.GetAllMessageException(fx);
+                clientProxy.Abort();
+
             }
             catch (Exception err)
             {
 
                 textBox1.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(err);
+                clientProxy.Abort();
             }
         }
 
@@ -121,6 +131,49 @@ namespace Client2
         {
             if (SaveStorage())
                 MessageBox.Show("Settings was successfully saved");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string wGetDataResult = string.Empty; 
+            textBox1.Text = string.Empty;
+            CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
+            try
+            {
+
+
+                clientProxy.ClientCredentials.Windows.ClientCredential.UserName = txtUser.Text.Trim();
+                clientProxy.ClientCredentials.Windows.ClientCredential.Password = txtPwd.Text.Trim();
+                clientProxy.ClientCredentials.Windows.ClientCredential.Domain = txtDomain.Text.Trim();
+                if (chkUseProxy.Checked)
+                {
+                    WebProxy proxy = new WebProxy(storage.StorageObject.ProxyAddress, false);
+                    proxy.Credentials = new NetworkCredential(storage.StorageObject.ProxyUser, storage.StorageObject.ProxyPassword, storage.StorageObject.ProxyDomain);
+                    WebRequest.DefaultWebProxy = proxy;
+                }
+                 wGetDataResult = clientProxy.GetData(1);
+
+                MessageBox.Show(wGetDataResult);
+            }
+                //No cierra el canal
+            catch (FaultException<WCFServiceError> fx)
+            {
+                textBox1.Text = "FaultException\r\n" + Fwk.Exceptions.ExceptionHelper.GetAllMessageException(fx);
+                //puedo hacer Abort si lo deceo o bien puedo continuar utilizando el proxy
+                clientProxy.Abort();
+            }
+            //Cierra el canal
+            catch (Exception err)
+            {
+
+                textBox1.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(err);
+                clientProxy.Abort();
+            }
+
+
+             wGetDataResult = clientProxy.GetData(111111);
+
+            MessageBox.Show(wGetDataResult);
         }
     }
 }
