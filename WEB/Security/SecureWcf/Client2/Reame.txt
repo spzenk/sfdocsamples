@@ -1,6 +1,6 @@
 ﻿Usuario no Valido
 
-	SOAP security negotiation with 'http://192.168.1.116/SecureWcf/CoreSecurity.svc' for target 'http://192.168.1.116/SecureWcf/CoreSecurity.svc' failed. See inner exception for more details.Source: 
+	SOAP security negotiation with 'http://localhost:38258/CoreSecurity.svc' for target 'http://localhost:38258/CoreSecurity.svc' failed. See inner exception for more details.Source: 
 	System.ServiceModel
 
 	Message: 
