@@ -17,7 +17,7 @@ namespace Client2
     {
         Fwk.Caching.FwkSimpleStorageBase<Cache> storage = new Fwk.Caching.FwkSimpleStorageBase<Cache>();
         //   string usr = "administrador";
-     
+
         //No importa el dominio cuando el  iis no esta agragada a ningun dominio
         string domain = "192.168.1.116";
         public Form1()
@@ -31,7 +31,7 @@ namespace Client2
             CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
             try
             {
-                
+
 
                 //clientProxy.ClientCredentials.Windows.AllowedImpersonationLevel = System.Security.Principal.TokenImpersonationLevel.None;
                 // clientProxy.ChannelFactory.Credentials.Windows.ClientCredential.UserName = usr;
@@ -60,7 +60,7 @@ namespace Client2
             }
             catch (FaultException fx)
             {
-                textBox1.Text ="FaultException\r\n" + Fwk.Exceptions.ExceptionHelper.GetAllMessageException(fx);
+                textBox1.Text = "FaultException\r\n" + Fwk.Exceptions.ExceptionHelper.GetAllMessageException(fx);
                 clientProxy.Abort();
 
             }
@@ -135,7 +135,7 @@ namespace Client2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string wGetDataResult = string.Empty; 
+            string wGetDataResult = string.Empty;
             textBox1.Text = string.Empty;
             CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
             try
@@ -151,11 +151,11 @@ namespace Client2
                     proxy.Credentials = new NetworkCredential(storage.StorageObject.ProxyUser, storage.StorageObject.ProxyPassword, storage.StorageObject.ProxyDomain);
                     WebRequest.DefaultWebProxy = proxy;
                 }
-                 wGetDataResult = clientProxy.GetData(1);
+                wGetDataResult = clientProxy.GetData(1);
 
                 MessageBox.Show(wGetDataResult);
             }
-                //No cierra el canal
+            //No cierra el canal
             catch (FaultException<WCFServiceError> fx)
             {
                 textBox1.Text = "FaultException\r\n" + Fwk.Exceptions.ExceptionHelper.GetAllMessageException(fx);
@@ -170,10 +170,47 @@ namespace Client2
                 clientProxy.Abort();
             }
 
-
-             wGetDataResult = clientProxy.GetData(111111);
+            wGetDataResult = clientProxy.GetData(111111);
 
             MessageBox.Show(wGetDataResult);
+        }
+
+        private void btnConcurrency_Click(object sender, EventArgs e)
+        {
+            string wGetDataResult = string.Empty;
+            textBox1.Text = string.Empty;
+            CoreSecurityClient clientProxy = new ServiceReference1.CoreSecurityClient("ws");
+            try
+            {
+
+
+                clientProxy.ClientCredentials.Windows.ClientCredential.UserName = txtUser.Text.Trim();
+                clientProxy.ClientCredentials.Windows.ClientCredential.Password = txtPwd.Text.Trim();
+                clientProxy.ClientCredentials.Windows.ClientCredential.Domain = txtDomain.Text.Trim();
+                if (chkUseProxy.Checked)
+                {
+                    WebProxy proxy = new WebProxy(storage.StorageObject.ProxyAddress, false);
+                    proxy.Credentials = new NetworkCredential(storage.StorageObject.ProxyUser, storage.StorageObject.ProxyPassword, storage.StorageObject.ProxyDomain);
+                    WebRequest.DefaultWebProxy = proxy;
+                }
+                wGetDataResult = clientProxy.GetData(Convert.ToInt32(txtInput.Text));
+
+                MessageBox.Show(wGetDataResult);
+            }
+            //No cierra el canal
+            catch (FaultException<WCFServiceError> fx)
+            {
+                textBox1.Text = "FaultException\r\n" + Fwk.Exceptions.ExceptionHelper.GetAllMessageException(fx);
+                //puedo hacer Abort si lo deceo o bien puedo continuar utilizando el proxy
+                clientProxy.Abort();
+            }
+            //Cierra el canal
+            catch (Exception err)
+            {
+
+                textBox1.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(err);
+                clientProxy.Abort();
+            }
         }
     }
 }
