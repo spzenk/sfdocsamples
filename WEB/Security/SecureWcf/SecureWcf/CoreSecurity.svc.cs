@@ -8,11 +8,16 @@ using System.Text;
 
 namespace SecureWcf
 {
+    [ServiceBehavior(ConcurrencyMode = ConcurrencyMode.Multiple  )]
     public class CoreSecurity : ICoreSecurity
     {
      
+        
         public string GetData(int value)
         {
+
+            int x = value * 3;
+
             //Si hay una excepción interna que no se atrapa y se define como FaultException<SomeError> exception,
             //entonces el canal se cerrará, así que para evitar que el canal se cierre, siempre se deben definir las excepciones como FaultException<SomeError> exception (
             if (value == 0)

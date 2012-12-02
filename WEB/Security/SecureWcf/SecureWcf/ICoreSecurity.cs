@@ -12,8 +12,7 @@ namespace SecureWcf
     [ServiceContract]
     public interface ICoreSecurity
     {
-
-        [OperationContract]
+         [OperationContract]
         [FaultContract(typeof(WCFServiceError))]
         string GetData(int value);
 
