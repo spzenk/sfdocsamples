@@ -92,7 +92,13 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\ServiceReference1\Client2.ServiceReference1.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\ServiceReference1\CoreSecurity.wsdl" />
+    <None Include="Service References\ServiceReference1\CoreSecurity.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ServiceReference1\CoreSecurity1.wsdl" />
     <None Include="Service References\ServiceReference1\CoreSecurity1.xsd">
       <SubType>Designer</SubType>
@@ -115,13 +121,13 @@
     <None Include="Service References\ServiceReference1\CoreSecurity.disco" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Client\Client.Basic.csproj">
       <Project>{B1C7590D-00E5-4B11-ADDE-5A37D21EFB21}</Project>
       <Name>Client.Basic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ServiceReference1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

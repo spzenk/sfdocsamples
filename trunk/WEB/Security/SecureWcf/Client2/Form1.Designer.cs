@@ -50,6 +50,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnConcurrency = new System.Windows.Forms.Button();
+            this.txtInput = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -66,10 +68,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 220);
+            this.textBox1.Location = new System.Drawing.Point(12, 230);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1005, 299);
+            this.textBox1.Size = new System.Drawing.Size(985, 289);
             this.textBox1.TabIndex = 1;
             // 
             // chkUseProxy
@@ -262,11 +264,31 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btnConcurrency
+            // 
+            this.btnConcurrency.Location = new System.Drawing.Point(826, 189);
+            this.btnConcurrency.Name = "btnConcurrency";
+            this.btnConcurrency.Size = new System.Drawing.Size(171, 35);
+            this.btnConcurrency.TabIndex = 13;
+            this.btnConcurrency.Text = "Test ConcurrencyMode";
+            this.btnConcurrency.UseVisualStyleBackColor = true;
+            this.btnConcurrency.Click += new System.EventHandler(this.btnConcurrency_Click);
+            // 
+            // txtInput
+            // 
+            this.txtInput.Location = new System.Drawing.Point(606, 189);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(175, 22);
+            this.txtInput.TabIndex = 14;
+            this.txtInput.Text = "89";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1243, 521);
+            this.ClientSize = new System.Drawing.Size(1013, 521);
+            this.Controls.Add(this.txtInput);
+            this.Controls.Add(this.btnConcurrency);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnSaveSettings);
             this.Controls.Add(this.label7);
@@ -312,6 +334,8 @@
         private System.Windows.Forms.TextBox txtProxyAddress;
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnConcurrency;
+        private System.Windows.Forms.TextBox txtInput;
     }
 }
 
