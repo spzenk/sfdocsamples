@@ -95,6 +95,13 @@
     <None Include="Service References\ServiceReference1\Client2.ServiceReference1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Reame.txt" />
+    <None Include="Service References\ServiceReference1\CoreSecurity.disco" />
     <None Include="Service References\ServiceReference1\CoreSecurity.wsdl" />
     <None Include="Service References\ServiceReference1\CoreSecurity.xsd">
       <SubType>Designer</SubType>
@@ -106,19 +113,12 @@
     <None Include="Service References\ServiceReference1\CoreSecurity2.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Reame.txt" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference1\CoreSecurity.disco" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Client\Client.Basic.csproj">
