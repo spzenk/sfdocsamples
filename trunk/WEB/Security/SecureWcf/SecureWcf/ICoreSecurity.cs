@@ -15,7 +15,8 @@ namespace SecureWcf
          [OperationContract]
         [FaultContract(typeof(WCFServiceError))]
         string GetData(int value);
-
+        [OperationContract]
+         int GetData_y();
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
