@@ -51,14 +51,27 @@
             this.btnSaveSettings = new System.Windows.Forms.Button();
             this.txtInput = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.txtSessionId = new System.Windows.Forms.TextBox();
+            this.txtProxy1_SessionId = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnProxy2_GetData = new System.Windows.Forms.Button();
+            this.btnProxy2_Close = new System.Windows.Forms.Button();
+            this.btnProxy2_GetData_y = new System.Windows.Forms.Button();
+            this.btnProxy2_Open = new System.Windows.Forms.Button();
+            this.txtProxy2_SessionId = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 224);
+            this.button1.Location = new System.Drawing.Point(6, 6);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(260, 35);
             this.button1.TabIndex = 0;
@@ -68,10 +81,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 293);
+            this.textBox1.Location = new System.Drawing.Point(12, 415);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(985, 226);
+            this.textBox1.Size = new System.Drawing.Size(985, 104);
             this.textBox1.TabIndex = 1;
             // 
             // chkUseProxy
@@ -256,7 +269,7 @@
             // 
             // txtInput
             // 
-            this.txtInput.Location = new System.Drawing.Point(278, 230);
+            this.txtInput.Location = new System.Drawing.Point(470, 197);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(62, 22);
             this.txtInput.TabIndex = 14;
@@ -264,28 +277,134 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(445, 230);
+            this.button3.Location = new System.Drawing.Point(272, 3);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(283, 35);
+            this.button3.Size = new System.Drawing.Size(150, 35);
             this.button3.TabIndex = 21;
             this.button3.Text = "GetData_y";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
-            // txtSessionId
+            // txtProxy1_SessionId
             // 
-            this.txtSessionId.Location = new System.Drawing.Point(12, 197);
-            this.txtSessionId.Name = "txtSessionId";
-            this.txtSessionId.Size = new System.Drawing.Size(431, 22);
-            this.txtSessionId.TabIndex = 22;
+            this.txtProxy1_SessionId.Location = new System.Drawing.Point(40, 59);
+            this.txtProxy1_SessionId.Name = "txtProxy1_SessionId";
+            this.txtProxy1_SessionId.Size = new System.Drawing.Size(431, 22);
+            this.txtProxy1_SessionId.TabIndex = 22;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(452, 6);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(103, 35);
+            this.button2.TabIndex = 23;
+            this.button2.Text = "Open";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(561, 6);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(103, 35);
+            this.button4.TabIndex = 24;
+            this.button4.Text = "Close";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click_1);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 225);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(821, 175);
+            this.tabControl1.TabIndex = 25;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.txtProxy1_SessionId);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.button2);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(813, 146);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Proxy 1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.txtProxy2_SessionId);
+            this.tabPage2.Controls.Add(this.btnProxy2_GetData);
+            this.tabPage2.Controls.Add(this.btnProxy2_Close);
+            this.tabPage2.Controls.Add(this.btnProxy2_GetData_y);
+            this.tabPage2.Controls.Add(this.btnProxy2_Open);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(813, 146);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Proxy 2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnProxy2_GetData
+            // 
+            this.btnProxy2_GetData.Location = new System.Drawing.Point(77, 19);
+            this.btnProxy2_GetData.Name = "btnProxy2_GetData";
+            this.btnProxy2_GetData.Size = new System.Drawing.Size(260, 35);
+            this.btnProxy2_GetData.TabIndex = 25;
+            this.btnProxy2_GetData.Text = "Test service --> GetData";
+            this.btnProxy2_GetData.UseVisualStyleBackColor = true;
+            this.btnProxy2_GetData.Click += new System.EventHandler(this.btnProxy2_GetData_Click);
+            // 
+            // btnProxy2_Close
+            // 
+            this.btnProxy2_Close.Location = new System.Drawing.Point(632, 19);
+            this.btnProxy2_Close.Name = "btnProxy2_Close";
+            this.btnProxy2_Close.Size = new System.Drawing.Size(103, 35);
+            this.btnProxy2_Close.TabIndex = 28;
+            this.btnProxy2_Close.Text = "Close";
+            this.btnProxy2_Close.UseVisualStyleBackColor = true;
+            this.btnProxy2_Close.Click += new System.EventHandler(this.btnProxy2_Close_Click);
+            // 
+            // btnProxy2_GetData_y
+            // 
+            this.btnProxy2_GetData_y.Location = new System.Drawing.Point(343, 16);
+            this.btnProxy2_GetData_y.Name = "btnProxy2_GetData_y";
+            this.btnProxy2_GetData_y.Size = new System.Drawing.Size(150, 35);
+            this.btnProxy2_GetData_y.TabIndex = 26;
+            this.btnProxy2_GetData_y.Text = "GetData_y";
+            this.btnProxy2_GetData_y.UseVisualStyleBackColor = true;
+            this.btnProxy2_GetData_y.Click += new System.EventHandler(this.btnProxy2_GetData_y_Click);
+            // 
+            // btnProxy2_Open
+            // 
+            this.btnProxy2_Open.Location = new System.Drawing.Point(523, 19);
+            this.btnProxy2_Open.Name = "btnProxy2_Open";
+            this.btnProxy2_Open.Size = new System.Drawing.Size(103, 35);
+            this.btnProxy2_Open.TabIndex = 27;
+            this.btnProxy2_Open.Text = "Open";
+            this.btnProxy2_Open.UseVisualStyleBackColor = true;
+            this.btnProxy2_Open.Click += new System.EventHandler(this.btnProxy2_Open_Click);
+            // 
+            // txtProxy2_SessionId
+            // 
+            this.txtProxy2_SessionId.Location = new System.Drawing.Point(77, 60);
+            this.txtProxy2_SessionId.Name = "txtProxy2_SessionId";
+            this.txtProxy2_SessionId.Size = new System.Drawing.Size(431, 22);
+            this.txtProxy2_SessionId.TabIndex = 25;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1013, 521);
-            this.Controls.Add(this.txtSessionId);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtInput);
             this.Controls.Add(this.btnSaveSettings);
             this.Controls.Add(this.label7);
@@ -293,7 +412,6 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "WCF security test";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -302,6 +420,11 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -332,7 +455,17 @@
         private System.Windows.Forms.Button btnSaveSettings;
         private System.Windows.Forms.TextBox txtInput;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.TextBox txtSessionId;
+        private System.Windows.Forms.TextBox txtProxy1_SessionId;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtProxy2_SessionId;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Button btnProxy2_GetData;
+        private System.Windows.Forms.Button btnProxy2_Close;
+        private System.Windows.Forms.Button btnProxy2_GetData_y;
+        private System.Windows.Forms.Button btnProxy2_Open;
     }
 }
 
