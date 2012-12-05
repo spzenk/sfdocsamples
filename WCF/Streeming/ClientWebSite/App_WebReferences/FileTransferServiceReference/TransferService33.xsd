@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://bpc85.iel-bt.com/file_transfer_sample/webservice/TransferService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="http://localhost:26715/TransferService.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/Message" />
   <xs:element name="DownloadRequest">
     <xs:complexType>
       <xs:sequence>

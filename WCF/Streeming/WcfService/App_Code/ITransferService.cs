@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-// NOTE: If you change the interface name "ITransferService" here, you must also update the reference to "ITransferService" in Web.config.
+
 [ServiceContract]
 public interface ITransferService
 {

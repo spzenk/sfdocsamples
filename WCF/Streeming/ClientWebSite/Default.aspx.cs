@@ -11,6 +11,7 @@ using System.Web.UI.WebControls.WebParts;
 using System.Xml.Linq;
 using FileTransferServiceReference;
 using System.Net;
+using System.IO;
 
 public partial class _Default : System.Web.UI.Page 
 {
@@ -80,17 +81,22 @@ public partial class _Default : System.Web.UI.Page
     { 
         if (FileUpload1.HasFile)
         {
-            System.IO.FileInfo fileInfo = new System.IO.FileInfo(FileUpload1.PostedFile.FileName);
+            //System.IO.FileInfo fileInfo = new System.IO.FileInfo(System.IO.Path.Combine("c:/",FileUpload1.PostedFile.FileName));
             FileTransferServiceReference.ITransferService clientUpload = new FileTransferServiceReference.TransferServiceClient();
             FileTransferServiceReference.RemoteFileInfo uploadRequestInfo = new RemoteFileInfo();
+            //FileUpload1.SaveAs(System.IO.Path.Combine("c:/", FileUpload1.PostedFile.FileName));
 
-            using (System.IO.FileStream stream = new System.IO.FileStream(FileUpload1.PostedFile.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            using (Stream stream = new MemoryStream(FileUpload1.FileBytes))
             {
                 uploadRequestInfo.FileName = FileUpload1.FileName;
-                uploadRequestInfo.Length = fileInfo.Length;
+                uploadRequestInfo.Length = stream.Length;
                 uploadRequestInfo.FileByteStream = stream;
                 clientUpload.UploadFile(uploadRequestInfo);
-             }
+            }
+            //using (System.IO.FileStream stream = new System.IO.FileStream(FileUpload1.PostedFile.FileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            //{
+               
+            // }
         }
     }
      
