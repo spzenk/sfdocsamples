@@ -11,20 +11,20 @@
     <CollectionMappings />
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
     <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
     <ReferencedAssemblies />
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost/file_transfer_sample/webservice/TransferService.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:26715/TransferService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="TransferService.xsd" MetadataType="Schema" ID="138e45ae-463d-44d8-82a5-87285dddcd87" SourceId="1" SourceUrl="http://bpc85.iel-bt.com/file_transfer_sample/webservice/TransferService.svc?xsd=xsd0" />
-    <MetadataFile FileName="TransferService.wsdl" MetadataType="Wsdl" ID="7811c03c-4fea-401c-a31a-1884c876867b" SourceId="1" SourceUrl="http://bpc85.iel-bt.com/file_transfer_sample/webservice/TransferService.svc?wsdl" />
-    <MetadataFile FileName="TransferService1.xsd" MetadataType="Schema" ID="1ed06699-8289-4339-8e17-b46b5cf5ed75" SourceId="1" SourceUrl="http://bpc85.iel-bt.com/file_transfer_sample/webservice/TransferService.svc?xsd=xsd2" />
-    <MetadataFile FileName="TransferService2.xsd" MetadataType="Schema" ID="d97bfde7-5207-45a2-8075-9fb30165cdd3" SourceId="1" SourceUrl="http://bpc85.iel-bt.com/file_transfer_sample/webservice/TransferService.svc?xsd=xsd1" />
-    <MetadataFile FileName="TransferService.disco" MetadataType="Disco" ID="1258e250-28e1-4048-9a30-32cb11af1758" SourceId="1" SourceUrl="http://bpc85.iel-bt.com/file_transfer_sample/webservice/TransferService.svc?disco" />
+    <MetadataFile FileName="TransferService3.xsd" MetadataType="Schema" ID="687cfcec-057c-43e1-94d4-efeff3a3f69c" SourceId="1" SourceUrl="http://localhost:26715/TransferService.svc?xsd=xsd2" />
+    <MetadataFile FileName="TransferService1.wsdl" MetadataType="Wsdl" ID="108331fb-9ef8-489b-99a8-ff25bb4bfe5d" SourceId="1" SourceUrl="http://localhost:26715/TransferService.svc?wsdl" />
+    <MetadataFile FileName="TransferService32.xsd" MetadataType="Schema" ID="26fa7e41-27e2-49f7-879f-65b570072d7f" SourceId="1" SourceUrl="http://localhost:26715/TransferService.svc?xsd=xsd1" />
+    <MetadataFile FileName="TransferService33.xsd" MetadataType="Schema" ID="ae532b1c-310a-4946-8025-bbc496dd830e" SourceId="1" SourceUrl="http://localhost:26715/TransferService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
