@@ -86,7 +86,9 @@
     </EntityDeploy>
     <Compile Include="Allus.Keepcon.cs" />
     <Compile Include="BE\Import.cs" />
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\DataSources\BB_MovistarSM_LogsEntities.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
