@@ -25,7 +25,7 @@ namespace Allus.Keepcon
         {
             WebProxy wWebProxy = new WebProxy("proxyallus", 3128);
             wWebProxy.Credentials = new System.Net.NetworkCredential("moviedo", "Lincelin4", "allus-ar");
-           // Proxy = wWebProxy;
+            Proxy = wWebProxy;
 
             user = "MovistarPostDemo";
             password = "k33pc0n12112012";
