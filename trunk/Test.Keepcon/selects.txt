@@ -1,0 +1,10 @@
+﻿
+SELECT  count(*) AS Post_Count FROM [BB_SM_Logs].[dbo].[Post] WHERE keepcon_moderator_decision IS NOT NULL
+
+SELECT  [keepcon_send_date], DATEDIFF(second,[keepcon_send_date] ,[keepcon_result_resived_date]) AS '[send_date - result_resived_date]'
+  FROM [BB_SM_Logs].[dbo].[Post]
+WHERE keepcon_moderator_decision IS NOT NULL
+
+SELECT [keepcon_send_date] ,[keepcon_moderator_date], DATEDIFF(second,[keepcon_send_date] ,[keepcon_moderator_date]) AS 'send_date - moderator_date'
+  FROM [BB_SM_Logs].[dbo].[Post]
+WHERE keepcon_moderator_decision IS NOT NULL
