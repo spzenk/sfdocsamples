@@ -30,13 +30,13 @@ namespace Test.Keepcon
         private void btnSendBath_Click(object sender, EventArgs e)
         {
             //<?xml version="1.0" encoding="UTF-8"?><response><status>OK</status><setId>aa8f0d86-2d0d-404d-9aa0-c9644e939d9d</setId></response>
-            ClearText();
-            List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
+            //ClearText();
+            //List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
 
-            Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
-            int count = posts.Count();
-            txtImport.Text = wImport.GetXml();
-            txtResult.Text = KeepconSvc.SendContent(wImport);
+            //Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
+            //int count = posts.Count();
+            //txtImport.Text = wImport.GetXml();
+            //txtResult.Text = KeepconSvc.SendContent(wImport);
 
             
         }
@@ -46,13 +46,13 @@ namespace Test.Keepcon
         private void btnCheckResult_Click(object sender, EventArgs e)
         {
             ClearText();
-            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
-            if (export != null)
-            {
-                txtImport.Text = export.GetXml();
-                txtSetId.Text = export.SetId;
-                KeepconSvc.SaveResult(export);
-            }
+            //Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
+            //if (export != null)
+            //{
+            //    txtImport.Text = export.GetXml();
+            //    txtSetId.Text = export.SetId;
+            //    KeepconSvc.SaveResult(export);
+            //}
             
         }
 
@@ -65,12 +65,12 @@ namespace Test.Keepcon
         private void button6_Click(object sender, EventArgs e)
         {
 
-            List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
-            Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts[8]);
+            //List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
+            //Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts[8]);
       
-            txtImport.Text = wImport.GetXml();
+            //txtImport.Text = wImport.GetXml();
 
-            txtResult.Text = KeepconSvc.SendContent(wImport);
+            //txtResult.Text = KeepconSvc.SendContent(wImport);
         }
         void ClearText()
         {
@@ -120,7 +120,13 @@ namespace Test.Keepcon
         }
         #endregion
 
- 
+        private void btnEngine_StartSVC_Click(object sender, EventArgs e)
+        {
+            keepconengine1.Start();
+        }
+
+
+
 
     }
 
