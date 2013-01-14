@@ -3,13 +3,9 @@
   <Groups>
     <Group name="Engine">
       <Keys>
-        <!-- 1 = 1 min
-	  ,5 = 30 sec
-	  ,25 = 15 sec
-	  ,1 = 6 seg
-	  ,0167 aprox 1 seg-->
+        <!-- 1 = 1 seg	  -->
         <Key name="ClockInterval" encrypted="false">
-          <Value><![CDATA[,1]]></Value>
+          <Value><![CDATA[3]]></Value>
         </Key>
         <Key name="ServiceName" encrypted="false">
           <Value><![CDATA[Keepcon test]]></Value>
