@@ -90,7 +90,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ConfigurationManager.xml" />
+    <Content Include="ConfigurationManager.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="XMLFile1.xml" />
   </ItemGroup>
   <ItemGroup>
