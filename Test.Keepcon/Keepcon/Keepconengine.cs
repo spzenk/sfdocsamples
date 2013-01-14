@@ -79,8 +79,7 @@ namespace Allus.Keepcon
             //serviceStopTime = null;
             try
             {
-                KeepconSvc.Init();
-                //this.Send_To_Keepcon();
+                this.Send_To_Keepcon();
             }
             //TODO: Codigo de Detencion del servicio
             //catch (TechnicalException te)
@@ -124,7 +123,7 @@ namespace Allus.Keepcon
             {
                 Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
                 Helper.Log(Helper.ServiceName, string.Format("Send_To_Keepcon: Enviando {0} post", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
-                KeepconSvc.SendContent(wImport);
+                //KeepconSvc.SendContent(wImport);
                 Helper.Log(Helper.ServiceName, string.Format("Send_To_Keepcon: Envio de {0} post: FINALIZADO", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
             }
             Helper.Log(Helper.ServiceName, string.Format("Send_To_Keepcon: No hay post para enviar", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);

@@ -21,7 +21,7 @@ namespace Allus.Keepcon
 {
     public class Helper
     {
-        internal static readonly String Cnnstring = ConfigurationManager.ConnectionStrings["kc"].ConnectionString;
+        //internal static String Cnnstring = string.Empty;
         public static bool WsSecure = false;
         public static string ServiceName = "Keepcon test service";
         static Boolean logOnFile = false;
@@ -33,6 +33,7 @@ namespace Allus.Keepcon
         {
             try
             {
+                //Cnnstring = ConfigurationManager.ConnectionStrings["BB_MovistarSM_LogsEntities"].ConnectionString;
                 logFileFullName = Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "{0}_LogFile.xml");
 
                 if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "LogOnFile") != null)

@@ -29,6 +29,9 @@
 		  <Key name="kc_password" encrypted="false">
 			  <Value><![CDATA[k33pc0n12112012]]></Value>
 		  </Key>
+		  <Key name="kc_batch" encrypted="false">
+			  <Value><![CDATA[12]]></Value>
+		  </Key>
       </Keys>
 
 	</Group>

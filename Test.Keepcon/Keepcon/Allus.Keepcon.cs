@@ -21,6 +21,7 @@ namespace Allus.Keepcon
         static string user;
         static string password;
         static WebProxy Proxy = null;
+        static int kc_batch=10;
         static KeepconSvc()
         {
 
@@ -36,6 +37,9 @@ namespace Allus.Keepcon
 
                 if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_password") != null)
                     password = Convert.ToString(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_password"));
+
+                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_batch") != null)
+                    kc_batch = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_batch"));
 
                 if (Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Enabled") != null)
                     if (Convert.ToBoolean(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Enabled")))
