@@ -43,7 +43,7 @@ namespace Allus.Keepcon
             try
             {
                 if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval") != null)
-                    interval = Convert.ToDouble(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval")) * 1000 * 60;
+                    interval = Convert.ToDouble(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval")) * 1000;
             }
             catch (Exception ex)
             {
