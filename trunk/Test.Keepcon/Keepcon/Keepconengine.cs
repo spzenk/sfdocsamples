@@ -42,8 +42,8 @@ namespace Allus.Keepcon
             double interval = 0;
             try
             {
-                if (Fwk.Configuration.ConfigurationManager.GetProperty("Enjine", "ClockInterval") != null)
-                    interval = Convert.ToDouble(Fwk.Configuration.ConfigurationManager.GetProperty("Enjine", "ClockInterval")) * 1000 * 60;
+                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval") != null)
+                    interval = Convert.ToDouble(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval")) * 1000 * 60;
             }
             catch (Exception ex)
             {
@@ -79,7 +79,8 @@ namespace Allus.Keepcon
             //serviceStopTime = null;
             try
             {
-                this.Send_To_Keepcon();
+                KeepconSvc.Init();
+                //this.Send_To_Keepcon();
             }
             //TODO: Codigo de Detencion del servicio
             //catch (TechnicalException te)
@@ -148,6 +149,19 @@ namespace Allus.Keepcon
             if (SussessEvent != null)
                 SussessEvent(status);
         }
+      
+
+
+
+        public  void SaveResult(Export.Export export)
+        {
+            KeepconSvc.SaveResult(export);
+        }
+
+        public string SendASK(string setId)
+        {
+            return KeepconSvc.SendASK(setId);
+        }  
         /// <summary>
         /// 
         /// </summary>
@@ -164,13 +178,6 @@ namespace Allus.Keepcon
             //    return true;
             //}
             //else { return false; }
-        }
-
-
-
-        public  void SaveResult(Export.Export export)
-        {
-            KeepconSvc.SaveResult(export);
         }
     }
 }

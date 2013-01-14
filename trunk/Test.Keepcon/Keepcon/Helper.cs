@@ -35,8 +35,8 @@ namespace Allus.Keepcon
             {
                 logFileFullName = Path.Combine(System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location), "{0}_LogFile.xml");
 
-                if (Fwk.Configuration.ConfigurationManager.GetProperty("Enjine", "LogOnFile") != null)
-                    logOnFile = Convert.ToBoolean(Fwk.Configuration.ConfigurationManager.GetProperty("Enjine", "LogOnFile"));
+                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "LogOnFile") != null)
+                    logOnFile = Convert.ToBoolean(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "LogOnFile"));
 
                 
         
@@ -177,8 +177,8 @@ namespace Allus.Keepcon
             string sn = string.Empty;
             try
             {
-                if (Fwk.Configuration.ConfigurationManager.GetProperty("Enjine", "lic") != null)
-                    l = Fwk.Configuration.ConfigurationManager.GetProperty("Enjine", "lic").ToString();
+                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "lic") != null)
+                    l = Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "lic").ToString();
 
                 if (string.IsNullOrEmpty(l))
                 {

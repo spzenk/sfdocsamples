@@ -31,11 +31,11 @@ namespace Allus.Keepcon
             {
 
 
-                if (Fwk.Configuration.ConfigurationManager.GetProperty("Connection", "user") != null)
-                    user = Convert.ToString(Fwk.Configuration.ConfigurationManager.GetProperty("Enjine", "user"));
+                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_user") != null)
+                    user = Convert.ToString(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_user"));
 
-                if (Fwk.Configuration.ConfigurationManager.GetProperty("Connection", "password") != null)
-                    password = Convert.ToString(Fwk.Configuration.ConfigurationManager.GetProperty("Connection", "password"));
+                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_password") != null)
+                    password = Convert.ToString(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_password"));
 
                 if (Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Enabled") != null)
                     if (Convert.ToBoolean(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Enabled")))
@@ -56,7 +56,7 @@ namespace Allus.Keepcon
                         if (string.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Domain")))
                             throw new Exception("La propiedad Proxy.Domain no puede ser nula");
 
-                        if (Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Host") != null)
+                        if (string.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Host")))
                             throw new Exception("La propiedad Proxy.Host no puede ser nula");
 
                         Proxy = new WebProxy(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Host"), port);
@@ -77,7 +77,8 @@ namespace Allus.Keepcon
             }
 
         }
-
+        public static void Init()
+        {}
         /// <summary>
         /// Envia contenido a keepcont
         /// Establece el tiempo de envio a cada post
@@ -108,7 +109,7 @@ namespace Allus.Keepcon
             return result;
         }
 
-        public static string RetriveResult()
+        internal static string RetriveResult()
         {
             try
             {
@@ -137,7 +138,7 @@ namespace Allus.Keepcon
                 throw ex;
             }
         }
-        public static string SendASK(string setId)
+        internal static string SendASK(string setId)
         {
             try
             {
@@ -150,7 +151,7 @@ namespace Allus.Keepcon
         }
 
 
-        public static String HttpPUT(string url, string inputData, int? pTimeout = null)
+        internal static String HttpPUT(string url, string inputData, int? pTimeout = null)
         {
 
             Uri wUrl = new Uri(url);

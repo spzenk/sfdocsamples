@@ -1,7 +1,7 @@
 <ConfigurationFile>
   
   <Groups>
-    <Group name="Enjine">
+    <Group name="Engine">
       <Keys>
         <!-- 1 = 1 min
 	  ,5 = 30 sec
@@ -9,7 +9,7 @@
 	  ,1 = 6 seg
 	  ,0167 aprox 1 seg-->
         <Key name="ClockInterval" encrypted="false">
-          <Value><![CDATA[.1]]></Value>
+          <Value><![CDATA[,1]]></Value>
         </Key>
         <Key name="ServiceName" encrypted="false">
           <Value><![CDATA[Keepcon test]]></Value>
@@ -23,6 +23,12 @@
         <Key name="sleepTime" encrypted="false">
           <Value><![CDATA[20]]></Value>
         </Key>
+		  <Key name="kc_user" encrypted="false">
+			  <Value><![CDATA[MovistarPostDemo]]></Value>
+		  </Key>
+		  <Key name="kc_password" encrypted="false">
+			  <Value><![CDATA[k33pc0n12112012]]></Value>
+		  </Key>
       </Keys>
 
 	</Group>
