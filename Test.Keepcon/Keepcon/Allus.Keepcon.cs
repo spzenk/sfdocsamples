@@ -9,37 +9,59 @@ using Allus.Keepcon.Import;
 
 namespace Allus.Keepcon
 {
+    /// <summary>
+    /// Componente q realiza llamadas al servicio web REST de keepcon
+    /// Componente q almacena en BD los resultados de las llamadas al servicio web REST de keepcon
+    /// </summary>
     public class KeepconSvc
     {
         //Enviando / obteniendo contenidos a moderar
         static string url_send_content_asynk = "http://service.keepcon.com/input/contentSet";
+        /// <summary>
+        ///URL servicio web REST al cual el cliente enviará el contenido a moderar
+        /// </summary>
         static string url_send_content_synk = "http://sync.keepcon.com/synchronic/moderate";
+        /// <summary>
+        /// URL servicio web REST donde consumir los resultados.
+        /// </summary>
         static string url_get_result = "http://service.keepcon.com/output/contentSet?contextName={0}&clientACK=true";
+
+        /// <summary>
+        /// URL Serivico web REST de ACK
+        /// </summary>
         static string url_ack = "http://service.keepcon.com:63081/output/contentSet/ack/{0}";
 
 
         static string user;
         static string password;
         static WebProxy Proxy = null;
-        static int kc_batch=10;
+        /// <summary>
+        /// Tamaño del lote a enviar
+        /// </summary>
+        static int kc_batch = 30;
+
         static KeepconSvc()
         {
-
-            user = "MovistarPostDemo";
-            password = "k33pc0n12112012";
+            bool result = true;
+            //user = "MovistarPostDemo";
+            //password = "k33pc0n12112012";
 
             try
             {
 
 
-                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_user") != null)
+                if (string.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_user")))
+                    throw new Exception("La propiedad Engine.kc_user no puede ser nula");
+                else
                     user = Convert.ToString(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_user"));
 
                 if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_password") != null)
                     password = Convert.ToString(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_password"));
 
-                if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_batch") != null)
-                    kc_batch = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_batch"));
+                result = Int32.TryParse(Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "kc_batch"), out kc_batch);
+                if (!result)
+                    throw new Exception("La propiedad Engine.kc_batch no es correcta");
+
 
                 if (Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Enabled") != null)
                     if (Convert.ToBoolean(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Enabled")))
@@ -47,12 +69,12 @@ namespace Allus.Keepcon
 
                         if (string.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "UserName")))
                             throw new Exception("La propiedad Proxy.UserName no puede ser nula");
-                        
+
                         if (string.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Password")))
                             throw new Exception("La propiedad Proxy.Password no puede ser nula");
 
                         int port;
-                        bool result = Int32.TryParse(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Port"), out port);
+                        result = Int32.TryParse(Fwk.Configuration.ConfigurationManager.GetProperty("Proxy", "Port"), out port);
                         if (!result)
                             throw new Exception("La propiedad Proxy.Port no es correcta");
 
@@ -81,14 +103,23 @@ namespace Allus.Keepcon
             }
 
         }
+
         public static void Init()
-        {}
+        { }
+
         /// <summary>
+        /// 
         /// Envia contenido a keepcont
-        /// Establece el tiempo de envio a cada post
+        /// Establece el tiempo de envio a cada post y almacena el resultado de envio
         /// </summary>
         /// <param name="import"></param>
-        /// <returns></returns>
+        /// <returns>
+        /// Como respuesta al envío, Keepcon envia una respuesta confirmando que se
+        /// recibió con éxito un lote de contenidos, junto con el identificador de lote
+        /// asignado a dicho envío. response.setId , response.status
+        /// 
+        /// Puede retornar status= ERROR con lo cual se retorna errorMessage = descripcion del error
+        /// </returns>
         internal static string SendContent(Allus.Keepcon.Import.Import import)
         {
             DateTime datetime = System.DateTime.Now;
@@ -101,18 +132,25 @@ namespace Allus.Keepcon
                     result = HttpPUT(url_send_content_asynk, import.GetXml());
 
 
+
             }
             catch (Exception ex)
             {
                 return Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
             }
 
+            //TODO: Es obligatorio implementar un mecanismo de reintentos. si result = ERROR
             Response response = (Response)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(Response), result);
-            Set_SendedTime(import, response, datetime);
+            if (!response.Status.Equals("ERROR"))
+                Set_SendedTime(import, response, datetime);
 
             return result;
         }
 
+        /// <summary>
+        /// Llamada al servicio  web REST de keepcon donde consumir los resultados.
+        /// </summary>
+        /// <returns></returns>
         internal static string RetriveResult()
         {
             try
@@ -121,16 +159,20 @@ namespace Allus.Keepcon
             }
             catch (Exception ex)
             {
-                return Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+                throw ex;
             }
         }
 
+        /// <summary>
+        /// Llamada al servicio  web REST de keepcon donde consumir los resultados.
+        /// </summary>
+        /// <returns>Retorna un objeto Export</returns>
         internal static Allus.Keepcon.Export.Export RetriveResult_2()
         {
             Allus.Keepcon.Export.Export import = null;
             try
             {
-                string result =  HttpPUT(string.Format(url_get_result, user), string.Empty);
+                string result = HttpPUT(string.Format(url_get_result, user), string.Empty);
                 if (!String.IsNullOrEmpty(result))
                     import = Export.Export.SetXml(result);
 
@@ -142,6 +184,15 @@ namespace Allus.Keepcon
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// Envia a Keepcon un ACK confirmando la correcta recepción
+        /// del lote de resultados. En caso de que Keepcon no haya recibido el ACK dentro
+        /// de los 5 minutos de haber consultado el lote, se volverá a enviar el mismo lote
+        /// en el próximo llamado.
+        /// </summary>
+        /// <param name="setId"></param>
+        /// <returns></returns>
         internal static string SendASK(string setId)
         {
             try
@@ -150,16 +201,23 @@ namespace Allus.Keepcon
             }
             catch (Exception ex)
             {
-                return Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+                throw ex;
             }
         }
 
 
-        internal static String HttpPUT(string url, string inputData, int? pTimeout = null)
+        /// <summary>
+        /// Realiza llamadas web REST 
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="inputData"></param>
+        /// <param name="pTimeout"></param>
+        /// <returns></returns>
+        static String HttpPUT(string url, string inputData, int? pTimeout = null)
         {
 
             Uri wUrl = new Uri(url);
-            string wXmlRes = string.Empty; 
+            string wXmlRes = string.Empty;
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create(wUrl);
             req.KeepAlive = false;
 
@@ -195,22 +253,26 @@ namespace Allus.Keepcon
                 wRequestStream.Flush();
                 wRequestStream.Close();
             }
-            
+
             using (HttpWebResponse wResponse = (HttpWebResponse)req.GetResponse())
             {
                 StreamReader wReader = new StreamReader(wResponse.GetResponseStream());
-                 wXmlRes = Fwk.HelperFunctions.FileFunctions.GetTextFromReader(wReader);
+                wXmlRes = Fwk.HelperFunctions.FileFunctions.GetTextFromReader(wReader);
 
-                
+
             }
             return wXmlRes;
         }
 
 
 
-    #region DATA
+        #region DATA
 
-
+        /// <summary>
+        /// Retorna post 
+        /// </summary>
+        /// <param name="takeNumber"></param>
+        /// <returns></returns>
         internal static List<Post> RetrivePost_To_Send(int takeNumber)
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
@@ -222,51 +284,51 @@ namespace Allus.Keepcon
             }
         }
         internal static List<Post> Update_Sended_Post()
-      {
-          using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
-          {
-              var x = from s in dc.Post where s.keepcon_send_date.HasValue == false select s;
-              return x.ToList<Post>();
+        {
+            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+            {
+                var x = from s in dc.Post where s.keepcon_send_date.HasValue == false select s;
+                return x.ToList<Post>();
 
-          }
-      }
-
-    
-    #endregion
+            }
+        }
 
 
-      internal static void SaveResult(Export.Export export)
-      {
-          using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
-          {
-              foreach (Export.Content c in export.Contents)
-              {
-                  var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
-                  post.keepcon_result_resived_date =  System.DateTime.Now;
-                  post.keepcon_moderator_date = Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(c.ModerationDate);
-                  post.keepcon_moderator_decision = c.ModerationDecision;
-                  post.keepcon_result_setId = export.SetId;
-                  post.keepcon_moderator = c.ModeratorName;
-                  
-              }
-              dc.SaveChanges();
-          }
-      }
-      
-        static void Set_SendedTime(Import.Import import,Response response,DateTime datetime )
-      {
-          
-          using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
-          {
-              foreach (Import.Content c in import.Contents)
-              {
-                  var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
-                  post.keepcon_send_date = datetime;
-                  post.keepcon_send_setId = response.SetGuid;
-              }
-              dc.SaveChanges();
-          }
-      }
+        #endregion
+
+
+        internal static void SaveResult(Export.Export export)
+        {
+            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+            {
+                foreach (Export.Content c in export.Contents)
+                {
+                    var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
+                    post.keepcon_result_resived_date = System.DateTime.Now;
+                    post.keepcon_moderator_date = Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(c.ModerationDate);
+                    post.keepcon_moderator_decision = c.ModerationDecision;
+                    post.keepcon_result_setId = export.SetId;
+                    post.keepcon_moderator = c.ModeratorName;
+
+                }
+                dc.SaveChanges();
+            }
+        }
+
+        static void Set_SendedTime(Import.Import import, Response response, DateTime datetime)
+        {
+
+            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+            {
+                foreach (Import.Content c in import.Contents)
+                {
+                    var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
+                    post.keepcon_send_date = datetime;
+                    post.keepcon_send_setId = response.SetGuid;
+                }
+                dc.SaveChanges();
+            }
+        }
 
     }
 
@@ -274,6 +336,6 @@ namespace Allus.Keepcon
     public enum KeepconSvcStatusEnum
     {
         SENDED = 0,
-        PROCCESSED =1
+        PROCCESSED = 1
     }
 }

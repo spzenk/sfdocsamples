@@ -10,6 +10,11 @@ using System.Timers;
 namespace Allus.Keepcon
 {
     public delegate void SussessHandler(string status);
+
+    /// <summary>
+    /// Componente servicio qu opera directamente con <see cref="Allus.Keepcon.KeepconSvc"/>
+    /// Este componente tiene logica de negocio, conoce que metodos de <see cref="Allus.Keepcon.KeepconSvc"/> llamar y los mecanismos derreintento
+    /// </summary>
     public partial class Keepconengine : Component
     {
         internal int sleepTime = 0;
@@ -123,7 +128,7 @@ namespace Allus.Keepcon
             {
                 Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
                 Helper.Log(Helper.ServiceName, string.Format("Send_To_Keepcon: Enviando {0} post", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
-                //KeepconSvc.SendContent(wImport);
+                KeepconSvc.SendContent(wImport);
                 Helper.Log(Helper.ServiceName, string.Format("Send_To_Keepcon: Envio de {0} post: FINALIZADO", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
             }
             Helper.Log(Helper.ServiceName, string.Format("Send_To_Keepcon: No hay post para enviar", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
