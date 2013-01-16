@@ -583,6 +583,30 @@ namespace Keepcon
         private global::System.String _keepcon_moderator;
         partial void Onkeepcon_moderatorChanging(global::System.String value);
         partial void Onkeepcon_moderatorChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> keepcon_ack
+        {
+            get
+            {
+                return _keepcon_ack;
+            }
+            set
+            {
+                Onkeepcon_ackChanging(value);
+                ReportPropertyChanging("keepcon_ack");
+                _keepcon_ack = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("keepcon_ack");
+                Onkeepcon_ackChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _keepcon_ack;
+        partial void Onkeepcon_ackChanging(Nullable<global::System.Boolean> value);
+        partial void Onkeepcon_ackChanged();
 
         #endregion
     

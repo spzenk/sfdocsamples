@@ -186,7 +186,7 @@ namespace Allus.Keepcon
         /// </summary>
         public void Start_CheckResult()
         {
-            OnSussess("CheckResult: Iniciando llamada a web metodos ");
+            //OnSussess("CheckResult: Iniciando llamada a web metodos ");
             double interval = 0;
             try
             {
@@ -249,14 +249,28 @@ namespace Allus.Keepcon
                 Helper.Log(Helper.ServiceName, string.Format("CheckResult: Guardando resultado keepcont :Cantidad {0}", export.Contents.Count), Fwk.Logging.EventType.Information, false);
                 KeepconSvc.SaveResult(export);
                 Helper.Log(Helper.ServiceName, string.Format("CheckResult: Se almacenaron {0} post", export.Contents.Count), Fwk.Logging.EventType.Information, false);
+
+                KeepconSvc.SendASK(export.SetId);
             }
             else
             { Helper.Log(Helper.ServiceName, string.Format("CheckResult: Las respuesta del chequeo arrojo un reult = null", export.Contents.Count), Fwk.Logging.EventType.Information, false); }
         }
 
-        public string SendASK(string setId)
+        public void SendASK(string setId)
         {
-            return KeepconSvc.SendASK(setId);
+            try
+            {
+                KeepconSvc.SendASK(setId);
+            }
+            catch (Exception ex)
+            {
+                Fwk.Exceptions.TechnicalException te = new Fwk.Exceptions.TechnicalException(String.Format("CheckResult : SendASK lote {0} fallo",setId ), ex);
+                te.ErrorId = "1";
+                Helper.Log(Helper.ServiceName, te, false);
+         
+            }
+            
+            KeepconSvc.SaveResult_ACK(setId);
         }
 
 
