@@ -19,6 +19,12 @@ namespace Test.Keepcon
         public Form1()
         {
             InitializeComponent();
+
+            if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_SendContent") != null)
+                lblSend_Clock.Text = Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_SendContent");
+
+            if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_CheckResult") != null)
+                lblCheckResultClock.Text = Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_CheckResult");
         }
 
 
@@ -38,7 +44,7 @@ namespace Test.Keepcon
             //txtImport.Text = wImport.GetXml();
             //txtResult.Text = KeepconSvc.SendContent(wImport);
 
-            
+
         }
 
 
@@ -53,7 +59,7 @@ namespace Test.Keepcon
             //    txtSetId.Text = export.SetId;
             //    KeepconSvc.SaveResult(export);
             //}
-            
+
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -67,7 +73,7 @@ namespace Test.Keepcon
 
             //List<Post> posts = KeepconSvc.RetrivePost_To_Send(12);
             //Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts[8]);
-      
+
             //txtImport.Text = wImport.GetXml();
 
             //txtResult.Text = KeepconSvc.SendContent(wImport);
@@ -122,7 +128,64 @@ namespace Test.Keepcon
 
         private void btnEngine_StartSVC_Click(object sender, EventArgs e)
         {
-            keepconengine1.Start();
+            btnStart_SendContent.Enabled = false;
+            try
+            {
+                keepconengine1.Start();
+            }
+            catch (Exception ex)
+            {
+                btnStart_SendContent.Enabled = true;
+                txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+            }
+            btnStop_SendContent.Enabled = true;
+        }
+
+        private void btnStart_CheckResult_Click(object sender, EventArgs e)
+        {
+            btnStart_CheckResult.Enabled = false;
+            try
+            {
+                keepconengine1.Start();
+            }
+            catch (Exception ex)
+            {
+                btnStart_CheckResult.Enabled = true;
+                txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+            }
+            btnStop_Checkresult.Enabled = true;
+        }
+
+        private void btnStop_SendContent_Click(object sender, EventArgs e)
+        {
+            btnStop_SendContent.Enabled = false;
+            try
+            {
+                keepconengine1.Start();
+            }
+            catch (Exception ex)
+            {
+
+                btnStop_SendContent.Enabled = true;
+                txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+            }
+            btnStart_CheckResult.Enabled = true;
+        }
+
+        private void btnStop_Checkresult_Click(object sender, EventArgs e)
+        {
+            btnStop_Checkresult.Enabled = false;
+            try
+            {
+                keepconengine1.Start();
+            }
+            catch (Exception ex)
+            {
+                
+                btnStop_Checkresult.Enabled = true;
+                txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+            }
+            btnStart_CheckResult.Enabled = true;
         }
 
 
@@ -130,27 +193,5 @@ namespace Test.Keepcon
 
     }
 
-    //public partial class Post
-    //{
-    //    public static IQueryable<T> Page<T, TResult>(this IQueryable<T> query,
-    //                           int pageNum, int pageSize,
-    //                           Expression<Func<T, TResult>> orderByProperty,
-    //                           bool isAscendingOrder, out int rowsCount)
-    //    {
-    //        if (pageSize <= 0) pageSize = 20;
-
-    //        rowsCount = query.Count();
-
-    //        if (rowsCount <= pageSize || pageNum <= 0) pageNum = 1;
-
-    //        int excludedRows = (pageNum - 1) * pageSize;
-
-    //        if (isAscendingOrder)
-    //            query = query.OrderBy(orderByProperty);
-    //        else
-    //            query = query.OrderByDescending(orderByProperty);
-
-    //        return query.Skip(excludedRows).Take(pageSize);
-    //    }
-    //}
+    
 }

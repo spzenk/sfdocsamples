@@ -6,6 +6,7 @@ using System.Net;
 using System.Security.Cryptography;
 using System.IO;
 using Allus.Keepcon.Import;
+using Keepcon;
 
 namespace Allus.Keepcon
 {
@@ -124,26 +125,27 @@ namespace Allus.Keepcon
         {
             DateTime datetime = System.DateTime.Now;
             string result = string.Empty;
-            try
-            {
+            //try
+            //{
                 if (import.Contents.Count == 1)
                     result = HttpPUT(url_send_content_synk, import.GetXml());
                 else
                     result = HttpPUT(url_send_content_asynk, import.GetXml());
-
-
-
-            }
-            catch (Exception ex)
-            {
-                return Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    return Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+            //}
 
             //TODO: Es obligatorio implementar un mecanismo de reintentos. si result = ERROR
             Response response = (Response)Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(Response), result);
             if (!response.Status.Equals("ERROR"))
                 Set_SendedTime(import, response, datetime);
+            else
+            {
+                //Registrar el error
 
+            }
             return result;
         }
 
@@ -153,14 +155,14 @@ namespace Allus.Keepcon
         /// <returns></returns>
         internal static string RetriveResult()
         {
-            try
-            {
+            //try
+            //{
                 return HttpPUT(string.Format(url_get_result, user), string.Empty);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw ex;
+            //}
         }
 
         /// <summary>
@@ -273,22 +275,22 @@ namespace Allus.Keepcon
         /// </summary>
         /// <param name="takeNumber"></param>
         /// <returns></returns>
-        internal static List<Post> RetrivePost_To_Send(int takeNumber)
+        internal static List<KeepconPost> RetrivePost_To_Send(int takeNumber)
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
 
-                var x = from s in dc.Post where s.keepcon_send_date.HasValue == false select s;
-                return x.Take(takeNumber).ToList<Post>();
+                var x = from s in dc.KeepconPost where s.keepcon_send_date.HasValue == false select s;
+                return x.Take(takeNumber).ToList<KeepconPost>();
 
             }
         }
-        internal static List<Post> Update_Sended_Post()
+        internal static List<KeepconPost> Update_Sended_Post()
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
-                var x = from s in dc.Post where s.keepcon_send_date.HasValue == false select s;
-                return x.ToList<Post>();
+                var x = from s in dc.KeepconPost where s.keepcon_send_date.HasValue == false select s;
+                return x.ToList<KeepconPost>();
 
             }
         }
@@ -303,7 +305,7 @@ namespace Allus.Keepcon
             {
                 foreach (Export.Content c in export.Contents)
                 {
-                    var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
+                    var post = dc.KeepconPost.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
                     post.keepcon_result_resived_date = System.DateTime.Now;
                     post.keepcon_moderator_date = Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(c.ModerationDate);
                     post.keepcon_moderator_decision = c.ModerationDecision;
@@ -322,7 +324,7 @@ namespace Allus.Keepcon
             {
                 foreach (Import.Content c in import.Contents)
                 {
-                    var post = dc.Post.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
+                    var post = dc.KeepconPost.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
                     post.keepcon_send_date = datetime;
                     post.keepcon_send_setId = response.SetGuid;
                 }
@@ -330,6 +332,21 @@ namespace Allus.Keepcon
             }
         }
 
+
+        static void Save_KeepcontLogs(int id, DateTime keepcon_send_date, string keepcon_error_message, LogType logType)
+        {
+
+            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+            {
+
+                KeepconLogs wKeepconLogs = new KeepconLogs();
+                wKeepconLogs.id = id;
+                wKeepconLogs.keepcon_send_date = keepcon_send_date;
+                wKeepconLogs.keepcon_error_message = keepcon_error_message;
+                wKeepconLogs.logtype = (int)logType;
+                dc.SaveChanges();
+            }
+        }
     }
 
 
@@ -337,5 +354,13 @@ namespace Allus.Keepcon
     {
         SENDED = 0,
         PROCCESSED = 1
+    }
+
+
+    public enum LogType
+    {
+        Post = 0,
+        Message = 1,
+        Mail = 3
     }
 }
