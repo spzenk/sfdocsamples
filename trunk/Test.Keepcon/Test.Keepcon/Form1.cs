@@ -21,10 +21,10 @@ namespace Test.Keepcon
             InitializeComponent();
 
             if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_SendContent") != null)
-                lblSend_Clock.Text = Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_SendContent");
+                lblSend_Clock.Text = String.Format("Se ejecuta cada {0} segundos",Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_SendContent"));
 
             if (Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_CheckResult") != null)
-                lblCheckResultClock.Text = Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_CheckResult");
+                lblCheckResultClock.Text = String.Format("Se ejecuta cada {0} segundos",Fwk.Configuration.ConfigurationManager.GetProperty("Engine", "ClockInterval_CheckResult"));
         }
 
 
@@ -128,64 +128,67 @@ namespace Test.Keepcon
 
         private void btnEngine_StartSVC_Click(object sender, EventArgs e)
         {
-            btnStart_SendContent.Enabled = false;
+           
             try
             {
-                keepconengine1.Start();
+                keepconengine1.Start_SendContent();
             }
             catch (Exception ex)
             {
-                btnStart_SendContent.Enabled = true;
                 txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+                return;
             }
+            btnStart_SendContent.Enabled = false;
             btnStop_SendContent.Enabled = true;
         }
 
         private void btnStart_CheckResult_Click(object sender, EventArgs e)
         {
-            btnStart_CheckResult.Enabled = false;
+            
             try
             {
-                keepconengine1.Start();
+                keepconengine1.Start_CheckResult();
             }
             catch (Exception ex)
             {
-                btnStart_CheckResult.Enabled = true;
                 txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+                return;
             }
+            btnStart_CheckResult.Enabled = false;
             btnStop_Checkresult.Enabled = true;
         }
 
         private void btnStop_SendContent_Click(object sender, EventArgs e)
         {
-            btnStop_SendContent.Enabled = false;
+           
             try
             {
-                keepconengine1.Start();
+                keepconengine1.Stop_SendContent();
             }
             catch (Exception ex)
             {
-
-                btnStop_SendContent.Enabled = true;
                 txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+                return;
             }
-            btnStart_CheckResult.Enabled = true;
+            btnStart_SendContent.Enabled = true;
+            btnStop_SendContent.Enabled = false;
         }
 
         private void btnStop_Checkresult_Click(object sender, EventArgs e)
         {
-            btnStop_Checkresult.Enabled = false;
+         
             try
             {
-                keepconengine1.Start();
+                keepconengine1.Start_CheckResult();
             }
             catch (Exception ex)
             {
-                
-                btnStop_Checkresult.Enabled = true;
                 txtResult.Text = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex);
+                return;
             }
             btnStart_CheckResult.Enabled = true;
+            btnStop_Checkresult.Enabled = false;
+            
         }
 
 
