@@ -97,7 +97,8 @@ namespace Allus.Keepcon
         /// </summary>
         public void Start_SendContent()
         {
-            OnSussess("Iniciando llamada a web metodos ");
+            //OnSussess("Iniciando llamada a web metodos ");
+            Helper.Log(Helper.ServiceName, "SendContent: Iniciando envia de post a keepcont", Fwk.Logging.EventType.Information, false);
             double interval = 0;
             try
             {
@@ -162,7 +163,7 @@ namespace Allus.Keepcon
         public void SendContent()
         {
 
-            Helper.Log(Helper.ServiceName, "SendContent: Iniciando envia de post a keepcont", Fwk.Logging.EventType.Information, false);
+            
             List<KeepconPost> posts = KeepconSvc.RetrivePost_To_Send(12);
             if (posts.Count != 0)
             {
@@ -171,7 +172,10 @@ namespace Allus.Keepcon
                 KeepconSvc.SendContent(wImport);
                 Helper.Log(Helper.ServiceName, string.Format("SendContent: Envio de {0} post: FINALIZADO", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
             }
-            Helper.Log(Helper.ServiceName, string.Format("SendContent: No hay post para enviar", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
+            else
+            {
+                Helper.Log(Helper.ServiceName, string.Format("SendContent: No hay post para enviar", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
+            }
         }
         #endregion
 
