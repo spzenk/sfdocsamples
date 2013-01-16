@@ -12,6 +12,11 @@ namespace Allus.Keepcon.Export
     {
         [XmlAttribute("setId")]
         public String SetId { get; set; }
+        [XmlIgnore()]
+        public Guid SetGuid
+        {
+            get { return new Guid(SetId); }
+        }
         public Export()
         {
             this.Contents = new List<Content>();
