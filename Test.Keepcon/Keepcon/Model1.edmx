@@ -34,7 +34,7 @@
           <Property Name="keepcon_moderator_decision" Type="varchar" MaxLength="200" />
           <Property Name="keepcon_moderator_date" Type="datetime" />
           <Property Name="keepcon_send_setId" Type="uniqueidentifier" />
-          <Property Name="keepcon_result_setId" Type="varchar" MaxLength="300" />
+          <Property Name="keepcon_result_setId" Type="uniqueidentifier" />
           <Property Name="keepcon_moderator" Type="varchar" MaxLength="50" />
           <Property Name="keepcon_ack" Type="bit" />
         </EntityType>
@@ -71,7 +71,7 @@
           <Property Type="String" Name="keepcon_moderator_decision" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="keepcon_moderator_date" />
           <Property Type="Guid" Name="keepcon_send_setId" />
-          <Property Type="String" Name="keepcon_result_setId" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Guid" Name="keepcon_result_setId" />
           <Property Type="String" Name="keepcon_moderator" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="keepcon_ack" />
         </EntityType>
@@ -132,7 +132,7 @@
     <Diagrams>
       <Diagram Name="Model1" ZoomLevel="92">
         <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.KeepconLogs" Width="1.5" PointX="5.375" PointY="0.75" Height="1.5923063151041665" />
-        <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.KeepconPost" Width="1.5" PointX="5.375" PointY="3.75" Height="2.9070849609374996" />
+        <EntityTypeShape EntityType="BB_MovistarSM_LogsModel.KeepconPost" Width="1.5" PointX="0.75" PointY="0.75" Height="3.0714322916666656" />
       </Diagram>
     </Diagrams>
   </Designer>

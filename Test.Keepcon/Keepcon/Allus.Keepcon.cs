@@ -312,7 +312,7 @@ namespace Allus.Keepcon
                     post.keepcon_result_resived_date = System.DateTime.Now;
                     post.keepcon_moderator_date = Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(c.ModerationDate);
                     post.keepcon_moderator_decision = c.ModerationDecision;
-                    post.keepcon_result_setId = export.SetId;
+                    post.keepcon_result_setId = export.SetGuid;
                     post.keepcon_moderator = c.ModeratorName;
 
                 }
@@ -328,7 +328,8 @@ namespace Allus.Keepcon
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
-                foreach (KeepconPost wKeepconPost in dc.KeepconPost.Where(p=>p.keepcon_result_setId.Equals(setId)))
+                Guid guid = new Guid(setId);
+                foreach (KeepconPost wKeepconPost in dc.KeepconPost.Where(p => p.keepcon_result_setId.Equals(guid)))
                 {
                     wKeepconPost.keepcon_ack = true;
                 }
@@ -363,6 +364,7 @@ namespace Allus.Keepcon
                 wKeepconLogs.keepcon_send_date = keepcon_send_date;
                 wKeepconLogs.keepcon_error_message = keepcon_error_message;
                 wKeepconLogs.logtype = (int)logType;
+                dc.KeepconLogs.AddObject(wKeepconLogs);
                 dc.SaveChanges();
             }
         }

@@ -541,7 +541,7 @@ namespace Keepcon
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public global::System.String keepcon_result_setId
+        public Nullable<global::System.Guid> keepcon_result_setId
         {
             get
             {
@@ -551,13 +551,13 @@ namespace Keepcon
             {
                 Onkeepcon_result_setIdChanging(value);
                 ReportPropertyChanging("keepcon_result_setId");
-                _keepcon_result_setId = StructuralObject.SetValidValue(value, true);
+                _keepcon_result_setId = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("keepcon_result_setId");
                 Onkeepcon_result_setIdChanged();
             }
         }
-        private global::System.String _keepcon_result_setId;
-        partial void Onkeepcon_result_setIdChanging(global::System.String value);
+        private Nullable<global::System.Guid> _keepcon_result_setId;
+        partial void Onkeepcon_result_setIdChanging(Nullable<global::System.Guid> value);
         partial void Onkeepcon_result_setIdChanged();
     
         /// <summary>
