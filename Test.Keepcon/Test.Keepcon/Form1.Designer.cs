@@ -39,13 +39,18 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnEngine_StartSVC = new System.Windows.Forms.Button();
+            this.btnStop_Checkresult = new System.Windows.Forms.Button();
+            this.btnStop_SendContent = new System.Windows.Forms.Button();
+            this.btnStart_CheckResult = new System.Windows.Forms.Button();
+            this.btnStart_SendContent = new System.Windows.Forms.Button();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.keepconengine1 = new Allus.Keepcon.Keepconengine(this.components);
+            this.lblSend_Clock = new System.Windows.Forms.Label();
+            this.lblCheckResultClock = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSendBath
@@ -146,13 +151,75 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(763, 150);
             this.tabControl1.TabIndex = 9;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.lblCheckResultClock);
+            this.tabPage2.Controls.Add(this.lblSend_Clock);
+            this.tabPage2.Controls.Add(this.btnStop_Checkresult);
+            this.tabPage2.Controls.Add(this.btnStop_SendContent);
+            this.tabPage2.Controls.Add(this.btnStart_CheckResult);
+            this.tabPage2.Controls.Add(this.btnStart_SendContent);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(755, 124);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Engine";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnStop_Checkresult
+            // 
+            this.btnStop_Checkresult.Enabled = false;
+            this.btnStop_Checkresult.Location = new System.Drawing.Point(226, 69);
+            this.btnStop_Checkresult.Name = "btnStop_Checkresult";
+            this.btnStop_Checkresult.Size = new System.Drawing.Size(143, 28);
+            this.btnStop_Checkresult.TabIndex = 4;
+            this.btnStop_Checkresult.Text = "STOP Send content";
+            this.btnStop_Checkresult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStop_Checkresult.UseVisualStyleBackColor = true;
+            this.btnStop_Checkresult.Click += new System.EventHandler(this.btnStop_Checkresult_Click);
+            // 
+            // btnStop_SendContent
+            // 
+            this.btnStop_SendContent.Enabled = false;
+            this.btnStop_SendContent.Location = new System.Drawing.Point(226, 3);
+            this.btnStop_SendContent.Name = "btnStop_SendContent";
+            this.btnStop_SendContent.Size = new System.Drawing.Size(143, 28);
+            this.btnStop_SendContent.TabIndex = 3;
+            this.btnStop_SendContent.Text = "STOP Send content";
+            this.btnStop_SendContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStop_SendContent.UseVisualStyleBackColor = true;
+            this.btnStop_SendContent.Click += new System.EventHandler(this.btnStop_SendContent_Click);
+            // 
+            // btnStart_CheckResult
+            // 
+            this.btnStart_CheckResult.Location = new System.Drawing.Point(51, 69);
+            this.btnStart_CheckResult.Name = "btnStart_CheckResult";
+            this.btnStart_CheckResult.Size = new System.Drawing.Size(143, 28);
+            this.btnStart_CheckResult.TabIndex = 2;
+            this.btnStart_CheckResult.Text = "Start check results";
+            this.btnStart_CheckResult.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStart_CheckResult.UseVisualStyleBackColor = true;
+            this.btnStart_CheckResult.Click += new System.EventHandler(this.btnStart_CheckResult_Click);
+            // 
+            // btnStart_SendContent
+            // 
+            this.btnStart_SendContent.Location = new System.Drawing.Point(51, 6);
+            this.btnStart_SendContent.Name = "btnStart_SendContent";
+            this.btnStart_SendContent.Size = new System.Drawing.Size(143, 28);
+            this.btnStart_SendContent.TabIndex = 1;
+            this.btnStart_SendContent.Text = "Start Send content";
+            this.btnStart_SendContent.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStart_SendContent.UseVisualStyleBackColor = true;
+            this.btnStart_SendContent.Click += new System.EventHandler(this.btnEngine_StartSVC_Click);
             // 
             // tabPage1
             // 
@@ -171,27 +238,23 @@
             this.tabPage1.Text = "Keepcon component";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // lblSend_Clock
             // 
-            this.tabPage2.Controls.Add(this.btnEngine_StartSVC);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(755, 124);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Engine";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.lblSend_Clock.AutoSize = true;
+            this.lblSend_Clock.Location = new System.Drawing.Point(486, 14);
+            this.lblSend_Clock.Name = "lblSend_Clock";
+            this.lblSend_Clock.Size = new System.Drawing.Size(35, 13);
+            this.lblSend_Clock.TabIndex = 5;
+            this.lblSend_Clock.Text = "label1";
             // 
-            // btnEngine_StartSVC
+            // lblCheckResultClock
             // 
-            this.btnEngine_StartSVC.Location = new System.Drawing.Point(60, 35);
-            this.btnEngine_StartSVC.Name = "btnEngine_StartSVC";
-            this.btnEngine_StartSVC.Size = new System.Drawing.Size(143, 28);
-            this.btnEngine_StartSVC.TabIndex = 1;
-            this.btnEngine_StartSVC.Text = "Start Service";
-            this.btnEngine_StartSVC.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEngine_StartSVC.UseVisualStyleBackColor = true;
-            this.btnEngine_StartSVC.Click += new System.EventHandler(this.btnEngine_StartSVC_Click);
+            this.lblCheckResultClock.AutoSize = true;
+            this.lblCheckResultClock.Location = new System.Drawing.Point(486, 69);
+            this.lblCheckResultClock.Name = "lblCheckResultClock";
+            this.lblCheckResultClock.Size = new System.Drawing.Size(35, 13);
+            this.lblCheckResultClock.TabIndex = 6;
+            this.lblCheckResultClock.Text = "label1";
             // 
             // Form1
             // 
@@ -204,9 +267,10 @@
             this.Name = "Form1";
             this.Text = "Keepcont test service";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,8 +290,13 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button btnEngine_StartSVC;
+        private System.Windows.Forms.Button btnStart_SendContent;
         private Allus.Keepcon.Keepconengine keepconengine1;
+        private System.Windows.Forms.Button btnStart_CheckResult;
+        private System.Windows.Forms.Button btnStop_Checkresult;
+        private System.Windows.Forms.Button btnStop_SendContent;
+        private System.Windows.Forms.Label lblSend_Clock;
+        private System.Windows.Forms.Label lblCheckResultClock;
     }
 }
 

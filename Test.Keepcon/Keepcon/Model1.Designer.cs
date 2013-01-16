@@ -16,13 +16,8 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
-#region EDM Relationship Metadata
 
-[assembly: EdmRelationshipAttribute("BB_MovistarSM_LogsModel", "FK_Post_Post", "Post", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(Allus.Keepcon.Post), "Post1", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(Allus.Keepcon.Post), true)]
-
-#endregion
-
-namespace Allus.Keepcon
+namespace Keepcon
 {
     #region Contexts
     
@@ -73,28 +68,52 @@ namespace Allus.Keepcon
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Post> Post
+        public ObjectSet<KeepconLogs> KeepconLogs
         {
             get
             {
-                if ((_Post == null))
+                if ((_KeepconLogs == null))
                 {
-                    _Post = base.CreateObjectSet<Post>("Post");
+                    _KeepconLogs = base.CreateObjectSet<KeepconLogs>("KeepconLogs");
                 }
-                return _Post;
+                return _KeepconLogs;
             }
         }
-        private ObjectSet<Post> _Post;
+        private ObjectSet<KeepconLogs> _KeepconLogs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<KeepconPost> KeepconPost
+        {
+            get
+            {
+                if ((_KeepconPost == null))
+                {
+                    _KeepconPost = base.CreateObjectSet<KeepconPost>("KeepconPost");
+                }
+                return _KeepconPost;
+            }
+        }
+        private ObjectSet<KeepconPost> _KeepconPost;
 
         #endregion
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the Post EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the KeepconLogs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToPost(Post post)
+        public void AddToKeepconLogs(KeepconLogs keepconLogs)
         {
-            base.AddObject("Post", post);
+            base.AddObject("KeepconLogs", keepconLogs);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the KeepconPost EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToKeepconPost(KeepconPost keepconPost)
+        {
+            base.AddObject("KeepconPost", keepconPost);
         }
 
         #endregion
@@ -108,34 +127,167 @@ namespace Allus.Keepcon
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BB_MovistarSM_LogsModel", Name="Post")]
+    [EdmEntityTypeAttribute(NamespaceName="BB_MovistarSM_LogsModel", Name="KeepconLogs")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class Post : EntityObject
+    public partial class KeepconLogs : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new Post object.
+        /// Create a new KeepconLogs object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="keepcon_send_date">Initial value of the keepcon_send_date property.</param>
+        /// <param name="logtype">Initial value of the logtype property.</param>
+        public static KeepconLogs CreateKeepconLogs(global::System.Int32 id, global::System.DateTime keepcon_send_date, global::System.Int32 logtype)
+        {
+            KeepconLogs keepconLogs = new KeepconLogs();
+            keepconLogs.id = id;
+            keepconLogs.keepcon_send_date = keepcon_send_date;
+            keepconLogs.logtype = logtype;
+            return keepconLogs;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime keepcon_send_date
+        {
+            get
+            {
+                return _keepcon_send_date;
+            }
+            set
+            {
+                if (_keepcon_send_date != value)
+                {
+                    Onkeepcon_send_dateChanging(value);
+                    ReportPropertyChanging("keepcon_send_date");
+                    _keepcon_send_date = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("keepcon_send_date");
+                    Onkeepcon_send_dateChanged();
+                }
+            }
+        }
+        private global::System.DateTime _keepcon_send_date;
+        partial void Onkeepcon_send_dateChanging(global::System.DateTime value);
+        partial void Onkeepcon_send_dateChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 logtype
+        {
+            get
+            {
+                return _logtype;
+            }
+            set
+            {
+                if (_logtype != value)
+                {
+                    OnlogtypeChanging(value);
+                    ReportPropertyChanging("logtype");
+                    _logtype = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("logtype");
+                    OnlogtypeChanged();
+                }
+            }
+        }
+        private global::System.Int32 _logtype;
+        partial void OnlogtypeChanging(global::System.Int32 value);
+        partial void OnlogtypeChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String keepcon_error_message
+        {
+            get
+            {
+                return _keepcon_error_message;
+            }
+            set
+            {
+                Onkeepcon_error_messageChanging(value);
+                ReportPropertyChanging("keepcon_error_message");
+                _keepcon_error_message = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("keepcon_error_message");
+                Onkeepcon_error_messageChanged();
+            }
+        }
+        private global::System.String _keepcon_error_message;
+        partial void Onkeepcon_error_messageChanging(global::System.String value);
+        partial void Onkeepcon_error_messageChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BB_MovistarSM_LogsModel", Name="KeepconPost")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class KeepconPost : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new KeepconPost object.
         /// </summary>
         /// <param name="postID">Initial value of the PostID property.</param>
         /// <param name="message">Initial value of the Message property.</param>
-        /// <param name="creationDate">Initial value of the CreationDate property.</param>
-        /// <param name="fromUserID">Initial value of the FromUserID property.</param>
-        /// <param name="sourcePostID">Initial value of the SourcePostID property.</param>
-        /// <param name="socialNetworkID">Initial value of the SocialNetworkID property.</param>
+        /// <param name="creationDatePost">Initial value of the CreationDatePost property.</param>
+        /// <param name="createdRowPost">Initial value of the CreatedRowPost property.</param>
         /// <param name="createdRow">Initial value of the CreatedRow property.</param>
-        public static Post CreatePost(global::System.Int32 postID, global::System.String message, global::System.DateTime creationDate, global::System.Int32 fromUserID, global::System.String sourcePostID, global::System.Int32 socialNetworkID, global::System.DateTime createdRow)
+        public static KeepconPost CreateKeepconPost(global::System.Int32 postID, global::System.String message, global::System.DateTime creationDatePost, global::System.DateTime createdRowPost, global::System.DateTime createdRow)
         {
-            Post post = new Post();
-            post.PostID = postID;
-            post.Message = message;
-            post.CreationDate = creationDate;
-            post.FromUserID = fromUserID;
-            post.SourcePostID = sourcePostID;
-            post.SocialNetworkID = socialNetworkID;
-            post.CreatedRow = createdRow;
-            return post;
+            KeepconPost keepconPost = new KeepconPost();
+            keepconPost.PostID = postID;
+            keepconPost.Message = message;
+            keepconPost.CreationDatePost = creationDatePost;
+            keepconPost.CreatedRowPost = createdRowPost;
+            keepconPost.CreatedRow = createdRow;
+            return keepconPost;
         }
 
         #endregion
@@ -197,192 +349,48 @@ namespace Allus.Keepcon
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.DateTime CreationDate
+        public global::System.DateTime CreationDatePost
         {
             get
             {
-                return _CreationDate;
+                return _CreationDatePost;
             }
             set
             {
-                OnCreationDateChanging(value);
-                ReportPropertyChanging("CreationDate");
-                _CreationDate = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("CreationDate");
-                OnCreationDateChanged();
+                OnCreationDatePostChanging(value);
+                ReportPropertyChanging("CreationDatePost");
+                _CreationDatePost = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreationDatePost");
+                OnCreationDatePostChanged();
             }
         }
-        private global::System.DateTime _CreationDate;
-        partial void OnCreationDateChanging(global::System.DateTime value);
-        partial void OnCreationDateChanged();
+        private global::System.DateTime _CreationDatePost;
+        partial void OnCreationDatePostChanging(global::System.DateTime value);
+        partial void OnCreationDatePostChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.Int32 FromUserID
+        public global::System.DateTime CreatedRowPost
         {
             get
             {
-                return _FromUserID;
+                return _CreatedRowPost;
             }
             set
             {
-                OnFromUserIDChanging(value);
-                ReportPropertyChanging("FromUserID");
-                _FromUserID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("FromUserID");
-                OnFromUserIDChanged();
+                OnCreatedRowPostChanging(value);
+                ReportPropertyChanging("CreatedRowPost");
+                _CreatedRowPost = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("CreatedRowPost");
+                OnCreatedRowPostChanged();
             }
         }
-        private global::System.Int32 _FromUserID;
-        partial void OnFromUserIDChanging(global::System.Int32 value);
-        partial void OnFromUserIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ToUserID
-        {
-            get
-            {
-                return _ToUserID;
-            }
-            set
-            {
-                OnToUserIDChanging(value);
-                ReportPropertyChanging("ToUserID");
-                _ToUserID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ToUserID");
-                OnToUserIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _ToUserID;
-        partial void OnToUserIDChanging(Nullable<global::System.Int32> value);
-        partial void OnToUserIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String SourcePostID
-        {
-            get
-            {
-                return _SourcePostID;
-            }
-            set
-            {
-                OnSourcePostIDChanging(value);
-                ReportPropertyChanging("SourcePostID");
-                _SourcePostID = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("SourcePostID");
-                OnSourcePostIDChanged();
-            }
-        }
-        private global::System.String _SourcePostID;
-        partial void OnSourcePostIDChanging(global::System.String value);
-        partial void OnSourcePostIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 SocialNetworkID
-        {
-            get
-            {
-                return _SocialNetworkID;
-            }
-            set
-            {
-                OnSocialNetworkIDChanging(value);
-                ReportPropertyChanging("SocialNetworkID");
-                _SocialNetworkID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("SocialNetworkID");
-                OnSocialNetworkIDChanged();
-            }
-        }
-        private global::System.Int32 _SocialNetworkID;
-        partial void OnSocialNetworkIDChanging(global::System.Int32 value);
-        partial void OnSocialNetworkIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String AppSourceID
-        {
-            get
-            {
-                return _AppSourceID;
-            }
-            set
-            {
-                OnAppSourceIDChanging(value);
-                ReportPropertyChanging("AppSourceID");
-                _AppSourceID = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("AppSourceID");
-                OnAppSourceIDChanged();
-            }
-        }
-        private global::System.String _AppSourceID;
-        partial void OnAppSourceIDChanging(global::System.String value);
-        partial void OnAppSourceIDChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String Permlink
-        {
-            get
-            {
-                return _Permlink;
-            }
-            set
-            {
-                OnPermlinkChanging(value);
-                ReportPropertyChanging("Permlink");
-                _Permlink = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("Permlink");
-                OnPermlinkChanged();
-            }
-        }
-        private global::System.String _Permlink;
-        partial void OnPermlinkChanging(global::System.String value);
-        partial void OnPermlinkChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Int32> ParentPostID
-        {
-            get
-            {
-                return _ParentPostID;
-            }
-            set
-            {
-                OnParentPostIDChanging(value);
-                ReportPropertyChanging("ParentPostID");
-                _ParentPostID = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("ParentPostID");
-                OnParentPostIDChanged();
-            }
-        }
-        private Nullable<global::System.Int32> _ParentPostID;
-        partial void OnParentPostIDChanging(Nullable<global::System.Int32> value);
-        partial void OnParentPostIDChanged();
+        private global::System.DateTime _CreatedRowPost;
+        partial void OnCreatedRowPostChanging(global::System.DateTime value);
+        partial void OnCreatedRowPostChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -407,30 +415,6 @@ namespace Allus.Keepcon
         private global::System.DateTime _CreatedRow;
         partial void OnCreatedRowChanging(global::System.DateTime value);
         partial void OnCreatedRowChanged();
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public Nullable<global::System.Boolean> IsBack
-        {
-            get
-            {
-                return _IsBack;
-            }
-            set
-            {
-                OnIsBackChanging(value);
-                ReportPropertyChanging("IsBack");
-                _IsBack = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("IsBack");
-                OnIsBackChanged();
-            }
-        }
-        private Nullable<global::System.Boolean> _IsBack;
-        partial void OnIsBackChanging(Nullable<global::System.Boolean> value);
-        partial void OnIsBackChanged();
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -602,69 +586,6 @@ namespace Allus.Keepcon
 
         #endregion
     
-        #region Navigation Properties
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BB_MovistarSM_LogsModel", "FK_Post_Post", "Post1")]
-        public EntityCollection<Post> Post1
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Post>("BB_MovistarSM_LogsModel.FK_Post_Post", "Post1");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Post>("BB_MovistarSM_LogsModel.FK_Post_Post", "Post1", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("BB_MovistarSM_LogsModel", "FK_Post_Post", "Post")]
-        public Post Post2
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Post>("BB_MovistarSM_LogsModel.FK_Post_Post", "Post").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Post>("BB_MovistarSM_LogsModel.FK_Post_Post", "Post").Value = value;
-            }
-        }
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<Post> Post2Reference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Post>("BB_MovistarSM_LogsModel.FK_Post_Post", "Post");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Post>("BB_MovistarSM_LogsModel.FK_Post_Post", "Post", value);
-                }
-            }
-        }
-
-        #endregion
     }
 
     #endregion

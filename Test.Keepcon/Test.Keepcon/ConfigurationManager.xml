@@ -4,9 +4,12 @@
     <Group name="Engine">
       <Keys>
         <!-- 1 = 1 seg	  -->
-        <Key name="ClockInterval" encrypted="false">
+        <Key name="ClockInterval_SendContent" encrypted="false">
           <Value><![CDATA[3]]></Value>
         </Key>
+		  <Key name="ClockInterval_CheckResult" encrypted="false">
+			  <Value><![CDATA[3]]></Value>
+		  </Key>
         <Key name="ServiceName" encrypted="false">
           <Value><![CDATA[Keepcon test]]></Value>
         </Key>
