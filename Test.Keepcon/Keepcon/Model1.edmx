@@ -8,7 +8,7 @@
         <EntityContainer Name="BB_MovistarSM_LogsModelStoreContainer">
           <EntitySet Name="KeepconLogs" EntityType="BB_MovistarSM_LogsModel.Store.KeepconLogs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="KeepconPost" EntityType="BB_MovistarSM_LogsModel.Store.KeepconPost" store:Type="Tables" Schema="dbo" />
-          </EntityContainer>
+        </EntityContainer>
         <EntityType Name="KeepconLogs">
           <Key>
             <PropertyRef Name="id" />
@@ -36,6 +36,7 @@
           <Property Name="keepcon_send_setId" Type="uniqueidentifier" />
           <Property Name="keepcon_result_setId" Type="varchar" MaxLength="300" />
           <Property Name="keepcon_moderator" Type="varchar" MaxLength="50" />
+          <Property Name="keepcon_ack" Type="bit" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -72,6 +73,7 @@
           <Property Type="Guid" Name="keepcon_send_setId" />
           <Property Type="String" Name="keepcon_result_setId" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="keepcon_moderator" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="keepcon_ack" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -92,6 +94,7 @@
           <EntitySetMapping Name="KeepconPost">
             <EntityTypeMapping TypeName="BB_MovistarSM_LogsModel.KeepconPost">
               <MappingFragment StoreEntitySet="KeepconPost">
+                <ScalarProperty Name="keepcon_ack" ColumnName="keepcon_ack" />
                 <ScalarProperty Name="keepcon_moderator" ColumnName="keepcon_moderator" />
                 <ScalarProperty Name="keepcon_result_setId" ColumnName="keepcon_result_setId" />
                 <ScalarProperty Name="keepcon_send_setId" ColumnName="keepcon_send_setId" />

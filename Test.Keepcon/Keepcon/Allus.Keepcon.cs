@@ -298,7 +298,10 @@ namespace Allus.Keepcon
 
         #endregion
 
-
+        /// <summary>
+        /// Almacena resultado de moderacion
+        /// </summary>
+        /// <param name="export"></param>
         internal static void SaveResult(Export.Export export)
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
@@ -312,6 +315,22 @@ namespace Allus.Keepcon
                     post.keepcon_result_setId = export.SetId;
                     post.keepcon_moderator = c.ModeratorName;
 
+                }
+                dc.SaveChanges();
+            }
+        }
+
+        /// <summary>
+        /// Establece la bandera keepcon_ack par aindicar q al lote de post con un determinado set result id se le envio el ACK
+        /// </summary>
+        /// <param name="setId">Lote resultado</param>
+        internal static void SaveResult_ACK(string setId)
+        {
+            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+            {
+                foreach (KeepconPost wKeepconPost in dc.KeepconPost.Where(p=>p.keepcon_result_setId.Equals(setId)))
+                {
+                    wKeepconPost.keepcon_ack = true;
                 }
                 dc.SaveChanges();
             }
