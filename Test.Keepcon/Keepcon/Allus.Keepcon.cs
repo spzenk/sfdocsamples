@@ -271,29 +271,34 @@ namespace Allus.Keepcon
         #region DATA
 
         /// <summary>
-        /// Retorna post 
+        /// Retorna post retorna un batch = kc_batch
         /// </summary>
         /// <param name="takeNumber"></param>
         /// <returns></returns>
-        internal static List<KeepconPost> RetrivePost_To_Send(int takeNumber)
+        internal static List<KeepconPost> RetrivePost_To_Send()
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
 
                 var x = from s in dc.KeepconPost where s.keepcon_send_date.HasValue == false select s;
-                return x.Take(takeNumber).ToList<KeepconPost>();
+                return x.Take(kc_batch).ToList<KeepconPost>();
 
             }
         }
-        internal static List<KeepconPost> Update_Sended_Post()
-        {
-            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
-            {
-                var x = from s in dc.KeepconPost where s.keepcon_send_date.HasValue == false select s;
-                return x.ToList<KeepconPost>();
 
-            }
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        //internal static List<KeepconPost> Update_Sended_Post()
+        //{
+        //    using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+        //    {
+        //        var x = from s in dc.KeepconPost where s.keepcon_send_date.HasValue == false select s;
+        //        return x.ToList<KeepconPost>();
+
+        //    }
+        //}
 
 
         #endregion
