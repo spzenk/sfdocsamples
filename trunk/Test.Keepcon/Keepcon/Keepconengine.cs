@@ -164,7 +164,7 @@ namespace Allus.Keepcon
         {
 
             
-            List<KeepconPost> posts = KeepconSvc.RetrivePost_To_Send(12);
+            List<KeepconPost> posts = KeepconSvc.RetrivePost_To_Send();
             if (posts.Count != 0)
             {
                 Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
