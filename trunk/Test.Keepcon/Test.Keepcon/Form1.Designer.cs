@@ -47,8 +47,9 @@
             this.btnStart_CheckResult = new System.Windows.Forms.Button();
             this.btnStart_SendContent = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.keepconengine1 = new Allus.Keepcon.Keepconengine(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.txtLogs = new System.Windows.Forms.TextBox();
+            this.keepconengine1 = new Allus.Keepcon.Keepconengine(this.components);
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -242,6 +243,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.txtSetId);
             this.tabPage1.Controls.Add(this.button6);
             this.tabPage1.Controls.Add(this.btnSendBath);
@@ -257,9 +259,15 @@
             this.tabPage1.Text = "Keepcon component";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // keepconengine1
+            // button1
             // 
-            this.keepconengine1.SussessEvent += new Allus.Keepcon.SussessHandler(this.keepconengine1_SussessEvent);
+            this.button1.Location = new System.Drawing.Point(538, 90);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(143, 27);
+            this.button1.TabIndex = 9;
+            this.button1.Text = "Retrive_All_ContentType_To_Send";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // txtLogs
             // 
@@ -271,6 +279,10 @@
             this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtLogs.Size = new System.Drawing.Size(287, 389);
             this.txtLogs.TabIndex = 11;
+            // 
+            // keepconengine1
+            // 
+            this.keepconengine1.SussessEvent += new Allus.Keepcon.SussessHandler(this.keepconengine1_SussessEvent);
             // 
             // Form1
             // 
@@ -315,6 +327,7 @@
         private System.Windows.Forms.Label lblSend_Clock;
         private System.Windows.Forms.Label lblCheckResultClock;
         private System.Windows.Forms.TextBox txtLogs;
+        private System.Windows.Forms.Button button1;
     }
 }
 
