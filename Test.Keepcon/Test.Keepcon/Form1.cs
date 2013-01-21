@@ -193,9 +193,30 @@ namespace Test.Keepcon
         StringBuilder logs = new StringBuilder();
         private void keepconengine1_SussessEvent(string status)
         {
-            logs.AppendLine(String.Concat(System.DateTime.Now.ToShortTimeString() , "-->",status));
 
-            txtLogs.Text = logs.ToString();
+
+
+            if (InvokeRequired)
+            {
+                BeginInvoke(new SussessHandler(keepconengine1_SussessEvent), new object[] { status });
+                return;
+            }
+            else
+            {
+                logs.AppendLine(String.Concat(System.DateTime.Now.ToShortTimeString(), "-->", status));
+
+                txtLogs.Text = logs.ToString();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            StringBuilder strb= new StringBuilder ();
+            foreach(string s in Allus.Keepcon.KeepconSvc.Retrive_All_ContentType_To_Send())
+            {
+                strb.AppendLine(s);
+            }
+            txtResult.Text = strb.ToString();
         }
 
 

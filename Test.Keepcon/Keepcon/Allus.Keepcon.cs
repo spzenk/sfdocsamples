@@ -169,12 +169,12 @@ namespace Allus.Keepcon
         /// Llamada al servicio  web REST de keepcon donde consumir los resultados.
         /// </summary>
         /// <returns>Retorna un objeto Export</returns>
-        public static Allus.Keepcon.Export.Export RetriveResult_2()
+        public static Allus.Keepcon.Export.Export RetriveResult_2(string contextName)
         {
             Allus.Keepcon.Export.Export import = null;
             try
             {
-                string result = HttpPUT(string.Format(url_get_result, user), string.Empty);
+                string result = HttpPUT(string.Format(url_get_result, contextName), string.Empty);
                 if (!String.IsNullOrEmpty(result))
                     import = Export.Export.SetXml(result);
 
@@ -285,7 +285,20 @@ namespace Allus.Keepcon
 
             }
         }
+        public static List<String> Retrive_All_ContentType_To_Send()
+        {
+            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+            {
 
+                var x = (from s in dc.KeepconPost 
+                        where 
+                        s.keepcon_send_date.HasValue &&
+                        !s.keepcon_result_setId.HasValue 
+                        select s.KeepconCustomerCare).Distinct();
+                return x.ToList<String>();
+
+            }
+        }
         /// <summary>
         /// 
         /// </summary>
