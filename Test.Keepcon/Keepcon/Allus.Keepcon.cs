@@ -127,9 +127,9 @@ namespace Allus.Keepcon
             string result = string.Empty;
             //try
             //{
-                if (import.Contents.Count == 1)
-                    result = HttpPUT(url_send_content_synk, import.GetXml());
-                else
+                //if (import.Contents.Count == 1)
+                //    result = HttpPUT(url_send_content_synk, import.GetXml());
+                //else
                     result = HttpPUT(url_send_content_asynk, import.GetXml());
             //}
             //catch (Exception ex)
@@ -169,7 +169,7 @@ namespace Allus.Keepcon
         /// Llamada al servicio  web REST de keepcon donde consumir los resultados.
         /// </summary>
         /// <returns>Retorna un objeto Export</returns>
-        internal static Allus.Keepcon.Export.Export RetriveResult_2()
+        public static Allus.Keepcon.Export.Export RetriveResult_2()
         {
             Allus.Keepcon.Export.Export import = null;
             try

@@ -166,7 +166,10 @@ namespace Allus.Keepcon
     {
         public enum Status { Arrived = 4000, SendedError = 4001, SendedOk = 4002 }
     }
-
+    public class SocialNetworkId
+    {
+        public enum Status { Arrived = 4000, SendedError = 4001, SendedOk = 4002 }
+    }
     public class lic
     {
         public static void chk()

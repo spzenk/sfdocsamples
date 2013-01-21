@@ -16,7 +16,7 @@ namespace Allus.Keepcon.Import
         public Import(KeepconPost post)
         {
             this.Contents = new List<Content>();
-            this.Contenttype = "MovistarPostDemo";
+            this.Contenttype = post.KeepconCustomerCare;
 
 
             Content wContent = new Content();
@@ -32,23 +32,24 @@ namespace Allus.Keepcon.Import
 
 
         }
-
+        public static List<String> Retrive_CustommerCareList(List<KeepconPost> posts)
+        {
+            List<String> custommerCareList = (from p in posts select p.KeepconCustomerCare).Distinct().ToList<string>();
+            return custommerCareList;
+        
+        }
         public Import(List<KeepconPost> posts)
         {
             this.Contents = new List<Content>();
-            this.Contenttype = "MovistarPostDemo";
-
+          
             Content wContent = null;
 
-
-
-
-            //List<KeepconPost> posts = RetrivePost(skip + 10);
-            int count = posts.Count();
+         
+            //int count = posts.Count();
             foreach (KeepconPost p in posts)
             {
                 wContent = new Content();
-
+                
                 wContent.Author = new Author("author", "allus");
 
                 //wContent.Date = System.DateTime.Now;

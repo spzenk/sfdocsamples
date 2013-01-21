@@ -52,7 +52,7 @@ namespace Test.Keepcon
         private void btnCheckResult_Click(object sender, EventArgs e)
         {
             ClearText();
-            //Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
+            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
             //if (export != null)
             //{
             //    txtImport.Text = export.GetXml();
@@ -189,6 +189,13 @@ namespace Test.Keepcon
             btnStart_CheckResult.Enabled = true;
             btnStop_Checkresult.Enabled = false;
             
+        }
+        StringBuilder logs = new StringBuilder();
+        private void keepconengine1_SussessEvent(string status)
+        {
+            logs.AppendLine(String.Concat(System.DateTime.Now.ToShortTimeString() , "-->",status));
+
+            txtLogs.Text = logs.ToString();
         }
 
 
