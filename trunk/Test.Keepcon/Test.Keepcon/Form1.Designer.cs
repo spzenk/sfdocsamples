@@ -40,14 +40,15 @@
             this.button6 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblCheckResultClock = new System.Windows.Forms.Label();
+            this.lblSend_Clock = new System.Windows.Forms.Label();
             this.btnStop_Checkresult = new System.Windows.Forms.Button();
             this.btnStop_SendContent = new System.Windows.Forms.Button();
             this.btnStart_CheckResult = new System.Windows.Forms.Button();
             this.btnStart_SendContent = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.keepconengine1 = new Allus.Keepcon.Keepconengine(this.components);
-            this.lblSend_Clock = new System.Windows.Forms.Label();
-            this.lblCheckResultClock = new System.Windows.Forms.Label();
+            this.txtLogs = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -68,11 +69,11 @@
             // 
             this.txtImport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtImport.Location = new System.Drawing.Point(16, 185);
+            this.txtImport.Location = new System.Drawing.Point(305, 185);
             this.txtImport.Multiline = true;
             this.txtImport.Name = "txtImport";
             this.txtImport.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtImport.Size = new System.Drawing.Size(759, 233);
+            this.txtImport.Size = new System.Drawing.Size(651, 233);
             this.txtImport.TabIndex = 1;
             // 
             // txtResult
@@ -80,11 +81,11 @@
             this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtResult.Location = new System.Drawing.Point(16, 441);
+            this.txtResult.Location = new System.Drawing.Point(305, 444);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtResult.Size = new System.Drawing.Size(759, 120);
+            this.txtResult.Size = new System.Drawing.Size(686, 120);
             this.txtResult.TabIndex = 2;
             // 
             // button2
@@ -175,6 +176,24 @@
             this.tabPage2.Text = "Engine";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblCheckResultClock
+            // 
+            this.lblCheckResultClock.AutoSize = true;
+            this.lblCheckResultClock.Location = new System.Drawing.Point(486, 69);
+            this.lblCheckResultClock.Name = "lblCheckResultClock";
+            this.lblCheckResultClock.Size = new System.Drawing.Size(35, 13);
+            this.lblCheckResultClock.TabIndex = 6;
+            this.lblCheckResultClock.Text = "label1";
+            // 
+            // lblSend_Clock
+            // 
+            this.lblSend_Clock.AutoSize = true;
+            this.lblSend_Clock.Location = new System.Drawing.Point(486, 14);
+            this.lblSend_Clock.Name = "lblSend_Clock";
+            this.lblSend_Clock.Size = new System.Drawing.Size(35, 13);
+            this.lblSend_Clock.TabIndex = 5;
+            this.lblSend_Clock.Text = "label1";
+            // 
             // btnStop_Checkresult
             // 
             this.btnStop_Checkresult.Enabled = false;
@@ -238,29 +257,27 @@
             this.tabPage1.Text = "Keepcon component";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // lblSend_Clock
+            // keepconengine1
             // 
-            this.lblSend_Clock.AutoSize = true;
-            this.lblSend_Clock.Location = new System.Drawing.Point(486, 14);
-            this.lblSend_Clock.Name = "lblSend_Clock";
-            this.lblSend_Clock.Size = new System.Drawing.Size(35, 13);
-            this.lblSend_Clock.TabIndex = 5;
-            this.lblSend_Clock.Text = "label1";
+            this.keepconengine1.SussessEvent += new Allus.Keepcon.SussessHandler(this.keepconengine1_SussessEvent);
             // 
-            // lblCheckResultClock
+            // txtLogs
             // 
-            this.lblCheckResultClock.AutoSize = true;
-            this.lblCheckResultClock.Location = new System.Drawing.Point(486, 69);
-            this.lblCheckResultClock.Name = "lblCheckResultClock";
-            this.lblCheckResultClock.Size = new System.Drawing.Size(35, 13);
-            this.lblCheckResultClock.TabIndex = 6;
-            this.lblCheckResultClock.Text = "label1";
+            this.txtLogs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLogs.Location = new System.Drawing.Point(12, 185);
+            this.txtLogs.Multiline = true;
+            this.txtLogs.Name = "txtLogs";
+            this.txtLogs.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtLogs.Size = new System.Drawing.Size(287, 389);
+            this.txtLogs.TabIndex = 11;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(814, 596);
+            this.ClientSize = new System.Drawing.Size(985, 596);
+            this.Controls.Add(this.txtLogs);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtResult);
             this.Controls.Add(this.txtImport);
@@ -297,6 +314,7 @@
         private System.Windows.Forms.Button btnStop_SendContent;
         private System.Windows.Forms.Label lblSend_Clock;
         private System.Windows.Forms.Label lblCheckResultClock;
+        private System.Windows.Forms.TextBox txtLogs;
     }
 }
 

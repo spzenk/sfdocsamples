@@ -97,7 +97,7 @@ namespace Allus.Keepcon
         /// </summary>
         public void Start_SendContent()
         {
-            //OnSussess("Iniciando llamada a web metodos ");
+            OnSussess("Start_SendContent");
             Helper.Log(Helper.ServiceName, "SendContent: Iniciando envia de post a keepcont", Fwk.Logging.EventType.Information, false);
             double interval = 0;
             try
@@ -138,10 +138,12 @@ namespace Allus.Keepcon
 
         private void _SendContentTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
+
             _SendContentTimer.Stop();
           
             try
             {
+                OnSussess("SendContent: SendContent ");
                 this.SendContent();
             }
            
@@ -162,14 +164,21 @@ namespace Allus.Keepcon
         /// </summary>
         public void SendContent()
         {
-
-            
             List<KeepconPost> posts = KeepconSvc.RetrivePost_To_Send();
+
             if (posts.Count != 0)
             {
-                Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(posts);
+
                 Helper.Log(Helper.ServiceName, string.Format("SendContent: Enviando {0} post", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
-                KeepconSvc.SendContent(wImport);
+                List<string> custommerCareList = Allus.Keepcon.Import.Import.Retrive_CustommerCareList(posts);
+                foreach (String customerCare in custommerCareList)
+                {
+                    List<KeepconPost> postAux = posts.Where<KeepconPost>(p => p.KeepconCustomerCare.Equals(customerCare)).ToList<KeepconPost>();
+                    Allus.Keepcon.Import.Import wImport = new Allus.Keepcon.Import.Import(postAux);
+                    wImport.Contenttype = customerCare;
+                    KeepconSvc.SendContent(wImport);
+                }
+
                 Helper.Log(Helper.ServiceName, string.Format("SendContent: Envio de {0} post: FINALIZADO", posts.Count.ToString()), Fwk.Logging.EventType.Information, false);
             }
             else
@@ -186,7 +195,7 @@ namespace Allus.Keepcon
         /// </summary>
         public void Start_CheckResult()
         {
-            //OnSussess("CheckResult: Iniciando llamada a web metodos ");
+            OnSussess("CheckResult: Start_CheckResult  ");
             double interval = 0;
             try
             {
@@ -227,6 +236,7 @@ namespace Allus.Keepcon
 
             try
             {
+                OnSussess("CheckResult_From_Keepcon ");
                 this.CheckResult_From_Keepcon();
             }
             catch (Exception ex)
@@ -253,7 +263,7 @@ namespace Allus.Keepcon
                 KeepconSvc.SendASK(export.SetId);
             }
             else
-            { Helper.Log(Helper.ServiceName, string.Format("CheckResult: Las respuesta del chequeo arrojo un reult = null", export.Contents.Count), Fwk.Logging.EventType.Information, false); }
+            { Helper.Log(Helper.ServiceName, "CheckResult: Las respuesta del chequeo arrojo un reult = null", Fwk.Logging.EventType.Information, false); }
         }
 
         public void SendASK(string setId)

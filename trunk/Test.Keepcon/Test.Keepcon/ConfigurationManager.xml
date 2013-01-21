@@ -5,10 +5,10 @@
       <Keys>
         <!-- 1 = 1 seg	  -->
         <Key name="ClockInterval_SendContent" encrypted="false">
-          <Value><![CDATA[3]]></Value>
+          <Value><![CDATA[7]]></Value>
         </Key>
 		  <Key name="ClockInterval_CheckResult" encrypted="false">
-			  <Value><![CDATA[3]]></Value>
+			  <Value><![CDATA[7]]></Value>
 		  </Key>
         <Key name="ServiceName" encrypted="false">
           <Value><![CDATA[Keepcon test]]></Value>
@@ -16,9 +16,7 @@
         <Key name="LogOnFile" encrypted="false">
           <Value><![CDATA[true]]></Value>
         </Key>
-        <Key name="lic" encrypted="false">
-          <Value><![CDATA[bijjI/Vsyg69+LTRxbuV3Q==]]></Value>
-        </Key>
+        
         <Key name="sleepTime" encrypted="false">
           <Value><![CDATA[20]]></Value>
         </Key>
@@ -44,13 +42,13 @@
 			</Key>
 
 			<Key name="UserName" encrypted="false">
-				<Value><![CDATA[*]]></Value>
+				<Value><![CDATA[moviedo]]></Value>
 			</Key>
 			<Key name="Password" encrypted="false">
-				<Value><![CDATA[*]]></Value>
+				<Value><![CDATA[Lincelin6]]></Value>
 			</Key>
 			<Key name="Domain" encrypted="false">
-				<Value><![CDATA[allus.com.ar]]></Value>
+				<Value><![CDATA[ALLUS-AR]]></Value>
 			</Key>
 			<Key name="Host" encrypted="false">
 				<Value><![CDATA[proxyallus]]></Value>
