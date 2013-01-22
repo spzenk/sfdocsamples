@@ -52,7 +52,7 @@ namespace Test.Keepcon
         private void btnCheckResult_Click(object sender, EventArgs e)
         {
             ClearText();
-            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
+            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2("MovistarCustomerCareTw");
             //if (export != null)
             //{
             //    txtImport.Text = export.GetXml();
