@@ -264,7 +264,9 @@ namespace Allus.Keepcon
                     KeepconSvc.SaveResult(export);
                     Helper.Log(Helper.ServiceName, string.Format("CheckResult: Se almacenaron {0} post, context type {1} ", export.Contents.Count, contenType), Fwk.Logging.EventType.Information, false);
 
-                    KeepconSvc.SendASK(export.SetId);
+                    SendASK(export.SetId);
+            
+
                 }
                 else
                 { Helper.Log(Helper.ServiceName, string.Format("CheckResult: Las respuesta del chequeo arrojo un reult = null, context type: {0}",contenType), Fwk.Logging.EventType.Information, false); }
@@ -275,7 +277,8 @@ namespace Allus.Keepcon
         {
             try
             {
-                KeepconSvc.SendASK(setId);
+               String result = KeepconSvc.SendASK(setId);
+
             }
             catch (Exception ex)
             {
