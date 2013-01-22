@@ -252,18 +252,23 @@ namespace Allus.Keepcon
         public void CheckResult_From_Keepcon()
         {
             Helper.Log(Helper.ServiceName, "CheckResult_From_Keepcon: Iicio ", Fwk.Logging.EventType.Information, false);
-            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2("MovistarCustomerCareTw");
-            if (export != null)
+
+            List<string> contentTypeList = KeepconSvc.Retrive_All_ContentType_To_Send();
+            foreach (String contenType in contentTypeList)
             {
+                Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2(contenType);
+                if (export != null)
+                {
 
-                Helper.Log(Helper.ServiceName, string.Format("CheckResult: Guardando resultado keepcont :Cantidad {0}", export.Contents.Count), Fwk.Logging.EventType.Information, false);
-                KeepconSvc.SaveResult(export);
-                Helper.Log(Helper.ServiceName, string.Format("CheckResult: Se almacenaron {0} post", export.Contents.Count), Fwk.Logging.EventType.Information, false);
+                    Helper.Log(Helper.ServiceName, string.Format("CheckResult: Guardando resultado keepcont :Cantidad {0}, context type: {1}", export.Contents.Count, contenType), Fwk.Logging.EventType.Information, false);
+                    KeepconSvc.SaveResult(export);
+                    Helper.Log(Helper.ServiceName, string.Format("CheckResult: Se almacenaron {0} post, context type {1} ", export.Contents.Count, contenType), Fwk.Logging.EventType.Information, false);
 
-                KeepconSvc.SendASK(export.SetId);
+                    KeepconSvc.SendASK(export.SetId);
+                }
+                else
+                { Helper.Log(Helper.ServiceName, string.Format("CheckResult: Las respuesta del chequeo arrojo un reult = null, context type: {0}",contenType), Fwk.Logging.EventType.Information, false); }
             }
-            else
-            { Helper.Log(Helper.ServiceName, "CheckResult: Las respuesta del chequeo arrojo un reult = null", Fwk.Logging.EventType.Information, false); }
         }
 
         public void SendASK(string setId)
