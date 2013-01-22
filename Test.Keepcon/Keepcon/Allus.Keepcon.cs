@@ -348,8 +348,8 @@ namespace Allus.Keepcon
         {
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
-                Guid guid = new Guid(setId);
-                foreach (KeepconPost wKeepconPost in dc.KeepconPost.Where(p => p.keepcon_result_setId.Equals(guid)))
+
+                foreach (KeepconPost wKeepconPost in dc.KeepconPost.Where(p => p.keepcon_result_setId.Equals(setId)))
                 {
                     wKeepconPost.keepcon_ack = true;
                 }

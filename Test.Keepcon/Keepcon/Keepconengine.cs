@@ -273,22 +273,27 @@ namespace Allus.Keepcon
             }
         }
 
-        public void SendASK(string setId)
+        public string SendASK(string setId)
         {
+            String result = string.Empty;
             try
             {
-               String result = KeepconSvc.SendASK(setId);
+                result = KeepconSvc.SendASK(setId);
+
+               
 
             }
             catch (Exception ex)
             {
                 Fwk.Exceptions.TechnicalException te = new Fwk.Exceptions.TechnicalException(String.Format("CheckResult : SendASK lote {0} fallo",setId ), ex);
                 te.ErrorId = "1";
-                Helper.Log(Helper.ServiceName, te, false);
-         
+                throw te;//Helper.Log(Helper.ServiceName, te, false);
+                
             }
-            
-            KeepconSvc.SaveResult_ACK(setId);
+            if(result.Equals("OK"))
+                KeepconSvc.SaveResult_ACK(setId);
+
+            return result;
         }
 
 

@@ -65,7 +65,7 @@ namespace Test.Keepcon
         private void button5_Click(object sender, EventArgs e)
         {
             txtResult.Text = txtImport.Text = string.Empty;
-            keepconengine1.SendASK(txtSetId.Text);
+            txtResult.Text = keepconengine1.SendASK(txtSetId.Text);
         }
 
         private void button6_Click(object sender, EventArgs e)
