@@ -293,7 +293,7 @@ namespace Allus.Keepcon
                 var x = (from s in dc.KeepconPost 
                         where 
                         s.keepcon_send_date.HasValue &&
-                        !s.keepcon_result_setId.HasValue 
+                        String.IsNullOrEmpty(s.keepcon_result_setId)
                         select s.KeepconCustomerCare).Distinct();
                 return x.ToList<String>();
 
@@ -330,7 +330,7 @@ namespace Allus.Keepcon
                     post.keepcon_result_resived_date = System.DateTime.Now;
                     post.keepcon_moderator_date = Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(c.ModerationDate);
                     post.keepcon_moderator_decision = c.ModerationDecision;
-                    post.keepcon_result_setId = export.SetGuid;
+                    post.keepcon_result_setId = export.SetId;
                     post.keepcon_moderator = c.ModeratorName;
 
                 }
