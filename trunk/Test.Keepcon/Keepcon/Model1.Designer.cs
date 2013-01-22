@@ -68,22 +68,6 @@ namespace Keepcon
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<KeepconPost> KeepconPost
-        {
-            get
-            {
-                if ((_KeepconPost == null))
-                {
-                    _KeepconPost = base.CreateObjectSet<KeepconPost>("KeepconPost");
-                }
-                return _KeepconPost;
-            }
-        }
-        private ObjectSet<KeepconPost> _KeepconPost;
-    
-        /// <summary>
-        /// No Metadata Documentation available.
-        /// </summary>
         public ObjectSet<KeepconLogs> KeepconLogs
         {
             get
@@ -96,17 +80,25 @@ namespace Keepcon
             }
         }
         private ObjectSet<KeepconLogs> _KeepconLogs;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<KeepconPost> KeepconPost
+        {
+            get
+            {
+                if ((_KeepconPost == null))
+                {
+                    _KeepconPost = base.CreateObjectSet<KeepconPost>("KeepconPost");
+                }
+                return _KeepconPost;
+            }
+        }
+        private ObjectSet<KeepconPost> _KeepconPost;
 
         #endregion
         #region AddTo Methods
-    
-        /// <summary>
-        /// Deprecated Method for adding a new object to the KeepconPost EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
-        /// </summary>
-        public void AddToKeepconPost(KeepconPost keepconPost)
-        {
-            base.AddObject("KeepconPost", keepconPost);
-        }
     
         /// <summary>
         /// Deprecated Method for adding a new object to the KeepconLogs EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
@@ -114,6 +106,14 @@ namespace Keepcon
         public void AddToKeepconLogs(KeepconLogs keepconLogs)
         {
             base.AddObject("KeepconLogs", keepconLogs);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the KeepconPost EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToKeepconPost(KeepconPost keepconPost)
+        {
+            base.AddObject("KeepconPost", keepconPost);
         }
 
         #endregion
@@ -541,7 +541,7 @@ namespace Keepcon
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
-        public Nullable<global::System.Guid> keepcon_result_setId
+        public global::System.String keepcon_result_setId
         {
             get
             {
@@ -551,13 +551,13 @@ namespace Keepcon
             {
                 Onkeepcon_result_setIdChanging(value);
                 ReportPropertyChanging("keepcon_result_setId");
-                _keepcon_result_setId = StructuralObject.SetValidValue(value);
+                _keepcon_result_setId = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("keepcon_result_setId");
                 Onkeepcon_result_setIdChanged();
             }
         }
-        private Nullable<global::System.Guid> _keepcon_result_setId;
-        partial void Onkeepcon_result_setIdChanging(Nullable<global::System.Guid> value);
+        private global::System.String _keepcon_result_setId;
+        partial void Onkeepcon_result_setIdChanging(global::System.String value);
         partial void Onkeepcon_result_setIdChanged();
     
         /// <summary>
