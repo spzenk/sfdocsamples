@@ -252,7 +252,7 @@ namespace Allus.Keepcon
         public void CheckResult_From_Keepcon()
         {
             Helper.Log(Helper.ServiceName, "CheckResult_From_Keepcon: Iicio ", Fwk.Logging.EventType.Information, false);
-            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2();
+            Allus.Keepcon.Export.Export export = KeepconSvc.RetriveResult_2("MovistarCustomerCareTw");
             if (export != null)
             {
 
