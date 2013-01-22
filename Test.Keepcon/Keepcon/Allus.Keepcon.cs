@@ -165,9 +165,11 @@ namespace Allus.Keepcon
             //}
         }
 
+
         /// <summary>
         /// Llamada al servicio  web REST de keepcon donde consumir los resultados.
         /// </summary>
+        /// <param name="contextName">[account-name] es el nombre de la cuenta de su empresa. Pero si la empresatiene dos contexto va el nombre del contexto</param>
         /// <returns>Retorna un objeto Export</returns>
         public static Allus.Keepcon.Export.Export RetriveResult_2(string contextName)
         {
