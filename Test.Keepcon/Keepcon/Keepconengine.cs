@@ -153,6 +153,7 @@ namespace Allus.Keepcon
             }
             finally
             {
+                _SendContentTimer.
                 _SendContentTimer.Start();
             }
        
