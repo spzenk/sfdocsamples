@@ -80,9 +80,9 @@ namespace Allus.Keepcon
         public void Stop()
         {
             _SendContentTimer.Stop();
-            _SendContentTimer.Dispose();
+            //_SendContentTimer.Dispose();
             _CheckResultTimer.Stop();
-            _CheckResultTimer.Dispose();
+            //_CheckResultTimer.Dispose();
 
             ///OnSussess(string.Concat(Helper.ServiceName, " detenido"));
             Helper.Log(Helper.ServiceName, "Fin de llamadas a servicio web", Fwk.Logging.EventType.Information, true);
@@ -128,7 +128,7 @@ namespace Allus.Keepcon
         public void Stop_SendContent()
         {
             _SendContentTimer.Stop();
-            _SendContentTimer.Dispose();
+            //_SendContentTimer.Dispose();
 
 
             ///OnSussess(string.Concat(Helper.ServiceName, " detenido"));
@@ -153,7 +153,7 @@ namespace Allus.Keepcon
             }
             finally
             {
-                _SendContentTimer.
+             
                 _SendContentTimer.Start();
             }
        
