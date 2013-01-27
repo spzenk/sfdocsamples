@@ -106,6 +106,7 @@ namespace Allus.Keepcon
         {
             return string.Concat("\r\n", ExceptionHelper.GetAllMessageException(ex), "\r\n-----------StackTrace------------------\r\n ", ex.StackTrace);
         }
+        static object lookFile;
         /// <summary>
         /// Crea una entrada en log.xml
         /// </summary>
@@ -115,9 +116,12 @@ namespace Allus.Keepcon
         {
             if (!logOnFile) return;
 
-            StaticLogger.Log(TargetType.File, ev,
-                      string.Format(logFileFullName, DateFunctions.Get_Year_Mont_Day_String(DateTime.Now, '-'))
-                      , string.Empty);
+            lock (lookFile)
+            {
+                StaticLogger.Log(TargetType.File, ev,
+                          string.Format(logFileFullName, DateFunctions.Get_Year_Mont_Day_String(DateTime.Now, '-'))
+                          , string.Empty);
+            }
         }
 
         /// <summary>
