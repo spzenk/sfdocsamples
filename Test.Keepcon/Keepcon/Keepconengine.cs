@@ -128,9 +128,6 @@ namespace Allus.Keepcon
         public void Stop_SendContent()
         {
             _SendContentTimer.Stop();
-            //_SendContentTimer.Dispose();
-
-
             ///OnSussess(string.Concat(Helper.ServiceName, " detenido"));
             Helper.Log(Helper.ServiceName, "Fin de llamadas a servicio web", Fwk.Logging.EventType.Information, true);
 
@@ -234,7 +231,6 @@ namespace Allus.Keepcon
         private void _CheckResultTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             _CheckResultTimer.Stop();
-
             try
             {
                 OnSussess("CheckResult_From_Keepcon ");

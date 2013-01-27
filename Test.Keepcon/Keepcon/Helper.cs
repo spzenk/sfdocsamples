@@ -30,6 +30,7 @@ namespace Allus.Keepcon
      
         static Helper()
         {
+            lookFile = new object();
             try
             {
                 //Cnnstring = ConfigurationManager.ConnectionStrings["BB_MovistarSM_LogsEntities"].ConnectionString;
@@ -116,11 +117,19 @@ namespace Allus.Keepcon
         {
             if (!logOnFile) return;
 
-            lock (lookFile)
+            lock (lookFile)//Evita concurencia en hilos de la app
             {
-                StaticLogger.Log(TargetType.File, ev,
-                          string.Format(logFileFullName, DateFunctions.Get_Year_Mont_Day_String(DateTime.Now, '-'))
-                          , string.Empty);
+                try
+                {
+                    StaticLogger.Log(TargetType.File, ev,
+                              string.Format(logFileFullName, DateFunctions.Get_Year_Mont_Day_String(DateTime.Now, '-'))
+                              , string.Empty);
+                }
+                catch (System.IO.IOException)//Hilos externos a la app. EJ Notepad
+                {
+                    //"The requested operation cannot be performed on a file with a user-mapped section open."
+                    //throw ex;
+                }
             }
         }
 
