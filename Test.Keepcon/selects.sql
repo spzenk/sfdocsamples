@@ -1,4 +1,4 @@
-﻿
+
 --USE BB_MovistarSM_Logs
 
 --SELECT *  FROM dbo.KeepconPost ORDER BY postid desc
@@ -34,7 +34,7 @@ WHERE keepcon_moderator_decision IS NOT NULL AND postid  NOT IN(1342162,1342164,
 
 SELECT  max(DATEDIFF(second,[keepcon_send_date] ,[keepcon_result_resived_date])) AS '[Maximo tiempo (seg)]'
   FROM [dbo].[KeepconPost]
-WHERE keepcon_moderator_decision IS NOT NULL
+WHERE keepcon_moderator_decision IS NOT NULL  AND postid  NOT IN(1342162,1342164,1342165 )
 
 SELECT  min(DATEDIFF(second,[keepcon_send_date] ,[keepcon_result_resived_date])) AS '[Minimo tiempo (seg)]'
   FROM [dbo].[KeepconPost]
