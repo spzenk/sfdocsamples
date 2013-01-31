@@ -246,13 +246,13 @@ namespace Allus.Keepcon
 
             req.Credentials = new NetworkCredential(user, password);
 
-            ASCIIEncoding wEncoding = new ASCIIEncoding();
+            //ASCIIEncoding wEncoding = new ASCIIEncoding();
+            UTF8Encoding wEncoding = new UTF8Encoding();
+            
             Byte[] wByte = wEncoding.GetBytes(inputData);
             req.ContentLength = wByte.Length;
             using (Stream wRequestStream = req.GetRequestStream())
             {
-
-
                 wRequestStream.Write(wByte, 0, wByte.Length);
                 wRequestStream.Flush();
                 wRequestStream.Close();
