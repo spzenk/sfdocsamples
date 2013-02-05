@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.IO;
 using Allus.Keepcon.Import;
 using Keepcon;
+using Fwk.Logging;
 
 namespace Allus.Keepcon
 {
@@ -177,6 +178,10 @@ namespace Allus.Keepcon
             try
             {
                 string result = HttpPUT(string.Format(url_get_result, contextName), string.Empty);
+                if (result.Contains("free"))
+              
+                    Helper.Audit_Result(result);
+                
                 if (!String.IsNullOrEmpty(result))
                     import = Export.Export.SetXml(result);
 
