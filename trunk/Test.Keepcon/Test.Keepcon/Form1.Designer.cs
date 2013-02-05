@@ -50,6 +50,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.txtLogs = new System.Windows.Forms.TextBox();
             this.keepconengine1 = new Allus.Keepcon.Keepconengine(this.components);
+            this.btn_GetMsg = new System.Windows.Forms.Button();
+            this.txtPostId = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -284,11 +286,32 @@
             // 
             this.keepconengine1.SussessEvent += new Allus.Keepcon.SussessHandler(this.keepconengine1_SussessEvent);
             // 
+            // btn_GetMsg
+            // 
+            this.btn_GetMsg.Location = new System.Drawing.Point(798, 51);
+            this.btn_GetMsg.Name = "btn_GetMsg";
+            this.btn_GetMsg.Size = new System.Drawing.Size(143, 28);
+            this.btn_GetMsg.TabIndex = 12;
+            this.btn_GetMsg.Text = "Get msg";
+            this.btn_GetMsg.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_GetMsg.UseVisualStyleBackColor = true;
+            this.btn_GetMsg.Click += new System.EventHandler(this.btn_GetMsg_Click);
+            // 
+            // txtPostId
+            // 
+            this.txtPostId.Location = new System.Drawing.Point(798, 25);
+            this.txtPostId.Name = "txtPostId";
+            this.txtPostId.Size = new System.Drawing.Size(181, 20);
+            this.txtPostId.TabIndex = 13;
+            this.txtPostId.Text = "1392134";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 596);
+            this.Controls.Add(this.txtPostId);
+            this.Controls.Add(this.btn_GetMsg);
             this.Controls.Add(this.txtLogs);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.txtResult);
@@ -328,6 +351,8 @@
         private System.Windows.Forms.Label lblCheckResultClock;
         private System.Windows.Forms.TextBox txtLogs;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_GetMsg;
+        private System.Windows.Forms.TextBox txtPostId;
     }
 }
 

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Net;
 using Allus.Keepcon;
 using System.Linq.Expressions;
+using Keepcon;
 
 namespace Test.Keepcon
 {
@@ -217,6 +218,43 @@ namespace Test.Keepcon
                 strb.AppendLine(s);
             }
             txtResult.Text = strb.ToString();
+        }
+
+        private void btn_GetMsg_Click(object sender, EventArgs e)
+        {
+            StringBuilder strb = new StringBuilder();
+            KeepconPost wKeepconPost = KeepconSvc.GetPostById(Convert.ToInt32(txtPostId.Text));
+            strb.AppendLine("Texto Original");
+            strb.AppendLine();
+            strb.AppendLine(wKeepconPost.Message);
+           
+            strb.AppendLine();
+            strb.AppendLine("Texto convertido a UTF-8");
+            UTF8Encoding wEncoding = new UTF8Encoding();
+
+            Byte[] wByte = wEncoding.GetBytes(wKeepconPost.Message);
+            strb.AppendLine(wEncoding.GetString(wByte));
+
+
+            UnicodeEncoding wEncoding_Unicode = new UnicodeEncoding();
+            strb.AppendLine();
+            strb.AppendLine("Texto convertido a Unicode");
+            wByte = wEncoding_Unicode.GetBytes(wKeepconPost.Message);
+            strb.AppendLine(wEncoding_Unicode.GetString(wByte));
+
+
+            ASCIIEncoding wEncoding_ASCII = new ASCIIEncoding();
+            wByte = wEncoding_ASCII.GetBytes(wKeepconPost.Message);
+            
+
+            strb.AppendLine();
+            strb.AppendLine("Texto convertido a ASCII");
+            strb.AppendLine(wEncoding_ASCII.GetString(wByte));
+            
+
+           
+
+            txtImport.Text = strb.ToString(); 
         }
 
 
