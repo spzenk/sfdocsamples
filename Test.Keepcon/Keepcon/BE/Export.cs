@@ -65,8 +65,37 @@ namespace Allus.Keepcon.Export
         [XmlArrayItem("tag")]
         public List<Tag> Tagging { get; set; }
 
+        [XmlArray("comments")]
+        [XmlArrayItem("comment")]
+        public List<Comment> Comments { get; set; }
 
+    }
+    public class Comment
+    {
+        public Comment() { }
+        public Comment(string commentText)
+        {
+            text.Text = commentText;
+        }
+   
+        [XmlElement("user")]
+        public string User { get; set; }
 
+        [XmlElement("date")]
+        public long Date
+        {
+            get;
+            set;
+        }
+        Fwk.Xml.CData text;
+        [XmlElement("text", Type = typeof(Fwk.Xml.CData))]
+        public Fwk.Xml.CData Text { get { return text; } set { text = value; } }
+
+        [XmlIgnore()]
+        public DateTime? Date_Converted
+        {
+            get { return Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(this.Date); }
+        }
     }
 
     public class Tag
