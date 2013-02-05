@@ -631,6 +631,54 @@ namespace Keepcon
         private global::System.String _KeepconCustomerCare;
         partial void OnKeepconCustomerCareChanging(global::System.String value);
         partial void OnKeepconCustomerCareChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String keepcon_result_tagging
+        {
+            get
+            {
+                return _keepcon_result_tagging;
+            }
+            set
+            {
+                Onkeepcon_result_taggingChanging(value);
+                ReportPropertyChanging("keepcon_result_tagging");
+                _keepcon_result_tagging = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("keepcon_result_tagging");
+                Onkeepcon_result_taggingChanged();
+            }
+        }
+        private global::System.String _keepcon_result_tagging;
+        partial void Onkeepcon_result_taggingChanging(global::System.String value);
+        partial void Onkeepcon_result_taggingChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String keepcon_result_comments
+        {
+            get
+            {
+                return _keepcon_result_comments;
+            }
+            set
+            {
+                Onkeepcon_result_commentsChanging(value);
+                ReportPropertyChanging("keepcon_result_comments");
+                _keepcon_result_comments = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("keepcon_result_comments");
+                Onkeepcon_result_commentsChanged();
+            }
+        }
+        private global::System.String _keepcon_result_comments;
+        partial void Onkeepcon_result_commentsChanging(global::System.String value);
+        partial void Onkeepcon_result_commentsChanged();
 
         #endregion
     

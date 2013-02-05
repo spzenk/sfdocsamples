@@ -180,7 +180,7 @@ namespace Allus.Keepcon
                 string result = HttpPUT(string.Format(url_get_result, contextName), string.Empty);
                 if (result.Contains("free"))
               
-                    Helper.Audit_Result(result);
+                    //Helper.Audit_Result(result);
                 
                 if (!String.IsNullOrEmpty(result))
                     import = Export.Export.SetXml(result);
@@ -330,16 +330,35 @@ namespace Allus.Keepcon
         /// <param name="export"></param>
         internal static void SaveResult(Export.Export export)
         {
+
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
-                foreach (Export.Content c in export.Contents)
+                   foreach (Export.Content c in export.Contents)
                 {
                     var post = dc.KeepconPost.Where(s => s.PostID.Equals(c.Id)).FirstOrDefault();
                     post.keepcon_result_resived_date = System.DateTime.Now;
                     post.keepcon_moderator_date = Fwk.HelperFunctions.DateFunctions.UnixLongTimeToDateTime(c.ModerationDate);
                     post.keepcon_moderator_decision = c.ModerationDecision;
                     post.keepcon_result_setId = export.SetId;
-                    post.keepcon_moderator = c.ModeratorName;
+
+                   
+                    if (c.Tagging != null)
+                        if (c.Tagging.Count > 0)
+                        {
+
+                            //var ts = from t in c.Tagging select t.Text;
+                            try
+                            {
+                                post.keepcon_result_tagging = Fwk.HelperFunctions.FormatFunctions.GetStringBuilderWhitSeparator<Allus.Keepcon.Export.Tag>(c.Tagging, ',').ToString();
+                            }
+                            catch (Exception r)
+                            {
+                                throw r;
+                            }
+                        }
+                    if (c.Comments != null)
+                        if (c.Comments.Count > 0)
+                            post.keepcon_result_comments = c.Comments[0].Text.Text;
 
                 }
                 dc.SaveChanges();
