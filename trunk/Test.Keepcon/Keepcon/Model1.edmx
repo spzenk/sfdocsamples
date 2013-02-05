@@ -38,6 +38,8 @@
           <Property Name="keepcon_moderator" Type="varchar" MaxLength="50" />
           <Property Name="keepcon_ack" Type="bit" />
           <Property Name="KeepconCustomerCare" Type="varchar(max)" />
+          <Property Name="keepcon_result_tagging" Type="varchar(max)" />
+          <Property Name="keepcon_result_comments" Type="varchar(max)" />
         </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -76,6 +78,8 @@
           <Property Type="String" Name="keepcon_moderator" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="keepcon_ack" />
           <Property Type="String" Name="KeepconCustomerCare" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="keepcon_result_tagging" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="keepcon_result_comments" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -96,6 +100,8 @@
           <EntitySetMapping Name="KeepconPost">
             <EntityTypeMapping TypeName="BB_MovistarSM_LogsModel.KeepconPost">
               <MappingFragment StoreEntitySet="KeepconPost">
+                <ScalarProperty Name="keepcon_result_comments" ColumnName="keepcon_result_comments" />
+                <ScalarProperty Name="keepcon_result_tagging" ColumnName="keepcon_result_tagging" />
                 <ScalarProperty Name="KeepconCustomerCare" ColumnName="KeepconCustomerCare" />
                 <ScalarProperty Name="keepcon_ack" ColumnName="keepcon_ack" />
                 <ScalarProperty Name="keepcon_moderator" ColumnName="keepcon_moderator" />
