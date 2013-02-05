@@ -132,7 +132,30 @@ namespace Allus.Keepcon
                 }
             }
         }
+        public static void Audit_Result(string res)
+        {
+            if (!logOnFile) return;
 
+            lock (lookFile)//Evita concurencia en hilos de la app
+            {
+                Event ev1 = new Event();
+                ev1.LogType = EventType.Information;
+                ev1.Source = ServiceName;
+                ev1.LogDate = System.DateTime.Now;
+                ev1.Message.Text = res;
+                try
+                {
+                    StaticLogger.Log(TargetType.File, ev1,
+                              string.Format("", DateFunctions.Get_Year_Mont_Day_String(DateTime.Now, '-'))
+                              , string.Empty);
+                }
+                catch (System.IO.IOException)//Hilos externos a la app. EJ Notepad
+                {
+                    //"The requested operation cannot be performed on a file with a user-mapped section open."
+                    //throw ex;
+                }
+            }
+        }
         /// <summary>
         /// Envia el error por mail de acuerdo a las direcciones configuradas.
         /// </summary>
