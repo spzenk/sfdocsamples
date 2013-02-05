@@ -10,6 +10,7 @@ using System.Net;
 using Allus.Keepcon;
 using System.Linq.Expressions;
 using Keepcon;
+using Allus.Keepcon.Export;
 
 namespace Test.Keepcon
 {
@@ -255,6 +256,14 @@ namespace Test.Keepcon
            
 
             txtImport.Text = strb.ToString(); 
+        }
+
+        private void btnSerializeExport_Click(object sender, EventArgs e)
+        {
+            string content= Fwk.HelperFunctions.FileFunctions.OpenTextFile("XMLFile1.xml");
+
+            Export wExport = Export.SetXml(content);
+
         }
 
 
