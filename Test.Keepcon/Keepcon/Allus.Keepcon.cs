@@ -246,8 +246,9 @@ namespace Allus.Keepcon
 
             req.Credentials = new NetworkCredential(user, password);
 
-            //ASCIIEncoding wEncoding = new ASCIIEncoding();
             UTF8Encoding wEncoding = new UTF8Encoding();
+
+           
             
             Byte[] wByte = wEncoding.GetBytes(inputData);
             req.ContentLength = wByte.Length;
@@ -386,6 +387,17 @@ namespace Allus.Keepcon
                 wKeepconLogs.logtype = (int)logType;
                 dc.KeepconLogs.AddObject(wKeepconLogs);
                 dc.SaveChanges();
+            }
+        }
+
+        public static KeepconPost GetPostById(int postId)
+        {
+            using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
+            {
+
+                return dc.KeepconPost.Where(s => s.PostID == postId).FirstOrDefault < KeepconPost>();
+                
+
             }
         }
     }
