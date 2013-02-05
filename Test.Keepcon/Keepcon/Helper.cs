@@ -146,7 +146,7 @@ namespace Allus.Keepcon
                 try
                 {
                     StaticLogger.Log(TargetType.File, ev1,
-                              string.Format("", DateFunctions.Get_Year_Mont_Day_String(DateTime.Now, '-'))
+                              string.Format("Result", DateFunctions.Get_Year_Mont_Day_String(DateTime.Now, '-'))
                               , string.Empty);
                 }
                 catch (System.IO.IOException)//Hilos externos a la app. EJ Notepad
