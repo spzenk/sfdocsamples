@@ -35,6 +35,7 @@ namespace Performance_Timer_Tasks
 
 
                 Task t = Task.Factory.StartNew(() => DoWork());
+                //t.Start();
                 //DoWork();
                 
 
@@ -57,7 +58,7 @@ namespace Performance_Timer_Tasks
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            for (int i = 0; i <= 5; i++)
+            for (int i = 1; i <= 30; i++)
             {
                 insert(ProcessorId,i);
             }
