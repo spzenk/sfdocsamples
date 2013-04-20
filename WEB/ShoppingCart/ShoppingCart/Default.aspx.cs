@@ -16,23 +16,24 @@ namespace ShoppingCart
         {
             if (!this.IsPostBack)
             {
-                if(Page.Session["CARRO"]==null)
-                 this.Page.Session["CARRO"] = new List<ProductBE>(); 
-                    //Fill_Catalogo();
-                if(Request.QueryString["id"]!=null)
+                if (Page.Session["CARRO"] == null)
+                    this.Page.Session["CARRO"] = new List<ProductBE>();
+                //Fill_Catalogo();
+                if (Request.QueryString["id"] != null)
                 {
-                String idCategoria = Request.QueryString["id"].ToString();
+                    String idCategoria = Request.QueryString["id"].ToString();
 
-                int id = Convert.ToInt32 (idCategoria.Split('.')[0]);
-                FillGrid(id);
+                    int id = Convert.ToInt32(idCategoria.Split('.')[0]);
+                    FillGrid(id);
                 }
                 FillCat();
+                if (Request.QueryString["id"] == null)
+                 this.trvCategories.CollapseAll();
 
-                
             }
             if (this.IsCallback)
-            { 
-                
+            {
+
             }
 
         }
@@ -197,7 +198,7 @@ namespace ShoppingCart
 
  
             TreeViewBind(this.trvCategories, categories, null);
-
+            
             this.trvCategories.DataBind();
         }
             /// <summary>
@@ -213,7 +214,7 @@ namespace ShoppingCart
                foreach (ProductCategotyBE cat in categories.Where(p=>p.ParentId.Equals("0")))
                {
                    nodeTree = new TreeNode(cat.Text, cat.Id);
-                   nodeTree.SelectAction = TreeNodeSelectAction.None;
+                   nodeTree.SelectAction = TreeNodeSelectAction.Expand;
                    nodeTree.Target = "Default.aspx";
                    AddSubcategories(nodeTree, cat.Id, categories);
                    trv.Nodes.Add(nodeTree);

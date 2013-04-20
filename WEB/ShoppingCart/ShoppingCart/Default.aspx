@@ -102,8 +102,8 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:TreeView ID="trvCategories" ExpandDepth="3" runat="server" Width="168px" ExpandImageUrl="~/img/expand_collapse_plus.gif"
-                    CollapseImageUrl="~/img/expand_collapse_minus.gif" ImageSet="BulletedList2" NodeIndent="10"
-                    NodeStyle-Height="24">
+                    CollapseImageUrl="~/img/expand_collapse_minus.gif" ImageSet="BulletedList2" NodeIndent="5"
+                    NodeStyle-Height="20" ShowExpandCollapse="true" >
                     <LevelStyles>
                         <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
                         <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
