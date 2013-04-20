@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="viewbuy.aspx.cs" Inherits="Capote.viewbuy" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="viewbuy.aspx.cs" Inherits="ShoppingCart.viewbuy" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    <div id="centerContent_div" class="grid_9">
 
