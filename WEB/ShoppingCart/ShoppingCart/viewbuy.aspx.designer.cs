@@ -7,7 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Capote {
+namespace ShoppingCart
+{
     
     
     public partial class viewbuy {
