@@ -3,8 +3,6 @@
    
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
-<%--<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
-</asp:Content>--%>
 <asp:Content ID="t" runat="server" ContentPlaceHolderID="MainContent">
 
 
@@ -99,40 +97,34 @@
             CallService();
         }
     </script>
-  
     <div id="ProductCategory_div" class="grid_3 alpha">
         <br />
-           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                    <asp:TreeView ID="trvCategories" ExpandDepth="3" runat="server" Width="168px" ExpandImageUrl="~/img/expand_collapse_plus.gif"
-                        CollapseImageUrl="~/img/expand_collapse_minus.gif" ImageSet="Arrows"  >
-              
-                        <LevelStyles>
-                            <asp:TreeNodeStyle CssClass="nodeLevel1"  ChildNodesPadding="8"  />
-                            <asp:TreeNodeStyle CssClass="nodeLevel2"  ChildNodesPadding="5"  />
-                            <asp:TreeNodeStyle CssClass="nodeLevel3"  ChildNodesPadding="5"/>
-                           <%-- <asp:TreeNodeStyle ChildNodesPadding="10" Font-Bold="true" Font-Size="12pt" ForeColor="DarkGreen" />
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <asp:TreeView ID="trvCategories" ExpandDepth="3" runat="server" Width="168px" ExpandImageUrl="~/img/expand_collapse_plus.gif"
+                    CollapseImageUrl="~/img/expand_collapse_minus.gif" ImageSet="BulletedList2" NodeIndent="10"
+                    NodeStyle-Height="24">
+                    <LevelStyles>
+                        <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
+                        <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
+                        <asp:TreeNodeStyle CssClass="nodeLevel3" ChildNodesPadding="5" />
+                        <%-- <asp:TreeNodeStyle ChildNodesPadding="10" Font-Bold="true" Font-Size="12pt" ForeColor="DarkGreen" />
                             <asp:TreeNodeStyle ChildNodesPadding="5" Font-Bold="true" Font-Size="10pt" />
                             <asp:TreeNodeStyle ChildNodesPadding="5" Font-Underline="true" Font-Size="10pt" />
                             <asp:TreeNodeStyle ChildNodesPadding="10" Font-Size="8pt" />--%>
-                        </LevelStyles>
-                        <%--<HoverNodeStyle Font-Underline="False" />
+                    </LevelStyles>
+                    <%--<HoverNodeStyle Font-Underline="False" />
                         <SelectedNodeStyle Font-Underline="True" HorizontalPadding="0px" VerticalPadding="0px" />--%>
-                        <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" 
+                    <%-- <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" 
                             HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
                         <ParentNodeStyle Font-Bold="False" />
                         <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" 
-                            HorizontalPadding="0px" VerticalPadding="0px" />
-                    </asp:TreeView>
-                
-                  </ContentTemplate>
-            </asp:UpdatePanel>
-
-
-       
-    </div>
-    <div id="centerContent_div" class="grid_9">
-        <asp:TreeView ID="TreeView1" runat="server" ShowExpandCollapse="true" ImageSet="BulletedList2">
+                            HorizontalPadding="0px" VerticalPadding="0px" />--%>
+                </asp:TreeView>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <div>
+    <asp:TreeView ID="TreeView1" runat="server" ShowExpandCollapse="true" ImageSet="BulletedList2">
             <ParentNodeStyle Font-Bold="False" />
             <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
             <Nodes>
@@ -152,6 +144,12 @@
             <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px"
                 VerticalPadding="0px" />
         </asp:TreeView>
+    </div>
+    </div>
+
+    
+    <div id="centerContent_div" class="grid_9">
+        
             <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
         <div class="cart-div"  style="margin-top:30px"> 
 
