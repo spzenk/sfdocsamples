@@ -19,7 +19,13 @@ namespace ShoppingCart
                 if(Page.Session["CARRO"]==null)
                  this.Page.Session["CARRO"] = new List<ProductBE>(); 
                     //Fill_Catalogo();
-                FillGrid();
+                if(Request.QueryString["id"]!=null)
+                {
+                String idCategoria = Request.QueryString["id"].ToString();
+
+                int id = Convert.ToInt32 (idCategoria.Split('.')[0]);
+                FillGrid(id);
+                }
                 FillCat();
 
                 
@@ -62,15 +68,10 @@ namespace ShoppingCart
 
         }
 
-        void FillGrid()
+        void FillGrid(int idCategoria)
         {
-           _Catalogo= ProductsDAC.Retrive_Produts(1);
-            //_Catalogo = new List<ProductBE>();
-            //_Catalogo.Add(new ProductBE { Id = 1, Description = "A", Count = 0, Price = 99 });
-            //_Catalogo.Add(new ProductBE { Id = 2, Description = "B", Count = 0, Price = 99 });
-            //_Catalogo.Add(new ProductBE { Id = 3, Description = "C", Count = 0, Price = 99 });
-            //_Catalogo.Add(new ProductBE { Id = 4, Description = "D", Count = 0, Price = 99 });
-
+            _Catalogo = ProductsDAC.Retrive_Produts(idCategoria);
+         
             if (this.Page.Session["CARRO"] != null)
             {
                 foreach (ProductBE i in (List<ProductBE>)this.Page.Session["CARRO"])
@@ -87,10 +88,7 @@ namespace ShoppingCart
         void Fill_Catalogo()
         {
             _Catalogo = new List<ProductBE>();
-            _Catalogo.Add(new ProductBE { Id = 1, Description = "A", Count = 0, Price =99});
-            _Catalogo.Add(new ProductBE {Id=2 , Description = "B", Count = 0 , Price =99});
-            _Catalogo.Add(new ProductBE { Id = 3, Description = "C", Count = 0, Price = 99 });
-            _Catalogo.Add(new ProductBE { Id = 4, Description = "D", Count = 0, Price = 99 });
+
 
             TableRow row = null;
             TableCell tCell;
@@ -196,8 +194,8 @@ namespace ShoppingCart
         private void FillCat()
         {
             ProductCategotyBEList categories = ProductsDAC.Retrive_Categories();
-            //ProductCategotyBEList subcategories = ProductsDAC.Retrive_Sub_Categories();
-            ///http://code.msdn.microsoft.com/CSASPNETDataBindingByXMLStr-7e52de2c
+
+ 
             TreeViewBind(this.trvCategories, categories, null);
 
             this.trvCategories.DataBind();
@@ -216,6 +214,7 @@ namespace ShoppingCart
                {
                    nodeTree = new TreeNode(cat.Text, cat.Id);
                    nodeTree.SelectAction = TreeNodeSelectAction.None;
+                   nodeTree.Target = "Default.aspx";
                    AddSubcategories(nodeTree, cat.Id, categories);
                    trv.Nodes.Add(nodeTree);
                }
@@ -242,45 +241,17 @@ namespace ShoppingCart
            foreach (ProductCategotyBE childCatatBE in childsBE)
            {
                nodeTree_Child = new TreeNode(childCatatBE.Text, childCatatBE.Id);
+               nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
                parent.ChildNodes.Add(nodeTree_Child);
                if (categories.Any(p => p.ParentId.Equals(childCatatBE.Id) ) == true)
                {
-                   //parent.ChildNodes.Add(nodeTree_Child);
+                  
                    AddSubcategories(nodeTree_Child, childCatatBE.Id, categories);
                }
-               //else
-               //{
-                   
-               //}
-               //this.AddChildNode(nodeTree, node);
-               //trv.Nodes.Add(nodeTree);
+              
            }
        }
-       /// <summary>
-       /// This method is use to add child nodes to the TreeView nodes via 
-       /// recursion algorithm. 
-       /// </summary>
-       /// <param name="nodeParent"></param>
-       /// <param name="node"></param>
-       private void AddChildNode(TreeNode nodeParent, XmlNode node)
-       {
-           TreeNode nodeTreeChild = null;
-           foreach (XmlNode nodeChild in node.ChildNodes)
-           {
-               if (node.ChildNodes.Count == 0)
-               {
-                   nodeParent.ChildNodes.Add(nodeTreeChild);
-               }
-               else
-               {
-                   nodeTreeChild = new TreeNode();
-                   XmlElement elementChild = (XmlElement)nodeChild;
-                   nodeTreeChild.Text = elementChild.GetAttribute("name").ToString();
-                   this.AddChildNode(nodeTreeChild, nodeChild);
-                   nodeParent.ChildNodes.Add(nodeTreeChild);
-               }
-           }
-       }
+    
         #endregion
 
       
