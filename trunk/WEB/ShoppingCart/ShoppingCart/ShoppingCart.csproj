@@ -104,6 +104,7 @@
     <Content Include="Scripts\jquery_1.5.js" />
     <Content Include="Scripts\pelsoft.js" />
     <Content Include="menu\main_menu_2.ascx" />
+    <Content Include="service\wcf_service.svc" />
     <Content Include="Styles\992_16_5_5.css" />
     <Content Include="Styles\Common.css" />
     <Content Include="Styles\Grd960.css" />
