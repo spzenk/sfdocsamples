@@ -43,8 +43,11 @@ public class wcf_service : Iwcf_service
         return "listo";
 
     }
-    public List<ProductBE> AddToCart(int numberToBuy, int id, decimal price, string description)
+    public List<ProductBE> AddToCart(int numberToBuy, int id, string price, string description)
     {
+        decimal priceToDec= 0;
+        Decimal.TryParse(price, out priceToDec);
+
         if (System.Web.HttpContext.Current.Session["CARRO"] != null)
         {
             var cart = (List<ProductBE>)System.Web.HttpContext.Current.Session["CARRO"];
@@ -56,14 +59,14 @@ public class wcf_service : Iwcf_service
                 item.Description = description;
                 item.Id = id;
                 item.Count = numberToBuy;
-                item.Price = price * numberToBuy;
+                item.Price = priceToDec * numberToBuy;
                 cart.Add(item);
             }
             else
             {
                 
                 item.Count = numberToBuy;
-                item.Price = price * numberToBuy;
+                item.Price = priceToDec * numberToBuy;
             }
             return (List<ProductBE>)cart;
         }
@@ -114,7 +117,7 @@ public class wcf_service : Iwcf_service
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        List<ProductBE> AddToCart(int numberToBuy, int id, decimal price, string description);
+        List<ProductBE> AddToCart(int numberToBuy, int id, string price, string description);
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]

@@ -20,33 +20,6 @@ namespace ShoppingCart
           
 
     
-
-        public string Li_Category = "<li><a href='/{0}'>{0}</a><li>";
-        public string Li_FinalCategory = "<li><a href='{1}'>{0}</a>";
-
-        public string GetMenu()
-        {
-            StringBuilder ul = new StringBuilder("<ul> [BODY]</ul>");
-
-            //int order = 0;
-
-            var roots = this.Where(p => p.ParentId.Equals(0));
-
-            foreach (ProductCategotyBE cat in roots)
-            {
-                if (this.Any(p => p.ParentId.Equals(cat.Id)))
-                {
- 
-                }
-            }
-            return ul.ToString();
-        }
-
-        public void RetriveOrder(List<ProductCategotyBE> roots)
-        {
-            //this.Any(p => p.ParentId, Equals(pProductCategotyBE_Id));
-        }
-    
     }
     public class ProductCategotyBE:Fwk.Bases.BaseEntity
     {
