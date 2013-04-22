@@ -41,9 +41,12 @@ namespace ShoppingCart
 
         }
 
-       
 
-
+            [System.Web.Services.WebMethod]
+        public void ClearGrid()
+        {
+            FillGrid(null);
+        }
        
 
         void FillGrid(int? idCategoria)
