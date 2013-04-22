@@ -88,13 +88,29 @@
 
         function ClearCart() {
 
-          
-
             varUrl = "../../service/wcf_service.svc/ClearCart";
             varData = '{}';
 
             varProcessData = true;
             CallService();
+            CallWebMethod_ClearGrid();
+        }
+
+        function CallWebMethod_ClearGrid() {
+            $.ajax({
+                type: "POST", //GET or POST or PUT or DELETE verb
+                url: "~/Default.aspx/ClearGrid", // Location of the service
+                data: "{}", //Data sent to server
+                contentType: "application/json; charset=utf-8", // content type sent to server
+                dataType: "json", //Expected data format from server
+                async: true,
+                cache: false,
+                success: function (data) {
+
+                    alert('limpio');
+                },
+                error: ServiceFailed// When Service call fails
+            });
         }
     </script>
     <div id="ProductCategory_div" class="grid_3 alpha">
