@@ -4,14 +4,15 @@
 .cart-col-description{	width:150px;	display: table-cell;	}
 .cart-col-price{width:100px;	display: table-cell;	}
 .cart-total{ margin-top: 7; width: 120px; height: 40; border: 1px;float:right}
-.cart-catalog-col-price{	color:#990000;	display:inline;	margin-top:3px;		}
+.cart-catalog-col-price{	color:#990000;	display:table-cell;	margin-top:3px;		}
 .cart-catalog-col-desc
 {
 	color:#373737;
-	display:inline;
+	display:table-cell;
 	margin-top:3px;
 	font-weight:bold;
 	width:400px;
+	border-style:none;
 	}
 .cart-div
 {

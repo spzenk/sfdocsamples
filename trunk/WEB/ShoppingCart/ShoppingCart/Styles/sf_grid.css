@@ -5,15 +5,20 @@
 
 .YodaGrilla .AspNet-GridView
 {
+	border-color: #FFFFFF;
 	width: 90%;
+	
 }
+.YodaGrilla table tbody tr  td
+{border-style: none;
+	}
 
 .YodaGrilla .AspNet-GridView div.AspNet-GridView-Pagination, .YodaGrilla .AspNet-GridView div.AspNet-GridView-Pagination a, .YodaGrilla .AspNet-GridView div.AspNet-GridView-Pagination span
 {
 	
 	background: #E9F5DA;
 	font-weight: normal;
-	text-align: center;
+	text-align: center;border-style: none;
 
 
 }
@@ -63,12 +68,11 @@
 	color: #666666;
 	height: 10px;
 	background: White;
-	border-right: #d3d3d3 1px solid;
-	border-bottom: #d3d3d3 1px solid;
 	margin-left: 0px;
 	padding-top: 0px;
 	padding-left: 3px;
 	text-align: left;
+	border-style:none;
 }
 
 
@@ -82,11 +86,13 @@
 .YodaGrilla .AspNet-GridView table tbody tr.AspNet-GridView-Alternate td
 {
 	background-color: #FFFFE3;
+	border-style:none;
 }
 
 .YodaGrilla .AspNet-GridView table tbody tr.filaSeleccionada td
 {
     background-color: #FFFF99;
+    border-style:none;
    
 }
 
@@ -123,7 +129,7 @@
 .YodaGrilla .AspNet-GridView table tbody tr.filaActual td.colSeleccion .navSel
 {
 
-	background-image: url(imagenes/grilla/grillaIconos_actual.png);
+	background-image: url(img/grilla/grillaIconos_actual.png);
 	background-repeat:no-repeat;
 }
 .YodaGrilla .AspNet-GridView table tbody tr.filaActual td.colSeleccion .sel{    }
@@ -148,22 +154,20 @@ TIPO DE COLUMNAS PARA JEDIS :)
 /*COLUMNA: description*/
 .YodaGrilla .AspNet-GridView table tbody tr td.cart-catalog-col-desc
 {
-		
-	color:#373737;
-	margin-top:3px;
-	font-weight:bold;
-	width:500px;
-	
+	border-style: none;
+	color: #373737;
+	margin-top: 3px;
+	font-weight: bold;
+	width: 500px;
 	display: table-cell;
 }
 /*  imagen dentro de la columna price*/
 .YodaGrilla .AspNet-GridView table tbody tr td.cart-catalog-col-price
 {
-width:100px;
+	width: 100px;
 	display: table-cell;
-	color:#990000;
-	
-	
+	color: #990000;
+	border-style: none;
 }
 
 
@@ -200,10 +204,10 @@ width:100px;
 	text-decoration: underline;
 }
 .icon_search,.icon_edit,.icon_remov,.icon_send{ background-position:center; padding:2px 0 2px 18px}
-.icon_search {background:transparent url(../../Images/search.png) no-repeat scroll 0 0;}
-.icon_edit {background:transparent url(../../Images/edit.png) no-repeat scroll 0 0;}
-.icon_remov{background:transparent url(../../Images/remov_16.png) no-repeat scroll 0 0;}
-.icon_send{background:transparent url(../../Images/send_32.png) no-repeat scroll 0 0;}
+.icon_search {background:transparent url(../img/search.png) no-repeat scroll 0 0;}
+.icon_edit {background:transparent url(../img/edit.png) no-repeat scroll 0 0;}
+.icon_remov{background:transparent url(../img/remov_16.png) no-repeat scroll 0 0;}
+.icon_send{background:transparent url(../img/send_32.png) no-repeat scroll 0 0;}
 
 .grid_Button
 {
@@ -220,16 +224,16 @@ width:100px;
 	height:35px;
 	white-space: normal;
 }
-.grid_Button_confirm{background: transparent url(../../Images/confirm_16.png) no-repeat scroll right center;}
-.grid_Button_reject{background: transparent url(../../Images/Delete_16.png) no-repeat scroll right center;}
+.grid_Button_confirm{background: transparent url(../img/confirm_16.png) no-repeat scroll right center;}
+.grid_Button_reject{background: transparent url(../img/remov_16.png) no-repeat scroll right center;}
 
-.grid_Button_send{background: transparent url(../../Images/send_16.png) no-repeat scroll right center;}
-.grid_Button_waiting{background: transparent url(../../Images/square_clock_16.png) no-repeat scroll right center;}
-.grid_Button_refused{background: transparent url(../../Images/Private.png) no-repeat scroll right center;}
+.grid_Button_send{background: transparent url(../img/send_16.png) no-repeat scroll right center;}
+.grid_Button_waiting{background: transparent url(../img/square_clock_16.png) no-repeat scroll right center;}
+.grid_Button_refused{background: transparent url(../img/Private.png) no-repeat scroll right center;}
 
-.grid_Button_lock{background: transparent url(../../Images/security-locked_24.png) no-repeat scroll right center;}
-.grid_Button_unlock{background: transparent url(../../Images/security-unlocked_24.png) no-repeat scroll right center;}
-.grid_Button_remove{background: transparent url(../../Images/trash_16.png) no-repeat scroll right center;}
+.grid_Button_lock{background: transparent url(../img/security-locked_24.png) no-repeat scroll right center;}
+.grid_Button_unlock{background: transparent url(../img/security-unlocked_24.png) no-repeat scroll right center;}
+.grid_Button_remove{background: transparent url(../img/trash_16.png) no-repeat scroll right center;}
 
 
 .grid_label

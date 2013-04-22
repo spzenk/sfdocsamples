@@ -3,7 +3,7 @@
 body
 {
 	background:#526074 url("../../img/bgr_box.jpg") repeat scroll -1703px 0 transparent;
-	background-color: #D6D9DB; /*background-color: #333333; */ /*background-image: url("../../images/port/background_2.jpg");*/
+	background-color: #D6D9DB; /*background-color: #333333; */ /*background-image: url("../img/port/background_2.jpg");*/
 	background-position: center top; /*  background-repeat: repeat;*/
 	background-attachment: scroll;
 	height: 100%;
@@ -11,6 +11,7 @@ body
 	font-family: Verdana,Arial,Helvetica,sans-serif;
 	font-size: 13px;
 	line-height:2em;
+	
 }
 
 #home_wrap
@@ -41,7 +42,7 @@ body
 #master_header
 {
     background-position: center center;
-    background-image: url('../../Images/port/banner.jpg');
+    background-image: url('../img/port/banner.jpg');
   
     background-repeat: no-repeat;
     background-attachment: scroll;
