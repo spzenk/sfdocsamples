@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="viewbuy.aspx.cs" Inherits="ShoppingCart.viewbuy" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
  <script type="text/javascript" language="javascript">
 
@@ -22,14 +23,11 @@
 
    
     </script>
-
-   <div id="centerContent_div" class="push_1 grid_12">
+    <div class="clear"></div>
+   <div id="centerContent_div" class="grid_12">
 
             <div class="frm_title_2" style="margin-top:9px">Listado de su compra</div> 
-        <%-- <div class ="frm-message">
-             <asp:Label ID="MSG" runat="server" Text="No productos en su carrito de compras"></asp:Label>
-             </div>
-             --%>
+      
              <asp:Label ID="msg" Width="641px" CssClass="frm-message" runat="server" 
                 Text="No productos en su carrito de compras" Font-Bold="True" Visible="false"></asp:Label>
              
