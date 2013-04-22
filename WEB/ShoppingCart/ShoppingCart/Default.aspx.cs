@@ -18,17 +18,20 @@ namespace ShoppingCart
             {
                 if (Page.Session["CARRO"] == null)
                     this.Page.Session["CARRO"] = new List<ProductBE>();
+                int? idSubcategoria = null;
                 //Fill_Catalogo();
                 if (Request.QueryString["id"] != null)
                 {
                     String idCategoria = Request.QueryString["id"].ToString();
 
-                    int id = Convert.ToInt32(idCategoria.Split('.')[0]);
-                    FillGrid(id);
+                    idSubcategoria = Convert.ToInt32(idCategoria.Split('.')[0]);
+                    FillGrid(idSubcategoria);
                 }
-                FillCat();
-                if (Request.QueryString["id"] == null)
-                 this.trvCategories.CollapseAll();
+
+
+                FillCat(idSubcategoria);
+
+               
 
             }
             if (this.IsCallback)
@@ -41,37 +44,11 @@ namespace ShoppingCart
        
 
 
-        public void AddToCart(int numberToBuy, int id, decimal price, string description)
+       
+
+        void FillGrid(int? idCategoria)
         {
-            if (System.Web.HttpContext.Current.Session["CARRO"] != null)
-            {
-              var cart =  (List<ProductBE>)System.Web.HttpContext.Current.Session["CARRO"];
-              
-              var item = cart.Where(p => p.Id.Equals(id)).FirstOrDefault();
-              if (item == null)
-              {
-                  item = new ProductBE();
-                  item.Description = description;
-                  item.Id = id;
-                  item.Count = numberToBuy;
-                  item.Price = price * numberToBuy;
-                  cart.Add(item);
-              }
-              else
-              {
-
-
-                  item.Count = numberToBuy;
-                  item.Price = price * numberToBuy;
-              }
-            }
-
-
-        }
-
-        void FillGrid(int idCategoria)
-        {
-            _Catalogo = ProductsDAC.Retrive_Produts(idCategoria);
+            _Catalogo = ProductsDAC.Retrive_Produts(idCategoria.Value);
          
             if (this.Page.Session["CARRO"] != null)
             {
@@ -192,14 +169,60 @@ namespace ShoppingCart
         #region Tree vie
 
 
-        private void FillCat()
+        private void FillCat(int? idSubcategoria)
         {
+            //if (this.Page.Session["FIRST_TIME"] == null)
+            //{
+
+            //    this.Page.Session["FIRST_TIME"] = true;
+            //}
+
             ProductCategotyBEList categories = ProductsDAC.Retrive_Categories();
 
- 
+
             TreeViewBind(this.trvCategories, categories, null);
-            
+
+         
+
+            this.trvCategories.CollapseAll();
+            if (idSubcategoria.HasValue)
+            {
+                ExpandCategory(this.trvCategories.Nodes, idSubcategoria.Value  );
+            }
             this.trvCategories.DataBind();
+            //if ((bool)this.Page.Session["FIRST_TIME"])
+            //{
+                
+            //    this.Page.Session["FIRST_TIME"] = false;
+            //}
+            //else
+            //{
+               
+            //}
+
+
+
+        }
+
+        void ExpandCategory(TreeNodeCollection nodes, int idSubcategoria)
+        {
+           
+            foreach (TreeNode node in nodes)
+            {
+                
+                //if (node.Value.Equals(idSubcategoria))
+                if (Convert.ToInt32(node.Value.Split('.')[0]).Equals(idSubcategoria) && node.Parent != null)
+                {
+                    node.Parent.Expand();
+                    return;
+                }
+
+                if (node.ChildNodes.Count > 0)
+                {
+                    ExpandCategory(node.ChildNodes, idSubcategoria);
+                }
+
+            }
         }
             /// <summary>
        /// TreeViewBind() method, is use to load an XML string via XmlDocument
@@ -254,6 +277,12 @@ namespace ShoppingCart
        }
     
         #endregion
+
+       protected void trvCategories_TreeNodeCheckChanged(object sender, TreeNodeEventArgs e)
+       {
+           if (e.Node.Parent.Value !="0" )
+               return;
+       }
 
       
     }

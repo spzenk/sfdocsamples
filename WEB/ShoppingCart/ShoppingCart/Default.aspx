@@ -101,9 +101,11 @@
         <br />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
-                <asp:TreeView ID="trvCategories" ExpandDepth="3" runat="server" Width="168px" ExpandImageUrl="~/img/expand_collapse_plus.gif"
-                    CollapseImageUrl="~/img/expand_collapse_minus.gif" ImageSet="BulletedList2" NodeIndent="5"
-                    NodeStyle-Height="20" ShowExpandCollapse="true" >
+                <asp:TreeView ID="trvCategories" ExpandDepth="0" runat="server" Width="168px" ExpandImageUrl="~/img/expand_collapse_plus.gif"
+                    CollapseImageUrl="~/img/expand_collapse_minus.gif" 
+                    ImageSet="BulletedList2" NodeIndent="5"
+                    NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false" 
+                    ontreenodecheckchanged="trvCategories_TreeNodeCheckChanged">
                     <LevelStyles>
                         <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
                         <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
@@ -123,28 +125,6 @@
                 </asp:TreeView>
             </ContentTemplate>
         </asp:UpdatePanel>
-        <div>
-    <asp:TreeView ID="TreeView1" runat="server" ShowExpandCollapse="true" ImageSet="BulletedList2">
-            <ParentNodeStyle Font-Bold="False" />
-            <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
-            <Nodes>
-                <asp:TreeNode Text="Home" SelectAction="Expand">
-                    <asp:TreeNode Text="Products" SelectAction="Expand">
-                        <asp:TreeNode Text="First Product" />
-                        <asp:TreeNode Text="Second Product" />
-                    </asp:TreeNode>
-                    <asp:TreeNode Text="Services" SelectAction="Expand">
-                        <asp:TreeNode Text="First Service" />
-                        <asp:TreeNode Text="Second Service" />
-                    </asp:TreeNode>
-                </asp:TreeNode>
-            </Nodes>
-            <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" HorizontalPadding="0px"
-                NodeSpacing="0px" VerticalPadding="0px" />
-            <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px"
-                VerticalPadding="0px" />
-        </asp:TreeView>
-    </div>
     </div>
 
     
@@ -166,21 +146,21 @@
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
                             <Columns >
-                                <asp:TemplateField HeaderText="">
+                         <%--       <asp:TemplateField HeaderText="">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton2" CommandArgument='<%# Eval("Id") %>' CommandName="View"
                                             runat="server" CssClass="icon_search"> 
                                         </asp:LinkButton>
                                     </ItemTemplate>
-                                </asp:TemplateField>
+                                </asp:TemplateField>--%>
                                 <asp:TemplateField HeaderText="# to Buy">
                                     <ItemTemplate>
-                                        <div style="height: 60px;">
+                                        <div style="height: 60px;border-style:none">
                                             <asp:TextBox ID="txtNumberToBuy" runat="server" AutoPostBack="False" BorderColor="#759CAC"
                                                 BorderWidth="1px" CausesValidation="True" SkinID="TextBoxSkin" TabIndex="20"
                                                 Width="30px">1px</asp:TextBox>
                                             <ajaxToolkit:NumericUpDownExtender ID="txtNumberToBuy_NumericUpDownExtender" runat="server"
-                                                Enabled="True" Maximum="10" Minimum="1" RefValues="" ServiceDownMethod="" ServiceDownPath=""
+                                                Enabled="True" Maximum="10" Minimum="0" RefValues="" ServiceDownMethod="" ServiceDownPath=""
                                                 ServiceUpMethod="" Tag="" TargetButtonDownID="" TargetButtonUpID="" TargetControlID="txtNumberToBuy"
                                                 Width="75">
                                             </ajaxToolkit:NumericUpDownExtender>

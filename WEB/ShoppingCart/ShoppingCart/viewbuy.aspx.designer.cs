@@ -7,11 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ShoppingCart
-{
+namespace ShoppingCart {
     
     
     public partial class viewbuy {
+        
+        /// <summary>
+        /// msg control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label msg;
         
         /// <summary>
         /// UpdatePanel2 control.
