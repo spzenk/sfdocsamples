@@ -30,6 +30,8 @@ namespace ShoppingCart
         public String Catego { get; set; }
         public String ParentId { get; set; }
         public String IdNivel { get; set; }
+
+        public int Level { get; set; }
     }
 
 }
