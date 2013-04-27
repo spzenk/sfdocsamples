@@ -80,11 +80,10 @@
 } 
 .nodeLevel3
 {
-	font: 10px Arial,Sans-Serif;
-	border: double 1px gray;
+	font: 12px Arial, Sans-Serif;
 	margin: 0px;
 	padding-left: 1px;
-	color: #666666;
+	color: #006600;
 	height: 25px;
 	width: 100px;
 	text-decoration: none;

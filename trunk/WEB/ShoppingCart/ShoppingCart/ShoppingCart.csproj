@@ -162,6 +162,13 @@
     <Compile Include="Account\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Buy.master.cs">
+      <DependentUpon>Buy.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Buy.master.designer.cs">
+      <DependentUpon>Buy.master</DependentUpon>
+    </Compile>
     <Compile Include="Code\CatalogoBE.cs" />
     <Compile Include="Code\DataClasses1.designer.cs" />
     <Compile Include="Code\DelfinData.designer.cs" />
@@ -230,6 +237,7 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Buy.master" />
     <None Include="Code\DelfinData.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DelfinData1.designer.cs</LastGenOutput>
