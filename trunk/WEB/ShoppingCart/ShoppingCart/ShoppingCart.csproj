@@ -162,8 +162,15 @@
     </Compile>
     <Compile Include="Code\CatalogoBE.cs" />
     <Compile Include="Code\DataClasses1.designer.cs" />
+    <Compile Include="Code\DelfinData.designer.cs" />
+    <Compile Include="Code\DelfinData1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DelfinData.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Code\GridViewBoundFieldHelper.cs" />
     <Compile Include="Code\ProductsDAC.cs" />
+    <Compile Include="Code\ProductsDelfinDAC.cs" />
     <Compile Include="Code\wcf_service.cs" />
     <Compile Include="DataClasses1.designer.cs">
       <AutoGen>True</AutoGen>
@@ -221,6 +228,11 @@
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Code\DelfinData.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DelfinData1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="DataClasses1.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
@@ -230,6 +242,11 @@
   <ItemGroup>
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Code\DelfinData.dbml.layout">
+      <DependentUpon>DelfinData.dbml</DependentUpon>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

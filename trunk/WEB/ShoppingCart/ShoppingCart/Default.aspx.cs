@@ -176,9 +176,6 @@ namespace ShoppingCart
         {
             ProductCategotyBEList categories = ProductsDelfinDAC.Retrive_Categories();
             TreeViewBind(this.trvCategories, categories, null);
-
-         
-
             this.trvCategories.CollapseAll();
             if (idSubcategoria.HasValue)
             {
@@ -197,10 +194,11 @@ namespace ShoppingCart
             foreach (TreeNode node in nodes)
             {
                 
-                //if (node.Value.Equals(idSubcategoria))
-                if (Convert.ToInt32(node.Value.Split('.')[0]).Equals(idSubcategoria) && node.Parent != null)
+                if (node.Value.Equals(idSubcategoria.ToString()))
+                //if (Convert.ToInt32(node.Value.Split('.')[0]).Equals(idSubcategoria) && node.Parent != null)
                 {
-                    node.Parent.Expand();
+                    //node.Parent.Expand();
+                    TryExpandParents(node);
                     return;
                 }
 
@@ -211,6 +209,17 @@ namespace ShoppingCart
 
             }
         }
+        void TryExpandParents(TreeNode node)
+        {
+
+            if (node.Parent != null)
+            {
+                node.Parent.Expand();
+                TryExpandParents(node.Parent);
+            }
+
+        }
+
             /// <summary>
        /// TreeViewBind() method, is use to load an XML string via XmlDocument
        /// object, and convert it to XML Object. Binding object to TreeView
@@ -237,22 +246,7 @@ namespace ShoppingCart
                trv.Nodes.Clear();
            }
        }
-       void AddCategoriesElDelfin(TreeNode parent, string parentId, ProductCategotyBEList categories)
-       {
-           List<ProductCategotyBE> childsBE = categories.Where(p => p.ParentId.Equals(parentId)).ToList();
-           TreeNode nodeTree_Child = null;
-           foreach (ProductCategotyBE childCatatBE in childsBE)
-           {
-               nodeTree_Child = new TreeNode(childCatatBE.Text, childCatatBE.Id);
-               nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
-               parent.ChildNodes.Add(nodeTree_Child);
-               if (categories.Any(p => p.ParentId.Equals(childCatatBE.Id)) == true)
-               {
-
-                   AddSubcategories(nodeTree_Child, childCatatBE.Id, categories);
-               }
-           }
-       }
+      
         /// <summary>
         /// 
         /// </summary>
@@ -266,15 +260,23 @@ namespace ShoppingCart
            TreeNode nodeTree_Child = null;
            foreach (ProductCategotyBE childCatatBE in childsBE)
            {
-               nodeTree_Child = new TreeNode(childCatatBE.Text, childCatatBE.Id);
-               nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
-               parent.ChildNodes.Add(nodeTree_Child);
-               if (categories.Any(p => p.ParentId.Equals(childCatatBE.Id) ) == true)
+               if (childCatatBE.Id == "102")
                {
-                  
+                   int i=0;
+               }
+               nodeTree_Child = new TreeNode(childCatatBE.Text, childCatatBE.Id);
+               if (childCatatBE.Level == 3)
+                   nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
+               else
+                   nodeTree_Child.SelectAction = TreeNodeSelectAction.Expand;
+
+               parent.ChildNodes.Add(nodeTree_Child);
+               if (categories.Any(p => p.ParentId.Equals(childCatatBE.Id)) == true)
+               {
+
                    AddSubcategories(nodeTree_Child, childCatatBE.Id, categories);
                }
-              
+
            }
        }
     
