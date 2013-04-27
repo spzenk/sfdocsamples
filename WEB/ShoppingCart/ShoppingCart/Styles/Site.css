@@ -59,10 +59,10 @@
 .nodeLevel1
 {
 	font: 14px Arial,Sans-Serif;
-	border: double 1px gray;
+	/*border: double 1px gray;*/
 	height: 20px;
-	width: 90px;
-	padding-left: 5px;
+	
+	padding-left: 0px;
 	color: #800000;
 	text-decoration: none;
 	cursor:pointer;
@@ -72,8 +72,8 @@
 	font: 12px Arial,Sans-Serif;
 	border: none;
 	margin: 0px;
-	padding-left: 10px;
-	height: 25px;
+	padding-left: 2px;
+	height: 20px;
 	width: 90px;
 	color: #666666;
 	text-decoration: none;
@@ -83,7 +83,7 @@
 	font: 10px Arial,Sans-Serif;
 	border: double 1px gray;
 	margin: 0px;
-	padding-left: 15px;
+	padding-left: 1px;
 	color: #666666;
 	height: 25px;
 	width: 100px;
