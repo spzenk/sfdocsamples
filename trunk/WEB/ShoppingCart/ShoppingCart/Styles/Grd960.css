@@ -2,8 +2,7 @@
 
 body
 {
-	background:#526074 url("../../img/bgr_box.jpg") repeat scroll -1703px 0 transparent;
-	background-color: #D6D9DB; /*background-color: #333333; */ /*background-image: url("../img/port/background_2.jpg");*/
+	background-color: #D6D9DB; 
 	background-position: center top; /*  background-repeat: repeat;*/
 	background-attachment: scroll;
 	height: 100%;
@@ -11,20 +10,9 @@ body
 	font-family: Verdana,Arial,Helvetica,sans-serif;
 	font-size: 13px;
 	line-height:2em;
-	
 }
 
-#home_wrap
-{
-    height:500px;
-    width:850px;
-    margin-top:20px;}
-#home_wrap_image
-{
-   margin: 5px;
-
-    }
-
+#home_wrap{    height:500px;    width:850px;    margin-top:20px;}#home_wrap_image{   margin: 5px;}
 
         
 #master_preheader
@@ -43,7 +31,6 @@ body
 {
     background-position: center center;
     background-image: url('../img/port/banner.jpg');
-  
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-color: #2B2B24;
