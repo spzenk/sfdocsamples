@@ -9,7 +9,8 @@ namespace ShoppingCart
 {
     public class ProductBE
     {
-        public int Id { get; set; }
+        public Decimal Id { get; set; }
+        public String IdCate { get; set; }
         public String Description { get; set; }
         public int Count { get; set; }
         public Decimal Price { get; set; }
@@ -25,8 +26,10 @@ namespace ShoppingCart
     {
         public String Id { get; set; }
         public String Text { get; set; }
+        public String Depto { get; set; }
+        public String Catego { get; set; }
         public String ParentId { get; set; }
-        public int Order { get; set; }
+        public String IdNivel { get; set; }
     }
 
 }
