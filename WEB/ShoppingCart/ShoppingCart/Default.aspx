@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Buy.master" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="ShoppingCart._Default" %>
    
     <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
@@ -113,38 +113,10 @@
             });
         }
     </script>
-    <div id="ProductCategory_div" class="grid_3 alpha">
-        <br />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <asp:TreeView ID="trvCategories" ExpandDepth="0" runat="server" Width="168px" ExpandImageUrl="~/img/expand_collapse_plus.gif"
-                    CollapseImageUrl="~/img/expand_collapse_minus.gif" 
-                    ImageSet="BulletedList2" NodeIndent="5"
-                    NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false" 
-                    ontreenodecheckchanged="trvCategories_TreeNodeCheckChanged">
-                    <LevelStyles>
-                        <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
-                        <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
-                        <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
-                        <%-- <asp:TreeNodeStyle ChildNodesPadding="10" Font-Bold="true" Font-Size="12pt" ForeColor="DarkGreen" />
-                            <asp:TreeNodeStyle ChildNodesPadding="5" Font-Bold="true" Font-Size="10pt" />
-                            <asp:TreeNodeStyle ChildNodesPadding="5" Font-Underline="true" Font-Size="10pt" />
-                            <asp:TreeNodeStyle ChildNodesPadding="10" Font-Size="8pt" />--%>
-                    </LevelStyles>
-                    <%--<HoverNodeStyle Font-Underline="False" />
-                        <SelectedNodeStyle Font-Underline="True" HorizontalPadding="0px" VerticalPadding="0px" />--%>
-                    <%-- <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" 
-                            HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                        <ParentNodeStyle Font-Bold="False" />
-                        <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" 
-                            HorizontalPadding="0px" VerticalPadding="0px" />--%>
-                </asp:TreeView>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
+    
 
     
-    <div id="centerContent_div" class="grid_9">
+    <div id="centerContent_div" class="grid_9 alpha">
         
             <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
         <div class="cart-div"  style="margin-top:30px"> 
@@ -202,6 +174,7 @@
         </div>
 
     </div>
+   
     <div id="righContent" class="grid_4 omega">
         <div class="frm_label_2">
             Sus compras</div>
