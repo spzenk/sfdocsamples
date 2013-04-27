@@ -51,7 +51,7 @@ namespace ShoppingCart
 
         void FillGrid(int? idCategoria)
         {
-            _Catalogo = ProductsDAC.Retrive_Produts(idCategoria.Value);
+            _Catalogo = ProductsDelfinDAC.Retrive_Produts(idCategoria.Value);
          
             if (this.Page.Session["CARRO"] != null)
             {
@@ -174,15 +174,7 @@ namespace ShoppingCart
 
         private void FillCat(int? idSubcategoria)
         {
-            //if (this.Page.Session["FIRST_TIME"] == null)
-            //{
-
-            //    this.Page.Session["FIRST_TIME"] = true;
-            //}
-
-            ProductCategotyBEList categories = ProductsDAC.Retrive_Categories();
-
-
+            ProductCategotyBEList categories = ProductsDelfinDAC.Retrive_Categories();
             TreeViewBind(this.trvCategories, categories, null);
 
          
@@ -193,15 +185,7 @@ namespace ShoppingCart
                 ExpandCategory(this.trvCategories.Nodes, idSubcategoria.Value  );
             }
             this.trvCategories.DataBind();
-            //if ((bool)this.Page.Session["FIRST_TIME"])
-            //{
-                
-            //    this.Page.Session["FIRST_TIME"] = false;
-            //}
-            //else
-            //{
-               
-            //}
+           
 
 
 
@@ -239,7 +223,7 @@ namespace ShoppingCart
                TreeNode nodeTree = null;
                foreach (ProductCategotyBE cat in categories.Where(p=>p.ParentId.Equals("0")))
                {
-                   nodeTree = new TreeNode(cat.Text, cat.Id);
+                   nodeTree = new TreeNode(cat.Text.Trim(), cat.Id);
                    nodeTree.SelectAction = TreeNodeSelectAction.Expand;
                    nodeTree.Target = "Default.aspx";
                    AddSubcategories(nodeTree, cat.Id, categories);
@@ -253,7 +237,22 @@ namespace ShoppingCart
                trv.Nodes.Clear();
            }
        }
+       void AddCategoriesElDelfin(TreeNode parent, string parentId, ProductCategotyBEList categories)
+       {
+           List<ProductCategotyBE> childsBE = categories.Where(p => p.ParentId.Equals(parentId)).ToList();
+           TreeNode nodeTree_Child = null;
+           foreach (ProductCategotyBE childCatatBE in childsBE)
+           {
+               nodeTree_Child = new TreeNode(childCatatBE.Text, childCatatBE.Id);
+               nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
+               parent.ChildNodes.Add(nodeTree_Child);
+               if (categories.Any(p => p.ParentId.Equals(childCatatBE.Id)) == true)
+               {
 
+                   AddSubcategories(nodeTree_Child, childCatatBE.Id, categories);
+               }
+           }
+       }
         /// <summary>
         /// 
         /// </summary>
