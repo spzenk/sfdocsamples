@@ -199,7 +199,7 @@
 
             <div style="margin: 3px">
                 <div class="frm_label_2">
-                    <span class="frm_ast">*</span> Comentarios
+                    <span class="frm_ast"></span> Comentarios
                 </div>
                 <div class="frm_fieldvalue">
                     <textarea id="txtComment" class="frm_fieldvalue" cols="40" rows="5"></textarea>
