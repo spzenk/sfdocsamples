@@ -79,6 +79,7 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="building.aspx" />
     <Content Include="buy.aspx" />
+    <Content Include="buycart.aspx" />
     <Content Include="Code\articulos_s_categoria.sql" />
     <Content Include="Default.aspx" />
     <Content Include="Default2.aspx" />
@@ -188,6 +189,13 @@
     </Compile>
     <Compile Include="buy2.master.designer.cs">
       <DependentUpon>buy2.master</DependentUpon>
+    </Compile>
+    <Compile Include="buycart.aspx.cs">
+      <DependentUpon>buycart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="buycart.aspx.designer.cs">
+      <DependentUpon>buycart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Code\CatalogoBE.cs" />
     <Compile Include="Code\DelfinData.designer.cs" />

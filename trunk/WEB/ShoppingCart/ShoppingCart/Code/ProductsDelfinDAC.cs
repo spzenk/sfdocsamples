@@ -20,47 +20,47 @@ namespace ShoppingCart
         {
             connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["DelfinSAConnectionString"].ConnectionString;
         }
-        public static List<ProductBE> Retrive_Produts(int subCategoryId)
+        public static List<ProductBE> Retrive_Produts(int? subCategoryId)
         {
             ProductBE wProductBE = null;
             List<ProductBE> wCatalogoList = new List<ProductBE>();
-            //using (DelfinDataDataContext dc = new DelfinDataDataContext())
-            //{
-            //    var productsdb = dc.shopcart_products_views.Where(p => p.idcate.Equals(subCategoryId));
-            //    if (productsdb != null)
-            //        foreach (shopcart_products_view p_db in productsdb)
-            //        {
-            //            wProductBE = new ProductBE();
-            //            wProductBE.Id = p_db.idart;
-            //            wProductBE.IdCate = subCategoryId.ToString();
-            //            wProductBE.Price = p_db.prevta;
-            //            wProductBE.Description = p_db.denom;
-            //            wProductBE.Count = 0;
-            //            wCatalogo.Add(wProductBE);
-            //        }
-            //}
-
-            Database dataBase = null;
-            DbCommand cmd = null;
-
-
-            dataBase = new Microsoft.Practices.EnterpriseLibrary.Data.Sql.SqlDatabase(ProductsDelfinDAC.connectionString);
-            cmd = dataBase.GetStoredProcCommand("Articulos_s_categoria");
-            dataBase.AddInParameter(cmd, "idcate", System.Data.DbType.Int32, subCategoryId);
-            using (IDataReader reader = dataBase.ExecuteReader(cmd))
+            using (DelfinDataDataContext dc = new DelfinDataDataContext())
             {
-                while (reader.Read())
-                {
-                    wProductBE = new ProductBE();
-                    wProductBE.Id = Convert.ToDecimal(reader["idart"]);
-                    wProductBE.IdCate = subCategoryId.ToString();
-                    wProductBE.Price = Convert.ToDecimal(reader["precio"]);
-                    wProductBE.Description = reader["denom"].ToString();
-                    wProductBE.Count = 0;
-                    wCatalogoList.Add(wProductBE);
-
-                }
+                var productsdb = dc.shopcart_products_views.Where(p => p.idcate.Equals(subCategoryId));
+                if (productsdb != null)
+                    foreach (shopcart_products_view p_db in productsdb)
+                    {
+                        wProductBE = new ProductBE();
+                        wProductBE.Id = p_db.idart;
+                        wProductBE.IdCate = subCategoryId.ToString();
+                        wProductBE.Price = p_db.prevta;
+                        wProductBE.Description = p_db.denom;
+                        wProductBE.Count = 0;
+                        wCatalogoList.Add(wProductBE);
+                    }
             }
+
+            //Database dataBase = null;
+            //DbCommand cmd = null;
+
+
+            //dataBase = new Microsoft.Practices.EnterpriseLibrary.Data.Sql.SqlDatabase(ProductsDelfinDAC.connectionString);
+            //cmd = dataBase.GetStoredProcCommand("Articulos_s_categoria");
+            //dataBase.AddInParameter(cmd, "idcate", System.Data.DbType.Int32, subCategoryId);
+            //using (IDataReader reader = dataBase.ExecuteReader(cmd))
+            //{
+            //    while (reader.Read())
+            //    {
+            //        wProductBE = new ProductBE();
+            //        wProductBE.Id = Convert.ToDecimal(reader["idart"]);
+            //        wProductBE.IdCate = subCategoryId.ToString();
+            //        wProductBE.Price = Convert.ToDecimal(reader["precio"]);
+            //        wProductBE.Description = reader["denom"].ToString();
+            //        wProductBE.Count = 0;
+            //        wCatalogoList.Add(wProductBE);
+
+            //    }
+            //}
 
             return wCatalogoList;
         }

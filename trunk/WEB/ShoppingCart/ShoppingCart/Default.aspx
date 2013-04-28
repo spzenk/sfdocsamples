@@ -213,7 +213,7 @@
                 </td>
                 <td>
                     <div class="shoppingCartDiv_buy">
-                        <a class="frm_label_1" href="/buy.aspx">Comprar</a>
+                        <a class="frm_label_1" href="/buycart.aspx">Comprar</a>
                     </div>
                 </td>
             </tr>
