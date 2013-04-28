@@ -35,7 +35,7 @@
     <link href="~/Styles/992_16_5_5.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/tables.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
-<%--    <link href="~/Styles/reset.css" rel="stylesheet" type="text/css" />--%>
+ <%--   <link href="~/Styles/reset.css" rel="stylesheet" type="text/css" />--%>
    <link href="~/Styles/Grd960.css" rel="stylesheet" type="text/css" />
     <title></title>
 </head>
@@ -43,8 +43,8 @@
     <form id="form1" runat="server">
     <div id="master_header" class="panel2">
         <div class="container_16">
-            <img class="img_src" src="img/banner1.jpg" alt="Pelsoft software factory"
-                style="margin-left: 10px; height: 110px; width: 970px; margin-right: 0px" />
+            <img class="img_src" src="img/banner1.jpg" alt="Pelsoft software factory" style="margin-left: 10px;
+                height: 110px; width: 970px; margin-right: 0px" />
         </div>
         <div class="clear">
         </div>
@@ -58,25 +58,22 @@
         <div class="clear">
         </div>
     </div>
-        <%--Center Container--%>
-     <ajaxToolkit:ToolkitScriptManager runat="Server" EnablePartialRendering="true" ID="ScriptManager1" />
+    <%--Center Container--%>
+    <ajaxToolkit:ToolkitScriptManager runat="Server" EnablePartialRendering="true" ID="ScriptManager1" />
     <div id="master_wrap" class="container_16 box_roun_shadow">
-        <div class="master_center_right_wrap">   
-
+        <div class="master_center_right_wrap">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-            
             </asp:ContentPlaceHolder>
         </div>
-        <div class="clear"></div>
+        <div class="clear">
+        </div>
     </div>
-        
-   
- <div id="master_footer" class="container_16">
+    <div id="master_footer" class="container_16">
         <div id="master_footerLine" class="">
         </div>
         <div id="master_footerContainerLeft" class="grid_7">
             <p>
-                Copyright © 2011  Pelsoft .- Software factory</p>
+                Copyright © 2011 Pelsoft .- Software factory</p>
         </div>
         <div id="master_footerContainerRight" class="grid_8">
         </div>

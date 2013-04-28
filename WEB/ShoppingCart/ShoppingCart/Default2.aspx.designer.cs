@@ -10,7 +10,7 @@
 namespace WebApplication1 {
     
     
-    public partial class Buy {
+    public partial class Default2 {
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -31,12 +31,21 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TreeView trvCategories;
         
         /// <summary>
-        /// Content control.
+        /// UpdatePanel2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder Content;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
+        
+        /// <summary>
+        /// GridView_Prod control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView GridView_Prod;
     }
 }

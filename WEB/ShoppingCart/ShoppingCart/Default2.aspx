@@ -1,11 +1,8 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="ShoppingCart._Default" %>
-   
-    <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
-<asp:Content ID="t" runat="server" ContentPlaceHolderID="MainContent">
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default2.aspx.cs" Inherits="WebApplication1.Default2" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript" language="javascript">
         var varUrl;
         var varData;
@@ -53,7 +50,7 @@
                 htmlTable += '<tr> <td  class ="cart-col-description" >' + list[i]['Description'] + '</td><td>' + list[i]['Count'] + '</td> <td  class ="cart-col-price" >' + list[i]['Price'] + '</td></tr>';
                 totalprice += list[i]['Price'];
             }
-             htmlTable +='</tbody>'
+            htmlTable += '</tbody>'
             shoppingCartDiv.append(htmlTable);
 
             shoppingCartDiv.append('<br />');
@@ -114,37 +111,23 @@
         }
     </script>
     
-    <div id="ProductCategory_div" class="grid_3 alpha">
+        <div id="ProductCategory_div" class="grid_3">
         <br />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:TreeView ID="trvCategories" ExpandDepth="0" runat="server" Width="168px" 
-                
-                    ImageSet="BulletedList2" NodeIndent="5"
-                    NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false" 
-                    ontreenodecheckchanged="trvCategories_TreeNodeCheckChanged">
+                    NodeIndent="5" NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false">
                     <LevelStyles>
                         <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
                         <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
                         <asp:TreeNodeStyle CssClass="nodeLevel3" ChildNodesPadding="5" />
-                        <%-- <asp:TreeNodeStyle ChildNodesPadding="10" Font-Bold="true" Font-Size="12pt" ForeColor="DarkGreen" />
-                            <asp:TreeNodeStyle ChildNodesPadding="5" Font-Bold="true" Font-Size="10pt" />
-                            <asp:TreeNodeStyle ChildNodesPadding="5" Font-Underline="true" Font-Size="10pt" />
-                            <asp:TreeNodeStyle ChildNodesPadding="10" Font-Size="8pt" />--%>
                     </LevelStyles>
-                    <%--<HoverNodeStyle Font-Underline="False" />
-                        <SelectedNodeStyle Font-Underline="True" HorizontalPadding="0px" VerticalPadding="0px" />--%>
-                    <%-- <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" 
-                            HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                        <ParentNodeStyle Font-Bold="False" />
-                        <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" 
-                            HorizontalPadding="0px" VerticalPadding="0px" />--%>
                 </asp:TreeView>
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
     
-    <div id="centerContent_div" class="grid_9 alpha">
+     <div id="centerContent_div" class="grid_9">
         
             <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
         <div class="cart-div"  style="margin-top:30px"> 
@@ -157,7 +140,7 @@
                     <div id="divGridView" class="">
                         <asp:GridView ID="GridView_Prod" runat="server" AutoGenerateColumns="False" CSSSelectorClass="YodaGrilla"
                             ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="540px"
-                            ShowHeader="False" OnRowCommand="GridView_Prod_RowCommand" 
+                            ShowHeader="False" 
                             OnRowDataBound="GridView_Prod_RowDataBound">
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
@@ -203,7 +186,7 @@
 
     </div>
    
-    <div id="righContent" class="grid_4 omega">
+    <div id="righContent" class="grid_4">
         <div class="frm_label_2">
             Sus compras</div>
         <div id="shoppingCartDiv" class="cart-div" style="margin-top: 10px; margin-left: 3px ;width:250px">
