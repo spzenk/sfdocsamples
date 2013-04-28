@@ -1,31 +1,31 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="buycart.aspx.cs" Inherits="ShoppingCart.buycart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <style type="text/css">
-      
-
-        div.f1c {
+        div.f1c
+        {
             background: url('/img/bgr_box.png') repeat scroll -1004px 0 transparent;
             padding: 5px 15px;
             width: 450px;
         }
         
-div.f1b {
-    background: url("/img/bgr_2.jpg") repeat scroll -176px -361px transparent;
-    height: 8px;
-    width: 480px;
-}
+        div.f1b
+        {
+            background: url("/img/bgr_2.jpg") repeat scroll -176px -361px transparent;
+            height: 8px;
+            width: 480px;
+        }
         
-div.f1st {
-    background: url("/img/bgr_2.jpg") repeat scroll -176px -320px transparent;
-    color: #FFFFFF;
-    display: table-cell;
-    height: 27px;
-    text-align: center;
-    vertical-align: middle;
-    width: 500px;
-}
-  </style>
-    
+        div.f1st
+        {
+            background: url("/img/bgr_2.jpg") repeat scroll -176px -320px transparent;
+            color: #FFFFFF;
+            display: table-cell;
+            height: 27px;
+            text-align: center;
+            vertical-align: middle;
+            width: 500px;
+        }
+    </style>
     <script type="text/javascript" >
 
         var varType;
