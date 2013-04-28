@@ -11,13 +11,13 @@ h4 {color: #576d84;font-size: 24px;line-height:25px}
 h5 {color: #585858;font-size: 24px;line-height:25px}
 h6 {color: #576d84;font-size: 17px;line-height:18px}
 h7 {color: #585858;font-size: 17px;line-height:18px}
-
+/*
 hr{border:0 #ccc solid;border-top-width:1px;clear:both;height:0}
 a:focus{outline:1px dotted}
 ol{list-style:decimal}ul{list-style:disc}
 
-p,dl,hr,h1,h2,h3,h4,h5,h6,ol,ul,pre,table,address,fieldset{margin-bottom:20px}
 
+*/
 #master_footer{padding: 0px;margin-top: 10px;  height: 4em;width:90%;    margin-left:auto;    margin-right:auto;    text-align: left;    vertical-align: middle;}
 #master_footerLine{border-bottom: 1px solid #B3B3B3;    font-size: 1px;height: 8px;}
 #master_footerContainerLeft{float:left;color:#808080}

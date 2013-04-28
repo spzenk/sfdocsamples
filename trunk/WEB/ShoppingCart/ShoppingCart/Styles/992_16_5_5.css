@@ -37,7 +37,7 @@ body {
 .grid_16 {
 	display:inline;
 	float: left;
-	position: relative;
+	/*position: relative;*/ /*Esto se comenta debido a que el menu tiene header errores*/
 	margin-left: 3px;
 	margin-right: 2px;
 }
