@@ -119,26 +119,14 @@
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <asp:TreeView ID="trvCategories" ExpandDepth="0" runat="server" Width="168px" 
-                
-                    ImageSet="BulletedList2" NodeIndent="5"
-                    NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false" 
-                    ontreenodecheckchanged="trvCategories_TreeNodeCheckChanged">
+                    ImageSet="BulletedList2" NodeIndent="5"              NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false"                >
                     <LevelStyles>
                         <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
                         <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
                         <asp:TreeNodeStyle CssClass="nodeLevel3" ChildNodesPadding="5" />
-                        <%-- <asp:TreeNodeStyle ChildNodesPadding="10" Font-Bold="true" Font-Size="12pt" ForeColor="DarkGreen" />
-                            <asp:TreeNodeStyle ChildNodesPadding="5" Font-Bold="true" Font-Size="10pt" />
-                            <asp:TreeNodeStyle ChildNodesPadding="5" Font-Underline="true" Font-Size="10pt" />
-                            <asp:TreeNodeStyle ChildNodesPadding="10" Font-Size="8pt" />--%>
+                        
                     </LevelStyles>
-                    <%--<HoverNodeStyle Font-Underline="False" />
-                        <SelectedNodeStyle Font-Underline="True" HorizontalPadding="0px" VerticalPadding="0px" />--%>
-                    <%-- <NodeStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" 
-                            HorizontalPadding="5px" NodeSpacing="0px" VerticalPadding="0px" />
-                        <ParentNodeStyle Font-Bold="False" />
-                        <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" 
-                            HorizontalPadding="0px" VerticalPadding="0px" />--%>
+                    
                 </asp:TreeView>
             </ContentTemplate>
         </asp:UpdatePanel>

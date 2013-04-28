@@ -15,8 +15,8 @@ namespace WebApplication1
         {
             if (!this.IsPostBack)
             {
-                //if (Page.Session["CARRO"] == null)
-                //    this.Page.Session["CARRO"] = new List<ProductBE>();
+                if (Page.Session["CARRO"] == null)
+                    this.Page.Session["CARRO"] = new List<ProductBE>();
                 int? idSubcategoria = null;
 
                 if (Request.QueryString["id"] != null)
