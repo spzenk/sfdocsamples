@@ -137,7 +137,7 @@ div.f1st {
 
 <div style="margin-top: 20px; margin-left: 5px;" >
         <div class="frm_title_2" >
-            Contactenos
+            GRACIAS POR SU COMPRA!!!!
         </div>
         <div class="" style="font-size:12px; font-weight:bold;line-height: 12px;width:900px;color:#293955;margin: 10px 0 5px;
 	padding: 8px" >
@@ -186,11 +186,11 @@ div.f1st {
               <div class="frm_fieldvalue">
                   <textarea id="txtComment" class="frm_fieldvalue" cols="40" rows="5"></textarea>
               </div>
-              <div class="f1b">
-              </div>
+             <%-- <div class="f1b">
+              </div>--%>
           </div>
       </div>
-      <div class="frm_row" style="height: 200px">
+      <div class="frm_row" style="height: 400px">
           <div id="div1" style="margin: 15px;">
               <div class="frm_label_2">
                   Telefono</div>
@@ -214,9 +214,9 @@ div.f1st {
           </div>
       </div>
       <%--<div class = "frm_group_buttons" style="height:30px; background: url('/img/sprites-t1.gif') repeat-x scroll 0 -281px #000000 ; width:638px;clear: both; height:40px">--%>
-      <div class="frm_group_buttons" style="height: 30px; width: 638px; clear: both; height: 40px;
+      <div class="frm_group_buttons " style="height: 30px; width: 638px; clear: both; height: 40px;
           background-color: White">
-          <input type="image" name="Enviar" alt="Enviar" class="img_box" src="/../img/submit.gif"
+          <input type="image" name="Enviar" alt="Enviar" class="img_box" src="/img/submit.gif"
               style="margin-top: 7; width: 120px; height: 40; border: 1px" onmousedown="SendMessage();" />
       </div>
         </div>
