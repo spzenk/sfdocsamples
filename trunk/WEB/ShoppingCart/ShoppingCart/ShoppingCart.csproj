@@ -199,6 +199,7 @@
       <DependentUpon>buycart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Code\CatalogoBE.cs" />
+    <Compile Include="Code\common.cs" />
     <Compile Include="Code\DelfinData.designer.cs" />
     <Compile Include="Code\DelfinData1.designer.cs">
       <AutoGen>True</AutoGen>
