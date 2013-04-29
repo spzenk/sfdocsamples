@@ -48,7 +48,7 @@ public class wcf_service : Iwcf_service
 
         //string body= String.Format(txt, contactName, email, phone, city, state, message);
 
-        // CELAM.DAC.CommonDAC.SendMail_Me(string.Concat("Mensaje de contacto de ", contactName), BODY.ToString(), email);
+        Common.SendMail_Me(string.Concat("Nuevo pedido de ", contactName), BODY.ToString(), email);
     }
     public String SendMessage2(string contactName, string message)
     {
