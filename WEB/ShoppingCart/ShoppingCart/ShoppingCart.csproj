@@ -78,11 +78,13 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="building.aspx" />
-    <Content Include="buy.aspx" />
+    <Content Include="buycart_ok.aspx" />
     <Content Include="buycart.aspx" />
     <Content Include="Code\articulos_s_categoria.sql" />
+    <Content Include="Code\shopcart_products_view.sql" />
     <Content Include="Default.aspx" />
     <Content Include="Default2.aspx" />
+    <Content Include="Email_buycart.htm" />
     <Content Include="Global.asax" />
     <Content Include="img\ActualizarPerfilBig.gif" />
     <Content Include="img\ActualizarPerfilSmall.gif" />
@@ -117,7 +119,6 @@
     <Content Include="Scripts\fwkhelper.js" />
     <Content Include="Scripts\jquery.quicksearch.js" />
     <Content Include="Scripts\jquery_1.5.js" />
-    <Content Include="Scripts\pelsoft.js" />
     <Content Include="menu\main_menu_2.ascx" />
     <Content Include="service\wcf_service.svc" />
     <Content Include="Styles\992_16_5_5.css" />

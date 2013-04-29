@@ -23,7 +23,7 @@ public class wcf_service : Iwcf_service
         //Esta funcion se puede usar porque  AspNetCompatibilityRequirementsMode.Allowed
 
         string ruta = HttpContext.Current.Server.MapPath("..");
-        string file = System.IO.Path.Combine(ruta, @"modules\inf", "Email_contactenos.htm");
+        string file = System.IO.Path.Combine(ruta, "Email_buycart.htm");
         string txt = Fwk.HelperFunctions.FileFunctions.OpenTextFile(file);
         StringBuilder BODY = new StringBuilder(txt);
         BODY.Replace("$contactName$", contactName);
@@ -32,10 +32,23 @@ public class wcf_service : Iwcf_service
         BODY.Replace("$city$", city);
         BODY.Replace("$state$", state);
         BODY.Replace("$message$", message);
+        StringBuilder htmlTable = new StringBuilder("<thead><tr> <td>Producto</td><td>Cantidad</td> <td>Precio</td></tr></thead><tbody>");
+        var cart = (List<ProductBE>)System.Web.HttpContext.Current.Session["CARRO"];
+        decimal totalprice = 0;
+        foreach (ProductBE p in cart)
+        {
+            htmlTable.AppendLine("<tr> <td>" + p.Description + "</td><td>" + p.Count + "</td> <td>" + p.Price + "</td></tr>");
+
+            totalprice += p.Price;
+        }
+        htmlTable.AppendLine("<tr> <td>Total  </td><td>  </td> <td>" + totalprice.ToString() + "</td></tr>");
+        htmlTable.AppendLine("</tbody>");
+        BODY.Replace("$pedido$", htmlTable.ToString());
+
 
         //string body= String.Format(txt, contactName, email, phone, city, state, message);
-        
-       // CELAM.DAC.CommonDAC.SendMail_Me(string.Concat("Mensaje de contacto de ", contactName), BODY.ToString(), email);
+
+        // CELAM.DAC.CommonDAC.SendMail_Me(string.Concat("Mensaje de contacto de ", contactName), BODY.ToString(), email);
     }
     public String SendMessage2(string contactName, string message)
     {

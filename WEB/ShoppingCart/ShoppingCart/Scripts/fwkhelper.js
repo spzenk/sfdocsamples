@@ -63,7 +63,12 @@ jQuery.fn.fadeSliderE = function (settings, exp) {
         }, settings.speed, settings.easing);
     }
 };
-
+/*
+Busca un control por nombre *+nombre se usa desde   $(document).ready de las Master page
+*/
+jQuery.fn.findControl = function (clientId) {
+    return $('*[id*="_' + clientId + '"]');
+}
 
 /// Helper Functions
 
