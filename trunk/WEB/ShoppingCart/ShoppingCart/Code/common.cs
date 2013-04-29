@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Net.Mail;
+using System.Configuration;
+using System.Web.Configuration;
+using System.Net.Configuration;
 
 namespace ShoppingCart
 {
@@ -15,20 +18,18 @@ namespace ShoppingCart
         {
             if (string.IsNullOrEmpty(from))
                 return;
-            string commentTo = System.Configuration.ConfigurationManager.AppSettings["commentTo"].ToString();
+
+            Configuration c = WebConfigurationManager.OpenWebConfiguration(HttpContext.Current.Request.ApplicationPath);
+            MailSettingsSectionGroup mailSettings = c.GetSectionGroup("system.net/mailSettings") as MailSettingsSectionGroup;
+
+            
             //Crea el nuevo correo electronico con el cuerpo del mensaje y el asutno.
-            MailMessage wMailMessage = new MailMessage(from, commentTo) { Body = body, Subject = subjet };
+            MailMessage wMailMessage = new MailMessage(from, mailSettings.Smtp.From) { Body = body, Subject = subjet };
             wMailMessage.IsBodyHtml = true;
-
-
-
             SmtpClient wSmtpClient = new SmtpClient();
-
-
             //Envia el correo electronico.
             try
             {
-
                 wSmtpClient.Send(wMailMessage);
             }
             catch (Exception ex) { throw ex; }
