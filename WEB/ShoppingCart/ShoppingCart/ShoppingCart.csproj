@@ -116,6 +116,7 @@
     <Content Include="img\Warning.png" />
     <Content Include="img\webaccess.jpg" />
     <Content Include="img\website.jpg" />
+    <Content Include="Scripts\fwkhelper.js" />
     <Content Include="Scripts\jquery.quicksearch.js" />
     <Content Include="Scripts\jquery_1.5.js" />
     <Content Include="menu\main_menu_2.ascx" />
@@ -124,7 +125,6 @@
     <Content Include="Styles\Common.css" />
     <Content Include="Styles\Grd960.css" />
     <Content Include="Styles\Menu.css" />
-    <Content Include="Styles\reset.css" />
     <Content Include="Styles\sf_grid.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Styles\tables.css" />
