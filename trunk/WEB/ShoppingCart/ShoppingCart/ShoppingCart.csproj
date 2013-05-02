@@ -116,7 +116,6 @@
     <Content Include="img\Warning.png" />
     <Content Include="img\webaccess.jpg" />
     <Content Include="img\website.jpg" />
-    <Content Include="Scripts\fwkhelper.js" />
     <Content Include="Scripts\jquery.quicksearch.js" />
     <Content Include="Scripts\jquery_1.5.js" />
     <Content Include="menu\main_menu_2.ascx" />
