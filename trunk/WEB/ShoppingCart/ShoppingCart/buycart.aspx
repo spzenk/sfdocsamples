@@ -15,18 +15,17 @@
     
         var varUrl;
         var varData;
-        var varContentType;
         var varDataType;
-        var varProcessData;
+       
         //Generic function to call AXMX/WCF  Service        
         function CallService() {
             $.ajax({
                 type: "POST", //GET or POST or PUT or DELETE verb
                 url: varUrl, // Location of the service
                 data: varData, //Data sent to server
-                contentType: varContentType, // content type sent to server
-                dataType: varDataType, //Expected data format from server
-                processdata: varProcessData, //True or False
+                contentType: "application/json; charset=utf-8",
+                dataType: "json", //Expected data format from server
+                processdata: true, //True or False
                 success: function (msg) {//On Successfull service call
                     ServiceSucceeded(msg);
                 },
@@ -39,33 +38,22 @@
             alert('El pedido se envio correctamente ');
 
             var path = Getrootpath('');
-
-            
             document.location.href = path + "/buycart_ok.aspx";
             
-           
-           
-            varUrl = null; varData = null; varContentType = null; varDataType = null; varProcessData = null;
+             
         }
         function ServiceFailed(result) {
             alert('Service call failed: ' + result.status + '' + result.statusText);
 
-            varUrl = null; varData = null; varContentType = null; varDataType = null; varProcessData = null;
         }
 
 
         function SendMessage() {
-
-         
             if (validate_cotrols() == false) {
                 alert('Por favor verifique todos los datos !!!');
                 return;
             }
-
-            varType = "POST";
             varUrl = "../../service/wcf_service.svc/SendMessage";
-
-            //varData = '{"contactName": "' + $('#txtUserName').val() + '","message": "' + $('#txtComment').val() + '"}';
             varData = '{"contactName": "' + $('#txtUserName').val() +
                        '","message": "' + $('#txtComment').val() +
                        '","email": "' + $('#txtEmail').val() +
@@ -73,11 +61,8 @@
                        '","city": "' + $('#txtCity').val() +
                        '","state": "' + $('#txtRegion').val() +
                                      '"}';
-
-
-            varContentType = "application/json; charset=utf-8";
-            varDataType = "xml";
-            varProcessData = true;
+         
+            
             CallService();
         }
 

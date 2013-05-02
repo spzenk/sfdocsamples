@@ -49,6 +49,7 @@ public class wcf_service : Iwcf_service
         //string body= String.Format(txt, contactName, email, phone, city, state, message);
 
         Common.SendMail_Me(string.Concat("Nuevo pedido de ", contactName), BODY.ToString(), email);
+        cart.Clear();
     }
     public String SendMessage2(string contactName, string message)
     {
@@ -122,10 +123,10 @@ public class wcf_service : Iwcf_service
     {
         
         [OperationContract]
-        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Xml)]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         void SendMessage(string contactName,string message,string email,string phone,string city,string state);
         [OperationContract]
-        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Xml)]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         String SendMessage2(string contactName, string message);
 
         [OperationContract]
