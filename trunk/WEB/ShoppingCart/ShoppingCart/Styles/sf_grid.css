@@ -9,9 +9,14 @@
 	width: 90%;
 	
 }
-.YodaGrilla table tbody tr  td
-{border-style: none;
+.YodaGrilla table tbody 
+{	border-style: none;    border: none;border-color: #FFFFFF;
 	}
+.YodaGrilla table tbody tr  td
+{
+	border-style: none;
+ border-style: none;    border: none;border-color: #FFFFFF;
+}
 
 .YodaGrilla .AspNet-GridView div.AspNet-GridView-Pagination, .YodaGrilla .AspNet-GridView div.AspNet-GridView-Pagination a, .YodaGrilla .AspNet-GridView div.AspNet-GridView-Pagination span
 {
