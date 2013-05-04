@@ -33,21 +33,21 @@
 <ul id="menu"> 
   
    
-    <li><a class="menuv_a"  href="../Default.aspx">Inicio</a> 
+    <li><a class="menuv_a"  href="/Default.aspx">Inicio</a> 
     </li> 
-    <li><a class="menuv_a" href="../building.aspx">Supermercado</a> 
+    <li><a class="menuv_a" href="/building.aspx">Supermercado</a> 
         <ul id="servicios"> 
    
             <li>
-                <img class="corner_inset_left img_menu" alt="" src="/img/corner_inset_left.png" />
-                <a class="menuv_a" href="../building.aspx">Mision y vicion</a>
+                <img class="corner_inset_left src" alt="" src="/img/corner_inset_left.png" />
+                <a class="menuv_a" href="/building.aspx">Mision y vicion</a>
                 <img class="corner_inset_right img_menu" alt="" src="/img/corner_inset_right.png" />
             </li>
                 
-              <li><a class="menuv_a" href="../building.aspx" title="Mision y vicion">Servicios y producion</a></li>
-              <li><a class="menuv_a" href="../building.aspx" title="">Red El Delfin</a></li>
-              <li><a class="menuv_a" href="../building.aspx" title="">Capityal humano</a></li>
-              <li><a class="menuv_a" href="../building.aspx" title="">Hacer pedidos </a></li>
+              <li><a class="menuv_a" href="/building.aspx" title="Mision y vicion">Servicios y producion</a></li>
+              <li><a class="menuv_a" href="/building.aspx" title="">Red El Delfin</a></li>
+              <li><a class="menuv_a" href="/building.aspx" title="">Capityal humano</a></li>
+              <li><a class="menuv_a" href="/building.aspx" title="">Hacer pedidos </a></li>
              <li class ="last">
                 <img class="corner_left img_menu" alt="" src="/img/corner_left.png" />
                 <img class="middle img_menu" src="/img/dot.gif" alt=""/>
@@ -58,17 +58,17 @@
     <li><a class="menuv_a" href="/building.aspx">Supermercado</a>
         <ul id="cooperativa">
             <li>
-                <img class="corner_inset_left img_menu" alt="" src="/img/corner_inset_left.png" />
-                <a class="menuv_a" href="../About.aspx">Quienes somos</a>
-                <img class="corner_inset_right img_menu" alt="" src="/img/corner_inset_right.png" />
+                <img class="corner_inset_left src" alt="" src="/img/corner_inset_left.png" />
+                <a class="menuv_a" href="/About.aspx">Quienes somos</a>
+                <img class="corner_inset_right src" alt="" src="/img/corner_inset_right.png" />
             </li>
-            <li><a class="menuv_a" href="../building.aspx">Contactar</a></li>
+            <li><a class="menuv_a" href="/building.aspx">Contactar</a></li>
             
-            <li><a class="menuv_a" href="../building.aspx">Hacer pedidos</a></li>
+            <li><a class="menuv_a" href="/building.aspx">Hacer pedidos</a></li>
              <li class ="last">
-                <img class="corner_left img_menu" alt="" src="/img/corner_left.png" />
-               <img class="middle img_menu" src="/img/dot.gif" alt="" />
-                <img class="corner_right img_menu" alt="" src="/img/corner_right.png" />
+                <img class="corner_left src" alt="" src="/img/corner_left.png" />
+               <img class="middle src" src="/img/dot.gif" alt="" />
+                <img class="corner_right src" alt="" src="/img/corner_right.png" />
             </li>
         </ul>
     </li>
