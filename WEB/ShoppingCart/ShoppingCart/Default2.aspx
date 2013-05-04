@@ -6,16 +6,13 @@
     <script type="text/javascript" language="javascript">
         var varUrl;
         var varData;
-
+        var svcRootPath;
         var lastArray = new Array();
 
         $(document).ready(function () {
-
-
-
-            varUrl = "../../service/wcf_service.svc/RetriveCart";
+            svcRootPath = Getrootpath("/service/wcf_service.svc");
+            varUrl = svcRootPath + "/RetriveCart";
             CallService();
-
         });
 
         //Generic function to call AXMX/WCF  Service
@@ -59,8 +56,6 @@
         }
         function ServiceFailed(result) {
             alert('Service failed: ' + result.status + '' + result.statusText);
-
-
         }
         function Add(txtNumberToBuy, Id, price, description, index) {
 
@@ -72,7 +67,8 @@
             }
             lastArray[index] = numberToBuy;
 
-            varUrl = "../../service/wcf_service.svc/AddToCart";
+            //varUrl = rootPath + "/service/wcf_service.svc/AddToCart";
+            varUrl = svcRootPath + "/AddToCart";
             varData = '{"numberToBuy": "' + numberToBuy +
                        '","id": "' + Id +
                         '","price": "' + price +
@@ -85,7 +81,8 @@
 
         function ClearCart() {
 
-            varUrl = "../../service/wcf_service.svc/ClearCart";
+            //varUrl = rootPath + "/service/wcf_service.svc/ClearCart";
+            varUrl = svcRootPath + "/ClearCart";
             varData = '{}';
 
             varProcessData = true;
@@ -111,23 +108,8 @@
         }
     </script>
     
-        <div id="ProductCategory_div" class="grid_3">
-        <br />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <asp:TreeView ID="trvCategories" ExpandDepth="0" runat="server" Width="168px" 
-                    NodeIndent="5" NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false">
-                    <LevelStyles>
-                        <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
-                        <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
-                        <asp:TreeNodeStyle CssClass="nodeLevel3" ChildNodesPadding="5" />
-                    </LevelStyles>
-                </asp:TreeView>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
-    
-     <div id="centerContent_div" class="grid_9">
+
+   <div id="centerContent_div" class="grid_9 alpha">
         
             <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
         <div class="cart-div"  style="margin-top:30px"> 
@@ -139,23 +121,17 @@
                 
                     <div id="divGridView" class="">
                         <asp:GridView ID="GridView_Prod" runat="server" AutoGenerateColumns="False" CSSSelectorClass="YodaGrilla"
-                            ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="540px"
-                            ShowHeader="False" 
+                            ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="100%"
+                            ShowHeader="False" OnRowCommand="GridView_Prod_RowCommand" 
                             OnRowDataBound="GridView_Prod_RowDataBound">
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
                             <Columns >
-                         <%--       <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton2" CommandArgument='<%# Eval("Id") %>' CommandName="View"
-                                            runat="server" CssClass="icon_search"> 
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
+
                                 <asp:TemplateField HeaderText="# to Buy">
                                     <ItemTemplate>
                                         <div style="height: 60px;border-style:none">
-                                            <asp:TextBox ID="txtNumberToBuy" runat="server" AutoPostBack="False" BorderColor="#759CAC"
+                                            <asp:TextBox ID="txtNumberToBuy" runat="server" AutoPostBack="False" BorderStyle="None"
                                                 BorderWidth="1px" CausesValidation="True" SkinID="TextBoxSkin" TabIndex="20"
                                                 Width="30px">1px</asp:TextBox>
                                             <ajaxToolkit:NumericUpDownExtender ID="txtNumberToBuy_NumericUpDownExtender" runat="server"
@@ -173,10 +149,10 @@
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
                                     SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc"   />
                                 <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id"  />
-                                <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price"/>
+                                <asp:BoundField DataField="Price" HeaderText="Price"  ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price" ItemStyle-HorizontalAlign="Center" />
                             </Columns>
-                            <AlternatingRowStyle BackColor="White" BorderStyle="Solid"  />
-                            <RowStyle BorderStyle="Solid"/>
+                            <AlternatingRowStyle  BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
+                            <RowStyle BorderStyle="Solid" BorderWidth="1"  BorderColor="#A8A7A6" />
                             
                         </asp:GridView>
                     </div>
@@ -185,7 +161,6 @@
         </div>
 
     </div>
-   
     <div id="righContent" class="grid_4">
         <div class="frm_label_2">
             Sus compras</div>
