@@ -63,9 +63,8 @@
         }
         function ServiceFailed(result) {
             alert('Service failed: ' + result.status + '' + result.statusText);
-
-
         }
+
         function Add(txtNumberToBuy, Id, price, description, index) {
 
             var numberToBuy = document.getElementById(txtNumberToBuy).value;
