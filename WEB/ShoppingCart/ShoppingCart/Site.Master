@@ -12,13 +12,20 @@
 
         $(document).ready(function () {
 
-            //           $('.menuv_a').each(function () {
-            //               $(this).attr('href', Getrootpath($(this).attr('href')));
-            //           });
+            $('.src').each(function () {
+                $(this).attr('src', Getrootpath($(this).attr('src')));
+            });
 
-            //           $('.img_src').each(function () {
-            //               $(this).attr('src', Getrootpath($(this).attr('src')));
-            //           });
+            $('.href').each(function () {
+                $(this).attr('href', Getrootpath($(this).attr('href')));
+            });
+            $('.menuv_a').each(function () {
+                $(this).attr('href', Getrootpath($(this).attr('href')));
+            });
+
+            $('.img_src').each(function () {
+                $(this).attr('src', Getrootpath($(this).attr('src')));
+            });
         });
 
         function ResolveUrl(url) {
@@ -43,7 +50,7 @@
     <form id="form1" runat="server">
     <div id="master_header" class="panel2">
         <div class="container_16">
-            <img class="img_src" src="img/banner1.jpg" alt="Pelsoft software factory" style="margin-left: 10px;
+            <img class="img_src" src="/img/banner1.jpg" alt="Pelsoft software factory" style="margin-left: 10px;
                 height: 110px; width: 970px; margin-right: 0px" />
         </div>
         <div class="clear">
