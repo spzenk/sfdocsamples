@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DelfinSA" EntityNamespace="ShoppingCart" ContextNamespace="ShoppingCart" Class="DelfinDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=SANTANA\SQLEXPRESS2008R2;Initial Catalog=DelfinSA;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DelfinSAConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SANTANA\SQLEXPRESS2008R2;Initial Catalog=DelfinSA;Integrated Security=True;User ID=ws" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DelfinSAConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.categoria" Member="categorias">
     <Type Name="categoria">
       <Column Name="idcate" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
