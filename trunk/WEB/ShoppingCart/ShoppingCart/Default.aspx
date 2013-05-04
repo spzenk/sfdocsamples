@@ -9,14 +9,15 @@
     <script type="text/javascript" language="javascript">
         var varUrl;
         var varData;
-
+        var svcRootPath;
         var lastArray = new Array();
 
         $(document).ready(function () {
 
+            svcRootPath = Getrootpath("/service/wcf_service.svc");
 
-
-            varUrl = "../../service/wcf_service.svc/RetriveCart";
+            varUrl = svcRootPath + "/RetriveCart";
+            
             CallService();
 
         });
@@ -75,7 +76,8 @@
             }
             lastArray[index] = numberToBuy;
 
-            varUrl = "../../service/wcf_service.svc/AddToCart";
+            //varUrl = rootPath + "/service/wcf_service.svc/AddToCart";
+            varUrl = svcRootPath + "/AddToCart";
             varData = '{"numberToBuy": "' + numberToBuy +
                        '","id": "' + Id +
                         '","price": "' + price +
@@ -88,7 +90,8 @@
 
         function ClearCart() {
 
-            varUrl = "../../service/wcf_service.svc/ClearCart";
+            //varUrl = rootPath + "/service/wcf_service.svc/ClearCart";
+            varUrl = svcRootPath + "/ClearCart";
             varData = '{}';
 
             varProcessData = true;
@@ -208,12 +211,12 @@
                 </td>
                 <td>
                     <div id="Div3" class="shoppingCartDiv_buy">
-                        <a class="frm_label_1" href="/viewbuy.aspx">Ver</a>
+                        <a class="frm_label_1 href" href="/viewbuy.aspx">Ver</a>
                     </div>
                 </td>
                 <td>
                     <div class="shoppingCartDiv_buy">
-                        <a class="frm_label_1" href="/buycart.aspx">Comprar</a>
+                        <a class="frm_label_1 href" href="/buycart.aspx">Comprar</a>
                     </div>
                 </td>
             </tr>

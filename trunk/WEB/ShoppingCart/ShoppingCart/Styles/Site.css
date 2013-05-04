@@ -1,5 +1,7 @@
 ﻿/* ShoppingCart.site
 ----------------------------------------------------------*/
+.href{}
+.src{}
 .cart-col{}
 .cart-col-description{	width:150px;	display: table-cell;	}
 .cart-col-price{width:100px;	display: table-cell;	}
