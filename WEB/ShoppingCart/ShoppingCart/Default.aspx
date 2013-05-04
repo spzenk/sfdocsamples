@@ -147,7 +147,7 @@
                 
                     <div id="divGridView" class="">
                         <asp:GridView ID="GridView_Prod" runat="server" AutoGenerateColumns="False" CSSSelectorClass="YodaGrilla"
-                            ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="540px"
+                            ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="100%"
                             ShowHeader="False" OnRowCommand="GridView_Prod_RowCommand" 
                             OnRowDataBound="GridView_Prod_RowDataBound">
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
@@ -163,7 +163,7 @@
                                 <asp:TemplateField HeaderText="# to Buy">
                                     <ItemTemplate>
                                         <div style="height: 60px;border-style:none">
-                                            <asp:TextBox ID="txtNumberToBuy" runat="server" AutoPostBack="False" BorderColor="#759CAC"
+                                            <asp:TextBox ID="txtNumberToBuy" runat="server" AutoPostBack="False" BorderStyle="None"
                                                 BorderWidth="1px" CausesValidation="True" SkinID="TextBoxSkin" TabIndex="20"
                                                 Width="30px">1px</asp:TextBox>
                                             <ajaxToolkit:NumericUpDownExtender ID="txtNumberToBuy_NumericUpDownExtender" runat="server"
@@ -181,10 +181,10 @@
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
                                     SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc"   />
                                 <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id"  />
-                                <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price"/>
+                                <asp:BoundField DataField="Price" HeaderText="Price"  ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price" ItemStyle-HorizontalAlign="Center" />
                             </Columns>
-                            <AlternatingRowStyle BackColor="White" BorderStyle="Solid"  />
-                            <RowStyle BorderStyle="Solid"/>
+                            <AlternatingRowStyle  BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
+                            <RowStyle BorderStyle="Solid" BorderWidth="1"  BorderColor="#A8A7A6" />
                             
                         </asp:GridView>
                     </div>
