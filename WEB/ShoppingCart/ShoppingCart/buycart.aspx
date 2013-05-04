@@ -5,12 +5,9 @@
         .frm-error-message{color: #990000; background-color: #F3F3F3}
     </style>
     <script type="text/javascript" >
-
+        var svcRootPath;
         $(document).ready(function () {
-          
-          
-
-
+            svcRootPath = Getrootpath("/service/wcf_service.svc");
         });
     
         var varUrl;
@@ -53,7 +50,8 @@
                 alert('Por favor verifique todos los datos !!!');
                 return;
             }
-            varUrl = "../../service/wcf_service.svc/SendMessage";
+            //varUrl = "../../service/wcf_service.svc/SendMessage";
+            varUrl = svcRootPath + "/SendMessage";
             varData = '{"contactName": "' + $('#txtUserName').val() +
                        '","message": "' + $('#txtComment').val() +
                        '","email": "' + $('#txtEmail').val() +
