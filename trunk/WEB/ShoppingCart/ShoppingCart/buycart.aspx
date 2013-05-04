@@ -225,7 +225,7 @@
                                 <asp:TemplateField HeaderText=""  ItemStyle-CssClass="cart-catalog-col-price">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton2" CommandArgument='<%# Eval("Id") %>' CommandName="remove"
-                                            runat="server" CssClass="icon_remov"> 
+                                            runat="server" ToolTip="Eliminar artículo" CssClass="icon_remov"> 
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
