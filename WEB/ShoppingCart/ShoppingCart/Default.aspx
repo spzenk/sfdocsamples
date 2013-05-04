@@ -134,7 +134,7 @@
         </asp:UpdatePanel>
     </div>
     
-    <div id="centerContent_div" class="grid_9 alpha">
+    <div id="centerContent_div" class="grid_9">
         
             <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
         <div class="cart-div"  style="margin-top:30px"> 

@@ -1,8 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default2.aspx.cs" Inherits="WebApplication1.Default2" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Buy.master" AutoEventWireup="true" CodeBehind="Default2.aspx.cs" Inherits="WebApplication1.Default2" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
 
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="Content" runat="server">
     <script type="text/javascript" language="javascript">
         var varUrl;
         var varData;
@@ -109,7 +109,7 @@
     </script>
     
 
-   <div id="centerContent_div" class="grid_9 alpha">
+   <div id="centerContent_div" class="grid_8 alpha">
         
             <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
         <div class="cart-div"  style="margin-top:30px"> 
@@ -161,7 +161,7 @@
         </div>
 
     </div>
-    <div id="righContent" class="grid_4">
+    <div id="righContent" class="grid_4 omega">
         <div class="frm_label_2">
             Sus compras</div>
         <div id="shoppingCartDiv" class="cart-div" style="margin-top: 10px; margin-left: 3px ;width:250px">

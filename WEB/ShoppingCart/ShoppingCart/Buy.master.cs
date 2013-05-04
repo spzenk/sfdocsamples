@@ -121,7 +121,7 @@ namespace WebApplication1
                 //}
                 nodeTree_Child = new TreeNode(childCatatBE.Text, childCatatBE.Id);
                 if (childCatatBE.Level == 3)
-                    nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id ;
+                    nodeTree_Child.NavigateUrl = "Default2.aspx?id=" + childCatatBE.Id ;
                 else
                     nodeTree_Child.SelectAction = TreeNodeSelectAction.Expand;
 

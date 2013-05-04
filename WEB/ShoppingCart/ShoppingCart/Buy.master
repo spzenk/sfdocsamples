@@ -1,7 +1,7 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Buy.master.cs" Inherits="WebApplication1.Buy" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div id="ProductCategory_div" class="grid_3">
+    <div id="ProductCategory_div" class="grid_4 alpha">
         <br />
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
@@ -17,36 +17,9 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-    <div id="centerContent_div" class="grid_9">
+    <div id="centerContent_div" class="">
         <asp:ContentPlaceHolder ID="Content" runat="server">
         </asp:ContentPlaceHolder>
     </div> 
-    <div id="righContent" class="grid_4">
-        <div class="frm_label_2">
-            Sus compras</div>
-        <div id="shoppingCartDiv" class="cart-div" style="margin-top: 10px; margin-left: 3px;
-            width: 250px">
-        </div>
-        <div class="clear">
-        </div>
-        <table style="margin-left: 10px">
-            <tr>
-                <td>
-                    <div id="Div1" class="shoppingCartDiv_buy">
-                        <input type="button" value="Limpiar" onclick="javascript:ClearCart();" />
-                    </div>
-                </td>
-                <td>
-                    <div id="Div3" class="shoppingCartDiv_buy">
-                        <a class="frm_label_1" href="/viewbuy.aspx">Ver</a>
-                    </div>
-                </td>
-                <td>
-                    <div class="shoppingCartDiv_buy">
-                        <a class="frm_label_1" href="/buycart.aspx">Comprar</a>
-                    </div>
-                </td>
-            </tr>
-        </table>
-    </div>
+    
 </asp:Content>
