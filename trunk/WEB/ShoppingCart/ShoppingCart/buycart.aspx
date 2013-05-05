@@ -167,7 +167,7 @@
                         </div>
                 </div>
             </div>
-            <div id="divReg" style="margin: 12px;">
+            <div id="divReg" style="margin: 10px;">
                 <div class="frm_label_2">
                     Provincia</div>
                 <div>
@@ -182,7 +182,7 @@
                 </div>
             </div>
 
-            <div style="margin: 3px">
+            <div style="margin: 12px">
                 <div class="frm_label_2">
                     <span class="frm_ast"></span> Comentarios
                 </div>
@@ -196,63 +196,59 @@
         <%--<div class = "frm_group_buttons" style="height:30px; background: url('/img/sprites-t1.gif') repeat-x scroll 0 -281px #000000 ; width:638px;clear: both; height:40px">--%>
       
     </div>
-      <div class=" frm_row" style="margin:10px; height: 30px; width: 82%;  height: 50px; background-color: Gray" >
-            <input type="image" name="Enviar" alt="Enviar" class="img_box" src="img/submit.gif"
-                style="margin-left:500px; margin-top: 7; width: 120px; height: 45; font-size:35px" onmousedown="SendMessage();" />
-        </div>
+      
+            <input type="image" name="Enviar" alt="Enviar" class="frm_btn_send" src="img/submit.gif"
+                style="margin-left:700px; margin-top:20px" onmousedown="SendMessage();" />
+      
         <div class="clearfix"></div>
 
-       <div id="centerContent_div" class="grid_12">
-
-            <div class="frm_title_2" style="margin-top:9px; color: #990000;">Listado de su compra</div> 
-      
-             <asp:Label ID="Label1" Width="641px" CssClass="frm-message" runat="server" 
-                Text="No productos en su carrito de compras" Font-Bold="True" Visible="false"></asp:Label>
-             
-        <div id="cart-div-container" class="cart-div" style = "margin-left:30px ;width:650px"> 
-
+    <div id="centerContent_div" class="grid_12">
+        <div class="frm_title_2" style="margin-top: 9px; color: #990000;">
+            Listado de su compra</div>
+        <asp:Label ID="Label1" Width="641px" CssClass="frm-message" runat="server" Text="No productos en su carrito de compras"
+            Font-Bold="True" Visible="false"></asp:Label>
+        <div id="cart-div-container" class="cart-div" style="margin-left: 30px; width: 850px">
             <%--PRODUCT PANEL GRID VIEW--%>
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-                
-                    <div id="divGridView" class="cart-div" style="border-style:none;display:table;">
+                    <div id="divGridView" class="cart-div" style="border-style: none; display: table;">
                         <asp:GridView ID="GridView_Prod" runat="server" AutoGenerateColumns="False" CSSSelectorClass="YodaGrilla"
-                            ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="600" 
+                            ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="600"
                             ShowHeader="False" OnRowCommand="GridView_Prod_RowCommand" OnRowDataBound="GridView_Prod_RowDataBound">
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
-                            <Columns >
-                                <asp:TemplateField HeaderText=""  ItemStyle-CssClass="cart-catalog-col-price">
+                            <Columns>
+                                <asp:TemplateField HeaderText="" ItemStyle-CssClass="cart-catalog-col-price">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton2" CommandArgument='<%# Eval("Id") %>' CommandName="remove"
                                             runat="server" ToolTip="Eliminar artículo" CssClass="icon_remov"> 
                                         </asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:BoundField DataField="Count" HeaderText="Count" ReadOnly="True"
-                                    SortExpression="Count" ItemStyle-CssClass="cart-catalog-col-price"   />
-                                   
+                                <asp:BoundField DataField="Count" HeaderText="Count" ReadOnly="True" SortExpression="Count"
+                                    ItemStyle-CssClass="cart-catalog-col-price" />
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
-                                    SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc"   />
-                                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id"  />
-                                <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price"/>
+                                    SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc" />
+                                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id" />
+                                <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price"
+                                    ItemStyle-CssClass="cart-catalog-col-price" />
                             </Columns>
-                            <AlternatingRowStyle BackColor="White" BorderStyle="Solid"  />
-                            <RowStyle BorderStyle="Solid"/>
-                            
+                            <AlternatingRowStyle BackColor="White" BorderStyle="Solid" />
+                            <RowStyle BorderStyle="Solid" />
                         </asp:GridView>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-        <div id ="todal_div" style="float:right; margin: 3px">
-              <div class="frm_label_2">
-                  <span class="frm_ast">*</span> Total 
-              </div>
-              <div class="frm_fieldvalue" style="margin-top: 4px">
-                  <input id="txtTotal" runat="server" type="text" class="frm_fieldvalue" style="width: 300px;" readonly="readonly" />
-              </div>
-          </div>
+        <div id="todal_div" style="float: right; margin: 3px">
+            <div class="frm_label_2">
+                <span class="frm_ast">*</span> Total
+            </div>
+            <div class="frm_fieldvalue" style="margin-top: 4px">
+                <input id="txtTotal" runat="server" type="text" class="frm_fieldvalue" style="width: 230px;"
+                    readonly="readonly" />
+            </div>
+        </div>
     </div>
 
 </asp:Content>
