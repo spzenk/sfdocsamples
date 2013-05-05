@@ -386,6 +386,12 @@ ol{list-style:decimal}ul{list-style:disc}
 	margin-bottom: 5px;
 }.btGrisNegrita: c{background-color: #333333;color: #FFFF66;}
 
+.frm_btn_send
+{
+height: 30px; 
+font-size:2em;
+margin:10px;
+}
 
 /*Panel estatico del collapsed*/	
 .cpHeaderStatic
