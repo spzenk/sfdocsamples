@@ -45,20 +45,25 @@
     <link href="~/Styles/992_16_5_5.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/tables.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
- <%--   <link href="~/Styles/reset.css" rel="stylesheet" type="text/css" />--%>
    <link href="~/Styles/Grd960.css" rel="stylesheet" type="text/css" />
     <title></title>
 </head>
 <body>
+
     <form id="form1" runat="server">
-    <div id="master_header" class="panel2">
-        <div class="container_16">
-            <img class="img_src" src="/img/banner1.jpg" alt="Pelsoft software factory" style="margin-left: 10px;
-                height: 110px; width: 970px; margin-right: 0px" />
-        </div>
-        <div class="clear">
-        </div>
-    </div>
+    <ajaxToolkit:ToolkitScriptManager runat="Server" EnablePartialRendering="true" ID="ScriptManager1" />
+    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>
+            <div id="master_header" class="panel2">
+                <div class="container_16">
+                    <img class="img_src" src="/img/banner1.jpg" alt="Pelsoft software factory" style="margin-left: 10px;
+                        height: 110px; width: 970px; margin-right: 0px" />
+                </div>
+                <div class="clear">
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
     <div id="Div1" class="container_16" style="background-color: #172322;">
         <div id="Div2" class="grid_14 alpha">
             <uc1:main_menu_2 ID="main_menu_21" runat="server" />
@@ -68,8 +73,8 @@
         <div class="clear">
         </div>
     </div>
-    <%--Center Container--%>
-    <ajaxToolkit:ToolkitScriptManager runat="Server" EnablePartialRendering="true" ID="ScriptManager1" />
+ 
+    
     <div id="master_wrap" class="container_16 box_roun_shadow">
         <div class="master_center_right_wrap">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">

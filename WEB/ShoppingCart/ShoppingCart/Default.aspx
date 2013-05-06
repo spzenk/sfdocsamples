@@ -151,13 +151,7 @@
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
                             <Columns >
-                         <%--       <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton2" CommandArgument='<%# Eval("Id") %>' CommandName="View"
-                                            runat="server" CssClass="icon_search"> 
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
+                     
                                 <asp:TemplateField HeaderText="# to Buy">
                                     <ItemTemplate>
                                         <div style="height: 60px;border-style:none">
@@ -165,7 +159,7 @@
                                                 BorderWidth="1px" CausesValidation="True" SkinID="TextBoxSkin" TabIndex="20"
                                                 Width="30px">1px</asp:TextBox>
                                             <ajaxToolkit:NumericUpDownExtender ID="txtNumberToBuy_NumericUpDownExtender" runat="server"
-                                                Enabled="True" Maximum="10" Minimum="0" RefValues="" ServiceDownMethod="" ServiceDownPath=""
+                                                Enabled="True" Maximum="1000" Minimum="0" RefValues="" ServiceDownMethod="" ServiceDownPath=""
                                                 ServiceUpMethod="" Tag="" TargetButtonDownID="" TargetButtonUpID="" TargetControlID="txtNumberToBuy"
                                                 Width="75">
                                             </ajaxToolkit:NumericUpDownExtender>

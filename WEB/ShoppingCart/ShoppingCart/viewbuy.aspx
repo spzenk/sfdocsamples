@@ -46,7 +46,7 @@
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
                             <Columns>
-                                <asp:TemplateField HeaderText="" ItemStyle-CssClass="cart-catalog-col-price">
+                                <asp:TemplateField HeaderText="" ItemStyle-CssClass="cart-catalog-col">
                                     <ItemTemplate>
                                         <asp:LinkButton ID="LinkButton2" CommandArgument='<%# Eval("Id") %>' CommandName="remove"
                                             runat="server" CssClass="icon_remov"> 
@@ -54,15 +54,15 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Count" HeaderText="Count" ReadOnly="True" SortExpression="Count"
-                                    ItemStyle-CssClass="cart-catalog-col-price" />
+                                    ItemStyle-CssClass="cart-catalog-col" />
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
                                     SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc" />
                                 <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id" />
                                 <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price"
                                     ItemStyle-CssClass="cart-catalog-col-price" DataFormatString="{0:c}"/>
                             </Columns>
-                            <AlternatingRowStyle BackColor="White" BorderStyle="Solid" />
-                            <RowStyle BorderStyle="Solid" />
+                              <AlternatingRowStyle  BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
+                            <RowStyle BorderStyle="Solid" BorderWidth="1"  BorderColor="#A8A7A6" />
                         </asp:GridView>
                     </div>
                 </ContentTemplate>
