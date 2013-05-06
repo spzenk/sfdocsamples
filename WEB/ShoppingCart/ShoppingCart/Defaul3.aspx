@@ -1,9 +1,6 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
-    CodeBehind="Default.aspx.cs" Inherits="ShoppingCart._Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Defaul3.aspx.cs" Inherits="ShoppingCart.Defaul3" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
-<asp:Content ID="t" runat="server" ContentPlaceHolderID="MainContent">
-
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
     <script type="text/javascript" language="javascript">
         var varUrl;
@@ -12,13 +9,9 @@
         var lastArray = new Array();
 
         $(document).ready(function () {
-
             svcRootPath = Getrootpath("/service/wcf_service.svc");
-
             varUrl = svcRootPath + "/RetriveCart";
-            
             CallService();
-
         });
 
         //Generic function to call AXMX/WCF  Service
@@ -31,7 +24,6 @@
                 dataType: "json", //Expected data format from server
                 processdata: true, //True or False
                 success: function (data) {
-
                     ServiceSucceeded(data);
                 },
                 error: ServiceFailed// When Service call fails
@@ -53,7 +45,7 @@
                 htmlTable += '<tr> <td  class ="cart-col-description" >' + list[i]['Description'] + '</td><td>' + list[i]['Count'] + '</td> <td  class ="cart-col-price" >' + list[i]['Price'] + '</td></tr>';
                 totalprice += list[i]['Price'];
             }
-             htmlTable +='</tbody>'
+            htmlTable += '</tbody>'
             shoppingCartDiv.append(htmlTable);
 
             shoppingCartDiv.append('<br />');
@@ -73,8 +65,6 @@
                 return;
             }
             lastArray[index] = numberToBuy;
-
-            //varUrl = rootPath + "/service/wcf_service.svc/AddToCart";
             varUrl = svcRootPath + "/AddToCart";
             varData = '{"numberToBuy": "' + numberToBuy +
                        '","id": "' + Id +
@@ -88,79 +78,71 @@
 
         function ClearCart() {
 
-            //varUrl = rootPath + "/service/wcf_service.svc/ClearCart";
+            
             varUrl = svcRootPath + "/ClearCart";
             varData = '{}';
-
             varProcessData = true;
             CallService();
             CallWebMethod_ClearGrid();
         }
 
-        function CallWebMethod_ClearGrid() {
+        function RetriveProducts() {
+
+            var categoryId = $("#txtCategory").val();
+            varUrl = svcRootPath + "/RetriveProducts";
+            varData = '{"categoryId": "' + categoryId + '"}';
+       
             $.ajax({
-                type: "POST", //GET or POST or PUT or DELETE verb
-                url: "~/Default.aspx/ClearGrid", // Location of the service
-                data: "{}", //Data sent to server
-                contentType: "application/json; charset=utf-8", // content type sent to server
-                dataType: "json", //Expected data format from server
+                type: "POST",
+                url: varUrl,
+                data: varData, 
+                contentType: "application/json; charset=utf-8", 
+                dataType: "json", 
                 async: true,
                 cache: false,
-                success: function (data) {
+                success: function (result) {
+                    var list = result.RetriveProductsResult;
+                    var row = $("[id*=GridView_Prod] tr:last-child").clone(true);
 
-                    alert('limpio');
+                    for (var i = 0; i < list.length; i++) {
+                    //Set product attributes to the row and add it to the gridview
+                    $("td", row).eq(0).html(list[i]['Count']);
+                    $("td", row).eq(1).html(list[i]['Description']);
+                    $("td", row).eq(2).html(list[i]['Price']);
+
+                    $("[id*=GridView_Prod]").append(row);
+                    //get the copy of the last row again.
+                    row = $("[id*=GridView_Prod] tr:last-child").clone(true);
+                }        
                 },
                 error: ServiceFailed// When Service call fails
             });
         }
     </script>
-    
-    <div id="ProductCategory_div" class="grid_3 alpha">
-        <br />
-        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
-                <asp:TreeView ID="trvCategories" ExpandDepth="0" runat="server" Width="168px" 
-                    ImageSet="BulletedList2" NodeIndent="5"              NodeStyle-Height="20" ShowExpandCollapse="true" ShowLines="false"                >
-                    <LevelStyles>
-                        <asp:TreeNodeStyle CssClass="nodeLevel1" ChildNodesPadding="8" />
-                        <asp:TreeNodeStyle CssClass="nodeLevel2" ChildNodesPadding="5" />
-                        <asp:TreeNodeStyle CssClass="nodeLevel3" ChildNodesPadding="5" />
-                        
-                    </LevelStyles>
-                    
-                </asp:TreeView>
-            </ContentTemplate>
-        </asp:UpdatePanel>
-    </div>
-    
-    <div id="centerContent_div" class="grid_9">
-        
-            <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
-        <div class="cart-div"  style="margin-top:30px"> 
 
+    <div id="ProductCategory_div" class="grid_3 alpha">
+       <input id="txtCategory" type="text" name="total" value="" style="width:200px" />
+    <input type ="button" style="width:200px"  name="btnSend" onclick="javascript:RetriveProducts();" />
+        
+    </div>
+
+    <div id="centerContent_div" class="grid_9">
+        <div class="frm_title_2" style="margin-top: 14px">
+            Listado de productos</div>
+        <div class="cart-div" style="margin-top: 30px">
             <%--PRODUCT PANEL GRID VIEW--%>
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-
-                
                     <div id="divGridView" class="">
                         <asp:GridView ID="GridView_Prod" runat="server" AutoGenerateColumns="False" CSSSelectorClass="YodaGrilla"
                             ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="100%"
-                            ShowHeader="False" OnRowCommand="GridView_Prod_RowCommand" 
-                            OnRowDataBound="GridView_Prod_RowDataBound">
+                            ShowHeader="False"  >
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
-                            <Columns >
-                         <%--       <asp:TemplateField HeaderText="">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LinkButton2" CommandArgument='<%# Eval("Id") %>' CommandName="View"
-                                            runat="server" CssClass="icon_search"> 
-                                        </asp:LinkButton>
-                                    </ItemTemplate>
-                                </asp:TemplateField>--%>
+                            <Columns>
                                 <asp:TemplateField HeaderText="# to Buy">
                                     <ItemTemplate>
-                                        <div style="height: 60px;border-style:none">
+                                        <div style="height: 60px; border-style: none">
                                             <asp:TextBox ID="txtNumberToBuy" runat="server" AutoPostBack="False" BorderStyle="None"
                                                 BorderWidth="1px" CausesValidation="True" SkinID="TextBoxSkin" TabIndex="20"
                                                 Width="30px">1px</asp:TextBox>
@@ -177,47 +159,17 @@
                                     <ItemStyle HorizontalAlign="Center" Width="100px" />
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
-                                    SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc"   />
-                                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id"  />
-                                <asp:BoundField DataField="Price" HeaderText="Price"  ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:c}"  />
+                                    SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc" />
+                                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id" />
+                                <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price"
+                                    ItemStyle-CssClass="cart-catalog-col-price" ItemStyle-HorizontalAlign="Center" />
                             </Columns>
-                            <AlternatingRowStyle  BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
-                            <RowStyle BorderStyle="Solid" BorderWidth="1"  BorderColor="#A8A7A6" />
-                            
+                            <AlternatingRowStyle BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
+                            <RowStyle BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
                         </asp:GridView>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-
-    </div>
-   
-    <div id="righContent" class="grid_4 omega">
-        <div class="frm_label_2">
-            Sus compras</div>
-        <div id="shoppingCartDiv" class="cart-div" style="margin-top: 10px; margin-left: 3px ;width:250px">
-        </div>
-        <div class="clear">
-        </div>
-        <table style="margin-left: 10px">
-            <tr>
-                <td>
-                    <div id="Div1" class="shoppingCartDiv_buy">
-                        
-                        <input type ="button" value="Limpiar" onclick="javascript:ClearCart();" />
-                    </div>
-                </td>
-                <td>
-                    <div id="Div3" class="shoppingCartDiv_buy">
-                        <a class="frm_label_1 href" href="/viewbuy.aspx">Ver</a>
-                    </div>
-                </td>
-                <td>
-                    <div class="shoppingCartDiv_buy">
-                        <a class="frm_label_1 href" href="/buycart.aspx">Comprar</a>
-                    </div>
-                </td>
-            </tr>
-        </table>
     </div>
 </asp:Content>

@@ -231,7 +231,7 @@
                                     SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc" />
                                 <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id" />
                                 <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price"
-                                    ItemStyle-CssClass="cart-catalog-col-price" />
+                                    ItemStyle-CssClass="cart-catalog-col-price"  DataFormatString="{0:c}" />
                             </Columns>
                             <AlternatingRowStyle BackColor="White" BorderStyle="Solid" />
                             <RowStyle BorderStyle="Solid" />
