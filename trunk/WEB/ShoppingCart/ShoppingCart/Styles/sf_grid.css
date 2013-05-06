@@ -1,13 +1,7 @@
-﻿.fernandezja {} 
-
-/* This style sheet is intended to contain OFTEN CHANGED rules used when the GridView control adapter is enabled. */
-/* Empty rules are provided merely as a convenience for your future use or experimentation. */
-
-.YodaGrilla .AspNet-GridView
+﻿.YodaGrilla .AspNet-GridView
 {
 	border-color: #FFFFFF;
 	width: 90%;
-	
 }
 .YodaGrilla table tbody 
 {	border-style: none;    border: none;border-color: #FFFFFF;
@@ -139,57 +133,12 @@
 }
 .YodaGrilla .AspNet-GridView table tbody tr.filaActual td.colSeleccion .sel{    }
 .YodaGrilla .AspNet-GridView table tbody tr.AspNet-GridView-Selected td{background-color:#6699FF;}
-
 .YodaGrilla .AspNet-GridView table tfoot tr td{}
-
-
 .selTest, .YodaGrilla .AspNet-GridView table tbody tr .selTest, .YodaGrilla .AspNet-GridView table tbody .selTest, .YodaGrilla .AspNet-GridView table tbody tr.selTest, .YodaGrilla .AspNet-GridView table tbody tr.selTest td
 {
 	background-color: #ffffcc;
 }
-
-
-
-
-/* 
--------------------------------------------------------------------
-TIPO DE COLUMNAS PARA JEDIS :)
--------------------------------------------------------------------
-*/
-/*COLUMNA: description*/
-.YodaGrilla .AspNet-GridView table tbody tr td.cart-catalog-col-desc
-{
-	border-style: none;
-	color: #373737;
-	margin-top: 3px;
-	font-weight: bold;
-	width: 500px;
-	display: table-cell;
-}
-/*  imagen dentro de la columna price*/
-.YodaGrilla .AspNet-GridView table tbody tr td.cart-catalog-col-price
-{
-	width: 100px;
-	display: table-cell;
-	color: #990000;
-	border-style: none;
-}
-
-
-/*COLUMNA: Nombre*/
-.YodaGrilla .AspNet-GridView table tbody tr td.tipoNombre 
-{
-	width:100px;
-}
-.YodaGrilla .AspNet-GridView table th .tipoNombre 
-{
-	
-}
-
-.grid_link
-{
-	
-}
+.grid_link{	}
 
 .grid_link a
 {
@@ -239,18 +188,4 @@ TIPO DE COLUMNAS PARA JEDIS :)
 .grid_Button_lock{background: transparent url(../img/security-locked_24.png) no-repeat scroll right center;}
 .grid_Button_unlock{background: transparent url(../img/security-unlocked_24.png) no-repeat scroll right center;}
 .grid_Button_remove{background: transparent url(../img/trash_16.png) no-repeat scroll right center;}
-
-
-.grid_label
-{
-	border: 0 none;
-	color: #333333;
-	cursor: text;
-	display: inline-block;
-	font-size: 11px;
-	font-weight: bold;
-	line-height: 13px;
-	margin: 0;
-	padding: 0;
-	white-space: normal;
-}
+.grid_label{border: 0 none;color: #333333;	cursor: text;	display: inline-block;	font-size: 11px;	font-weight: bold;	line-height: 13px;	margin: 0;	padding: 0;	white-space: normal;}
