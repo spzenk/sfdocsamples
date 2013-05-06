@@ -113,6 +113,24 @@ public class wcf_service : Iwcf_service
 
 
     }
+
+    public List<ProductBE> RetriveProducts(int categoryId)
+    {
+        List<ProductBE> _Catalogo = ProductsDelfinDAC.Retrive_Produts(categoryId);
+
+        if (System.Web.HttpContext.Current.Session["CARRO"] != null)
+        {
+            foreach (ProductBE i in (List<ProductBE>)System.Web.HttpContext.Current.Session["CARRO"])
+            {
+                var itemCatalogo = _Catalogo.Where(p => p.Id.Equals(i.Id)).FirstOrDefault();
+                if (itemCatalogo != null)
+                    itemCatalogo.Count = i.Count;
+            }
+        }
+        return  _Catalogo;
+
+
+    }
     #endregion
 }
 
@@ -141,6 +159,11 @@ public class wcf_service : Iwcf_service
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         List<ProductBE> ClearCart();
-        
+
+
+
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        List<ProductBE> RetriveProducts(int categoryId);
     }
 
