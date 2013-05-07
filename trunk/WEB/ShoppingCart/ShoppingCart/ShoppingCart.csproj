@@ -105,6 +105,7 @@
     <Content Include="img\expand_collapse_minus.gif" />
     <Content Include="img\expand_collapse_plus.gif" />
     <Content Include="img\folder.png" />
+    <Content Include="img\logo_delfcap.png" />
     <Content Include="img\menu_right.png" />
     <Content Include="img\remov_16.png" />
     <Content Include="img\shopping cart.png" />
