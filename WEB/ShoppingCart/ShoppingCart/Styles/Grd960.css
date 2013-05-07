@@ -30,10 +30,10 @@ body
 #master_header
 {
     background-position: center center;
-    background-image: url('../img/port/banner.jpg');
+    
     background-repeat: no-repeat;
     background-attachment: scroll;
-    background-color: #2B2B24;
+    background-color: #293955;
     height: 110px;
     border-style: solid;
     border-width: 1px;
