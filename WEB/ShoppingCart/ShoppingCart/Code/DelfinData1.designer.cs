@@ -22,7 +22,7 @@ namespace ShoppingCart
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DelfinSA")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="HCapote")]
 	public partial class DelfinDataDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -42,7 +42,7 @@ namespace ShoppingCart
     #endregion
 		
 		public DelfinDataDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["DelfinSAConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["HCapoteConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -2884,11 +2884,11 @@ namespace ShoppingCart
 		
 		private decimal _idcate;
 		
-		private decimal _prevta;
+		private System.Nullable<decimal> _prevta;
 		
 		private string _denom;
 		
-		private decimal _idpais;
+		private string _Marca;
 		
 		public shopcart_products_view()
 		{
@@ -2926,8 +2926,8 @@ namespace ShoppingCart
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prevta", DbType="Decimal(11,5) NOT NULL")]
-		public decimal prevta
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_prevta", DbType="Decimal(11,5)")]
+		public System.Nullable<decimal> prevta
 		{
 			get
 			{
@@ -2958,18 +2958,18 @@ namespace ShoppingCart
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_idpais", DbType="Decimal(5,0) NOT NULL")]
-		public decimal idpais
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Marca", DbType="Char(30) NOT NULL", CanBeNull=false)]
+		public string Marca
 		{
 			get
 			{
-				return this._idpais;
+				return this._Marca;
 			}
 			set
 			{
-				if ((this._idpais != value))
+				if ((this._Marca != value))
 				{
-					this._idpais = value;
+					this._Marca = value;
 				}
 			}
 		}

@@ -35,6 +35,7 @@ namespace ShoppingCart
                         wProductBE.IdCate = subCategoryId.ToString();
                         wProductBE.Price = p_db.prevta;
                         wProductBE.Description = p_db.denom;
+                        wProductBE.Marca = p_db.Marca;
                         wProductBE.Count = 0;
                         wCatalogoList.Add(wProductBE);
                     }

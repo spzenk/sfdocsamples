@@ -14,7 +14,7 @@
 	display:table-cell;
 	margin-top:3px;
 	font-weight:bold;
-	width:400px;
+	width:350px;
 	border-style:none;
 	}
 	.cart-catalog-col
@@ -25,7 +25,14 @@
 	font-weight:bold;
 	border-style:none;
 	}
-	
+		.cart-catalog-marca
+{
+	color: #4A4A4A;
+	display: table-cell;
+	margin-top: 3px;
+	font-weight: normal;
+	border-style: none;
+}
 .cart-div
 {
 	border-radius: 3px 3px 3px 3px;

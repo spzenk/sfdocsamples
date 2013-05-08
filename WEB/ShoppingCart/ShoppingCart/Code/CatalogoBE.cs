@@ -13,7 +13,8 @@ namespace ShoppingCart
         public String IdCate { get; set; }
         public String Description { get; set; }
         public int Count { get; set; }
-        public Decimal Price { get; set; }
+        public Decimal? Price { get; set; }
+        public String Marca { get; set; }
     }
 
     public class ProductCategotyBEList : Fwk.Bases.BaseEntities<ProductCategotyBE>

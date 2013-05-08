@@ -31,7 +31,8 @@ namespace ShoppingCart
                 GridView_Prod.DataBind();
                 foreach (ProductBE p in list)
                 {
-                    total += p.Price;
+                    if (p.Price.HasValue)
+                        total += p.Price.Value;
                 }
                 txtTotal.Value = total.ToString();
                 

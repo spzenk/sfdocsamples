@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DelfinSA" EntityNamespace="ShoppingCart" ContextNamespace="ShoppingCart" Class="DelfinDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=SANTANA\SQLEXPRESS2008R2;Initial Catalog=DelfinSA;Integrated Security=True;User ID=ws" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="DelfinSAConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HCapote" EntityNamespace="ShoppingCart" ContextNamespace="ShoppingCart" Class="DelfinDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=SANTANA\SQLEXPRESS2008R2;Initial Catalog=HCapote;User ID=ws" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="HCapoteConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.categoria" Member="categorias">
     <Type Name="categoria">
       <Column Name="idcate" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -125,9 +125,9 @@
     <Type Name="shopcart_products_view">
       <Column Name="idart" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" CanBeNull="false" />
       <Column Name="idcate" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" CanBeNull="false" />
-      <Column Name="prevta" Type="System.Decimal" DbType="Decimal(11,5) NOT NULL" CanBeNull="false" />
+      <Column Name="prevta" Type="System.Decimal" DbType="Decimal(11,5)" CanBeNull="true" />
       <Column Name="denom" Type="System.String" DbType="Char(40) NOT NULL" CanBeNull="false" />
-      <Column Name="idpais" Type="System.Decimal" DbType="Decimal(5,0) NOT NULL" CanBeNull="false" />
+      <Column Name="Marca" Type="System.String" DbType="Char(30) NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
 </Database>

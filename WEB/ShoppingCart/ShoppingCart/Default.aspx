@@ -64,7 +64,7 @@
             alert('Service failed: ' + result.status + '' + result.statusText);
         }
 
-        function Add(txtNumberToBuy, Id, price, description, index) {
+        function Add(txtNumberToBuy, Id, price, description, marca,index) {
 
             var numberToBuy = document.getElementById(txtNumberToBuy).value;
 
@@ -80,6 +80,7 @@
                        '","id": "' + Id +
                         '","price": "' + price +
                          '","description": "' + description +
+                         '","marca": "' + marca +
                                '"}';
 
             varProcessData = true;
@@ -172,6 +173,8 @@
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
                                     SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc"   />
+                        <asp:BoundField DataField="Marca" HeaderText="Marca" ReadOnly="True"
+                                    SortExpression="Marca" ItemStyle-CssClass="cart-catalog-col-marca"   />
                                 <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id"  />
                                 <asp:BoundField DataField="Price" HeaderText="Price"  ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:c}"  />
                             </Columns>
