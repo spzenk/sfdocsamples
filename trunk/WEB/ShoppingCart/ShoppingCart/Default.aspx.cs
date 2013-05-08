@@ -178,8 +178,8 @@ namespace ShoppingCart
                 foreach (ProductCategotyBE cat in categories.Where(p => p.ParentId.Equals("0")))
                 {
                     nodeTree = new TreeNode(cat.Text.Trim(), cat.Id);
-                    nodeTree.SelectAction = TreeNodeSelectAction.Expand;
-                    nodeTree.Target = "Default.aspx";
+                    
+                
                     AddSubcategories(nodeTree, cat.Id, categories);
                     trv.Nodes.Add(nodeTree);
                 }
@@ -202,6 +202,16 @@ namespace ShoppingCart
         {
 
             List<ProductCategotyBE> childsBE = categories.Where(p => p.ParentId.Equals(parentId)).ToList();
+            if (childsBE.Count != 0)
+            {
+                parent.Target = "Default.aspx";
+                parent.SelectAction = TreeNodeSelectAction.Expand;
+            }
+            else
+            {
+                parent.NavigateUrl = "Default.aspx?id=" + parentId + "";
+            }
+
             TreeNode nodeTree_Child = null;
             foreach (ProductCategotyBE childCatatBE in childsBE)
             {
