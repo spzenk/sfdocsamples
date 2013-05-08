@@ -38,8 +38,8 @@ public class wcf_service : Iwcf_service
         foreach (ProductBE p in cart)
         {
             htmlTable.AppendLine("<tr> <td>" + p.Description + "</td><td>" + p.Count + "</td> <td>" + p.Price + "</td></tr>");
-
-            totalprice += p.Price;
+            if (p.Price.HasValue)
+                totalprice += p.Price.Value;
         }
         htmlTable.AppendLine("<tr> <td>Total  </td><td>  </td> <td>" + totalprice.ToString() + "</td></tr>");
         htmlTable.AppendLine("</tbody>");
@@ -57,7 +57,7 @@ public class wcf_service : Iwcf_service
         return "listo";
 
     }
-    public List<ProductBE> AddToCart(int numberToBuy, int id, string price, string description)
+    public List<ProductBE> AddToCart(int numberToBuy, int id, string price, string description,string marca)
     {
         decimal priceToDec= 0;
         Decimal.TryParse(price, out priceToDec);
@@ -73,6 +73,7 @@ public class wcf_service : Iwcf_service
                 item.Description = description;
                 item.Id = id;
                 item.Count = numberToBuy;
+                item.Marca = marca; 
                 item.Price = priceToDec * numberToBuy;
                 cart.Add(item);
             }
@@ -149,7 +150,7 @@ public class wcf_service : Iwcf_service
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        List<ProductBE> AddToCart(int numberToBuy, int id, string price, string description);
+        List<ProductBE> AddToCart(int numberToBuy, int id, string price, string description, string marca);
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]

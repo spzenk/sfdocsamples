@@ -8,36 +8,36 @@
         <elementListCompartment Id="a0cf136d-d97f-4f0b-ab6a-0a492e6e6eaf" absoluteBounds="1.3900000000000001, 1.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="1d4dc1dc-4a57-45ba-9188-13af9e572618" isExpanded="false" absoluteBounds="5.875, 1.875, 2, 0.45">
+    <classShape Id="1d4dc1dc-4a57-45ba-9188-13af9e572618" isExpanded="false" absoluteBounds="4.625, 1.375, 2, 0.45">
       <DataClassMoniker Name="/DelfinDataDataContext/articulo" />
       <nestedChildShapes>
-        <elementListCompartment Id="83f98737-79b0-45c5-b18a-b03a55576f0f" absoluteBounds="5.89, 2.335, 1.9700000000000002, 10.441365559895832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="83f98737-79b0-45c5-b18a-b03a55576f0f" absoluteBounds="4.64, 1.835, 1.9700000000000002, 10.441365559895832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(3.375 : 2.1); (5.875 : 2.1)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(3.375 : 1.6); (4.625 : 1.6)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/DelfinDataDataContext/categoria/categoria_articulo" />
       <nodes>
         <classShapeMoniker Id="129b8235-7417-4838-810d-ad70e31627de" />
         <classShapeMoniker Id="1d4dc1dc-4a57-45ba-9188-13af9e572618" />
       </nodes>
     </associationConnector>
-    <classShape Id="7a0b648b-c0c2-4761-a931-80f4ec00c8a2" isExpanded="false" absoluteBounds="3, 5.125, 2, 0.45">
+    <classShape Id="7a0b648b-c0c2-4761-a931-80f4ec00c8a2" isExpanded="false" absoluteBounds="7.375, 2.5, 2, 0.45">
       <DataClassMoniker Name="/DelfinDataDataContext/codbarra" />
       <nestedChildShapes>
-        <elementListCompartment Id="1fd62c74-734e-489b-b581-34a2da753eed" absoluteBounds="3.0149999999999997, 5.585, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="1fd62c74-734e-489b-b581-34a2da753eed" absoluteBounds="7.39, 2.96, 1.9700000000000002, 7.556844075520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.875 : 2.325); (6.875 : 5.35); (5 : 5.35)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(6.625 : 1.825); (7.375 : 2.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/DelfinDataDataContext/articulo/articulo_codbarra" />
       <nodes>
         <classShapeMoniker Id="1d4dc1dc-4a57-45ba-9188-13af9e572618" />
         <classShapeMoniker Id="7a0b648b-c0c2-4761-a931-80f4ec00c8a2" />
       </nodes>
     </associationConnector>
-    <classShape Id="e83a0bf4-4b0d-4492-a1f2-0121ecfc91c1" isExpanded="false" absoluteBounds="1.375, 0.875, 2, 0.45">
+    <classShape Id="31272a4d-59b6-446e-a1c2-85a7d70ecbe1" absoluteBounds="4, 2.875, 2, 1.7708968098958331">
       <DataClassMoniker Name="/DelfinDataDataContext/shopcart_products_view" />
       <nestedChildShapes>
-        <elementListCompartment Id="d1988e20-8e56-48e8-a800-432d5c79d6ec" absoluteBounds="1.3900000000000001, 1.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="86ca1ab6-2454-4602-9bb1-889c4d18efbc" absoluteBounds="4.0150000000000006, 3.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

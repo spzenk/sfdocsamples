@@ -22,6 +22,7 @@ namespace ShoppingCart
                         wProductBE.Id = p_db.ProductID;
                         wProductBE.Price = p_db.ListPrice;
                         wProductBE.Description = p_db.Name;
+                        
                         wProductBE.Count = 0;
                         wCatalogo.Add(wProductBE);
                     }

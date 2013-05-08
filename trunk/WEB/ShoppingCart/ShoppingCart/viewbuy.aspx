@@ -57,6 +57,8 @@
                                     ItemStyle-CssClass="cart-catalog-col" />
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
                                     SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc" />
+                                 <asp:BoundField DataField="Marca" HeaderText="Marca" ReadOnly="True"
+                                    SortExpression="Marca" ItemStyle-CssClass="cart-catalog-col-marca"   />
                                 <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id" />
                                 <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price"
                                     ItemStyle-CssClass="cart-catalog-col-price" DataFormatString="{0:c}"/>

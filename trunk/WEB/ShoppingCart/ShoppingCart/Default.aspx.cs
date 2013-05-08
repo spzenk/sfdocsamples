@@ -86,7 +86,7 @@ namespace ShoppingCart
                 ProductBE wItem = ((ProductBE)e.Row.DataItem);
 
                 txtQuantity = (TextBox)e.Row.FindControl("txtNumberToBuy"); // quantity
-   
+                txtQuantity.ReadOnly = true;
 
                 //string txtId = GridViewBoundFieldHelper.GetText(e.Row, "Id");
                 //string wPrice = GridViewBoundFieldHelper.GetText(e.Row, "Price");
@@ -95,15 +95,13 @@ namespace ShoppingCart
                 
                 //hfMealPrice = (HiddenField)e.Row.FindControl("hfMealPrice"); // meal price
                 //hfTotal = (HiddenField)e.Row.FindControl("hfTotal"); //total
-
-
- 
-
+                
                 txtQuantity.Attributes.Add("onchange", "javascript:Add('" + 
                     txtQuantity.ClientID + "','" +
                     wItem.Id.ToString() + "','" +
                     wItem.Price.ToString() + "','" +
-                    wItem.Description + "','" + 
+                    wItem.Description + "','" +
+                    wItem.Marca + "','" + 
                     e.Row.DataItemIndex + 
                     "');");
                 

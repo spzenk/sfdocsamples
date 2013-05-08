@@ -29,10 +29,11 @@ namespace ShoppingCart
                 else Msg.Visible = false;
                 Decimal total = 0;
                 GridView_Prod.DataSource = (List<ProductBE>)this.Page.Session["CARRO"];
-                
+
                 foreach (ProductBE p in list)
                 {
-                    total += p.Price;
+                    if (p.Price.HasValue)
+                        total += p.Price.Value;
                 }
                 txtTotal.Value = total.ToString();
                 GridView_Prod.DataBind();
