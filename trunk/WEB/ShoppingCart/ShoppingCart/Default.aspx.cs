@@ -209,16 +209,21 @@ namespace ShoppingCart
             {
               
                 nodeTree_Child = new TreeNode(childCatatBE.Text, childCatatBE.Id);
-                if (childCatatBE.Level == 3)
-                    nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
-                else
-                    nodeTree_Child.SelectAction = TreeNodeSelectAction.Expand;
+                //if (childCatatBE.Level == 3)
+                //    nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
+                //else
+                //    nodeTree_Child.SelectAction = TreeNodeSelectAction.Expand;
 
                 parent.ChildNodes.Add(nodeTree_Child);
                 if (categories.Any(p => p.ParentId.Equals(childCatatBE.Id)) == true)
                 {
 
                     AddSubcategories(nodeTree_Child, childCatatBE.Id, categories);
+                    nodeTree_Child.SelectAction = TreeNodeSelectAction.Expand;
+                }
+                else
+                {
+                    nodeTree_Child.NavigateUrl = "Default.aspx?id=" + childCatatBE.Id + "";
                 }
 
             }
