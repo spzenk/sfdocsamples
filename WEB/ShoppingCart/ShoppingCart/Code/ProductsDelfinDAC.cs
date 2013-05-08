@@ -76,7 +76,7 @@ namespace ShoppingCart
             using (DelfinDataDataContext dc = new DelfinDataDataContext())
             {
 
-                var categoryList = dc.categorias.ToList<categoria>();
+                var categoryList = dc.categorias.OrderBy(d => d.denom).ToList<categoria>();
 
                 ProductCategotyBE be = null;
                 foreach (categoria item in categoryList.Where(p => p.idnivel != null && string.IsNullOrEmpty(p.idnivel.Trim())==false))
