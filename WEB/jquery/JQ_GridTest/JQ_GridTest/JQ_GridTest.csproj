@@ -37,6 +37,9 @@
       <HintPath>..\..\..\..\..\fwk\trunk\src\Libraries\Framework\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\..\..\..\fwk\trunk\src\Libraries\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
@@ -64,7 +67,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="generatedata.js" />
-    <Content Include="gridmobile.htm" />
+    <Content Include="orinal_samples\gridmobile.htm" />
     <Content Include="jqwidgets\globalization\globalize.culture.cs-CZ.js" />
     <Content Include="jqwidgets\globalization\globalize.culture.de-DE.js" />
     <Content Include="jqwidgets\globalization\globalize.culture.en-CA.js" />
@@ -379,15 +382,17 @@
     <Content Include="jqwidgets\styles\jqx.ui-start.css" />
     <Content Include="jqwidgets\styles\jqx.ui-sunny.css" />
     <Content Include="jqwidgets\styles\jqx.web.css" />
+    <Content Include="orinal_samples\treebindingtojson.htm" />
     <Content Include="Scripts\gettheme.js" />
     <Content Include="Scripts\jquery-1.8.3.min.js" />
     <Content Include="service\wcf_service.svc" />
-    <Content Include="mytest.htm" />
+    <Content Include="grid.htm" />
     <Content Include="Styles\jqx.apireference.css" />
     <Content Include="Styles\qunit-git.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="treebindingtojson.htm" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

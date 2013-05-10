@@ -86,7 +86,7 @@ namespace ShoppingCart
                     be.Catego = item.denom.Trim();
                     be.ParentId = item.idparent.ToString().Trim();
                     be.IdNivel = item.idnivel;
-                    be.Level= item.idnivel.Split('.').Count();
+                    be.Value= item.idnivel.Split('.').Count();
                     wProductCategotyBEList.Add(be);
                 }
 

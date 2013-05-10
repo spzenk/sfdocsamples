@@ -20,10 +20,45 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var theme = getDemoTheme();
 
-            var data = generatedata(150);
+            $("#number").jqxButton({ width: '120px', height: '35px', theme: 'darkblue' });
+            $("#btnSend").jqxButton({ width: '120px', height: '35px', theme: 'darkblue' });
+//            var svcRootPath = Getrootpath("/service/wcf_service.svc");
+            varUrl = "/service/wcf_service.svc/RetriveProducts";
+            varData = '{"categoryId": "20"}';
+            $.ajax({
+                type: "POST",
+                url: varUrl,
+                data: varData,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                processdata: true,
+                success: function (data) {
+
+                    ServiceSucceeded(data);
+                },
+                error: ServiceFailed
+            });
       
+           
+        });
+
+        function ServiceSucceeded(result) {
+            var theme = getDemoTheme();
+            var data = new Array();
+            var totalprice = 0;
+            var list = result.RetriveProductsResult;
+
+
+            for (var i = 0; i < list.length; i++) {
+                var row = {};
+                row["Count"] = list[i]['Count'];
+                row["Description"] = list[i]['Description'];
+                row["Price"] = list[i]['Price'];
+                data[i] = row;
+                totalprice += list[i]['Price'];
+            }
+           
             var source =
             {
                 localdata: data,
@@ -40,15 +75,16 @@
                 theme: theme,
                 touchmode: true,
                 columns: [
-                  { text: 'First Name', dataField: 'firstname', width: 100 },
-                  { text: 'Last Name', dataField: 'lastname', width: 100 },
-                  { text: 'Product', dataField: 'productname', width: 180 },
-                  { text: 'Quantity', dataField: 'quantity', width: 80, cellsalign: 'right' },
-                  { text: 'Unit Price', dataField: 'price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
-                  { text: 'Total', dataField: 'total', cellsalign: 'right', minwidth: 100, cellsformat: 'c2' }
+                  { text: 'Cantidad', dataField: 'Count', width: 100 },
+                  { text: 'Description', dataField: 'Description', width: 100 },
+                  { text: 'Price', dataField: 'Price', width: 90, cellsalign: 'right', cellsformat: 'c2' },
+                  
                 ]
             });
-        });
+
+            $('#number').spin({ max: 100, min: 0 });
+        }
+
     </script>
 </head>
 
@@ -62,6 +98,8 @@
         </div>
 
     </div>
-       <input type ="button" style="width:200px"  name="btnSend" onclick="javascript:RetriveProducts(10);" />
+       <input id="btnSend" type ="button" style="width:200px" value="Enviar" name="btnSend" onclick="javascript:RetriveProducts(10);" />
+
+      <input type="text" id="number" value="0" />
 </body>
 </html>
