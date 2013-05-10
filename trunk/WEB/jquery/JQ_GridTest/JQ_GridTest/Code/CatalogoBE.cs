@@ -32,7 +32,7 @@ namespace ShoppingCart
         public String ParentId { get; set; }
         public String IdNivel { get; set; }
 
-        public int Level { get; set; }
+        public int Value { get; set; }
     }
 
 }

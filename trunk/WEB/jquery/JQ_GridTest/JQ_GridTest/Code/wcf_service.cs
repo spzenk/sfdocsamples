@@ -8,6 +8,7 @@ using System.ServiceModel.Web;
 using System.ServiceModel.Activation;
 using ShoppingCart;
 using System.Web;
+using Newtonsoft.Json;
 
 
 
@@ -117,12 +118,16 @@ public class wcf_service : Iwcf_service
 
     public List<ProductBE> RetriveProducts(int categoryId)
     {
-        List<ProductBE> _Catalogo = ProductsDelfinDAC.Retrive_Produts(categoryId);
+        return  ProductsDelfinDAC.Retrive_Produts(categoryId);
+    }
 
-      
-        return  _Catalogo;
+    public String RetriveCategories()
+    {
+        ProductCategotyBEList list = ProductsDelfinDAC.Retrive_Categories();
 
+        String jsonList = JsonConvert.SerializeObject(list);
 
+        return jsonList;
     }
     #endregion
 }
@@ -158,5 +163,8 @@ public class wcf_service : Iwcf_service
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
         List<ProductBE> RetriveProducts(int categoryId);
+        [OperationContract]
+        [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
+        String RetriveCategories();
     }
 
