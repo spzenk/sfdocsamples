@@ -67,6 +67,7 @@
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="generatedata.js" />
+    <Content Include="orinal_samples\defaultfunctionality.htm" />
     <Content Include="orinal_samples\gridmobile.htm" />
     <Content Include="jqwidgets\globalization\globalize.culture.cs-CZ.js" />
     <Content Include="jqwidgets\globalization\globalize.culture.de-DE.js" />
