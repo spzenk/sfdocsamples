@@ -20,8 +20,9 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-        
 
+            $("#number").jqxButton({ width: '120px', height: '35px', theme: 'darkblue' });
+            $("#btnSend").jqxButton({ width: '120px', height: '35px', theme: 'darkblue' });
 //            var svcRootPath = Getrootpath("/service/wcf_service.svc");
             varUrl = "/service/wcf_service.svc/RetriveProducts";
             varData = '{"categoryId": "20"}';
@@ -59,7 +60,7 @@
                 data[i] = row;
                 totalprice += list[i]['Price'];
             }
-
+           
             var source =
             {
                 localdata: data,
@@ -82,6 +83,8 @@
                   
                 ]
             });
+
+            $('#number').spin({ max: 100, min: 0 });
         }
 
     </script>
@@ -97,6 +100,8 @@
         </div>
 
     </div>
-       <input type ="button" style="width:200px"  name="btnSend" onclick="javascript:RetriveProducts(10);" />
+       <input id="btnSend" type ="button" style="width:200px" value="Enviar" name="btnSend" onclick="javascript:RetriveProducts(10);" />
+
+      <input type="text" id="number" value="0" />
 </body>
 </html>
