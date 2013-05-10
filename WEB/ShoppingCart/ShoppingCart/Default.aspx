@@ -190,6 +190,7 @@
     </div>
    
     <div id="righContent" class="grid_4 omega">
+    <div>
         <div class="frm_label_2">
             Sus compras</div>
         <div id="shoppingCartDiv" class="cart-div" style="margin-top: 10px; margin-left: 3px ;width:250px">
@@ -216,5 +217,47 @@
                 </td>
             </tr>
         </table>
+        
+        </div>
+
+        <div class="left_box_white left_box_st" style="height:300px">
+            <div class="left_box_panel_white left_box_panel_st box_roun_shadow">
+                <div class="left_box_panel_title_white left_box_panel_title_st">
+                    <img class="img_menu" src="/img/vineta_star.png" alt="" />
+                    <span>Contacto</span>
+                </div>
+                <div class="frm_container_border" style="margin-top:10px; height:64px">
+                    <img class="src" border="0" src="/img/callus01.jpg" title="" alt="" height="60"
+                        width="50" style="float: left" />
+                    <div style="margin-top: 10PX; color: GrayText; font-weight: bold">
+                        Guardia y Reclamos</div>
+                    <table>
+                        <tr>
+                            <td>
+                                03585-420159
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                03585-153-15407627
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="frm_container_border" style="margin-top: 10px; height: 64px">
+                    <img class="img_menu"  border="0" src="/img/contactus.jpg" title="" alt="" height="50"
+                        width="50" style="float: left" />
+                    <div style="margin-top: 20PX; color: #333333; font-weight: bold">
+                        <ul style="list-style-type: none;">
+                            <li><a class="menuv_a" href="/img/inf/Contactenos.aspx" target="_self" style="
+                            font-size: 11px;text-decoration: none;margin-left:10px">
+                                Contactenos </a></li>
+                        </ul>
+                    </div>
+
+                    
+                </div>
+            </div>
+        </div>
     </div>
 </asp:Content>

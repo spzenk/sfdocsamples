@@ -92,7 +92,9 @@
     <Content Include="img\arrobacart.gif" />
     <Content Include="img\banner1.jpg" />
     <Content Include="img\bgr_box.png" />
+    <Content Include="img\callus01.jpg" />
     <Content Include="img\confirm_16.png" />
+    <Content Include="img\contactus.jpg" />
     <Content Include="img\corner_blue_left.png" />
     <Content Include="img\corner_blue_right.png" />
     <Content Include="img\corner_inset_left.png" />
