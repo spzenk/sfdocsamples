@@ -75,27 +75,54 @@ function retriveProduct(categoryId) {
 
 }
 
-function ServiceSucceeded(result) {
 
+
+
+function OnRetriveCategories_Succeeded(result) {
+    var theme = getDemoTheme();
     var data = new Array();
-    var row = {};
-    
     var totalprice = 0;
-    var list = result.RetriveProductsResult;
-   
-  
-    for (var i = 0; i < list.length; i++) {
-    
-        row["Count"] = list[i]['Count'];
-        row["Description"] = list[i]['Description'];
-        row["Price"] = list[i]['Price'];
-        data[i] = row;
-        totalprice += list[i]['Price'];
-    }
+    var list = result.RetriveCategoriesResult;
+    var data = list;
 
+    // prepare the data
+    var source =
+                {
+                    datatype: "json",
+                    datafields: [
+                        { name: 'Id' },
+                        { name: 'ParentId' },
+                        { name: 'Text' },
+                        { name: 'Value' }
+                    ],
+                    id: 'Id',
+                    localdata: data
+                };
+
+    // create data adapter.
+    var dataAdapter = new $.jqx.dataAdapter(source);
+    // perform Data Binding.
+    dataAdapter.dataBind();
+    // get the tree items. The first parameter is the item's id. The second parameter is the parent item's id. The 'items' parameter represents 
+    // the sub items collection name. Each jqxTree item has a 'label' property, but in the JSON data, we have a 'text' field. The last parameter 
+    // specifies the mapping between the 'text' and 'label' fields.  
+    var records = dataAdapter.getRecordsHierarchy('Id', 'ParentId', 'items', [{ name: 'Text', map: 'label'}]);
+
+    // Create jqxExpander
+
+
+   $('#jqxTree').jqxTree({ source: records, width: '300px', theme: theme });
+
+//    $("#jqxTree")
+//      .jqxTree({ "plugins": ["themes", "html_data", "ui"] })
+//        .bind("select_node.jstree", function (event, data) {
+//            alert(data.rslt.obj.attr("id"));
+//        }
+//            ).delegate("a", "click", function (event, data) { event.preventDefault(); })
 
 }
 
 function ServiceFailed(result) {
-    alert('Service failed: ' + result.status + '' + result.statusText);
+    alert('Service call failed: ' + result.status + '' + result.statusText);
+
 }
