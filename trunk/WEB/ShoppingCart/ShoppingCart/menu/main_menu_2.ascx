@@ -29,13 +29,13 @@
    
             <li>
                 <img class="corner_inset_left src" alt="" src="/img/corner_inset_left.png" />
-                <a class="menuv_a" href="/building.aspx">Mision y vicion</a>
+                <a class="menuv_a" href="/building.aspx">Misión y visión</a>
                 <img class="corner_inset_right src" alt="" src="/img/corner_inset_right.png" />
             </li>
                 
-              <li><a class="menuv_a" href="/building.aspx" title="Mision y vicion">Servicios y producion</a></li>
+              <li><a class="menuv_a" href="/building.aspx" title="Mision y vicion">Servicios y producción</a></li>
               <li><a class="menuv_a" href="/building.aspx" title="">Red El Delfin</a></li>
-              <li><a class="menuv_a" href="/building.aspx" title="">Capityal humano</a></li>
+              <li><a class="menuv_a" href="/building.aspx" title="">Capital humano</a></li>
               <li><a class="menuv_a" href="/building.aspx" title="">Hacer pedidos </a></li>
              <li class ="last">
                 <img class="corner_left src" alt="" src="/img/corner_left.png" />
