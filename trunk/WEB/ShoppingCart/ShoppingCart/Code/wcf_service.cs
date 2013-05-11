@@ -51,10 +51,25 @@ public class wcf_service : Iwcf_service
         Common.SendMail_Me(string.Concat("Nuevo pedido de ", contactName), BODY.ToString(), email);
         cart.Clear();
     }
-    public String SendMessage2(string contactName, string message)
+    public void SendMessage_contact(string contactName, string message, string email, string phone, string city, string state)
     {
 
-        return "listo";
+        //Esta funcion se puede usar porque  AspNetCompatibilityRequirementsMode.Allowed
+
+        string ruta = HttpContext.Current.Server.MapPath("..");
+        string file = System.IO.Path.Combine(ruta, "Email_contactenos.htm");
+        string txt = Fwk.HelperFunctions.FileFunctions.OpenTextFile(file);
+        StringBuilder BODY = new StringBuilder(txt);
+        BODY.Replace("$contactName$", contactName);
+        BODY.Replace("$email$", email);
+        BODY.Replace("$phone$", phone);
+        BODY.Replace("$city$", city);
+        BODY.Replace("$state$", state);
+        BODY.Replace("$message$", message);
+
+        //string body= String.Format(txt, contactName, email, phone, city, state, message);
+
+        Common.SendMail_Me(string.Concat("Mensaje de contacto de ", contactName), BODY.ToString(), email);
 
     }
     public List<ProductBE> AddToCart(int numberToBuy, int id, string price, string description,string marca)
@@ -146,7 +161,7 @@ public class wcf_service : Iwcf_service
         void SendMessage(string contactName,string message,string email,string phone,string city,string state);
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
-        String SendMessage2(string contactName, string message);
+        void SendMessage_contact(string contactName, string message, string email, string phone, string city, string state);
 
         [OperationContract]
         [WebInvoke(Method = "POST", BodyStyle = WebMessageBodyStyle.Wrapped, ResponseFormat = WebMessageFormat.Json)]
