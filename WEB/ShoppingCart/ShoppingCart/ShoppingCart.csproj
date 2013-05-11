@@ -82,10 +82,12 @@
     <Content Include="buycart.aspx" />
     <Content Include="Code\articulos_s_categoria.sql" />
     <Content Include="Code\shopcart_products_view.sql" />
+    <Content Include="contact.aspx" />
     <Content Include="Defaul3.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="Default2.aspx" />
     <Content Include="Email_buycart.htm" />
+    <Content Include="Email_contactenos.htm" />
     <Content Include="Global.asax" />
     <Content Include="img\ActualizarPerfilBig.gif" />
     <Content Include="img\ActualizarPerfilSmall.gif" />
