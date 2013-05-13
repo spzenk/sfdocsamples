@@ -65,7 +65,31 @@ namespace ShoppingCart
 
             return wCatalogoList;
         }
+        public static List<ProductBE> Retrive_Produts(string text)
+        {
+            ProductBE wProductBE = null;
+            List<ProductBE> wCatalogoList = new List<ProductBE>();
+            using (DelfinDataDataContext dc = new DelfinDataDataContext())
+            {
+                var productsdb = dc.shopcart_products_views.Where(p => p.denom.Trim().Contains(text.Trim()));
+                if (productsdb != null)
+                    foreach (shopcart_products_view p_db in productsdb)
+                    {
+                        wProductBE = new ProductBE();
+                        wProductBE.Id = p_db.idart;
+                        wProductBE.IdCate = p_db.idcate.ToString();
+                        wProductBE.Price = p_db.prevta;
+                        wProductBE.Description = p_db.denom;
+                        wProductBE.Marca = p_db.Marca;
+                        wProductBE.Count = 0;
+                        wCatalogoList.Add(wProductBE);
+                    }
+            }
 
+
+
+            return wCatalogoList;
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -79,7 +103,7 @@ namespace ShoppingCart
                 var categoryList = dc.categorias.OrderBy(d => d.denom).ToList<categoria>();
 
                 ProductCategotyBE be = null;
-                foreach (categoria item in categoryList.Where(p => p.idnivel != null && string.IsNullOrEmpty(p.idnivel.Trim())==false))
+                foreach (categoria item in categoryList.Where(p => p.idnivel != null && string.IsNullOrEmpty(p.idnivel.Trim()) == false))
                 {
                     be = new ProductCategotyBE();
                     be.Id = item.idcate.ToString();//+ "." + item.ProductCategoryID.ToString();
@@ -87,7 +111,7 @@ namespace ShoppingCart
                     be.Catego = item.denom.Trim();
                     be.ParentId = item.idparent.ToString().Trim();
                     be.IdNivel = item.idnivel;
-                    be.Level= item.idnivel.Split('.').Count();
+                    be.Level = item.idnivel.Split('.').Count();
                     wProductCategotyBEList.Add(be);
                 }
 
@@ -104,7 +128,69 @@ namespace ShoppingCart
             return wProductCategotyBEList;
         }
 
+        public static ShoppingCart.Code.siteMap Retrive_SiteMap()
+        {
+            ShoppingCart.Code.siteMap siteMap = new ShoppingCart.Code.siteMap();
+            ProductCategotyBEList categories = ProductsDelfinDAC.Retrive_Categories();
+            siteMap.SiteMapNode = new Code.siteMapNode();
+            ShoppingCart.Code.siteMapNode node = null;
 
+            foreach (ProductCategotyBE cat in categories.Where(p => p.ParentId.Equals("0")))
+            {
+                node = new ShoppingCart.Code.siteMapNode();
+
+                node.Description = cat.Text.Trim();
+                node.Title = cat.Text.Trim();
+
+                AddSubcategories(node, cat.Id, categories);
+                //trv.Nodes.Add(nodeTree);
+                siteMap.SiteMapNode.SiteMapNodes.Add(node);
+            }
+
+            return siteMap;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="parentId"></param>
+        /// <param name="categories"></param>
+        private static void AddSubcategories(ShoppingCart.Code.siteMapNode parent, string parentId, ProductCategotyBEList categories)
+        {
+
+            List<ProductCategotyBE> childsBE = categories.Where(p => p.ParentId.Equals(parentId)).ToList();
+            if (childsBE.Count != 0)
+            {
+                parent.Url = "Default.aspx";
+                //parent.SelectAction = TreeNodeSelectAction.Expand;
+            }
+            else
+            {
+                parent.Url = "Default.aspx?id=" + parentId + "";
+            }
+
+            ShoppingCart.Code.siteMapNode nodeTree_Child = null;
+            foreach (ProductCategotyBE childCatatBE in childsBE)
+            {
+
+                nodeTree_Child = new ShoppingCart.Code.siteMapNode();
+                nodeTree_Child.Description = childCatatBE.Text;
+                nodeTree_Child.Title = childCatatBE.Text;
+                parent.SiteMapNodes.Add(nodeTree_Child);
+                if (categories.Any(p => p.ParentId.Equals(childCatatBE.Id)) == true)
+                {
+
+                    AddSubcategories(nodeTree_Child, childCatatBE.Id, categories);
+                    //nodeTree_Child.SelectAction = TreeNodeSelectAction.Expand;
+                }
+                else
+                {
+                    nodeTree_Child.Url = "Default.aspx?id=" + childCatatBE.Id + "";
+                }
+
+            }
+        }
     }
 }
 
