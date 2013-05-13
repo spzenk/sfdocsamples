@@ -149,6 +149,23 @@
     <Content Include="Styles\Site.css" />
     <Content Include="Styles\tables.css" />
     <Content Include="Styles\trv.css" />
+    <Content Include="cat.egories.xml" />
+    <Content Include="TreeLineImages\dash.gif" />
+    <Content Include="TreeLineImages\dashminus.gif" />
+    <Content Include="TreeLineImages\dashplus.gif" />
+    <Content Include="TreeLineImages\i.gif" />
+    <Content Include="TreeLineImages\l.gif" />
+    <Content Include="TreeLineImages\lminus.gif" />
+    <Content Include="TreeLineImages\lplus.gif" />
+    <Content Include="TreeLineImages\minus.gif" />
+    <Content Include="TreeLineImages\noexpand.gif" />
+    <Content Include="TreeLineImages\plus.gif" />
+    <Content Include="TreeLineImages\r.gif" />
+    <Content Include="TreeLineImages\rminus.gif" />
+    <Content Include="TreeLineImages\rplus.gif" />
+    <Content Include="TreeLineImages\t.gif" />
+    <Content Include="TreeLineImages\tminus.gif" />
+    <Content Include="TreeLineImages\tplus.gif" />
     <Content Include="viewbuy.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -228,6 +245,7 @@
     <Compile Include="Code\GridViewBoundFieldHelper.cs" />
     <Compile Include="Code\ProductsDAC.cs" />
     <Compile Include="Code\ProductsDelfinDAC.cs" />
+    <Compile Include="Code\SiteMap.cs" />
     <Compile Include="Code\wcf_service.cs" />
     <Compile Include="Code\DataClasses1.cs">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
@@ -306,6 +324,7 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Web.sitemap" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Code\DataClasses1.dbml.layout">

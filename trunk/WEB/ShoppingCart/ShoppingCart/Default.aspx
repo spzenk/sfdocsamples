@@ -113,6 +113,12 @@
                 },
                 error: ServiceFailed// When Service call fails
             });
+
+            function Press(evt){ 
+                var key = nav4 ? evt.which : evt.keyCode; 
+                if (key == 13 )
+
+            }
         }
     </script>
     
@@ -133,29 +139,38 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-    
     <div id="centerContent_div" class="grid_9">
+        <div style="margin-top: 16px">
+            <div class="grid_6 alpha">
+                <asp:TextBox ID="txtSearch"  CssClass="frm_findcontrol" onkeypress="Press(event);"
+                    AutoPostBack="false" runat="server" Height="21px" Width="378px" ToolTip="Ingrese algun texto para buscar productos"></asp:TextBox>
+            </div>
+            <div class="grid_3 omega">
+                <asp:Button ID="btnSearchProducts" CssClass="btGrisNegrita" runat="server"  
+                    SkinID="CustomButtonStyle" OnClick="btnSearchProducts_Click" Text="Buscar" Width="100" Font-Bold="False"
+                    Font-Size="11pt" /></div>
+        </div>
+        <div class="clear"></div>
+        <div class="frm_title_2" style="margin-top: 14px">
+            Listado de productos</div>
+        <div>
+          
         
-            <div class="frm_title_2" style="margin-top:14px">Listado de productos</div> 
-        <div class="cart-div"  style="margin-top:30px"> 
 
+        <div class="cart-div" style="margin-top: 30px">
             <%--PRODUCT PANEL GRID VIEW--%>
             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                 <ContentTemplate>
-
-                
                     <div id="divGridView" class="">
                         <asp:GridView ID="GridView_Prod" runat="server" AutoGenerateColumns="False" CSSSelectorClass="YodaGrilla"
                             ToolTip="Lista de productos" BorderColor="White" CaptionAlign="Left" Width="100%"
-                            ShowHeader="False" OnRowCommand="GridView_Prod_RowCommand" 
-                            OnRowDataBound="GridView_Prod_RowDataBound">
+                            ShowHeader="False" OnRowCommand="GridView_Prod_RowCommand" OnRowDataBound="GridView_Prod_RowDataBound">
                             <PagerSettings Position="TopAndBottom" FirstPageText="Ir al inicio" LastPageText="Ultima pagina"
                                 Mode="NextPreviousFirstLast"></PagerSettings>
-                            <Columns >
-                     
+                            <Columns>
                                 <asp:TemplateField HeaderText="# to Buy">
                                     <ItemTemplate>
-                                        <div style="height: 60px;border-style:none">
+                                        <div style="height: 60px; border-style: none">
                                             <asp:TextBox ID="txtNumberToBuy" runat="server" AutoPostBack="False" BorderStyle="None"
                                                 BorderWidth="1px" CausesValidation="True" SkinID="TextBoxSkin" TabIndex="20"
                                                 Width="30px">1px</asp:TextBox>
@@ -172,23 +187,23 @@
                                     <ItemStyle HorizontalAlign="Center" Width="100px" />
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="Description" HeaderText="Description" ReadOnly="True"
-                                    SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc"   />
-                        <asp:BoundField DataField="Marca" HeaderText="Marca" ReadOnly="True"
-                                    SortExpression="Marca" ItemStyle-CssClass="cart-catalog-col-marca"   />
-                                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id"  />
-                                <asp:BoundField DataField="Price" HeaderText="Price"  ReadOnly="True" SortExpression="Price" ItemStyle-CssClass="cart-catalog-col-price" ItemStyle-HorizontalAlign="Center" DataFormatString="{0:c}"  />
+                                    SortExpression="Description" ItemStyle-CssClass="cart-catalog-col-desc" />
+                                <asp:BoundField DataField="Marca" HeaderText="Marca" ReadOnly="True" SortExpression="Marca"
+                                    ItemStyle-CssClass="cart-catalog-col-marca" />
+                                <asp:BoundField DataField="Id" HeaderText="Id" ReadOnly="True" Visible="false" SortExpression="Id" />
+                                <asp:BoundField DataField="Price" HeaderText="Price" ReadOnly="True" SortExpression="Price"
+                                    ItemStyle-CssClass="cart-catalog-col-price" ItemStyle-HorizontalAlign="Center"
+                                    DataFormatString="{0:c}" />
                             </Columns>
-                            <AlternatingRowStyle  BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
-                            <RowStyle BorderStyle="Solid" BorderWidth="1"  BorderColor="#A8A7A6" />
-                            
+                            <AlternatingRowStyle BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
+                            <RowStyle BorderStyle="Solid" BorderWidth="1" BorderColor="#A8A7A6" />
                         </asp:GridView>
                     </div>
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>
-
     </div>
-   
+   </div>
     <div id="righContent" class="grid_4 omega">
         <div>
             <div class="frm_label_2">

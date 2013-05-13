@@ -1,8 +1,9 @@
-﻿
+﻿.href{} .src{}
 /*	//////////////////////////////////////////////////////////////////////////////////
 	//	TITULOS
 	//////////////////////////////////////////////////////////////////////////////////
 */
+
 h1,h2,h3,h4,h5,h6,h7{text-decoration: none;font-weight: bold;margin: 0px;padding-top: 8px;padding-right: 0px;padding-bottom: 5px;padding-left: 0px;}
 h1 {color: #642D15;font-size: 27px;line-height: 30px}
 h2 {color: #576d84;font-size: 19px;line-height:20px}
@@ -371,7 +372,7 @@ ol{list-style:decimal}ul{list-style:disc}
 .frm-message a
 {cursor: pointer;}
 
-.frm-message focus
+.frm-message :focus
 {
 	color: #3366FF;
 }
@@ -380,17 +381,21 @@ ol{list-style:decimal}ul{list-style:disc}
 .ch-addAdministrator {background: url('../img/administrator_add_32.png')  no-repeat scroll 0 0 transparent;}
 
 
-.btGrisNegrita{background-color: #666666;color: #FFFFFF;font-size: 16px;border:1px solid #333333;height: 25px; background-image: -moz-linear-gradient(#494949, #1F1F1F);
+.btGrisNegrita{background-color: #666666;color: #FFFFFF;font-size: 12px;border:1px solid #333333;height: 25px; background-image: -moz-linear-gradient(#494949, #1F1F1F);
 	margin-left: 5px;
 	margin-right: 5px;
-	margin-bottom: 5px;
-}.btGrisNegrita: c{background-color: #333333;color: #FFFF66;}
-
+	margin-bottom: 5px;cursor:pointer;border-radius: 3px 3px 3px 3px;
+}
+.btGrisNegrita: c{background-color: #333333;color: #FFFF66;}
+.btGrisNegrita: hover
+{
+	color: #FF5050;
+}
 .frm_btn_send
 {
 height: 30px; 
 font-size:2em;
-margin:10px;
+margin:10px;cursor:pointer;border-radius: 3px 3px 3px 3px;
 }
 
 /*Panel estatico del collapsed*/	

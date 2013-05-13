@@ -239,7 +239,28 @@ namespace ShoppingCart
 
         #endregion
 
-      
-      
+        protected void btnSearchProducts_Click(object sender, EventArgs e)
+        {
+            SearchProducts(txtSearch.Text.Trim());
+        }
+
+
+        void SearchProducts(string text)
+        {
+            _Catalogo = ProductsDelfinDAC.Retrive_Produts(text);
+
+            if (this.Page.Session["CARRO"] != null)
+            {
+                foreach (ProductBE i in (List<ProductBE>)this.Page.Session["CARRO"])
+                {
+                    var itemCatalogo = _Catalogo.Where(p => p.Id.Equals(i.Id)).FirstOrDefault();
+                    if (itemCatalogo != null)
+                        itemCatalogo.Count = i.Count;
+                }
+            }
+
+            GridView_Prod.DataSource = _Catalogo;
+            GridView_Prod.DataBind();
+        }
     }
 }
