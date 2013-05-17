@@ -34,7 +34,8 @@ namespace Allus.Keepcon.Import
         }
         public static List<String> Retrive_CustommerCareList(List<KeepconPost> posts)
         {
-            List<String> custommerCareList = (from p in posts select p.KeepconCustomerCare).Distinct().ToList<string>();
+            List<String> custommerCareList = (from p in posts where String.IsNullOrEmpty(p.KeepconCustomerCare)==false
+                                              select p.KeepconCustomerCare).Distinct().ToList<string>();
             return custommerCareList;
         
         }

@@ -60,3 +60,4 @@ WHERE keepcon_moderator_decision IS NOT NULL
 
 
 
+		SELECT MESSAGE  FROM dbo.KeepconPost		
