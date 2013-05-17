@@ -178,7 +178,7 @@ namespace Allus.Keepcon
             try
             {
                 string result = HttpPUT(string.Format(url_get_result, contextName), string.Empty);
-                if (result.Contains("free"))
+                //if (result.Contains("free"))
               
                     //Helper.Audit_Result(result);
                 
@@ -288,7 +288,8 @@ namespace Allus.Keepcon
             using (BB_MovistarSM_LogsEntities dc = new BB_MovistarSM_LogsEntities())
             {
 
-                var x = from s in dc.KeepconPost where s.keepcon_send_date.HasValue == false select s;
+                var x = from s in dc.KeepconPost where s.keepcon_send_date.HasValue == false 
+                        && String.IsNullOrEmpty(s.KeepconCustomerCare)==false select s;
                 return x.Take(kc_batch).ToList<KeepconPost>();
 
             }
@@ -346,15 +347,15 @@ namespace Allus.Keepcon
                         if (c.Tagging.Count > 0)
                         {
 
-                            //var ts = from t in c.Tagging select t.Text;
-                            try
-                            {
+                            
+                            //try
+                            //{
                                 post.keepcon_result_tagging = Fwk.HelperFunctions.FormatFunctions.GetStringBuilderWhitSeparator<Allus.Keepcon.Export.Tag>(c.Tagging, ',').ToString();
-                            }
-                            catch (Exception r)
-                            {
-                                throw r;
-                            }
+                            //}
+                            //catch (Exception r)
+                            //{
+                            //    throw r;
+                            //}
                         }
                     if (c.Comments != null)
                         if (c.Comments.Count > 0)
