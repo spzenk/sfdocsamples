@@ -1,2 +1,0 @@
-﻿http://weblogs.asp.net/scottgu/archive/2010/07/02/introducing-razor.aspx
-http://www.asp.net/mvc/tutorials/getting-started-with-mvc3-part3-cs
