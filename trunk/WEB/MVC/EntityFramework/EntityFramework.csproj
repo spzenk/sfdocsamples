@@ -50,7 +50,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Microsoft.VisualStudio.DebuggerVisualizers.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json.Net35">
+    <Reference Include="Newtonsoft.Json.Net35, Version=4.0.2.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\fwk\trunk\src\Libraries\Newtonsoft.Json.Net35.dll</HintPath>
     </Reference>
     <Reference Include="System" />
