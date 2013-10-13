@@ -19,8 +19,8 @@ namespace Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            jsObservables t4 = new jsObservables();
-            String s = t4.TransformText();
+            //jsObservables t4 = new jsObservables();
+            //String s = t4.TransformText();
         }
     }
 }
