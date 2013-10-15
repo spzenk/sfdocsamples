@@ -7,7 +7,7 @@ ECHO ** Generador t4 fwk :. .Net 4.0**
 @if not "%PROGRAMFILES(X86)%" == "" (
  @SET "SPDIR= %PROGRAMFILES(X86)%%vs%"
 )
-gacutil -i Fwk.T4Gen.dll
+gacutil -i JavascriptCruncher.dll
 gacutil -i ajaxmin.dll
 @ECHO OFF
 
