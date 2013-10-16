@@ -6,7 +6,13 @@ using Microsoft.VisualStudio.TextTemplating;
 namespace Fwk.T4Gen
 {
 
-
+    public class EntityModelToObservable
+    {
+        //public static Project GetProject(ITextTemplatingEngineHost host)
+        //{
+           
+        //}
+    }
 
     public class EnvDteHelper
     {
@@ -46,6 +52,15 @@ namespace Fwk.T4Gen
             return jsProjectItems;
         }
 
+        public static void SaveMinifiedCode(ProjectItem originalJsItem, string minifiedCode)
+        {
+            string outputFileName = Path.ChangeExtension(originalJsItem.FileNames[0], ".min.js");
+            File.WriteAllText(outputFileName, minifiedCode);
+
+            ProjectItem parentProjectItem = originalJsItem.Properties.Parent;
+            parentProjectItem.ProjectItems.AddFromFile(outputFileName);
+        }
+
         private static void GetJsProjectItems(ProjectItem parentProjectItem, List<ProjectItem> jsProjectItems)
         {
             foreach (ProjectItem projectItem in parentProjectItem.ProjectItems)
@@ -55,7 +70,8 @@ namespace Fwk.T4Gen
                 if (projectItem.Name.EndsWith(".js") && !projectItem.Name.EndsWith(".min.js"))
                     jsProjectItems.Add(projectItem);
             }
-        } 
+        }
+
     }
 
 }

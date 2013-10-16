@@ -1,13 +1,7 @@
-﻿<#@ template debug="true" hostSpecific="true" #>
-<#@ output extension=".cs" #>
-<#@ Assembly Name="System.Core" #>
-<#@ Assembly Name="System.Windows.Forms" #>
-<#@ import namespace="System" #>
+﻿<#@ template language="C#" hostSpecific="true" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.Ajax.Utilities" #>
 <#@ import namespace="System.IO" #>
-<#@ import namespace="System.Diagnostics" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="System.Collections" #>
-<#@ import namespace="System.Collections.Generic" #> 
 <#
 EnvDTE.Project project = EnvDteHelper.GetProject(this.Host);  
 List<EnvDTE.ProjectItem> jsProjectItems = EnvDteHelper.GetJsProjectItems(project);  
@@ -24,7 +18,7 @@ foreach( EnvDTE.ProjectItem item in jsProjectItems)
     string jsMinified = cruncher.Crunch(jsCode, crunchSettings);  
       
     EnvDteHelper.SaveMinifiedCode(item, jsMinified);  
-    this.WriteLine( "Processed: {0}", itemFileName);  
+    this.WriteLine( "Archivo min: {0}", itemFileName);  
 }  
-this.WriteLine("done!");  
+this.WriteLine("Listo !");  
 #> 
