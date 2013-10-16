@@ -31,10 +31,12 @@ List<EnvDTE.ProjectItem> jsProjectItems = EnvDteHelper.GetJsProjectItems(project
 
 List<Type> typeList = 	EntityModelToObservable.GetDefinedTypesOnAllAssemblies(this.Host);
 
+	string targetDir = Host.ResolveAssemblyReference("$(TargetDir)");
 foreach (var type in typeList)
     {
 		
-		TransformText(type);  
+		TransformText2(targetDir);
+		/*TransformText(type);  */
 		
 		/*
 		var vmtemplate = new ViewModelTemplate(type, list);
@@ -50,7 +52,13 @@ foreach (var type in typeList)
             
             #line default
             #line hidden
-            this.Write(" ");
+            this.Write(" \r\n\r\n");
+            
+            #line 32 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\jsObservables.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(targetDir));
+            
+            #line default
+            #line hidden
             return this.GenerationEnvironment.ToString();
         }
         private global::Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost hostValue;
@@ -189,13 +197,48 @@ this.Write("\t\t");
         #line 21 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
 this.Write("\r\n\r\n\t\t//\tinvoke the extendable\'s init() function. Must happen when all observable" +
         "s are created (in case a\r\n    //\tcomputable wants to make use of it)\r\n   this.In" +
-        "itialize();\r\n\r\n}\r\n\r\n\r\n       \r\n");
+        "itialize();\r\n\r\n}\r\n\r\n       \r\n");
 
         
         #line default
         #line hidden
         
-        #line 32 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+        #line 31 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+   }  
+        
+        #line default
+        #line hidden
+        
+        #line 34 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+
+	public void TransformText2(string ruta )
+	{
+        
+        #line default
+        #line hidden
+        
+        #line 36 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\r\n\t");
+
+        
+        #line default
+        #line hidden
+        
+        #line 38 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(ruta));
+
+        
+        #line default
+        #line hidden
+        
+        #line 38 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\r\n\r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 40 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
    }  
         
         #line default
