@@ -38,25 +38,10 @@ namespace Fwk.T4Gen
 
             string targetDir = host.ResolveAssemblyReference("$(TargetDir)");
             //Directory.SetCurrentDirectory(targetDir);
-
+             var list = new List<Type>();
             DirectoryInfo d = new DirectoryInfo(targetDir);
-            Append("*.dll",
-            FileInfo[] files = d.GetFiles("*.dll");
-
-            var list = new List<Type>();
-
-            foreach (FileInfo dll in files)
-            {
-              Assembly ass =  System.Reflection.Assembly.LoadFile(dll.FullName);
-              foreach (Type type in ass.GetTypes())
-              {
-                  if (type.IsAbstract) continue;
-                 //if (type.Name != typeof(BaseViewModel).Name) continue;
-                  list.Add(type);
-              }
-                
-            }
-
+            Append("*.dll", d,ref list);
+            Append("*.exe", d, ref list);
 
             return list;
         }
