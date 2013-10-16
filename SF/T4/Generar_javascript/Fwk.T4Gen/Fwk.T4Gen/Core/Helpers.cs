@@ -41,7 +41,7 @@ namespace Fwk.T4Gen
 
             DirectoryInfo d = new DirectoryInfo(targetDir);
 
-            FileInfo[] files = d.GetFiles("*dll");
+            FileInfo[] files = d.GetFiles("*.exe|*.dll");
 
             var list = new List<Type>();
 
@@ -61,39 +61,49 @@ namespace Fwk.T4Gen
 
 
 
-        //public static List<Type> Types()
-        //{
-        //    var list = new List<Type>();
+        public static List<Type> Types()
+        {
+            var list = new List<Type>();
+
+         
+            foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
+            {
+                if (type.IsAbstract) continue;
+                if (type.Name != typeof(BaseViewModel).Name) continue;
+                list.Add(type);
+            }
 
 
-        //    foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
-        //    {
-        //        if (type.IsAbstract) continue;	
-        //        if (type.Name != typeof(BaseViewModel).Name) continue;
-        //        list.Add(type);
-        //    }
-           
 
+            return list;
+        }
 
-        //    return list;
-        //}
+        public static List<EnvDTE.CodeClass> GetDefinedTypes(ITextTemplatingEngineHost host)
+        {
+            var listClass = new List<EnvDTE.CodeClass>();
+            Project project = GetProject(host);
+            foreach (EnvDTE.CodeElement element in project.CodeModel.CodeElements)
+            {
+                if (element.Kind == EnvDTE.vsCMElement.vsCMElementClass)
+                {
+                    var type = (EnvDTE.CodeClass)element;
+                    // do stuff with that class here
 
-        //public static IEnumerable GetDefinedTypes(ITextTemplatingEngineHost host)
-        //{
-        //    var list = new List<EnvDTE.CodeClass>();
-        //    Project project = GetProject(host);
-        //    foreach (EnvDTE.CodeElement element in project.CodeModel.CodeElements)
-        //    {
-        //        if (element.Kind == EnvDTE.vsCMElement.vsCMElementClass)
-        //        {
-        //            var type = (EnvDTE.CodeClass)element;
-        //            // do stuff with that class here
-                   
-        //            list.Add(type);
-        //        }
-        //    }
-        //    return list;
-        //}
+                    //var allProperties = VisualStudioHelper.GetAllCodeElementsOfType(type.Members, EnvDTE.vsCMElement.vsCMElementProperty, true);
+                        foreach(EnvDTE.CodeProperty property in type.Members)
+                        {
+                            if (property.Kind == EnvDTE.vsCMElement.vsCMElementProperty)
+                            {
+                                //list.Add(property); 
+                            }
+                           
+                            
+                        }
+                        listClass.Add(type);
+                }
+            }
+            return listClass;
+        }
 
         //public static List<Type> RetriveAllModels()
         //{

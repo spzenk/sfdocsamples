@@ -96,6 +96,7 @@
     <ProjectReference Include="..\Models\Models.csproj">
       <Project>{E2941798-97C5-4C9C-BA7F-D3299925EABA}</Project>
       <Name>Models</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -103,13 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\viewmodels\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="classgenerator.js">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>classgenerator.tt</DependentUpon>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
