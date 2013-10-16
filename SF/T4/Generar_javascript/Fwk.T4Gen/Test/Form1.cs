@@ -24,8 +24,8 @@ namespace Test
         private void button1_Click(object sender, EventArgs e)
         {
             DirectoryInfo d2 = new DirectoryInfo(@"C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Test\bin\Debug");
-
-            FileInfo[] files = d2.GetFiles("*.exe|*.dll");
+            var set = new HashSet<string> { ".dll", ".exe" };
+            FileInfo[] files = d2.GetFiles(".dll", SearchOption.TopDirectoryOnly);
 
             List<Type> d = RetriveAllModels();
             d = Properties();

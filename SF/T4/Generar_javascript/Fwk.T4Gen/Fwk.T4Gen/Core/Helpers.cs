@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using EnvDTE;
 using Microsoft.VisualStudio.TextTemplating;
-using Fwk.Bases.ViewModels;
+
 using System.Collections;
 using System.Reflection;
 namespace Fwk.T4Gen
@@ -40,8 +40,8 @@ namespace Fwk.T4Gen
             //Directory.SetCurrentDirectory(targetDir);
 
             DirectoryInfo d = new DirectoryInfo(targetDir);
-
-            FileInfo[] files = d.GetFiles("*.exe|*.dll");
+            Append("*.dll",
+            FileInfo[] files = d.GetFiles("*.dll");
 
             var list = new List<Type>();
 
@@ -51,14 +51,31 @@ namespace Fwk.T4Gen
               foreach (Type type in ass.GetTypes())
               {
                   if (type.IsAbstract) continue;
-                  if (type.Name != typeof(BaseViewModel).Name) continue;
+                 //if (type.Name != typeof(BaseViewModel).Name) continue;
                   list.Add(type);
               }
                 
             }
+
+
             return list;
         }
 
+        public static void Append(String filter, DirectoryInfo d, ref  List<Type> list)
+        {
+            FileInfo[] files = d.GetFiles(filter);
+            foreach (FileInfo dll in files)
+            {
+                Assembly ass = System.Reflection.Assembly.LoadFile(dll.FullName);
+                foreach (Type type in ass.GetTypes())
+                {
+                    if (type.IsAbstract) continue;
+                    //if (type.Name != typeof(BaseViewModel).Name) continue;
+                    list.Add(type);
+                }
+
+            }
+        }
 
 
         public static List<Type> Types()
@@ -66,12 +83,12 @@ namespace Fwk.T4Gen
             var list = new List<Type>();
 
          
-            foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
-            {
-                if (type.IsAbstract) continue;
-                if (type.Name != typeof(BaseViewModel).Name) continue;
-                list.Add(type);
-            }
+            //foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
+            //{
+            //    if (type.IsAbstract) continue;
+            //    if (type.Name != typeof(BaseViewModel).Name) continue;
+            //    list.Add(type);
+            //}
 
 
 
