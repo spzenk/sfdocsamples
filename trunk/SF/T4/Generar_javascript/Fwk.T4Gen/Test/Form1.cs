@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using Fwk.T4Gen;
 using Fwk.Bases.ViewModels;
 using System.Reflection;
+using System.IO;
 
 namespace Test
 {
@@ -22,12 +23,16 @@ namespace Test
 
         private void button1_Click(object sender, EventArgs e)
         {
-            List<Type> d = RetriveAllModels();
+            DirectoryInfo d2 = new DirectoryInfo(@"C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Test\bin\Debug");
 
+            FileInfo[] files = d2.GetFiles("*.exe|*.dll");
+
+            List<Type> d = RetriveAllModels();
+            d = Properties();
             //jsObservables t4 = new jsObservables();
             //String s = t4.TransformText();
 
-        
+
         }
 
         public static List<Type> Properties()

@@ -10,12 +10,11 @@ List<EnvDTE.ProjectItem> jsProjectItems = EnvDteHelper.GetJsProjectItems(project
 
 List<Type> typeList = 	EntityModelToObservable.GetDefinedTypesOnAllAssemblies(this.Host);
 
-	string targetDir = Host.ResolveAssemblyReference("$(TargetDir)");
 foreach (var type in typeList)
     {
 		
-		TransformText2(targetDir);
-		/*TransformText(type);  */
+
+		TransformText(type);  
 		
 		/*
 		var vmtemplate = new ViewModelTemplate(type, list);
@@ -29,4 +28,5 @@ foreach (var type in typeList)
  
 #> 
 
-<#= targetDir #>
+
+
