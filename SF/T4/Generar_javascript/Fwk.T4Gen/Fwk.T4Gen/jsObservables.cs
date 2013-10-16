@@ -29,12 +29,13 @@ EnvDTE.Project project = EntityModelToObservable.GetProject(this.Host);
 
 List<EnvDTE.ProjectItem> jsProjectItems = EnvDteHelper.GetJsProjectItems(project);  
 
-List<Type> typeList = 	EntityModelToObservable.Properties();
+List<Type> typeList = 	EntityModelToObservable.GetDefinedTypesOnAllAssemblies(this.Host);
 
 foreach (var type in typeList)
     {
+		
 		TransformText(type);  
-
+		
 		/*
 		var vmtemplate = new ViewModelTemplate(type, list);
 		vmtemplate.Output.Project = @"..\Test\Test.csproj";
@@ -44,7 +45,7 @@ foreach (var type in typeList)
 
   
 
-this.WriteLine("Listo !");  
+ 
 
             
             #line default
@@ -74,7 +75,7 @@ this.WriteLine("Listo !");
         #line hidden
         
         #line 3 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
-this.Write("\t\t\r\n\r\n\tvar ");
+this.Write("\t\t\r\n\r\nvar ");
 
         
         #line default
@@ -88,7 +89,7 @@ this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name.ToLower()));
         #line hidden
         
         #line 6 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
-this.Write(" = function()\r\n\t{\r\n\t\tvar self = this;\r\n\r\n\t\tself.$type = \'");
+this.Write(" = function()\r\n{\r\n\t\tvar self = this;\r\n\r\n\t\tself.$type = \'");
 
         
         #line default
@@ -102,13 +103,99 @@ this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0}, {1}", _ty
         #line hidden
         
         #line 10 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
-this.Write("\';\r\n\r\n     }\r\n\r\n\r\n       \r\n");
+this.Write("\';\r\n\r\n\t\t");
 
         
         #line default
         #line hidden
         
+        #line 12 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+ foreach(var prop in _type.GetProperties()) { 
+		
+	if (prop.PropertyType != typeof(string)
+			  && prop.PropertyType != typeof(byte[])
+			  && prop.PropertyType.GetInterface("IEnumerable") != null) {
+        
+        #line default
+        #line hidden
+        
         #line 16 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\t\tself.");
+
+        
+        #line default
+        #line hidden
+        
+        #line 17 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+
+        
+        #line default
+        #line hidden
+        
+        #line 17 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(" = ko.observableArray();\r\n\t\t");
+
+        
+        #line default
+        #line hidden
+        
+        #line 18 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+   } else { 
+        
+        #line default
+        #line hidden
+        
+        #line 18 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\t\tself.");
+
+        
+        #line default
+        #line hidden
+        
+        #line 19 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(prop.Name));
+
+        
+        #line default
+        #line hidden
+        
+        #line 19 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(" = ko.observable();\r\n\t\t");
+
+        
+        #line default
+        #line hidden
+        
+        #line 20 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+  }	
+        
+        #line default
+        #line hidden
+        
+        #line 20 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\t\t");
+
+        
+        #line default
+        #line hidden
+        
+        #line 21 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+ }	
+        
+        #line default
+        #line hidden
+        
+        #line 21 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\r\n\r\n\t\t//\tinvoke the extendable\'s init() function. Must happen when all observable" +
+        "s are created (in case a\r\n    //\tcomputable wants to make use of it)\r\n   this.In" +
+        "itialize();\r\n\r\n}\r\n\r\n\r\n       \r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 32 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
    }  
         
         #line default

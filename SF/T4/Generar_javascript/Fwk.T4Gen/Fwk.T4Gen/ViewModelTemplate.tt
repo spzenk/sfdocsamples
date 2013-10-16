@@ -3,13 +3,29 @@
 	{#>
 		
 
-	var <#= _type.Name.ToLower() #> = function()
-	{
+var <#= _type.Name.ToLower() #> = function()
+{
 		var self = this;
 
 		self.$type = '<#= string.Format("{0}, {1}", _type.FullName, _type.Assembly.GetName().Name) #>';
 
-     }
+		<#+ foreach(var prop in _type.GetProperties()) { 
+		
+	if (prop.PropertyType != typeof(string)
+			  && prop.PropertyType != typeof(byte[])
+			  && prop.PropertyType.GetInterface("IEnumerable") != null) {#>
+		self.<#= prop.Name #> = ko.observableArray();
+		<#+   } else { #>
+		self.<#= prop.Name #> = ko.observable();
+		<#+  }	#>
+		<#+ }	#>
+
+
+		//	invoke the extendable's init() function. Must happen when all observables are created (in case a
+    //	computable wants to make use of it)
+   this.Initialize();
+
+}
 
 
        

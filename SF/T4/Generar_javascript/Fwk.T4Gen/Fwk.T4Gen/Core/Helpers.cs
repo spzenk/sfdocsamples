@@ -1,9 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using EnvDTE;
 using Microsoft.VisualStudio.TextTemplating;
 using Fwk.Bases.ViewModels;
+using System.Collections;
+using System.Reflection;
 namespace Fwk.T4Gen
 {
 
@@ -30,16 +33,81 @@ namespace Fwk.T4Gen
             return dteProject;
         }
 
-        public static List<Type> Properties()
+        public static List<Type> GetDefinedTypesOnAllAssemblies(ITextTemplatingEngineHost host)
+        {
+            string path = host.ResolvePath("");
+            Directory.SetCurrentDirectory(path);
+       
+            DirectoryInfo d = new DirectoryInfo(path);
+
+            FileInfo[] files = d.GetFiles("*dll");
+
+            var list = new List<Type>();
+
+            foreach (FileInfo dll in files)
+            {
+              Assembly ass =  System.Reflection.Assembly.LoadFile(dll.FullName);
+              foreach (Type type in ass.GetTypes())
+              {
+                  if (type.IsAbstract) continue;
+                  if (type.Name != typeof(BaseViewModel).Name) continue;
+                  list.Add(type);
+              }
+                
+            }
+            return list;
+        }
+
+
+
+        public static List<Type> Types()
         {
             var list = new List<Type>();
 
 
             foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
             {
-                if (type.IsAbstract) continue;	// only generate JS viewmodels for non-abstract classes
-
+                if (type.IsAbstract) continue;	
+                if (type.Name != typeof(BaseViewModel).Name) continue;
                 list.Add(type);
+            }
+           
+
+
+            return list;
+        }
+
+        public static IEnumerable GetDefinedTypes(ITextTemplatingEngineHost host)
+        {
+            var list = new List<EnvDTE.CodeClass>();
+            Project project = GetProject(host);
+            foreach (EnvDTE.CodeElement element in project.CodeModel.CodeElements)
+            {
+                if (element.Kind == EnvDTE.vsCMElement.vsCMElementClass)
+                {
+                    var type = (EnvDTE.CodeClass)element;
+                    // do stuff with that class here
+                   
+                    list.Add(type);
+                }
+            }
+            return list;
+        }
+
+        public static List<Type> RetriveAllModels()
+        {
+            var list = new List<Type>();
+            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+            {
+                Type[] types = assembly.GetTypes();
+                foreach (Type type in types)
+                {
+                    if (type.BaseType == typeof(BaseViewModel))
+                    {
+                        list.Add(type);
+                    }
+                }
+
             }
             return list;
         }
