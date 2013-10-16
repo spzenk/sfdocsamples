@@ -21,6 +21,10 @@ namespace Test
         {
             //jsObservables t4 = new jsObservables();
             //String s = t4.TransformText();
+
+            jsObservables t = new jsObservables();
+         
+           textBox1.Text=t.TransformText();
         }
     }
 }
