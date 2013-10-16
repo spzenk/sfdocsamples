@@ -1,24 +1,27 @@
 ﻿<#@ template language="C#" hostSpecific="true" #>
+<#@ include file="ViewModelTemplate.tt" #> 
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Microsoft.Ajax.Utilities" #>
 <#@ import namespace="System.IO" #>
 <#
-EnvDTE.Project project = EnvDteHelper.GetProject(this.Host);  
+EnvDTE.Project project = EntityModelToObservable.GetProject(this.Host);  
+
 List<EnvDTE.ProjectItem> jsProjectItems = EnvDteHelper.GetJsProjectItems(project);  
-ScriptCruncher cruncher = new ScriptCruncher();  
-CodeSettings crunchSettings = new CodeSettings();  
-crunchSettings.CollapseToLiteral = true;  
-crunchSettings.LocalRenaming = LocalRenaming.CrunchAll;   
-crunchSettings.StripDebugStatements=true;  
+
+List<Type> typeList = 	EntityModelToObservable.Properties();
+
+foreach (var type in typeList)
+    {
+		TransformText(type);  
+
+		/*
+		var vmtemplate = new ViewModelTemplate(type, list);
+		vmtemplate.Output.Project = @"..\Test\Test.csproj";
+		vmtemplate.Output.File = @"Scripts\viewmodels\" + type.Name.ToLower() + ".js";
+		vmtemplate.Render();*/
+    }
+
   
-foreach( EnvDTE.ProjectItem item in jsProjectItems)  
-{     
-    string itemFileName = item.FileNames[0];   
-    string jsCode = File.ReadAllText(itemFileName);  
-    string jsMinified = cruncher.Crunch(jsCode, crunchSettings);  
-      
-    EnvDteHelper.SaveMinifiedCode(item, jsMinified);  
-    this.WriteLine( "Archivo min: {0}", itemFileName);  
-}  
+
 this.WriteLine("Listo !");  
 #> 
