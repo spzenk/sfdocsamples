@@ -21,26 +21,29 @@ namespace Fwk.T4Gen
     {
         public virtual string TransformText()
         {
+            this.Write(" \r\n");
             
-            #line 5 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\jsObservables.tt"
+            #line 6 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\jsObservables.tt"
 
-EnvDTE.Project project = EnvDteHelper.GetProject(this.Host);  
+EnvDTE.Project project = EntityModelToObservable.GetProject(this.Host);  
+
 List<EnvDTE.ProjectItem> jsProjectItems = EnvDteHelper.GetJsProjectItems(project);  
-ScriptCruncher cruncher = new ScriptCruncher();  
-CodeSettings crunchSettings = new CodeSettings();  
-crunchSettings.CollapseToLiteral = true;  
-crunchSettings.LocalRenaming = LocalRenaming.CrunchAll;   
-crunchSettings.StripDebugStatements=true;  
+
+List<Type> typeList = 	EntityModelToObservable.Properties();
+
+foreach (var type in typeList)
+    {
+		TransformText(type);  
+
+		/*
+		var vmtemplate = new ViewModelTemplate(type, list);
+		vmtemplate.Output.Project = @"..\Test\Test.csproj";
+		vmtemplate.Output.File = @"Scripts\viewmodels\" + type.Name.ToLower() + ".js";
+		vmtemplate.Render();*/
+    }
+
   
-foreach( EnvDTE.ProjectItem item in jsProjectItems)  
-{     
-    string itemFileName = item.FileNames[0];   
-    string jsCode = File.ReadAllText(itemFileName);  
-    string jsMinified = cruncher.Crunch(jsCode, crunchSettings);  
-      
-    EnvDteHelper.SaveMinifiedCode(item, jsMinified);  
-    this.WriteLine( "Archivo min: {0}", itemFileName);  
-}  
+
 this.WriteLine("Listo !");  
 
             
@@ -61,6 +64,55 @@ this.WriteLine("Listo !");
                 this.hostValue = value;
             }
         }
+        
+        #line 1 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+
+	public void TransformText(Type _type )
+	{
+        
+        #line default
+        #line hidden
+        
+        #line 3 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\t\t\r\n\r\n\tvar ");
+
+        
+        #line default
+        #line hidden
+        
+        #line 6 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(_type.Name.ToLower()));
+
+        
+        #line default
+        #line hidden
+        
+        #line 6 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(" = function()\r\n\t{\r\n\t\tvar self = this;\r\n\r\n\t\tself.$type = \'");
+
+        
+        #line default
+        #line hidden
+        
+        #line 10 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("{0}, {1}", _type.FullName, _type.Assembly.GetName().Name)));
+
+        
+        #line default
+        #line hidden
+        
+        #line 10 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+this.Write("\';\r\n\r\n     }\r\n\r\n\r\n       \r\n");
+
+        
+        #line default
+        #line hidden
+        
+        #line 16 "C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Fwk.T4Gen\ViewModelTemplate.tt"
+   }  
+        
+        #line default
+        #line hidden
     }
     
     #line default
