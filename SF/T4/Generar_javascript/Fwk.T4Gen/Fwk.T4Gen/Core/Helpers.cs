@@ -55,7 +55,7 @@ namespace Fwk.T4Gen
                 foreach (Type type in ass.GetTypes())
                 {
                     if (type.IsAbstract) continue;
-                    //if (type.Name != typeof(BaseViewModel).Name) continue;
+                    if (type.BaseType.Name!="BaseViewModel") continue;
                     list.Add(type);
                 }
 

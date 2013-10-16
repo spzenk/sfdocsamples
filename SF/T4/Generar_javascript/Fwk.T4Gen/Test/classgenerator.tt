@@ -15,6 +15,6 @@
 <#
     jsObservables t = new jsObservables();
 	t.Host = this.Host;
-	t.BaseType= Int32;
+	
     this.Write(t.TransformText());
 #>
