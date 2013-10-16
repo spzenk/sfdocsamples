@@ -27,8 +27,14 @@ var <#= _type.Name.ToLower() #> = function()
 
 }
 
-
        
 <#+   }  #>
 
 
+<#+
+	public void TransformText2(string ruta )
+	{#>
+
+	<#= ruta #>
+
+<#+   }  #>

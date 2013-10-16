@@ -35,10 +35,11 @@ namespace Fwk.T4Gen
 
         public static List<Type> GetDefinedTypesOnAllAssemblies(ITextTemplatingEngineHost host)
         {
-            string path = host.ResolvePath("");
-            Directory.SetCurrentDirectory(path);
-       
-            DirectoryInfo d = new DirectoryInfo(path);
+
+            string targetDir = host.ResolveAssemblyReference("$(TargetDir)");
+            //Directory.SetCurrentDirectory(targetDir);
+
+            DirectoryInfo d = new DirectoryInfo(targetDir);
 
             FileInfo[] files = d.GetFiles("*dll");
 
@@ -60,57 +61,57 @@ namespace Fwk.T4Gen
 
 
 
-        public static List<Type> Types()
-        {
-            var list = new List<Type>();
+        //public static List<Type> Types()
+        //{
+        //    var list = new List<Type>();
 
 
-            foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
-            {
-                if (type.IsAbstract) continue;	
-                if (type.Name != typeof(BaseViewModel).Name) continue;
-                list.Add(type);
-            }
+        //    foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
+        //    {
+        //        if (type.IsAbstract) continue;	
+        //        if (type.Name != typeof(BaseViewModel).Name) continue;
+        //        list.Add(type);
+        //    }
            
 
 
-            return list;
-        }
+        //    return list;
+        //}
 
-        public static IEnumerable GetDefinedTypes(ITextTemplatingEngineHost host)
-        {
-            var list = new List<EnvDTE.CodeClass>();
-            Project project = GetProject(host);
-            foreach (EnvDTE.CodeElement element in project.CodeModel.CodeElements)
-            {
-                if (element.Kind == EnvDTE.vsCMElement.vsCMElementClass)
-                {
-                    var type = (EnvDTE.CodeClass)element;
-                    // do stuff with that class here
+        //public static IEnumerable GetDefinedTypes(ITextTemplatingEngineHost host)
+        //{
+        //    var list = new List<EnvDTE.CodeClass>();
+        //    Project project = GetProject(host);
+        //    foreach (EnvDTE.CodeElement element in project.CodeModel.CodeElements)
+        //    {
+        //        if (element.Kind == EnvDTE.vsCMElement.vsCMElementClass)
+        //        {
+        //            var type = (EnvDTE.CodeClass)element;
+        //            // do stuff with that class here
                    
-                    list.Add(type);
-                }
-            }
-            return list;
-        }
+        //            list.Add(type);
+        //        }
+        //    }
+        //    return list;
+        //}
 
-        public static List<Type> RetriveAllModels()
-        {
-            var list = new List<Type>();
-            foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-            {
-                Type[] types = assembly.GetTypes();
-                foreach (Type type in types)
-                {
-                    if (type.BaseType == typeof(BaseViewModel))
-                    {
-                        list.Add(type);
-                    }
-                }
+        //public static List<Type> RetriveAllModels()
+        //{
+        //    var list = new List<Type>();
+        //    foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
+        //    {
+        //        Type[] types = assembly.GetTypes();
+        //        foreach (Type type in types)
+        //        {
+        //            if (type.BaseType == typeof(BaseViewModel))
+        //            {
+        //                list.Add(type);
+        //            }
+        //        }
 
-            }
-            return list;
-        }
+        //    }
+        //    return list;
+        //}
         
     }
 
