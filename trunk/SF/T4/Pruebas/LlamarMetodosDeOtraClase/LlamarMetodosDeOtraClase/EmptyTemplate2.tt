@@ -18,6 +18,7 @@
 
     string text = Fwk.HelperFunctions.FileFunctions.OpenTextFile(@"c:\Projects\DocEjemplos\SF\T4\Pruebas\LlamarMetodosDeOtraClase\LlamarMetodosDeOtraClase\TextFile1.txt");
 	Write(text);  
+	
 	Write(GetData2());
 	
 	Write(GetData2());
