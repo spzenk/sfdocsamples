@@ -1,0 +1,29 @@
+﻿
+<#@ include file="ViewModelTemplate.tt" #> 
+<#@ import namespace="Microsoft.VisualStudio.TextTemplating" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="Microsoft.Ajax.Utilities" #>
+<#@ import namespace="System.IO" #>
+<#+
+public class ObservableGenerator : Template
+{
+    
+    public Type _Model;
+
+    protected override void TransformText()
+    {
+      
+#>
+--User <#= System.Environment.UserName #>
+--Observable  <#= _Model.Name #>_d
+<#+
+        PushIndent("\t");
+         TransformText(_Model);
+        PopIndent();
+#>
+
+<#+
+
+    }
+}
+#>

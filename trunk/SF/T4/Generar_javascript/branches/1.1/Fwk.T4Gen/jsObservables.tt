@@ -3,19 +3,23 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Microsoft.Ajax.Utilities" #>
 <#@ import namespace="System.IO" #>
+<#@ include file="observable.ttinclude" #>
 <#
 EnvDTE.Project project = EntityModelToObservable.GetProject(this.Host);  
-
-List<EnvDTE.ProjectItem> jsProjectItems = EnvDteHelper.GetJsProjectItems(project);  
-
 List<Type> typeList = 	EntityModelToObservable.GetDefinedTypesOnAllAssemblies(this.Host);
 
+string outputFileName="";
+string targetDir = this.Host.ResolveAssemblyReference("$(TargetDir)");
+	ObservableGenerator gen = new  ObservableGenerator();
 foreach (var type in typeList)
     {
 		
-
-		TransformText(type);  
+		outputFileName = Path.Combine(targetDir,string.Concat(type.Name,".js"));
 		
+		gen._Model= type;
+
+		this.gen.RenderToFile(DatabaseName + "_Insert.sql");
+	
 		/*
 		var vmtemplate = new ViewModelTemplate(type, list);
 		vmtemplate.Output.Project = @"..\Test\Test.csproj";
@@ -24,8 +28,7 @@ foreach (var type in typeList)
     }
 
   
-
- 
+	
 #> 
 
 
