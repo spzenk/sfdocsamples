@@ -5,25 +5,20 @@
 
 var <#= _type.Name.ToLower() #> = function()
 {
-		var self = this;
-
-		self.$type = '<#= string.Format("{0}, {1}", _type.FullName, _type.Assembly.GetName().Name) #>';
+	var self = this;
+	self.$type = '<#= string.Format("{0}, {1}", _type.FullName, _type.Assembly.GetName().Name) #>';
 
 		<#+ foreach(var prop in _type.GetProperties()) { 
 		
 	if (prop.PropertyType != typeof(string)
 			  && prop.PropertyType != typeof(byte[])
 			  && prop.PropertyType.GetInterface("IEnumerable") != null) {#>
-		self.<#= prop.Name #> = ko.observableArray();
+	self.<#= prop.Name #> = ko.observableArray();
 		<#+   } else { #>
-		self.<#= prop.Name #> = ko.observable();
+	self.<#= prop.Name #> = ko.observable();
 		<#+  }	#>
 		<#+ }	#>
-
-
-
    this.Initialize();
-
 }
 
        
