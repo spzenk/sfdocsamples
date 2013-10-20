@@ -35,7 +35,7 @@ namespace Fwk.T4Gen
 
         public static List<Type> GetDefinedTypesOnAllAssemblies(ITextTemplatingEngineHost host)
         {
-
+           
             string targetDir = host.ResolveAssemblyReference("$(TargetDir)");
             //Directory.SetCurrentDirectory(targetDir);
              var list = new List<Type>();
@@ -63,22 +63,7 @@ namespace Fwk.T4Gen
         }
 
 
-        public static List<Type> Types()
-        {
-            var list = new List<Type>();
-
-         
-            //foreach (Type type in System.Reflection.Assembly.GetAssembly(typeof(BaseViewModel)).GetTypes())
-            //{
-            //    if (type.IsAbstract) continue;
-            //    if (type.Name != typeof(BaseViewModel).Name) continue;
-            //    list.Add(type);
-            //}
-
-
-
-            return list;
-        }
+       
 
         public static List<EnvDTE.CodeClass> GetDefinedTypes(ITextTemplatingEngineHost host)
         {
@@ -107,23 +92,13 @@ namespace Fwk.T4Gen
             return listClass;
         }
 
-        //public static List<Type> RetriveAllModels()
-        //{
-        //    var list = new List<Type>();
-        //    foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
-        //    {
-        //        Type[] types = assembly.GetTypes();
-        //        foreach (Type type in types)
-        //        {
-        //            if (type.BaseType == typeof(BaseViewModel))
-        //            {
-        //                list.Add(type);
-        //            }
-        //        }
+        public static void SaveObservable(Project project, string observableCode,string outputFileName)
+        {
 
-        //    }
-        //    return list;
-        //}
+            File.WriteAllText(String.Concat(outputFileName, ".js"), observableCode);
+      
+            project.ProjectItems.AddFromFile(String.Concat(outputFileName, ".js"));
+        }
         
     }
 
