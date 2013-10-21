@@ -42,6 +42,7 @@
     <Reference Include="Fwk.Bases">
       <HintPath>..\..\..\libs\Fwk.Bases.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.TextTemplating.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TextTemplating.Interfaces.10.0, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -53,9 +54,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="T4Toolbox.10.0, Version=10.10.13.1, Culture=neutral, PublicKeyToken=7e313accbcce84dc, processorArchitecture=x86" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\Helpers.cs" />
+    <Compile Include="Generator1.cs" />
     <Compile Include="jsObservables.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -67,6 +70,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Template1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Template1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Template1.partial.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Core\app.config" />
@@ -80,6 +89,10 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Template1.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Template1.cs</LastGenOutput>
     </None>
     <None Include="ViewModelTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

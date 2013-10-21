@@ -1,5 +1,5 @@
 ﻿<#@ template language="C#" hostSpecific="true" #>
-<#@ include file="ViewModelTemplate.tt" #> 
+
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Xml" #>
 <#@ import namespace="System.Xml" #>
@@ -8,23 +8,28 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Microsoft.Ajax.Utilities" #>
 <#@ import namespace="System.IO" #>
-<#@ include file="T4Toolbox.tt" #>
 <#@ include file="observable.ttinclude" #>
+
 <#
-EnvDTE.Project project = EntityModelToObservable.GetProject(this.Host);  
-List<Type> typeList = 	EntityModelToObservable.GetDefinedTypesOnAllAssemblies(this.Host);
+EnvDTE.Project project = Fwk.T4Gen.EntityModelToObservable.GetProject(this.Host);  
+List<Type> typeList = 	Fwk.T4Gen.EntityModelToObservable.GetDefinedTypesOnAllAssemblies(this.Host);
+var session = new TextTemplatingSession();
 
 string outputFileName="";
 string targetDir = this.Host.ResolveAssemblyReference("$(TargetDir)");
-	ObservableGenerator gen = new  ObservableGenerator();
+ObservableGenerator gen = new ObservableGenerator();
+var template = Activator.CreateInstance<ObservableGenerator>();
 foreach (var type in typeList)
     {
 		
 		outputFileName = Path.Combine(targetDir,string.Concat(type.Name,".js"));
-		
-		gen._Model= type;
 
-		this.GenerationEnvironment.RenderToFile(outputFileName );
+        gen._Model = type;
+        session["type"] = type;
+        String codeGen = gen.TransformText();
+                                                                                       
+        Fwk.HelperFunctions.FileFunctions.SaveTextFile(outputFileName, codeGen);
+       
 	
 		/*
 		var vmtemplate = new ViewModelTemplate(type, list);

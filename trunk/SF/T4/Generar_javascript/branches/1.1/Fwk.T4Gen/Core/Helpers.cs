@@ -5,8 +5,10 @@ using System.IO;
 using EnvDTE;
 using Microsoft.VisualStudio.TextTemplating;
 
+
 using System.Collections;
 using System.Reflection;
+
 namespace Fwk.T4Gen
 {
 
@@ -106,6 +108,7 @@ namespace Fwk.T4Gen
     {
         public static Project GetProject(ITextTemplatingEngineHost host)
         {
+            
             IServiceProvider hostServiceProvider = (IServiceProvider)host;
             if (hostServiceProvider == null)
                 throw new Exception("Host property returned unexpected value (null).");
@@ -162,4 +165,5 @@ namespace Fwk.T4Gen
 
     }
 
+   
 }
