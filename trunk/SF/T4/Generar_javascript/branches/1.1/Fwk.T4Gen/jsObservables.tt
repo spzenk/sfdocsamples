@@ -1,8 +1,14 @@
 ﻿<#@ template language="C#" hostSpecific="true" #>
 <#@ include file="ViewModelTemplate.tt" #> 
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Text" #> 
+<#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Microsoft.Ajax.Utilities" #>
 <#@ import namespace="System.IO" #>
+<#@ include file="T4Toolbox.tt" #>
 <#@ include file="observable.ttinclude" #>
 <#
 EnvDTE.Project project = EntityModelToObservable.GetProject(this.Host);  
@@ -18,7 +24,7 @@ foreach (var type in typeList)
 		
 		gen._Model= type;
 
-		this.gen.RenderToFile(DatabaseName + "_Insert.sql");
+		this.GenerationEnvironment.RenderToFile(outputFileName );
 	
 		/*
 		var vmtemplate = new ViewModelTemplate(type, list);
