@@ -1,0 +1,12 @@
+<#+
+	public class ObservableTemplate : T4Toolbox.Template
+                                                           {
+
+	                                                         public Type _type;
+                                                             public override string TransformText()
+                                                             { #>
+		Hola
+		<#  return this.GenerationEnvironment.ToString(); #>
+		<#+	} #>
+<#+ } 
+#>

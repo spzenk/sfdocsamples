@@ -1,7 +1,6 @@
 ﻿<#+
 	public void TransformText(Type _type )
 	{#>
-		
 
 var <#= _type.Name.ToLower() #> = function()
 {
@@ -19,13 +18,8 @@ var <#= _type.Name.ToLower() #> = function()
 		self.<#= prop.Name #> = ko.observable();
 		<#+  }	#>
 		<#+ }	#>
-
-
-
    this.Initialize();
-
 }
-
        
 <#+   }  #>
 

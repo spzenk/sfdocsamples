@@ -148,7 +148,7 @@ namespace Fwk.T4Gen
             string outputFileName = Path.ChangeExtension(originalJsItem.FileNames[0], ".min.js");
             File.WriteAllText(outputFileName, minifiedCode);
 
-            ProjectItem parentProjectItem = originalJsItem.Properties.Parent;
+            ProjectItem parentProjectItem = (ProjectItem)originalJsItem.Properties.Parent;
             parentProjectItem.ProjectItems.AddFromFile(outputFileName);
         }
 
