@@ -19,7 +19,7 @@ List<Type> typeList = 	Fwk.T4Gen.EntityModelToObservable.GetDefinedTypesOnAllAss
 
 
 string outputFileName="";
-string targetDir = this.Host.ResolveAssemblyReference("$(TargetDir)");
+string targetDir = this.Host.ResolveAssemblyReference("$(ProjectDir)");
 ObservableTemplate gen = new ObservableTemplate();
 
 foreach (var type in typeList)
