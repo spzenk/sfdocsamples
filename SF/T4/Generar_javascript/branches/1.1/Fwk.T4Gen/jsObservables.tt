@@ -1,4 +1,6 @@
-﻿<#@ template language="C#" hostSpecific="true" #>
+﻿<#@ template language="C#" Hostspecific="true" #>
+<#@ include file="ViewModelTemplate.tt" #> 
+<#@ include file="ObservableTemplate.tt" #>
 
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Xml" #>
@@ -8,37 +10,27 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Microsoft.Ajax.Utilities" #>
 <#@ import namespace="System.IO" #>
-<#@ include file="observable.ttinclude" #>
+
+
 
 <#
 EnvDTE.Project project = Fwk.T4Gen.EntityModelToObservable.GetProject(this.Host);  
 List<Type> typeList = 	Fwk.T4Gen.EntityModelToObservable.GetDefinedTypesOnAllAssemblies(this.Host);
-var session = new TextTemplatingSession();
+
 
 string outputFileName="";
 string targetDir = this.Host.ResolveAssemblyReference("$(TargetDir)");
-ObservableGenerator gen = new ObservableGenerator();
-var template = Activator.CreateInstance<ObservableGenerator>();
+ObservableTemplate gen = new ObservableTemplate();
+
 foreach (var type in typeList)
     {
-		
+	    gen._type = type;
+        
 		outputFileName = Path.Combine(targetDir,string.Concat(type.Name,".js"));
-
-        gen._Model = type;
-        session["type"] = type;
-        String codeGen = gen.TransformText();
-                                                                                       
-        Fwk.HelperFunctions.FileFunctions.SaveTextFile(outputFileName, codeGen);
-       
-	
-		/*
-		var vmtemplate = new ViewModelTemplate(type, list);
-		vmtemplate.Output.Project = @"..\Test\Test.csproj";
-		vmtemplate.Output.File = @"Scripts\viewmodels\" + type.Name.ToLower() + ".js";
-		vmtemplate.Render();*/
+        gen.RenderToFile(outputFileName);
+        //File.WriteAllText(outputFileName, this.GenerationEnvironment.ToString());
+        //this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
     }
-
-  
 	
 #> 
 
