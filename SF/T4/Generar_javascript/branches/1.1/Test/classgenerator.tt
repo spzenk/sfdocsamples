@@ -8,8 +8,9 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
-					
-<#@ assembly name="$(SolutionDir)\Fwk.T4Gen\bin\debug\Fwk.T4Gen.dll" #>
+<#@ include file="T4Toolbox.tt" #>					
+
+<#@ assembly name="$(ProjectDir)\bin\debug\Fwk.T4Gen.dll" #>
 <#@ import namespace="Fwk.T4Gen" #>
 
 <#

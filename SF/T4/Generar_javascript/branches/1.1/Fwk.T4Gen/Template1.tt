@@ -1,0 +1,14 @@
+﻿<#+
+// <copyright file="Template1.tt" company="">
+//  Copyright © . All Rights Reserved.
+// </copyright>
+
+public class Template1 : T4Toolbox.Template
+{
+	public override string TransformText()
+	{
+
+        return this.GenerationEnvironment.ToString();
+	}
+}
+#>

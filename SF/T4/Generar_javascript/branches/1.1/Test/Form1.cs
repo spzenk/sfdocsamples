@@ -26,7 +26,7 @@ namespace Test
             DirectoryInfo d2 = new DirectoryInfo(@"C:\Projects\sfdocsamples\SF\T4\Generar_javascript\Fwk.T4Gen\Test\bin\Debug");
             var set = new HashSet<string> { ".dll", ".exe" };
             FileInfo[] files = d2.GetFiles(".dll", SearchOption.TopDirectoryOnly);
-
+       
             List<Type> d = RetriveAllModels();
             d = Properties();
             //jsObservables t4 = new jsObservables();
