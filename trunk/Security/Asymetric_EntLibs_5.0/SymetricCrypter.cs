@@ -185,7 +185,7 @@ namespace Symetric_EntLibs_5._0
              TechnicalException te;
              if (string.IsNullOrEmpty(keyFileName))
              {
-                 keyFileName = System.Configuration.ConfigurationSettings.AppSettings["CrypKeyFile"];
+                 keyFileName = System.Configuration.ConfigurationManager.AppSettings["CrypKeyFile"];
              }
              if (string.IsNullOrEmpty(keyFileName))
              {
@@ -197,9 +197,7 @@ namespace Symetric_EntLibs_5._0
 
              if (!File.Exists(keyFileName))
              {
-                 throw new Fwk.Exceptions.TechnicalException();
-
-                 te = new TechnicalException(string.Concat("La clave de encriptacion ", keyFileName, " no existe"));
+                                  te = new TechnicalException(string.Concat("La clave de encriptacion ", keyFileName, " no existe"));
                  ExceptionHelper.SetTechnicalException<SymetriCypher<T>>(te);
                  te.ErrorId = "4401";
                  throw te;
