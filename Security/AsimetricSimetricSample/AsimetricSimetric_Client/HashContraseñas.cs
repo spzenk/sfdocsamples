@@ -16,11 +16,9 @@ namespace AsimetricSimetric_Client
 
             try
             {
-                _objTemporal = System.Text.Encoding.UTF8.GetBytes(
-_strPasswordSalt);
+                _objTemporal = System.Text.Encoding.UTF8.GetBytes(_strPasswordSalt);
                 for (int i = 0; i <= intIteraciones - 1; i++)
-                    _objTemporal = _objSha256.ComputeHash(
-_objTemporal);
+                    _objTemporal = _objSha256.ComputeHash(_objTemporal);
             }
             finally { _objSha256.Clear(); }
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Security.Cryptography;
 
+//http://msdn.microsoft.com/es-es/library/bb972217.aspx#mainSection
 namespace AsimetricSimetric_Client
 {
     /// <summary>
