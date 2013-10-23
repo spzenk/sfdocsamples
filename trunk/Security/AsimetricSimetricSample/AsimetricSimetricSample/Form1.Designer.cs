@@ -42,7 +42,7 @@
             // 
             // txtAsimDesEncriptado
             // 
-            this.txtAsimDesEncriptado.Location = new System.Drawing.Point(12, 368);
+            this.txtAsimDesEncriptado.Location = new System.Drawing.Point(12, 483);
             this.txtAsimDesEncriptado.Multiline = true;
             this.txtAsimDesEncriptado.Name = "txtAsimDesEncriptado";
             this.txtAsimDesEncriptado.Size = new System.Drawing.Size(436, 108);
@@ -74,12 +74,12 @@
             this.txtAsimLlavePublica.Location = new System.Drawing.Point(12, 47);
             this.txtAsimLlavePublica.Multiline = true;
             this.txtAsimLlavePublica.Name = "txtAsimLlavePublica";
-            this.txtAsimLlavePublica.Size = new System.Drawing.Size(436, 53);
+            this.txtAsimLlavePublica.Size = new System.Drawing.Size(436, 154);
             this.txtAsimLlavePublica.TabIndex = 14;
             // 
             // txtAsimEncriptado
             // 
-            this.txtAsimEncriptado.Location = new System.Drawing.Point(12, 278);
+            this.txtAsimEncriptado.Location = new System.Drawing.Point(12, 393);
             this.txtAsimEncriptado.Multiline = true;
             this.txtAsimEncriptado.Name = "txtAsimEncriptado";
             this.txtAsimEncriptado.Size = new System.Drawing.Size(436, 53);
@@ -87,7 +87,7 @@
             // 
             // txtAsimAEncriptar
             // 
-            this.txtAsimAEncriptar.Location = new System.Drawing.Point(15, 162);
+            this.txtAsimAEncriptar.Location = new System.Drawing.Point(15, 277);
             this.txtAsimAEncriptar.Multiline = true;
             this.txtAsimAEncriptar.Name = "txtAsimAEncriptar";
             this.txtAsimAEncriptar.Size = new System.Drawing.Size(436, 85);
@@ -96,7 +96,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 142);
+            this.label1.Location = new System.Drawing.Point(9, 257);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 17);
             this.label1.TabIndex = 11;
