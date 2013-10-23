@@ -62,8 +62,7 @@ namespace AsimetricSimetricSample
 
         private void btnAsimDesEncriptar_Click(object sender, EventArgs e)
         {
-            this.txtAsimDesEncriptado.Text = this._objKey.DesEncriptar(Convert.FromBase64String
-(this.txtAsimEncriptado.Text), this.chkSimetrica.Checked);
+            this.txtAsimDesEncriptado.Text = this._objKey.DesEncriptar(Convert.FromBase64String(this.txtAsimEncriptado.Text), this.chkSimetrica.Checked);
         }
     }
 }

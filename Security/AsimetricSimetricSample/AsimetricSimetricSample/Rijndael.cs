@@ -8,6 +8,20 @@ namespace AsimetricSimetricSample
 {
     public class MiRijndael
     {
+        
+
+        public static byte[] Encriptar(string strEncriptar, string strPK)
+        {
+            return Encriptar(strEncriptar, (new PasswordDeriveBytes(strPK, null)).GetBytes(32));
+        }
+
+        public static string Desencriptar(byte[] bytDesEncriptar, string strPK)
+        {
+            return Desencriptar(bytDesEncriptar, (new PasswordDeriveBytes(strPK, null)).GetBytes(32));
+        }
+
+
+
         public static byte[] Encriptar(string strEncriptar, byte[] bytPK)
         {
             Rijndael miRijndael = Rijndael.Create();
@@ -20,8 +34,7 @@ namespace AsimetricSimetricSample
                 miRijndael.GenerateIV();
 
                 byte[] toEncrypt = System.Text.Encoding.UTF8.GetBytes(strEncriptar);
-                encrypted = (miRijndael.CreateEncryptor()).TransformFinalBlock(toEncrypt, 0,
-toEncrypt.Length);
+                encrypted = (miRijndael.CreateEncryptor()).TransformFinalBlock(toEncrypt, 0, toEncrypt.Length);
 
                 returnValue = new byte[miRijndael.IV.Length + encrypted.Length];
                 miRijndael.IV.CopyTo(returnValue, 0);
@@ -54,16 +67,6 @@ toEncrypt.Length);
             finally { miRijndael.Clear(); }
 
             return returnValue;
-        }
-
-        public static byte[] Encriptar(string strEncriptar, string strPK)
-        {
-            return Encriptar(strEncriptar, (new PasswordDeriveBytes(strPK, null)).GetBytes(32));
-        }
-
-        public static string Desencriptar(byte[] bytDesEncriptar, string strPK)
-        {
-            return Desencriptar(bytDesEncriptar, (new PasswordDeriveBytes(strPK, null)).GetBytes(32));
         }
     }
 }
