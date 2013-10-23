@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Symetric_EntLibs_5._0;
 
 namespace Asymetric_EntLibs_5_0
 {
@@ -15,7 +16,7 @@ namespace Asymetric_EntLibs_5_0
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Form_ConArchivo());
         }
     }
 }
