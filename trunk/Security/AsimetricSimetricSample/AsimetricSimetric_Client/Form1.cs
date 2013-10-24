@@ -38,8 +38,8 @@ namespace AsimetricSimetric_Client
             PasswordDeriveBytes _objPdb = new PasswordDeriveBytes(this.txtAsimAEncriptar.Text, System.Text.Encoding.UTF8.GetBytes(this.txtSalt.Text), "SHA256", Convert.ToInt32(this.txtIteraciones.Text));
             this.txtHashEncriptado2.Text = Convert.ToBase64String(_objPdb.GetBytes(32));
 
-            byte[] bytes_CriptedData = HashContraseñas.Encriptar(txtAsimAEncriptar.Text, txtSalt.Text, Convert.ToInt32(txtIteraciones.Text));
-            this.txtHashEncriptado.Text = Convert.ToBase64String(bytes_CriptedData);
+            byte[] bytes_CriptedData = HashContraseñas.CreateHash(txtAsimAEncriptar.Text, txtSalt.Text, Convert.ToInt32(txtIteraciones.Text));
+            this.txtHashValue.Text = Convert.ToBase64String(bytes_CriptedData);
 
         }
         byte[] _objHashKey = null;
@@ -48,6 +48,31 @@ namespace AsimetricSimetric_Client
         {
             this._objHashKey = (new System.Security.Cryptography.DESCryptoServiceProvider()).Key;
             this.lblSalt.Text = "Key : " + Convert.ToBase64String(this._objHashKey);
+        }
+        
+        private void txtUserName_TextChanged(object sender, EventArgs e)
+        {
+            txtAsimAEncriptar.Text = HashContraseñas.Get_Credentials_Pathern(txtUserName.Text, txtPassword.Text);  
+        }
+
+       
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            txtAsimAEncriptar.Text = HashContraseñas.Get_Credentials_Pathern(txtUserName.Text, txtPassword.Text);  
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (Form2 f = new Form2())
+            {
+                f.intIteraciones = Convert.ToInt32(txtIteraciones.Text);
+                f.strSalt = txtSalt.Text;
+                f.username = txtUserName.Text;
+                f.stored_hash = txtHashValue.Text;
+                f.pwd = txtPassword.Text;
+                f.ShowDialog();
+            }
         }
 
 
