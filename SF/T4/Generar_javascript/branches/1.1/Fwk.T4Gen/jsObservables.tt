@@ -25,9 +25,9 @@ ObservableTemplate gen = new ObservableTemplate();
 foreach (var type in typeList)
     {
 	    gen._type = type;
-        
+        String code = gen.TransformText();
 		outputFileName = Path.Combine(targetDir,string.Concat(type.Name,".js"));
-        gen.RenderToFile(outputFileName);
+        //gen.RenderToFile(outputFileName);
         //File.WriteAllText(outputFileName, this.GenerationEnvironment.ToString());
         //this.GenerationEnvironment.Remove(0, this.GenerationEnvironment.Length);
     }
