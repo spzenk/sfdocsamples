@@ -12,7 +12,8 @@ namespace AsimetricSimetricSample
 
         public static byte[] Encriptar(string strEncriptar, string strPK)
         {
-            return Encriptar(strEncriptar, (new PasswordDeriveBytes(strPK, null)).GetBytes(32));
+            PasswordDeriveBytes pwdBytes = new PasswordDeriveBytes(strPK, null);
+            return Encriptar(strEncriptar, pwdBytes.GetBytes(32));
         }
 
         public static string Desencriptar(byte[] bytDesEncriptar, string strPK)

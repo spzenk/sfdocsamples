@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsimetricSimetricSample", "AsimetricSimetricSample\AsimetricSimetricSample.csproj", "{110C8B43-3E5F-4FC4-9AAD-FBCF561C39E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsimetricSimetric_hash", "AsimetricSimetric_Client\AsimetricSimetric_hash.csproj", "{2BFF0B1D-C8D3-450C-93B6-731D183E9620}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsimetricSimetric_hash_Ent_Libs", "AsimetricSimetric_hash_Ent_Libs\AsimetricSimetric_hash_Ent_Libs.csproj", "{188DAF9A-3283-49FE-8683-CC93AE056253}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -17,14 +13,6 @@ Global
 		{110C8B43-3E5F-4FC4-9AAD-FBCF561C39E4}.Debug|x86.Build.0 = Debug|x86
 		{110C8B43-3E5F-4FC4-9AAD-FBCF561C39E4}.Release|x86.ActiveCfg = Release|x86
 		{110C8B43-3E5F-4FC4-9AAD-FBCF561C39E4}.Release|x86.Build.0 = Release|x86
-		{2BFF0B1D-C8D3-450C-93B6-731D183E9620}.Debug|x86.ActiveCfg = Debug|x86
-		{2BFF0B1D-C8D3-450C-93B6-731D183E9620}.Debug|x86.Build.0 = Debug|x86
-		{2BFF0B1D-C8D3-450C-93B6-731D183E9620}.Release|x86.ActiveCfg = Release|x86
-		{2BFF0B1D-C8D3-450C-93B6-731D183E9620}.Release|x86.Build.0 = Release|x86
-		{188DAF9A-3283-49FE-8683-CC93AE056253}.Debug|x86.ActiveCfg = Debug|x86
-		{188DAF9A-3283-49FE-8683-CC93AE056253}.Debug|x86.Build.0 = Debug|x86
-		{188DAF9A-3283-49FE-8683-CC93AE056253}.Release|x86.ActiveCfg = Release|x86
-		{188DAF9A-3283-49FE-8683-CC93AE056253}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
