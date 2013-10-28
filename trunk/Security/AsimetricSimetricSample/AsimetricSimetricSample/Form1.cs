@@ -32,9 +32,10 @@ namespace AsimetricSimetricSample
         private void btnAsimEncriptar_Click(object sender, EventArgs e)
         {
             byte[] _bytEncriptado = null;
-
+            System.Security.Cryptography.CspParameters csp = new CspParameters();
+            csp.KeyContainerName = "pepe";
             //Creamos una instancia del encritador publico 
-            RSACryptoServiceProvider _objEncriptadorPublicoRSA = new RSACryptoServiceProvider();
+            RSACryptoServiceProvider _objEncriptadorPublicoRSA = new RSACryptoServiceProvider(csp);
             //Le asignamos la llave genarada 
             _objEncriptadorPublicoRSA.FromXmlString(this.txtAsimLlavePublica.Text);
 
