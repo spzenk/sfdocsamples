@@ -24,14 +24,19 @@ namespace AsimetricSimetricSample
             _objKey = new RSATest();
         }
 
+        /// <summary>
+        /// Genera _bytEncriptado: Es unByte[] con el contenido de llavePublica RSA encriptada (bytes) y contenido Encriptado Simetrico 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAsimEncriptar_Click(object sender, EventArgs e)
         {
             byte[] _bytEncriptado = null;
 
             //Creamos una instancia del encritador publico 
-            RSACryptoServiceProvider _objEncriptadorPublico = new RSACryptoServiceProvider();
+            RSACryptoServiceProvider _objEncriptadorPublicoRSA = new RSACryptoServiceProvider();
             //Le asignamos la llave genarada 
-            _objEncriptadorPublico.FromXmlString(this.txtAsimLlavePublica.Text);
+            _objEncriptadorPublicoRSA.FromXmlString(this.txtAsimLlavePublica.Text);
 
             if (this.chkSimetrica.Checked)
             {
@@ -39,21 +44,24 @@ namespace AsimetricSimetricSample
                 byte[] _bytKey = (Rijndael.Create()).Key;
 
                 //Se encripta el texto y se obtiene la llave que se utilizó para la encriptación 
-                byte[] _bytEncriptadoSimetrico = MiRijndael.Encriptar(this.txtAsimAEncriptar.Text, _bytKey);
+                byte[] _contenidoEncriptadoSimetrico = MiRijndael.Encriptar(this.txtAsimAEncriptar.Text, _bytKey);
 
                 //Se encripta la llave con el algoritmo RSA 
-                byte[] _bytEncriptadoLlave = _objEncriptadorPublico.Encrypt(_bytKey, false);
+                byte[] llaveEncriptadaRSA = _objEncriptadorPublicoRSA.Encrypt(_bytKey, false);
 
-                //Se copia en un arreglo la llave encriptada y el encriptado de Rijndael 
-                _bytEncriptado = new byte[_bytEncriptadoLlave.Length + _bytEncriptadoSimetrico.Length];
-                _bytEncriptadoLlave.CopyTo(_bytEncriptado, 0);
-                _bytEncriptadoSimetrico.CopyTo(_bytEncriptado, _bytEncriptadoLlave.Length);
+                #region Se copia en un vector la llave encriptada y el contenido encriptado Simetrico (Rijndael)
+                _bytEncriptado = new byte[llaveEncriptadaRSA.Length + _contenidoEncriptadoSimetrico.Length];
+                llaveEncriptadaRSA.CopyTo(_bytEncriptado, 0);
+                _contenidoEncriptadoSimetrico.CopyTo(_bytEncriptado, llaveEncriptadaRSA.Length);
+                #endregion
+
             }
             else
             {
-                _bytEncriptado = _objEncriptadorPublico.Encrypt(System.Text.Encoding.UTF8.GetBytes(this.txtAsimAEncriptar.Text), false);
+                _bytEncriptado = _objEncriptadorPublicoRSA.Encrypt(System.Text.Encoding.UTF8.GetBytes(this.txtAsimAEncriptar.Text), false);
             }
             this.txtAsimEncriptado.Text = Convert.ToBase64String(_bytEncriptado);
+
         }
 
         private void btnAsimGenerar_Click(object sender, EventArgs e)
