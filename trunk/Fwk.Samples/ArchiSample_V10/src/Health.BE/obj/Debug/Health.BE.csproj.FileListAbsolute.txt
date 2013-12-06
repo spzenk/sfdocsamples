@@ -1,0 +1,10 @@
+E:\Projects\Fwk.FullArchSample\Releases\Health.BE.dll.config
+E:\Projects\Fwk.FullArchSample\Releases\Health.BE.dll
+E:\Projects\Fwk.FullArchSample\Releases\Health.BE.pdb
+E:\Projects\Fwk.FullArchSample\src\Health.BE\obj\Debug\Health.BE.dll
+E:\Projects\Fwk.FullArchSample\src\Health.BE\obj\Debug\Health.BE.pdb
+E:\Projects\sfdocsamples\Fwk.Samples\ArchiSample_V10\src\Health.BE\obj\Debug\Health.BE.dll
+E:\Projects\sfdocsamples\Fwk.Samples\ArchiSample_V10\Releases\Health.BE.dll.config
+E:\Projects\sfdocsamples\Fwk.Samples\ArchiSample_V10\Releases\Health.BE.dll
+E:\Projects\sfdocsamples\Fwk.Samples\ArchiSample_V10\Releases\Health.BE.pdb
+E:\Projects\sfdocsamples\Fwk.Samples\ArchiSample_V10\src\Health.BE\obj\Debug\Health.BE.pdb
