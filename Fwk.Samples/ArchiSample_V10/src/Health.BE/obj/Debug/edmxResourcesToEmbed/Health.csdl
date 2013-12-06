@@ -1,0 +1,1176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Clinica1Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="HealthEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="aspnet_Users" EntityType="Clinica1Model.aspnet_Users" />
+    <EntitySet Name="TipoParametroes" EntityType="Clinica1Model.TipoParametro" />
+    <AssociationSet Name="FK_TipoParametro_TipoParametro" Association="Clinica1Model.FK_TipoParametro_TipoParametro">
+      <End Role="TipoParametro" EntitySet="TipoParametroes" />
+      <End Role="TipoParametro1" EntitySet="TipoParametroes" />
+    </AssociationSet>
+    <EntitySet Name="Parametros" EntityType="Clinica1Model.Parametro" />
+    <AssociationSet Name="FK_ParamComercial_TipoParametro" Association="Clinica1Model.FK_ParamComercial_TipoParametro">
+      <End Role="TipoParametro" EntitySet="TipoParametroes" />
+      <End Role="Parametro" EntitySet="Parametros" />
+    </AssociationSet>
+    <EntitySet Name="Vacunas" EntityType="Clinica1Model.Vacuna" />
+    <EntitySet Name="ResourceSchedulings" EntityType="Clinica1Model.ResourceScheduling" />
+    <EntitySet Name="Mutuals" EntityType="Clinica1Model.Mutual" />
+    <EntitySet Name="Profesionals" EntityType="Clinica1Model.Profesional" />
+    <EntitySet Name="Profesional_ResourseScheduling" EntityType="Clinica1Model.Profesional_ResourseScheduling" />
+    <AssociationSet Name="FK_Profesional_Parametros" Association="Clinica1Model.FK_Profesional_Parametros">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="Profesional" EntitySet="Profesionals" />
+    </AssociationSet>
+    <AssociationSet Name="ProfesionalEspecialidad" Association="Clinica1Model.ProfesionalEspecialidad">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="Profesional" EntitySet="Profesionals" />
+    </AssociationSet>
+    <EntitySet Name="CEI10_Temp" EntityType="Clinica1Model.CEI10_Temp" />
+    <EntitySet Name="CEI_10" EntityType="Clinica1Model.CEI_10" />
+    <EntitySet Name="ProfesionalAppointments" EntityType="Clinica1Model.ProfesionalAppointment" />
+    <EntitySet Name="Patient_Appointments_View" EntityType="Clinica1Model.Patient_Appointments_View" />
+    <EntitySet Name="PatientAllergies" EntityType="Clinica1Model.PatientAllergy" />
+    <EntitySet Name="Patients" EntityType="Clinica1Model.Patient" />
+    <EntitySet Name="PatientViews" EntityType="Clinica1Model.PatientView" />
+    <AssociationSet Name="FK_PatientAllergy_Paciente" Association="Clinica1Model.FK_PatientAllergy_Paciente">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="PatientAllergy" EntitySet="PatientAllergies" />
+    </AssociationSet>
+    <EntitySet Name="PlanVacunacions" EntityType="Clinica1Model.PlanVacunacion" />
+    <AssociationSet Name="FK_PlanVacunación_Paciente" Association="Clinica1Model.FK_PlanVacunación_Paciente">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="PlanVacunacion" EntitySet="PlanVacunacions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanVacunacion_Vacunas" Association="Clinica1Model.FK_PlanVacunacion_Vacunas">
+      <End Role="Vacuna" EntitySet="Vacunas" />
+      <End Role="PlanVacunacion" EntitySet="PlanVacunacions" />
+    </AssociationSet>
+    <EntitySet Name="PlanVacunacion_FullView" EntityType="Clinica1Model.PlanVacunacion_FullView" />
+    <EntitySet Name="MutualPorPacientes" EntityType="Clinica1Model.MutualPorPaciente" />
+    <AssociationSet Name="FK_MutualPorPaciente_Mutual" Association="Clinica1Model.FK_MutualPorPaciente_Mutual">
+      <End Role="Mutual" EntitySet="Mutuals" />
+      <End Role="MutualPorPaciente" EntitySet="MutualPorPacientes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MutualPorPaciente_Paciente" Association="Clinica1Model.FK_MutualPorPaciente_Paciente">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="MutualPorPaciente" EntitySet="MutualPorPacientes" />
+    </AssociationSet>
+    <EntitySet Name="HealthInstitution_Rooms" EntityType="Clinica1Model.HealthInstitution_Rooms" />
+    <AssociationSet Name="FK_HealthInstitution_Rooms_HealthInstitution_Rooms" Association="Clinica1Model.FK_HealthInstitution_Rooms_HealthInstitution_Rooms">
+      <End Role="HealthInstitution_Rooms" EntitySet="HealthInstitution_Rooms" />
+      <End Role="HealthInstitution_Rooms1" EntitySet="HealthInstitution_Rooms" />
+    </AssociationSet>
+    <EntitySet Name="Personas" EntityType="Clinica1Model.Persona" />
+    <AssociationSet Name="FK_Persona_aspnet_Users" Association="Clinica1Model.FK_Persona_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Persona" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Parametros" Association="Clinica1Model.FK_Persona_Parametros">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="Persona" EntitySet="Personas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paciente_Persona" Association="Clinica1Model.FK_Paciente_Persona">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Patient" EntitySet="Patients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profecional_Persona" Association="Clinica1Model.FK_Profecional_Persona">
+      <End Role="Persona" EntitySet="Personas" />
+      <End Role="Profesional" EntitySet="Profesionals" />
+    </AssociationSet>
+    <EntitySet Name="Profesional_FullView" EntityType="Clinica1Model.Profesional_FullView" />
+    <EntitySet Name="HealtInstitute_UsersInRoles" EntityType="Clinica1Model.HealtInstitute_UsersInRoles" />
+    <EntitySet Name="HealthInstitution_Profesional" EntityType="Clinica1Model.HealthInstitution_Profesional" />
+    <AssociationSet Name="FK_HealthInstitution_Profesional_Profesional" Association="Clinica1Model.FK_HealthInstitution_Profesional_Profesional">
+      <End Role="Profesional" EntitySet="Profesionals" />
+      <End Role="HealthInstitution_Profesional" EntitySet="HealthInstitution_Profesional" />
+    </AssociationSet>
+    <EntitySet Name="HealthInstitutions" EntityType="Clinica1Model.HealthInstitution" />
+    <AssociationSet Name="FK_HealthInstitution_Parametros_City" Association="Clinica1Model.FK_HealthInstitution_Parametros_City">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Parametros_Country" Association="Clinica1Model.FK_HealthInstitution_Parametros_Country">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Parametros_Province" Association="Clinica1Model.FK_HealthInstitution_Parametros_Province">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Profesional_HealthInstitution" Association="Clinica1Model.FK_HealthInstitution_Profesional_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+      <End Role="HealthInstitution_Profesional" EntitySet="HealthInstitution_Profesional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Rooms_HealthInstitution" Association="Clinica1Model.FK_HealthInstitution_Rooms_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+      <End Role="HealthInstitution_Rooms" EntitySet="HealthInstitution_Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealtInstitute_Roles_HealthInstitution" Association="Clinica1Model.FK_HealtInstitute_Roles_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+      <End Role="HealtInstitute_UsersInRoles" EntitySet="HealtInstitute_UsersInRoles" />
+    </AssociationSet>
+    <EntitySet Name="Appointments" EntityType="Clinica1Model.Appointment" />
+    <AssociationSet Name="FK_Appointments_HealthInstitution" Association="Clinica1Model.FK_Appointments_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+      <End Role="Appointment" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfessionalAppoiment_Appointments" Association="Clinica1Model.FK_ProfessionalAppoiment_Appointments">
+      <End Role="Appointment" EntitySet="Appointments" />
+      <End Role="ProfesionalAppointment" EntitySet="ProfesionalAppointments" />
+    </AssociationSet>
+    <EntitySet Name="PatientMedicament_View" EntityType="Clinica1Model.PatientMedicament_View" />
+    <EntitySet Name="PatientMedicaments" EntityType="Clinica1Model.PatientMedicament" />
+    <AssociationSet Name="FK_PatientMedicament_PatientMedicament" Association="Clinica1Model.FK_PatientMedicament_PatientMedicament">
+      <End Role="PatientMedicament" EntitySet="PatientMedicaments" />
+      <End Role="PatientMedicament1" EntitySet="PatientMedicaments" />
+    </AssociationSet>
+    <EntitySet Name="MedicalEvent_View" EntityType="Clinica1Model.MedicalEvent_View" />
+    <EntitySet Name="MedicalEvents" EntityType="Clinica1Model.MedicalEvent" />
+    <EntitySet Name="MedicalEventDetail_View" EntityType="Clinica1Model.MedicalEventDetail_View" />
+    <AssociationSet Name="FK_MedicalEvent_HealthInstitution" Association="Clinica1Model.FK_MedicalEvent_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitutions" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evento_Paciente" Association="Clinica1Model.FK_Evento_Paciente">
+      <End Role="Patient" EntitySet="Patients" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evento_Parametros" Association="Clinica1Model.FK_Evento_Parametros">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evento_Parametros1" Association="Clinica1Model.FK_Evento_Parametros1">
+      <End Role="Parametro" EntitySet="Parametros" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalEvent_Profesional" Association="Clinica1Model.FK_MedicalEvent_Profesional">
+      <End Role="Profesional" EntitySet="Profesionals" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientMedicament_MedicalEvent" Association="Clinica1Model.FK_PatientMedicament_MedicalEvent">
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+      <End Role="PatientMedicament" EntitySet="PatientMedicaments" />
+    </AssociationSet>
+    <EntitySet Name="MedicalEventDetails" EntityType="Clinica1Model.MedicalEventDetail" />
+    <AssociationSet Name="FK_MedicalEventDetail_MedicalEvent" Association="Clinica1Model.FK_MedicalEventDetail_MedicalEvent">
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+      <End Role="MedicalEventDetail" EntitySet="MedicalEventDetails" />
+    </AssociationSet>
+    <EntitySet Name="MedicalEventAlerts" EntityType="Clinica1Model.MedicalEventAlert" />
+    <AssociationSet Name="FK_MedicalEventAlerts_MedicalEvent" Association="Clinica1Model.FK_MedicalEventAlerts_MedicalEvent">
+      <End Role="MedicalEvent" EntitySet="MedicalEvents" />
+      <End Role="MedicalEventAlert" EntitySet="MedicalEventAlerts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="Guid" Name="ApplicationId" Nullable="false" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="LoweredUserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="MobileAlias" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="IsAnonymous" Nullable="false" />
+    <Property Type="DateTime" Name="LastActivityDate" Nullable="false" />
+    <NavigationProperty Name="Personas" Relationship="Clinica1Model.FK_Persona_aspnet_Users" FromRole="aspnet_Users" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="TipoParametro">
+    <Key>
+      <PropertyRef Name="IdTipoParametro" />
+    </Key>
+    <Property Type="Int32" Name="IdTipoParametro" Nullable="false" />
+    <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="IdTipoParametroRelacion" />
+    <NavigationProperty Name="TipoParametro1" Relationship="Clinica1Model.FK_TipoParametro_TipoParametro" FromRole="TipoParametro" ToRole="TipoParametro1" />
+    <NavigationProperty Name="TipoParametro2" Relationship="Clinica1Model.FK_TipoParametro_TipoParametro" FromRole="TipoParametro1" ToRole="TipoParametro" />
+    <NavigationProperty Name="Parametros" Relationship="Clinica1Model.FK_ParamComercial_TipoParametro" FromRole="TipoParametro" ToRole="Parametro" />
+    <Property Type="String" Name="Descripcion" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_TipoParametro_TipoParametro">
+    <End Type="Clinica1Model.TipoParametro" Role="TipoParametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.TipoParametro" Role="TipoParametro1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoParametro">
+        <PropertyRef Name="IdTipoParametro" />
+      </Principal>
+      <Dependent Role="TipoParametro1">
+        <PropertyRef Name="IdTipoParametroRelacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Parametro">
+    <Key>
+      <PropertyRef Name="IdParametro" />
+    </Key>
+    <Property Type="Int32" Name="IdParametro" Nullable="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="IdTipoParametro" />
+    <Property Type="Int32" Name="IdParametroRef" />
+    <Property Type="String" Name="Descripcion" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="Vigente" Nullable="false" />
+    <Property Type="Guid" Name="UserId" />
+    <Property Type="String" Name="CompanyId" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TipoParametro" Relationship="Clinica1Model.FK_ParamComercial_TipoParametro" FromRole="Parametro" ToRole="TipoParametro" />
+    <NavigationProperty Name="Profesionals" Relationship="Clinica1Model.FK_Profesional_Parametros" FromRole="Parametro" ToRole="Profesional" />
+    <NavigationProperty Name="Profesionals1" Relationship="Clinica1Model.ProfesionalEspecialidad" FromRole="Parametro" ToRole="Profesional" />
+    <NavigationProperty Name="Personas" Relationship="Clinica1Model.FK_Persona_Parametros" FromRole="Parametro" ToRole="Persona" />
+    <NavigationProperty Name="HealthInstitutions" Relationship="Clinica1Model.FK_HealthInstitution_Parametros_City" FromRole="Parametro" ToRole="HealthInstitution" />
+    <NavigationProperty Name="HealthInstitutions1" Relationship="Clinica1Model.FK_HealthInstitution_Parametros_Country" FromRole="Parametro" ToRole="HealthInstitution" />
+    <NavigationProperty Name="HealthInstitutions2" Relationship="Clinica1Model.FK_HealthInstitution_Parametros_Province" FromRole="Parametro" ToRole="HealthInstitution" />
+    <NavigationProperty Name="MedicalEvents" Relationship="Clinica1Model.FK_Evento_Parametros" FromRole="Parametro" ToRole="MedicalEvent" />
+    <NavigationProperty Name="MedicalEvents1" Relationship="Clinica1Model.FK_Evento_Parametros1" FromRole="Parametro" ToRole="MedicalEvent" />
+  </EntityType>
+  <Association Name="FK_ParamComercial_TipoParametro">
+    <End Type="Clinica1Model.TipoParametro" Role="TipoParametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoParametro">
+        <PropertyRef Name="IdTipoParametro" />
+      </Principal>
+      <Dependent Role="Parametro">
+        <PropertyRef Name="IdTipoParametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Vacuna">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="Int16" Name="Cantidad" />
+    <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="OrdenGrupo" />
+    <Property Type="String" Name="Grupo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Anulaciones" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Comentario" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PlanVacunacions" Relationship="Clinica1Model.FK_PlanVacunacion_Vacunas" FromRole="Vacuna" ToRole="PlanVacunacion" />
+  </EntityType>
+  <EntityType Name="ResourceScheduling">
+    <Key>
+      <PropertyRef Name="IdSheduler" />
+    </Key>
+    <Property Type="Int32" Name="IdSheduler" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="DateStart" />
+    <Property Type="DateTime" Name="DateEnd" />
+    <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="ResourceId" />
+    <Property Type="Int32" Name="WeekOfMonth" />
+    <Property Type="Int32" Name="WeekDays" />
+    <Property Type="Double" Name="Duration" />
+    <Property Type="Guid" Name="CreationUserId" />
+    <Property Type="Guid" Name="UpdateUserId" />
+    <Property Type="DateTime" Name="CreationDate" />
+    <Property Type="DateTime" Name="UpdatedDate" />
+    <Property Type="Int32" Name="ResourceType" />
+    <Property Type="String" Name="TimeStart" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TimeEnd" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Type="Guid" Name="HealthInstitutionId" />
+  </EntityType>
+  <EntityType Name="Mutual">
+    <Key>
+      <PropertyRef Name="IdMutual" />
+    </Key>
+    <Property Type="Int32" Name="IdMutual" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="ExigeCoseguro" />
+    <NavigationProperty Name="MutualPorPacientes" Relationship="Clinica1Model.FK_MutualPorPaciente_Mutual" FromRole="Mutual" ToRole="MutualPorPaciente" />
+  </EntityType>
+  <EntityType Name="Profesional">
+    <Key>
+      <PropertyRef Name="IdProfesional" />
+    </Key>
+    <Property Type="Int32" Name="IdProfesional" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IdPersona" />
+    <Property Type="Int32" Name="IdEspecialidad" />
+    <Property Type="String" Name="Matricula" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastAccessTime" />
+    <Property Type="Guid" Name="LastAccessUserId" />
+    <Property Type="DateTime" Name="FechaAlta" />
+    <Property Type="Int32" Name="IdProfesion" />
+    <NavigationProperty Name="Parametro" Relationship="Clinica1Model.FK_Profesional_Parametros" FromRole="Profesional" ToRole="Parametro" />
+    <NavigationProperty Name="Parametros" Relationship="Clinica1Model.ProfesionalEspecialidad" FromRole="Profesional" ToRole="Parametro" />
+    <NavigationProperty Name="Persona" Relationship="Clinica1Model.FK_Profecional_Persona" FromRole="Profesional" ToRole="Persona" />
+    <NavigationProperty Name="HealthInstitution_Profesional" Relationship="Clinica1Model.FK_HealthInstitution_Profesional_Profesional" FromRole="Profesional" ToRole="HealthInstitution_Profesional" />
+    <Property Type="Guid" Name="LastHealthInstId" />
+    <NavigationProperty Name="MedicalEvents" Relationship="Clinica1Model.FK_MedicalEvent_Profesional" FromRole="Profesional" ToRole="MedicalEvent" />
+  </EntityType>
+  <EntityType Name="Profesional_ResourseScheduling">
+    <Key>
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="IdSheduler" />
+      <PropertyRef Name="IdProfesional" />
+    </Key>
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="IdSheduler" Nullable="false" />
+    <Property Type="Double" Name="Duration" />
+    <Property Type="Int32" Name="WeekDays" />
+    <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="IdPersona" />
+    <Property Type="Int32" Name="IdProfesional" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Profesional_Parametros">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.Profesional" Role="Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="Profesional">
+        <PropertyRef Name="IdProfesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProfesionalEspecialidad">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="*" />
+    <End Type="Clinica1Model.Profesional" Role="Profesional" Multiplicity="*" />
+  </Association>
+  <EntityType Name="CEI10_Temp">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ParentCode" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="CEI_10">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ParentCode" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Type="Boolean" Name="HasChilds" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfesionalAppointment">
+    <Key>
+      <PropertyRef Name="AppointmentId" />
+    </Key>
+    <Property Type="Int32" Name="AppointmentId" Nullable="false" />
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="String" Name="PatientName" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="RoomId" />
+    <Property Type="Int32" Name="IdMotivoConsulta" />
+    <Property Type="Guid" Name="HealthInstitutionId" />
+    <NavigationProperty Name="Appointment" Relationship="Clinica1Model.FK_ProfessionalAppoiment_Appointments" FromRole="ProfesionalAppointment" ToRole="Appointment" />
+  </EntityType>
+  <EntityType Name="Patient_Appointments_View">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="IdProfesional" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="AppointmentId" />
+      <PropertyRef Name="IsExceptional" />
+    </Key>
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="DateTime" Name="Start" />
+    <Property Type="DateTime" Name="End" />
+    <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Location" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="ResourceId" />
+    <Property Type="String" Name="Subject" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Status" />
+    <Property Type="Double" Name="Duration" />
+    <Property Type="Int32" Name="IdProfesional" Nullable="false" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="AppointmentId" Nullable="false" />
+    <Property Type="Boolean" Name="IsExceptional" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientAllergy">
+    <Key>
+      <PropertyRef Name="AllergyId" />
+    </Key>
+    <Property Type="Int32" Name="AllergyId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="Boolean" Name="FoodAllergy" Nullable="false" />
+    <Property Type="Boolean" Name="MedicamentsAllergy" Nullable="false" />
+    <Property Type="Boolean" Name="MiteAllergy" Nullable="false" />
+    <Property Type="Boolean" Name="InsectAllergy" Nullable="false" />
+    <Property Type="Boolean" Name="PollenAllergy" Nullable="false" />
+    <Property Type="String" Name="OtherAllergy" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="GeneralDetails" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Observation" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="LastAccessTime" Nullable="false" />
+    <Property Type="Guid" Name="LastAccessUserId" Nullable="false" />
+    <Property Type="Boolean" Name="AnimalAllergy" Nullable="false" />
+    <Property Type="Boolean" Name="ChemicalAllergy" Nullable="false" />
+    <Property Type="Boolean" Name="SunAllergy" Nullable="false" />
+    <Property Type="Int32" Name="MedicalEventId" />
+    <Property Type="Boolean" Name="Enabled" Nullable="false" />
+    <NavigationProperty Name="Patient" Relationship="Clinica1Model.FK_PatientAllergy_Paciente" FromRole="PatientAllergy" ToRole="Patient" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientId" />
+    </Key>
+    <Property Type="Int32" Name="PatientId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="IdPersona" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAlta" Nullable="false" />
+    <Property Type="DateTime" Name="LastAccessTime" />
+    <Property Type="Guid" Name="LastAccessUserId" />
+    <NavigationProperty Name="PatientAllergies" Relationship="Clinica1Model.FK_PatientAllergy_Paciente" FromRole="Patient" ToRole="PatientAllergy" />
+    <NavigationProperty Name="PlanVacunacions" Relationship="Clinica1Model.FK_PlanVacunación_Paciente" FromRole="Patient" ToRole="PlanVacunacion" />
+    <NavigationProperty Name="MutualPorPacientes" Relationship="Clinica1Model.FK_MutualPorPaciente_Paciente" FromRole="Patient" ToRole="MutualPorPaciente" />
+    <NavigationProperty Name="Persona" Relationship="Clinica1Model.FK_Paciente_Persona" FromRole="Patient" ToRole="Persona" />
+    <Property Type="Guid" Name="LastHealthInstId" />
+    <NavigationProperty Name="MedicalEvents" Relationship="Clinica1Model.FK_Evento_Paciente" FromRole="Patient" ToRole="MedicalEvent" />
+  </EntityType>
+  <EntityType Name="PatientView">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="FechaAlta" />
+      <PropertyRef Name="TipoDocumento" />
+      <PropertyRef Name="NroDocumento" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Sexo" />
+      <PropertyRef Name="EstadoCivil" />
+      <PropertyRef Name="FechaNacimiento" />
+    </Key>
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="Int32" Name="IdPersona" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAlta" Nullable="false" />
+    <Property Type="String" Name="TipoDocumento" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="NroDocumento" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="Int16" Name="Sexo" Nullable="false" />
+    <Property Type="String" Name="EstadoCivil" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PatientAllergy_Paciente">
+    <End Type="Clinica1Model.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="Clinica1Model.PatientAllergy" Role="PatientAllergy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="PatientAllergy">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PlanVacunacion">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="DateTime" Name="FechaPlaneada" Nullable="false" />
+    <Property Type="DateTime" Name="FechaColocacion" />
+    <Property Type="Guid" Name="ProfesionalColocadorUserID" />
+    <Property Type="String" Name="NombreProfesionalQueColoco" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Lote" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="FechaPlaneada_Alterada" Nullable="false" />
+    <Property Type="Int32" Name="CodigoVacunaSustituta" />
+    <NavigationProperty Name="Patient" Relationship="Clinica1Model.FK_PlanVacunación_Paciente" FromRole="PlanVacunacion" ToRole="Patient" />
+    <NavigationProperty Name="Vacuna" Relationship="Clinica1Model.FK_PlanVacunacion_Vacunas" FromRole="PlanVacunacion" ToRole="Vacuna" />
+  </EntityType>
+  <Association Name="FK_PlanVacunación_Paciente">
+    <End Type="Clinica1Model.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="Clinica1Model.PlanVacunacion" Role="PlanVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="PlanVacunacion">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanVacunacion_Vacunas">
+    <End Type="Clinica1Model.Vacuna" Role="Vacuna" Multiplicity="1" />
+    <End Type="Clinica1Model.PlanVacunacion" Role="PlanVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacuna">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="PlanVacunacion">
+        <PropertyRef Name="Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PlanVacunacion_FullView">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="FechaPlaneada" />
+      <PropertyRef Name="FechaPlaneada_Alterada" />
+      <PropertyRef Name="PatientId" />
+    </Key>
+    <Property Type="Int32" Name="Codigo" Nullable="false" />
+    <Property Type="DateTime" Name="FechaPlaneada" Nullable="false" />
+    <Property Type="DateTime" Name="FechaColocacion" />
+    <Property Type="String" Name="Lote" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="FechaPlaneada_Alterada" Nullable="false" />
+    <Property Type="Int32" Name="CodigoVacunaSustituta" />
+    <Property Type="Int16" Name="Cantidad" />
+    <Property Type="String" Name="Nombre" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="OrdenGrupo" />
+    <Property Type="String" Name="Grupo" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Comentario" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Anulaciones" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="Guid" Name="ProfesionalColocadorUserID" />
+    <Property Type="String" Name="NombreProfesionalQueColoco" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MutualPorPaciente">
+    <Key>
+      <PropertyRef Name="IdMutual" />
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Type="Int32" Name="IdMutual" Nullable="false" />
+    <Property Type="Int32" Name="IdPaciente" Nullable="false" />
+    <Property Type="Int32" Name="NroAfiliadoMutual" />
+    <Property Type="Boolean" Name="IsActive" Nullable="false" />
+    <NavigationProperty Name="Mutual" Relationship="Clinica1Model.FK_MutualPorPaciente_Mutual" FromRole="MutualPorPaciente" ToRole="Mutual" />
+    <NavigationProperty Name="Patient" Relationship="Clinica1Model.FK_MutualPorPaciente_Paciente" FromRole="MutualPorPaciente" ToRole="Patient" />
+  </EntityType>
+  <Association Name="FK_MutualPorPaciente_Mutual">
+    <End Type="Clinica1Model.Mutual" Role="Mutual" Multiplicity="1" />
+    <End Type="Clinica1Model.MutualPorPaciente" Role="MutualPorPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mutual">
+        <PropertyRef Name="IdMutual" />
+      </Principal>
+      <Dependent Role="MutualPorPaciente">
+        <PropertyRef Name="IdMutual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MutualPorPaciente_Paciente">
+    <End Type="Clinica1Model.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="Clinica1Model.MutualPorPaciente" Role="MutualPorPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="MutualPorPaciente">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HealthInstitution_Rooms">
+    <Key>
+      <PropertyRef Name="RomId" />
+    </Key>
+    <Property Type="Int32" Name="RomId" Nullable="false" />
+    <Property Type="Guid" Name="HealthInstitutionId" />
+    <Property Type="String" Name="Name" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Code" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Number" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="HealthInstitution_Rooms1" Relationship="Clinica1Model.FK_HealthInstitution_Rooms_HealthInstitution_Rooms" FromRole="HealthInstitution_Rooms" ToRole="HealthInstitution_Rooms1" />
+    <NavigationProperty Name="HealthInstitution_Rooms2" Relationship="Clinica1Model.FK_HealthInstitution_Rooms_HealthInstitution_Rooms" FromRole="HealthInstitution_Rooms1" ToRole="HealthInstitution_Rooms" />
+    <NavigationProperty Name="HealthInstitution" Relationship="Clinica1Model.FK_HealthInstitution_Rooms_HealthInstitution" FromRole="HealthInstitution_Rooms" ToRole="HealthInstitution" />
+  </EntityType>
+  <Association Name="FK_HealthInstitution_Rooms_HealthInstitution_Rooms">
+    <End Type="Clinica1Model.HealthInstitution_Rooms" Role="HealthInstitution_Rooms" Multiplicity="1" />
+    <End Type="Clinica1Model.HealthInstitution_Rooms" Role="HealthInstitution_Rooms1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution_Rooms">
+        <PropertyRef Name="RomId" />
+      </Principal>
+      <Dependent Role="HealthInstitution_Rooms1">
+        <PropertyRef Name="RomId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Type="Int32" Name="IdPersona" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Guid" Name="UserId" />
+    <Property Type="String" Name="TipoDocumento" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="NroDocumento" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="Int16" Name="Sexo" Nullable="false" />
+    <Property Type="Int32" Name="IdEstadocivil" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="DateTime" Name="LastAccessTime" Nullable="false" />
+    <Property Type="Guid" Name="LastAccessUserId" Nullable="false" />
+    <Property Type="DateTime" Name="FechaAlta" Nullable="false" />
+    <Property Type="Binary" Name="Foto" MaxLength="Max" FixedLength="false" />
+    <Property Type="Boolean" Name="IsUserActive" Nullable="false" />
+    <Property Type="String" Name="Street" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="StreetNumber" />
+    <Property Type="String" Name="Floor" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="CountryId" />
+    <Property Type="Int32" Name="ProvinceId" />
+    <Property Type="Int32" Name="CityId" />
+    <Property Type="String" Name="Neighborhood" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mail" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Telefono1" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Telefono2" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Province" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="City" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ZipCode" MaxLength="8" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="aspnet_Users" Relationship="Clinica1Model.FK_Persona_aspnet_Users" FromRole="Persona" ToRole="aspnet_Users" />
+    <NavigationProperty Name="Parametro" Relationship="Clinica1Model.FK_Persona_Parametros" FromRole="Persona" ToRole="Parametro" />
+    <NavigationProperty Name="Patients" Relationship="Clinica1Model.FK_Paciente_Persona" FromRole="Persona" ToRole="Patient" />
+    <NavigationProperty Name="Profesionals" Relationship="Clinica1Model.FK_Profecional_Persona" FromRole="Persona" ToRole="Profesional" />
+    <Property Type="Guid" Name="LastHealthInstId" />
+  </EntityType>
+  <Association Name="FK_Persona_aspnet_Users">
+    <End Type="Clinica1Model.aspnet_Users" Role="aspnet_Users" Multiplicity="0..1" />
+    <End Type="Clinica1Model.Persona" Role="Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Parametros">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.Persona" Role="Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="IdEstadocivil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paciente_Persona">
+    <End Type="Clinica1Model.Persona" Role="Persona" Multiplicity="1" />
+    <End Type="Clinica1Model.Patient" Role="Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profecional_Persona">
+    <End Type="Clinica1Model.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="Clinica1Model.Profesional" Role="Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Profesional">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Profesional_FullView">
+    <Key>
+      <PropertyRef Name="IdProfesional" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Sexo" />
+      <PropertyRef Name="NroDocumento" />
+      <PropertyRef Name="NombreEspecialidad" />
+      <PropertyRef Name="FechaNacimiento" />
+      <PropertyRef Name="TipoDocumento" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="NombreProfecion" />
+    </Key>
+    <Property Type="Int32" Name="IdProfesional" Nullable="false" />
+    <Property Type="String" Name="Matricula" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="FechaAlta" />
+    <Property Type="String" Name="Apellido" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="Nombre" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="Int16" Name="Sexo" Nullable="false" />
+    <Property Type="Int32" Name="IdEspecialidad" />
+    <Property Type="String" Name="NroDocumento" Nullable="false" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="NombreEspecialidad" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="UserName" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="UserId" />
+    <Property Type="Int32" Name="IdEstadocivil" />
+    <Property Type="DateTime" Name="FechaNacimiento" Nullable="false" />
+    <Property Type="String" Name="TipoDocumento" Nullable="false" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="IdPersona" Nullable="false" />
+    <Property Type="String" Name="Street" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="StreetNumber" />
+    <Property Type="String" Name="Floor" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="CountryId" />
+    <Property Type="Int32" Name="CityId" />
+    <Property Type="String" Name="Neighborhood" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="mail" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Telefono1" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="Telefono2" MaxLength="20" FixedLength="true" Unicode="true" />
+    <Property Type="Binary" Name="Foto" MaxLength="Max" FixedLength="false" />
+    <Property Type="Int32" Name="IdProfesion" />
+    <Property Type="String" Name="NombreProfecion" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="ProvinceId" />
+  </EntityType>
+  <EntityType Name="HealtInstitute_UsersInRoles">
+    <Key>
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="HealthInstitutionId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Type="String" Name="RoleName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="Guid" Name="HealthInstitutionId" Nullable="false" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <NavigationProperty Name="HealthInstitution" Relationship="Clinica1Model.FK_HealtInstitute_Roles_HealthInstitution" FromRole="HealtInstitute_UsersInRoles" ToRole="HealthInstitution" />
+  </EntityType>
+  <EntityType Name="HealthInstitution_Profesional">
+    <Key>
+      <PropertyRef Name="HealthInstitutionId" />
+      <PropertyRef Name="ProfesionalId" />
+    </Key>
+    <Property Type="Guid" Name="HealthInstitutionId" Nullable="false" />
+    <Property Type="Int32" Name="ProfesionalId" Nullable="false" />
+    <Property Type="Guid" Name="UserId" Nullable="false" />
+    <Property Type="Boolean" Name="ActiveFlag" Nullable="false" />
+    <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+    <Property Type="Boolean" Name="IsAdmin" Nullable="false" />
+    <Property Type="Boolean" Name="IsOwner" Nullable="false" />
+    <NavigationProperty Name="Profesional" Relationship="Clinica1Model.FK_HealthInstitution_Profesional_Profesional" FromRole="HealthInstitution_Profesional" ToRole="Profesional" />
+    <NavigationProperty Name="HealthInstitution" Relationship="Clinica1Model.FK_HealthInstitution_Profesional_HealthInstitution" FromRole="HealthInstitution_Profesional" ToRole="HealthInstitution" />
+  </EntityType>
+  <Association Name="FK_HealthInstitution_Profesional_Profesional">
+    <End Type="Clinica1Model.Profesional" Role="Profesional" Multiplicity="1" />
+    <End Type="Clinica1Model.HealthInstitution_Profesional" Role="HealthInstitution_Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesional">
+        <PropertyRef Name="IdProfesional" />
+      </Principal>
+      <Dependent Role="HealthInstitution_Profesional">
+        <PropertyRef Name="ProfesionalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HealthInstitution">
+    <Key>
+      <PropertyRef Name="HealthInstitutionId" />
+    </Key>
+    <Property Type="Guid" Name="HealthInstitutionId" Nullable="false" />
+    <Property Type="Int32" Name="HealthInstitutionType" />
+    <Property Type="String" Name="Street" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="StreetNumber" />
+    <Property Type="String" Name="Floor" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="CountryId" />
+    <Property Type="Int32" Name="ProvinceId" />
+    <Property Type="Int32" Name="CityId" />
+    <Property Type="String" Name="RazonSocial" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Province" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="City" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Neighborhood" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ZipCode" MaxLength="8" FixedLength="true" Unicode="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="DateTime" Name="LastAccessTime" />
+    <Property Type="Guid" Name="LastAccessUserId" />
+    <Property Type="String" Name="ActivationKey" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CUIT" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Type="Guid" Name="HealthInstitutionIdParent" />
+    <NavigationProperty Name="Parametro" Relationship="Clinica1Model.FK_HealthInstitution_Parametros_City" FromRole="HealthInstitution" ToRole="Parametro" />
+    <NavigationProperty Name="Parametro1" Relationship="Clinica1Model.FK_HealthInstitution_Parametros_Country" FromRole="HealthInstitution" ToRole="Parametro" />
+    <NavigationProperty Name="Parametro2" Relationship="Clinica1Model.FK_HealthInstitution_Parametros_Province" FromRole="HealthInstitution" ToRole="Parametro" />
+    <NavigationProperty Name="HealthInstitution_Profesional" Relationship="Clinica1Model.FK_HealthInstitution_Profesional_HealthInstitution" FromRole="HealthInstitution" ToRole="HealthInstitution_Profesional" />
+    <NavigationProperty Name="HealthInstitution_Rooms" Relationship="Clinica1Model.FK_HealthInstitution_Rooms_HealthInstitution" FromRole="HealthInstitution" ToRole="HealthInstitution_Rooms" />
+    <NavigationProperty Name="HealtInstitute_UsersInRoles" Relationship="Clinica1Model.FK_HealtInstitute_Roles_HealthInstitution" FromRole="HealthInstitution" ToRole="HealtInstitute_UsersInRoles" />
+    <NavigationProperty Name="Appointments" Relationship="Clinica1Model.FK_Appointments_HealthInstitution" FromRole="HealthInstitution" ToRole="Appointment" />
+    <NavigationProperty Name="MedicalEvents" Relationship="Clinica1Model.FK_MedicalEvent_HealthInstitution" FromRole="HealthInstitution" ToRole="MedicalEvent" />
+  </EntityType>
+  <Association Name="FK_HealthInstitution_Parametros_City">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="HealthInstitution">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Parametros_Country">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="HealthInstitution">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Parametros_Province">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="HealthInstitution">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Profesional_HealthInstitution">
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="1" />
+    <End Type="Clinica1Model.HealthInstitution_Profesional" Role="HealthInstitution_Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="HealthInstitution_Profesional">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Rooms_HealthInstitution">
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="0..1" />
+    <End Type="Clinica1Model.HealthInstitution_Rooms" Role="HealthInstitution_Rooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="HealthInstitution_Rooms">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealtInstitute_Roles_HealthInstitution">
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="1" />
+    <End Type="Clinica1Model.HealtInstitute_UsersInRoles" Role="HealtInstitute_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="HealtInstitute_UsersInRoles">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Appointment">
+    <Key>
+      <PropertyRef Name="AppointmentId" />
+    </Key>
+    <Property Type="Int32" Name="AppointmentId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="Start" />
+    <Property Type="DateTime" Name="End" />
+    <Property Type="String" Name="Description" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="Location" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="ResourceId" />
+    <Property Type="Int32" Name="Status" />
+    <Property Type="String" Name="Subject" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Label" />
+    <Property Type="Boolean" Name="AllDay" />
+    <Property Type="Int32" Name="DayNumber" />
+    <Property Type="Int32" Name="WeekOfMonth" />
+    <Property Type="Int32" Name="WeekDays" />
+    <Property Type="Int32" Name="OccurrenceCount" />
+    <Property Type="Int32" Name="Periodicity" />
+    <Property Type="Int32" Name="Range" />
+    <Property Type="Double" Name="Duration" />
+    <Property Type="Int32" Name="Month" />
+    <Property Type="Guid" Name="CreationUserId" />
+    <Property Type="Guid" Name="UpdateUserId" />
+    <Property Type="DateTime" Name="CreationDate" />
+    <Property Type="DateTime" Name="UpdatedDate" />
+    <Property Type="Guid" Name="HealthInstitutionId" />
+    <NavigationProperty Name="HealthInstitution" Relationship="Clinica1Model.FK_Appointments_HealthInstitution" FromRole="Appointment" ToRole="HealthInstitution" />
+    <NavigationProperty Name="ProfesionalAppointment" Relationship="Clinica1Model.FK_ProfessionalAppoiment_Appointments" FromRole="Appointment" ToRole="ProfesionalAppointment" />
+    <Property Type="Boolean" Name="IsExceptional" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Appointments_HealthInstitution">
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="0..1" />
+    <End Type="Clinica1Model.Appointment" Role="Appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="Appointment">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfessionalAppoiment_Appointments">
+    <End Type="Clinica1Model.Appointment" Role="Appointment" Multiplicity="1" />
+    <End Type="Clinica1Model.ProfesionalAppointment" Role="ProfesionalAppointment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Appointment">
+        <PropertyRef Name="AppointmentId" />
+      </Principal>
+      <Dependent Role="ProfesionalAppointment">
+        <PropertyRef Name="AppointmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PatientMedicament_View">
+    <Key>
+      <PropertyRef Name="PatientMedicamentId" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="MedicamentName" />
+      <PropertyRef Name="Periodicity_hours" />
+      <PropertyRef Name="DaysCount" />
+      <PropertyRef Name="MedicalEventId" />
+      <PropertyRef Name="NombreProfesional" />
+      <PropertyRef Name="ApellidoProfesional" />
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="MedicamentPresentation" />
+      <PropertyRef Name="Enabled" />
+      <PropertyRef Name="Dosis" />
+      <PropertyRef Name="IdEspesialidad" />
+      <PropertyRef Name="NombreEspesialidad" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Type="Int32" Name="PatientMedicamentId" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="String" Name="MedicamentName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="Periodicity_hours" Nullable="false" />
+    <Property Type="Int16" Name="DaysCount" Nullable="false" />
+    <Property Type="Int32" Name="MedicalEventId" Nullable="false" />
+    <Property Type="Int32" Name="PatientMedicamentId_Parent" />
+    <Property Type="String" Name="NombreProfesional" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="ApellidoProfesional" Nullable="false" MaxLength="30" FixedLength="true" Unicode="false" />
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="String" Name="MedicamentPresentation" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Enabled" Nullable="false" />
+    <Property Type="String" Name="Dosis" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="IdEspesialidad" Nullable="false" />
+    <Property Type="Int32" Name="IdTipoConsulta" />
+    <Property Type="String" Name="NombreEspesialidad" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="String" Name="NombreTipoConsulta" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientMedicament">
+    <Key>
+      <PropertyRef Name="PatientMedicamentId" />
+    </Key>
+    <Property Type="Int32" Name="PatientMedicamentId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="Guid" Name="CreatedUserId" Nullable="false" />
+    <Property Type="String" Name="MedicamentName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="Periodicity_hours" Nullable="false" />
+    <Property Type="Int16" Name="DaysCount" Nullable="false" />
+    <Property Type="Int32" Name="MedicalEventId" Nullable="false" />
+    <Property Type="Int32" Name="PatientMedicamentId_Parent" />
+    <Property Type="String" Name="MedicamentPresentation" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Enabled" Nullable="false" />
+    <Property Type="String" Name="Dosis" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="Status" Nullable="false" />
+    <NavigationProperty Name="PatientMedicament1" Relationship="Clinica1Model.FK_PatientMedicament_PatientMedicament" FromRole="PatientMedicament" ToRole="PatientMedicament1" />
+    <NavigationProperty Name="PatientMedicament2" Relationship="Clinica1Model.FK_PatientMedicament_PatientMedicament" FromRole="PatientMedicament1" ToRole="PatientMedicament" />
+    <NavigationProperty Name="MedicalEvent" Relationship="Clinica1Model.FK_PatientMedicament_MedicalEvent" FromRole="PatientMedicament" ToRole="MedicalEvent" />
+  </EntityType>
+  <Association Name="FK_PatientMedicament_PatientMedicament">
+    <End Type="Clinica1Model.PatientMedicament" Role="PatientMedicament" Multiplicity="0..1" />
+    <End Type="Clinica1Model.PatientMedicament" Role="PatientMedicament1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientMedicament">
+        <PropertyRef Name="PatientMedicamentId" />
+      </Principal>
+      <Dependent Role="PatientMedicament1">
+        <PropertyRef Name="PatientMedicamentId_Parent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MedicalEvent_View">
+    <Key>
+      <PropertyRef Name="MedicalEventId" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="NombreEspesialidad" />
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="IdProfesional" />
+    </Key>
+    <Property Type="Int32" Name="MedicalEventId" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="String" Name="NombreEspesialidad" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="Int32" Name="IdProfesional" Nullable="false" />
+    <Property Type="String" Name="Profesional" MaxLength="62" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="MedicalEventId_Parent" />
+    <Property Type="String" Name="NombreTipoConsulta" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Type="Guid" Name="HealthInstitutionId" />
+    <Property Type="String" Name="RazonSocial" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="MedicalEvent">
+    <Key>
+      <PropertyRef Name="MedicalEventId" />
+    </Key>
+    <Property Type="Int32" Name="MedicalEventId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="Int32" Name="ProfesionalId" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="Int32" Name="IdEspesialidad" Nullable="false" />
+    <Property Type="Int32" Name="IdTipoConsulta" />
+    <Property Type="String" Name="Motivo" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Guid" Name="CreatedUserId" />
+    <Property Type="String" Name="Evolucion" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="MedicalEventId_Parent" />
+    <Property Type="Boolean" Name="IsDefinitive" Nullable="false" />
+    <Property Type="String" Name="MetodoComplementario" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Int32" Name="AppointmentId" />
+    <Property Type="String" Name="PMOQuirurgico" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Type="Guid" Name="HealthInstitutionId" />
+    <NavigationProperty Name="HealthInstitution" Relationship="Clinica1Model.FK_MedicalEvent_HealthInstitution" FromRole="MedicalEvent" ToRole="HealthInstitution" />
+    <NavigationProperty Name="Patient" Relationship="Clinica1Model.FK_Evento_Paciente" FromRole="MedicalEvent" ToRole="Patient" />
+    <NavigationProperty Name="Parametro" Relationship="Clinica1Model.FK_Evento_Parametros" FromRole="MedicalEvent" ToRole="Parametro" />
+    <NavigationProperty Name="Parametro1" Relationship="Clinica1Model.FK_Evento_Parametros1" FromRole="MedicalEvent" ToRole="Parametro" />
+    <NavigationProperty Name="Profesional" Relationship="Clinica1Model.FK_MedicalEvent_Profesional" FromRole="MedicalEvent" ToRole="Profesional" />
+    <NavigationProperty Name="PatientMedicaments" Relationship="Clinica1Model.FK_PatientMedicament_MedicalEvent" FromRole="MedicalEvent" ToRole="PatientMedicament" />
+    <NavigationProperty Name="MedicalEventDetails" Relationship="Clinica1Model.FK_MedicalEventDetail_MedicalEvent" FromRole="MedicalEvent" ToRole="MedicalEventDetail" />
+    <NavigationProperty Name="MedicalEventAlerts" Relationship="Clinica1Model.FK_MedicalEventAlerts_MedicalEvent" FromRole="MedicalEvent" ToRole="MedicalEventAlert" />
+  </EntityType>
+  <EntityType Name="MedicalEventDetail_View">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="ProfesionalId" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="MedicalEventId" />
+      <PropertyRef Name="DetailType" />
+    </Key>
+    <Property Type="Int32" Name="PatientId" Nullable="false" />
+    <Property Type="Int32" Name="ProfesionalId" Nullable="false" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="false" />
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="18" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="MedicalEventId" Nullable="false" />
+    <Property Type="Int16" Name="DetailType" Nullable="false" />
+    <Property Type="String" Name="Desc" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="ActiveRelevance" />
+    <Property Type="String" Name="Observations" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="RelevanceType" />
+    <Property Type="String" Name="Profesional" MaxLength="62" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="RelevanceTypeName" MaxLength="50" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_MedicalEvent_HealthInstitution">
+    <End Type="Clinica1Model.HealthInstitution" Role="HealthInstitution" Multiplicity="0..1" />
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evento_Paciente">
+    <End Type="Clinica1Model.Patient" Role="Patient" Multiplicity="1" />
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evento_Parametros">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="1" />
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="IdEspesialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evento_Parametros1">
+    <End Type="Clinica1Model.Parametro" Role="Parametro" Multiplicity="0..1" />
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametro">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="IdTipoConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalEvent_Profesional">
+    <End Type="Clinica1Model.Profesional" Role="Profesional" Multiplicity="1" />
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesional">
+        <PropertyRef Name="IdProfesional" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="ProfesionalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientMedicament_MedicalEvent">
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="1" />
+    <End Type="Clinica1Model.PatientMedicament" Role="PatientMedicament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalEvent">
+        <PropertyRef Name="MedicalEventId" />
+      </Principal>
+      <Dependent Role="PatientMedicament">
+        <PropertyRef Name="MedicalEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MedicalEventDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="false" MaxLength="18" FixedLength="true" Unicode="true" />
+    <Property Type="Int32" Name="MedicalEventId" Nullable="false" />
+    <Property Type="Int16" Name="DetailType" Nullable="false" />
+    <Property Type="String" Name="Description" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Type="Int16" Name="RelevanceType" />
+    <Property Type="Boolean" Name="ActiveRelevance" />
+    <Property Type="String" Name="Observations" MaxLength="300" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MedicalEvent" Relationship="Clinica1Model.FK_MedicalEventDetail_MedicalEvent" FromRole="MedicalEventDetail" ToRole="MedicalEvent" />
+  </EntityType>
+  <Association Name="FK_MedicalEventDetail_MedicalEvent">
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="1" />
+    <End Type="Clinica1Model.MedicalEventDetail" Role="MedicalEventDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalEvent">
+        <PropertyRef Name="MedicalEventId" />
+      </Principal>
+      <Dependent Role="MedicalEventDetail">
+        <PropertyRef Name="MedicalEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MedicalEventAlert">
+    <Key>
+      <PropertyRef Name="AlertId" />
+    </Key>
+    <Property Type="Int32" Name="AlertId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="MedicalEventId" Nullable="false" />
+    <Property Type="DateTime" Name="CreationDate" Nullable="false" />
+    <Property Type="Int32" Name="AlertType" Nullable="false" />
+    <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="Enabled" Nullable="false" />
+    <Property Type="Int32" Name="ReferenceId" />
+    <NavigationProperty Name="MedicalEvent" Relationship="Clinica1Model.FK_MedicalEventAlerts_MedicalEvent" FromRole="MedicalEventAlert" ToRole="MedicalEvent" />
+  </EntityType>
+  <Association Name="FK_MedicalEventAlerts_MedicalEvent">
+    <End Type="Clinica1Model.MedicalEvent" Role="MedicalEvent" Multiplicity="1" />
+    <End Type="Clinica1Model.MedicalEventAlert" Role="MedicalEventAlert" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalEvent">
+        <PropertyRef Name="MedicalEventId" />
+      </Principal>
+      <Dependent Role="MedicalEventAlert">
+        <PropertyRef Name="MedicalEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,1296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Clinica1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="Clinica1ModelStoreContainer">
+    <EntitySet Name="Appointments" EntityType="Clinica1Model.Store.Appointments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="aspnet_Users" EntityType="Clinica1Model.Store.aspnet_Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CEI_10" EntityType="Clinica1Model.Store.CEI_10" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CEI10_Temp" EntityType="Clinica1Model.Store.CEI10_Temp" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HealthInstitution" EntityType="Clinica1Model.Store.HealthInstitution" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HealthInstitution_Profesional" EntityType="Clinica1Model.Store.HealthInstitution_Profesional" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HealthInstitution_Rooms" EntityType="Clinica1Model.Store.HealthInstitution_Rooms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="HealtInstitute_UsersInRoles" EntityType="Clinica1Model.Store.HealtInstitute_UsersInRoles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MedicalEvent" EntityType="Clinica1Model.Store.MedicalEvent" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MedicalEventAlerts" EntityType="Clinica1Model.Store.MedicalEventAlerts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MedicalEventDetail" EntityType="Clinica1Model.Store.MedicalEventDetail" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Mutual" EntityType="Clinica1Model.Store.Mutual" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MutualPorPaciente" EntityType="Clinica1Model.Store.MutualPorPaciente" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Parametros" EntityType="Clinica1Model.Store.Parametros" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Patient" EntityType="Clinica1Model.Store.Patient" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatientAllergy" EntityType="Clinica1Model.Store.PatientAllergy" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatientMedicament" EntityType="Clinica1Model.Store.PatientMedicament" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Persona" EntityType="Clinica1Model.Store.Persona" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PlanVacunacion" EntityType="Clinica1Model.Store.PlanVacunacion" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Profesional" EntityType="Clinica1Model.Store.Profesional" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfesionalAppointment" EntityType="Clinica1Model.Store.ProfesionalAppointment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProfesionalEspecialidad" EntityType="Clinica1Model.Store.ProfesionalEspecialidad" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ResourceScheduling" EntityType="Clinica1Model.Store.ResourceScheduling" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TipoParametro" EntityType="Clinica1Model.Store.TipoParametro" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Vacunas" EntityType="Clinica1Model.Store.Vacunas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MedicalEvent_View" EntityType="Clinica1Model.Store.MedicalEvent_View" store:Type="Views" store:Schema="dbo" store:Name="MedicalEvent_View">
+      <DefiningQuery>SELECT 
+      [MedicalEvent_View].[MedicalEventId] AS [MedicalEventId], 
+      [MedicalEvent_View].[CreatedDate] AS [CreatedDate], 
+      [MedicalEvent_View].[NombreEspesialidad] AS [NombreEspesialidad], 
+      [MedicalEvent_View].[PatientId] AS [PatientId], 
+      [MedicalEvent_View].[IdProfesional] AS [IdProfesional], 
+      [MedicalEvent_View].[Profesional] AS [Profesional], 
+      [MedicalEvent_View].[MedicalEventId_Parent] AS [MedicalEventId_Parent], 
+      [MedicalEvent_View].[NombreTipoConsulta] AS [NombreTipoConsulta], 
+      [MedicalEvent_View].[HealthInstitutionId] AS [HealthInstitutionId], 
+      [MedicalEvent_View].[RazonSocial] AS [RazonSocial]
+      FROM [dbo].[MedicalEvent_View] AS [MedicalEvent_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MedicalEventDetail_View" EntityType="Clinica1Model.Store.MedicalEventDetail_View" store:Type="Views" store:Schema="dbo" store:Name="MedicalEventDetail_View">
+      <DefiningQuery>SELECT 
+      [MedicalEventDetail_View].[PatientId] AS [PatientId], 
+      [MedicalEventDetail_View].[ProfesionalId] AS [ProfesionalId], 
+      [MedicalEventDetail_View].[CreatedDate] AS [CreatedDate], 
+      [MedicalEventDetail_View].[Id] AS [Id], 
+      [MedicalEventDetail_View].[Code] AS [Code], 
+      [MedicalEventDetail_View].[MedicalEventId] AS [MedicalEventId], 
+      [MedicalEventDetail_View].[DetailType] AS [DetailType], 
+      [MedicalEventDetail_View].[Desc] AS [Desc], 
+      [MedicalEventDetail_View].[ActiveRelevance] AS [ActiveRelevance], 
+      [MedicalEventDetail_View].[Observations] AS [Observations], 
+      [MedicalEventDetail_View].[RelevanceType] AS [RelevanceType], 
+      [MedicalEventDetail_View].[Profesional] AS [Profesional], 
+      [MedicalEventDetail_View].[RelevanceTypeName] AS [RelevanceTypeName]
+      FROM [dbo].[MedicalEventDetail_View] AS [MedicalEventDetail_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Patient_Appointments_View" EntityType="Clinica1Model.Store.Patient_Appointments_View" store:Type="Views" store:Schema="dbo" store:Name="Patient_Appointments_View">
+      <DefiningQuery>SELECT 
+      [Patient_Appointments_View].[PatientId] AS [PatientId], 
+      [Patient_Appointments_View].[Start] AS [Start], 
+      [Patient_Appointments_View].[End] AS [End], 
+      [Patient_Appointments_View].[Description] AS [Description], 
+      [Patient_Appointments_View].[Location] AS [Location], 
+      [Patient_Appointments_View].[ResourceId] AS [ResourceId], 
+      [Patient_Appointments_View].[Subject] AS [Subject], 
+      [Patient_Appointments_View].[Status] AS [Status], 
+      [Patient_Appointments_View].[Duration] AS [Duration], 
+      [Patient_Appointments_View].[IdProfesional] AS [IdProfesional], 
+      [Patient_Appointments_View].[Apellido] AS [Apellido], 
+      [Patient_Appointments_View].[Nombre] AS [Nombre], 
+      [Patient_Appointments_View].[AppointmentId] AS [AppointmentId], 
+      [Patient_Appointments_View].[IsExceptional] AS [IsExceptional]
+      FROM [dbo].[Patient_Appointments_View] AS [Patient_Appointments_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PatientMedicament_View" EntityType="Clinica1Model.Store.PatientMedicament_View" store:Type="Views" store:Schema="dbo" store:Name="PatientMedicament_View">
+      <DefiningQuery>SELECT 
+      [PatientMedicament_View].[PatientMedicamentId] AS [PatientMedicamentId], 
+      [PatientMedicament_View].[CreatedDate] AS [CreatedDate], 
+      [PatientMedicament_View].[MedicamentName] AS [MedicamentName], 
+      [PatientMedicament_View].[Periodicity_hours] AS [Periodicity_hours], 
+      [PatientMedicament_View].[DaysCount] AS [DaysCount], 
+      [PatientMedicament_View].[MedicalEventId] AS [MedicalEventId], 
+      [PatientMedicament_View].[PatientMedicamentId_Parent] AS [PatientMedicamentId_Parent], 
+      [PatientMedicament_View].[NombreProfesional] AS [NombreProfesional], 
+      [PatientMedicament_View].[ApellidoProfesional] AS [ApellidoProfesional], 
+      [PatientMedicament_View].[PatientId] AS [PatientId], 
+      [PatientMedicament_View].[MedicamentPresentation] AS [MedicamentPresentation], 
+      [PatientMedicament_View].[Enabled] AS [Enabled], 
+      [PatientMedicament_View].[Dosis] AS [Dosis], 
+      [PatientMedicament_View].[IdEspesialidad] AS [IdEspesialidad], 
+      [PatientMedicament_View].[IdTipoConsulta] AS [IdTipoConsulta], 
+      [PatientMedicament_View].[NombreEspesialidad] AS [NombreEspesialidad], 
+      [PatientMedicament_View].[NombreTipoConsulta] AS [NombreTipoConsulta], 
+      [PatientMedicament_View].[Status] AS [Status]
+      FROM [dbo].[PatientMedicament_View] AS [PatientMedicament_View]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PatientView" EntityType="Clinica1Model.Store.PatientView" store:Type="Views" store:Schema="dbo" store:Name="PatientView">
+      <DefiningQuery>SELECT 
+      [PatientView].[PatientId] AS [PatientId], 
+      [PatientView].[IdPersona] AS [IdPersona], 
+      [PatientView].[FechaAlta] AS [FechaAlta], 
+      [PatientView].[TipoDocumento] AS [TipoDocumento], 
+      [PatientView].[NroDocumento] AS [NroDocumento], 
+      [PatientView].[Apellido] AS [Apellido], 
+      [PatientView].[Nombre] AS [Nombre], 
+      [PatientView].[Sexo] AS [Sexo], 
+      [PatientView].[EstadoCivil] AS [EstadoCivil], 
+      [PatientView].[FechaNacimiento] AS [FechaNacimiento]
+      FROM [dbo].[PatientView] AS [PatientView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="PlanVacunacion_FullView" EntityType="Clinica1Model.Store.PlanVacunacion_FullView" store:Type="Views" store:Schema="dbo" store:Name="PlanVacunacion_FullView">
+      <DefiningQuery>SELECT 
+      [PlanVacunacion_FullView].[Codigo] AS [Codigo], 
+      [PlanVacunacion_FullView].[FechaPlaneada] AS [FechaPlaneada], 
+      [PlanVacunacion_FullView].[FechaColocacion] AS [FechaColocacion], 
+      [PlanVacunacion_FullView].[Lote] AS [Lote], 
+      [PlanVacunacion_FullView].[FechaPlaneada_Alterada] AS [FechaPlaneada_Alterada], 
+      [PlanVacunacion_FullView].[CodigoVacunaSustituta] AS [CodigoVacunaSustituta], 
+      [PlanVacunacion_FullView].[Cantidad] AS [Cantidad], 
+      [PlanVacunacion_FullView].[Nombre] AS [Nombre], 
+      [PlanVacunacion_FullView].[OrdenGrupo] AS [OrdenGrupo], 
+      [PlanVacunacion_FullView].[Grupo] AS [Grupo], 
+      [PlanVacunacion_FullView].[Comentario] AS [Comentario], 
+      [PlanVacunacion_FullView].[Anulaciones] AS [Anulaciones], 
+      [PlanVacunacion_FullView].[PatientId] AS [PatientId], 
+      [PlanVacunacion_FullView].[ProfesionalColocadorUserID] AS [ProfesionalColocadorUserID], 
+      [PlanVacunacion_FullView].[NombreProfesionalQueColoco] AS [NombreProfesionalQueColoco]
+      FROM [dbo].[PlanVacunacion_FullView] AS [PlanVacunacion_FullView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Profesional_FullView" EntityType="Clinica1Model.Store.Profesional_FullView" store:Type="Views" store:Schema="dbo" store:Name="Profesional_FullView">
+      <DefiningQuery>SELECT 
+      [Profesional_FullView].[IdProfesional] AS [IdProfesional], 
+      [Profesional_FullView].[IdPersona] AS [IdPersona], 
+      [Profesional_FullView].[Matricula] AS [Matricula], 
+      [Profesional_FullView].[FechaAlta] AS [FechaAlta], 
+      [Profesional_FullView].[Apellido] AS [Apellido], 
+      [Profesional_FullView].[Nombre] AS [Nombre], 
+      [Profesional_FullView].[Sexo] AS [Sexo], 
+      [Profesional_FullView].[IdEspecialidad] AS [IdEspecialidad], 
+      [Profesional_FullView].[NroDocumento] AS [NroDocumento], 
+      [Profesional_FullView].[NombreEspecialidad] AS [NombreEspecialidad], 
+      [Profesional_FullView].[UserName] AS [UserName], 
+      [Profesional_FullView].[UserId] AS [UserId], 
+      [Profesional_FullView].[IdEstadocivil] AS [IdEstadocivil], 
+      [Profesional_FullView].[FechaNacimiento] AS [FechaNacimiento], 
+      [Profesional_FullView].[TipoDocumento] AS [TipoDocumento], 
+      [Profesional_FullView].[Street] AS [Street], 
+      [Profesional_FullView].[StreetNumber] AS [StreetNumber], 
+      [Profesional_FullView].[Floor] AS [Floor], 
+      [Profesional_FullView].[CountryId] AS [CountryId], 
+      [Profesional_FullView].[CityId] AS [CityId], 
+      [Profesional_FullView].[Neighborhood] AS [Neighborhood], 
+      [Profesional_FullView].[mail] AS [mail], 
+      [Profesional_FullView].[Telefono1] AS [Telefono1], 
+      [Profesional_FullView].[Telefono2] AS [Telefono2], 
+      [Profesional_FullView].[Foto] AS [Foto], 
+      [Profesional_FullView].[IdProfesion] AS [IdProfesion], 
+      [Profesional_FullView].[NombreProfecion] AS [NombreProfecion], 
+      [Profesional_FullView].[ProvinceId] AS [ProvinceId]
+      FROM [dbo].[Profesional_FullView] AS [Profesional_FullView]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Profesional_ResourseScheduling" EntityType="Clinica1Model.Store.Profesional_ResourseScheduling" store:Type="Views" store:Schema="dbo" store:Name="Profesional_ResourseScheduling">
+      <DefiningQuery>SELECT 
+      [Profesional_ResourseScheduling].[Nombre] AS [Nombre], 
+      [Profesional_ResourseScheduling].[Apellido] AS [Apellido], 
+      [Profesional_ResourseScheduling].[UserName] AS [UserName], 
+      [Profesional_ResourseScheduling].[IdSheduler] AS [IdSheduler], 
+      [Profesional_ResourseScheduling].[Duration] AS [Duration], 
+      [Profesional_ResourseScheduling].[WeekDays] AS [WeekDays], 
+      [Profesional_ResourseScheduling].[Description] AS [Description], 
+      [Profesional_ResourseScheduling].[IdPersona] AS [IdPersona], 
+      [Profesional_ResourseScheduling].[IdProfesional] AS [IdProfesional]
+      FROM [dbo].[Profesional_ResourseScheduling] AS [Profesional_ResourseScheduling]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Appointments_HealthInstitution" Association="Clinica1Model.Store.FK_Appointments_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+      <End Role="Appointments" EntitySet="Appointments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evento_Paciente" Association="Clinica1Model.Store.FK_Evento_Paciente">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evento_Parametros" Association="Clinica1Model.Store.FK_Evento_Parametros">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Evento_Parametros1" Association="Clinica1Model.Store.FK_Evento_Parametros1">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Parametros_City" Association="Clinica1Model.Store.FK_HealthInstitution_Parametros_City">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Parametros_Country" Association="Clinica1Model.Store.FK_HealthInstitution_Parametros_Country">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Parametros_Province" Association="Clinica1Model.Store.FK_HealthInstitution_Parametros_Province">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Profesional_HealthInstitution" Association="Clinica1Model.Store.FK_HealthInstitution_Profesional_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+      <End Role="HealthInstitution_Profesional" EntitySet="HealthInstitution_Profesional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Profesional_Profesional" Association="Clinica1Model.Store.FK_HealthInstitution_Profesional_Profesional">
+      <End Role="Profesional" EntitySet="Profesional" />
+      <End Role="HealthInstitution_Profesional" EntitySet="HealthInstitution_Profesional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealthInstitution_Rooms_HealthInstitution" Association="Clinica1Model.Store.FK_HealthInstitution_Rooms_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+      <End Role="HealthInstitution_Rooms" EntitySet="HealthInstitution_Rooms" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HealtInstitute_Roles_HealthInstitution" Association="Clinica1Model.Store.FK_HealtInstitute_Roles_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+      <End Role="HealtInstitute_UsersInRoles" EntitySet="HealtInstitute_UsersInRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalEvent_HealthInstitution" Association="Clinica1Model.Store.FK_MedicalEvent_HealthInstitution">
+      <End Role="HealthInstitution" EntitySet="HealthInstitution" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalEvent_Profesional" Association="Clinica1Model.Store.FK_MedicalEvent_Profesional">
+      <End Role="Profesional" EntitySet="Profesional" />
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalEventAlerts_MedicalEvent" Association="Clinica1Model.Store.FK_MedicalEventAlerts_MedicalEvent">
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+      <End Role="MedicalEventAlerts" EntitySet="MedicalEventAlerts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MedicalEventDetail_MedicalEvent" Association="Clinica1Model.Store.FK_MedicalEventDetail_MedicalEvent">
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+      <End Role="MedicalEventDetail" EntitySet="MedicalEventDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MutualPorPaciente_Mutual" Association="Clinica1Model.Store.FK_MutualPorPaciente_Mutual">
+      <End Role="Mutual" EntitySet="Mutual" />
+      <End Role="MutualPorPaciente" EntitySet="MutualPorPaciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MutualPorPaciente_Paciente" Association="Clinica1Model.Store.FK_MutualPorPaciente_Paciente">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="MutualPorPaciente" EntitySet="MutualPorPaciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Paciente_Persona" Association="Clinica1Model.Store.FK_Paciente_Persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Patient" EntitySet="Patient" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ParamComercial_TipoParametro" Association="Clinica1Model.Store.FK_ParamComercial_TipoParametro">
+      <End Role="TipoParametro" EntitySet="TipoParametro" />
+      <End Role="Parametros" EntitySet="Parametros" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientAllergy_Paciente" Association="Clinica1Model.Store.FK_PatientAllergy_Paciente">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="PatientAllergy" EntitySet="PatientAllergy" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientMedicament_MedicalEvent" Association="Clinica1Model.Store.FK_PatientMedicament_MedicalEvent">
+      <End Role="MedicalEvent" EntitySet="MedicalEvent" />
+      <End Role="PatientMedicament" EntitySet="PatientMedicament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientMedicament_PatientMedicament" Association="Clinica1Model.Store.FK_PatientMedicament_PatientMedicament">
+      <End Role="PatientMedicament" EntitySet="PatientMedicament" />
+      <End Role="PatientMedicament1" EntitySet="PatientMedicament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_aspnet_Users" Association="Clinica1Model.Store.FK_Persona_aspnet_Users">
+      <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Persona_Parametros" Association="Clinica1Model.Store.FK_Persona_Parametros">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="Persona" EntitySet="Persona" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanVacunación_Paciente" Association="Clinica1Model.Store.FK_PlanVacunación_Paciente">
+      <End Role="Patient" EntitySet="Patient" />
+      <End Role="PlanVacunacion" EntitySet="PlanVacunacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PlanVacunacion_Vacunas" Association="Clinica1Model.Store.FK_PlanVacunacion_Vacunas">
+      <End Role="Vacunas" EntitySet="Vacunas" />
+      <End Role="PlanVacunacion" EntitySet="PlanVacunacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profecional_Parametros" Association="Clinica1Model.Store.FK_Profecional_Parametros">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="Profesional" EntitySet="Profesional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Profecional_Persona" Association="Clinica1Model.Store.FK_Profecional_Persona">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Profesional" EntitySet="Profesional" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfecionalEspecialidad_ParamComercial1" Association="Clinica1Model.Store.FK_ProfecionalEspecialidad_ParamComercial1">
+      <End Role="Parametros" EntitySet="Parametros" />
+      <End Role="ProfesionalEspecialidad" EntitySet="ProfesionalEspecialidad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfecionalEspecialidad_Profecional" Association="Clinica1Model.Store.FK_ProfecionalEspecialidad_Profecional">
+      <End Role="Profesional" EntitySet="Profesional" />
+      <End Role="ProfesionalEspecialidad" EntitySet="ProfesionalEspecialidad" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProfessionalAppoiment_Appointments" Association="Clinica1Model.Store.FK_ProfessionalAppoiment_Appointments">
+      <End Role="Appointments" EntitySet="Appointments" />
+      <End Role="ProfesionalAppointment" EntitySet="ProfesionalAppointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TipoParametro_TipoParametro" Association="Clinica1Model.Store.FK_TipoParametro_TipoParametro">
+      <End Role="TipoParametro" EntitySet="TipoParametro" />
+      <End Role="TipoParametro1" EntitySet="TipoParametro" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Appointments">
+    <Key>
+      <PropertyRef Name="AppointmentId" />
+    </Key>
+    <Property Name="AppointmentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Start" Type="datetime" />
+    <Property Name="End" Type="datetime" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="Location" Type="nchar" MaxLength="10" />
+    <Property Name="ResourceId" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Subject" Type="varchar" MaxLength="50" />
+    <Property Name="Label" Type="int" />
+    <Property Name="AllDay" Type="bit" />
+    <Property Name="DayNumber" Type="int" />
+    <Property Name="WeekOfMonth" Type="int" />
+    <Property Name="WeekDays" Type="int" />
+    <Property Name="OccurrenceCount" Type="int" />
+    <Property Name="Periodicity" Type="int" />
+    <Property Name="Range" Type="int" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="Month" Type="int" />
+    <Property Name="CreationUserId" Type="uniqueidentifier" />
+    <Property Name="UpdateUserId" Type="uniqueidentifier" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" />
+    <Property Name="IsExceptional" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="aspnet_Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="LoweredUserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
+    <Property Name="IsAnonymous" Type="bit" Nullable="false" />
+    <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CEI_10">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Code" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="ParentCode" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="HasChilds" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CEI10_Temp">
+    <Key>
+      <PropertyRef Name="Code" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Code" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="Description" Type="varchar" Nullable="false" MaxLength="500" />
+    <Property Name="ParentCode" Type="char" Nullable="false" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="HealthInstitution">
+    <Key>
+      <PropertyRef Name="HealthInstitutionId" />
+    </Key>
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="HealthInstitutionType" Type="int" />
+    <Property Name="Street" Type="varchar" MaxLength="250" />
+    <Property Name="StreetNumber" Type="smallint" />
+    <Property Name="Floor" Type="char" MaxLength="4" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="ProvinceId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="100" />
+    <Property Name="Province" Type="varchar" MaxLength="100" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="Neighborhood" Type="varchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="char" MaxLength="8" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="LastAccessTime" Type="datetime" />
+    <Property Name="LastAccessUserId" Type="uniqueidentifier" />
+    <Property Name="ActivationKey" Type="varchar" MaxLength="100" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="CUIT" Type="char" MaxLength="11" />
+    <Property Name="HealthInstitutionIdParent" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="HealthInstitution_Profesional">
+    <Key>
+      <PropertyRef Name="HealthInstitutionId" />
+      <PropertyRef Name="ProfesionalId" />
+    </Key>
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ProfesionalId" Type="int" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ActiveFlag" Type="bit" Nullable="false" />
+    <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="IsOwner" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HealthInstitution_Rooms">
+    <Key>
+      <PropertyRef Name="RomId" />
+    </Key>
+    <Property Name="RomId" Type="int" Nullable="false" />
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" />
+    <Property Name="Name" Type="nchar" MaxLength="10" />
+    <Property Name="Code" Type="nchar" MaxLength="10" />
+    <Property Name="Number" Type="nchar" MaxLength="10" />
+    <Property Name="Description" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="HealtInstitute_UsersInRoles">
+    <Key>
+      <PropertyRef Name="RoleName" />
+      <PropertyRef Name="HealthInstitutionId" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="100" />
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MedicalEvent">
+    <Key>
+      <PropertyRef Name="MedicalEventId" />
+    </Key>
+    <Property Name="MedicalEventId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="ProfesionalId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="IdEspesialidad" Type="int" Nullable="false" />
+    <Property Name="IdTipoConsulta" Type="int" />
+    <Property Name="Motivo" Type="varchar" MaxLength="100" />
+    <Property Name="CreatedUserId" Type="uniqueidentifier" />
+    <Property Name="Evolucion" Type="varchar" MaxLength="300" />
+    <Property Name="MedicalEventId_Parent" Type="int" />
+    <Property Name="IsDefinitive" Type="bit" Nullable="false" />
+    <Property Name="MetodoComplementario" Type="varchar" MaxLength="100" />
+    <Property Name="AppointmentId" Type="int" />
+    <Property Name="PMOQuirurgico" Type="varchar" MaxLength="100" />
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="MedicalEventAlerts">
+    <Key>
+      <PropertyRef Name="AlertId" />
+    </Key>
+    <Property Name="AlertId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="MedicalEventId" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" Nullable="false" />
+    <Property Name="AlertType" Type="int" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="ReferenceId" Type="int" />
+  </EntityType>
+  <EntityType Name="MedicalEventDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="nchar" Nullable="false" MaxLength="18" />
+    <Property Name="MedicalEventId" Type="int" Nullable="false" />
+    <Property Name="DetailType" Type="smallint" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="250" />
+    <Property Name="RelevanceType" Type="smallint" />
+    <Property Name="ActiveRelevance" Type="bit" />
+    <Property Name="Observations" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="Mutual">
+    <Key>
+      <PropertyRef Name="IdMutual" />
+    </Key>
+    <Property Name="IdMutual" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="ExigeCoseguro" Type="bit" />
+  </EntityType>
+  <EntityType Name="MutualPorPaciente">
+    <Key>
+      <PropertyRef Name="IdMutual" />
+      <PropertyRef Name="IdPaciente" />
+    </Key>
+    <Property Name="IdMutual" Type="int" Nullable="false" />
+    <Property Name="IdPaciente" Type="int" Nullable="false" />
+    <Property Name="NroAfiliadoMutual" Type="int" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Parametros">
+    <Key>
+      <PropertyRef Name="IdParametro" />
+    </Key>
+    <Property Name="IdParametro" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="IdTipoParametro" Type="int" />
+    <Property Name="IdParametroRef" Type="int" />
+    <Property Name="Descripcion" Type="nvarchar" MaxLength="100" />
+    <Property Name="Vigente" Type="bit" Nullable="false" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="CompanyId" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Patient">
+    <Key>
+      <PropertyRef Name="PatientId" />
+    </Key>
+    <Property Name="PatientId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+    <Property Name="LastAccessTime" Type="datetime" />
+    <Property Name="LastAccessUserId" Type="uniqueidentifier" />
+    <Property Name="LastHealthInstId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PatientAllergy">
+    <Key>
+      <PropertyRef Name="AllergyId" />
+    </Key>
+    <Property Name="AllergyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="FoodAllergy" Type="bit" Nullable="false" />
+    <Property Name="MedicamentsAllergy" Type="bit" Nullable="false" />
+    <Property Name="MiteAllergy" Type="bit" Nullable="false" />
+    <Property Name="InsectAllergy" Type="bit" Nullable="false" />
+    <Property Name="PollenAllergy" Type="bit" Nullable="false" />
+    <Property Name="OtherAllergy" Type="varchar" MaxLength="250" />
+    <Property Name="GeneralDetails" Type="varchar" MaxLength="250" />
+    <Property Name="Observation" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="LastAccessTime" Type="datetime" Nullable="false" />
+    <Property Name="LastAccessUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="AnimalAllergy" Type="bit" Nullable="false" />
+    <Property Name="ChemicalAllergy" Type="bit" Nullable="false" />
+    <Property Name="SunAllergy" Type="bit" Nullable="false" />
+    <Property Name="MedicalEventId" Type="int" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatientMedicament">
+    <Key>
+      <PropertyRef Name="PatientMedicamentId" />
+    </Key>
+    <Property Name="PatientMedicamentId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="CreatedUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="MedicamentName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Periodicity_hours" Type="smallint" Nullable="false" />
+    <Property Name="DaysCount" Type="smallint" Nullable="false" />
+    <Property Name="MedicalEventId" Type="int" Nullable="false" />
+    <Property Name="PatientMedicamentId_Parent" Type="int" />
+    <Property Name="MedicamentPresentation" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="Dosis" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="IdPersona" />
+    </Key>
+    <Property Name="IdPersona" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="TipoDocumento" Type="char" Nullable="false" MaxLength="4" />
+    <Property Name="NroDocumento" Type="char" Nullable="false" MaxLength="11" />
+    <Property Name="Apellido" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Nombre" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Sexo" Type="smallint" Nullable="false" />
+    <Property Name="IdEstadocivil" Type="int" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="LastAccessTime" Type="datetime" Nullable="false" />
+    <Property Name="LastAccessUserId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+    <Property Name="Foto" Type="varbinary(max)" />
+    <Property Name="IsUserActive" Type="bit" Nullable="false" />
+    <Property Name="Street" Type="varchar" MaxLength="250" />
+    <Property Name="StreetNumber" Type="smallint" />
+    <Property Name="Floor" Type="char" MaxLength="4" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="ProvinceId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="Neighborhood" Type="varchar" MaxLength="100" />
+    <Property Name="mail" Type="varchar" MaxLength="100" />
+    <Property Name="Telefono1" Type="nchar" MaxLength="20" />
+    <Property Name="Telefono2" Type="nchar" MaxLength="20" />
+    <Property Name="Province" Type="varchar" MaxLength="100" />
+    <Property Name="City" Type="varchar" MaxLength="100" />
+    <Property Name="ZipCode" Type="char" MaxLength="8" />
+    <Property Name="LastHealthInstId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="PlanVacunacion">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="FechaPlaneada" Type="datetime" Nullable="false" />
+    <Property Name="FechaColocacion" Type="datetime" />
+    <Property Name="ProfesionalColocadorUserID" Type="uniqueidentifier" />
+    <Property Name="NombreProfesionalQueColoco" Type="varchar" MaxLength="100" />
+    <Property Name="Lote" Type="varchar" MaxLength="10" />
+    <Property Name="FechaPlaneada_Alterada" Type="bit" Nullable="false" />
+    <Property Name="CodigoVacunaSustituta" Type="int" />
+  </EntityType>
+  <EntityType Name="Profesional">
+    <Key>
+      <PropertyRef Name="IdProfesional" />
+    </Key>
+    <Property Name="IdProfesional" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="IdEspecialidad" Type="int" />
+    <Property Name="Matricula" Type="varchar" MaxLength="50" />
+    <Property Name="LastAccessTime" Type="datetime" />
+    <Property Name="LastAccessUserId" Type="uniqueidentifier" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="IdProfesion" Type="int" />
+    <Property Name="LastHealthInstId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ProfesionalAppointment">
+    <Key>
+      <PropertyRef Name="AppointmentId" />
+    </Key>
+    <Property Name="AppointmentId" Type="int" Nullable="false" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="PatientName" Type="varchar" Nullable="false" MaxLength="40" />
+    <Property Name="RoomId" Type="int" />
+    <Property Name="IdMotivoConsulta" Type="int" />
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="ProfesionalEspecialidad">
+    <Key>
+      <PropertyRef Name="IdProfesional" />
+      <PropertyRef Name="IdEspecialidad" />
+    </Key>
+    <Property Name="IdProfesional" Type="int" Nullable="false" />
+    <Property Name="IdEspecialidad" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ResourceScheduling">
+    <Key>
+      <PropertyRef Name="IdSheduler" />
+    </Key>
+    <Property Name="IdSheduler" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DateStart" Type="datetime" />
+    <Property Name="DateEnd" Type="datetime" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="ResourceId" Type="int" />
+    <Property Name="WeekOfMonth" Type="int" />
+    <Property Name="WeekDays" Type="int" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="CreationUserId" Type="uniqueidentifier" />
+    <Property Name="UpdateUserId" Type="uniqueidentifier" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="UpdatedDate" Type="datetime" />
+    <Property Name="ResourceType" Type="int" />
+    <Property Name="TimeStart" Type="varchar" MaxLength="5" />
+    <Property Name="TimeEnd" Type="varchar" MaxLength="5" />
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" />
+  </EntityType>
+  <EntityType Name="TipoParametro">
+    <Key>
+      <PropertyRef Name="IdTipoParametro" />
+    </Key>
+    <Property Name="IdTipoParametro" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="IdTipoParametroRelacion" Type="int" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Vacunas">
+    <Key>
+      <PropertyRef Name="Codigo" />
+    </Key>
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="Cantidad" Type="smallint" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="OrdenGrupo" Type="smallint" />
+    <Property Name="Grupo" Type="varchar" MaxLength="50" />
+    <Property Name="Anulaciones" Type="varchar" MaxLength="50" />
+    <Property Name="Comentario" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.MedicalEvent_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="MedicalEvent_View">
+    <Key>
+      <PropertyRef Name="MedicalEventId" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="NombreEspesialidad" />
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="IdProfesional" />
+    </Key>
+    <Property Name="MedicalEventId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="NombreEspesialidad" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="IdProfesional" Type="int" Nullable="false" />
+    <Property Name="Profesional" Type="varchar" MaxLength="62" />
+    <Property Name="MedicalEventId_Parent" Type="int" />
+    <Property Name="NombreTipoConsulta" Type="nchar" MaxLength="50" />
+    <Property Name="HealthInstitutionId" Type="uniqueidentifier" />
+    <Property Name="RazonSocial" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.MedicalEventDetail_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="MedicalEventDetail_View">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="ProfesionalId" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Code" />
+      <PropertyRef Name="MedicalEventId" />
+      <PropertyRef Name="DetailType" />
+    </Key>
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="ProfesionalId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Code" Type="nchar" Nullable="false" MaxLength="18" />
+    <Property Name="MedicalEventId" Type="int" Nullable="false" />
+    <Property Name="DetailType" Type="smallint" Nullable="false" />
+    <Property Name="Desc" Type="varchar" MaxLength="250" />
+    <Property Name="ActiveRelevance" Type="bit" />
+    <Property Name="Observations" Type="varchar" MaxLength="300" />
+    <Property Name="RelevanceType" Type="smallint" />
+    <Property Name="Profesional" Type="varchar" MaxLength="62" />
+    <Property Name="RelevanceTypeName" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.Patient_Appointments_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Patient_Appointments_View">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="IdProfesional" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="AppointmentId" />
+      <PropertyRef Name="IsExceptional" />
+    </Key>
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="Start" Type="datetime" />
+    <Property Name="End" Type="datetime" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="Location" Type="nchar" MaxLength="10" />
+    <Property Name="ResourceId" Type="int" />
+    <Property Name="Subject" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="int" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="IdProfesional" Type="int" Nullable="false" />
+    <Property Name="Apellido" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Nombre" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="AppointmentId" Type="int" Nullable="false" />
+    <Property Name="IsExceptional" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.PatientMedicament_View' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="PatientMedicament_View">
+    <Key>
+      <PropertyRef Name="PatientMedicamentId" />
+      <PropertyRef Name="CreatedDate" />
+      <PropertyRef Name="MedicamentName" />
+      <PropertyRef Name="Periodicity_hours" />
+      <PropertyRef Name="DaysCount" />
+      <PropertyRef Name="MedicalEventId" />
+      <PropertyRef Name="NombreProfesional" />
+      <PropertyRef Name="ApellidoProfesional" />
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="MedicamentPresentation" />
+      <PropertyRef Name="Enabled" />
+      <PropertyRef Name="Dosis" />
+      <PropertyRef Name="IdEspesialidad" />
+      <PropertyRef Name="NombreEspesialidad" />
+      <PropertyRef Name="Status" />
+    </Key>
+    <Property Name="PatientMedicamentId" Type="int" Nullable="false" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+    <Property Name="MedicamentName" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="Periodicity_hours" Type="smallint" Nullable="false" />
+    <Property Name="DaysCount" Type="smallint" Nullable="false" />
+    <Property Name="MedicalEventId" Type="int" Nullable="false" />
+    <Property Name="PatientMedicamentId_Parent" Type="int" />
+    <Property Name="NombreProfesional" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="ApellidoProfesional" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="MedicamentPresentation" Type="varchar" Nullable="false" MaxLength="200" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+    <Property Name="Dosis" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="IdEspesialidad" Type="int" Nullable="false" />
+    <Property Name="IdTipoConsulta" Type="int" />
+    <Property Name="NombreEspesialidad" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="NombreTipoConsulta" Type="nchar" MaxLength="50" />
+    <Property Name="Status" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.PatientView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="PatientView">
+    <Key>
+      <PropertyRef Name="PatientId" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="FechaAlta" />
+      <PropertyRef Name="TipoDocumento" />
+      <PropertyRef Name="NroDocumento" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Sexo" />
+      <PropertyRef Name="EstadoCivil" />
+      <PropertyRef Name="FechaNacimiento" />
+    </Key>
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+    <Property Name="TipoDocumento" Type="char" Nullable="false" MaxLength="4" />
+    <Property Name="NroDocumento" Type="char" Nullable="false" MaxLength="11" />
+    <Property Name="Apellido" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Nombre" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Sexo" Type="smallint" Nullable="false" />
+    <Property Name="EstadoCivil" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.PlanVacunacion_FullView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="PlanVacunacion_FullView">
+    <Key>
+      <PropertyRef Name="Codigo" />
+      <PropertyRef Name="FechaPlaneada" />
+      <PropertyRef Name="FechaPlaneada_Alterada" />
+      <PropertyRef Name="PatientId" />
+    </Key>
+    <Property Name="Codigo" Type="int" Nullable="false" />
+    <Property Name="FechaPlaneada" Type="datetime" Nullable="false" />
+    <Property Name="FechaColocacion" Type="datetime" />
+    <Property Name="Lote" Type="varchar" MaxLength="10" />
+    <Property Name="FechaPlaneada_Alterada" Type="bit" Nullable="false" />
+    <Property Name="CodigoVacunaSustituta" Type="int" />
+    <Property Name="Cantidad" Type="smallint" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="OrdenGrupo" Type="smallint" />
+    <Property Name="Grupo" Type="varchar" MaxLength="50" />
+    <Property Name="Comentario" Type="varchar" MaxLength="500" />
+    <Property Name="Anulaciones" Type="varchar" MaxLength="50" />
+    <Property Name="PatientId" Type="int" Nullable="false" />
+    <Property Name="ProfesionalColocadorUserID" Type="uniqueidentifier" />
+    <Property Name="NombreProfesionalQueColoco" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.Profesional_FullView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Profesional_FullView">
+    <Key>
+      <PropertyRef Name="IdProfesional" />
+      <PropertyRef Name="IdPersona" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Sexo" />
+      <PropertyRef Name="NroDocumento" />
+      <PropertyRef Name="NombreEspecialidad" />
+      <PropertyRef Name="FechaNacimiento" />
+      <PropertyRef Name="TipoDocumento" />
+      <PropertyRef Name="NombreProfecion" />
+    </Key>
+    <Property Name="IdProfesional" Type="int" Nullable="false" />
+    <Property Name="IdPersona" Type="int" Nullable="false" />
+    <Property Name="Matricula" Type="varchar" MaxLength="50" />
+    <Property Name="FechaAlta" Type="datetime" />
+    <Property Name="Apellido" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Nombre" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Sexo" Type="smallint" Nullable="false" />
+    <Property Name="IdEspecialidad" Type="int" />
+    <Property Name="NroDocumento" Type="char" Nullable="false" MaxLength="11" />
+    <Property Name="NombreEspecialidad" Type="nchar" Nullable="false" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="256" />
+    <Property Name="UserId" Type="uniqueidentifier" />
+    <Property Name="IdEstadocivil" Type="int" />
+    <Property Name="FechaNacimiento" Type="datetime" Nullable="false" />
+    <Property Name="TipoDocumento" Type="char" Nullable="false" MaxLength="4" />
+    <Property Name="Street" Type="varchar" MaxLength="250" />
+    <Property Name="StreetNumber" Type="smallint" />
+    <Property Name="Floor" Type="char" MaxLength="4" />
+    <Property Name="CountryId" Type="int" />
+    <Property Name="CityId" Type="int" />
+    <Property Name="Neighborhood" Type="varchar" MaxLength="50" />
+    <Property Name="mail" Type="nchar" MaxLength="10" />
+    <Property Name="Telefono1" Type="nchar" MaxLength="20" />
+    <Property Name="Telefono2" Type="nchar" MaxLength="20" />
+    <Property Name="Foto" Type="varbinary(max)" />
+    <Property Name="IdProfesion" Type="int" />
+    <Property Name="NombreProfecion" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProvinceId" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'Health.dbo.Profesional_ResourseScheduling' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="Profesional_ResourseScheduling">
+    <Key>
+      <PropertyRef Name="Nombre" />
+      <PropertyRef Name="Apellido" />
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="IdSheduler" />
+      <PropertyRef Name="IdProfesional" />
+    </Key>
+    <Property Name="Nombre" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="Apellido" Type="char" Nullable="false" MaxLength="30" />
+    <Property Name="UserName" Type="nvarchar" Nullable="false" MaxLength="256" />
+    <Property Name="IdSheduler" Type="int" Nullable="false" />
+    <Property Name="Duration" Type="float" />
+    <Property Name="WeekDays" Type="int" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="IdPersona" Type="int" />
+    <Property Name="IdProfesional" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Appointments_HealthInstitution">
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="0..1" />
+    <End Role="Appointments" Type="Clinica1Model.Store.Appointments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="Appointments">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evento_Paciente">
+    <End Role="Patient" Type="Clinica1Model.Store.Patient" Multiplicity="1" />
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evento_Parametros">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="1" />
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="IdEspesialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Evento_Parametros1">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="0..1" />
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="IdTipoConsulta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Parametros_City">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="0..1" />
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="HealthInstitution">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Parametros_Country">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="0..1" />
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="HealthInstitution">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Parametros_Province">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="0..1" />
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="HealthInstitution">
+        <PropertyRef Name="ProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Profesional_HealthInstitution">
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="1" />
+    <End Role="HealthInstitution_Profesional" Type="Clinica1Model.Store.HealthInstitution_Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="HealthInstitution_Profesional">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Profesional_Profesional">
+    <End Role="Profesional" Type="Clinica1Model.Store.Profesional" Multiplicity="1" />
+    <End Role="HealthInstitution_Profesional" Type="Clinica1Model.Store.HealthInstitution_Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesional">
+        <PropertyRef Name="IdProfesional" />
+      </Principal>
+      <Dependent Role="HealthInstitution_Profesional">
+        <PropertyRef Name="ProfesionalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealthInstitution_Rooms_HealthInstitution">
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="0..1" />
+    <End Role="HealthInstitution_Rooms" Type="Clinica1Model.Store.HealthInstitution_Rooms" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="HealthInstitution_Rooms">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HealtInstitute_Roles_HealthInstitution">
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="1" />
+    <End Role="HealtInstitute_UsersInRoles" Type="Clinica1Model.Store.HealtInstitute_UsersInRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="HealtInstitute_UsersInRoles">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalEvent_HealthInstitution">
+    <End Role="HealthInstitution" Type="Clinica1Model.Store.HealthInstitution" Multiplicity="0..1" />
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HealthInstitution">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="HealthInstitutionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalEvent_Profesional">
+    <End Role="Profesional" Type="Clinica1Model.Store.Profesional" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesional">
+        <PropertyRef Name="IdProfesional" />
+      </Principal>
+      <Dependent Role="MedicalEvent">
+        <PropertyRef Name="ProfesionalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalEventAlerts_MedicalEvent">
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="1" />
+    <End Role="MedicalEventAlerts" Type="Clinica1Model.Store.MedicalEventAlerts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalEvent">
+        <PropertyRef Name="MedicalEventId" />
+      </Principal>
+      <Dependent Role="MedicalEventAlerts">
+        <PropertyRef Name="MedicalEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MedicalEventDetail_MedicalEvent">
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="1" />
+    <End Role="MedicalEventDetail" Type="Clinica1Model.Store.MedicalEventDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalEvent">
+        <PropertyRef Name="MedicalEventId" />
+      </Principal>
+      <Dependent Role="MedicalEventDetail">
+        <PropertyRef Name="MedicalEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MutualPorPaciente_Mutual">
+    <End Role="Mutual" Type="Clinica1Model.Store.Mutual" Multiplicity="1" />
+    <End Role="MutualPorPaciente" Type="Clinica1Model.Store.MutualPorPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mutual">
+        <PropertyRef Name="IdMutual" />
+      </Principal>
+      <Dependent Role="MutualPorPaciente">
+        <PropertyRef Name="IdMutual" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MutualPorPaciente_Paciente">
+    <End Role="Patient" Type="Clinica1Model.Store.Patient" Multiplicity="1" />
+    <End Role="MutualPorPaciente" Type="Clinica1Model.Store.MutualPorPaciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="MutualPorPaciente">
+        <PropertyRef Name="IdPaciente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Paciente_Persona">
+    <End Role="Persona" Type="Clinica1Model.Store.Persona" Multiplicity="1" />
+    <End Role="Patient" Type="Clinica1Model.Store.Patient" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Patient">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ParamComercial_TipoParametro">
+    <End Role="TipoParametro" Type="Clinica1Model.Store.TipoParametro" Multiplicity="0..1" />
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoParametro">
+        <PropertyRef Name="IdTipoParametro" />
+      </Principal>
+      <Dependent Role="Parametros">
+        <PropertyRef Name="IdTipoParametro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientAllergy_Paciente">
+    <End Role="Patient" Type="Clinica1Model.Store.Patient" Multiplicity="1" />
+    <End Role="PatientAllergy" Type="Clinica1Model.Store.PatientAllergy" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="PatientAllergy">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientMedicament_MedicalEvent">
+    <End Role="MedicalEvent" Type="Clinica1Model.Store.MedicalEvent" Multiplicity="1" />
+    <End Role="PatientMedicament" Type="Clinica1Model.Store.PatientMedicament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MedicalEvent">
+        <PropertyRef Name="MedicalEventId" />
+      </Principal>
+      <Dependent Role="PatientMedicament">
+        <PropertyRef Name="MedicalEventId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientMedicament_PatientMedicament">
+    <End Role="PatientMedicament" Type="Clinica1Model.Store.PatientMedicament" Multiplicity="0..1" />
+    <End Role="PatientMedicament1" Type="Clinica1Model.Store.PatientMedicament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PatientMedicament">
+        <PropertyRef Name="PatientMedicamentId" />
+      </Principal>
+      <Dependent Role="PatientMedicament1">
+        <PropertyRef Name="PatientMedicamentId_Parent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_aspnet_Users">
+    <End Role="aspnet_Users" Type="Clinica1Model.Store.aspnet_Users" Multiplicity="0..1" />
+    <End Role="Persona" Type="Clinica1Model.Store.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="aspnet_Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Persona_Parametros">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="0..1" />
+    <End Role="Persona" Type="Clinica1Model.Store.Persona" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="Persona">
+        <PropertyRef Name="IdEstadocivil" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanVacunación_Paciente">
+    <End Role="Patient" Type="Clinica1Model.Store.Patient" Multiplicity="1" />
+    <End Role="PlanVacunacion" Type="Clinica1Model.Store.PlanVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient">
+        <PropertyRef Name="PatientId" />
+      </Principal>
+      <Dependent Role="PlanVacunacion">
+        <PropertyRef Name="PatientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PlanVacunacion_Vacunas">
+    <End Role="Vacunas" Type="Clinica1Model.Store.Vacunas" Multiplicity="1" />
+    <End Role="PlanVacunacion" Type="Clinica1Model.Store.PlanVacunacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vacunas">
+        <PropertyRef Name="Codigo" />
+      </Principal>
+      <Dependent Role="PlanVacunacion">
+        <PropertyRef Name="Codigo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profecional_Parametros">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="0..1" />
+    <End Role="Profesional" Type="Clinica1Model.Store.Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="Profesional">
+        <PropertyRef Name="IdProfesion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Profecional_Persona">
+    <End Role="Persona" Type="Clinica1Model.Store.Persona" Multiplicity="0..1" />
+    <End Role="Profesional" Type="Clinica1Model.Store.Profesional" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="IdPersona" />
+      </Principal>
+      <Dependent Role="Profesional">
+        <PropertyRef Name="IdPersona" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfecionalEspecialidad_ParamComercial1">
+    <End Role="Parametros" Type="Clinica1Model.Store.Parametros" Multiplicity="1" />
+    <End Role="ProfesionalEspecialidad" Type="Clinica1Model.Store.ProfesionalEspecialidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parametros">
+        <PropertyRef Name="IdParametro" />
+      </Principal>
+      <Dependent Role="ProfesionalEspecialidad">
+        <PropertyRef Name="IdEspecialidad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfecionalEspecialidad_Profecional">
+    <End Role="Profesional" Type="Clinica1Model.Store.Profesional" Multiplicity="1" />
+    <End Role="ProfesionalEspecialidad" Type="Clinica1Model.Store.ProfesionalEspecialidad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profesional">
+        <PropertyRef Name="IdProfesional" />
+      </Principal>
+      <Dependent Role="ProfesionalEspecialidad">
+        <PropertyRef Name="IdProfesional" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProfessionalAppoiment_Appointments">
+    <End Role="Appointments" Type="Clinica1Model.Store.Appointments" Multiplicity="1" />
+    <End Role="ProfesionalAppointment" Type="Clinica1Model.Store.ProfesionalAppointment" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Appointments">
+        <PropertyRef Name="AppointmentId" />
+      </Principal>
+      <Dependent Role="ProfesionalAppointment">
+        <PropertyRef Name="AppointmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TipoParametro_TipoParametro">
+    <End Role="TipoParametro" Type="Clinica1Model.Store.TipoParametro" Multiplicity="0..1" />
+    <End Role="TipoParametro1" Type="Clinica1Model.Store.TipoParametro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TipoParametro">
+        <PropertyRef Name="IdTipoParametro" />
+      </Principal>
+      <Dependent Role="TipoParametro1">
+        <PropertyRef Name="IdTipoParametroRelacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
