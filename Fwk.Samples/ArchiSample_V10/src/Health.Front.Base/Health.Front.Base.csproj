@@ -74,28 +74,22 @@
     <Reference Include="DevExpress.XtraScheduler.v11.1.Extensions, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraSpellChecker.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="Fwk.Bases">
-      <HintPath>..\Libraries\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases.Connector">
-      <HintPath>..\Libraries\Fwk.Bases.Connector.dll</HintPath>
-    </Reference>
-    <Reference Include="Fwk.Bases.Connector.XmlSerializers">
-      <HintPath>..\Libraries\Fwk.Bases.Connector.XmlSerializers.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Bases.Connector.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases.FrontEnd">
-      <HintPath>..\Libraries\Fwk.Bases.FrontEnd.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Bases.FrontEnd.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Controls.Win32">
-      <HintPath>..\Libraries\Fwk.Controls.Win32.dll</HintPath>
-    </Reference>
-    <Reference Include="Fwk.DataBase">
-      <HintPath>..\Libraries\Fwk.DataBase.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Controls.Win32.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Security">
-      <HintPath>..\Libraries\Fwk.Security.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Security.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.UI">
-      <HintPath>..\Libraries\Fwk.UI.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

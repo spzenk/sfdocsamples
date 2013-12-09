@@ -166,53 +166,44 @@
     <Reference Include="DevExpress.XtraVerticalGrid.v11.1, Version=11.1.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Fwk.Bases, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fwk.Bases">
+      <HintPath>..\..\Libraries\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases.Connector">
-      <HintPath>..\..\libs\Fwk.Bases.Connector.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\Libraries\Fwk.Bases.Connector.dll</HintPath>
+    </Reference>
+    <Reference Include="Fwk.Bases.FrontEnd">
+      <HintPath>..\..\Libraries\Fwk.Bases.FrontEnd.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Security">
-      <HintPath>..\..\libs\Fwk.Security.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\..\Libraries\Fwk.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Fwk.UI, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Fwk.UI.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Fwk.UI">
+      <HintPath>..\..\Libraries\Fwk.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Security.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography, Version=5.0.414.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Security.Cryptography">
+      <HintPath>..\..\Libraries\Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.ServiceLocation.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\..\Libraries\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.Unity.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.Unity">
+      <HintPath>..\..\Libraries\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\libs\Microsoft.Practices.Unity.Interception.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Microsoft.Practices.Unity.Interception">
+      <HintPath>..\..\Libraries\Microsoft.Practices.Unity.Interception.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -249,21 +240,15 @@
     <Compile Include="btnAndroid.Designer.cs">
       <DependentUpon>btnAndroid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Environment\frmFindHealthInst.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Environment\frmFindHealthInst.cs" />
     <Compile Include="Environment\frmFindHealthInst.Designer.cs">
       <DependentUpon>frmFindHealthInst.cs</DependentUpon>
     </Compile>
-    <Compile Include="Environment\frmHealthInst_Info.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Environment\frmHealthInst_Info.cs" />
     <Compile Include="Environment\frmHealthInst_Info.Designer.cs">
       <DependentUpon>frmHealthInst_Info.cs</DependentUpon>
     </Compile>
-    <Compile Include="Environment\frmRegisterHealth.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Environment\frmRegisterHealth.cs" />
     <Compile Include="Environment\frmRegisterHealth.Designer.cs">
       <DependentUpon>frmRegisterHealth.cs</DependentUpon>
     </Compile>
@@ -273,15 +258,11 @@
     <Compile Include="Environment\FRM_AuthenticationForm_ASPNet.Designer.cs">
       <DependentUpon>FRM_AuthenticationForm_ASPNet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\uc_PatientAppoiments.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Pacientes\uc_PatientAppoiments.cs" />
     <Compile Include="Pacientes\uc_PatientAppoiments.Designer.cs">
       <DependentUpon>uc_PatientAppoiments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\uc_PatientsGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Pacientes\uc_PatientsGrid.cs" />
     <Compile Include="Pacientes\uc_PatientsGrid.Designer.cs">
       <DependentUpon>uc_PatientsGrid.cs</DependentUpon>
     </Compile>
@@ -291,27 +272,19 @@
     <Compile Include="Personas\uc_MedioContacto.Designer.cs">
       <DependentUpon>uc_MedioContacto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\uc_PatientCard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Pacientes\uc_PatientCard.cs" />
     <Compile Include="Pacientes\uc_PatientCard.Designer.cs">
       <DependentUpon>uc_PatientCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\frm_Profecional_Shifts.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Profecional\frm_Profecional_Shifts.cs" />
     <Compile Include="Profecional\frm_Profecional_Shifts.Designer.cs">
       <DependentUpon>frm_Profecional_Shifts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\uc_TimeLine.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Profecional\uc_TimeLine.cs" />
     <Compile Include="Profecional\uc_TimeLine.Designer.cs">
       <DependentUpon>uc_TimeLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmDxShiftAppointment.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Scheduler\frmDxShiftAppointment.cs" />
     <Compile Include="Scheduler\frmDxShiftAppointment.Designer.cs">
       <DependentUpon>frmDxShiftAppointment.cs</DependentUpon>
     </Compile>
@@ -322,9 +295,7 @@
     <Compile Include="frmMainRibon.Designer.cs">
       <DependentUpon>frmMainRibon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\frmFindProfecionales.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Profecional\frmFindProfecionales.cs" />
     <Compile Include="Profecional\frmFindProfecionales.Designer.cs">
       <DependentUpon>frmFindProfecionales.cs</DependentUpon>
     </Compile>
@@ -334,9 +305,7 @@
     <Compile Include="Profecional\frmProfecionales_Grid.Designer.cs">
       <DependentUpon>frmProfecionales_Grid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\frmProfecionalCard.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Profecional\frmProfecionalCard.cs" />
     <Compile Include="Profecional\frmProfecionalCard.Designer.cs">
       <DependentUpon>frmProfecionalCard.cs</DependentUpon>
     </Compile>
@@ -346,51 +315,35 @@
     <Compile Include="Profecional\uc_Profecionales_Grid.Designer.cs">
       <DependentUpon>uc_Profecionales_Grid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\uc_Profecionales_Card.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Profecional\uc_Profecionales_Card.cs" />
     <Compile Include="Profecional\uc_Profecionales_Card.Designer.cs">
       <DependentUpon>uc_Profecionales_Card.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmResouceScheduling.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Scheduler\frmResouceScheduling.cs" />
     <Compile Include="Scheduler\frmResouceScheduling.Designer.cs">
       <DependentUpon>frmResouceScheduling.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmShiftsControls.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Scheduler\frmShiftsControls.cs" />
     <Compile Include="Scheduler\frmShiftsControls.Designer.cs">
       <DependentUpon>frmShiftsControls.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmMain_ShiftsMannager.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Scheduler\frmMain_ShiftsMannager.cs" />
     <Compile Include="Scheduler\frmMain_ShiftsMannager.Designer.cs">
       <DependentUpon>frmMain_ShiftsMannager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmShiftAppointment.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Scheduler\frmShiftAppointment.cs" />
     <Compile Include="Scheduler\frmShiftAppointment.Designer.cs">
       <DependentUpon>frmShiftAppointment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\uc_AllShiftGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Scheduler\uc_AllShiftGrid.cs" />
     <Compile Include="Scheduler\uc_AllShiftGrid.Designer.cs">
       <DependentUpon>uc_AllShiftGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\uc_shedule_profecional_timeline.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Scheduler\uc_shedule_profecional_timeline.cs" />
     <Compile Include="Scheduler\uc_shedule_profecional_timeline.Designer.cs">
       <DependentUpon>uc_shedule_profecional_timeline.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\uc_ShiftsControls.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="Scheduler\uc_ShiftsControls.cs" />
     <Compile Include="Scheduler\uc_ShiftsControls.Designer.cs">
       <DependentUpon>uc_ShiftsControls.cs</DependentUpon>
     </Compile>
@@ -409,27 +362,19 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="Personas\frmFindPerosnas.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Personas\frmFindPerosnas.cs" />
     <Compile Include="Personas\frmFindPerosnas.Designer.cs">
       <DependentUpon>frmFindPerosnas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\FrmABMPaciente.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Pacientes\FrmABMPaciente.cs" />
     <Compile Include="Pacientes\FrmABMPaciente.Designer.cs">
       <DependentUpon>FrmABMPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\frmWebBrowser.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Pacientes\frmWebBrowser.cs" />
     <Compile Include="Pacientes\frmWebBrowser.Designer.cs">
       <DependentUpon>frmWebBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\frmGridPacientes.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Pacientes\frmGridPacientes.cs" />
     <Compile Include="Pacientes\frmGridPacientes.Designer.cs">
       <DependentUpon>frmGridPacientes.cs</DependentUpon>
     </Compile>
