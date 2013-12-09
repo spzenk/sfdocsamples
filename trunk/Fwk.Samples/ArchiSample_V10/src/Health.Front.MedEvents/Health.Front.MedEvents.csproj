@@ -70,19 +70,16 @@
       <HintPath>..\Libraries\DevExpress.XtraVerticalGrid.v11.1.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases">
-      <HintPath>..\Libraries\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases.Connector">
-      <HintPath>..\Libraries\Fwk.Bases.Connector.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Bases.Connector.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases.FrontEnd">
-      <HintPath>..\Libraries\Fwk.Bases.FrontEnd.dll</HintPath>
-    </Reference>
-    <Reference Include="Fwk.Controls.Win32">
-      <HintPath>..\Libraries\Fwk.Controls.Win32.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.Bases.FrontEnd.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.UI">
-      <HintPath>..\Libraries\Fwk.UI.dll</HintPath>
+      <HintPath>..\..\Libraries\Fwk.UI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -103,15 +100,11 @@
     <Compile Include="..\GlobalAssemblyInfo.cs">
       <Link>Properties\GlobalAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="frmAddMedicament.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmAddMedicament.cs" />
     <Compile Include="frmAddMedicament.Designer.cs">
       <DependentUpon>frmAddMedicament.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmEvent.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmEvent.cs" />
     <Compile Include="frmEvent.Designer.cs">
       <DependentUpon>frmEvent.cs</DependentUpon>
     </Compile>
@@ -121,39 +114,27 @@
     <Compile Include="frmMain_Patient_Atention.Designer.cs">
       <DependentUpon>frmMain_Patient_Atention.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmQueryUpdateMedicament.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frmQueryUpdateMedicament.cs" />
     <Compile Include="frmQueryUpdateMedicament.Designer.cs">
       <DependentUpon>frmQueryUpdateMedicament.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_cei10.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frm_cei10.cs" />
     <Compile Include="frm_cei10.Designer.cs">
       <DependentUpon>frm_cei10.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_EventDetails_Diagnosis.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frm_EventDetails_Diagnosis.cs" />
     <Compile Include="frm_EventDetails_Diagnosis.Designer.cs">
       <DependentUpon>frm_EventDetails_Diagnosis.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_EventDetails_MetodoComplementario.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frm_EventDetails_MetodoComplementario.cs" />
     <Compile Include="frm_EventDetails_MetodoComplementario.Designer.cs">
       <DependentUpon>frm_EventDetails_MetodoComplementario.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_ManageMedicament.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="frm_ManageMedicament.cs" />
     <Compile Include="frm_ManageMedicament.Designer.cs">
       <DependentUpon>frm_ManageMedicament.cs</DependentUpon>
     </Compile>
-    <Compile Include="uc_PatientAllergy.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="uc_PatientAllergy.cs" />
     <Compile Include="uc_PatientAllergy.Designer.cs">
       <DependentUpon>uc_PatientAllergy.cs</DependentUpon>
     </Compile>
@@ -175,46 +156,32 @@
     <Compile Include="uc_docprontviewer_1.Designer.cs">
       <DependentUpon>uc_docprontviewer_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="UC_EventDetailsGrid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="UC_EventDetailsGrid.cs" />
     <Compile Include="UC_EventDetailsGrid.Designer.cs">
       <DependentUpon>UC_EventDetailsGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="uc_Events_Grid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="uc_Events_Grid.cs" />
     <Compile Include="uc_Events_Grid.Designer.cs">
       <DependentUpon>uc_Events_Grid.cs</DependentUpon>
     </Compile>
-    <Compile Include="uc_event_01.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="uc_event_01.cs" />
     <Compile Include="uc_event_01.Designer.cs">
       <DependentUpon>uc_event_01.cs</DependentUpon>
     </Compile>
-    <Compile Include="uc_event_view.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="uc_event_view.cs" />
     <Compile Include="uc_event_view.Designer.cs">
       <DependentUpon>uc_event_view.cs</DependentUpon>
     </Compile>
-    <Compile Include="uc_PatientMedicaments_Grid.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="uc_PatientMedicaments_Grid.cs" />
     <Compile Include="uc_PatientMedicaments_Grid.Designer.cs">
       <DependentUpon>uc_PatientMedicaments_Grid.cs</DependentUpon>
     </Compile>
-    <Compile Include="uc_pmo_grid_view.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="uc_pmo_grid_view.cs" />
     <Compile Include="uc_pmo_grid_view.Designer.cs">
       <DependentUpon>uc_pmo_grid_view.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="uc_VAcunas.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
+    <Compile Include="uc_VAcunas.cs" />
     <Compile Include="uc_VAcunas.Designer.cs">
       <DependentUpon>uc_VAcunas.cs</DependentUpon>
     </Compile>
