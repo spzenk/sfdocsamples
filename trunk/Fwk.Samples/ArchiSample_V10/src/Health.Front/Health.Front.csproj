@@ -240,15 +240,21 @@
     <Compile Include="btnAndroid.Designer.cs">
       <DependentUpon>btnAndroid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Environment\frmFindHealthInst.cs" />
+    <Compile Include="Environment\frmFindHealthInst.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Environment\frmFindHealthInst.Designer.cs">
       <DependentUpon>frmFindHealthInst.cs</DependentUpon>
     </Compile>
-    <Compile Include="Environment\frmHealthInst_Info.cs" />
+    <Compile Include="Environment\frmHealthInst_Info.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Environment\frmHealthInst_Info.Designer.cs">
       <DependentUpon>frmHealthInst_Info.cs</DependentUpon>
     </Compile>
-    <Compile Include="Environment\frmRegisterHealth.cs" />
+    <Compile Include="Environment\frmRegisterHealth.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Environment\frmRegisterHealth.Designer.cs">
       <DependentUpon>frmRegisterHealth.cs</DependentUpon>
     </Compile>
@@ -258,11 +264,15 @@
     <Compile Include="Environment\FRM_AuthenticationForm_ASPNet.Designer.cs">
       <DependentUpon>FRM_AuthenticationForm_ASPNet.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\uc_PatientAppoiments.cs" />
+    <Compile Include="Pacientes\uc_PatientAppoiments.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Pacientes\uc_PatientAppoiments.Designer.cs">
       <DependentUpon>uc_PatientAppoiments.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\uc_PatientsGrid.cs" />
+    <Compile Include="Pacientes\uc_PatientsGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Pacientes\uc_PatientsGrid.Designer.cs">
       <DependentUpon>uc_PatientsGrid.cs</DependentUpon>
     </Compile>
@@ -272,19 +282,27 @@
     <Compile Include="Personas\uc_MedioContacto.Designer.cs">
       <DependentUpon>uc_MedioContacto.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\uc_PatientCard.cs" />
+    <Compile Include="Pacientes\uc_PatientCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Pacientes\uc_PatientCard.Designer.cs">
       <DependentUpon>uc_PatientCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\frm_Profecional_Shifts.cs" />
+    <Compile Include="Profecional\frm_Profecional_Shifts.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Profecional\frm_Profecional_Shifts.Designer.cs">
       <DependentUpon>frm_Profecional_Shifts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\uc_TimeLine.cs" />
+    <Compile Include="Profecional\uc_TimeLine.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Profecional\uc_TimeLine.Designer.cs">
       <DependentUpon>uc_TimeLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmDxShiftAppointment.cs" />
+    <Compile Include="Scheduler\frmDxShiftAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Scheduler\frmDxShiftAppointment.Designer.cs">
       <DependentUpon>frmDxShiftAppointment.cs</DependentUpon>
     </Compile>
@@ -295,7 +313,9 @@
     <Compile Include="frmMainRibon.Designer.cs">
       <DependentUpon>frmMainRibon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\frmFindProfecionales.cs" />
+    <Compile Include="Profecional\frmFindProfecionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Profecional\frmFindProfecionales.Designer.cs">
       <DependentUpon>frmFindProfecionales.cs</DependentUpon>
     </Compile>
@@ -305,7 +325,9 @@
     <Compile Include="Profecional\frmProfecionales_Grid.Designer.cs">
       <DependentUpon>frmProfecionales_Grid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\frmProfecionalCard.cs" />
+    <Compile Include="Profecional\frmProfecionalCard.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Profecional\frmProfecionalCard.Designer.cs">
       <DependentUpon>frmProfecionalCard.cs</DependentUpon>
     </Compile>
@@ -315,35 +337,51 @@
     <Compile Include="Profecional\uc_Profecionales_Grid.Designer.cs">
       <DependentUpon>uc_Profecionales_Grid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Profecional\uc_Profecionales_Card.cs" />
+    <Compile Include="Profecional\uc_Profecionales_Card.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Profecional\uc_Profecionales_Card.Designer.cs">
       <DependentUpon>uc_Profecionales_Card.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmResouceScheduling.cs" />
+    <Compile Include="Scheduler\frmResouceScheduling.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Scheduler\frmResouceScheduling.Designer.cs">
       <DependentUpon>frmResouceScheduling.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmShiftsControls.cs" />
+    <Compile Include="Scheduler\frmShiftsControls.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Scheduler\frmShiftsControls.Designer.cs">
       <DependentUpon>frmShiftsControls.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmMain_ShiftsMannager.cs" />
+    <Compile Include="Scheduler\frmMain_ShiftsMannager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Scheduler\frmMain_ShiftsMannager.Designer.cs">
       <DependentUpon>frmMain_ShiftsMannager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\frmShiftAppointment.cs" />
+    <Compile Include="Scheduler\frmShiftAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Scheduler\frmShiftAppointment.Designer.cs">
       <DependentUpon>frmShiftAppointment.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\uc_AllShiftGrid.cs" />
+    <Compile Include="Scheduler\uc_AllShiftGrid.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Scheduler\uc_AllShiftGrid.Designer.cs">
       <DependentUpon>uc_AllShiftGrid.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\uc_shedule_profecional_timeline.cs" />
+    <Compile Include="Scheduler\uc_shedule_profecional_timeline.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Scheduler\uc_shedule_profecional_timeline.Designer.cs">
       <DependentUpon>uc_shedule_profecional_timeline.cs</DependentUpon>
     </Compile>
-    <Compile Include="Scheduler\uc_ShiftsControls.cs" />
+    <Compile Include="Scheduler\uc_ShiftsControls.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Scheduler\uc_ShiftsControls.Designer.cs">
       <DependentUpon>uc_ShiftsControls.cs</DependentUpon>
     </Compile>
@@ -362,19 +400,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>
-    <Compile Include="Personas\frmFindPerosnas.cs" />
+    <Compile Include="Personas\frmFindPerosnas.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Personas\frmFindPerosnas.Designer.cs">
       <DependentUpon>frmFindPerosnas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\FrmABMPaciente.cs" />
+    <Compile Include="Pacientes\FrmABMPaciente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pacientes\FrmABMPaciente.Designer.cs">
       <DependentUpon>FrmABMPaciente.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\frmWebBrowser.cs" />
+    <Compile Include="Pacientes\frmWebBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pacientes\frmWebBrowser.Designer.cs">
       <DependentUpon>frmWebBrowser.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pacientes\frmGridPacientes.cs" />
+    <Compile Include="Pacientes\frmGridPacientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Pacientes\frmGridPacientes.Designer.cs">
       <DependentUpon>frmGridPacientes.cs</DependentUpon>
     </Compile>
