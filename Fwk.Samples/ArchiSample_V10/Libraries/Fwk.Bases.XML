@@ -1188,31 +1188,6 @@
             
             </summary>
         </member>
-        <member name="M:Fwk.Params.BE.ParamTypeBE.#ctor">
-            <summary>
-            Empty Constructor
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.BE.ParamTypeBE.ParamTypeId">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.BE.ParamTypeBE.Name">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.BE.ParamTypeBE.ParamTypeRefId">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.BE.ParamTypeBE.Description">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:Fwk.Params.Svc.DeleteParametroService">
             <summary>
             
@@ -1639,7 +1614,7 @@
             <summary>
             Constructor
             </summary>
-            <param name="pTableNamme">Nombre de la tabla en Bloqcking</param>
+            <param name="pBlockingTableNamme">Nombre de la tabla en Bloqcking</param>
         </member>
         <member name="M:Fwk.Blocking.BlockingEngineBase.Create(Fwk.Blocking.IBlockingMark)">
             <summary>
@@ -1647,7 +1622,7 @@
             BlockingMarks. Previamente verifica que no haya sido bloqueadas
             anteriormente ninguna de las instancias.
             </summary>
-            <param name="IBlockingMark"><see cref="T:Fwk.Blocking.IBlockingMark"/></param>
+            <param name="pIBlockingMark"><see cref="T:Fwk.Blocking.IBlockingMark"/></param>
         </member>
         <member name="M:Fwk.Blocking.BlockingEngineBase.Remove(System.Int32)">
             <summary>
@@ -2221,6 +2196,80 @@
             <param name="property">Propiedad actualizada. Este objeto puede contener todos sus valores modifcados</param>
             <param name="propertyName">Nombre de la propiedad que se mofdifico.- Este valor es el original sin modificacion</param>
         </member>
+        <member name="T:Fwk.Security.Cryptography.Config.CypherProviderCollection">
+            <summary>
+            Colección ConfigProvider 
+            </summary>
+            <date>2006/09/02</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.#ctor">
+            <summary>
+            Constructor de ConfigElementCollection.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.CreateNewElement">
+            <summary>
+            Crea un nuevo ConfigProviderElement en la colección.
+            </summary>
+            <returns>ConfigurationElement.</returns>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.GetElementKey(System.Configuration.ConfigurationElement)">
+            <summary>
+            Obtiene el key de un RuleElement.
+            </summary>
+            <param name="element">ConfigProviderElement del cual se desea conocer su key.</param>
+            <returns>ConfigProviderElement.</returns>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Remove(System.Int32)">
+            <summary>
+            Elimina un proveedor por indice
+            </summary>
+            <param name="index"></param>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Remove(Fwk.Security.Cryptography.Config.CypherProviderElement)">
+            <summary>
+            Elimina un proveedor  
+            </summary>
+            <param name="configProvider"></param>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Remove(System.String)">
+            <summary>
+            Elimina un proveedor por su nombre
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.IndexOf(Fwk.Security.Cryptography.Config.CypherProviderElement)">
+            <summary>
+            Retorna el índice del proveedor de configuracion.
+            </summary>
+            <param name="configProvider">configProvider que se desea conocer su </param>
+            <returns>índice</returns>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Add(Fwk.Security.Cryptography.Config.CypherProviderElement)">
+            <summary>
+            Agrega un nuevo proveedor a la coleccion Providers .-
+            </summary>
+            <param name="configProvider"></param>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.IsReadOnly">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderCollection.Count">
+            <summary>
+            Cantidad de proveedores de configuracion .
+            </summary>
+        </member>
+        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderCollection.Item(System.Int32)">
+            <summary>
+            Retorna un proveedor de configuracion según si índice.
+            </summary>
+            <param name="pIndex">índice del proveedor de configuracion que se desea obtener.</param>
+            <returns>proveedor de configuracion</returns>
+        </member>
         <member name="T:Fwk.Xml.NodeAttribute">
             <summary>
             Manejo de Attribute.
@@ -2595,7 +2644,7 @@
         </member>
         <member name="T:Fwk.Security.Cryptography.SymetricCypherFactory">
             <summary>
-            Fabrica de SymetriCypher <![CDATA[SymetriCypher<T>]]>
+            Fabrica de SymetriCypher <![CDATA[SymetriCypher<T>]]> Crea todo los algoritmos de tipo RijndaelManaged
             </summary>
         </member>
         <member name="M:Fwk.Security.Cryptography.SymetricCypherFactory.#cctor">
@@ -2613,11 +2662,18 @@
             <summary>
             Busca un cryptographer determinado por medio de su nombre  
             </summary>
-            <typeparam name="T">Tipo de algoritmo simetrico</typeparam>
             <param name="providerName">nombre proveedor configurado </param>
             <returns>Argoritmo </returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Fwk.Security.Cryptography.SymetricCypherFactory.Add``1(System.String,System.String)" -->
+        <member name="M:Fwk.Security.Cryptography.SymetricCypherFactory.Add``1(System.String,System.String)">
+            <summary>
+            Busca un criptographer determinado por medio de su nombre de archivo de encriptacion y tipo de algoritmo simetrico
+            </summary>
+            <providerName>Provider Name</providerName>
+            <typeparam name="T">Tipo de algoritmo simetrico</typeparam>
+            <param name="key">Clave de encriptacion</param>
+            <returns>Argoritmo</returns>
+        </member>
         <member name="M:Fwk.Security.Cryptography.SymetricCypherFactory.GenNewKey">
             <summary>
             
@@ -3229,6 +3285,41 @@
             </summary>
             <returns>Valor entero mayor que cero, representa la cantidad de mensajes sin leer</returns>
         </member>
+        <member name="T:Fwk.Security.Cryptography.Config.CypherProviderSection">
+            <summary>
+            Sección 'CypherProviderSection' del archivo de configuración App.Config.
+            </summary>
+            <date>2006/09/02</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderSection.#ctor">
+            <summary>
+            Constructor de ConfigProviderSection.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderSection.GetProvider(System.String)">
+            <summary>
+            Retorna un proveedor determinado
+            </summary>
+            <param name="name">nombre del proveedor configurado.</param>
+            <returns>Provider (Rule).</returns>
+        </member>
+        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderSection.AddNewProvider(Fwk.Security.Cryptography.Config.CypherProviderElement)">
+            <summary>
+            Agrega un nuevo proveedor si este no existe
+            </summary>
+            <param name="newProvider"></param>
+        </member>
+        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderSection.Providers">
+            <summary>
+            Colección de proveedores de coneccion. 
+            </summary>
+        </member>
+        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderSection.DefaultProvider">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Fwk.Xml.CData">
             <summary>
             Manejo de CData.
@@ -3698,11 +3789,6 @@
         <member name="P:Fwk.Params.Isvc.SearchParams.Params.Enabled">
             <summary>
             
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.Isvc.SearchParams.Params.ParamTypeId">
-            <summary>
-            Tipo de parametro
             </summary>
         </member>
         <member name="P:Fwk.Params.Isvc.SearchParams.Params.ParentId">
@@ -4399,7 +4485,6 @@
             <summary>
              retrieve response
             </summary>
-            <param name="command">Command to send Imap Server</param>
             <param name="sResultArray">Imap Server response</param>
             <returns>ImapResponseEnum type</returns>
         </member>
@@ -4516,7 +4601,17 @@
             <param name="sUserId">User's login id</param>
             <param name="sPassword">User's password</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Fwk.Mail.Imap.Imap.Login(System.String,System.UInt16,System.String,System.String,System.Boolean)" -->
+        <member name="M:Fwk.Mail.Imap.Imap.Login(System.String,System.UInt16,System.String,System.String,System.Boolean)">
+            <summary>
+            Login to specified Imap host and port
+            </summary>
+            <param name="sHost">Imap server name</param>
+            <param name="nPort">Imap server port</param>
+            <param name="sUserId">User's login id</param>
+            <param name="sPassword">User's password</param>
+            <exception cref="!:IMAP_ERR_LOGIN"></exception>
+            <exception cref="!:IMAP_ERR_INVALIDPARAM"></exception>
+        </member>
         <member name="M:Fwk.Mail.Imap.Imap.LogOut">
             <summary>
             Logout the user: It logout the user and disconnect the connetion from IMAP server.
@@ -4528,7 +4623,15 @@
             </summary>
             <returns></returns>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:Fwk.Mail.Imap.Imap.SelectFolder(System.String)" -->
+        <member name="M:Fwk.Mail.Imap.Imap.SelectFolder(System.String)">
+            <summary>
+            Select the sFolder/mailbox after login
+            </summary>
+            <param name="sFolder">mailbox folder</param>
+            <exception cref="!:IMAP_ERR_SELECT"></exception>
+            <exception cref="!:IMAP_ERR_INSUFFICIENT_DATA"></exception>
+            <exception cref="!:IMAP_ERR_INVALIDPARAM"></exception>
+        </member>
         <member name="M:Fwk.Mail.Imap.Imap.ExamineFolder(System.String)">
             <summary>
             Examine the sFolder/mailbox after login
@@ -6174,7 +6277,7 @@
             
             </summary>
         </member>
-        <member name="M:Fwk.Params.Back.ParamDAC.RetriveByParams(System.Nullable{System.Int32},System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.String)">
+        <member name="M:Fwk.Params.Back.ParamDAC.RetriveByParams(System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.String)">
             <summary>
             Retorna parametros por id, id padre, y filtra x vigentes o no vigentes
             </summary>
@@ -6183,15 +6286,6 @@
             <param name="enabled">Vigentes o no</param>
             <param name="culture">Cultura que se desea consultar: th-TH, en-US, es-AR etc etc</param>
             <param name="cnnStringName">Cadena de coneccion</param>
-            <returns></returns>
-        </member>
-        <member name="M:Fwk.Params.Back.ParamDAC.RetriveParamType(System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String)">
-            <summary>
-            Retorna registros de la tabla ParamType por parametros. Permite filtrar por padre y vigencia
-            </summary>
-            <param name="parentId">Id tipo parametro padre</param>
-            <param name="enabled">Vigencia</param>
-            <param name="cnnStringName">Cadena de conexion</param>
             <returns></returns>
         </member>
         <member name="M:Fwk.Params.Back.ParamDAC.Create(Fwk.Params.BE.ParamBE,System.Guid,System.String)">
@@ -7129,7 +7223,7 @@
             
             </summary>
         </member>
-        <member name="M:Fwk.Params.ParamsController.SearchParams(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+        <member name="M:Fwk.Params.ParamsController.SearchParams(System.String,System.Nullable{System.Int32},System.String)">
             <summary>
              Busca parametros por id 
              La cadena de conexión se obtiene del atributo appId del wrapper 
@@ -8940,16 +9034,16 @@
             en el archivo correspondiente o genere uno nuevo
             </summary>
         </member>
-        <member name="M:Fwk.Logging.StaticLogger.GetTargetByRule(Fwk.ConfigSection.LogProviderElement,System.String,System.String)">
+        <member name="M:Fwk.Logging.StaticLogger.GetTargetByProvider(Fwk.ConfigSection.LogProviderElement,System.String,System.String)">
             <summary>
             
             </summary>
-            <param name="rule"></param>
+            <param name="provider"></param>
             <param name="path"></param>
             <param name="fileNamePrefix"></param>
             <returns></returns>
         </member>
-        <member name="M:Fwk.Logging.StaticLogger.GetTargetByRule_NoConfig(Fwk.Logging.Targets.TargetType,System.String,System.String)">
+        <member name="M:Fwk.Logging.StaticLogger.GetTargetByType_NoConfig(Fwk.Logging.Targets.TargetType,System.String,System.String)">
             <summary>
             Configura y retorna un Target.- Llama Target.FactoryTarget quien es el encargado de crear realmente 
             el Target o retornar uno ya creado.-
@@ -9041,26 +9135,6 @@
         <member name="P:Fwk.Configuration.Common.ConfigFileRegistry.Available">
             <summary>
             
-            </summary>
-        </member>
-        <member name="T:Fwk.Params.Svc.SearchParamTypeService">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.Isvc.SearchParamType.Params.Enabled">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.Isvc.SearchParamType.Params.ParamTypeId">
-            <summary>
-            Tipo de parametro
-            </summary>
-        </member>
-        <member name="P:Fwk.Params.Isvc.SearchParamType.Params.ParentId">
-            <summary>
-            Param de referencia. Referencia a un parametro padre
             </summary>
         </member>
         <member name="T:Fwk.Transaction.TransactionScopeHandler">
@@ -10849,115 +10923,6 @@
         <member name="P:Fwk.Configuration.ConfigurationManager.DefaultProvider">
             <summary>
             Proveedor configurado como por defecto
-            </summary>
-        </member>
-        <member name="T:Fwk.Security.Cryptography.Config.CypherProviderCollection">
-            <summary>
-            Colección ConfigProvider 
-            </summary>
-            <date>2006/09/02</date>
-            <author>moviedo</author>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.#ctor">
-            <summary>
-            Constructor de ConfigElementCollection.
-            </summary>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.CreateNewElement">
-            <summary>
-            Crea un nuevo ConfigProviderElement en la colección.
-            </summary>
-            <returns>ConfigurationElement.</returns>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.GetElementKey(System.Configuration.ConfigurationElement)">
-            <summary>
-            Obtiene el key de un RuleElement.
-            </summary>
-            <param name="element">ConfigProviderElement del cual se desea conocer su key.</param>
-            <returns>ConfigProviderElement.</returns>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Remove(System.Int32)">
-            <summary>
-            Elimina un proveedor por indice
-            </summary>
-            <param name="index"></param>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Remove(Fwk.Security.Cryptography.Config.CypherProviderElement)">
-            <summary>
-            Elimina un proveedor  
-            </summary>
-            <param name="configProvider"></param>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Remove(System.String)">
-            <summary>
-            Elimina un proveedor por su nombre
-            </summary>
-            <param name="name"></param>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.IndexOf(Fwk.Security.Cryptography.Config.CypherProviderElement)">
-            <summary>
-            Retorna el índice del proveedor de configuracion.
-            </summary>
-            <param name="configProvider">configProvider que se desea conocer su </param>
-            <returns>índice</returns>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.Add(Fwk.Security.Cryptography.Config.CypherProviderElement)">
-            <summary>
-            Agrega un nuevo proveedor a la coleccion Providers .-
-            </summary>
-            <param name="configProvider"></param>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderCollection.IsReadOnly">
-            <summary>
-            
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderCollection.Count">
-            <summary>
-            Cantidad de proveedores de configuracion .
-            </summary>
-        </member>
-        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderCollection.Item(System.Int32)">
-            <summary>
-            Retorna un proveedor de configuracion según si índice.
-            </summary>
-            <param name="pIndex">índice del proveedor de configuracion que se desea obtener.</param>
-            <returns>proveedor de configuracion</returns>
-        </member>
-        <member name="T:Fwk.Security.Cryptography.Config.CypherProviderSection">
-            <summary>
-            Sección 'CypherProviderSection' del archivo de configuración App.Config.
-            </summary>
-            <date>2006/09/02</date>
-            <author>moviedo</author>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderSection.#ctor">
-            <summary>
-            Constructor de ConfigProviderSection.
-            </summary>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderSection.GetProvider(System.String)">
-            <summary>
-            Retorna un proveedor determinado
-            </summary>
-            <param name="name">nombre del proveedor configurado.</param>
-            <returns>Provider (Rule).</returns>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.Config.CypherProviderSection.AddNewProvider(Fwk.Security.Cryptography.Config.CypherProviderElement)">
-            <summary>
-            Agrega un nuevo proveedor si este no existe
-            </summary>
-            <param name="newProvider"></param>
-        </member>
-        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderSection.Providers">
-            <summary>
-            Colección de proveedores de coneccion. 
-            </summary>
-        </member>
-        <member name="P:Fwk.Security.Cryptography.Config.CypherProviderSection.DefaultProvider">
-            <summary>
-            
             </summary>
         </member>
         <member name="T:Fwk.Security.Cryptography.Config.CypherProviderElement">
