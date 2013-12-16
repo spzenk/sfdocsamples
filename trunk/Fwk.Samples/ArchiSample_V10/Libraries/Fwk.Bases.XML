@@ -6279,9 +6279,9 @@
         </member>
         <member name="M:Fwk.Params.Back.ParamDAC.RetriveByParams(System.Nullable{System.Int32},System.Nullable{System.Boolean},System.String,System.String)">
             <summary>
-            Retorna parametros por id, id padre, y filtra x vigentes o no vigentes
+            Retorna parametros por id, id padre, y filtra x vigentes o no vigentes La cultura puede se String.Empty
+            en cuyo caso no la tendra en cuenta para el filtro
             </summary>
-            <param name="paramTypeId">Tipo (gasto, clase, forma pago etc)</param>
             <param name="parentId">Relacion con otro param</param>
             <param name="enabled">Vigentes o no</param>
             <param name="culture">Cultura que se desea consultar: th-TH, en-US, es-AR etc etc</param>
