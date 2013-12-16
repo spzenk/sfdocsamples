@@ -130,6 +130,7 @@
   <ItemGroup>
     <Content Include="..\..\Health.Ws\Metasvc.xml">
       <Link>Metasvc.xml</Link>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
