@@ -4,6 +4,10 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel;
 using WcfDispatcher;
+using Fwk.Bases;
+using Fwk.HelperFunctions;
+using System.Reflection;
+
 
 namespace WcfDispatcher_Host
 {
@@ -12,12 +16,18 @@ namespace WcfDispatcher_Host
     {
         static void Main(string[] args)
         {
-
+            //string reqInfo = "Health.Isvc.RetrivePatients.RetrivePatientsReq, Health.SVC, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null";
+            //IServiceContract wRequest = (IServiceContract)ReflectionFunctions.CreateInstance(reqInfo);
+            //Type reqType = Type.GetType(reqInfo);
+            //Type reqType = ReflectionFunctions.CreateType(reqInfo);
+           var d = Assembly.Load("Health.SVC");
+            
 
             using (ServiceHost host = new ServiceHost(typeof(FwkService)))
             {
                 host.Open();
-                MetadataHelper.Log_ServiceHost(host); 
+                MetadataHelper.Log_ServiceHost(host);
+                Console.ReadLine();
             }
 
             
