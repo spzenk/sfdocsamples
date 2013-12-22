@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Health.BE;
 using Health.BE.Enums;
+using DevExpress.XtraGrid.Columns;
 
 namespace Health.Front.Events
 {
@@ -25,6 +26,8 @@ namespace Health.Front.Events
         public UC_EventDetailsGrid()
         {
             InitializeComponent();
+            colColEnabled.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.Value;
+            colColEnabled.FilterInfo = new ColumnFilterInfo("[ColEnabled] = true");
         }
 
         [Browsable(true)]

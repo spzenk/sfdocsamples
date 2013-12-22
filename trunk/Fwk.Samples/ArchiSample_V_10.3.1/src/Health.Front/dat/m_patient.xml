@@ -174,7 +174,7 @@
       <EntityState>Unchanged</EntityState>
       <Enabled>true</Enabled>
       <DisplayName>Historial quirurjico</DisplayName>
-      <AssemblyInfo>Health.Front.Events.uc_pmo_grid_view, Health.Front, Version=1.2.0.22, Culture=neutral, PublicKeyToken=null</AssemblyInfo>
+      <AssemblyInfo>Health.Front.Events.uc_pmo_grid_view, Health.Front.MedEvents, Version=1.2.0.22, Culture=neutral, PublicKeyToken=null</AssemblyInfo>
       <ToolTipInfo />
       <SelectedImageIndex>0</SelectedImageIndex>
       <ImageIndex>0</ImageIndex>

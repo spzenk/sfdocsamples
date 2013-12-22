@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(uc_event_01));
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             this.colEnabled = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
@@ -157,7 +158,7 @@
             this.btnMetComplementario.Appearance.TextOptions.Trimming = DevExpress.Utils.Trimming.Word;
             this.btnMetComplementario.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.btnMetComplementario.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnMetComplementario.Location = new System.Drawing.Point(134, 196);
+            this.btnMetComplementario.Location = new System.Drawing.Point(291, 196);
             this.btnMetComplementario.Name = "btnMetComplementario";
             this.btnMetComplementario.Size = new System.Drawing.Size(142, 65);
             this.btnMetComplementario.TabIndex = 2044;
@@ -175,7 +176,7 @@
             this.btnDiagnosis.Appearance.Options.UseFont = true;
             this.btnDiagnosis.Appearance.Options.UseForeColor = true;
             this.btnDiagnosis.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.Flat;
-            this.btnDiagnosis.Location = new System.Drawing.Point(291, 196);
+            this.btnDiagnosis.Location = new System.Drawing.Point(122, 196);
             this.btnDiagnosis.Name = "btnDiagnosis";
             this.btnDiagnosis.Size = new System.Drawing.Size(142, 65);
             this.btnDiagnosis.TabIndex = 2043;
@@ -290,7 +291,7 @@
             // 
             // btnAddMedicamento
             // 
-            this.btnAddMedicamento.Image = global::Health.Front.Base.Properties.Resources.add;
+            this.btnAddMedicamento.Image = ((System.Drawing.Image)(resources.GetObject("btnAddMedicamento.Image")));
             this.btnAddMedicamento.Location = new System.Drawing.Point(11, 30);
             this.btnAddMedicamento.Name = "btnAddMedicamento";
             this.btnAddMedicamento.Size = new System.Drawing.Size(153, 25);
@@ -327,22 +328,22 @@
             this.colEnabled,
             this.colStatus});
             this.gridView_Medicaments.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.SeaShell;
-            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Brown;
-            styleFormatCondition3.Appearance.Options.UseBackColor = true;
-            styleFormatCondition3.Appearance.Options.UseForeColor = true;
-            styleFormatCondition3.ApplyToRow = true;
-            styleFormatCondition3.Column = this.colEnabled;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition3.Expression = "[Enabled]  == False";
-            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Gold;
-            styleFormatCondition4.Appearance.Options.UseBackColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition4.Expression = "[Status] == 660";
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.SeaShell;
+            styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Brown;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Appearance.Options.UseForeColor = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Column = this.colEnabled;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition1.Expression = "[Enabled]  == False";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Gold;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition2.Expression = "[Status] == 660";
             this.gridView_Medicaments.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition3,
-            styleFormatCondition4});
+            styleFormatCondition1,
+            styleFormatCondition2});
             this.gridView_Medicaments.GridControl = this.gridControl_Medicaments;
             this.gridView_Medicaments.Name = "gridView_Medicaments";
             this.gridView_Medicaments.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -444,7 +445,7 @@
             // 
             // simpleButton1
             // 
-            this.simpleButton1.Image = global::Health.Front.Base.Properties.Resources.add;
+            this.simpleButton1.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(667, 30);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(179, 27);
@@ -454,7 +455,7 @@
             // 
             // btnQuitarMedicamento
             // 
-            this.btnQuitarMedicamento.Image = global::Health.Front.Base.Properties.Resources.close_16;
+            this.btnQuitarMedicamento.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitarMedicamento.Image")));
             this.btnQuitarMedicamento.Location = new System.Drawing.Point(180, 30);
             this.btnQuitarMedicamento.Name = "btnQuitarMedicamento";
             this.btnQuitarMedicamento.Size = new System.Drawing.Size(151, 25);
@@ -555,7 +556,7 @@
             // m_quitar
             // 
             this.m_quitar.Enabled = false;
-            this.m_quitar.Image = global::Health.Front.Base.Properties.Resources.close_16;
+            this.m_quitar.Image = ((System.Drawing.Image)(resources.GetObject("m_quitar.Image")));
             this.m_quitar.Name = "m_quitar";
             this.m_quitar.Size = new System.Drawing.Size(215, 24);
             this.m_quitar.Text = "Quitar Medicamento";
