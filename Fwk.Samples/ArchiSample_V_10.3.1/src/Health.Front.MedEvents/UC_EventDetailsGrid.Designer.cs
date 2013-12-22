@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
             this.medicalEventDetailViewListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridControl_Details = new DevExpress.XtraGrid.GridControl();
             this.gridView_Details = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -39,6 +39,7 @@
             this.gridColumn7 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn8 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemImageComboBox2 = new DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox();
+            this.colColEnabled = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.medicalEventDetailViewListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Details)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView_Details)).BeginInit();
@@ -79,23 +80,24 @@
             this.gridColumn1,
             this.gridColumn2,
             this.gridColumn7,
-            this.gridColumn8});
+            this.gridColumn8,
+            this.colColEnabled});
             this.gridView_Details.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.SeaShell;
-            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Brown;
-            styleFormatCondition3.Appearance.Options.UseBackColor = true;
-            styleFormatCondition3.Appearance.Options.UseForeColor = true;
-            styleFormatCondition3.ApplyToRow = true;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition3.Expression = "[Enabled]  == False";
-            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Gold;
-            styleFormatCondition4.Appearance.Options.UseBackColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition4.Expression = "[Status] == 660";
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.SeaShell;
+            styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Brown;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Appearance.Options.UseForeColor = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition1.Expression = "[Enabled]  == False";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Gold;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition2.Expression = "[Status] == 660";
             this.gridView_Details.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition3,
-            styleFormatCondition4});
+            styleFormatCondition1,
+            styleFormatCondition2});
             this.gridView_Details.GridControl = this.gridControl_Details;
             this.gridView_Details.Name = "gridView_Details";
             this.gridView_Details.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -166,6 +168,11 @@
             this.repositoryItemImageComboBox2.Name = "repositoryItemImageComboBox2";
             this.repositoryItemImageComboBox2.ReadOnly = true;
             // 
+            // colColEnabled
+            // 
+            this.colColEnabled.FieldName = "ColEnabled";
+            this.colColEnabled.Name = "colColEnabled";
+            // 
             // UC_EventDetailsGrid
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -193,5 +200,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageComboBox repositoryItemImageComboBox2;
+        private DevExpress.XtraGrid.Columns.GridColumn colColEnabled;
     }
 }

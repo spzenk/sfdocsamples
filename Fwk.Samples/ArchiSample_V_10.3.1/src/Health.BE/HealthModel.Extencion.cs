@@ -32,6 +32,19 @@ namespace Health.BE
         }
     }
 
+    public partial class MedicalEventDetail_ViewBE : Fwk.Bases.Entity
+    {
+        /// <summary>
+        /// Solo para propositos de visualizacion en grilla
+        /// </summary>
+        private Boolean _ColEnabled = true;
+
+        public Boolean ColEnabled
+        {
+            get { return _ColEnabled; }
+            set { _ColEnabled = value; }
+        }
+    }
     public partial class MedicalEventDetailBE : Fwk.Bases.Entity
     {
         /// <summary>
@@ -40,18 +53,17 @@ namespace Health.BE
         /// <param name="view"></param>
         public MedicalEventDetailBE(MedicalEventDetail_ViewBE det_view)
         {
-        
+            this.Id = det_view.Id;
             this.Description = det_view.Desc;
             this.Code = det_view.Code;
             this.DetailType = det_view.DetailType;
             this.Observations = det_view.Observations;
             this.RelevanceType = det_view.RelevanceType;
-            
             this.ActiveRelevance = det_view.ActiveRelevance;
             this.EntityState = det_view.EntityState;
             
         }
-         
+
     }
     public partial class ParametroBE : Fwk.Bases.Entity
     {
@@ -288,6 +300,14 @@ namespace Health.BE
 
     public partial class MedicalEventBE
     {
+
+        MedicalEventDetailList _MedicalEventDetailList = new MedicalEventDetailList();
+
+        public MedicalEventDetailList MedicalEventDetailList
+        {
+            get { return _MedicalEventDetailList; }
+            set { _MedicalEventDetailList = value; }
+        }
         public PatientMedicament_ViewList PatientMedicaments { get; set; }
         public string NombreApellidoProfecional { get; set; }
         public string NombreEspesialidad { get; set; }
@@ -296,7 +316,8 @@ namespace Health.BE
         public MedicalEventDetail_ViewList DetailView_Diagnosis { get; set; }
         public MedicalEventDetail_ViewList DetailView_MetodosComplementarios { get; set; }
         public MedicalEventDetail_ViewList DetailView_Quirurgicos { get; set; }
-        public MedicalEventDetailList MedicalEventDetailList { get; set; }
+
+        //public MedicalEventDetailList MedicalEventDetailList { get; set; }
         public MedicalEventDetail_ViewList MedicalEventDetail_ViewList { get; set; }
     }
 
@@ -492,7 +513,7 @@ namespace Health.BE
         {
             get
             {
-                if (!this.WeekDays.HasValue)
+            if (!this.WeekDays.HasValue)
                     this.WeekDays = 0;
                 if (weekDays_BinArray == null)
                     weekDays_BinArray = CreateBoolArray(this.WeekDays.Value);

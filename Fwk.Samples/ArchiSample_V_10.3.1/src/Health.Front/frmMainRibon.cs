@@ -135,7 +135,7 @@ namespace Health.Front
 
         private void frmMainRibon_Load(object sender, EventArgs e)
         {
-            System.Threading.Thread.Sleep(10 * 1000);
+           
             storage.Load();
             if (storage.StorageObject == null)
             {
