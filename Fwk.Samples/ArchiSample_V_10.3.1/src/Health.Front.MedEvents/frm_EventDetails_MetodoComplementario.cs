@@ -12,6 +12,7 @@ using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using Health.BE;
 using DevExpress.XtraEditors.Controls;
 using Health.BE.Enums;
+using DevExpress.XtraGrid.Columns;
 
 
 namespace Health.Front.Events
@@ -32,7 +33,8 @@ namespace Health.Front.Events
         public frm_EventDetails_MetodoComplementario(MedicalEventBE medicalEevent)
         {
             InitializeComponent();
-
+            colColEnabled.FilterMode = DevExpress.XtraGrid.ColumnFilterMode.Value;
+            colColEnabled.FilterInfo = new ColumnFilterInfo("[ColEnabled] = true");
             //---------------MedicalEventDetailType---------------
             //12000	CEI10-Diagnosis                                   
             //12001	Tratamiento TTO                                   
@@ -153,6 +155,7 @@ namespace Health.Front.Events
             else
             {
                 selectedDetails.EntityState = Fwk.Bases.EntityState.Deleted;
+                selectedDetails.ColEnabled = false;
             }
 
             gridView_Details.RefreshData();

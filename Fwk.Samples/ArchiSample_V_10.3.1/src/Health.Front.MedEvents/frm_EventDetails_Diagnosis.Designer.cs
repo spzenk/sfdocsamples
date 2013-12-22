@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
             DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_EventDetails_Diagnosis));
             this.cmbAlertDiagnosis = new DevExpress.XtraEditors.LookUpEdit();
             this.parametroBEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -52,6 +53,7 @@
             this.txtObservación = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnQuitarDiag = new DevExpress.XtraEditors.SimpleButton();
+            this.colColEnabled = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAlertDiagnosis.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parametroBEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cEI10ComboBindingSource)).BeginInit();
@@ -200,7 +202,8 @@
             this.colCreatedDate,
             this.colStatusDescription,
             this.colMedicamentName,
-            this.colApellidoNombre});
+            this.colApellidoNombre,
+            this.colColEnabled});
             this.gridView_Details.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
             styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.SeaShell;
             styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Brown;
@@ -349,7 +352,7 @@
             // 
             // btnQuitarDiag
             // 
-            this.btnQuitarDiag.Image = global::Health.Front.Base.Properties.Resources.close_16;
+            this.btnQuitarDiag.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitarDiag.Image")));
             this.btnQuitarDiag.Location = new System.Drawing.Point(11, 230);
             this.btnQuitarDiag.Name = "btnQuitarDiag";
             this.btnQuitarDiag.Size = new System.Drawing.Size(151, 25);
@@ -357,7 +360,12 @@
             this.btnQuitarDiag.Text = "Quitar diagnóstico";
             this.btnQuitarDiag.Click += new System.EventHandler(this.btnQuitarDiag_Click);
             // 
-            // frm_EventDetails
+            // colColEnabled
+            // 
+            this.colColEnabled.FieldName = "ColEnabled";
+            this.colColEnabled.Name = "colColEnabled";
+            // 
+            // frm_EventDetails_Diagnosis
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
@@ -367,7 +375,7 @@
             this.Controls.Add(this.btnQuitarDiag);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.gridControl_Details);
-            this.Name = "frm_EventDetails";
+            this.Name = "frm_EventDetails_Diagnosis";
             this.Text = "Diagnóstico";
             this.Load += new System.EventHandler(this.frm_EventDetails_Load);
             this.Controls.SetChildIndex(this.aceptCancelButtonBar1, 0);
@@ -414,5 +422,6 @@
         private DevExpress.XtraEditors.MemoEdit txtObservación;
         private System.Windows.Forms.BindingSource medicalEventDetailViewListBindingSource;
         private DevExpress.XtraEditors.SimpleButton btnQuitarDiag;
+        private DevExpress.XtraGrid.Columns.GridColumn colColEnabled;
     }
 }

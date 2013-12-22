@@ -78,7 +78,7 @@ namespace Health.Front.Events
             _Evento.PatientMedicaments = Controller.RetrivePatientMedicaments(Controller.CurrentPatient.PatientId, null);
 
             //Nunca traera del evento _Event dado que es recientemente creado y no posee aun Detalles
-           // _Evento.MedicalEventDetail_ViewList = Controller.RetriveMedicalEventDetails(Controller.CurrentPatient.PatientId, null);
+
             if (_Evento.DetailView_Diagnosis == null)
                 _Evento.DetailView_Diagnosis = new MedicalEventDetail_ViewList();
 
@@ -109,10 +109,6 @@ namespace Health.Front.Events
             _Evento.Evolucion = txtEvolution.Text;
             _Evento.Motivo = txtMotivo.Text;
 
-            //_Evento.CEI10_Code = txtCEI10.EditValue.ToString();
-            //_Evento.Diagnosis = txtCEI10.Text;
-            //_Evento.MetodoComplementario = cmbPMO_Espesialidad.EditValue.ToString();
-            //_Evento.PMOQuirurgico = cmbPMO_Quirurgico.EditValue.ToString();
 
             if (cmbTipoConsulta.EditValue != null)
                 if ((int)cmbTipoConsulta.EditValue != (int)CommonValuesEnum.SeleccioneUnaOpcion)
@@ -124,7 +120,10 @@ namespace Health.Front.Events
             _Evento.PatientMedicaments.AddRange(medList);
 
             #region   Mapeo de details view a DetailView_Diagnosis
+            _Evento.MedicalEventDetailList.Clear();
             var medDetails = _Evento.DetailView_Diagnosis.Where(p => p.EntityState != Fwk.Bases.EntityState.Unchanged).ToList();
+            
+            
 
             foreach (MedicalEventDetail_ViewBE det_view in medDetails)
             {
