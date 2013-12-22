@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition3 = new DevExpress.XtraGrid.StyleFormatCondition();
-            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition4 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition1 = new DevExpress.XtraGrid.StyleFormatCondition();
+            DevExpress.XtraGrid.StyleFormatCondition styleFormatCondition2 = new DevExpress.XtraGrid.StyleFormatCondition();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_EventDetails_MetodoComplementario));
             this.cmbAlertDiagnosis = new DevExpress.XtraEditors.LookUpEdit();
             this.parametroBEBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.txtCEI10 = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.pMOFileListBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.searchLookUpEdit1View = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,10 +53,11 @@
             this.txtObservación = new DevExpress.XtraEditors.MemoEdit();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.btnQuitarDiag = new DevExpress.XtraEditors.SimpleButton();
-            this.pMOFileListBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.colColEnabled = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.cmbAlertDiagnosis.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.parametroBEBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCEI10.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pMOFileListBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Details)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalEventDetailViewListBindingSource)).BeginInit();
@@ -63,7 +66,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservación.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMOFileListBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // aceptCancelButtonBar1
@@ -142,6 +144,10 @@
             this.txtCEI10.Size = new System.Drawing.Size(688, 47);
             this.txtCEI10.TabIndex = 2046;
             // 
+            // pMOFileListBindingSource
+            // 
+            this.pMOFileListBindingSource.DataSource = typeof(Health.BE.PMOFileList);
+            // 
             // searchLookUpEdit1View
             // 
             this.searchLookUpEdit1View.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -196,23 +202,24 @@
             this.colCreatedDate,
             this.colStatusDescription,
             this.colMedicamentName,
-            this.colApellidoNombre});
+            this.colApellidoNombre,
+            this.colColEnabled});
             this.gridView_Details.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            styleFormatCondition3.Appearance.BackColor = System.Drawing.Color.SeaShell;
-            styleFormatCondition3.Appearance.ForeColor = System.Drawing.Color.Brown;
-            styleFormatCondition3.Appearance.Options.UseBackColor = true;
-            styleFormatCondition3.Appearance.Options.UseForeColor = true;
-            styleFormatCondition3.ApplyToRow = true;
-            styleFormatCondition3.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition3.Expression = "[Enabled]  == False";
-            styleFormatCondition4.Appearance.BackColor = System.Drawing.Color.Gold;
-            styleFormatCondition4.Appearance.Options.UseBackColor = true;
-            styleFormatCondition4.ApplyToRow = true;
-            styleFormatCondition4.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
-            styleFormatCondition4.Expression = "[Status] == 660";
+            styleFormatCondition1.Appearance.BackColor = System.Drawing.Color.SeaShell;
+            styleFormatCondition1.Appearance.ForeColor = System.Drawing.Color.Brown;
+            styleFormatCondition1.Appearance.Options.UseBackColor = true;
+            styleFormatCondition1.Appearance.Options.UseForeColor = true;
+            styleFormatCondition1.ApplyToRow = true;
+            styleFormatCondition1.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition1.Expression = "[Enabled]  == False";
+            styleFormatCondition2.Appearance.BackColor = System.Drawing.Color.Gold;
+            styleFormatCondition2.Appearance.Options.UseBackColor = true;
+            styleFormatCondition2.ApplyToRow = true;
+            styleFormatCondition2.Condition = DevExpress.XtraGrid.FormatConditionEnum.Expression;
+            styleFormatCondition2.Expression = "[Status] == 660";
             this.gridView_Details.FormatConditions.AddRange(new DevExpress.XtraGrid.StyleFormatCondition[] {
-            styleFormatCondition3,
-            styleFormatCondition4});
+            styleFormatCondition1,
+            styleFormatCondition2});
             this.gridView_Details.GridControl = this.gridControl_Details;
             this.gridView_Details.Name = "gridView_Details";
             this.gridView_Details.OptionsBehavior.AllowAddRows = DevExpress.Utils.DefaultBoolean.False;
@@ -345,7 +352,7 @@
             // 
             // btnQuitarDiag
             // 
-            this.btnQuitarDiag.Image = global::Health.Front.Base.Properties.Resources.close_16;
+            this.btnQuitarDiag.Image = ((System.Drawing.Image)(resources.GetObject("btnQuitarDiag.Image")));
             this.btnQuitarDiag.Location = new System.Drawing.Point(11, 230);
             this.btnQuitarDiag.Name = "btnQuitarDiag";
             this.btnQuitarDiag.Size = new System.Drawing.Size(151, 25);
@@ -353,9 +360,10 @@
             this.btnQuitarDiag.Text = "Quitar ";
             this.btnQuitarDiag.Click += new System.EventHandler(this.btnQuitarDiag_Click);
             // 
-            // pMOFileListBindingSource
+            // colColEnabled
             // 
-            this.pMOFileListBindingSource.DataSource = typeof(Health.BE.PMOFileList);
+            this.colColEnabled.FieldName = "ColEnabled";
+            this.colColEnabled.Name = "colColEnabled";
             // 
             // frm_EventDetails_MetodoComplementario
             // 
@@ -377,6 +385,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cmbAlertDiagnosis.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.parametroBEBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCEI10.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pMOFileListBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.searchLookUpEdit1View)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl_Details)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.medicalEventDetailViewListBindingSource)).EndInit();
@@ -386,7 +395,6 @@
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtObservación.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pMOFileListBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -414,5 +422,6 @@
         private System.Windows.Forms.BindingSource medicalEventDetailViewListBindingSource;
         private DevExpress.XtraEditors.SimpleButton btnQuitarDiag;
         private System.Windows.Forms.BindingSource pMOFileListBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colColEnabled;
     }
 }

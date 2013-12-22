@@ -133,6 +133,24 @@
     <value>734, 17</value>
   </metadata>
   <metadata name="medicalEventDetailViewListBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>971, 17</value>
+    <value>17, 60</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnQuitarDiag.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAANbY1E9YMgAAABl0RVh0U29m
+        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ4SURBVDhPVZM/TFNhFMVpHLqShpK4kBBZTBc3x64N
+        hqGk0tqS4NCFaIeaEkqsCTTQOFGlxcQ6qakgoaQyFKSx4Y9QhfQVA4VW+VMUBEOcjIPT8Z6vhbQvOe/d
+        nPs7973ve+81ALiUHDqv13stEAg8DAaDi6FQ6DfFmh57ZOoyNeErHo+naywcxvz0NL4sL6Oczyuxpsce
+        GbJ1A2i43e47L8bHkctk8FUCW3Nz0GZmlFjTY48M2YshPHQWi+XG4+FhBRQWFjDp90NLVMLaTAI5uU76
+        +1WPDFlmmOUAvd1uDyfjcexns3g7MIDRzk689nqRn32HzdlZVdNjb38tC7LMMMsBTU6nc1OTRywtLmIr
+        lULc50PYZkO8zyd1H57ctuGNeOyRyQvLDLMc0Opyuf58LxRQ/JDBzkJaHjWNiX4/xhx2PHU41JIK6Yq/
+        K0v4ISwzzHLAdavV+vd4d1dtVFHuwLtMBQKIuLoR7XZh6lHg0idDlhlm1QCz2bynrazgKJfDt9U1JIaG
+        8KznrrpODw5K3aPqvdVVlIXRPq6AmYsBrSaTKfkqFsNpqYTU6ChibjeSoREcrq/jcGMdyZGQ8tg7E+al
+        sMwwywFNjY2N9xxdXfi8tISfOzt4H4ngSMuLtKrymBePPTJkmWGWA/gqbjY3N0/c7+3FJwHODw7UnU62
+        t3EiG3ZaLOL88ECFPcKQZaaaVR+DUdRhMBiSt9rb8TwaRU7We1YuK7Gmxx4ZstWM7vJTFl0Vdej1+ojR
+        aNxoaWn51dbW9o9iTY89MlW28inzVDOEU/loDtEDUbAq1vTYI1P/M9UM4XK4Lm4Od5iviWJNj72a3xkN
+        /wFGIxk/PuC9zgAAAABJRU5ErkJggg==
+</value>
+  </data>
 </root>
