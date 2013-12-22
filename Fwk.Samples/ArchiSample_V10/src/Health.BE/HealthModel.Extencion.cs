@@ -492,6 +492,8 @@ namespace Health.BE
         {
             get
             {
+                if (!this.WeekDays.HasValue)
+                    this.WeekDays = 0;
                 if (weekDays_BinArray == null)
                     weekDays_BinArray = CreateBoolArray(this.WeekDays.Value);
                 return weekDays_BinArray;
