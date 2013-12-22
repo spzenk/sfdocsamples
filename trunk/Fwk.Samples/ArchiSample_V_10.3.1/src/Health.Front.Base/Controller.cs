@@ -111,17 +111,7 @@ namespace Health.Front
         {
 
 
-            //_ProfecionesList = SearchParametroByParams((int)TipoParametroEnum.Profecion, null);
-            //_EstadoCivilList = SearchParametroByParams((int)TipoParametroEnum.EstadoCivil, null);
-            ////_EstadoCivilList.Add(new ParametroBE { Nombre = Enum.GetName(typeof(CommonValuesEnum), CommonValuesEnum.SeleccioneUnaOpcion), IdParametro = (int)CommonValuesEnum.SeleccioneUnaOpcion });
-
-            //_EspecialidadMedicaList = SearchParametroByParams((int)TipoParametroEnum.Especialidad, null);
-            ////_EspecialidadMedicaList.Add(new ParametroBE { Nombre = Enum.GetName(typeof(CommonValuesEnum), CommonValuesEnum.SeleccioneUnaOpcion), IdParametro = (int)CommonValuesEnum.SeleccioneUnaOpcion });
-            //_EspecialidadMedicaList.Add(new ParametroBE { Nombre = Enum.GetName(typeof(CommonValuesEnum), CommonValuesEnum.Ninguno), IdParametro = (int)CommonValuesEnum.Ninguno });
-
-            ////_EstadoCivilList.Add(new ParametroBE { Nombre = "Todos", IdParametro = (int)CommonValuesEnum.TodosComboBoxValue });
-            //_MotivoConsultaList = SearchParametroByParams((int)TipoParametroEnum.MotivoConsulta, null);
-
+           
 
         }
         #region PopulateSync

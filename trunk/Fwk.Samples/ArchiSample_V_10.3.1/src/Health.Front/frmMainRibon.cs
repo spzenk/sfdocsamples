@@ -20,7 +20,6 @@ using Health.Front.Scheduler;
 using Health.Isvc.GetProfesional;
 using Fwk.UI.Controller;
 using System.Reflection;
-using Microsoft.Practices.EnterpriseLibrary.Security;
 using Fwk.Security;
 using DevExpress.XtraBars;
 using Health.Front.Environment;
@@ -330,7 +329,7 @@ namespace Health.Front
         }
 
 
-        internal static IAuthorizationProvider RuleProvider=null;
+        internal static Fwk.Security.IAuthorizationProvider RuleProvider=null;
         #region Authorization Factory
         /// <summary>
         /// Cargamos el Formulario de Autenticación
