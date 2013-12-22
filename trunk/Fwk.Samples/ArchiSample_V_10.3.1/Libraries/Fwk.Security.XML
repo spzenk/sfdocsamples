@@ -22,6 +22,122 @@
             </summary>
             <param name="owner"></param>
         </member>
+        <member name="T:Fwk.Security.NotOperator">
+            <summary>
+            Represents the logical negation operator 
+            is a unary operator that negates its operand. 
+            It returns true if and only if its operand is false.
+            </summary>
+        </member>
+        <member name="T:Fwk.Security.BooleanExpression">
+            <summary>
+            Represents an operator, operand or expression
+            that results in one of two values - true or false.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.BooleanExpression.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the current expression against the specified 
+            <see cref="T:System.Security.Principal.IPrincipal"/>.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns>True or false.</returns>
+        </member>
+        <member name="M:Fwk.Security.NotOperator.#ctor(Fwk.Security.BooleanExpression)">
+            <summary>
+            Intializes a new instance of the 
+            <see cref="T:Fwk.Security.NotOperator"/> class.
+            </summary>
+            <param name="expression">The operand that this
+            operator will negate.</param>
+        </member>
+        <member name="M:Fwk.Security.NotOperator.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the current expression against the specified 
+            <see cref="T:System.Security.Principal.IPrincipal"/>.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns>True or false.</returns>
+        </member>
+        <member name="P:Fwk.Security.NotOperator.Expression">
+            <summary>
+            Gets or sets the expression that will be negated by the
+            current operator.
+            </summary>
+            <value>A <see cref="T:Fwk.Security.BooleanExpression"/> object.</value>
+        </member>
+        <member name="T:Fwk.Security.OrOperator">
+            <summary>
+            Represents an operator that performs a logical-OR of its
+            contained left and right expressions, but only evaluates
+            its second expression if the first expression evaluates to true.
+            </summary>
+        </member>
+        <member name="T:Fwk.Security.AndOperator">
+            <summary>
+            Represents an operator that performs a logical-AND of its
+            contained left and right expressions, but only evaluates
+            its second expression if the first expression evaluates to true.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.AndOperator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fwk.Security.AndOperator"/>
+            class.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.AndOperator.#ctor(Fwk.Security.BooleanExpression,Fwk.Security.BooleanExpression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fwk.Security.AndOperator"/>
+            class with the specified
+            </summary>
+            <param name="left">The expression that will be evaluated first.</param>
+            <param name="right">The expression that will be evaluated last.</param>
+        </member>
+        <member name="M:Fwk.Security.AndOperator.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Performs the logical-AND of the left
+            and right expressions.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns>True if both the left and right expressions evaluate to true,
+            otherwise false.</returns>
+        </member>
+        <member name="P:Fwk.Security.AndOperator.Left">
+            <summary>
+            Gets or sets the first expression that will be evaluated -
+            the expression to the left of the operator.
+            </summary>
+            <value>A <see cref="T:Fwk.Security.BooleanExpression"/>.</value>
+        </member>
+        <member name="P:Fwk.Security.AndOperator.Right">
+            <summary>
+            Gets or sets the second expression that will be evaluated -
+            the expression to the right of the operator.
+            </summary>
+            <value>A <see cref="T:Fwk.Security.BooleanExpression"/>.</value>
+        </member>
+        <member name="M:Fwk.Security.OrOperator.#ctor(Fwk.Security.BooleanExpression,Fwk.Security.BooleanExpression)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.OrOperator"/> class with the
+            specified expressions.
+            </summary>
+            <param name="left">The first expression to evaluate.</param>
+            <param name="right">The second expression to evaluate.</param>
+        </member>
+        <member name="M:Fwk.Security.OrOperator.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the current expression against the specified 
+            <see cref="T:System.Security.Principal.IPrincipal"/>.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns>True or false.</returns>
+        </member>
         <member name="T:Fwk.Security.FwkAuthorizationRuleProvider">
             <summary>
             Represents an authorization provider that evaluates
@@ -30,15 +146,23 @@
             are authorized.
             </summary>
         </member>
-        <member name="M:Fwk.Security.FwkAuthorizationRuleProvider.#ctor(System.Collections.Specialized.NameValueCollection)">
+        <member name="T:Fwk.Security.IAuthorizationProvider">
             <summary>
-            Metodo requerido por exigencia de CustomAuthorizationProviderData todavia esta en desarrollo no se utiliza
+            Defines the basic functionality of an authorization provider.
             </summary>
-            <param name="configurationItems"></param>
+        </member>
+        <member name="M:Fwk.Security.IAuthorizationProvider.Authorize(System.Security.Principal.IPrincipal,System.String)">
+            <summary>
+            Evaluates the specified authority against the specified context.
+            </summary>
+            <param name="principal">Must be an <see cref="T:System.Security.Principal.IPrincipal"/> object.</param>
+            <param name="context">Name of the rule to evaluate.</param>
+            <returns><strong>True</strong> if the expression evaluates to true,
+            otherwise <strong>false</strong>.</returns>
         </member>
         <member name="M:Fwk.Security.FwkAuthorizationRuleProvider.#ctor(Fwk.Security.FwkAuthorizationRuleList)">
             <summary>
-            Initialize an instance of the <see cref="T:Microsoft.Practices.EnterpriseLibrary.Security.AuthorizationRuleProvider"/> class.
+            Initialize an instance of the <see cref="!:AuthorizationRuleProvider"/> class.
             </summary>
             <param name="authorizationRules">The collection of rules.</param>
         </member>
@@ -139,6 +263,128 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="T:Fwk.Security.IdentityExpression">
+            <summary>
+            Represents an expression that contains the 
+            name of an <see cref="T:System.Security.Principal.IIdentity"/>.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.IdentityExpression.#ctor(Fwk.Security.WordExpression)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.IdentityExpression"/> class with
+            the specified name.
+            </summary>
+            <param name="wordExpression">The name of an identity.</param>
+        </member>
+        <member name="M:Fwk.Security.IdentityExpression.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.IdentityExpression"/> class with
+            the specified identity name.
+            </summary>
+            <param name="identityName">The identity
+            name that will be used to match the 
+            specified identity during evaluation.</param>
+        </member>
+        <member name="M:Fwk.Security.IdentityExpression.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the specified principal against the
+            current expression. 
+            </summary>
+            <param name="principal">The 
+            <see cref="T:System.Security.Principal.IPrincipal"/>
+            against which the current expression will be evaluated.</param>
+            <returns><strong>True</strong> if the specified
+            principal's identity matches this expressions identity,
+            otherwise <strong>false</strong>.</returns>
+            <remarks>The expression evaluates
+            to true if the specified principal's identity has
+            the same name as the current <see cref="P:Fwk.Security.IdentityExpression.Word"/>
+            property. A case-insensitive string comparison
+            is performed.</remarks>
+        </member>
+        <member name="P:Fwk.Security.IdentityExpression.Word">
+            <summary>
+            Gets or sets the name of the identity that the
+            specified principal will be evaluated against.
+            </summary>
+            <value>An identity name.</value>
+        </member>
+        <member name="T:Fwk.Security.AnyExpression">
+            <summary>
+            Represents an expression that evaluates to true
+            for any specified principal.
+            </summary>
+        </member>
+        <member name="T:Fwk.Security.WordExpression">
+            <summary>
+            Represents a word value such as a role
+            name or identity name.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.WordExpression.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.WordExpression"/> class.
+            </summary>
+            <param name="word">A string value that is 
+            the name of an identity or role.</param>
+        </member>
+        <member name="M:Fwk.Security.WordExpression.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the current expression against the specified 
+            <see cref="T:System.Security.Principal.IPrincipal"/>
+            by checking if it is in the role that matches 
+            the Value property of the current object.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns>True if the specified principal is in the role, otherwise false.</returns>
+        </member>
+        <member name="M:Fwk.Security.WordExpression.Evaluate(System.Security.Principal.IIdentity)">
+            <summary>
+            Evaluates the current expression against the specified 
+            <see cref="T:System.Security.Principal.IIdentity"/>
+            by checking if its name matches 
+            the Value property of the current object.
+            </summary>
+            <param name="identity">The <see cref="T:System.Security.Principal.IIdentity"/>
+            that the current expression will be evaluated against.</param>
+            <returns>True if the specified identity's name matches the value of the current expression, otherwise false.</returns>
+        </member>
+        <member name="P:Fwk.Security.WordExpression.Value">
+            <summary>
+            The string value of the word.
+            </summary>
+            <value>The string from the expression.</value>
+        </member>
+        <member name="M:Fwk.Security.AnyExpression.#ctor">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.AnyExpression"/> class.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.AnyExpression.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the specified principal and returns
+            true if the principal is not null.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns><strong>True</strong> if the principal
+            is not null, otherwise <strong>false</strong>.</returns>
+        </member>
+        <member name="M:Fwk.Security.AnyExpression.Evaluate(System.Security.Principal.IIdentity)">
+            <summary>
+            Evaluates the specified 
+            <see cref="T:System.Security.Principal.IIdentity"/>.
+            </summary>
+            <param name="identity">The <see cref="T:System.Security.Principal.IIdentity"/>
+            that the current expression will be evaluated against.</param>
+            <returns><strong>True</strong> if the identity not null, 
+            otherwise <strong>false</strong>.</returns>
         </member>
         <member name="T:Fwk.Security.Common.ObjectDomain">
             <summary>
@@ -612,21 +858,6 @@
             <param name="applicationName">Nombre de la aplicacion. Coincide con CompanyId en la arquitectura</param>
             <returns></returns>
         </member>
-        <member name="M:Fwk.Security.FwkMembership.GetRulesList(System.String)">
-            <summary>
-            
-            </summary>
-            <param name="providerName"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Fwk.Security.FwkMembership.GetRulesList(System.String,System.String)">
-            <summary>
-            Retorna una lista de reglas de una determinada coneccion 
-            </summary>
-            <param name="applicationName">Nombre de la aplicacion. Coincide con CompanyId en la arquitectura</param>
-            <param name="connectionStringName">Nombre de cadena de coneccion del archivo de configuracion.-</param>
-            <returns></returns>
-        </member>
         <member name="M:Fwk.Security.FwkMembership.GetRulesAuxList(System.String)">
             <summary>
             Retorna una lista de reglas de una determinada coneccion 
@@ -953,6 +1184,30 @@
             <param name="pRolList">Lista de Roles</param>
             <param name="providerName">Nombre del proveedor de membership</param>
         </member>
+        <member name="T:Fwk.Security.Impersonation">
+            <summary>
+            Perform windows context Impersonation
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.Impersonation.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Constructor de la clase Impersonate
+            Por defecto impersonaliza para realizar cambio de contraseña
+            </summary>       
+            <param name="userName">Dominio del usuario a impersonalizar</param>
+            <param name="password">password</param>
+            <param name="domain">Dominio ej Pelsoft</param>
+        </member>
+        <member name="M:Fwk.Security.Impersonation.Impersonate">
+            <summary>
+            Lleva a cabo la impersonalizacion
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.Impersonation.UnImpersonate">
+            <summary>
+            Termina la sesion y retorna a la anterior
+            </summary>
+        </member>
         <member name="T:Fwk.Security.ActiveDirectory.ADUser">
             <summary>
             Clase que reprecenta un usuario de active directory.- 
@@ -1132,30 +1387,6 @@
             
             </summary>
         </member>
-        <member name="T:Fwk.Security.Impersonation">
-            <summary>
-            Perform windows context Impersonation
-            </summary>
-        </member>
-        <member name="M:Fwk.Security.Impersonation.#ctor(System.String,System.String,System.String)">
-            <summary>
-            Constructor de la clase Impersonate
-            Por defecto impersonaliza para realizar cambio de contraseña
-            </summary>       
-            <param name="userName">Dominio del usuario a impersonalizar</param>
-            <param name="password">password</param>
-            <param name="domain">Dominio ej Pelsoft</param>
-        </member>
-        <member name="M:Fwk.Security.Impersonation.Impersonate">
-            <summary>
-            Lleva a cabo la impersonalizacion
-            </summary>
-        </member>
-        <member name="M:Fwk.Security.Impersonation.UnImpersonate">
-            <summary>
-            Termina la sesion y retorna a la anterior
-            </summary>
-        </member>
         <member name="T:Fwk.Security.SVC.CreateUserService">
             <summary>
             Servicio que crea un usuario en las memberships
@@ -1167,6 +1398,44 @@
             </summary>
             <param name="pServiceRequest"></param>
             <returns></returns>
+        </member>
+        <member name="T:Fwk.Security.RoleExpression">
+            <summary>
+            Represents an expression that contains the 
+            name of a role.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.RoleExpression.#ctor(Fwk.Security.WordExpression)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Fwk.Security.RoleExpression"/>
+            class with the specified role name.
+            </summary>
+            <param name="wordExpression">The name of a role.</param>
+        </member>
+        <member name="M:Fwk.Security.RoleExpression.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.RoleExpression"/> class.
+            </summary>
+            <param name="roleName">The name of the role
+            to include in the expression.</param>
+        </member>
+        <member name="M:Fwk.Security.RoleExpression.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the current expression against the specified 
+            <see cref="T:System.Security.Principal.IPrincipal"/>.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns>True if the princal is in this expression's 
+            role, otherwise false.</returns>
+        </member>
+        <member name="P:Fwk.Security.RoleExpression.Word">
+            <summary>
+            Gets or sets the name of the role that the
+            specified principal will be evaluated against.
+            </summary>
+            <value>A role name.</value>
         </member>
         <member name="T:Fwk.Security.SVC.GetUserInfoByParamsService">
             <summary>
@@ -1401,6 +1670,11 @@
               Looks up a localized string similar to The rule {0} was successfully updated.
             </summary>
         </member>
+        <member name="P:Fwk.Security.Properties.Resource.UnexpectedTokenMessage">
+            <summary>
+              Looks up a localized string similar to Found token &quot;{1}&quot; when expecting {0} at position {2}..
+            </summary>
+        </member>
         <member name="P:Fwk.Security.Properties.Resource.User_AddRoleErrorMessage">
             <summary>
               Looks up a localized string similar to Please select a user name and select or enter a role..
@@ -1499,10 +1773,126 @@
               Looks up a localized string similar to Successfully authenticated user {0}.
             </summary>
         </member>
+        <member name="T:Fwk.Security.SyntaxException">
+            <summary>
+            The exception that is thrown when a syntax error
+            is found in an identity role rule expression.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.SyntaxException.#ctor">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.SyntaxException"/> class.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.SyntaxException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.SyntaxException"/> class
+            with a specified error message.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+        </member>
+        <member name="M:Fwk.Security.SyntaxException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.SyntaxException"/> class 
+            with a specified error message and 
+            a reference to the inner exception 
+            that is the cause of this exception.
+            </summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="innerException">
+            The exception that is the cause of the current exception. If the innerException parameter is not a null reference (Nothing in Visual Basic), the current exception is raised in a catch block that handles the inner exception.
+            </param>
+        </member>
+        <member name="M:Fwk.Security.SyntaxException.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.SyntaxException"/> class with the
+            specified message and index.
+            </summary>
+            <param name="message">The syntax error message.</param>
+            <param name="index">The position in the expression where the syntax
+            error was found.</param>
+        </member>
+        <member name="M:Fwk.Security.SyntaxException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.SyntaxException"/> class 
+            with serialized data.
+            </summary>
+            <param name="info">
+            The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds 
+            the serialized object data about the 
+            exception being thrown. 
+            </param>
+            <param name="context">
+            The <see cref="T:System.Runtime.Serialization.StreamingContext"/>
+            that contains contextual information 
+            about the source or destination. 
+            </param>
+        </member>
+        <member name="M:Fwk.Security.SyntaxException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"/>
+            with information about the exception.
+            </summary>
+            <param name="info">The SerializationInfo 
+            that holds the serialized object data 
+            about the exception being thrown. 
+            </param>
+            <param name="context">
+            The StreamingContext that contains contextual 
+            information about the source or destination. 
+            </param>
+        </member>
+        <member name="P:Fwk.Security.SyntaxException.Index">
+            <summary>
+            The position in the expression where the syntax
+            error was found.
+            </summary>
+            <value>The zero-based starting position in the original 
+            string where syntax error was found.</value>
+        </member>
         <member name="T:Fwk.Security.SVC.UpdateRulesCategoryService">
             <summary>
             
             </summary>
+        </member>
+        <member name="T:Fwk.Security.LexicalAnalyzer">
+            <summary>
+            Represents a lexical analyzer for Boolean expressions.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.LexicalAnalyzer.#ctor(System.String)">
+            <summary>
+            The expression to analyze.
+            </summary>
+            <param name="expression">A Boolean expression.</param>
+        </member>
+        <member name="M:Fwk.Security.LexicalAnalyzer.MoveNext">
+            <summary>
+            Gets the type of the next token.
+            </summary>
+            <returns>A <see cref="T:Fwk.Security.TokenType"/> value.</returns>
+        </member>
+        <member name="P:Fwk.Security.LexicalAnalyzer.Current">
+            <summary>
+            Gets the string value of the current token.
+            </summary>
+            <returns>The value of the current</returns>
+        </member>
+        <member name="P:Fwk.Security.LexicalAnalyzer.PreviousMatch">
+            <summary>
+            Gets the previous match of the regular expression.
+            </summary>
+        </member>
+        <member name="P:Fwk.Security.LexicalAnalyzer.CurrentMatch">
+            <summary>
+            Gets the current match of the regular expression.
+            </summary>
+            <value>A <see cref="T:System.Text.RegularExpressions.Match"/></value>
         </member>
         <member name="F:Fwk.Security.ISVC.AuthenticateUser.Params._Name">
             <summary>
@@ -1874,6 +2264,42 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="T:Fwk.Security.AnonymousExpression">
+            <summary>
+            Represents the value of an <see cref="T:System.Security.Principal.IIdentity"/> object
+            whose <see cref="P:System.Security.Principal.IIdentity.IsAuthenticated"/> property is false.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.AnonymousExpression.#ctor">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Fwk.Security.AnonymousExpression"/> class.
+            </summary>
+        </member>
+        <member name="M:Fwk.Security.AnonymousExpression.Evaluate(System.Security.Principal.IPrincipal)">
+            <summary>
+            Evaluates the specified 
+            <see cref="T:System.Security.Principal.IPrincipal"/>.
+            </summary>
+            <param name="principal">The <see cref="T:System.Security.Principal.IPrincipal"/>
+            that the current expression will be evaluated against.</param>
+            <returns><strong>True</strong> if the principal contains
+            an anonymous identity, otherwise <strong>false</strong>.</returns>
+            <exception cref="T:System.NotSupportedException">This expression
+            can only be evaluated against an identity. It has no 
+            meaning for a principal's roles because there
+            is no common definition of an anonymous role.</exception>
+        </member>
+        <member name="M:Fwk.Security.AnonymousExpression.Evaluate(System.Security.Principal.IIdentity)">
+            <summary>
+            Evaluates the specified 
+            <see cref="T:System.Security.Principal.IIdentity"/>.
+            </summary>
+            <param name="identity">The <see cref="T:System.Security.Principal.IIdentity"/>
+            that the current expression will be evaluated against.</param>
+            <returns><strong>True</strong> if the identity is
+            an anonymous identity, otherwise <strong>false</strong>.</returns>
         </member>
         <member name="T:Fwk.Security.ActiveDirectory.ADAccountOptions">
             <summary>
@@ -2800,6 +3226,86 @@
             
             </summary>
         </member>
+        <member name="T:Fwk.Security.TokenType">
+            <summary>
+            Specifies the type of a token in an expression.
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.InvalidCharacter">
+            <summary>
+            Invalid character
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.NoToken">
+            <summary>
+            No token found
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.Or">
+            <summary>
+            Or token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.And">
+            <summary>
+            And token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.Identity">
+            <summary>
+            Identity token 
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.Role">
+            <summary>
+            Role token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.Not">
+            <summary>
+            Not token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.Word">
+            <summary>
+            Word token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.Any">
+            <summary>
+            Any token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.Anonymous">
+            <summary>
+            Anonymous token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.LeftParenthesis">
+            <summary>
+            Left Paren token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.RightParenthesis">
+            <summary>
+            Right paren token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.QuotedString">
+            <summary>
+            Quoted string token
+            </summary>
+        </member>
+        <member name="F:Fwk.Security.TokenType.EndOfFile">
+            <summary>
+            EOF token
+            </summary>
+        </member>
+        <member name="P:Fwk.Security.IToken.Value">
+            <summary>
+            Token contents as a string.
+            </summary>
+        </member>
         <member name="T:Fwk.Security.ActiveDirectory.ADGroup">
             <summary>
             Grupo de Active Directory
@@ -3279,7 +3785,7 @@
             <summary>
             Represents the configuration data for a
             rule that is governed by an 
-            <see cref="T:Microsoft.Practices.EnterpriseLibrary.Security.AuthorizationRuleProvider"/>.
+            <see cref="!:AuthorizationRuleProvider"/>.
             </summary>
         </member>
         <member name="M:Fwk.Security.FwkAuthorizationRule.#ctor">
@@ -3516,6 +4022,22 @@
             No utilizado para la llamada al servicio solo se pone
             por que se debe utilizar si o si una clase en el request.
             </summary>
+        </member>
+        <member name="M:Fwk.Security.Parser.Parse(System.String)">
+            <summary>
+            Parses the the specified expression into a
+            <see cref="T:Fwk.Security.BooleanExpression"/>.
+            </summary>
+            <param name="expression">An expression.</param>
+            <returns>A <see cref="T:Fwk.Security.BooleanExpression"/>
+            object that is the root of the parse tree.</returns>
+        </member>
+        <member name="M:Fwk.Security.Parser.MoveNext">
+            <devdoc>Get the next token from the lexer.</devdoc>
+        </member>
+        <member name="M:Fwk.Security.Parser.AssertTokenType(Fwk.Security.TokenType)">
+            <devdoc>Asserts that the current token is 
+            of the specified type.</devdoc>
         </member>
     </members>
 </doc>

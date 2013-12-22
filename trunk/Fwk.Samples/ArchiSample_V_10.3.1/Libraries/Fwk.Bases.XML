@@ -1352,7 +1352,7 @@
         </member>
         <member name="T:Fwk.Bases.Debug.IEntityVisualizerForm">
             <summary>
-            Formulario lanzado por <see cref="T:Fwk.Bases.Debug.IEntityVisualizer"/> para las clases <see cref="T:Fwk.Bases.IEntity"/>
+            Formulario lanzado por <see cref="!:IEntityVisualizer"/> para las clases <see cref="T:Fwk.Bases.IEntity"/>
             </summary>
             <Author>Marcelo .F. Oviedo</Author>
         </member>
@@ -2530,56 +2530,6 @@
             <summary>
             
             </summary>
-        </member>
-        <member name="T:Fwk.HelperFunctions.CryptographyFunctions">
-            <summary>
-            Framework Library Integration Facades
-            Usa --&gt; Proveee una fachada estatica que no es instanciada por polyce injection .-
-            
-            Esta clase nececita un proveedor de encriptacion simetrica configurado .-
-            
-            <see cref="T:Microsoft.Practices.EnterpriseLibrary.Security.Cryptography.CryptographyManager"/>
-            </summary>
-        </member>
-        <member name="F:Fwk.HelperFunctions.CryptographyFunctions.HASH_PROVIDER">
-            <summary>
-            Nombre del proveedor espesificado por mediode el archivo de configuracion
-            Ver:  securityCryptographyConfiguration -->hashProviders
-            </summary>
-        </member>
-        <member name="F:Fwk.HelperFunctions.CryptographyFunctions.SYMM_PROVIDER">
-            <summary>
-            Nombre del proveedor espesificado por medio del arhivo de configuracion
-            Ver:  securityCryptographyConfiguration -->hashProviders
-            </summary>
-        </member>
-        <member name="M:Fwk.HelperFunctions.CryptographyFunctions.Decrypt(System.String)">
-            <summary>
-            Desencripta simetricamente con el provider "FwkSympPovider"
-            </summary>
-            <param name="cryptedText">Texto encriptado en base64</param>
-            <returns></returns>
-        </member>
-        <member name="T:Fwk.HelperFunctions.CryptographyFunctions.TripleDES">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Fwk.HelperFunctions.CryptographyFunctions.TripleDES.EncryptData(System.String,System.String)">
-            <summary>
-            
-            </summary>
-            <param name="strKey"></param>
-            <param name="strData"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Fwk.HelperFunctions.CryptographyFunctions.TripleDES.DecryptData(System.String,System.String)">
-            <summary>
-            Function to decrypt data
-            </summary>
-            <param name="strKey"></param>
-            <param name="strData"></param>
-            <returns></returns>
         </member>
         <member name="T:Fwk.Bases.IFwkWindowsService">
             <summary>
@@ -9906,25 +9856,6 @@
             Summary description for AssemblyType.
             </summary>
         </member>
-        <member name="T:Fwk.Bases.Debug.IEntityVisualizer">
-            <summary>
-             Visualizador en modo debug para cualquier clase qeu implementa la interfaz <see cref="T:Fwk.Bases.IEntity"/>
-            </summary>
-            <Author>Marcelo .F. Oviedo</Author>
-        </member>
-        <member name="M:Fwk.Bases.Debug.IEntityVisualizer.Show(Microsoft.VisualStudio.DebuggerVisualizers.IDialogVisualizerService,Microsoft.VisualStudio.DebuggerVisualizers.IVisualizerObjectProvider)">
-            <summary>
-            
-            </summary>
-            <param name="windowService"></param>
-            <param name="objectProvider"></param>
-        </member>
-        <member name="M:Fwk.Bases.Debug.IEntityVisualizer.TestShowVisualizer(System.Object)">
-            <summary>
-            Tests the visualizer by hosting it outside of the debugger.
-            </summary>
-            <param name="objectToVisualize">The object to display in the visualizer.</param>
-        </member>
         <member name="T:Fwk.ConfigSection.MailAgentElementCollection">
             <summary>
             Colección de reglas de logueo.
@@ -10151,51 +10082,6 @@
             </summary>
             <param name="pQuery">Consulta a realizar</param>
             <returns>DataSet con el resultado de la consulta</returns>
-        </member>
-        <member name="T:Fwk.Security.Cryptography.SymetriCypher_EntLibs`1">
-            <summary>
-            Clase generica de encriptacion
-            <![CDATA[SymetriCypher<T>]]>
-            </summary>
-            <typeparam name="T"><see cref="T:System.Security.Cryptography.SymmetricAlgorithm"/></typeparam>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.SymetriCypher_EntLibs`1.Encrypt(System.String)">
-            <summary>
-            Encripta una cadena de caracteres.-
-            </summary>
-            <param name="val">Cadena a encriptar</param>
-            <returns>Cadena encriptada</returns>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.SymetriCypher_EntLibs`1.Dencrypt(System.String)">
-            <summary>
-            Desencripta una cadena de caracteres.-
-            </summary>
-            <param name="val">Cadena encriptada</param>
-            <returns>Cadena desencriptada</returns>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.SymetriCypher_EntLibs`1.CreateKeyFile">
-            <summary>
-            Crea una archivo que contiene la semilla de encriptacion.- En base a este archivo el proveedor de encriptacion 
-            realizara la criptografia.
-            Esta sobrecarga abre un dialog box de creacion de archivo.-
-            </summary>
-        </member>
-        <member name="M:Fwk.Security.Cryptography.SymetriCypher_EntLibs`1.CreateKeyFile(System.String)">
-            <summary>
-            Crea una archivo que contiene la semilla de encriptacion.- En base a este archivo el proveedor de encriptacion 
-            realizara la criptografia.
-            </summary>
-            <param name="pkeyFileName">Nombre del archivo que contrendra la semilla.-</param>
-        </member>
-        <member name="P:Fwk.Security.Cryptography.SymetriCypher_EntLibs`1.KeyFileName">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Fwk.Security.Cryptography.SymetriCypher_EntLibs`1.AlgorithmProvider">
-            <summary>
-            
-            </summary>
         </member>
         <member name="T:Fwk.Security.Cryptography.SymetriCypher`1">
             <summary>
