@@ -41,12 +41,13 @@
             // 
             this.serviceInstaller1.Description = "Servicio MultipleInstanceService ";
             this.serviceInstaller1.DisplayName = "Prueva MultipleInstanceService";
+            this.serviceInstaller1.Installers.AddRange(new System.Configuration.Install.Installer[] {
+            this.serviceProcessInstaller1});
             this.serviceInstaller1.ServiceName = "MultipleInstanceService";
             // 
             // CustomServiceInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
             this.serviceInstaller1});
 
         }
