@@ -77,13 +77,11 @@
     <Compile Include="LogService.Designer.cs">
       <DependentUpon>LogService.cs</DependentUpon>
     </Compile>
-    <Compile Include="MultipleInstanceInstaller.cs" />
+    <Compile Include="MultipleInstanceInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="MultipleInstanceInstaller.Designer.cs">
       <DependentUpon>MultipleInstanceInstaller.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MultipleInstanceService.cs" />
-    <Compile Include="MultipleInstanceService.Designer.cs">
-      <DependentUpon>MultipleInstanceService.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -92,19 +90,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ServiceInstaller.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ServiceInstaller.Designer.cs">
-      <DependentUpon>ServiceInstaller.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="LogService.resx">
       <DependentUpon>LogService.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ServiceInstaller.resx">
-      <DependentUpon>ServiceInstaller.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -125,11 +114,6 @@
     <None Include="uninstall.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="InstallUtil.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
