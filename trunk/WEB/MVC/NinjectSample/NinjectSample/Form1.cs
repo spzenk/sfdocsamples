@@ -15,10 +15,11 @@ namespace NinjectSample
 {
     public partial class Form1 : Form
     {
-        
+
         public Form1()
         {
             InitializeComponent();
+            NinjectWebCommon.Start();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -27,12 +28,22 @@ namespace NinjectSample
             //kernel.Bind<IPaisRepository>().To<PaisRepository>();
             //System.Web.Http.Dependencies.IDependencyResolver resolver = new NinjectResolver(kernel);
             //GlobalConfiguration.Configuration.DependencyResolver = resolver;
+
+            var service = NinjectWebCommon.Get_Service<UserService>();
+
+            var uData = service.Get("gerard");
+
+            textBox1.Text = "Nombre actual = " + uData.FirstName;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NinjectWebCommon.Start();
-            var service = NinjectWebCommon.Get_Service<UserData>();
+
+            var service = NinjectWebCommon.Get_Service<UserService>();
+            var uData = service.Get("gerard");
+            textBox1.Text = "Nombre actual = " + uData.FirstName;
+            uData.FirstName = "Nombre actualizado";
+            service.Update(uData);
 
         }
     }

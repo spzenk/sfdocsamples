@@ -45,16 +45,26 @@ namespace NinjectSample.Clases
 
         }
 
-        public  UserData Get(string name)
+        public UserData Get(string userName)
         {
-            var user = UserDataRepository.Where(p => p.UserName.Equals(name.Trim()));
+            var user = UserDataRepository.Where(p => p.UserName.Equals(userName.Trim()));
             if (user != null)
                 return user.FirstOrDefault();
 
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userData"></param>
+        public void Update(UserData userData)
+        {
+            var user = Get(userData.UserName);
 
+            user.FirstName = userData.FirstName;
+            user.Roles = userData.Roles;
+        }
 
         internal  bool ValidateUser(string p1, string password)
         {
