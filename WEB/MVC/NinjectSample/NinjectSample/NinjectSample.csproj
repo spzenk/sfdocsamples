@@ -69,11 +69,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases\IoC\NinjectResolver.cs" />
     <Compile Include="Clases\IUserService.cs" />
-    <Compile Include="Clases\NinjectConfigurator.cs" />
-    <Compile Include="Clases\NinjectDependencyResolver.cs" />
-    <Compile Include="Clases\NinjectDependencyScope.cs" />
-    <Compile Include="Clases\NinjectWebCommon.cs" />
+    <Compile Include="Clases\NotUsed\NinjectConfigurator.cs" />
+    <Compile Include="Clases\IoC\NinjectDependencyResolver.cs" />
+    <Compile Include="Clases\IoC\NinjectDependencyScope.cs" />
+    <Compile Include="Clases\IoC\NinjectWebCommon.cs" />
     <Compile Include="Clases\UserData.cs" />
     <Compile Include="Clases\UserService.cs" />
     <Compile Include="Form1.cs">
