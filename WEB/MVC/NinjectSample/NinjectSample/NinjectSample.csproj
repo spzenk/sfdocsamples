@@ -70,10 +70,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\IoC\NinjectResolver.cs" />
+    <Compile Include="Clases\IoC_1\NinjectDependencyResolver.cs" />
+    <Compile Include="Clases\IoC_1\NinjectWebCommon.cs" />
     <Compile Include="Clases\IUserService.cs" />
     <Compile Include="Clases\NotUsed\NinjectConfigurator.cs" />
     <Compile Include="Clases\IoC\NinjectDependencyResolver.cs" />
-    <Compile Include="Clases\IoC\NinjectDependencyScope.cs" />
+    <Compile Include="Clases\IoC_1\NinjectDependencyScope.cs" />
     <Compile Include="Clases\IoC\NinjectWebCommon.cs" />
     <Compile Include="Clases\UserData.cs" />
     <Compile Include="Clases\UserService.cs" />
