@@ -25,7 +25,11 @@ namespace NinjectSample.Clases
         {
             return _container.TryGet(serviceType);
         }
-
+        /// <summary>
+        /// Llama kernel.GetAll
+        /// </summary>
+        /// <param name="serviceType"></param>
+        /// <returns></returns>
         public IEnumerable<object> GetServices(Type serviceType)
         {
             return _container.GetAll(serviceType);
@@ -38,12 +42,12 @@ namespace NinjectSample.Clases
 
         public void Dispose()
         {
-            // noop
-            //IDisposable disposable = resolver as IDisposable;
-            //if (disposable != null)
-            //    disposable.Dispose();
+             //TODO: ver si usar o no
+            IDisposable disposable = _container as IDisposable;
+            if (disposable != null)
+                disposable.Dispose();
 
-            //resolver = null;
+           // _container = null;
         }
 
     }
