@@ -9,7 +9,9 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Windows.Forms;
 using Ninject;
-using NinjectSample.Clases;
+using NinjectSample.Clases.IoC_1;
+using NinjectSample.Clases.BE;
+using NinjectSample.Clases.Svc;
 
 namespace NinjectSample
 {

@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NinjectSample.Clases.BE;
 
-namespace NinjectSample.Clases
+namespace NinjectSample.Clases.Svc
 {
-    public class UserService : NinjectSample.Clases.IUserService
+    public class UserService : IUserService
     { 
         public  List<UserData> UserDataRepository = null;
 

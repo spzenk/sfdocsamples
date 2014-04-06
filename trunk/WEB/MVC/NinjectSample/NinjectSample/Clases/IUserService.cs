@@ -1,5 +1,6 @@
 ﻿using System;
-namespace NinjectSample.Clases
+using NinjectSample.Clases.BE;
+namespace NinjectSample.Clases.Svc
 {
     interface IUserService
     {

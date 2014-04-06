@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NinjectSample.Clases
+namespace NinjectSample.Clases.BE
 {
     public class UserData
     {
