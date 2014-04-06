@@ -4,7 +4,7 @@
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(NinjectSample.Clases.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(NinjectSample.Clases.NinjectWebCommon), "Stop")]
 
-namespace NinjectSample.Clases
+namespace NinjectSample.Clases.IoC_1
 {
     using System;
     using System.Web;
@@ -13,6 +13,7 @@ namespace NinjectSample.Clases
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
     using Ninject;
     using Ninject.Web.Common;
+    using NinjectSample.Clases.Svc;
 
 
  
@@ -57,6 +58,10 @@ namespace NinjectSample.Clases
             kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
             RegisterServices(kernel);
+
+            // Install our Ninject-based IDependencyResolver into the Web API config
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectDependencyResolver(kernel);
+
             return kernel;
         }
 
@@ -66,54 +71,40 @@ namespace NinjectSample.Clases
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            //var containerConfigurator = new NinjectConfigurator();
-            //containerConfigurator.Configure(kernel);
+            //var kernelConfigurator = new NinjectConfigurator();
+            //kernelConfigurator.Configure(kernel);
             // Add all bindings/dependencies
-            AddBindings(kernel);
-            // Use the container and our NinjectDependencyResolver as
-            // application's resolver
-            var resolver = new NinjectDependencyResolver(kernel);
-            GlobalConfiguration.Configuration.DependencyResolver = resolver;
-            //TODO: VEr BasicAuthenticationMessageHandler
-            //GlobalConfiguration.Configuration.MessageHandlers.Add(kernel.Get<BasicAuthenticationMessageHandler>());
+            kernel.Bind<IUserService>().To<UserService>().InSingletonScope();
+            //kernel.Bind<IDatabaseValueParser>().To<DatabaseValueParser>();
+
+            //kernel.Bind<IHttpCategoryFetcher>().To<HttpCategoryFetcher>();
+            //kernel.Bind<IHttpPriorityFetcher>().To<HttpPriorityFetcher>();
+            //kernel.Bind<IHttpStatusFetcher>().To<HttpStatusFetcher>();
+            //kernel.Bind<IHttpUserFetcher>().To<HttpUserFetcher>();
+            //kernel.Bind<IHttpTaskFetcher>().To<HttpTaskFetcher>();
+            //kernel.Bind<IActionLogHelper>().To<ActionLogHelper>();
+            //kernel.Bind<IExceptionMessageFormatter>().To<ExceptionMessageFormatter>();
+            //kernel.Bind<IActionExceptionHandler>().To<ActionExceptionHandler>();
+            //kernel.Bind<IActionTransactionHelper>().To<ActionTransactionHelper>();
+
+            //kernel.Bind<IUserManager>().To<UserManager>();
+            //kernel.Bind<IMembershipInfoProvider>().To<MembershipAdapter>();
+            //kernel.Bind<ICategoryMapper>().To<CategoryMapper>();
+            //kernel.Bind<IPriorityMapper>().To<PriorityMapper>();
+            //kernel.Bind<IStatusMapper>().To<StatusMapper>();
+            //kernel.Bind<IUserMapper>().To<UserMapper>();
+            //kernel.Bind<ITaskMapper>().To<TaskMapper>();
+
+            //kernel.Bind<ISqlCommandFactory>().To<SqlCommandFactory>();
+            //kernel.Bind<IUserRepository>().To<UserRepository>();
+
+            //kernel.Bind<IUserSession>().ToMethod(CreateUserSession).InRequestScope();
+         
+           
         }
 
 
-        /// <summary>
-        /// Add all bindings/dependencies to the container
-        /// </summary>
-        private static void AddBindings(IKernel container)
-        {
-
-            container.Bind<IUserService>().To<UserService>();
-            //container.Bind<IDatabaseValueParser>().To<DatabaseValueParser>();
-
-            //container.Bind<IHttpCategoryFetcher>().To<HttpCategoryFetcher>();
-            //container.Bind<IHttpPriorityFetcher>().To<HttpPriorityFetcher>();
-            //container.Bind<IHttpStatusFetcher>().To<HttpStatusFetcher>();
-            //container.Bind<IHttpUserFetcher>().To<HttpUserFetcher>();
-            //container.Bind<IHttpTaskFetcher>().To<HttpTaskFetcher>();
-            //container.Bind<IActionLogHelper>().To<ActionLogHelper>();
-            //container.Bind<IExceptionMessageFormatter>().To<ExceptionMessageFormatter>();
-            //container.Bind<IActionExceptionHandler>().To<ActionExceptionHandler>();
-            //container.Bind<IActionTransactionHelper>().To<ActionTransactionHelper>();
-
-            //container.Bind<IUserManager>().To<UserManager>();
-            //container.Bind<IMembershipInfoProvider>().To<MembershipAdapter>();
-            //container.Bind<ICategoryMapper>().To<CategoryMapper>();
-            //container.Bind<IPriorityMapper>().To<PriorityMapper>();
-            //container.Bind<IStatusMapper>().To<StatusMapper>();
-            //container.Bind<IUserMapper>().To<UserMapper>();
-            //container.Bind<ITaskMapper>().To<TaskMapper>();
-
-            //container.Bind<ISqlCommandFactory>().To<SqlCommandFactory>();
-            //container.Bind<IUserRepository>().To<UserRepository>();
-
-            //container.Bind<IUserSession>().ToMethod(CreateUserSession).InRequestScope();
-
-
-        }
-
+      
         #region WebContainerManager
         public static T Get_Service<T>()
         {
@@ -124,6 +115,11 @@ namespace NinjectSample.Clases
 
             return (T)service;
         }
+
+        /// <summary>
+        /// Retrive Resolver
+        /// </summary>
+        /// <returns></returns>
         public static IDependencyResolver GetContainer()
         {
             var dependencyResolver = GlobalConfiguration.Configuration.DependencyResolver;
@@ -134,6 +130,6 @@ namespace NinjectSample.Clases
 
             throw new InvalidOperationException("NinjectDependencyResolver not being used as the MVC dependency resolver");
         }
-        #region
+        #endregion
     }
 }
