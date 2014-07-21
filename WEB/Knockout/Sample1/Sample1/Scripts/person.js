@@ -1,12 +1,13 @@
 ﻿
-window.PelsoftSite = {};
-var personA = null;
+//window.PelsoftSite = {};
+
 var httpHost = '';
 
 $(function () {
 
     httpHost = Getrootpath('');
-    personA = new PelsoftSite.Person();
+    //personA = new PelsoftSite.Person();
+    var personA = new Person();
     personA.Name('Marcelo ');
     personA.Surname(' Oviedo');
     personA.Age(38);
@@ -23,8 +24,8 @@ $(function () {
 
 
 
-(function (PelsoftSite) {
-    function Person() {
+//(function (PelsoftSite) {
+var Person =   function PersonType() {
         var self = this;
         self.Id = ko.observable();
         self.Name = ko.observable("");
@@ -45,12 +46,15 @@ $(function () {
         self.getById = function () {
         };
 
+        self.contacts = ko.observableArray(ko.utils.arrayMap(contacts, function (contact) {
+            return { firstName: contact.firstName, lastName: contact.lastName, phones: ko.observableArray(contact.phones) };
+        }));
     }
 
-    PelsoftSite.Person = Person;
+    //PelsoftSite.Person = Person;
 
 
-}(window.PelsoftSite));
+//}(window.PelsoftSite));
 
 
 function GetPerson() {
@@ -88,10 +92,4 @@ function UpdatePerson() {
                                 },
                                 error: ServiceFailed
                             });
-}
-
-function ServiceFailed(xhr, status, p3, p4) {
-    var errObj = JSON.parse(xhr.responseText);
-    errMsg = errObj.Message;
-    alert(errMsg);
 }
