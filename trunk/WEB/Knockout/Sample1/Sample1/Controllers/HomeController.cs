@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using System.Security.Cryptography;
+using Fwk.Security.Cryptography;
 namespace Sample1.Controllers
 {
     public class HomeController : Controller
@@ -14,6 +15,7 @@ namespace Sample1.Controllers
 
         public ActionResult Index()
         {
+           
             return View();
         }
         public ActionResult Person()
@@ -31,6 +33,23 @@ namespace Sample1.Controllers
 
             return p;
         }
-      
+
+        public ActionResult cripto()
+        {
+
+            return View();
+        }
+        public JsonResult Encriptar(string txt)
+        {
+            try
+            {
+                var encriptedText = SymetricCypherFactory.Cypher().Encrypt(txt);
+                return Json(new { Result = "ok", Message = encriptedText });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = ex.Message });
+            }
+        }
     }
 }
