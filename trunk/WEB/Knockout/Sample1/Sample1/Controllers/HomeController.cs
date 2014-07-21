@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Sample1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -15,6 +16,21 @@ namespace Sample1.Controllers
         {
             return View();
         }
+        public ActionResult Person()
+        {
+            return View();
+        }
+        public Person GetPerson()
+        {
+            Person p = new Person();
+            p.Age = 33;
+            p.Name = "Angeline";
+            p.Surname = "Junckitoscky";
+            p.BDate = DateTime.Now;
 
+
+            return p;
+        }
+      
     }
 }

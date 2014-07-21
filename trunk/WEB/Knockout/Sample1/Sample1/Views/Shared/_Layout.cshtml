@@ -61,7 +61,7 @@
         </div>
     </div>
     @RenderBody()
-    <img id="ajax-loader" class="ajaxloader" src="@Url.Content("~/img/ajax-loader.gif")" style="display:none" />
+    
     <div class="footer navbar navbar-default">
         <div class="container">
             <div class="row ">
@@ -73,6 +73,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/knockout")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/site")
     @RenderSection("scripts", required: false)
 </body>
 </html>
