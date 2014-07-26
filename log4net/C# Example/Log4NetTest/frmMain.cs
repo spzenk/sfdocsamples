@@ -37,7 +37,7 @@ namespace Log4NetTest
             log.Fatal("Fatal logging");
 
             //This is where we call the logger from a different class
-            OtherClass.TestLogger();
+            //OtherClass.TestLogger();
 
             try
             {
@@ -45,11 +45,11 @@ namespace Log4NetTest
             }
             catch (Exception ex)
             {
-                log.Debug("Debug error logging", ex);
-                log.Info("Info error logging", ex);
-                log.Warn("Warn error logging", ex);
-                log.Error("Error error logging", ex);
-                log.Fatal("Fatal error logging", ex);
+                //log.Debug("Debug error logging", ex);
+                //log.Info("Info error logging", ex);
+                //log.Warn("Warn error logging", ex);
+                //log.Error("Error error logging", ex);
+                //log.Fatal("Fatal error logging", ex);
             }
         }
     }
