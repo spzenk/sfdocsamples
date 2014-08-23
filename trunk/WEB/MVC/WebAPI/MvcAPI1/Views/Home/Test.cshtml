@@ -1,0 +1,84 @@
+﻿@{
+    ViewBag.Title = "Test";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Test</h2>
+ 
+<script type="text/javascript">
+    var httpHost = Getrootpath('');
+    $(function () {
+        
+        //$("#btn_callsvc1").button();
+
+        //$("#btn_callsvc1").click(function () {
+        //    alert('ddd');
+        //});
+        $('#btn_callsvc1').click(function () {
+          
+            Callsvc();
+        });
+
+    });
+
+    function Callsvc()
+    {
+        var varDataJSON='';
+        $.ajax(
+                       {
+                           url: httpHost + "/api/test/Get/",
+                           type: "POST",
+                           contentType: "application/json;charset=utf-8",
+                           datatype: "json",
+                           data: varDataJSON,
+                           success: function (result) {
+                               alert(result);
+                               $('#textRes1').val(result);
+                           },
+                           error: ServiceFailed
+                       });
+
+    }
+
+
+
+    function ServiceFailed(xhr, status, p3, p4) {
+        var errMsg = status + " " + p3;
+        //var errObj = JSON.parse(xhr.responseText);
+        errMsg = errMsg + "\n" + xhr.responseText;
+
+        alert(errMsg);
+    }
+
+    function Getrootpath(href) {
+
+        //return 'http://ws2008/SecPortal/';
+        var url = document.location.protocol + '//' + document.location.host;
+        var root = document.location + '/';
+        var aux = '';
+        var temp = new Array();
+        temp = root.split('/');
+        aux = temp[2].toString();
+
+        if (aux.indexOf('localhost:', 0) == -1) {
+            if (temp.length == 6)
+                url = url + '/' + temp[3] + href;
+            else
+                url = url + '/' + href;
+        }
+        else {
+            url = url + href;
+        }
+
+        return url;
+    }
+</script>
+
+
+<div>
+           <button id="btn_callsvc1" type="submit" class="btn btn-default">Buscar</button>
+  
+<label for="exampleInput">Texto de resultado</label>
+<input type="text" id="textRes1" class="form-control" />
+
+</div>
