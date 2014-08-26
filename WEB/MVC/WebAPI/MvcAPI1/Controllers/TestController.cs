@@ -8,22 +8,37 @@ using System.Web.Http;
 namespace MvcAPI1.Controllers
 {
     public class TestController : ApiController
+    
     {
+        public MvcAPI.Connector.ServiceReference1.WCFAPIServiceClient svcClient = null;
+      
+        public TestController()
+        {
+            svcClient = new MvcAPI.Connector.ServiceReference1.WCFAPIServiceClient("tcp");
+            
+        }
         // GET api/test
+        //[HttpGet]
+        //public IEnumerable<string> RetriveAll()
+        //{
+        //    return new string[] { "value1", "value2" };
+        //}
         [HttpPost]
-        public IEnumerable<string> Get()
+        public string RetriveAll2()
         {
-            return new string[] { "value1", "value2" };
-        }
+            MvcAPI.Connector.ServiceReference1.PMOFile[] pmoList = svcClient.RetrivePMOList();
 
-        // GET api/test/5
-        public string Get(int id)
-        {
-            return "value";
+            return  "value3";
         }
+        // GET api/test/5
+        //[HttpPost]
+        //public string Get(int id)
+        //{
+        //    return "value";
+        //}
 
         // POST api/test
-        public void Post([FromBody]string value)
+        public void Crear([FromBody]string value)
         {
         }
 
