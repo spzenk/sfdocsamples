@@ -23,17 +23,27 @@
 
     function Callsvc()
     {
-        var varDataJSON='';
+        var alertText = $('#alert-text-view');
+        alertText.hide('slow');
+        $('#textRes1').html('');
+        var varDataJSON = {
+            id: ''
+        }
         $.ajax(
                        {
-                           url: httpHost + "/api/test/Get/",
+                           //url: httpHost + "/api/test/RetriveAll2/",
+                           url: httpHost + "/home/RetrivePMOList/",
                            type: "POST",
                            contentType: "application/json;charset=utf-8",
                            datatype: "json",
-                           data: varDataJSON,
+                           //data: JSON.stringify(varDataJSON),
                            success: function (result) {
-                               alert(result);
-                               $('#textRes1').val(result);
+                               if (result.Result && result.Result == 'ERROR') {
+                                   OnFailure(result);
+                                   return;
+                               }
+                               
+                               $('#textRes1').html(JSON.stringify(result));
                            },
                            error: ServiceFailed
                        });
@@ -41,7 +51,15 @@
     }
 
 
+    function OnFailure(ajaxContext) {
+        var alertText = $('#alert-text-view');
+        alertText.show('slow');
 
+        if (ajaxContext.responseText)
+            alertText.find('.error-text').text(ajaxContext.responseText);
+        else
+            alertText.find('.error-text').text(ajaxContext.Message);
+    }
     function ServiceFailed(xhr, status, p3, p4) {
         var errMsg = status + " " + p3;
         //var errObj = JSON.parse(xhr.responseText);
@@ -76,9 +94,12 @@
 
 
 <div>
-           <button id="btn_callsvc1" type="submit" class="btn btn-default">Buscar</button>
+<button id="btn_callsvc1" type="submit" class="btn btn-default">RetrivePMOList</button>
   
 <label for="exampleInput">Texto de resultado</label>
-<input type="text" id="textRes1" class="form-control" />
-
+<div  id="textRes1" class="form-control" />
+     <div id="alert-text-view" class="alert alert-warning" style="display: none; margin: 5px">
+                        <p><strong>Error en el servidor</strong> </p>
+                        <p class="error-text"></p>
+                    </div>
 </div>
