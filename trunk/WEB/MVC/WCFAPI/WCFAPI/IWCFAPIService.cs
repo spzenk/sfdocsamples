@@ -18,7 +18,7 @@ namespace WCFAPI
         PMOFileList RetrivePMOList();
 
         [OperationContract]
-        PMOContract RetrivePMOList(String filterName);
+        PMOContract RetrivePMOListParamas(String filterName);
 
   
     }

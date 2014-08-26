@@ -20,7 +20,7 @@ namespace WCFAPI
             return list;
         }
 
-        public PMOContract RetrivePMOList(string filterName)
+        public PMOContract RetrivePMOListParamas(string filterName)
         {
             if (filterName == null)
             {
