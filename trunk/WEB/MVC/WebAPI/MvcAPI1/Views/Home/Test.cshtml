@@ -42,8 +42,16 @@
                                    OnFailure(result);
                                    return;
                                }
-                               
-                               $('#textRes1').html(JSON.stringify(result));
+                               var htmlTable='<table>';
+                               $.each(result, function (index, value) {
+                                   htmlTable += "<tr class='tr'>";
+                                   htmlTable += "<td>" + value.Code.toString() + "</td>";
+                                   htmlTable += "<td>" + value.Description.toString() + "</td>";
+                                
+                                   htmlTable += "</tr>";
+                               });
+                               htmlTable += "</table>";
+                               $('#textRes1').html(htmlTable);
                            },
                            error: ServiceFailed
                        });
