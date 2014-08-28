@@ -15,28 +15,30 @@
         //    alert('ddd');
         //});
         $('#btn_callsvc1').click(function () {
-          
-            Callsvc();
+            RetrivePMOList();
+        });
+        $('#btn_callsvc2').click(function () {
+            RetrivePMOListParamas();
         });
 
     });
 
-    function Callsvc()
+    function RetrivePMOListParamas()
     {
         var alertText = $('#alert-text-view');
         alertText.hide('slow');
         $('#textRes1').html('');
         var varDataJSON = {
-            id: ''
+            param: $('#txtParams').val()
         }
         $.ajax(
                        {
-                           //url: httpHost + "/api/test/RetriveAll2/",
-                           url: httpHost + "/home/RetrivePMOList/",
+                         
+                           url: httpHost + "/home/RetrivePMOListParamas/",
                            type: "POST",
                            contentType: "application/json;charset=utf-8",
                            datatype: "json",
-                           //data: JSON.stringify(varDataJSON),
+                           data: JSON.stringify(varDataJSON),
                            success: function (result) {
                                if (result.Result && result.Result == 'ERROR') {
                                    OnFailure(result);
@@ -47,7 +49,6 @@
                                    htmlTable += "<tr class='tr'>";
                                    htmlTable += "<td>" + value.Code.toString() + "</td>";
                                    htmlTable += "<td>" + value.Description.toString() + "</td>";
-                                
                                    htmlTable += "</tr>";
                                });
                                htmlTable += "</table>";
@@ -58,7 +59,37 @@
 
     }
 
+    function RetrivePMOList() {
+        var alertText = $('#alert-text-view');
+        alertText.hide('slow');
+        $('#textRes1').html('');
+        $.ajax(
+                       {
+   
+                           url: httpHost + "/home/RetrivePMOList/",
+                           type: "POST",
+                           contentType: "application/json;charset=utf-8",
+                           datatype: "json",
+                          
+                           success: function (result) {
+                               if (result.Result && result.Result == 'ERROR') {
+                                   OnFailure(result);
+                                   return;
+                               }
+                               var htmlTable = '<table>';
+                               $.each(result, function (index, value) {
+                                   htmlTable += "<tr class='tr'>";
+                                   htmlTable += "<td>" + value.Code.toString() + "</td>";
+                                   htmlTable += "<td>" + value.Description.toString() + "</td>";
+                                   htmlTable += "</tr>";
+                               });
+                               htmlTable += "</table>";
+                               $('#textRes1').html(htmlTable);
+                           },
+                           error: ServiceFailed
+                       });
 
+    }
     function OnFailure(ajaxContext) {
         var alertText = $('#alert-text-view');
         alertText.show('slow');
@@ -102,12 +133,13 @@
 
 
 <div>
-<button id="btn_callsvc1" type="submit" class="btn btn-default">RetrivePMOList</button>
-  
-<label for="exampleInput">Texto de resultado</label>
-<div  id="textRes1" class="form-control" />
-     <div id="alert-text-view" class="alert alert-warning" style="display: none; margin: 5px">
-                        <p><strong>Error en el servidor</strong> </p>
-                        <p class="error-text"></p>
-                    </div>
+    <button id="btn_callsvc1" type="submit" class="btn btn-default">RetrivePMOList</button>
+    <button id="btn_callsvc2" type="submit" class="btn btn-default">RetrivePMOListParamas</button>
+    <input id="txtParams" type="text" />
+    <label for="exampleInput">Texto de resultado</label>
+    <div id="textRes1" class="form-control" />
+    <div id="alert-text-view" class="alert alert-warning" style="display: none; margin: 5px">
+        <p><strong>Error en el servidor</strong> </p>
+        <p class="error-text"></p>
+    </div>
 </div>
