@@ -67,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MetadataHelper.cs" />
+    <Compile Include="PmoDAC.cs" />
     <Compile Include="WCFAPIService.svc.cs">
       <DependentUpon>WCFAPIService.svc</DependentUpon>
     </Compile>
