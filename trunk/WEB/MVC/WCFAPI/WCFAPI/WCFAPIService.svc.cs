@@ -15,8 +15,8 @@ namespace WCFAPI
     {
         public PMOFileList RetrivePMOList()
         {
-            String xml = Fwk.HelperFunctions.FileFunctions.OpenTextFile(@"pmo.xml");
-            PMOFileList list = Fwk.HelperFunctions.SerializationFunctions.DeserializeFromXml(typeof(PMOFileList), xml) as PMOFileList;
+
+            PMOFileList list = PmoDAC.Get();
             return list;
         }
 
@@ -26,11 +26,20 @@ namespace WCFAPI
             {
                 throw new ArgumentNullException("filterName");
             }
+            
+
+            PMOFileList list = PmoDAC.Get();
+            var slist= list.Where(p=>p.Description.Contains(filterName));
             PMOContract res = new PMOContract();
+            res.PMOFileList = new PMOFileList();
+
+            res.PMOFileList.AddRange(slist.ToList());
             return res;
         }
 
 
      
     }
+
+    
 }
