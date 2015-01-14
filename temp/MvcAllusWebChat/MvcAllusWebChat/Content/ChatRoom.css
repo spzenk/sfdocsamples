@@ -1,0 +1,65 @@
+﻿  ._tlkFriend {
+        margin: 5px 0 5px 0;
+        font-size: 1em;
+        color: Orange;
+        white-space: normal;
+        word-break: break-all;
+        overflow: auto;
+    }
+
+    ._tlkFriend ._talker {
+        font-size: 1em;
+        color: #0078D3;
+    }
+    ._time {
+        float:right;
+    }
+    
+     ._tlkFriend ._time {
+        font-size: 10px;
+        color: Gray;
+    }
+
+    ._tlkFriend ._msg {
+        font-size: 1em;
+        line-height: 20px;
+        color: black;
+        padding-left: 2px;
+        margin-left: 5px;
+    }
+
+    ._tlkMe {
+        margin: 5px 0 5px 0;
+        font-size: 1em;
+        color: Green;
+        /*border-bottom: 1px solid gray;*/
+        white-space: normal;
+        word-break: break-all;
+        overflow: auto;
+    }
+
+        ._tlkMe ._talker {
+            font-size: 1em;
+            color: grey;
+            
+        }
+
+        ._tlkMe ._time {
+            font-size: 10px;
+            color: Gray;
+        }
+
+        ._tlkMe ._msg {
+            font-size: 1em;
+            line-height: 20px;
+            color: black;
+            padding-left: 5px;
+            margin-left:5px
+        }
+._tlkMe ._msgClosed {
+      font-size: 1em;
+        line-height: 20px;
+        color: red;
+        padding-left: 2px;
+        margin-left: 5px;
+}
