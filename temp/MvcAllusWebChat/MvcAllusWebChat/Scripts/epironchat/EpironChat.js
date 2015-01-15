@@ -204,7 +204,6 @@ function RetriveAllMessage() {
                             .appendTo(container)
                             .addClass((this.IsFriend ? "_tlkFriend" : "_tlkMe"))
                             .end()
-
                             .append("<span class=\"_talker\">" + (this.IsFriend ? this.Talker : "Yo:") + "</span>")
                             //.append("<span>" + (this.IsFriend ? " dice  " : " dijo") + "</span>")
                             .append("<span class=\"_time\">" + dateFormat + "</span>")
