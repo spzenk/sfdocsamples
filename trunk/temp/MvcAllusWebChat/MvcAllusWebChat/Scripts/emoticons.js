@@ -3,11 +3,11 @@
 
 (function ($, exports, window, name) {
 
-    $('#div_emoticons').on('click', function () {
+    //$('#div_emoticons').on('click', function () {
         
-        var  x = $(this);
-        alert(x.val());
-    });
+    //    var  x = $(this);
+    //    alert(x.val());
+    //});
 
     
     if (!exports) {
