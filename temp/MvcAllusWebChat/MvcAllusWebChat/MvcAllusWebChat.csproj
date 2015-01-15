@@ -693,6 +693,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\epironchat\EpironChat.js" />
+    <Content Include="Scripts\epironchat\EpironChatReloj.js" />
     <Content Include="Scripts\epironchat\EpironChatTest.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
     <Content Include="Scripts\html5shiv-printshiv.min.js" />
@@ -798,6 +799,13 @@
     <Content Include="Scripts\Site-helpers.js" />
     <Content Include="Scripts\Site.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\EpironChatReloj\Index.cshtml" />
+    <Content Include="Views\EpironChatReloj\_ChatRoomView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\EpironChatReloj\_CreateChatRoomView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -846,7 +854,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\jqueryold\" />
-    <Folder Include="Views\EpironChatReloj\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

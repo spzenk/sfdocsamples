@@ -1,0 +1,88 @@
+﻿@model WebChat.Common.Models.ChatRoomCreationModel
+
+@using (Ajax.BeginForm("CreateChatRoom", "EpironChatReloj", new AjaxOptions()
+            {
+                LoadingElementId = "",
+                OnSuccess = "CreateChatRoom_CallBack",
+                OnBegin = "CreateChatRoomBefore_CallBack",
+                LoadingElementDuration=12,
+                OnFailure = "OnFailure"
+            }
+            ))
+{
+    <div class="modal-dialog">
+        <div id="CreateChatDialog" class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                <h4 class="modal-title">Crear nuevo chat test</h4>
+
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div id="alert-text-info-container">
+                        <table>
+                            <tr>
+                                <td>
+                                    <img id="ajaxloader" style="height: 40px; width: 40px; float: left;" src="@Url.Content("~/img/ajax-loader.gif")" />
+                                </td>
+                                <td>
+                                    <div id="alert-text-view-info" class="alert alert-warning" style="display: normal; margin: 5px">
+                                        <p class="info-text"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="span1">
+                        <div class="input-group">
+                            @Html.ValidationSummary(true)
+                        </div>
+                        @Html.HiddenFor(model => model.ChatRoomID)
+                        
+                        <label>Nombre</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            @Html.TextBoxFor(model => model.ClientName, new { @class = "form-control", @placeholder = "Nombre", @style = "width:300px;" })
+                            @Html.ValidationMessageFor(model => model.ClientName)
+                        </div>
+                        <label>Telefono</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Ingrese un telefono", @style = "width:300px;" })
+                            @Html.ValidationMessageFor(model => model.Phone)
+                        </div>
+                        @*<label>Email</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            @Html.TextBoxFor(model => model.ClientEmail, new { @class = "form-control", @placeholder = "Apellido", @style = "width:300px;" })
+                            @Html.ValidationMessageFor(model => model.ClientEmail)
+                        </div>*@
+                        <br />
+
+                        <label>Consulta</label>
+                        <div class="input-group">
+                            <span class="input-group-addon"></span>
+                            @Html.TextAreaFor(model => model.InitialMessage, new { @class = "form-control", @placeholder = "Ingrese su consulta", @rows = 5, @cols = 80 })
+                      
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        
+            <div id="alert-text-view" class="alert alert-warning" style="display: none; margin: 5px">
+                <p><strong>Error en el servidor</strong> </p>
+                <p class="error-text"></p>
+            </div>
+
+            <div class="modal-footer">
+                <button id="btnCreateNew" type="submit" class="btn btn-primary">Crear</button>
+                <button id="btnClose" type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
+
+            </div>
+
+        </div>
+    </div>
+}
