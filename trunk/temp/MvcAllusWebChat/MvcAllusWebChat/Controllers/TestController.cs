@@ -10,8 +10,12 @@ namespace WebChat.Controllers
     {
         //
         // GET: /Test/
-
+        
         public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult Emoticons()
         {
             return View();
         }

@@ -218,6 +218,8 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\emoticons.css" />
+    <Content Include="Content\emoticons.png" />
     <Content Include="Content\jqwidgets\images\backgroundTop.png" />
     <Content Include="Content\jqwidgets\images\backImage.png" />
     <Content Include="Content\jqwidgets\images\bg_black.png" />
@@ -692,6 +694,7 @@
     <Content Include="Scripts\bootbox.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\emoticons.js" />
     <Content Include="Scripts\epironchat\EpironChat.js" />
     <Content Include="Scripts\epironchat\EpironChatReloj.js" />
     <Content Include="Scripts\epironchat\EpironChatTest.js" />
@@ -700,6 +703,7 @@
     <Content Include="Scripts\html5shiv.js" />
     <Content Include="Scripts\html5shiv.min.js" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Content\emoticons.json" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
@@ -830,6 +834,7 @@
     <Content Include="Views\EpironChatTest\Index.cshtml" />
     <Content Include="Views\EpironChatTest\_ChatRoomView.cshtml" />
     <Content Include="Views\EpironChatTest\_CreateChatRoomView.cshtml" />
+    <Content Include="Views\Test\Emoticons.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">
