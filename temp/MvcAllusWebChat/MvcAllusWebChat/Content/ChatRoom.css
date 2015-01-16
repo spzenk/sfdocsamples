@@ -10,6 +10,7 @@
     ._tlkFriend ._talker {
         font-size: 1em;
         color: #0078D3;
+        padding-right :10px;
     }
     ._time {
         float:right;

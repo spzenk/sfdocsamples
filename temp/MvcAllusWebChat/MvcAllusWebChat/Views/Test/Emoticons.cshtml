@@ -8,32 +8,36 @@
     $(function () {
        
         $('#div_emoticons').html($.emoticons.toString());
-        //hacer click
-        //$('#txtMessage').on('keypress', function () {
-        //    var $text = $('#txtMessageList');
-        //        $in = $(this);
-        //    //$.emoticons.replace($in.val());
-
-        //    $text.html($.emoticons.replace($in.val()));
-        
-        //    //setTimeout(function () {
-        //    //    $text.html($.emoticons.replace($in.val()));
-        //    //}, 100);
-        //});
-
         $('#txtMessage').keyup(function (e) {
             if (e.keyCode == 13) {
                 appendMessage(false, 'Hendryx', '#txtMessage');
             }
         });
-
-
         $('#txtMessage2').keyup(function (e) {
             if (e.keyCode == 13) {
                 appendMessage(true, 'BB.King', '#txtMessage2');
             }
         });
+
+        $("#btnEmoticon").button({
+     
+          
+        });
+        $("#btnEmoticon").click(function () {
+            $('#emoticonSet').dialog("open");
+
+        });
+
+        $('#emoticonSet').dialog({
+            autoOpen: false,
+            width: 400,
+            title: '',
+            closeOnEscape: false
+        });
+  
+      
     });
+
     function appendMessage(isFriend, talker, messageId) {
 
         var message = $(messageId).val();
@@ -53,10 +57,9 @@
                     .append("<span class=\"_talker\">" + (isFriend ? talker : "Yo:") + "</span>")
                     .append("<span class=\"_time\">" + dateFormat + "</span>")
                     //.append("<span>: </span><BR /> ")
-                    .append("<span class=" + (isFriend ? "bubble_left" : "bubble_right") + ">" + $(divMessag).html() + "</span> ");
+                    .append("<spam class=" + (isFriend ? "bubble_left" : "bubble_right") + ">" + $(divMessag).html() + "</spam> ");
         
-
-        funcretriveAllMessage = setTimeout(function () { RetriveAllMessage(); }, 2000);
+        container.scrollTop(container[0].scrollHeight - container.height());
     }
    
 </script>
@@ -64,8 +67,13 @@
 <div class="container">
     <div class="row">
 
+        
+       
+        
+       
+    
+    </div>
         <div class="row">
-
             <div>
                 <table style=" border: 1px solid black">
                     <tr>
@@ -84,35 +92,30 @@
                             <div class="btn-group" role="group">
                                 <button type="button" id="btnSendMessage" class="btn btn-info " style="margin-left: 5px;">Enviar</button>
                                 <button type="button" id="btnExitChat" class="btn btn-danger " style="margin-left: 5px;">Salir</button>
+                                <div   id="btnEmoticon" style="margin-left: 5px;"></div>
+                                <!-- dialog emoticon sets -->
+                                <div id="emoticonSet">
+                                    <div id="div_emoticons"></div>
+                                </div>
+                                
                             </div>
 
                         </td>
                         <td></td>
                     </tr>
                 </table>
+                
             </div>
 
-
-
         </div>
 
-        @*<div class="col-lg-10">
-
-            <div id="text"></div>
-
+        <div class="row">
+            <label>Message from Other</label>
+            <input id="txtMessage2" type="text" class="form-control" style="height: 50px;" />
         </div>
-        <div class="" id="div_emoticons"></div>*@
-       
-
-        @*<input id="txtMessage_" type="text" class="form-control" style="height: 500px;" />*@
     </div>
 
-    <div>
-        <label>Message from Other</label>
-        <input id="txtMessage2" type="text" class="form-control" style="height: 50px;" />
-    </div>
-</div>
     @section scripts {
-      <script src="~/Scripts/emoticons.js"></script>
+         <script src="~/Scripts/emoticons.js"></script>
         @Scripts.Render("~/bundles/jqueryui")
     }
