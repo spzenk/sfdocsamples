@@ -3,6 +3,12 @@
 }
 
 <link href="~/Content/emoticons.css" rel="stylesheet" />
+
+<style>
+    .ui-button-text-only .ui-button-text {
+        padding: 0.3em 0.3em;
+    }
+</style>
 <script type="text/javascript">
 
     $(function () {
@@ -18,11 +24,8 @@
                 appendMessage(true, 'BB.King', '#txtMessage2');
             }
         });
-
-        $("#btnEmoticon").button({
      
-          
-        });
+        $("#btnEmoticon").button();
         $("#btnEmoticon").click(function () {
             $('#emoticonSet').dialog("open");
 
@@ -34,7 +37,12 @@
             title: '',
             closeOnEscape: false
         });
-  
+        $("#btnEmoticon").tooltip({
+            show: {
+                effect: "slideDown",
+                delay: 250
+            }
+        });
       
     });
 
@@ -67,10 +75,6 @@
 <div class="container">
     <div class="row">
 
-        
-       
-        
-       
     
     </div>
         <div class="row">
@@ -92,9 +96,15 @@
                             <div class="btn-group" role="group">
                                 <button type="button" id="btnSendMessage" class="btn btn-info " style="margin-left: 5px;">Enviar</button>
                                 <button type="button" id="btnExitChat" class="btn btn-danger " style="margin-left: 5px;">Salir</button>
-                                <div   id="btnEmoticon" style="margin-left: 5px;"></div>
+                                <div id="btnEmoticon" title="Elige un sticker o un emoticón" style="margin-left: 5px;">
+                                   
+                     
+                                        <img class="img_emoticon" src="~/img/ic_menu_emoticons%20(2).png" />
+                                   
+                                </div>
+                                
                                 <!-- dialog emoticon sets -->
-                                <div id="emoticonSet">
+                                <div id="emoticonSet" >
                                     <div id="div_emoticons"></div>
                                 </div>
                                 
