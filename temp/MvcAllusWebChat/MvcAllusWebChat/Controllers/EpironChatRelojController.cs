@@ -8,6 +8,7 @@ using WebChat.Common;
 using WebChat.Common.Models;
 using WebChat.Data;
 using WebChat.Logic;
+using WebChat.Logic.BC;
 
 namespace WebChat.Controllers
 {
@@ -25,47 +26,25 @@ namespace WebChat.Controllers
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {
-            String sessionId = ControllerContext.HttpContext.Session.SessionID;
-            SMSMessage wSMSMessage = null;
-            int? wPhoneId = null;
-            int smsId = -1;
-            int? chatRoomStatusFromEtl = null;
+
+
+            int userId = -1;
+            int chtRoomId = -1;
+            
             try
             {
-                //wPhoneId = EpironChat_LogsDAC.CheckPhoneId(model.Phone, model.ClientName);
+                EpironChatBC.CreateChatRoom(model, out chtRoomId, out userId);
 
-                //wSMSMessage = EpironChat_LogsDAC.GetSSID_IfNotExpired(wPhoneId.Value);
+                //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
+                //porque el etl no esta preparado para recibirlo
+                model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
+                chtRoomId = EpironChatBC.InsertMessage(chtRoomId, userId, model.InitialMessage, null);
 
-                //// check if a session id was generated 
-                //// Si noxiste se trata de un chat nuevo dado una session expirada
-                //if (wSMSMessage != null)
-                //{
-                //    smsId = wSMSMessage.SMSId;
-                //     if (wSMSMessage.RecordId.HasValue)
-                //{
-                //    //Chequear si el record id no esta cerrado
-                //   int? recordId= EpironChatDAC.GetRecordId(smsId, out chatRoomStatusFromEtl);
-                //   if (chatRoomStatusFromEtl.HasValue)
-                //        if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
-                //        {
-                //            EpironChat_LogsDAC.UpdateStatus(smsId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
-
-                //        }
-                //}
-
-                //}
-                //else
-                //{
-                //    //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
-                //    //porque el etl no esta preparado para recibirlo
-                //    model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-                //    smsId = EpironChat_LogsDAC.InsertMessage(wPhoneId.Value, model.InitialMessage, sessionId,null);
-                //}
                 DateTime serverCreationTime = DateTime.Now.AddMinutes(-3);
                 TimeSpan timeDifference = DateTime.Now - serverCreationTime;
                 int differenceInSeconds = (int)timeDifference.TotalSeconds;
 
-                return Json(new { Result = "OK", phoneId = 100, smsId = 2000, timeOnline = differenceInSeconds });
+                return Json(new { Result = "OK", userId = userId, chtRoomId = chtRoomId });
             }
             catch (Exception ex)
             {
@@ -123,7 +102,7 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChat_LogsDAC.InsertMessage(msg.UserId, msg.Message, ControllerContext.HttpContext.Session.SessionID, msg.RecordId);
+                EpironChatBC.InsertMessage(msg.ChatRoomID,msg.UserId, msg.Message, msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }

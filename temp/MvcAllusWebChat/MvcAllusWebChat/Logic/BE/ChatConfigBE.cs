@@ -40,7 +40,7 @@ namespace WebChat.Common.BE
 
            private System.Boolean _ChatConfigDefault;
 
-           private System.Int32? _ChatConfigTimeOut;
+        
 
 
         #endregion
@@ -101,11 +101,8 @@ namespace WebChat.Common.BE
 
 
 	#region [ChatConfigTimeOut]
-	public System.Int32? ChatConfigTimeOut
-	{
-		get { return _ChatConfigTimeOut; }
-		set { _ChatConfigTimeOut = value;}
-	}
+	public System.Double? ChatConfigTimeOut {get;set;}
+	
 	#endregion
 
 

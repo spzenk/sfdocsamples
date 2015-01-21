@@ -26,43 +26,17 @@ namespace WebChat.Controllers
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {
-            //String sessionId = ControllerContext.HttpContext.Session.SessionID;
-            
-            int? userId = null;
+            int userId = -1;
             int chtRoomId = -1;
-            int? chatRoomStatusFromEtl = null;
+
             try
             {
-                userId = EpironChatBC.CheckPhoneId(model.Phone, model.ClientName,model.ClientEmail);
-                ChatConfigBE chatConfigBE = EpironChatBC.GetChatConfig(model.ChatConfigId);
+                EpironChatBC.CreateChatRoom(model, out chtRoomId, out userId);
 
-                //wSMSMessage = EpironChat_LogsDAC.GetSSID_IfNotExpired(userId.Value);
-               
-                // check if a session id was generated 
-                // Si noxiste se trata de un chat nuevo dado una session expirada
-                //if (wSMSMessage != null)
-                //{
-                //    chtRoomId = wSMSMessage.SMSId;
-                //     if (wSMSMessage.RecordId.HasValue)
-                //{
-                //    //Chequear si el record id no esta cerrado
-                //   int? recordId= EpironChatDAC.GetRecordId(chtRoomId, out chatRoomStatusFromEtl);
-                //   if (chatRoomStatusFromEtl.HasValue)
-                //        if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
-                //        {
-                //            EpironChatBC.ChatRoom_UpdateStatus(chtRoomId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
-                            
-                //        }
-                //}
-
-                //}
-                //else
-                //{
-                    //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
-                    //porque el etl no esta preparado para recibirlo
-                    model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-                    chtRoomId = EpironChatBC.InsertMessage(userId.Value, model.InitialMessage, sessionId, null);
-                //}
+                //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
+                //porque el etl no esta preparado para recibirlo
+                model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
+                chtRoomId = EpironChatBC.InsertMessage(chtRoomId, userId, model.InitialMessage, null);
 
                 return Json(new { Result = "OK", userId = userId, chtRoomId = chtRoomId });
             }
@@ -73,20 +47,15 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult RetriveMessages(RetriveAllMessage pRetriveAllMessage)
+        public JsonResult RetriveMessages(RetriveAllMessage retriveAllMessage)
         {
-            int? chatRoomStatusFromEtl= null;
-            WebChat.Common.Enumerations.ChatRoomStatus wChatRoomStatus = Enumerations.ChatRoomStatus.Active;
+            WebChat.Common.Enumerations.ChatRoomStatus wChatRoomStatus = Enumerations.ChatRoomStatus.Active; 
+           
             List<Message> result = null;
             try
             {
-                result = EpironChatDAC.RecieveComments(pRetriveAllMessage.recordId, out chatRoomStatusFromEtl);
-                if (chatRoomStatusFromEtl.HasValue)
-                    if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
-                    {
-                        EpironChat_LogsDAC.UpdateStatus(pRetriveAllMessage.smsId,pRetriveAllMessage.recordId, WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
-                        wChatRoomStatus = WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator;
-                    }
+                result = EpironChatBC.RecieveComments(retriveAllMessage.chatRoomId, retriveAllMessage.recordId, out wChatRoomStatus);
+               
 
                 return Json(new { Result = "OK", Data = result, ChatRoomStatus = wChatRoomStatus });
             }
@@ -97,16 +66,16 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetRecordId(int smsId)
+        public JsonResult GetRecordId(int chatRoomId)
         {
             int? recordId = -1;
             int? chatRoomStatusFromEtl = null;
             try
             {
-                recordId = EpironChatDAC.GetRecordId(smsId, out chatRoomStatusFromEtl);
+                recordId = EpironChatDAC.GetRecordId(chatRoomId, out chatRoomStatusFromEtl);
 
                 if (recordId != null)
-                    EpironChat_LogsDAC.UpdateStatus(smsId,recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
+                    EpironChatBC.ChatRoom_UpdateStatus(chatRoomId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
                 
                 return Json(new { Result = "OK", recordId = recordId });
             }
@@ -122,7 +91,7 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChat_LogsDAC.InsertMessage(msg.UserId, msg.Message, ControllerContext.HttpContext.Session.SessionID, msg.RecordId);
+                EpironChatBC.InsertMessage(msg.ChatRoomID,msg.UserId, msg.Message, msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }
