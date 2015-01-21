@@ -27,18 +27,12 @@ namespace WebChat.Controllers
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {
             int userId = -1;
-            int chtRoomId = -1;
+            int chatRoomId = -1;
 
             try
             {
-                EpironChatBC.CreateChatRoom(model, out chtRoomId, out userId);
-
-                //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
-                //porque el etl no esta preparado para recibirlo
-                model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-                chtRoomId = EpironChatBC.InsertMessage(chtRoomId, userId, model.InitialMessage, null);
-
-                return Json(new { Result = "OK", userId = userId, chtRoomId = chtRoomId });
+                EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId);
+                return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
             }
             catch (Exception ex)
             {
@@ -55,7 +49,8 @@ namespace WebChat.Controllers
             try
             {
                 result = EpironChatBC.RecieveComments(retriveAllMessage.chatRoomId, retriveAllMessage.recordId, out wChatRoomStatus);
-               
+
+                //EpironChatBC.ChatRoom_UpdateTTL(retriveAllMessage.chatRoomId);
 
                 return Json(new { Result = "OK", Data = result, ChatRoomStatus = wChatRoomStatus });
             }
@@ -102,11 +97,11 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult LeaveChatRoom(int recordId, int smsId)
+        public JsonResult LeaveChatRoom(int chatRoomId)
         {
             try
             {
-                EpironChat_LogsDAC.LeaveChatRoom(smsId);
+                EpironChatBC.LeaveChatRoom(chatRoomId);
                 return Json(new { Result = "OK", Message = "Sala de chat cerrada por el cliente" });
             }
             catch (Exception ex)

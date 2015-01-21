@@ -29,14 +29,6 @@ namespace WebChat.Logic.DAC
     {
 
 
-   
-
-
-
-
-
-
-
         /// <summary>
         /// Obtiene un ChatConfig. 
         /// </summary>
@@ -46,8 +38,8 @@ namespace WebChat.Logic.DAC
         /// <Author>moviedo</Author>
         public static ChatConfigBE GetByParam(Guid? chatConfigGuid)
         {
-            Database wDataBase = null;
-            DbCommand wCmd = null;
+            Database dataBase = null;
+            DbCommand cmd = null;
 
 
             ChatConfigList wChatConfigList = new ChatConfigList();
@@ -56,25 +48,26 @@ namespace WebChat.Logic.DAC
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase("CnnStringKey");
-                wCmd = wDataBase.GetStoredProcCommand("[Chat].[ChatConfig_s_byParams]");
-                if (chatConfigGuid.HasValue != false)
-                    wDataBase.AddInParameter(wCmd, "ChatConfigGuid", System.Data.DbType.Guid, chatConfigGuid);
-
-                using (IDataReader reader = wDataBase.ExecuteReader(wCmd))
+                dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+                using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatConfig_g]"))
                 {
-                    while (reader.Read())
+                    if (chatConfigGuid.HasValue != false)
+                        dataBase.AddInParameter(cmd, "ChatConfigGuid", System.Data.DbType.Guid, chatConfigGuid);
+
+                    using (IDataReader reader = dataBase.ExecuteReader(cmd))
                     {
-                        wChatConfig = new ChatConfigBE();
-                        wChatConfig.ChatConfigId = Convert.ToInt32(reader["ChatConfigId"]);
-                        wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
-                        wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
-                        wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
+                        while (reader.Read())
+                        {
+                            wChatConfig = new ChatConfigBE();
+                            wChatConfig.ChatConfigId = Convert.ToInt32(reader["ChatConfigId"]);
+                            wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
+                            wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
+                            wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
 
 
+                        }
                     }
                 }
-
                 return wChatConfig;
 
             }

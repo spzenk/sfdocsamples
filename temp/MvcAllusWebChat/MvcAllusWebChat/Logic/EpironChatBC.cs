@@ -22,6 +22,7 @@ namespace WebChat.Logic.BC
             if (wChatUserBE != null)
                 return wChatUserBE.ChatUserId;
 
+            wChatUserBE = new ChatUserBE();
             /// Si no existe lo crea
             wChatUserBE.ChatUserPhone = phoneNumber;
             wChatUserBE.ChatUserName = clientName;
@@ -56,7 +57,7 @@ namespace WebChat.Logic.BC
                 //    needUpdate = true;
                 //}
                 //Actualiza el nombre del cliente si es necesario
-                if (userBE.ChatUserPhone.Trim().CompareTo(clientName.Trim()) != 0)
+                if (userBE.ChatUserName.Trim().CompareTo(clientName.Trim()) != 0)
                 {
                     userBE.ChatUserName = clientName;
                     needUpdate = true;
@@ -77,16 +78,7 @@ namespace WebChat.Logic.BC
             return ChatMessageDAC.InsertMessage(chatRoomId, userId, message, recordId);
         }
 
-        /// <summary>
-        /// Obtiele chat confoig.-. 
-        /// </summary>
-        /// <param name="chatConfigId">Si se pasa null obtiene uno por default</param>
-        /// <returns></returns>
-        internal static ChatConfigBE GetChatConfig(Guid? chatConfigId)
-        {
-            return ChatConfigDAC.GetByParam(chatConfigId);
-        }
-
+      
         /// <summary>
         /// REaliza la creacion de chatroom nuevo. Adicionalmente verifica si existen chatrooms activos por el usuario y los cierra
         /// </summary>
@@ -96,14 +88,23 @@ namespace WebChat.Logic.BC
         internal static void CreateChatRoom(ChatRoomCreationModel model, out int roomId, out int userId)
         {
             roomId = -1;
+            
             //Busca el cliente relacionado al telefono
             userId = EpironChatBC.CheckPhoneId(model.Phone, model.ClientName, model.ClientEmail);
 
-            ChatConfigBE chatConfigBE = EpironChatBC.GetChatConfig(model.ChatConfigId);
+            ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
             ActiveChatRoomBE wActiveChatRoom = GetChatRoom_IfNotExpired(userId, chatConfigBE);
+            if (wActiveChatRoom != null)
+            {
+                throw new Fwk.Exceptions.FunctionalException("El cliente que ingres esta siendo atendido en este momento");
+            }
+            else
+            { roomId = ChatRoomDAC.CreateChatRoom(chatConfigBE.ChatConfigId, (int)Common.Enumerations.ChatRoomStatus.Waiting); }
 
+            //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
+            //porque el etl no esta preparado para recibirlo
             model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-            EpironChatBC.InsertMessage(wActiveChatRoom.ChatRoomId, userId, model.InitialMessage, null);
+            EpironChatBC.InsertMessage(roomId, userId, model.InitialMessage, null);
         }
 
         /// <summary>
@@ -115,11 +116,12 @@ namespace WebChat.Logic.BC
         internal static ActiveChatRoomBE GetChatRoom_IfNotExpired(int userId, ChatConfigBE configBE)
         {
             List<ActiveChatRoomBE> chatroomList = ChatRoomDAC.RetriveActiveChatRooms(userId);
-            DateTime result;
+            DateTime expitrationTime;
             foreach (ActiveChatRoomBE item in chatroomList)
             {
-                result = item.ChatMessageDate.AddMinutes(configBE.ChatConfigTimeOut.Value);
-                if (result.CompareTo(DateTime.Now) >= 0)
+                expitrationTime = item.ChatMessageDate.AddMinutes(configBE.ChatConfigTimeOut.Value);
+                //Menos a 0 expitrationTime es anterior a value. Significa que ya paso el tiempo y expiro 
+                if (expitrationTime.CompareTo(DateTime.Now) <= 0)
                 {
                     item.Status = Common.Enumerations.ChatRoomStatus.ExpiredTimeout;
                     ChatRoomDAC.Update(item.ChatRoomId, (int)item.Status, null);
@@ -148,6 +150,16 @@ namespace WebChat.Logic.BC
                 }
 
             return result;
+        }
+
+        internal static void LeaveChatRoom(int chatRoomId)
+        {
+            ChatRoomDAC.Update(chatRoomId, (int)WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOwner, null);
+        }
+        [Obsolete("todavia no se usa")]
+        internal static void ChatRoom_UpdateTTL(int chatRoomId)
+        {
+            ChatRoomDAC.UpdateTTL(chatRoomId);
         }
     }
 }

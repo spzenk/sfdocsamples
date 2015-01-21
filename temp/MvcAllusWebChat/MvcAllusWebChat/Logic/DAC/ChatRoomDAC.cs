@@ -19,25 +19,24 @@ namespace WebChat.Logic
         /// <param name="chatConfigId"></param>
         /// <param name="statusId"></param>
         /// <returns></returns>
-        internal static int CreateChatRoom(string chatConfigId, int statusId)             
+        internal static int CreateChatRoom(Int32 chatConfigId, Int32 statusId)
         {
-            Database wDataBase = null;
-            DbCommand wCmd = null;
+            Database dataBase = null;
+            DbCommand cmd = null;
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
-                wCmd = wDataBase.GetStoredProcCommand("[Chat].[ChatRoom_u]");
-                /// ChatUserId
-                wDataBase.AddOutParameter(wCmd, "ChatRoomId", System.Data.DbType.Int32, 4);
+                dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+                using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatRoom_i]"))
+                {
 
-                wDataBase.AddInParameter(wCmd, "ChatRoomStatusId", System.Data.DbType.Int32, statusId);
+                    dataBase.AddOutParameter(cmd, "ChatRoomId", System.Data.DbType.Int32, 4);
+                    dataBase.AddInParameter(cmd, "ChatRoomStatusId", System.Data.DbType.Int32, statusId);
+                    dataBase.AddInParameter(cmd, "ChatConfigId", System.Data.DbType.Int32, chatConfigId);
 
-                wDataBase.AddInParameter(wCmd, "ChatConfigId", System.Data.DbType.String, chatConfigId);
-
-                wDataBase.ExecuteNonQuery(wCmd);
-                return (System.Int32)wDataBase.GetParameterValue(wCmd, "ChatRoomId");
-
+                    dataBase.ExecuteNonQuery(cmd);
+                    return (System.Int32)dataBase.GetParameterValue(cmd, "ChatRoomId");
+                }
             }
             catch (Exception ex)
             {
@@ -54,23 +53,25 @@ namespace WebChat.Logic
         internal static void Update(int chatRoomId, int statusId, int? recordId)
         {
 
-            Database wDataBase = null;
-            DbCommand wCmd = null;
+            Database dataBase = null;
+            DbCommand cmd = null;
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
-                wCmd = wDataBase.GetStoredProcCommand("[Chat].[ChatRoom_u]");
-                /// ChatUserId
-                wDataBase.AddInParameter(wCmd, "ChatRoomId", System.Data.DbType.Int32, chatRoomId);
+                dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+                using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatRoom_u]"))
+                {
+                    /// ChatUserId
+                    dataBase.AddInParameter(cmd, "ChatRoomId", System.Data.DbType.Int32, chatRoomId);
 
-                wDataBase.AddInParameter(wCmd, "ChatRoomStatusId", System.Data.DbType.Int32, statusId);
+                    dataBase.AddInParameter(cmd, "ChatRoomStatusId", System.Data.DbType.Int32, statusId);
 
-                if (recordId.HasValue)
-                    wDataBase.AddInParameter(wCmd, "RecordId", System.Data.DbType.String, recordId);
+                    if (recordId.HasValue)
+                        dataBase.AddInParameter(cmd, "RecordId", System.Data.DbType.String, recordId);
 
-                wDataBase.ExecuteNonQuery(wCmd);
-                
+                    dataBase.ExecuteNonQuery(cmd);
+                }
+
             }
             catch (Exception ex)
             {
@@ -90,23 +91,23 @@ namespace WebChat.Logic
             try
             {
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
-                cmd = database.GetStoredProcCommand("[Chat].[ActiveChatRoom_s_ByChatUserId]");
-                /// ChatUserId
-                database.AddInParameter(cmd, "UserId", System.Data.DbType.Int32, userId);
-                using (IDataReader reader = database.ExecuteReader(cmd))
+                using (cmd = database.GetStoredProcCommand("[Chat].[ActiveChatRoom_s_ByChatUserId]"))
                 {
-                    while (reader.Read())
+                    database.AddInParameter(cmd, "ChatUserId", System.Data.DbType.Int32, userId);
+                    using (IDataReader reader = database.ExecuteReader(cmd))
                     {
-                        item = new ActiveChatRoomBE();
-                        item.ChatRoomId = Convert.ToInt32(reader["ChatRoomId"]);
-                        item.ChatMessageId = Convert.ToInt32(reader["ChatMessageId"]);
-                        item.ChatMessageDate = Convert.ToDateTime(reader["ChatMessageDate"]);
-                        list.Add(item);
+                        while (reader.Read())
+                        {
+                            item = new ActiveChatRoomBE();
+                            item.ChatRoomId = Convert.ToInt32(reader["ChatRoomId"]);
+                            item.ChatMessageId = Convert.ToInt32(reader["ChatMessageId"]);
+                            item.ChatMessageDate = Convert.ToDateTime(reader["ChatMessageDate"]);
+                            list.Add(item);
 
+                        }
                     }
+                    return list;
                 }
-                return list;
-                
             }
             catch (Exception ex)
             {
@@ -118,10 +119,15 @@ namespace WebChat.Logic
 
 
 
-
+        [Obsolete("todavia no se usa")]
         internal static ChatRoom GetById(int p)
         {
-            throw new NotImplementedException();
+            return new ChatRoom();
+        }
+        [Obsolete("todavia no se usa")]
+        internal static void UpdateTTL(int chatRoomId)
+        {
+
         }
     }
 }
