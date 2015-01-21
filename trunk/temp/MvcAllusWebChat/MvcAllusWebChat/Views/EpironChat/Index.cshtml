@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<script type="text/javascript">
+@*<script type="text/javascript">
 
     //$(document).bind('keydown keyup', function (e) {
     //          if (e.which === 116) {
@@ -18,9 +18,15 @@
     //})
   
 
-</script>
+</script>*@
 <h2>chat</h2>
+<style>
+    .ui-button-text-only .ui-button-text {
+        padding: 0.3em 0.3em;
+    }
+</style>
 
+<link href="~/Content/emoticons.css" rel="stylesheet" />
 <!-- Busqueda-->
 <div class="container">
     <div class="row">
@@ -79,5 +85,7 @@
 
 
 @section scripts {
+    <script src="~/Scripts/emoticons.js"></script>
     <script src="~/Scripts/epironchat/EpironChat.js"></script>
+    @Scripts.Render("~/bundles/jqueryui");
 }

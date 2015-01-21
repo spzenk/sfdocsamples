@@ -14,7 +14,7 @@ namespace WebChat.Logic
 {
     public class EpironChatDAC
     {
-        static int? operatorIdConfig = null;
+        
 
         static EpironChatDAC()
         {
@@ -36,7 +36,7 @@ namespace WebChat.Logic
             int? recordId = null;
             try
             {
-                database = DatabaseFactory.CreateDatabase("EpironChatConnectionString");
+                database = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (DbCommand cmd = database.GetStoredProcCommand("[SMS].[Record_s_bySourceSMSId]"))
                 {
                     database.AddInParameter(cmd, "SMSId", DbType.Int32, pSMSId);

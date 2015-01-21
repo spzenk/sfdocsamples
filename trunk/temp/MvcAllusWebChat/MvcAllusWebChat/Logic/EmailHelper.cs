@@ -12,31 +12,22 @@ namespace WebChat.Logic
 {
     public class EmailHelper
     {
-        private ChatMailSenderBE _ChatMailSender { get; set; }
-        private ChatUserBE _ChatUser { get; set; }
-
-        public EmailHelper(Guid configId, int chatUserID)
-        {
-           this._ChatMailSender  =  EpironChat_LogsDAC.GetChatMailSenderByCongGuid(configId);
-           this._ChatUser = ChatUserDAC.GetByParams(chatUserID,String.Empty);
-        }
-
-        public bool SentEmail(string pMessage, bool wToTheClientFlag)
+        public static bool SentEmail(string pMessage, bool wToTheClientFlag, ChatMailSenderBE pChatMailSender, ChatUserBE pChatUser)
         {
             try
             {
-                if (_ChatMailSender == null || _ChatUser == null)
+                if (pChatMailSender == null || pChatUser == null)
                     return false;
 
                 System.Net.Mail.MailMessage wMessage = new System.Net.Mail.MailMessage() ;
 
-                SmtpClient wSmtpClient = new SmtpClient(_ChatMailSender.SMTPServer, _ChatMailSender.SMTPPort);
+                SmtpClient wSmtpClient = new SmtpClient(pChatMailSender.SMTPServer, pChatMailSender.SMTPPort);
 
                 //Configuraciones de la cuenta          
-                wSmtpClient.Credentials = new System.Net.NetworkCredential(_ChatMailSender.UserName, _ChatMailSender.Password);
+                wSmtpClient.Credentials = new System.Net.NetworkCredential(pChatMailSender.UserName, pChatMailSender.Password);
                 
                 wSmtpClient.Timeout = 300000;
-                wSmtpClient.EnableSsl = _ChatMailSender.EnableSSL;
+                wSmtpClient.EnableSsl = pChatMailSender.EnableSSL;
                 wSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 
               
@@ -45,19 +36,19 @@ namespace WebChat.Logic
 
 
                 //Configuro el FROM y TO . 
-                wMessage.From = new MailAddress(_ChatMailSender.Email);
+                wMessage.From = new MailAddress(pChatMailSender.Email);
 
                 string wSubject = string.Empty;
                 if (wToTheClientFlag)
                 {
-                    wMessage.To.Add(new MailAddress(_ChatUser.ChatUserEmail));  //En el caso de que sea desde la empresa para el cliente
-                    wMessage.Subject = string.Empty; //<--- completar
+                    wMessage.To.Add(new MailAddress(pChatUser.ChatUserEmail));  //En el caso de que sea desde la empresa para el cliente
+                    wMessage.Subject = "- [Chat Epiron] - "; //<--- completar
                 }
                 else
                 {
-                    wMessage.To.Add(new MailAddress(_ChatMailSender.Email));//En el caso de que sea desde el cliente para la empresa 
+                    wMessage.To.Add(new MailAddress(pChatMailSender.Email));//En el caso de que sea desde el cliente para la empresa 
                     //El asunto o subject del email para el caso wToTheClientFlag == false, se conforma con el formtamo [TAG]@Email_del_cliente[/TAG]
-                    wMessage.Subject = _ChatMailSender.TagStartWith + _ChatUser.ChatUserEmail + _ChatMailSender.TagEndWith;
+                    wMessage.Subject = pChatMailSender.TagStartWith + pChatUser.ChatUserEmail + pChatMailSender.TagEndWith;
                 }
 
                 System.Net.Mail.Attachment wAttachFile = null; //<--- por ahora sin attachments

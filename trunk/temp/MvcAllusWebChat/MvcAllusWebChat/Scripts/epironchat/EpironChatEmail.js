@@ -3,6 +3,10 @@ $(function () {
     $("#btnAccept").click(function () {
         sendEmail();
     });
+
+    $("#btnCancel").click(function () {
+        $('#emailForm').modal('hide');
+    });
 });
 
 function sendEmail() {
@@ -31,3 +35,5 @@ function sendEmail() {
         error: ServiceFailed
     });
 }
+
+

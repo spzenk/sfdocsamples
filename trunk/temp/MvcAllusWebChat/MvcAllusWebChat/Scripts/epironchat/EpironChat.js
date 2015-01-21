@@ -1,10 +1,10 @@
-﻿function onExit() {
-    if (_userId == -1)
-        return;
-    if (confirm("Si preciona F5 va tener que reicniciar el chat con el operador. Desea reiciar?") == false) {
-        console.log('blocked');
-    }
-}
+﻿//function onExit() {
+//    if (_userId == -1)
+//        return;
+//    if (confirm("Si preciona F5 va tener que reicniciar el chat con el operador. Desea reiciar?") == false) {
+//        console.log('blocked');
+//    }
+//}
 
 var _userId = -1;
 var _recordId = -1;
@@ -21,7 +21,7 @@ $(function () {
     //    keyboard: true
     //})
     //DisableControlsCreateChatRoom();
-
+    
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();
     $('#chatDialog').hide();
@@ -55,8 +55,8 @@ $(function () {
 function LeaveChatRoom() {
     var obj = {
 
-        recordId: _recordId,
-        smsId: _smsId
+        RecordId: _recordId,
+        ChatRoomId: _chatRoomId
     }
     $.ajax({
         url: "/EpironChat/LeaveChatRoom/",
@@ -114,17 +114,18 @@ function CreateChatRoom_CallBack(ajaxContext) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
         OnFailure(ajaxContext);
+        $('#alert-text-info-container').hide();
         return;
     }
     _userId = ajaxContext.phoneId;
 
-    GetRecordId(ajaxContext.smsId);
+    GetRecordId(ajaxContext.chatRoomId);
 }
 
-function GetRecordId(smsId) {
+function GetRecordId(chatRoomId) {
 
     var obj = {
-        smsId: smsId,
+        chatRoomId: chatRoomId,
     }
     $.ajax({
         url: "/EpironChat/GetRecordId/",
@@ -138,7 +139,7 @@ function GetRecordId(smsId) {
                 return;
             }
 
-            GetrecordId_CallBack(result, smsId);
+            GetrecordId_CallBack(result, chatRoomId);
 
         },
 
@@ -147,19 +148,19 @@ function GetRecordId(smsId) {
 
 }
 
-function GetrecordId_CallBack(ajaxContext, smsId) {
+function GetrecordId_CallBack(ajaxContext, chatRoomId) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
         OnFailure(ajaxContext);
         return;
     }
     if (ajaxContext.recordId == null) {
-        funcGetRecordId = setTimeout(function () { GetRecordId(smsId); }, 4000);
+        funcGetRecordId = setTimeout(function () { GetRecordId(chatRoomId); }, 4000);
         return;
     }
 
     _recordId = ajaxContext.recordId;
-    _smsId = smsId;
+    _chatRoomId = chatRoomId;
     $('#newModal').modal('hide');
     $("#btnOpenChat").hide('slow');
     $('#alert-text-view').hide('slow');
@@ -174,7 +175,7 @@ function RetriveAllMessage() {
 
     var obj = {
         recordId: _recordId,
-        smsId: _smsId
+        chatRoomId: _chatRoomId
     }
 
     $.ajax({

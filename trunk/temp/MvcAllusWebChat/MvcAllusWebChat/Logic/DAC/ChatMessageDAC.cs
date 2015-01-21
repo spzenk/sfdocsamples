@@ -27,7 +27,6 @@ namespace WebChat.Logic.DAC
                            select messages;
 
 
-
                 foreach (SMSMessage msg in msgs.ToList())
                 {
                     result.Add(new Message(msg, context));
@@ -45,26 +44,22 @@ namespace WebChat.Logic.DAC
         /// <param name="message"></param>
         internal static int InsertMessage(int chatRoomId, int chatUserId, string message, int? recordId)
         {
-            Database wDataBase = null;
-            DbCommand wCmd = null;
+            Database dataBase = null;
+            DbCommand cmd = null;
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase("CnnStringKey");
-                wCmd = wDataBase.GetStoredProcCommand("ChatUser_i");
-                
-                /// ChatUserId
-                wDataBase.AddOutParameter(wCmd, "ChatMessageId", System.Data.DbType.Int32, 4);
+                dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+                using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatMessage_i]"))
+                {
+                    dataBase.AddOutParameter(cmd, "ChatMessageId", System.Data.DbType.Int32, 4);
+                    dataBase.AddInParameter(cmd, "ChatRoomId", System.Data.DbType.Int32, chatRoomId);
+                    dataBase.AddInParameter(cmd, "ChatUserId", System.Data.DbType.Int32, chatUserId);
+                    dataBase.AddInParameter(cmd, "ChatMessage", System.Data.DbType.String, message);
 
-                wDataBase.AddInParameter(wCmd, "ChatRoomId", System.Data.DbType.Int32, chatRoomId);
-
-                wDataBase.AddInParameter(wCmd, "chatUserId", System.Data.DbType.Int32, chatUserId);
-
-                wDataBase.AddInParameter(wCmd, "message", System.Data.DbType.String, message);
-
-
-                wDataBase.ExecuteNonQuery(wCmd);
-                return (System.Int32)wDataBase.GetParameterValue(wCmd, "ChatMessageId");
+                    dataBase.ExecuteNonQuery(cmd);
+                    return (System.Int32)dataBase.GetParameterValue(cmd, "ChatMessageId");
+                }
             }
             catch (Exception ex)
             {

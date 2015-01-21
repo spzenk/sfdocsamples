@@ -25,9 +25,9 @@ using WebChat.Common;
 namespace WebChat.Logic.DAC
 {
 
-    public static class ChatUserDAC 
+    public static class ChatUserDAC
     {
-       
+
 
         /// <summary>
         /// Insert
@@ -38,25 +38,27 @@ namespace WebChat.Logic.DAC
         /// <Author>moviedo</Author>
         public static void Insert(ChatUserBE pChatUser)
         {
-            Database wDataBase = null;
-            DbCommand wCmd = null;
+            Database dataBase = null;
+            DbCommand cmd = null;
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase("CnnStringKey");
-                wCmd = wDataBase.GetStoredProcCommand("ChatUser_i");
-                /// ChatUserId
-                wDataBase.AddOutParameter(wCmd, "ChatUserId", System.Data.DbType.Int32, 4);
+                dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+                using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatUser_i]"))
+                {
+                    /// ChatUserId
+                    dataBase.AddOutParameter(cmd, "ChatUserId", System.Data.DbType.Int32, 4);
 
-                wDataBase.AddInParameter(wCmd, "ChatUserPhone", System.Data.DbType.String, pChatUser.ChatUserPhone);
+                    dataBase.AddInParameter(cmd, "ChatUserPhone", System.Data.DbType.String, pChatUser.ChatUserPhone);
 
-                wDataBase.AddInParameter(wCmd, "ChatUserName", System.Data.DbType.String, pChatUser.ChatUserName);
+                    dataBase.AddInParameter(cmd, "ChatUserName", System.Data.DbType.String, pChatUser.ChatUserName);
 
-                wDataBase.AddInParameter(wCmd, "ChatUserEmail", System.Data.DbType.String, pChatUser.ChatUserEmail);
-                
+                    dataBase.AddInParameter(cmd, "ChatUserEmail", System.Data.DbType.String, pChatUser.ChatUserEmail);
 
-                wDataBase.ExecuteNonQuery(wCmd);
-                pChatUser.ChatUserId = (System.Int32)wDataBase.GetParameterValue(wCmd, "ChatUserId");
+
+                    dataBase.ExecuteNonQuery(cmd);
+                    pChatUser.ChatUserId = (System.Int32)dataBase.GetParameterValue(cmd, "ChatUserId");
+                }
             }
             catch (Exception ex)
             {
@@ -81,26 +83,28 @@ namespace WebChat.Logic.DAC
         /// <Author>moviedo</Author>
         public static void Update(ChatUserBE pChatUser)
         {
-            Database wDataBase = null;
-            DbCommand wCmd = null;
+            Database dataBase = null;
+            DbCommand cmd = null;
 
             try
             {
-                wDataBase = DatabaseFactory.CreateDatabase("CnnStringKey");
-                wCmd = wDataBase.GetStoredProcCommand("ChatUser_u");
+                dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+                using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatUser_u]"))
+                {
 
-                wDataBase.AddInParameter(wCmd, "ChatUserId", System.Data.DbType.Int32, pChatUser.ChatUserId);
+                    dataBase.AddInParameter(cmd, "ChatUserId", System.Data.DbType.Int32, pChatUser.ChatUserId);
 
-                //wDataBase.AddInParameter(wCmd, "ChatUserPhone", System.Data.DbType.String, pChatUser.ChatUserPhone);
+                    //dataBase.AddInParameter(cmd, "ChatUserPhone", System.Data.DbType.String, pChatUser.ChatUserPhone);
 
-                wDataBase.AddInParameter(wCmd, "ChatUserName", System.Data.DbType.String, pChatUser.ChatUserName);
+                    dataBase.AddInParameter(cmd, "ChatUserName", System.Data.DbType.String, pChatUser.ChatUserName);
 
-                wDataBase.AddInParameter(wCmd, "ChatUserEmail", System.Data.DbType.String, pChatUser.ChatUserEmail);
+                    dataBase.AddInParameter(cmd, "ChatUserEmail", System.Data.DbType.String, pChatUser.ChatUserEmail);
 
 
-                wDataBase.AddInParameter(wCmd, "ChatUserModifiedDate", System.Data.DbType.DateTime, pChatUser.ChatUserModifiedDate);
+                    dataBase.AddInParameter(cmd, "ChatUserModifiedDate", System.Data.DbType.DateTime, pChatUser.ChatUserModifiedDate);
 
-                wDataBase.ExecuteNonQuery(wCmd);
+                    dataBase.ExecuteNonQuery(cmd);
+                }
             }
             catch (Exception ex)
             {
@@ -121,23 +125,26 @@ namespace WebChat.Logic.DAC
         /// <returns></returns>
         public static ChatUserBE GetByParams(int? chatUserId, String chatUserPhone)
         {
-            ChatUserBE wChatUser = new ChatUserBE();
+            ChatUserBE wChatUser = null;
             Database database = null;
-            
+
             try
             {
-                database = DatabaseFactory.CreateDatabase("EpironChatLogConnectionString");
+                database = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[ChatUser_g]"))
                 {
-                    if (!chatUserId.HasValue)
+                    if (chatUserId.HasValue)
                         database.AddInParameter(cmd, "ChatUserId", DbType.Int32, chatUserId);
-                    if(!String.IsNullOrEmpty(chatUserPhone))
-                        database.AddInParameter(cmd, "ChatUserId", DbType.String, chatUserPhone);
-                    
+                    if (!String.IsNullOrEmpty(chatUserPhone))
+                        database.AddInParameter(cmd, "ChatUserPhone", DbType.String, chatUserPhone);
+
                     using (IDataReader reader = database.ExecuteReader(cmd))
                     {
                         while (reader.Read())
                         {
+                            wChatUser = new ChatUserBE();
+
+                            wChatUser.ChatUserId = Convert.ToInt32(reader["ChatUserId"]);
                             if (reader["ChatUserPhone"] != DBNull.Value)
                                 wChatUser.ChatUserPhone = Convert.ToString(reader["ChatUserPhone"]);
 
@@ -159,13 +166,12 @@ namespace WebChat.Logic.DAC
         }
 
 
-
-
-
-
-
     }
 }
+
+
+
+
 
 
 
