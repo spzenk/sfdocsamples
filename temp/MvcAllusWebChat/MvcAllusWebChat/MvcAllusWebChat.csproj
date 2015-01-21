@@ -168,6 +168,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EpironChat.dbml</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\EpironChatDragFileController.cs" />
+    <Compile Include="Controllers\EpironChatEmailController.cs" />
     <Compile Include="Controllers\EpironChatRelojController.cs" />
     <Compile Include="Controllers\EpironChatTestController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -188,6 +190,14 @@
     <Compile Include="Logic\Bases\Security\UserManager.cs" />
     <Compile Include="Logic\Bases\SiteHelper.cs" />
     <Compile Include="Logic\Bases\TransactionHandler.cs" />
+    <Compile Include="Logic\BE\ActiveChatRoomBE.cs" />
+    <Compile Include="Logic\BE\ChatConfigBE.cs" />
+    <Compile Include="Logic\BE\ChatMailSender.cs" />
+    <Compile Include="Logic\BE\ChatMessage.cs" />
+    <Compile Include="Logic\BE\ChatUserBE.cs" />
+    <Compile Include="Logic\DAC\ChatConfigDAC.cs" />
+    <Compile Include="Logic\DAC\ChatMessageDAC.cs" />
+    <Compile Include="Logic\DAC\ChatUserDAC.cs" />
     <Compile Include="Logic\DAC\EpironChatDAC.cs" />
     <Compile Include="Logic\DAC\EpironChat_LogsDAC.cs" />
     <Compile Include="Logic\ChatManager_CallCenter_Rep.cs" />
@@ -195,12 +205,14 @@
     <Compile Include="Logic\ChatManager_CallCenter_Client.cs" />
     <Compile Include="Logic\ChatManager_ExclusiveBC.cs" />
     <Compile Include="Logic\BE\ChatRoom.cs" />
-    <Compile Include="Logic\DAC\ChatRoomDACDAC.cs" />
+    <Compile Include="Logic\DAC\ChatRoomDAC.cs" />
     <Compile Include="Logic\BE\Message.cs" />
     <Compile Include="Logic\BE\RoomTalker.cs" />
     <Compile Include="Logic\DAC\SessionDAC.cs" />
     <Compile Include="Logic\DAC\TalkersDAC.cs" />
     <Compile Include="Logic\Bases\models\BaseModel.cs" />
+    <Compile Include="Logic\EpironChatBC.cs" />
+    <Compile Include="Logic\EmailHelper.cs" />
     <Compile Include="Logic\Filter\SessionExpireFilterAttribute.cs" />
     <Compile Include="Models\RetriveAllMessageModel.cs" />
     <Compile Include="Logic\SecPortalException.cs" />
@@ -594,6 +606,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\emoticons.js" />
     <Content Include="Scripts\epironchat\EpironChat.js" />
+    <Content Include="Scripts\epironchat\EpironChatDragFile.js" />
+    <Content Include="Scripts\epironchat\EpironChatEmail.js" />
     <Content Include="Scripts\epironchat\EpironChatReloj.js" />
     <Content Include="Scripts\epironchat\EpironChatTest.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
@@ -733,6 +747,12 @@
     <Content Include="Views\EpironChatTest\_ChatRoomView.cshtml" />
     <Content Include="Views\EpironChatTest\_CreateChatRoomView.cshtml" />
     <Content Include="Views\Test\Emoticons.cshtml" />
+    <Content Include="Views\EpironChatEmail\Index.cshtml" />
+    <Content Include="Views\EpironChatEmail\_ChatRoomView.cshtml" />
+    <Content Include="Views\EpironChatEmail\_CreateChatRoomView.cshtml" />
+    <Content Include="Views\EpironChatEmail\_EmailFormView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">

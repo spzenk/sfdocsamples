@@ -5,9 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebChat.Common;
+using WebChat.Common.BE;
 using WebChat.Common.Models;
 using WebChat.Data;
 using WebChat.Logic;
+using WebChat.Logic.BC;
+using WebChat.Logic.DAC;
 
 namespace WebChat.Controllers
 {
@@ -23,44 +26,45 @@ namespace WebChat.Controllers
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {
-            String sessionId = ControllerContext.HttpContext.Session.SessionID;
-            SMSMessage wSMSMessage = null;
-            int? wPhoneId = null;
-            int smsId = -1;
+            //String sessionId = ControllerContext.HttpContext.Session.SessionID;
+            
+            int? userId = null;
+            int chtRoomId = -1;
             int? chatRoomStatusFromEtl = null;
             try
             {
-                wPhoneId = EpironChat_LogsDAC.CheckPhoneId(model.Phone, model.ClientName);
+                userId = EpironChatBC.CheckPhoneId(model.Phone, model.ClientName,model.ClientEmail);
+                ChatConfigBE chatConfigBE = EpironChatBC.GetChatConfig(model.ChatConfigId);
 
-                wSMSMessage = EpironChat_LogsDAC.GetSSID_IfNotExpired(wPhoneId.Value);
+                //wSMSMessage = EpironChat_LogsDAC.GetSSID_IfNotExpired(userId.Value);
                
                 // check if a session id was generated 
                 // Si noxiste se trata de un chat nuevo dado una session expirada
-                if (wSMSMessage != null)
-                {
-                    smsId = wSMSMessage.SMSId;
-                     if (wSMSMessage.RecordId.HasValue)
-                {
-                    //Chequear si el record id no esta cerrado
-                   int? recordId= EpironChatDAC.GetRecordId(smsId, out chatRoomStatusFromEtl);
-                   if (chatRoomStatusFromEtl.HasValue)
-                        if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
-                        {
-                            EpironChat_LogsDAC.UpdateStatus(smsId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
+                //if (wSMSMessage != null)
+                //{
+                //    chtRoomId = wSMSMessage.SMSId;
+                //     if (wSMSMessage.RecordId.HasValue)
+                //{
+                //    //Chequear si el record id no esta cerrado
+                //   int? recordId= EpironChatDAC.GetRecordId(chtRoomId, out chatRoomStatusFromEtl);
+                //   if (chatRoomStatusFromEtl.HasValue)
+                //        if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
+                //        {
+                //            EpironChatBC.ChatRoom_UpdateStatus(chtRoomId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
                             
-                        }
-                }
+                //        }
+                //}
 
-                }
-                else
-                {
+                //}
+                //else
+                //{
                     //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
                     //porque el etl no esta preparado para recibirlo
                     model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-                    smsId = EpironChat_LogsDAC.InsertMessage(wPhoneId.Value, model.InitialMessage, sessionId,null);
-                }
+                    chtRoomId = EpironChatBC.InsertMessage(userId.Value, model.InitialMessage, sessionId, null);
+                //}
 
-                return Json(new { Result = "OK", phoneId = wPhoneId, smsId = smsId });
+                return Json(new { Result = "OK", userId = userId, chtRoomId = chtRoomId });
             }
             catch (Exception ex)
             {
@@ -118,7 +122,7 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChat_LogsDAC.InsertMessage(msg.PhoneId, msg.Message, ControllerContext.HttpContext.Session.SessionID, msg.RecordId);
+                EpironChat_LogsDAC.InsertMessage(msg.UserId, msg.Message, ControllerContext.HttpContext.Session.SessionID, msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }

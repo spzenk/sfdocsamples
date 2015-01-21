@@ -1,31 +1,33 @@
 ﻿function onExit() {
-    if (_userId == -1)
+    if (_phoneId == -1)
         return;
     if (confirm("Si preciona F5 va tener que reicniciar el chat con el operador. Desea reiciar?") == false) {
         console.log('blocked');
     }
 }
 
-var _userId = -1;
+$(document).ready(function () {
+    $("#file").dropzone({ url: "/SaveUploadedFile" });
+
+});
+
+var _phoneId = -1;
 var _recordId = -1;
 var funcGetRecordId;
 var funcretriveAllMessage;
 
 $(function () {
-    $('#btnOpenChat2').hide();
-    $('#btnOpenChat2').on('click', function () {
-        CloseChatRoom("hola ");
-    });
-    //$('#newModal').modal({
+
+    //$('#chatRoomView').modal({
     //    backdrop: 'static',
-    //    keyboard: true
+    //    keyboard: false
     //})
     //DisableControlsCreateChatRoom();
 
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();
-    $('#chatDialog').hide();
-    
+
+
 
     $('#btnSendMessage').on('click', function () {
         SendMessage();
@@ -50,6 +52,33 @@ $(function () {
         }
     });
 
+
+    $('#chatRoomView').dialog({
+        autoOpen: false,
+        width: 400,
+        title: 'Chat room dialog',
+        closeOnEscape: false,
+        resizable: true,
+        modal: false,
+        show: {
+            effect: "blind",
+            duration: 1000
+        },
+        hide: {
+            effect: "explode",
+            duration: 1000
+        },
+        close: function (ev, ui) {
+
+            clearTimeout(funcGetRecordId);
+            ResetControlsCreateChatRoom();
+            $(this).close();
+        }
+    });
+
+    $("#btnOpenChat2").click(function () {
+        $("#chatRoomView").dialog("open");
+    });
 });
 
 function LeaveChatRoom() {
@@ -59,7 +88,7 @@ function LeaveChatRoom() {
         smsId: _smsId
     }
     $.ajax({
-        url: "/EpironChat/LeaveChatRoom/",
+        url: "/EpironChatTest/LeaveChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -85,10 +114,10 @@ function SendMessage() {
     var obj = {
         Message: $("#txtMessage").val(),
         RecordId: _recordId,
-        UserId: _userId
+        PhoneId: _phoneId
     }
     $.ajax({
-        url: "/EpironChat/SendMessage/",
+        url: "/EpironChatTest/SendMessage/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -116,9 +145,19 @@ function CreateChatRoom_CallBack(ajaxContext) {
         OnFailure(ajaxContext);
         return;
     }
-    _userId = ajaxContext.phoneId;
+    _phoneId = ajaxContext.phoneId;
 
-    GetRecordId(ajaxContext.smsId);
+    $('#newModal').modal('hide');
+    $("#btnOpenChat").hide('slow');
+    $('#alert-text-view').hide('slow');
+    $('#alert-text-info-container').hide('slow');
+
+    $("#chatRoomView").dialog("open");
+    Showloading(false);
+    setDateToTimer(ajaxContext.timeOnline);
+    timedCount();
+
+    //GetRecordId(ajaxContext.smsId);
 }
 
 function GetRecordId(smsId) {
@@ -127,7 +166,7 @@ function GetRecordId(smsId) {
         smsId: smsId,
     }
     $.ajax({
-        url: "/EpironChat/GetRecordId/",
+        url: "/EpironChatTest/GetRecordId/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -149,14 +188,14 @@ function GetRecordId(smsId) {
 
 function GetrecordId_CallBack(ajaxContext, smsId) {
 
-    if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
-        OnFailure(ajaxContext);
-        return;
-    }
-    if (ajaxContext.recordId == null) {
-        funcGetRecordId = setTimeout(function () { GetRecordId(smsId); }, 4000);
-        return;
-    }
+    //if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
+    //    OnFailure(ajaxContext);
+    //    return;
+    //}
+    //if (ajaxContext.recordId == null) {
+    //    funcGetRecordId = setTimeout(function () { GetRecordId(smsId); }, 4000);
+    //    return;
+    //}
 
     _recordId = ajaxContext.recordId;
     _smsId = smsId;
@@ -164,10 +203,67 @@ function GetrecordId_CallBack(ajaxContext, smsId) {
     $("#btnOpenChat").hide('slow');
     $('#alert-text-view').hide('slow');
     $('#alert-text-info-container').hide('slow');
-    $("#chatDialog").show('slow');
+
+    $("#chatRoomView").dialog("open");
     Showloading(false);
-    RetriveAllMessage();
-    ResetControlsChat();
+    setDateToTimer(Seconds);
+    timedCount();
+    //RetriveAllMessage();
+    //ResetControlsChat();
+}
+
+
+
+
+//aquí esta el contador de tiempo en pausa
+var sec = -1; var min = 0; var hour = 0; var t = 0;
+
+
+function setDateToTimer(Seconds) {
+    var date = new Date(2000, 1, 0);
+    date.setSeconds(Seconds);
+    sec = date.getSeconds();
+    min = date.getMinutes();
+    hour = date.getHours();
+}
+function timedCount()
+{
+
+        sec++;
+        if (sec == 60) {
+            sec = 0;
+            min = parseInt(min) + 1;
+        }
+        else {
+            min = min;
+        }
+
+        if (min == 60) {
+            min = 0;
+            hour = hour + 1;
+
+        }
+        else {
+            hour = hour;
+        }
+
+        if (sec.toString().length == 1)
+        { sec = "0" + sec; }
+
+        if (min.toString().length == 1) {
+            min = "0" + min;
+        }
+
+        document.getElementById("txt").value = hour + ":" + min + ":" + sec;
+
+
+        t = window.setTimeout(function () { timedCount() }, 1000);
+}
+
+function stopTimerCount() {
+    window.clearTimeout(t);
+    sec = 0; min = 0; t = 0; hour = 0;
+
 }
 
 function RetriveAllMessage() {
@@ -178,7 +274,7 @@ function RetriveAllMessage() {
     }
 
     $.ajax({
-        url: "/EpironChat/RetriveMessages/",
+        url: "/EpironChatTest/RetriveMessages/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -204,6 +300,7 @@ function RetriveAllMessage() {
                             .appendTo(container)
                             .addClass((this.IsFriend ? "_tlkFriend" : "_tlkMe"))
                             .end()
+
                             .append("<span class=\"_talker\">" + (this.IsFriend ? this.Talker : "Yo:") + "</span>")
                             //.append("<span>" + (this.IsFriend ? " dice  " : " dijo") + "</span>")
                             .append("<span class=\"_time\">" + dateFormat + "</span>")
@@ -247,7 +344,7 @@ function CloseChatRoom(message) {
                 //.append("<span>: </span><BR /> ")
                 .append("<span class=\"_msgClosed\">" + message + "</span> ");
 
-    _userId = -1;
+    _phoneId = -1;
     _recordId = -1;
 
 }
@@ -272,7 +369,7 @@ function ResetControlsChat() {
 
 function ResetControlsCreateChatRoom() {
 
-    _userId = -1;
+    _phoneId = -1;
     _recordId = -1;
 
     $('#ClientName').removeAttr('disabled');
