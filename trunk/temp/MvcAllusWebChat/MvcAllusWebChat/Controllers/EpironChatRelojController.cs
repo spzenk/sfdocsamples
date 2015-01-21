@@ -123,7 +123,7 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChat_LogsDAC.InsertMessage(msg.PhoneId, msg.Message, ControllerContext.HttpContext.Session.SessionID, msg.RecordId);
+                EpironChat_LogsDAC.InsertMessage(msg.UserId, msg.Message, ControllerContext.HttpContext.Session.SessionID, msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }

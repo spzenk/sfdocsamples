@@ -18,11 +18,12 @@ namespace WebChat.Common
     public class Common
     {
         static bool logOnWindowsEvent = true;
-        public const string CnnStringName = "epiron";
+        public const string EpironChatLogs_CnnStringName = "EpironChat_LogsConnectionString";
+        public const string EpironChat_CnnStringName = "EpironChat_ConnectionString";
         public static string CnnString_Entities = string.Empty;
-        public static string CnnString = string.Empty;
+        public static string EpironChatLogs_CnnString = string.Empty;
 
-        
+        public static string EpironChat_CnnString = string.Empty;
         
         static Boolean logOnFile = false;
         
@@ -39,8 +40,9 @@ namespace WebChat.Common
         static Common()
         {
             //SI NO HAY WRAPPERS CARGA DIRECTAMENTE 
-           
-               // CnnString = System.Configuration.ConfigurationManager.ConnectionStrings[CnnStringName].ConnectionString;
+
+            EpironChatLogs_CnnString = System.Configuration.ConfigurationManager.ConnectionStrings[EpironChatLogs_CnnStringName].ConnectionString;
+            EpironChat_CnnString = System.Configuration.ConfigurationManager.ConnectionStrings[EpironChat_CnnStringName].ConnectionString;
                 //CnnString_Entities = System.Configuration.ConfigurationManager.ConnectionStrings["HealthEntities"].ConnectionString;
          
 

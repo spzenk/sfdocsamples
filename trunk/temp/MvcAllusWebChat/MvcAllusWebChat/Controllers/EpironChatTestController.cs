@@ -8,6 +8,7 @@ using WebChat.Common;
 using WebChat.Common.Models;
 using WebChat.Data;
 using WebChat.Logic;
+using WebChat.Logic.DAC;
 
 namespace WebChat.Controllers
 {
@@ -118,7 +119,7 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChat_LogsDAC.InsertMessage(msg.PhoneId, msg.Message, ControllerContext.HttpContext.Session.SessionID, msg.RecordId);
+                ChatMessageDAC.InsertMessage(msg.ChatRoomID,msg.ChatRoomID, msg.Message,msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }

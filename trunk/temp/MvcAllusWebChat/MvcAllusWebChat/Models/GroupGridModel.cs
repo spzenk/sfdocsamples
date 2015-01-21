@@ -38,12 +38,14 @@ namespace WebChat.Common.Models
 
         public String ClientName { get; set; }
         public String ClientEmail{ get; set; }
+        public Int32 ChatConfigId { get; set; }
+        
 
     }
      public class ChatRoomCreationModel
     {
 
-
+         public Guid? ChatConfigId { get; set; }
         public String Phone { get; set; }
         public String InitialMessage { get; set; }
          public Guid ChatRoomID { get; set; }
