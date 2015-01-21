@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using WebChat.Common;
 using WebChat.Common.BE;
 using WebChat.Common.Models;
 using WebChat.Logic.DAC;
@@ -14,21 +15,21 @@ namespace WebChat.Logic.BC
             ChatRoomDAC.Update(chatRoomId, recordId, (int)status);
         }
 
-        internal static int CheckPhoneId(string phoneNumber, String clientName,String email)
+        internal static int CheckPhoneId(string phoneNumber, String clientName, String email)
         {
 
-          ChatUserBE wChatUserBE =  GetChatUser(phoneNumber, clientName);
-          if (wChatUserBE != null)
-              return wChatUserBE.ChatUserId;
+            ChatUserBE wChatUserBE = GetChatUser(phoneNumber, clientName);
+            if (wChatUserBE != null)
+                return wChatUserBE.ChatUserId;
 
             /// Si no existe lo crea
-          wChatUserBE.ChatUserPhone = phoneNumber;
-          wChatUserBE.ChatUserName = clientName;
-          wChatUserBE.ChatUserEmail = email;
-          
-          ChatUserDAC.Insert(wChatUserBE);
+            wChatUserBE.ChatUserPhone = phoneNumber;
+            wChatUserBE.ChatUserName = clientName;
+            wChatUserBE.ChatUserEmail = email;
 
-          return wChatUserBE.ChatUserId;
+            ChatUserDAC.Insert(wChatUserBE);
+
+            return wChatUserBE.ChatUserId;
 
         }
 
@@ -43,8 +44,8 @@ namespace WebChat.Logic.BC
         {
             bool needUpdate = false;
             //String id = String.Concat(clientName, "$", phone);
-            ChatUserBE userBE =   ChatUserDAC.GetByParams(null, phoneNumber);
-           
+            ChatUserBE userBE = ChatUserDAC.GetByParams(null, phoneNumber);
+
 
             if (userBE != null)
             {
@@ -59,7 +60,7 @@ namespace WebChat.Logic.BC
                 {
                     userBE.ChatUserName = clientName;
                     needUpdate = true;
-                    
+
                 }
                 if (needUpdate)
                     ChatUserDAC.Update(userBE);
@@ -71,55 +72,82 @@ namespace WebChat.Logic.BC
         }
 
 
-        internal static int InsertMessage(int chatRoomId ,int userId, String message,int recordId)
+        internal static int InsertMessage(int chatRoomId, int userId, String message, int? recordId)
         {
-            return ChatMessageDAC.InsertMessage(chatRoomId,userId, message, recordId);
+            return ChatMessageDAC.InsertMessage(chatRoomId, userId, message, recordId);
         }
 
-        internal static ChatConfigBE GetChatConfig(Guid chatConfigId )
+        /// <summary>
+        /// Obtiele chat confoig.-. 
+        /// </summary>
+        /// <param name="chatConfigId">Si se pasa null obtiene uno por default</param>
+        /// <returns></returns>
+        internal static ChatConfigBE GetChatConfig(Guid? chatConfigId)
         {
             return ChatConfigDAC.GetByParam(chatConfigId);
         }
 
-
-        internal static void CreateChatRoom(ChatRoomCreationModel model, out int  roomId,out int?  userId )
+        /// <summary>
+        /// REaliza la creacion de chatroom nuevo. Adicionalmente verifica si existen chatrooms activos por el usuario y los cierra
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="roomId"></param>
+        /// <param name="userId"></param>
+        internal static void CreateChatRoom(ChatRoomCreationModel model, out int roomId, out int userId)
         {
-             userId = null;
             roomId = -1;
-            int? chatRoomStatusFromEtl = null;
+            //Busca el cliente relacionado al telefono
             userId = EpironChatBC.CheckPhoneId(model.Phone, model.ClientName, model.ClientEmail);
 
             ChatConfigBE chatConfigBE = EpironChatBC.GetChatConfig(model.ChatConfigId);
+            ActiveChatRoomBE wActiveChatRoom = GetChatRoom_IfNotExpired(userId, chatConfigBE);
 
             model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-            chtRoomId = EpironChatBC.InsertMessage(userId.Value, model.InitialMessage, sessionId, null);
+            EpironChatBC.InsertMessage(wActiveChatRoom.ChatRoomId, userId, model.InitialMessage, null);
         }
+
         /// <summary>
-        /// 
+        /// Verificar chat activos del usuario.. Chaquea si expiraron y los actualiza en la bd
         /// </summary>
         /// <param name="userId"></param>
+        /// <param name="configBE"></param>
         /// <returns></returns>
-        internal static ChatRoom GetChatRoom_IfNotExpired(int userId)
+        internal static ActiveChatRoomBE GetChatRoom_IfNotExpired(int userId, ChatConfigBE configBE)
         {
+            List<ActiveChatRoomBE> chatroomList = ChatRoomDAC.RetriveActiveChatRooms(userId);
+            DateTime result;
+            foreach (ActiveChatRoomBE item in chatroomList)
+            {
+                result = item.ChatMessageDate.AddMinutes(configBE.ChatConfigTimeOut.Value);
+                if (result.CompareTo(DateTime.Now) >= 0)
+                {
+                    item.Status = Common.Enumerations.ChatRoomStatus.ExpiredTimeout;
+                    ChatRoomDAC.Update(item.ChatRoomId, (int)item.Status, null);
+                }
 
-          List<ActiveChatRoomBE> chatroomList = ChatRoomDAC.RetriveActiveChatRooms(userId);
+            }
 
-          foreach (ActiveChatRoomBE item in chatroomList)
-          {
- 
-          }
+            
+            var activeChatRoom = chatroomList.Where(s => s.Status.Equals(WebChat.Common.Enumerations.ChatRoomStatus.Active)).FirstOrDefault();
 
-            //using (EpironChat_logsDataContext db = new EpironChat_logsDataContext())
-            //{
-            //    var wSMSMessage = db.SMSMessage.Where(s => s.HomePhone == phoneId
-            //        && s.ChatRoomStatus == (int)WebChat.Common.Enumerations.ChatRoomStatus.Active
-            //        ).FirstOrDefault();
-            //    if (wSMSMessage != null)
+            return activeChatRoom;
 
-            //        return wSMSMessage;
-            //    else
-            //        return null;
-            //}
+
+        }
+
+        internal static List<Message> RecieveComments(int chatRoomId, int recordId, out Enumerations.ChatRoomStatus chatRoomStatus)
+        {
+            chatRoomStatus = Enumerations.ChatRoomStatus.Active;
+            int? chatRoomStatusFromEtl = null;
+            List<Message> result = EpironChatDAC.RecieveComments(recordId, out chatRoomStatusFromEtl);
+            if (chatRoomStatusFromEtl.HasValue)
+                if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
+                {
+                    ChatRoomDAC.Update(chatRoomId,(int) WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator, null);
+                    chatRoomStatus = WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator;
+                }
+
+            return result;
         }
     }
 }

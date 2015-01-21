@@ -51,14 +51,14 @@ namespace WebChat.Logic.DAC
 
 
             ChatConfigList wChatConfigList = new ChatConfigList();
-            ChatConfigBE wChatConfig;
+            ChatConfigBE wChatConfig = null;
 
 
             try
             {
                 wDataBase = DatabaseFactory.CreateDatabase("CnnStringKey");
                 wCmd = wDataBase.GetStoredProcCommand("[Chat].[ChatConfig_s_byParams]");
-                if(chatConfigGuid.HasValue !=false)
+                if (chatConfigGuid.HasValue != false)
                     wDataBase.AddInParameter(wCmd, "ChatConfigGuid", System.Data.DbType.Guid, chatConfigGuid);
 
                 using (IDataReader reader = wDataBase.ExecuteReader(wCmd))
@@ -66,14 +66,12 @@ namespace WebChat.Logic.DAC
                     while (reader.Read())
                     {
                         wChatConfig = new ChatConfigBE();
+                        wChatConfig.ChatConfigId = Convert.ToInt32(reader["ChatConfigId"]);
+                        wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
+                        wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
+                        wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
 
-                        
-                            wChatConfig.ChatConfigId = Convert.ToInt32(reader["ChatConfigId"]);
-                            wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
-                            wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
-                            wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
 
-                        
                     }
                 }
 
@@ -86,13 +84,6 @@ namespace WebChat.Logic.DAC
             }
 
         }
-
-
-
-
-
-
-
     }
 }
         

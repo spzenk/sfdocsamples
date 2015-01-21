@@ -50,8 +50,8 @@ namespace WebChat.Logic
         /// </summary>
         /// <param name="roomid"></param>
         /// <param name="status"></param>
-        /// <param name="chekOutTime"></param>
-        internal static void Update(int chatRoomId, int statusId, int recordId)
+        /// <param name="recordId">Si es Null no lo envia al SP</param>
+        internal static void Update(int chatRoomId, int statusId, int? recordId)
         {
 
             Database wDataBase = null;
@@ -66,7 +66,8 @@ namespace WebChat.Logic
 
                 wDataBase.AddInParameter(wCmd, "ChatRoomStatusId", System.Data.DbType.Int32, statusId);
 
-                wDataBase.AddInParameter(wCmd, "RecordId", System.Data.DbType.String, recordId);
+                if (recordId.HasValue)
+                    wDataBase.AddInParameter(wCmd, "RecordId", System.Data.DbType.String, recordId);
 
                 wDataBase.ExecuteNonQuery(wCmd);
                 
@@ -92,20 +93,13 @@ namespace WebChat.Logic
                 cmd = database.GetStoredProcCommand("[Chat].[ActiveChatRoom_s_ByChatUserId]");
                 /// ChatUserId
                 database.AddInParameter(cmd, "UserId", System.Data.DbType.Int32, userId);
-
-
-
                 using (IDataReader reader = database.ExecuteReader(cmd))
                 {
                     while (reader.Read())
                     {
                         item = new ActiveChatRoomBE();
                         item.ChatRoomId = Convert.ToInt32(reader["ChatRoomId"]);
-
-
                         item.ChatMessageId = Convert.ToInt32(reader["ChatMessageId"]);
-
-
                         item.ChatMessageDate = Convert.ToDateTime(reader["ChatMessageDate"]);
                         list.Add(item);
 
@@ -123,6 +117,11 @@ namespace WebChat.Logic
 
 
 
-      
+
+
+        internal static ChatRoom GetById(int p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

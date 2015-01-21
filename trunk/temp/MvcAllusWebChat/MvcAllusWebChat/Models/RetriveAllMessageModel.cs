@@ -16,7 +16,7 @@ namespace WebChat.Common.Models
 
 
         public Int32 recordId { get; set; }
-        public Int32 smsId { get; set; }
+        public Int32 chatRoomId { get; set; }
 
        
 
