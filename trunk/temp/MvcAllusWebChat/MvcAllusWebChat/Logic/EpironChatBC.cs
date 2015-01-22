@@ -57,12 +57,13 @@ namespace WebChat.Logic.BC
                 //    needUpdate = true;
                 //}
                 //Actualiza el nombre del cliente si es necesario
-                if (userBE.ChatUserName.Trim().CompareTo(clientName.Trim()) != 0)
-                {
-                    userBE.ChatUserName = clientName;
-                    needUpdate = true;
+                if (!String.IsNullOrEmpty(clientName))
+                    if (userBE.ChatUserName.Trim().CompareTo(clientName.Trim()) != 0)
+                    {
+                        userBE.ChatUserName = clientName;
+                        needUpdate = true;
+                    }
 
-                }
                 if (needUpdate)
                     ChatUserDAC.Update(userBE);
 
@@ -78,7 +79,34 @@ namespace WebChat.Logic.BC
             return ChatMessageDAC.InsertMessage(chatRoomId, userId, message, recordId);
         }
 
-      
+
+        /// <summary>
+        /// REaliza la creacion de chatroom nuevo. Adicionalmente verifica si existen chatrooms activos por el usuario y los cierra
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="roomId"></param>
+        /// <param name="userId"></param>
+        internal static void CreateChatRoom_FromUrl(string phone, string url, string @case, out int roomId, out int userId)
+        {
+            roomId = -1;
+
+            //Busca el cliente relacionado al telefono Este debe existir
+            userId = EpironChatBC.CheckPhoneId(phone, String.Empty, String.Empty);
+
+            ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
+            ActiveChatRoomBE wActiveChatRoom = GetChatRoom_IfNotExpired(userId, chatConfigBE);
+            if (wActiveChatRoom != null)
+            {
+                throw new Fwk.Exceptions.FunctionalException("El cliente que ingres esta siendo atendido en este momento");
+            }
+            else
+            { roomId = ChatRoomDAC.CreateChatRoom(chatConfigBE.ChatConfigId, (int)Common.Enumerations.ChatRoomStatus.Waiting); }
+
+            //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
+            //porque el etl no esta preparado para recibirlo
+            //model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
+            //EpironChatBC.InsertMessage(roomId, userId, model.InitialMessage, null);
+        }
         /// <summary>
         /// REaliza la creacion de chatroom nuevo. Adicionalmente verifica si existen chatrooms activos por el usuario y los cierra
         /// </summary>
