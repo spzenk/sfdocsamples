@@ -195,6 +195,7 @@
     <Compile Include="Logic\BE\ChatConfigBE.cs" />
     <Compile Include="Logic\BE\ChatMailSender.cs" />
     <Compile Include="Logic\BE\ChatMessage.cs" />
+    <Compile Include="Logic\BE\ChatEmailMessageBE.cs" />
     <Compile Include="Logic\BE\ChatUserBE.cs" />
     <Compile Include="Logic\DAC\ChatConfigDAC.cs" />
     <Compile Include="Logic\DAC\ChatMessageDAC.cs" />

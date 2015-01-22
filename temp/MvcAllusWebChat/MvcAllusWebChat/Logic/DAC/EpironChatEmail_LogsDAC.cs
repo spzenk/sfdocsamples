@@ -73,11 +73,11 @@ namespace WebChat.Logic
 
 
         /// <summary>
-        /// Inserta en ChatMessage
+        /// Inserta en ChatEMailMessageBE
         /// </summary>
-        /// <param name="pChatMessage">Entidad a insertar</param>
+        /// <param name="pChatEMailMessageBE">Entidad a insertar</param>
         /// <returns></returns>
-        public static bool InsertChatMessage(WebChat.Common.BE.ChatMessageBE pChatMessage)
+        public static bool InsertChatEmailMessage(WebChat.Common.BE.ChatEmailMessageBE pChatEMailMessageBE)
         {
             ChatUser wChatUser = new ChatUser();
             Database database = null;
@@ -85,12 +85,19 @@ namespace WebChat.Logic
             try
             {
                 database = DatabaseFactory.CreateDatabase("EpironChat_LogsConnectionString");
-                using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[ChatMessage]"))
+                using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[ChatEmailMessage_i]"))
                 {
-                    database.AddInParameter(cmd, "ChatMessage", DbType.String, pChatMessage.ChatMessageText);
-                    database.AddInParameter(cmd, "ChatRoomId", DbType.Int32, pChatMessage.ChatRoomId);
-                    database.AddInParameter(cmd, "ChatUserId", DbType.Int32, pChatMessage.ChatUserId);
-                    newId = (int)database.ExecuteScalar(cmd);
+                    database.AddOutParameter(cmd, "ChatEmailMessageId", DbType.Int32, sizeof(Int32));
+                    database.AddInParameter(cmd, "ChatRoomId", DbType.Int32, pChatEMailMessageBE.ChatRoomId);
+                    database.AddInParameter(cmd, "EmailFrom", DbType.String, pChatEMailMessageBE.EmailFrom);
+                    database.AddInParameter(cmd, "DeliveredTo", DbType.String, pChatEMailMessageBE.DeliveredTo);
+                    database.AddInParameter(cmd, "Body", DbType.String, pChatEMailMessageBE.Body);
+                    database.AddInParameter(cmd, "ErrorMessage", DbType.String, pChatEMailMessageBE.ErrorMessage);
+                    database.AddInParameter(cmd, "Subject", DbType.String, pChatEMailMessageBE.Subject);
+                    database.ExecuteNonQuery(cmd);
+
+                    newId = (int)database.GetParameterValue(cmd, "ChatEmailMessageId");
+
                     if (newId > 0)
                         return true;
                     else

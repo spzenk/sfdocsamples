@@ -19,9 +19,9 @@ namespace WebChat.Logic.BC
             return ChatUserDAC.GetByParams(pChatUserId, pClientPhone);
         }
 
-        public static bool InsertChatMessage(ChatMessageBE pChatMessageBE)
+        public static bool InsertChatEmailMessage(ChatEmailMessageBE pChatEmailMessageBE)
         {
-            return EpironChatEmail_LogsDAC.InsertChatMessage(pChatMessageBE);
+            return EpironChatEmail_LogsDAC.InsertChatEmailMessage(pChatEmailMessageBE);
         }
     }
 }

@@ -22,13 +22,13 @@ namespace WebChat.Controllers
             return View(wSentEmailModel);
         }
 
-        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pchatUserId)
+        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pchatUserId, int pChatRoom)
         {
             try
-            {
-                Guid wGuid =  new Guid("8f482c36-993f-4751-9299-e3e2be1b8d6");
+          {
+                Guid wGuid = new Guid("8F482C36-993F-4751-9299-E3E2BE1B8D68");
 
-                ChatMailSenderBE wChatMailSenderBE= EpironChatEmailBC.GetChatMailSenderByCongGuid(wGuid);
+                ChatMailSenderBE wChatMailSenderBE = EpironChatEmailBC.GetChatMailSenderByCongGuid(wGuid);
 
                 int chatUserId = 1;
 
@@ -41,12 +41,23 @@ namespace WebChat.Controllers
                 if (isSent)
                 {
                     //se registra en la base que se ha enviado un email
-                    ChatMessageBE wChatMessageBE = new ChatMessageBE();
-                    wChatMessageBE.ChatMessageText = emailBody;
-                    wChatMessageBE.ChatRoomId = 1; //<--- CAMBIAR
-                    wChatMessageBE.ChatUserId = wChatuserBE.ChatUserId;
+                    ChatEmailMessageBE wChatEmailMessageBE = new ChatEmailMessageBE();
+                    wChatEmailMessageBE.EmailFrom = wChatMailSenderBE.Email;
 
-                    bool saved = EpironChatEmailBC.InsertChatMessage(wChatMessageBE);
+                    wChatEmailMessageBE.Body = emailBody;
+                    if (toTheClientFlag)
+                    {
+                        wChatEmailMessageBE.Subject = "-Subject-";
+                        wChatEmailMessageBE.DeliveredTo = wChatuserBE.ChatUserEmail; 
+                    }
+                    else
+                    {
+                        wChatEmailMessageBE.Subject = wChatMailSenderBE.TagStartWith + wChatuserBE.ChatUserEmail + wChatMailSenderBE.TagEndWith;
+                        wChatEmailMessageBE.DeliveredTo = wChatMailSenderBE.Email;
+                    }
+
+
+                    bool saved = EpironChatEmailBC.InsertChatEmailMessage(wChatEmailMessageBE);
 
                     if (saved)
                     {
@@ -56,7 +67,7 @@ namespace WebChat.Controllers
                     {
                         return Json(new { Result = "OK", Message = "Error al Guardar el Email" }); //<-- Revisar si se debe o no avisar al cliente
                     }
-                  
+
                 }
                 else
                 {

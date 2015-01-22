@@ -55,7 +55,6 @@ namespace WebChat.Logic
 
                 wSmtpClient.Send(wMessage);
 
-                //return EpironChat_LogsDAC.InsertChatMessage(pMessage); //<-- registro el movimiento 
             }
             catch (Exception ex)
             {
