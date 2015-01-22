@@ -23,14 +23,58 @@ namespace WebChat.Controllers
 
             return View();
         }
+        //[HttpGet]
+        //public JsonResult CreateChatRoom(ChatRoomCreationModel model)
+        //{
+        //    int userId = -1;
+        //    int chatRoomId = -1;
+
+        //    try
+        //    {
+        //        EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId);
+        //        return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
+        //    }
+        //}
+        [HttpPost]
+        public JsonResult OnlineUsers_Count(ChatRoomCreationModel model)
+        {
+            int count = -1;
+            
+
+            try
+            {
+                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
+               count = EpironChatDAC.OnlineUsers_Count(model.ChatConfigId);
+
+
+                return Json(new { Result = "OK", count = count});
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
+            }
+        }
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {
             int userId = -1;
             int chatRoomId = -1;
-
+            int count = -1;
             try
             {
+                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
+                count = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
+                
+                if (count == 0)
+                {
+                    return Json(new { Result = "NO-OPERATORS" });
+ 
+                }
+
                 EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId);
                 return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
             }

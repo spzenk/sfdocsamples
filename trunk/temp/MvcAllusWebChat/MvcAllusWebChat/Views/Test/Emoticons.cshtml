@@ -69,7 +69,38 @@
         
         container.scrollTop(container[0].scrollHeight - container.height());
     }
-   
+
+    $(function () {
+        $('#btnSendCHat').on('click', function () {
+            cellphone = "1";
+            email = "hugo.lesiuk@allus.com.ar";
+            emailBody = $('#txtMessageList').html();
+            pGuid = 1;
+            pchatUserId = 1;
+            var params = { cellPhone: cellphone, email: email, emailBody: emailBody, toTheClientFlag: true, pGuid: pGuid, pchatUserId: pchatUserId }
+
+            var obj = null;
+
+            $.ajax({
+                url: "/EpironChatEmail/sendEmail/",
+                type: "POST",
+                dataType: 'json',
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(params),
+                success: function (result) {
+                    if (result.Result && result.Result == 'ERROR') {
+                        ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                        return;
+                    }
+                    //var html = JSON.parse(result);
+                    $('#txtMessageList').empty();
+                    $('#txtMessageList').html(result.Message);
+                },
+
+                error: ServiceFailed
+            });
+        });
+    })
 </script>
 <h2>chat</h2>
 <div class="container">
@@ -96,6 +127,7 @@
                             <div class="btn-group" role="group">
                                 <button type="button" id="btnSendMessage" class="btn btn-info " style="margin-left: 5px;">Enviar</button>
                                 <button type="button" id="btnExitChat" class="btn btn-danger " style="margin-left: 5px;">Salir</button>
+                                  <button type="button" id="btnSendCHat" class="btn btn-warning " style="margin-left: 5px;">Enviar por correo</button>
                                 <div id="btnEmoticon" title="Elige un sticker o un emoticón" style="margin-left: 5px;">
                                    
                      
