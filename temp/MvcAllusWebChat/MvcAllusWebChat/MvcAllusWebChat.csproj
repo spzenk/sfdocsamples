@@ -758,6 +758,7 @@
     <Content Include="Views\EpironChatEmail\_EmailFormView.cshtml">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="Views\EpironChat\chat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">

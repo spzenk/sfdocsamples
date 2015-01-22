@@ -23,22 +23,31 @@ namespace WebChat.Controllers
 
             return View();
         }
-        //[HttpGet]
-        //public JsonResult CreateChatRoom(ChatRoomCreationModel model)
-        //{
-        //    int userId = -1;
-        //    int chatRoomId = -1;
 
-        //    try
-        //    {
-        //        EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId);
-        //        return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
-        //    }
-        //}
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="tel"> Es el parámetro numérico ingresado al comienzo de la charla con Sofia.</param>
+        /// <param name="url">Es el link q nos permite visualizar la primera interacción del cliente con Sofia, previamente a la derivación al chat. Actualmente este URL está permitiendo ver una charla del dia actual, no de días anteriores.  Por ej te paso una de hace un rato para q puedas ver, de hoy: http://ar-movistar.agentbot.net/messages/?hash=86610-897638-98202_1421062641</param>
+        /// <param name="@case">Es un número correlativo q AIVO [dueños de Sofia] nos envía también para q controlemos mejor sus envios y nuestras recepciones. </param>
+        /// <returns></returns>
+        [HttpGet]
+        public JsonResult Chat(string phone ,string  url,string @case )
+        {
+            int userId = -1;
+            int chatRoomId = -1;
+
+            try
+            {
+                EpironChatBC.CreateChatRoom_FromUrl(phone ,url, @case, out chatRoomId, out userId);
+                View("Chat");
+                //return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
+            }
+        }
         [HttpPost]
         public JsonResult OnlineUsers_Count(ChatRoomCreationModel model)
         {
