@@ -92,7 +92,7 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetRecordId(int userId)
+        public JsonResult GetRecordId(int chatRoomId)
         {
             //int? recordId = -1;
             //int? chatRoomStatusFromEtl = null;

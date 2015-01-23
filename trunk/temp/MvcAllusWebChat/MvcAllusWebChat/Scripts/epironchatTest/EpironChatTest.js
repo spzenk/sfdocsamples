@@ -173,15 +173,16 @@ function CreateChatRoom_CallBack(ajaxContext) {
         OnFailure(ajaxContext);
         return;
     }
-    _userId = ajaxContext.userId;
-   
-    GetRecordId(ajaxContext.chatRoomId);
+    _userId = ajaxContext.phoneId;
+    _roomId = _ajaxContext.chatRoomId;
+    GetRecordId();
 }
 
-function GetRecordId(chatRoomId) {
+function GetRecordId() {
 
     var obj = {
-        chatRoomId: chatRoomId,
+        UserId: _userId,
+        RoomId: _roomId
     }
     $.ajax({
         url: "/EpironChatTest/GetRecordId/",
@@ -195,7 +196,7 @@ function GetRecordId(chatRoomId) {
                 return;
             }
 
-            GetrecordId_CallBack(result, chatRoomId);
+            GetrecordId_CallBack(result);
          
         },
 
@@ -204,19 +205,19 @@ function GetRecordId(chatRoomId) {
 
 }
 
-function GetrecordId_CallBack(ajaxContext, chatRoomId) {
+function GetrecordId_CallBack(ajaxContext) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
         OnFailure(ajaxContext);
         return;
     }
     if (ajaxContext.recordId == null) {
-        funcGetRecordId = setTimeout(function () { GetRecordId(chatRoomId); }, 4000);
+        funcGetRecordId = setTimeout(function () { GetRecordId(); }, 4000);
         return;
     }
 
     _recordId = ajaxContext.recordId;
-    _chatRoomId = chatRoomId;
+    
     $('#newModal').modal('hide');
     $("#btnOpenChat").hide('slow');
     $('#alert-text-view').hide('slow');
@@ -232,7 +233,7 @@ function RetriveAllMessage() {
 
     var obj = {
         recordId: _recordId,
-        chatRoomId: _chatRoomId
+        chatRoomId: _roomId
     }
 
     $.ajax({
