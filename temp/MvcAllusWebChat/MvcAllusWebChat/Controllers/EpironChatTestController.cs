@@ -23,7 +23,7 @@ namespace WebChat.Controllers
             return View();
         }
         /// <summary>
-        ///  Respond a llamadas  http://localhost:30250/EpironChatTest/chat/?tel=213&url=http://ar-movistar.agentbot.net/messages/?hash=33270-395607-87997_1404245636&case=49396
+        ///  Respond a llamadas http://localhost:30250/EpironChatTest/chat/?tel=213&url=http://ar-movistar.agentbot.net/messages/?hash=33270-395607-87997_1404245636&case=49396
         /// </summary>
         /// <param name="tel"> Es el parámetro numérico ingresado al comienzo de la charla con Sofia.</param>
         /// <param name="url">Es el link q nos permite visualizar la primera interacción del cliente con Sofia, previamente a la derivación al chat. 
