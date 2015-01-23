@@ -64,7 +64,7 @@ namespace WebChat.Controllers
                 //if (chatRoomStatusFromEtl.HasValue)
                 //    if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
                 //    {
-                //        EpironChat_LogsDAC.UpdateStatus(pRetriveAllMessage.smsId,pRetriveAllMessage.recordId, WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
+                //        EpironChat_LogsDAC.UpdateStatus(pRetriveAllMessage.userId,pRetriveAllMessage.recordId, WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
                 //        wChatRoomStatus = WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator;
                 //    }
 
@@ -77,16 +77,16 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetRecordId(int smsId)
+        public JsonResult GetRecordId(int userId)
         {
             //int? recordId = -1;
             //int? chatRoomStatusFromEtl = null;
             try
             {
-                //recordId = EpironChatDAC.GetRecordId(smsId, out chatRoomStatusFromEtl);
+                //recordId = EpironChatDAC.GetRecordId(userId, out chatRoomStatusFromEtl);
 
                 //if (recordId != null)
-                //    EpironChat_LogsDAC.UpdateStatus(smsId,recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
+                //    EpironChat_LogsDAC.UpdateStatus(userId,recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
 
                 return Json(new { Result = "OK", recordId = 5000 });
             }
@@ -102,7 +102,7 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChatBC.InsertMessage(msg.ChatRoomID,msg.UserId, msg.Message, msg.RecordId);
+                EpironChatBC.InsertMessage(msg.RoomId,msg.UserId, msg.Message, msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }
@@ -113,11 +113,11 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult LeaveChatRoom(int recordId, int smsId)
+        public JsonResult LeaveChatRoom(int recordId, int userId)
         {
             try
             {
-                //EpironChat_LogsDAC.LeaveChatRoom(smsId);
+                //EpironChat_LogsDAC.LeaveChatRoom(userId);
                 return Json(new { Result = "OK", Message = "Sala de chat cerrada por el cliente" });
             }
             catch (Exception ex)

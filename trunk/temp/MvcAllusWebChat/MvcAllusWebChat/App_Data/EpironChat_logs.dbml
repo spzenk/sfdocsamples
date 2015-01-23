@@ -23,7 +23,7 @@
   </Table>
   <Table Name="SMS.SMSMessage" Member="SMSMessage">
     <Type Name="SMSMessage">
-      <Column Name="SMSId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="HomePhone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DestinationPhone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Message" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
@@ -32,7 +32,7 @@
       <Column Name="ProcessId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ProcessTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SMSCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="SMSIdOrigen" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="userIdOrigen" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ProcessDetailsId" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AccountDetailUnique" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
       <Column Name="IdConfig" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -40,8 +40,8 @@
       <Column Name="ChatRoomStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="SessionId" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
       <Column Name="RecordId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="SMSMessage_SMSMessage" Member="SMSMessage2" ThisKey="SMSId" OtherKey="SMSId" Type="SMSMessage" Cardinality="One" />
-      <Association Name="SMSMessage_SMSMessage" Member="SMSMessage1" ThisKey="SMSId" OtherKey="SMSId" Type="SMSMessage" IsForeignKey="true" />
+      <Association Name="SMSMessage_SMSMessage" Member="SMSMessage2" ThisKey="userId" OtherKey="userId" Type="SMSMessage" Cardinality="One" />
+      <Association Name="SMSMessage_SMSMessage" Member="SMSMessage1" ThisKey="userId" OtherKey="userId" Type="SMSMessage" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="SMS.Phones" Member="Phones">

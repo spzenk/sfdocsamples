@@ -114,7 +114,8 @@ function SendMessage() {
     var obj = {
         Message: $("#txtMessage").val(),
         RecordId: _recordId,
-        UserId: _userId
+        UserId: _userId,
+        RoomId : _roomId
     }
     $.ajax({
         url: "/EpironChatTest/SendMessage/",

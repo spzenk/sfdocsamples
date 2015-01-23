@@ -43,34 +43,7 @@
                 delay: 250
             }
         });
-      
-    });
 
-    function appendMessage(isFriend, talker, messageId) {
-
-        var message = $(messageId).val();
-        var container = $('#txtMessageList');
-
-
-        var divMessag = document.createElement("DIV");
-        $(divMessag).html($.emoticons.replace(message));
-
-        var today = new Date();
-        var div = document.createElement("DIV");
-        var dateFormat = $.datepicker.formatDate('dd-mm-yy hh:mm:ss', today);
-        $(div)
-                    .appendTo(container)
-                    .addClass((isFriend ? "_tlkFriend" : "_tlkMe"))
-                    .end()
-                    .append("<span class=\"_talker\">" + (isFriend ? talker : "Yo:") + "</span>")
-                    .append("<span class=\"_time\">" + dateFormat + "</span>")
-                    //.append("<span>: </span><BR /> ")
-                    .append("<spam class=" + (isFriend ? "bubble_left" : "bubble_right") + ">" + $(divMessag).html() + "</spam> ");
-        
-        container.scrollTop(container[0].scrollHeight - container.height());
-    }
-
-    $(function () {
         $('#btnSendCHat').on('click', function () {
             cellphone = "1";
             email = "hugo.lesiuk@allus.com.ar";
@@ -100,7 +73,33 @@
                 error: ServiceFailed
             });
         });
-    })
+    });
+
+    function appendMessage(isFriend, talker, messageId) {
+
+        var message = $(messageId).val();
+        var container = $('#txtMessageList');
+
+
+        var divMessag = document.createElement("DIV");
+        $(divMessag).html($.emoticons.replace(message));
+
+        var today = new Date();
+        var div = document.createElement("DIV");
+        var dateFormat = $.datepicker.formatDate('dd-mm-yy hh:mm:ss', today);
+        $(div)
+                    .appendTo(container)
+                    .addClass((isFriend ? "_tlkFriend" : "_tlkMe"))
+                    .end()
+                    .append("<span class=\"_talker\">" + (isFriend ? talker : "Yo:") + "</span>")
+                    .append("<span class=\"_time\">" + dateFormat + "</span>")
+                    //.append("<span>: </span><BR /> ")
+                    .append("<spam class=" + (isFriend ? "bubble_left" : "bubble_right") + ">" + $(divMessag).html() + "</spam> ");
+        
+        container.scrollTop(container[0].scrollHeight - container.height());
+    }
+
+   
 </script>
 <h2>chat</h2>
 <div class="container">
@@ -161,3 +160,4 @@
          <script src="~/Scripts/emoticons.js"></script>
         @Scripts.Render("~/bundles/jqueryui")
     }
+

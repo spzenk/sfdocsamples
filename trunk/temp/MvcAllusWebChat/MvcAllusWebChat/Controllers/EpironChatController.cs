@@ -32,7 +32,7 @@ namespace WebChat.Controllers
         /// <param name="@case">Es un número correlativo q AIVO [dueños de Sofia] nos envía también para q controlemos mejor sus envios y nuestras recepciones. </param>
         /// <returns></returns>
         [HttpGet]
-        public JsonResult Chat(string phone ,string  url,string @case )
+        public ActionResult Chat(string phone, string url, string @case)
         {
             int userId = -1;
             int chatRoomId = -1;
@@ -40,7 +40,7 @@ namespace WebChat.Controllers
             try
             {
                 EpironChatBC.CreateChatRoom_FromUrl(phone ,url, @case, out chatRoomId, out userId);
-                View("Chat");
+                return View("Chat");
                 //return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
             }
             catch (Exception ex)
@@ -101,7 +101,7 @@ namespace WebChat.Controllers
             List<Message> result = null;
             try
             {
-                result = EpironChatBC.RecieveComments(retriveAllMessage.chatRoomId, retriveAllMessage.recordId, out wChatRoomStatus);
+                result = EpironChatBC.RecieveComments(retriveAllMessage.RoomId, retriveAllMessage.RecordId, out wChatRoomStatus);
 
                 //EpironChatBC.ChatRoom_UpdateTTL(retriveAllMessage.chatRoomId);
 
@@ -139,7 +139,7 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChatBC.InsertMessage(msg.ChatRoomID,msg.UserId, msg.Message, msg.RecordId);
+                EpironChatBC.InsertMessage(msg.RoomId,msg.UserId, msg.Message, msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }

@@ -25,16 +25,24 @@ namespace WebChat.Common.Models
 
         
     }
+    public class ChatRoomFromUrlModel
+    {
+        public String UserId { get; set; }
+        public String RoomId { get; set; }
+        public String RecordId { get; set; }
 
+        public String ClientName { get; set; }
+        public String ClientEmail { get; set; }
+        public Int32 ChatConfigId { get; set; }
+
+    }
     public class ChatRoomModel
     {
         
         
 
-        public String Name { get; set; }
-        public tblChatRoom ChatRoom { get; set; }
-
-        
+    
+            
 
         public String ClientName { get; set; }
         public String ClientEmail{ get; set; }

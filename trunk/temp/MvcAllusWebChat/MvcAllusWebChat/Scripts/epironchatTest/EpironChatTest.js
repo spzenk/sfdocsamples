@@ -105,13 +105,14 @@ $(function () {
     $("#btnOpenChat2").click(function () {
         $("#chatRoomView").dialog("open");
     });
+
+    $('#div_emoticons').html($.emoticons.toString());
 });
 
 function LeaveChatRoom() {
     var obj = {
-
-        recordId: _recordId,
-        chatRoomId: _chatRoomId
+        RecordId: _recordId,
+        RoomId: _roomId
     }
     $.ajax({
         url: "/EpironChatTest/LeaveChatRoom/",
@@ -140,7 +141,8 @@ function SendMessage() {
     var obj = {
         Message: $("#txtMessage").val(),
         RecordId: _recordId,
-        userId: _userId
+        UserId: _userId,
+        RoomId: _roomId
     }
     $.ajax({
         url: "/EpironChatTest/SendMessage/",

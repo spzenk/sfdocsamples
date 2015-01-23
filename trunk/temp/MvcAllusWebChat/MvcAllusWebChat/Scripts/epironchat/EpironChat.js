@@ -49,7 +49,7 @@ $(function () {
             SendMessage();
         }
     });
-
+    $('#div_emoticons').html($.emoticons.toString());
 });
 
 function LeaveChatRoom() {
@@ -85,7 +85,8 @@ function SendMessage() {
     var obj = {
         Message: $("#txtMessage").val(),
         RecordId: _recordId,
-        UserId: _userId
+        UserId: _userId,
+        RoomId: _roomId
     }
     $.ajax({
         url: "/EpironChat/SendMessage/",
@@ -174,8 +175,8 @@ function GetrecordId_CallBack(ajaxContext, chatRoomId) {
 function RetriveAllMessage() {
 
     var obj = {
-        recordId: _recordId,
-        chatRoomId: _chatRoomId
+        RecordId: _recordId,
+        RoomId: _chatRoomId
     }
 
     $.ajax({

@@ -1078,11 +1078,11 @@ namespace EpironChat
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _RecordSMSId;
+		private int _RecorduserId;
 		
 		private int _RecordId;
 		
-		private int _SourceSMSId;
+		private int _SourceuserId;
 		
 		private int _HomePhone;
 		
@@ -1094,12 +1094,12 @@ namespace EpironChat
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnRecordSMSIdChanging(int value);
-    partial void OnRecordSMSIdChanged();
+    partial void OnRecorduserIdChanging(int value);
+    partial void OnRecorduserIdChanged();
     partial void OnRecordIdChanging(int value);
     partial void OnRecordIdChanged();
-    partial void OnSourceSMSIdChanging(int value);
-    partial void OnSourceSMSIdChanged();
+    partial void OnSourceuserIdChanging(int value);
+    partial void OnSourceuserIdChanged();
     partial void OnHomePhoneChanging(int value);
     partial void OnHomePhoneChanged();
     partial void OnDestinationPhoneChanging(int value);
@@ -1113,22 +1113,22 @@ namespace EpironChat
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordSMSId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int RecordSMSId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecorduserId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int RecorduserId
 		{
 			get
 			{
-				return this._RecordSMSId;
+				return this._RecorduserId;
 			}
 			set
 			{
-				if ((this._RecordSMSId != value))
+				if ((this._RecorduserId != value))
 				{
-					this.OnRecordSMSIdChanging(value);
+					this.OnRecorduserIdChanging(value);
 					this.SendPropertyChanging();
-					this._RecordSMSId = value;
-					this.SendPropertyChanged("RecordSMSId");
-					this.OnRecordSMSIdChanged();
+					this._RecorduserId = value;
+					this.SendPropertyChanged("RecorduserId");
+					this.OnRecorduserIdChanged();
 				}
 			}
 		}
@@ -1153,22 +1153,22 @@ namespace EpironChat
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SourceSMSId", DbType="Int NOT NULL")]
-		public int SourceSMSId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SourceuserId", DbType="Int NOT NULL")]
+		public int SourceuserId
 		{
 			get
 			{
-				return this._SourceSMSId;
+				return this._SourceuserId;
 			}
 			set
 			{
-				if ((this._SourceSMSId != value))
+				if ((this._SourceuserId != value))
 				{
-					this.OnSourceSMSIdChanging(value);
+					this.OnSourceuserIdChanging(value);
 					this.SendPropertyChanging();
-					this._SourceSMSId = value;
-					this.SendPropertyChanged("SourceSMSId");
-					this.OnSourceSMSIdChanged();
+					this._SourceuserId = value;
+					this.SendPropertyChanged("SourceuserId");
+					this.OnSourceuserIdChanged();
 				}
 			}
 		}
