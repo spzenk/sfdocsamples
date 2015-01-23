@@ -11,7 +11,20 @@
    
 </script>
 <h2>chat</h2>
-
+<div id="alert-text-info-container">
+    <table>
+        <tr>
+            <td>
+                <img id="ajaxloader" style="height: 40px; width: 40px; float: left;" src="@Url.Content("~/img/ajax-loader.gif")" />
+            </td>
+            <td>
+                <div id="alert-text-view-info" class="alert alert-warning" style="display: normal; margin: 5px">
+                    <p class="info-text"></p>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
         <div id="chatRoomView">
             @Html.Partial("_ChatRoomView")
         </div>

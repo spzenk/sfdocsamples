@@ -58,7 +58,6 @@ $(function () {
     
     $('#btnClose').on('click', function () {
         clearTimeout(funcGetRecordId);
-        ResetControlsCreateChatRoom();
     });
 
     $('#txtMessage').keyup(function (e) {
@@ -68,6 +67,10 @@ $(function () {
     });
 
     $('#div_emoticons').html($.emoticons.toString());
+
+    GetRecordId();
+    alert_text_info_container("Conectando con uno de nuestros representantes", true);
+
 });
 
 function LeaveChatRoom() {
@@ -123,22 +126,7 @@ function SendMessage() {
     $("#txtMessage").val('');
 }
 
-function CreateChatRoomBefore_CallBack() {
-    DisableControlsCreateChatRoom();
-    alert_text_info_container("Conectando con uno de nuestros representantes", true);
-}
 
-function CreateChatRoom_CallBack(ajaxContext) {
-
-    if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
-        OnFailure(ajaxContext);
-        return;
-    }
-    _userId = ajaxContext.phoneId;
-    _roomId = _ajaxContext.roomId;
-   
-    GetRecordId();
-}
 
 function GetRecordId() {
 
@@ -185,10 +173,10 @@ function GetrecordId_CallBack(ajaxContext) {
     $('#alert-text-view').hide('slow');
     $('#alert-text-info-container').hide('slow');
     
-    $('#chatRoomView').modal('show');
+  
     Showloading(false);
     RetriveAllMessage();
-    ResetControlsChat();
+
 }
 
 function RetriveAllMessage() {
@@ -255,7 +243,7 @@ function CloseChatRoom(message) {
     $('#btnSendMessage').attr('disabled', 'true');
     $('#btnExitChat').attr('disabled', 'true');
     $('#txtMessage').attr('disabled', 'true');
-    $("#btnOpenChat").show('slow');
+    //$("#btnOpenChat").show('slow');
     var container = $('#txtMessageList');
 
     var today = new Date();

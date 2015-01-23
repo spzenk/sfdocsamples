@@ -113,11 +113,11 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult LeaveChatRoom(int recordId, int userId)
+        public JsonResult LeaveChatRoom(int recordId, int roomId)
         {
             try
             {
-                //EpironChat_LogsDAC.LeaveChatRoom(userId);
+                //EpironChat_LogsDAC.LeaveChatRoom(roomId);
                 return Json(new { Result = "OK", Message = "Sala de chat cerrada por el cliente" });
             }
             catch (Exception ex)
