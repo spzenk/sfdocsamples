@@ -631,7 +631,7 @@ namespace EpironChatLogs
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _SMSId;
+		private int _userId;
 		
 		private int _HomePhone;
 		
@@ -649,7 +649,7 @@ namespace EpironChatLogs
 		
 		private System.DateTime _SMSCreated;
 		
-		private System.Nullable<int> _SMSIdOrigen;
+		private System.Nullable<int> _userIdOrigen;
 		
 		private System.Nullable<int> _ProcessDetailsId;
 		
@@ -673,8 +673,8 @@ namespace EpironChatLogs
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnSMSIdChanging(int value);
-    partial void OnSMSIdChanged();
+    partial void OnuserIdChanging(int value);
+    partial void OnuserIdChanged();
     partial void OnHomePhoneChanging(int value);
     partial void OnHomePhoneChanged();
     partial void OnDestinationPhoneChanging(int value);
@@ -691,8 +691,8 @@ namespace EpironChatLogs
     partial void OnProcessTypeIdChanged();
     partial void OnSMSCreatedChanging(System.DateTime value);
     partial void OnSMSCreatedChanged();
-    partial void OnSMSIdOrigenChanging(System.Nullable<int> value);
-    partial void OnSMSIdOrigenChanged();
+    partial void OnuserIdOrigenChanging(System.Nullable<int> value);
+    partial void OnuserIdOrigenChanged();
     partial void OnProcessDetailsIdChanging(System.Nullable<int> value);
     partial void OnProcessDetailsIdChanged();
     partial void OnAccountDetailUniqueChanging(System.Nullable<System.Guid> value);
@@ -716,26 +716,26 @@ namespace EpironChatLogs
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int SMSId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int userId
 		{
 			get
 			{
-				return this._SMSId;
+				return this._userId;
 			}
 			set
 			{
-				if ((this._SMSId != value))
+				if ((this._userId != value))
 				{
 					if (this._SMSMessage1.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnSMSIdChanging(value);
+					this.OnuserIdChanging(value);
 					this.SendPropertyChanging();
-					this._SMSId = value;
-					this.SendPropertyChanged("SMSId");
-					this.OnSMSIdChanged();
+					this._userId = value;
+					this.SendPropertyChanged("userId");
+					this.OnuserIdChanged();
 				}
 			}
 		}
@@ -900,22 +900,22 @@ namespace EpironChatLogs
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSIdOrigen", DbType="Int")]
-		public System.Nullable<int> SMSIdOrigen
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userIdOrigen", DbType="Int")]
+		public System.Nullable<int> userIdOrigen
 		{
 			get
 			{
-				return this._SMSIdOrigen;
+				return this._userIdOrigen;
 			}
 			set
 			{
-				if ((this._SMSIdOrigen != value))
+				if ((this._userIdOrigen != value))
 				{
-					this.OnSMSIdOrigenChanging(value);
+					this.OnuserIdOrigenChanging(value);
 					this.SendPropertyChanging();
-					this._SMSIdOrigen = value;
-					this.SendPropertyChanged("SMSIdOrigen");
-					this.OnSMSIdOrigenChanged();
+					this._userIdOrigen = value;
+					this.SendPropertyChanged("userIdOrigen");
+					this.OnuserIdOrigenChanged();
 				}
 			}
 		}
@@ -1060,7 +1060,7 @@ namespace EpironChatLogs
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSMessage_SMSMessage", Storage="_SMSMessage2", ThisKey="SMSId", OtherKey="SMSId", IsUnique=true, IsForeignKey=false)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSMessage_SMSMessage", Storage="_SMSMessage2", ThisKey="userId", OtherKey="userId", IsUnique=true, IsForeignKey=false)]
 		public SMSMessage SMSMessage2
 		{
 			get
@@ -1089,7 +1089,7 @@ namespace EpironChatLogs
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSMessage_SMSMessage", Storage="_SMSMessage1", ThisKey="SMSId", OtherKey="SMSId", IsForeignKey=true)]
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSMessage_SMSMessage", Storage="_SMSMessage1", ThisKey="userId", OtherKey="userId", IsForeignKey=true)]
 		public SMSMessage SMSMessage1
 		{
 			get
@@ -1112,11 +1112,11 @@ namespace EpironChatLogs
 					if ((value != null))
 					{
 						value.SMSMessage2 = this;
-						this._SMSId = value.SMSId;
+						this._userId = value.userId;
 					}
 					else
 					{
-						this._SMSId = default(int);
+						this._userId = default(int);
 					}
 					this.SendPropertyChanged("SMSMessage1");
 				}

@@ -46,9 +46,9 @@
   </Table>
   <Table Name="SMS.RecordSMS" Member="RecordSMS">
     <Type Name="RecordSMS">
-      <Column Name="RecordSMSId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RecorduserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="RecordId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SourceSMSId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SourceuserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="HomePhone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DestinationPhone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CreatedRecordSMS" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
