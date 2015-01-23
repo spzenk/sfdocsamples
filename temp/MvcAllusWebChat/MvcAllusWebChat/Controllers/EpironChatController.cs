@@ -85,7 +85,7 @@ namespace WebChat.Controllers
                 }
 
                 EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId);
-                return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
+                return Json(new { Result = "OK", userId = userId, roomId = chatRoomId });
             }
             catch (Exception ex)
             {
@@ -114,16 +114,16 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetRecordId(int chatRoomId)
+        public JsonResult GetRecordId(int userId,int roomId)
         {
             int? recordId = -1;
             int? chatRoomStatusFromEtl = null;
             try
             {
-                recordId = EpironChatDAC.GetRecordId(chatRoomId, out chatRoomStatusFromEtl);
+                recordId = EpironChatDAC.GetRecordId(roomId, out chatRoomStatusFromEtl);
 
                 if (recordId != null)
-                    EpironChatBC.ChatRoom_UpdateStatus(chatRoomId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
+                    EpironChatBC.ChatRoom_UpdateStatus(userId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
                 
                 return Json(new { Result = "OK", recordId = recordId });
             }
