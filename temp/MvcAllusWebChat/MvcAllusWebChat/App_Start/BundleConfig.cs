@@ -36,7 +36,7 @@ namespace WebChat
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/Content/site").Include(
-                    "~/Content/Site.css"
+                    "~/Content/Site.css","~/Content/ChatRoom.css"
                 ));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
