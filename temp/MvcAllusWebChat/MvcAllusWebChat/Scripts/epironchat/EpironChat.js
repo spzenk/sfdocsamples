@@ -54,8 +54,8 @@ $(function () {
 
 function LeaveChatRoom() {
     var obj = {
-        RecordId: _recordId,
-        ChatRoomId: _roomId
+        recordId: _recordId,
+        chatRoomId: _roomId
     }
     $.ajax({
         url: "/EpironChat/LeaveChatRoom/",

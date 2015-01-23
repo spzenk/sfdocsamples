@@ -150,7 +150,7 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult LeaveChatRoom(int chatRoomId)
+        public JsonResult LeaveChatRoom(int chatRoomId, int recordId)
         {
             try
             {
