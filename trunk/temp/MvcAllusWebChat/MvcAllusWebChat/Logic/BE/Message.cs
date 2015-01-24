@@ -11,8 +11,8 @@ namespace WebChat.Logic
     
     public class Message
     {
-        public string Talker { get;  set; }
-        
+        public String  Talker { get;  set; }
+        public Int32 UserId { get; set; }
         public string MessageData { get;  set; }
         
         public DateTime SendTime { get;  set; }
@@ -30,11 +30,12 @@ namespace WebChat.Logic
         public Message()
         { }
 
-        public Message(SMSMessage message, HttpContextBase session)
+        public Message(ChatMessage message, HttpContextBase session)
         {
             Talker = "Yo";//message.tblTalker.tblSession.UserAlias;
-            MessageData = message.Message;
-            SendTime = message.SMSCreated;
+            UserId = message.ChatUserId;
+            MessageData = message.ChatMessage1;
+            SendTime = message.ChatMessageDate;
             IsFriend = true;// (message.tblTalker.tblSession.SessionID != session.Session.SessionID);
         }
     }

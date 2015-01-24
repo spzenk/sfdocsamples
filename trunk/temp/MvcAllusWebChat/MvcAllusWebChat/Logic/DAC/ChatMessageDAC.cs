@@ -12,29 +12,7 @@ namespace WebChat.Logic.DAC
     public class ChatMessageDAC
     {
         
-        /// <summary>
-        /// Retorna todos los mensajes de un chatRoom
-        /// </summary>
-        /// <param name="roomid"></param>
-        /// <returns></returns>
-        public static List<Message> RecieveMessage(int homePhone, HttpContextBase context)
-        {
-            List<Message> result = new List<Message>();
-            using (EpironChat_logsDataContext db = new EpironChat_logsDataContext())
-            {
-                var msgs = from messages in db.SMSMessage
-                           where messages.HomePhone.Equals(homePhone)
-                           select messages;
-
-
-                foreach (SMSMessage msg in msgs.ToList())
-                {
-                    result.Add(new Message(msg, context));
-                }
-                return result;
-            }
-
-        }
+       
         
 
            /// <summary>
