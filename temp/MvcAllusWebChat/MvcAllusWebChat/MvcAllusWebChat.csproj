@@ -204,7 +204,6 @@
     <Compile Include="Logic\DAC\ChatUserDAC.cs" />
     <Compile Include="Logic\DAC\EpironChatDAC.cs" />
     <Compile Include="Logic\DAC\EpironChatEmail_LogsDAC.cs" />
-    <Compile Include="Logic\DAC\EpironChat_LogsDAC.cs" />
     <Compile Include="Logic\ChatManager_CallCenter_Rep.cs" />
     <Compile Include="Logic\ChatManager.cs" />
     <Compile Include="Logic\ChatManager_CallCenter_Client.cs" />

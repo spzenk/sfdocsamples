@@ -1,58 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="EpironChat_Logs" EntityNamespace="EpironChatLogs" ContextNamespace="EpironChatLogs" Class="EpironChat_logsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=corrsf71des01;Initial Catalog=EpironChat_Logs;User ID=Desarrollo_soporte" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="EpironChat_LogsConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="SMS.SMSConfig" Member="SMSConfig">
-    <Type Name="SMSConfig">
-      <Column Name="IdConfig" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="PhoneId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Server" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Port" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Password" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="InterfaceVersion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Connect_Timeout" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Bind_Timeout" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Enquire_Interval" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SystemType" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AddressRange" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AddressTON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="AddressNPI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Enabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="AccountDetailUnique" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Association Name="Phones_SMSConfig" Member="Phones" ThisKey="PhoneId" OtherKey="PhoneId" Type="Phones" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="SMS.SMSMessage" Member="SMSMessage">
-    <Type Name="SMSMessage">
-      <Column Name="userId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="HomePhone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="DestinationPhone" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Message" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="UpdateTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SMSInserted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="ProcessId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProcessTypeId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SMSCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="userIdOrigen" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ProcessDetailsId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AccountDetailUnique" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
-      <Column Name="IdConfig" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CheckOutTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ChatRoomStatus" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SessionId" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Column Name="RecordId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="SMSMessage_SMSMessage" Member="SMSMessage2" ThisKey="userId" OtherKey="userId" Type="SMSMessage" Cardinality="One" />
-      <Association Name="SMSMessage_SMSMessage" Member="SMSMessage1" ThisKey="userId" OtherKey="userId" Type="SMSMessage" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="SMS.Phones" Member="Phones">
-    <Type Name="Phones">
-      <Column Name="PhoneId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Phone" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PhoneCreated" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="PhoneName" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
-      <Association Name="Phones_SMSConfig" Member="SMSConfig" ThisKey="PhoneId" OtherKey="PhoneId" Type="SMSConfig" />
-    </Type>
-  </Table>
   <Table Name="Chat.ChatConfig" Member="ChatConfig">
     <Type Name="ChatConfig">
       <Column Name="ChatConfigId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
@@ -106,6 +53,23 @@
       <Association Name="ChatMailSender_ChatConfig" Member="ChatConfig" ThisKey="ChatMailSenderId" OtherKey="ChatMailSenderId" Type="ChatConfig" />
     </Type>
   </Table>
+  <Table Name="Chat.ChatRoom" Member="ChatRoom">
+    <Type Name="ChatRoom">
+      <Column Name="ChatRoomId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ChatRoomGuid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ChatRoomCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="ChatRoomStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ChatConfigId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecordId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChatRoomModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ChatRoomTTL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ChatRoomExternalIdentifier" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ChatRoomURL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="ChatRoom_ChatEmailMessage" Member="ChatEmailMessage" ThisKey="ChatRoomId" OtherKey="ChatRoomId" Type="ChatEmailMessage" />
+      <Association Name="ChatRoom_ChatMessage" Member="ChatMessage" ThisKey="ChatRoomId" OtherKey="ChatRoomId" Type="ChatMessage" />
+      <Association Name="ChatConfig_ChatRoom" Member="ChatConfig" ThisKey="ChatConfigId" OtherKey="ChatConfigId" Type="ChatConfig" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="Chat.ChatMessage" Member="ChatMessage">
     <Type Name="ChatMessage">
       <Column Name="ChatMessageId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -115,21 +79,6 @@
       <Column Name="ChatUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="ChatUser_ChatMessage" Member="ChatUser" ThisKey="ChatUserId" OtherKey="ChatUserId" Type="ChatUser" IsForeignKey="true" />
       <Association Name="ChatRoom_ChatMessage" Member="ChatRoom" ThisKey="ChatRoomId" OtherKey="ChatRoomId" Type="ChatRoom" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="Chat.ChatRoom" Member="ChatRoom">
-    <Type Name="ChatRoom">
-      <Column Name="ChatRoomId" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="ChatRoomGuid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
-      <Column Name="ChatRoomCreated" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
-      <Column Name="ChatRoomStatusId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ChatConfigId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RecordId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="ChatRoomModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ChatRoomTTL" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="ChatRoom_ChatEmailMessage" Member="ChatEmailMessage" ThisKey="ChatRoomId" OtherKey="ChatRoomId" Type="ChatEmailMessage" />
-      <Association Name="ChatRoom_ChatMessage" Member="ChatMessage" ThisKey="ChatRoomId" OtherKey="ChatRoomId" Type="ChatMessage" />
-      <Association Name="ChatConfig_ChatRoom" Member="ChatConfig" ThisKey="ChatConfigId" OtherKey="ChatConfigId" Type="ChatConfig" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

@@ -22,7 +22,7 @@ namespace WebChat.Controllers
             return View(wSentEmailModel);
         }
 
-        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pchatUserId, int pChatRoom)
+        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pchatUserId, int pChatRoom, int pRoomId)
         {
             try
           {
@@ -43,7 +43,7 @@ namespace WebChat.Controllers
                     //se registra en la base que se ha enviado un email
                     ChatEmailMessageBE wChatEmailMessageBE = new ChatEmailMessageBE();
                     wChatEmailMessageBE.EmailFrom = wChatMailSenderBE.Email;
-
+                    wChatEmailMessageBE.ChatRoomId = pRoomId;
                     wChatEmailMessageBE.Body = emailBody;
                     if (toTheClientFlag)
                     {

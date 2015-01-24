@@ -30,15 +30,6 @@ namespace EpironChatLogs
 		
     #region Definiciones de métodos de extensibilidad
     partial void OnCreated();
-    partial void InsertSMSConfig(SMSConfig instance);
-    partial void UpdateSMSConfig(SMSConfig instance);
-    partial void DeleteSMSConfig(SMSConfig instance);
-    partial void InsertSMSMessage(SMSMessage instance);
-    partial void UpdateSMSMessage(SMSMessage instance);
-    partial void DeleteSMSMessage(SMSMessage instance);
-    partial void InsertPhones(Phones instance);
-    partial void UpdatePhones(Phones instance);
-    partial void DeletePhones(Phones instance);
     partial void InsertChatConfig(ChatConfig instance);
     partial void UpdateChatConfig(ChatConfig instance);
     partial void DeleteChatConfig(ChatConfig instance);
@@ -51,12 +42,12 @@ namespace EpironChatLogs
     partial void InsertChatMailSender(ChatMailSender instance);
     partial void UpdateChatMailSender(ChatMailSender instance);
     partial void DeleteChatMailSender(ChatMailSender instance);
-    partial void InsertChatMessage(ChatMessage instance);
-    partial void UpdateChatMessage(ChatMessage instance);
-    partial void DeleteChatMessage(ChatMessage instance);
     partial void InsertChatRoom(ChatRoom instance);
     partial void UpdateChatRoom(ChatRoom instance);
     partial void DeleteChatRoom(ChatRoom instance);
+    partial void InsertChatMessage(ChatMessage instance);
+    partial void UpdateChatMessage(ChatMessage instance);
+    partial void DeleteChatMessage(ChatMessage instance);
     #endregion
 		
 		public EpironChat_logsDataContext() : 
@@ -87,30 +78,6 @@ namespace EpironChatLogs
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<SMSConfig> SMSConfig
-		{
-			get
-			{
-				return this.GetTable<SMSConfig>();
-			}
-		}
-		
-		public System.Data.Linq.Table<SMSMessage> SMSMessage
-		{
-			get
-			{
-				return this.GetTable<SMSMessage>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Phones> Phones
-		{
-			get
-			{
-				return this.GetTable<Phones>();
-			}
 		}
 		
 		public System.Data.Linq.Table<ChatConfig> ChatConfig
@@ -145,14 +112,6 @@ namespace EpironChatLogs
 			}
 		}
 		
-		public System.Data.Linq.Table<ChatMessage> ChatMessage
-		{
-			get
-			{
-				return this.GetTable<ChatMessage>();
-			}
-		}
-		
 		public System.Data.Linq.Table<ChatRoom> ChatRoom
 		{
 			get
@@ -160,1149 +119,13 @@ namespace EpironChatLogs
 				return this.GetTable<ChatRoom>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="SMS.SMSConfig")]
-	public partial class SMSConfig : INotifyPropertyChanging, INotifyPropertyChanged
-	{
 		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IdConfig;
-		
-		private int _PhoneId;
-		
-		private string _Server;
-		
-		private System.Nullable<int> _Port;
-		
-		private string _Username;
-		
-		private string _Password;
-		
-		private string _InterfaceVersion;
-		
-		private System.Nullable<int> _Connect_Timeout;
-		
-		private System.Nullable<int> _Bind_Timeout;
-		
-		private System.Nullable<int> _Enquire_Interval;
-		
-		private string _SystemType;
-		
-		private string _AddressRange;
-		
-		private string _AddressTON;
-		
-		private string _AddressNPI;
-		
-		private System.Nullable<bool> _Enabled;
-		
-		private System.Nullable<System.Guid> _AccountDetailUnique;
-		
-		private EntityRef<Phones> _Phones;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdConfigChanging(int value);
-    partial void OnIdConfigChanged();
-    partial void OnPhoneIdChanging(int value);
-    partial void OnPhoneIdChanged();
-    partial void OnServerChanging(string value);
-    partial void OnServerChanged();
-    partial void OnPortChanging(System.Nullable<int> value);
-    partial void OnPortChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnPasswordChanging(string value);
-    partial void OnPasswordChanged();
-    partial void OnInterfaceVersionChanging(string value);
-    partial void OnInterfaceVersionChanged();
-    partial void OnConnect_TimeoutChanging(System.Nullable<int> value);
-    partial void OnConnect_TimeoutChanged();
-    partial void OnBind_TimeoutChanging(System.Nullable<int> value);
-    partial void OnBind_TimeoutChanged();
-    partial void OnEnquire_IntervalChanging(System.Nullable<int> value);
-    partial void OnEnquire_IntervalChanged();
-    partial void OnSystemTypeChanging(string value);
-    partial void OnSystemTypeChanged();
-    partial void OnAddressRangeChanging(string value);
-    partial void OnAddressRangeChanged();
-    partial void OnAddressTONChanging(string value);
-    partial void OnAddressTONChanged();
-    partial void OnAddressNPIChanging(string value);
-    partial void OnAddressNPIChanged();
-    partial void OnEnabledChanging(System.Nullable<bool> value);
-    partial void OnEnabledChanged();
-    partial void OnAccountDetailUniqueChanging(System.Nullable<System.Guid> value);
-    partial void OnAccountDetailUniqueChanged();
-    #endregion
-		
-		public SMSConfig()
-		{
-			this._Phones = default(EntityRef<Phones>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdConfig", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IdConfig
+		public System.Data.Linq.Table<ChatMessage> ChatMessage
 		{
 			get
 			{
-				return this._IdConfig;
+				return this.GetTable<ChatMessage>();
 			}
-			set
-			{
-				if ((this._IdConfig != value))
-				{
-					this.OnIdConfigChanging(value);
-					this.SendPropertyChanging();
-					this._IdConfig = value;
-					this.SendPropertyChanged("IdConfig");
-					this.OnIdConfigChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneId", DbType="Int NOT NULL")]
-		public int PhoneId
-		{
-			get
-			{
-				return this._PhoneId;
-			}
-			set
-			{
-				if ((this._PhoneId != value))
-				{
-					if (this._Phones.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPhoneIdChanging(value);
-					this.SendPropertyChanging();
-					this._PhoneId = value;
-					this.SendPropertyChanged("PhoneId");
-					this.OnPhoneIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Server", DbType="VarChar(50)")]
-		public string Server
-		{
-			get
-			{
-				return this._Server;
-			}
-			set
-			{
-				if ((this._Server != value))
-				{
-					this.OnServerChanging(value);
-					this.SendPropertyChanging();
-					this._Server = value;
-					this.SendPropertyChanged("Server");
-					this.OnServerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Port", DbType="Int")]
-		public System.Nullable<int> Port
-		{
-			get
-			{
-				return this._Port;
-			}
-			set
-			{
-				if ((this._Port != value))
-				{
-					this.OnPortChanging(value);
-					this.SendPropertyChanging();
-					this._Port = value;
-					this.SendPropertyChanged("Port");
-					this.OnPortChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(50)")]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Password", DbType="VarChar(50)")]
-		public string Password
-		{
-			get
-			{
-				return this._Password;
-			}
-			set
-			{
-				if ((this._Password != value))
-				{
-					this.OnPasswordChanging(value);
-					this.SendPropertyChanging();
-					this._Password = value;
-					this.SendPropertyChanged("Password");
-					this.OnPasswordChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InterfaceVersion", DbType="VarChar(50)")]
-		public string InterfaceVersion
-		{
-			get
-			{
-				return this._InterfaceVersion;
-			}
-			set
-			{
-				if ((this._InterfaceVersion != value))
-				{
-					this.OnInterfaceVersionChanging(value);
-					this.SendPropertyChanging();
-					this._InterfaceVersion = value;
-					this.SendPropertyChanged("InterfaceVersion");
-					this.OnInterfaceVersionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Connect_Timeout", DbType="Int")]
-		public System.Nullable<int> Connect_Timeout
-		{
-			get
-			{
-				return this._Connect_Timeout;
-			}
-			set
-			{
-				if ((this._Connect_Timeout != value))
-				{
-					this.OnConnect_TimeoutChanging(value);
-					this.SendPropertyChanging();
-					this._Connect_Timeout = value;
-					this.SendPropertyChanged("Connect_Timeout");
-					this.OnConnect_TimeoutChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Bind_Timeout", DbType="Int")]
-		public System.Nullable<int> Bind_Timeout
-		{
-			get
-			{
-				return this._Bind_Timeout;
-			}
-			set
-			{
-				if ((this._Bind_Timeout != value))
-				{
-					this.OnBind_TimeoutChanging(value);
-					this.SendPropertyChanging();
-					this._Bind_Timeout = value;
-					this.SendPropertyChanged("Bind_Timeout");
-					this.OnBind_TimeoutChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Enquire_Interval", DbType="Int")]
-		public System.Nullable<int> Enquire_Interval
-		{
-			get
-			{
-				return this._Enquire_Interval;
-			}
-			set
-			{
-				if ((this._Enquire_Interval != value))
-				{
-					this.OnEnquire_IntervalChanging(value);
-					this.SendPropertyChanging();
-					this._Enquire_Interval = value;
-					this.SendPropertyChanged("Enquire_Interval");
-					this.OnEnquire_IntervalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SystemType", DbType="VarChar(50)")]
-		public string SystemType
-		{
-			get
-			{
-				return this._SystemType;
-			}
-			set
-			{
-				if ((this._SystemType != value))
-				{
-					this.OnSystemTypeChanging(value);
-					this.SendPropertyChanging();
-					this._SystemType = value;
-					this.SendPropertyChanged("SystemType");
-					this.OnSystemTypeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressRange", DbType="VarChar(50)")]
-		public string AddressRange
-		{
-			get
-			{
-				return this._AddressRange;
-			}
-			set
-			{
-				if ((this._AddressRange != value))
-				{
-					this.OnAddressRangeChanging(value);
-					this.SendPropertyChanging();
-					this._AddressRange = value;
-					this.SendPropertyChanged("AddressRange");
-					this.OnAddressRangeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressTON", DbType="VarChar(50)")]
-		public string AddressTON
-		{
-			get
-			{
-				return this._AddressTON;
-			}
-			set
-			{
-				if ((this._AddressTON != value))
-				{
-					this.OnAddressTONChanging(value);
-					this.SendPropertyChanging();
-					this._AddressTON = value;
-					this.SendPropertyChanged("AddressTON");
-					this.OnAddressTONChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AddressNPI", DbType="VarChar(50)")]
-		public string AddressNPI
-		{
-			get
-			{
-				return this._AddressNPI;
-			}
-			set
-			{
-				if ((this._AddressNPI != value))
-				{
-					this.OnAddressNPIChanging(value);
-					this.SendPropertyChanging();
-					this._AddressNPI = value;
-					this.SendPropertyChanged("AddressNPI");
-					this.OnAddressNPIChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Enabled", DbType="Bit")]
-		public System.Nullable<bool> Enabled
-		{
-			get
-			{
-				return this._Enabled;
-			}
-			set
-			{
-				if ((this._Enabled != value))
-				{
-					this.OnEnabledChanging(value);
-					this.SendPropertyChanging();
-					this._Enabled = value;
-					this.SendPropertyChanged("Enabled");
-					this.OnEnabledChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountDetailUnique", DbType="UniqueIdentifier")]
-		public System.Nullable<System.Guid> AccountDetailUnique
-		{
-			get
-			{
-				return this._AccountDetailUnique;
-			}
-			set
-			{
-				if ((this._AccountDetailUnique != value))
-				{
-					this.OnAccountDetailUniqueChanging(value);
-					this.SendPropertyChanging();
-					this._AccountDetailUnique = value;
-					this.SendPropertyChanged("AccountDetailUnique");
-					this.OnAccountDetailUniqueChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phones_SMSConfig", Storage="_Phones", ThisKey="PhoneId", OtherKey="PhoneId", IsForeignKey=true)]
-		public Phones Phones
-		{
-			get
-			{
-				return this._Phones.Entity;
-			}
-			set
-			{
-				Phones previousValue = this._Phones.Entity;
-				if (((previousValue != value) 
-							|| (this._Phones.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Phones.Entity = null;
-						previousValue.SMSConfig.Remove(this);
-					}
-					this._Phones.Entity = value;
-					if ((value != null))
-					{
-						value.SMSConfig.Add(this);
-						this._PhoneId = value.PhoneId;
-					}
-					else
-					{
-						this._PhoneId = default(int);
-					}
-					this.SendPropertyChanged("Phones");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="SMS.SMSMessage")]
-	public partial class SMSMessage : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _userId;
-		
-		private int _HomePhone;
-		
-		private int _DestinationPhone;
-		
-		private string _Message;
-		
-		private System.Nullable<System.DateTime> _UpdateTime;
-		
-		private bool _SMSInserted;
-		
-		private System.Nullable<int> _ProcessId;
-		
-		private System.Nullable<int> _ProcessTypeId;
-		
-		private System.DateTime _SMSCreated;
-		
-		private System.Nullable<int> _userIdOrigen;
-		
-		private System.Nullable<int> _ProcessDetailsId;
-		
-		private System.Nullable<System.Guid> _AccountDetailUnique;
-		
-		private int _IdConfig;
-		
-		private System.Nullable<System.DateTime> _CheckOutTime;
-		
-		private System.Nullable<int> _ChatRoomStatus;
-		
-		private string _SessionId;
-		
-		private System.Nullable<int> _RecordId;
-		
-		private EntityRef<SMSMessage> _SMSMessage2;
-		
-		private EntityRef<SMSMessage> _SMSMessage1;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnuserIdChanging(int value);
-    partial void OnuserIdChanged();
-    partial void OnHomePhoneChanging(int value);
-    partial void OnHomePhoneChanged();
-    partial void OnDestinationPhoneChanging(int value);
-    partial void OnDestinationPhoneChanged();
-    partial void OnMessageChanging(string value);
-    partial void OnMessageChanged();
-    partial void OnUpdateTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnUpdateTimeChanged();
-    partial void OnSMSInsertedChanging(bool value);
-    partial void OnSMSInsertedChanged();
-    partial void OnProcessIdChanging(System.Nullable<int> value);
-    partial void OnProcessIdChanged();
-    partial void OnProcessTypeIdChanging(System.Nullable<int> value);
-    partial void OnProcessTypeIdChanged();
-    partial void OnSMSCreatedChanging(System.DateTime value);
-    partial void OnSMSCreatedChanged();
-    partial void OnuserIdOrigenChanging(System.Nullable<int> value);
-    partial void OnuserIdOrigenChanged();
-    partial void OnProcessDetailsIdChanging(System.Nullable<int> value);
-    partial void OnProcessDetailsIdChanged();
-    partial void OnAccountDetailUniqueChanging(System.Nullable<System.Guid> value);
-    partial void OnAccountDetailUniqueChanged();
-    partial void OnIdConfigChanging(int value);
-    partial void OnIdConfigChanged();
-    partial void OnCheckOutTimeChanging(System.Nullable<System.DateTime> value);
-    partial void OnCheckOutTimeChanged();
-    partial void OnChatRoomStatusChanging(System.Nullable<int> value);
-    partial void OnChatRoomStatusChanged();
-    partial void OnSessionIdChanging(string value);
-    partial void OnSessionIdChanged();
-    partial void OnRecordIdChanging(System.Nullable<int> value);
-    partial void OnRecordIdChanged();
-    #endregion
-		
-		public SMSMessage()
-		{
-			this._SMSMessage2 = default(EntityRef<SMSMessage>);
-			this._SMSMessage1 = default(EntityRef<SMSMessage>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int userId
-		{
-			get
-			{
-				return this._userId;
-			}
-			set
-			{
-				if ((this._userId != value))
-				{
-					if (this._SMSMessage1.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnuserIdChanging(value);
-					this.SendPropertyChanging();
-					this._userId = value;
-					this.SendPropertyChanged("userId");
-					this.OnuserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_HomePhone", DbType="Int NOT NULL")]
-		public int HomePhone
-		{
-			get
-			{
-				return this._HomePhone;
-			}
-			set
-			{
-				if ((this._HomePhone != value))
-				{
-					this.OnHomePhoneChanging(value);
-					this.SendPropertyChanging();
-					this._HomePhone = value;
-					this.SendPropertyChanged("HomePhone");
-					this.OnHomePhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DestinationPhone", DbType="Int NOT NULL")]
-		public int DestinationPhone
-		{
-			get
-			{
-				return this._DestinationPhone;
-			}
-			set
-			{
-				if ((this._DestinationPhone != value))
-				{
-					this.OnDestinationPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._DestinationPhone = value;
-					this.SendPropertyChanged("DestinationPhone");
-					this.OnDestinationPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Message", DbType="VarChar(MAX)")]
-		public string Message
-		{
-			get
-			{
-				return this._Message;
-			}
-			set
-			{
-				if ((this._Message != value))
-				{
-					this.OnMessageChanging(value);
-					this.SendPropertyChanging();
-					this._Message = value;
-					this.SendPropertyChanged("Message");
-					this.OnMessageChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UpdateTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> UpdateTime
-		{
-			get
-			{
-				return this._UpdateTime;
-			}
-			set
-			{
-				if ((this._UpdateTime != value))
-				{
-					this.OnUpdateTimeChanging(value);
-					this.SendPropertyChanging();
-					this._UpdateTime = value;
-					this.SendPropertyChanged("UpdateTime");
-					this.OnUpdateTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSInserted", DbType="Bit NOT NULL")]
-		public bool SMSInserted
-		{
-			get
-			{
-				return this._SMSInserted;
-			}
-			set
-			{
-				if ((this._SMSInserted != value))
-				{
-					this.OnSMSInsertedChanging(value);
-					this.SendPropertyChanging();
-					this._SMSInserted = value;
-					this.SendPropertyChanged("SMSInserted");
-					this.OnSMSInsertedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessId", DbType="Int")]
-		public System.Nullable<int> ProcessId
-		{
-			get
-			{
-				return this._ProcessId;
-			}
-			set
-			{
-				if ((this._ProcessId != value))
-				{
-					this.OnProcessIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessId = value;
-					this.SendPropertyChanged("ProcessId");
-					this.OnProcessIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessTypeId", DbType="Int")]
-		public System.Nullable<int> ProcessTypeId
-		{
-			get
-			{
-				return this._ProcessTypeId;
-			}
-			set
-			{
-				if ((this._ProcessTypeId != value))
-				{
-					this.OnProcessTypeIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessTypeId = value;
-					this.SendPropertyChanged("ProcessTypeId");
-					this.OnProcessTypeIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SMSCreated", DbType="DateTime NOT NULL")]
-		public System.DateTime SMSCreated
-		{
-			get
-			{
-				return this._SMSCreated;
-			}
-			set
-			{
-				if ((this._SMSCreated != value))
-				{
-					this.OnSMSCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._SMSCreated = value;
-					this.SendPropertyChanged("SMSCreated");
-					this.OnSMSCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_userIdOrigen", DbType="Int")]
-		public System.Nullable<int> userIdOrigen
-		{
-			get
-			{
-				return this._userIdOrigen;
-			}
-			set
-			{
-				if ((this._userIdOrigen != value))
-				{
-					this.OnuserIdOrigenChanging(value);
-					this.SendPropertyChanging();
-					this._userIdOrigen = value;
-					this.SendPropertyChanged("userIdOrigen");
-					this.OnuserIdOrigenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProcessDetailsId", DbType="Int")]
-		public System.Nullable<int> ProcessDetailsId
-		{
-			get
-			{
-				return this._ProcessDetailsId;
-			}
-			set
-			{
-				if ((this._ProcessDetailsId != value))
-				{
-					this.OnProcessDetailsIdChanging(value);
-					this.SendPropertyChanging();
-					this._ProcessDetailsId = value;
-					this.SendPropertyChanged("ProcessDetailsId");
-					this.OnProcessDetailsIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountDetailUnique", DbType="UniqueIdentifier")]
-		public System.Nullable<System.Guid> AccountDetailUnique
-		{
-			get
-			{
-				return this._AccountDetailUnique;
-			}
-			set
-			{
-				if ((this._AccountDetailUnique != value))
-				{
-					this.OnAccountDetailUniqueChanging(value);
-					this.SendPropertyChanging();
-					this._AccountDetailUnique = value;
-					this.SendPropertyChanged("AccountDetailUnique");
-					this.OnAccountDetailUniqueChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IdConfig", DbType="Int NOT NULL")]
-		public int IdConfig
-		{
-			get
-			{
-				return this._IdConfig;
-			}
-			set
-			{
-				if ((this._IdConfig != value))
-				{
-					this.OnIdConfigChanging(value);
-					this.SendPropertyChanging();
-					this._IdConfig = value;
-					this.SendPropertyChanged("IdConfig");
-					this.OnIdConfigChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CheckOutTime", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CheckOutTime
-		{
-			get
-			{
-				return this._CheckOutTime;
-			}
-			set
-			{
-				if ((this._CheckOutTime != value))
-				{
-					this.OnCheckOutTimeChanging(value);
-					this.SendPropertyChanging();
-					this._CheckOutTime = value;
-					this.SendPropertyChanged("CheckOutTime");
-					this.OnCheckOutTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomStatus", DbType="Int")]
-		public System.Nullable<int> ChatRoomStatus
-		{
-			get
-			{
-				return this._ChatRoomStatus;
-			}
-			set
-			{
-				if ((this._ChatRoomStatus != value))
-				{
-					this.OnChatRoomStatusChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomStatus = value;
-					this.SendPropertyChanged("ChatRoomStatus");
-					this.OnChatRoomStatusChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SessionId", DbType="VarChar(MAX)")]
-		public string SessionId
-		{
-			get
-			{
-				return this._SessionId;
-			}
-			set
-			{
-				if ((this._SessionId != value))
-				{
-					this.OnSessionIdChanging(value);
-					this.SendPropertyChanging();
-					this._SessionId = value;
-					this.SendPropertyChanged("SessionId");
-					this.OnSessionIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordId", DbType="Int")]
-		public System.Nullable<int> RecordId
-		{
-			get
-			{
-				return this._RecordId;
-			}
-			set
-			{
-				if ((this._RecordId != value))
-				{
-					this.OnRecordIdChanging(value);
-					this.SendPropertyChanging();
-					this._RecordId = value;
-					this.SendPropertyChanged("RecordId");
-					this.OnRecordIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSMessage_SMSMessage", Storage="_SMSMessage2", ThisKey="userId", OtherKey="userId", IsUnique=true, IsForeignKey=false)]
-		public SMSMessage SMSMessage2
-		{
-			get
-			{
-				return this._SMSMessage2.Entity;
-			}
-			set
-			{
-				SMSMessage previousValue = this._SMSMessage2.Entity;
-				if (((previousValue != value) 
-							|| (this._SMSMessage2.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SMSMessage2.Entity = null;
-						previousValue.SMSMessage1 = null;
-					}
-					this._SMSMessage2.Entity = value;
-					if ((value != null))
-					{
-						value.SMSMessage1 = this;
-					}
-					this.SendPropertyChanged("SMSMessage2");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="SMSMessage_SMSMessage", Storage="_SMSMessage1", ThisKey="userId", OtherKey="userId", IsForeignKey=true)]
-		public SMSMessage SMSMessage1
-		{
-			get
-			{
-				return this._SMSMessage1.Entity;
-			}
-			set
-			{
-				SMSMessage previousValue = this._SMSMessage1.Entity;
-				if (((previousValue != value) 
-							|| (this._SMSMessage1.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._SMSMessage1.Entity = null;
-						previousValue.SMSMessage2 = null;
-					}
-					this._SMSMessage1.Entity = value;
-					if ((value != null))
-					{
-						value.SMSMessage2 = this;
-						this._userId = value.userId;
-					}
-					else
-					{
-						this._userId = default(int);
-					}
-					this.SendPropertyChanged("SMSMessage1");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="SMS.Phones")]
-	public partial class Phones : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _PhoneId;
-		
-		private string _Phone;
-		
-		private string _PhoneCreated;
-		
-		private string _PhoneName;
-		
-		private EntitySet<SMSConfig> _SMSConfig;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnPhoneIdChanging(int value);
-    partial void OnPhoneIdChanged();
-    partial void OnPhoneChanging(string value);
-    partial void OnPhoneChanged();
-    partial void OnPhoneCreatedChanging(string value);
-    partial void OnPhoneCreatedChanged();
-    partial void OnPhoneNameChanging(string value);
-    partial void OnPhoneNameChanged();
-    #endregion
-		
-		public Phones()
-		{
-			this._SMSConfig = new EntitySet<SMSConfig>(new Action<SMSConfig>(this.attach_SMSConfig), new Action<SMSConfig>(this.detach_SMSConfig));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int PhoneId
-		{
-			get
-			{
-				return this._PhoneId;
-			}
-			set
-			{
-				if ((this._PhoneId != value))
-				{
-					this.OnPhoneIdChanging(value);
-					this.SendPropertyChanging();
-					this._PhoneId = value;
-					this.SendPropertyChanged("PhoneId");
-					this.OnPhoneIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Phone", DbType="VarChar(50)")]
-		public string Phone
-		{
-			get
-			{
-				return this._Phone;
-			}
-			set
-			{
-				if ((this._Phone != value))
-				{
-					this.OnPhoneChanging(value);
-					this.SendPropertyChanging();
-					this._Phone = value;
-					this.SendPropertyChanged("Phone");
-					this.OnPhoneChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneCreated", DbType="VarChar(50)")]
-		public string PhoneCreated
-		{
-			get
-			{
-				return this._PhoneCreated;
-			}
-			set
-			{
-				if ((this._PhoneCreated != value))
-				{
-					this.OnPhoneCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._PhoneCreated = value;
-					this.SendPropertyChanged("PhoneCreated");
-					this.OnPhoneCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PhoneName", DbType="VarChar(MAX)")]
-		public string PhoneName
-		{
-			get
-			{
-				return this._PhoneName;
-			}
-			set
-			{
-				if ((this._PhoneName != value))
-				{
-					this.OnPhoneNameChanging(value);
-					this.SendPropertyChanging();
-					this._PhoneName = value;
-					this.SendPropertyChanged("PhoneName");
-					this.OnPhoneNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Phones_SMSConfig", Storage="_SMSConfig", ThisKey="PhoneId", OtherKey="PhoneId")]
-		public EntitySet<SMSConfig> SMSConfig
-		{
-			get
-			{
-				return this._SMSConfig;
-			}
-			set
-			{
-				this._SMSConfig.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_SMSConfig(SMSConfig entity)
-		{
-			this.SendPropertyChanging();
-			entity.Phones = this;
-		}
-		
-		private void detach_SMSConfig(SMSConfig entity)
-		{
-			this.SendPropertyChanging();
-			entity.Phones = null;
 		}
 	}
 	
@@ -2392,6 +1215,381 @@ namespace EpironChatLogs
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="Chat.ChatRoom")]
+	public partial class ChatRoom : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ChatRoomId;
+		
+		private System.Guid _ChatRoomGuid;
+		
+		private System.DateTime _ChatRoomCreated;
+		
+		private int _ChatRoomStatusId;
+		
+		private int _ChatConfigId;
+		
+		private System.Nullable<int> _RecordId;
+		
+		private System.Nullable<System.DateTime> _ChatRoomModifiedDate;
+		
+		private System.Nullable<int> _ChatRoomTTL;
+		
+		private string _ChatRoomExternalIdentifier;
+		
+		private string _ChatRoomURL;
+		
+		private EntitySet<ChatEmailMessage> _ChatEmailMessage;
+		
+		private EntitySet<ChatMessage> _ChatMessage;
+		
+		private EntityRef<ChatConfig> _ChatConfig;
+		
+    #region Definiciones de métodos de extensibilidad
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnChatRoomIdChanging(int value);
+    partial void OnChatRoomIdChanged();
+    partial void OnChatRoomGuidChanging(System.Guid value);
+    partial void OnChatRoomGuidChanged();
+    partial void OnChatRoomCreatedChanging(System.DateTime value);
+    partial void OnChatRoomCreatedChanged();
+    partial void OnChatRoomStatusIdChanging(int value);
+    partial void OnChatRoomStatusIdChanged();
+    partial void OnChatConfigIdChanging(int value);
+    partial void OnChatConfigIdChanged();
+    partial void OnRecordIdChanging(System.Nullable<int> value);
+    partial void OnRecordIdChanged();
+    partial void OnChatRoomModifiedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnChatRoomModifiedDateChanged();
+    partial void OnChatRoomTTLChanging(System.Nullable<int> value);
+    partial void OnChatRoomTTLChanged();
+    partial void OnChatRoomExternalIdentifierChanging(string value);
+    partial void OnChatRoomExternalIdentifierChanged();
+    partial void OnChatRoomURLChanging(string value);
+    partial void OnChatRoomURLChanged();
+    #endregion
+		
+		public ChatRoom()
+		{
+			this._ChatEmailMessage = new EntitySet<ChatEmailMessage>(new Action<ChatEmailMessage>(this.attach_ChatEmailMessage), new Action<ChatEmailMessage>(this.detach_ChatEmailMessage));
+			this._ChatMessage = new EntitySet<ChatMessage>(new Action<ChatMessage>(this.attach_ChatMessage), new Action<ChatMessage>(this.detach_ChatMessage));
+			this._ChatConfig = default(EntityRef<ChatConfig>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ChatRoomId
+		{
+			get
+			{
+				return this._ChatRoomId;
+			}
+			set
+			{
+				if ((this._ChatRoomId != value))
+				{
+					this.OnChatRoomIdChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomId = value;
+					this.SendPropertyChanged("ChatRoomId");
+					this.OnChatRoomIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomGuid", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid ChatRoomGuid
+		{
+			get
+			{
+				return this._ChatRoomGuid;
+			}
+			set
+			{
+				if ((this._ChatRoomGuid != value))
+				{
+					this.OnChatRoomGuidChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomGuid = value;
+					this.SendPropertyChanged("ChatRoomGuid");
+					this.OnChatRoomGuidChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomCreated", DbType="DateTime NOT NULL")]
+		public System.DateTime ChatRoomCreated
+		{
+			get
+			{
+				return this._ChatRoomCreated;
+			}
+			set
+			{
+				if ((this._ChatRoomCreated != value))
+				{
+					this.OnChatRoomCreatedChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomCreated = value;
+					this.SendPropertyChanged("ChatRoomCreated");
+					this.OnChatRoomCreatedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomStatusId", DbType="Int NOT NULL")]
+		public int ChatRoomStatusId
+		{
+			get
+			{
+				return this._ChatRoomStatusId;
+			}
+			set
+			{
+				if ((this._ChatRoomStatusId != value))
+				{
+					this.OnChatRoomStatusIdChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomStatusId = value;
+					this.SendPropertyChanged("ChatRoomStatusId");
+					this.OnChatRoomStatusIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatConfigId", DbType="Int NOT NULL")]
+		public int ChatConfigId
+		{
+			get
+			{
+				return this._ChatConfigId;
+			}
+			set
+			{
+				if ((this._ChatConfigId != value))
+				{
+					if (this._ChatConfig.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnChatConfigIdChanging(value);
+					this.SendPropertyChanging();
+					this._ChatConfigId = value;
+					this.SendPropertyChanged("ChatConfigId");
+					this.OnChatConfigIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordId", DbType="Int")]
+		public System.Nullable<int> RecordId
+		{
+			get
+			{
+				return this._RecordId;
+			}
+			set
+			{
+				if ((this._RecordId != value))
+				{
+					this.OnRecordIdChanging(value);
+					this.SendPropertyChanging();
+					this._RecordId = value;
+					this.SendPropertyChanged("RecordId");
+					this.OnRecordIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomModifiedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ChatRoomModifiedDate
+		{
+			get
+			{
+				return this._ChatRoomModifiedDate;
+			}
+			set
+			{
+				if ((this._ChatRoomModifiedDate != value))
+				{
+					this.OnChatRoomModifiedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomModifiedDate = value;
+					this.SendPropertyChanged("ChatRoomModifiedDate");
+					this.OnChatRoomModifiedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomTTL", DbType="Int")]
+		public System.Nullable<int> ChatRoomTTL
+		{
+			get
+			{
+				return this._ChatRoomTTL;
+			}
+			set
+			{
+				if ((this._ChatRoomTTL != value))
+				{
+					this.OnChatRoomTTLChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomTTL = value;
+					this.SendPropertyChanged("ChatRoomTTL");
+					this.OnChatRoomTTLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomExternalIdentifier", DbType="NVarChar(MAX)")]
+		public string ChatRoomExternalIdentifier
+		{
+			get
+			{
+				return this._ChatRoomExternalIdentifier;
+			}
+			set
+			{
+				if ((this._ChatRoomExternalIdentifier != value))
+				{
+					this.OnChatRoomExternalIdentifierChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomExternalIdentifier = value;
+					this.SendPropertyChanged("ChatRoomExternalIdentifier");
+					this.OnChatRoomExternalIdentifierChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomURL", DbType="NVarChar(MAX)")]
+		public string ChatRoomURL
+		{
+			get
+			{
+				return this._ChatRoomURL;
+			}
+			set
+			{
+				if ((this._ChatRoomURL != value))
+				{
+					this.OnChatRoomURLChanging(value);
+					this.SendPropertyChanging();
+					this._ChatRoomURL = value;
+					this.SendPropertyChanged("ChatRoomURL");
+					this.OnChatRoomURLChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChatRoom_ChatEmailMessage", Storage="_ChatEmailMessage", ThisKey="ChatRoomId", OtherKey="ChatRoomId")]
+		public EntitySet<ChatEmailMessage> ChatEmailMessage
+		{
+			get
+			{
+				return this._ChatEmailMessage;
+			}
+			set
+			{
+				this._ChatEmailMessage.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChatRoom_ChatMessage", Storage="_ChatMessage", ThisKey="ChatRoomId", OtherKey="ChatRoomId")]
+		public EntitySet<ChatMessage> ChatMessage
+		{
+			get
+			{
+				return this._ChatMessage;
+			}
+			set
+			{
+				this._ChatMessage.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChatConfig_ChatRoom", Storage="_ChatConfig", ThisKey="ChatConfigId", OtherKey="ChatConfigId", IsForeignKey=true)]
+		public ChatConfig ChatConfig
+		{
+			get
+			{
+				return this._ChatConfig.Entity;
+			}
+			set
+			{
+				ChatConfig previousValue = this._ChatConfig.Entity;
+				if (((previousValue != value) 
+							|| (this._ChatConfig.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ChatConfig.Entity = null;
+						previousValue.ChatRoom.Remove(this);
+					}
+					this._ChatConfig.Entity = value;
+					if ((value != null))
+					{
+						value.ChatRoom.Add(this);
+						this._ChatConfigId = value.ChatConfigId;
+					}
+					else
+					{
+						this._ChatConfigId = default(int);
+					}
+					this.SendPropertyChanged("ChatConfig");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_ChatEmailMessage(ChatEmailMessage entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChatRoom = this;
+		}
+		
+		private void detach_ChatEmailMessage(ChatEmailMessage entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChatRoom = null;
+		}
+		
+		private void attach_ChatMessage(ChatMessage entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChatRoom = this;
+		}
+		
+		private void detach_ChatMessage(ChatMessage entity)
+		{
+			this.SendPropertyChanging();
+			entity.ChatRoom = null;
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="Chat.ChatMessage")]
 	public partial class ChatMessage : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -2629,333 +1827,6 @@ namespace EpironChatLogs
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="Chat.ChatRoom")]
-	public partial class ChatRoom : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ChatRoomId;
-		
-		private System.Guid _ChatRoomGuid;
-		
-		private System.DateTime _ChatRoomCreated;
-		
-		private int _ChatRoomStatusId;
-		
-		private int _ChatConfigId;
-		
-		private System.Nullable<int> _RecordId;
-		
-		private System.Nullable<System.DateTime> _ChatRoomModifiedDate;
-		
-		private System.Nullable<int> _ChatRoomTTL;
-		
-		private EntitySet<ChatEmailMessage> _ChatEmailMessage;
-		
-		private EntitySet<ChatMessage> _ChatMessage;
-		
-		private EntityRef<ChatConfig> _ChatConfig;
-		
-    #region Definiciones de métodos de extensibilidad
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnChatRoomIdChanging(int value);
-    partial void OnChatRoomIdChanged();
-    partial void OnChatRoomGuidChanging(System.Guid value);
-    partial void OnChatRoomGuidChanged();
-    partial void OnChatRoomCreatedChanging(System.DateTime value);
-    partial void OnChatRoomCreatedChanged();
-    partial void OnChatRoomStatusIdChanging(int value);
-    partial void OnChatRoomStatusIdChanged();
-    partial void OnChatConfigIdChanging(int value);
-    partial void OnChatConfigIdChanged();
-    partial void OnRecordIdChanging(System.Nullable<int> value);
-    partial void OnRecordIdChanged();
-    partial void OnChatRoomModifiedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnChatRoomModifiedDateChanged();
-    partial void OnChatRoomTTLChanging(System.Nullable<int> value);
-    partial void OnChatRoomTTLChanged();
-    #endregion
-		
-		public ChatRoom()
-		{
-			this._ChatEmailMessage = new EntitySet<ChatEmailMessage>(new Action<ChatEmailMessage>(this.attach_ChatEmailMessage), new Action<ChatEmailMessage>(this.detach_ChatEmailMessage));
-			this._ChatMessage = new EntitySet<ChatMessage>(new Action<ChatMessage>(this.attach_ChatMessage), new Action<ChatMessage>(this.detach_ChatMessage));
-			this._ChatConfig = default(EntityRef<ChatConfig>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomId", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int ChatRoomId
-		{
-			get
-			{
-				return this._ChatRoomId;
-			}
-			set
-			{
-				if ((this._ChatRoomId != value))
-				{
-					this.OnChatRoomIdChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomId = value;
-					this.SendPropertyChanged("ChatRoomId");
-					this.OnChatRoomIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomGuid", DbType="UniqueIdentifier NOT NULL")]
-		public System.Guid ChatRoomGuid
-		{
-			get
-			{
-				return this._ChatRoomGuid;
-			}
-			set
-			{
-				if ((this._ChatRoomGuid != value))
-				{
-					this.OnChatRoomGuidChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomGuid = value;
-					this.SendPropertyChanged("ChatRoomGuid");
-					this.OnChatRoomGuidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomCreated", DbType="DateTime NOT NULL")]
-		public System.DateTime ChatRoomCreated
-		{
-			get
-			{
-				return this._ChatRoomCreated;
-			}
-			set
-			{
-				if ((this._ChatRoomCreated != value))
-				{
-					this.OnChatRoomCreatedChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomCreated = value;
-					this.SendPropertyChanged("ChatRoomCreated");
-					this.OnChatRoomCreatedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomStatusId", DbType="Int NOT NULL")]
-		public int ChatRoomStatusId
-		{
-			get
-			{
-				return this._ChatRoomStatusId;
-			}
-			set
-			{
-				if ((this._ChatRoomStatusId != value))
-				{
-					this.OnChatRoomStatusIdChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomStatusId = value;
-					this.SendPropertyChanged("ChatRoomStatusId");
-					this.OnChatRoomStatusIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatConfigId", DbType="Int NOT NULL")]
-		public int ChatConfigId
-		{
-			get
-			{
-				return this._ChatConfigId;
-			}
-			set
-			{
-				if ((this._ChatConfigId != value))
-				{
-					if (this._ChatConfig.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnChatConfigIdChanging(value);
-					this.SendPropertyChanging();
-					this._ChatConfigId = value;
-					this.SendPropertyChanged("ChatConfigId");
-					this.OnChatConfigIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordId", DbType="Int")]
-		public System.Nullable<int> RecordId
-		{
-			get
-			{
-				return this._RecordId;
-			}
-			set
-			{
-				if ((this._RecordId != value))
-				{
-					this.OnRecordIdChanging(value);
-					this.SendPropertyChanging();
-					this._RecordId = value;
-					this.SendPropertyChanged("RecordId");
-					this.OnRecordIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomModifiedDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ChatRoomModifiedDate
-		{
-			get
-			{
-				return this._ChatRoomModifiedDate;
-			}
-			set
-			{
-				if ((this._ChatRoomModifiedDate != value))
-				{
-					this.OnChatRoomModifiedDateChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomModifiedDate = value;
-					this.SendPropertyChanged("ChatRoomModifiedDate");
-					this.OnChatRoomModifiedDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ChatRoomTTL", DbType="Int")]
-		public System.Nullable<int> ChatRoomTTL
-		{
-			get
-			{
-				return this._ChatRoomTTL;
-			}
-			set
-			{
-				if ((this._ChatRoomTTL != value))
-				{
-					this.OnChatRoomTTLChanging(value);
-					this.SendPropertyChanging();
-					this._ChatRoomTTL = value;
-					this.SendPropertyChanged("ChatRoomTTL");
-					this.OnChatRoomTTLChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChatRoom_ChatEmailMessage", Storage="_ChatEmailMessage", ThisKey="ChatRoomId", OtherKey="ChatRoomId")]
-		public EntitySet<ChatEmailMessage> ChatEmailMessage
-		{
-			get
-			{
-				return this._ChatEmailMessage;
-			}
-			set
-			{
-				this._ChatEmailMessage.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChatRoom_ChatMessage", Storage="_ChatMessage", ThisKey="ChatRoomId", OtherKey="ChatRoomId")]
-		public EntitySet<ChatMessage> ChatMessage
-		{
-			get
-			{
-				return this._ChatMessage;
-			}
-			set
-			{
-				this._ChatMessage.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ChatConfig_ChatRoom", Storage="_ChatConfig", ThisKey="ChatConfigId", OtherKey="ChatConfigId", IsForeignKey=true)]
-		public ChatConfig ChatConfig
-		{
-			get
-			{
-				return this._ChatConfig.Entity;
-			}
-			set
-			{
-				ChatConfig previousValue = this._ChatConfig.Entity;
-				if (((previousValue != value) 
-							|| (this._ChatConfig.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._ChatConfig.Entity = null;
-						previousValue.ChatRoom.Remove(this);
-					}
-					this._ChatConfig.Entity = value;
-					if ((value != null))
-					{
-						value.ChatRoom.Add(this);
-						this._ChatConfigId = value.ChatConfigId;
-					}
-					else
-					{
-						this._ChatConfigId = default(int);
-					}
-					this.SendPropertyChanged("ChatConfig");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_ChatEmailMessage(ChatEmailMessage entity)
-		{
-			this.SendPropertyChanging();
-			entity.ChatRoom = this;
-		}
-		
-		private void detach_ChatEmailMessage(ChatEmailMessage entity)
-		{
-			this.SendPropertyChanging();
-			entity.ChatRoom = null;
-		}
-		
-		private void attach_ChatMessage(ChatMessage entity)
-		{
-			this.SendPropertyChanging();
-			entity.ChatRoom = this;
-		}
-		
-		private void detach_ChatMessage(ChatMessage entity)
-		{
-			this.SendPropertyChanging();
-			entity.ChatRoom = null;
 		}
 	}
 }
