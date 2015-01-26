@@ -56,6 +56,7 @@ namespace WebChat.Controllers
                 return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
             }
         }
+
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {

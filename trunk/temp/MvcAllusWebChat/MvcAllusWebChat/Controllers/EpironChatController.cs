@@ -25,22 +25,32 @@ namespace WebChat.Controllers
         }
 
         /// <summary>
-        /// 
+        ///  Respond a llamadas http://localhost:30250/EpironChatTest/chat/?tel=213&url=http://ar-movistar.agentbot.net/messages/?hash=33270-395607-87997_1404245636&case=49396
         /// </summary>
         /// <param name="tel"> Es el parámetro numérico ingresado al comienzo de la charla con Sofia.</param>
-        /// <param name="url">Es el link q nos permite visualizar la primera interacción del cliente con Sofia, previamente a la derivación al chat. Actualmente este URL está permitiendo ver una charla del dia actual, no de días anteriores.  Por ej te paso una de hace un rato para q puedas ver, de hoy: http://ar-movistar.agentbot.net/messages/?hash=86610-897638-98202_1421062641</param>
+        /// <param name="url">Es el link q nos permite visualizar la primera interacción del cliente con Sofia, previamente a la derivación al chat. 
+        /// Actualmente este URL está permitiendo ver una charla del dia actual, no de días anteriores.  
+        /// Por ej te paso una de hace un rato para q puedas ver, de hoy: http://ar-movistar.agentbot.net/messages/?hash=86610-897638-98202_1421062641</param>
         /// <param name="@case">Es un número correlativo q AIVO [dueños de Sofia] nos envía también para q controlemos mejor sus envios y nuestras recepciones. </param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Chat(string phone, string url, string @case)
+        public ActionResult Chat(string tel, string url, string @case)
         {
-            int userId = -1;
             int chatRoomId = -1;
-
+            int userId = -1;
             try
             {
-                EpironChatBC.CreateChatRoom_FromUrl(phone ,url, @case, out chatRoomId, out userId);
-                return View("Chat");
+
+
+                ///TODO: preguntar si ya hay un recodset creado para chatear..
+
+                EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId);
+                ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
+                model.ChatConfigId = 111111;
+                model.UserId = "55";
+                model.RecordId = "1321223411111";
+                model.RoomId = "534";
+                return View("chat", model);
                 //return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
             }
             catch (Exception ex)
@@ -48,6 +58,7 @@ namespace WebChat.Controllers
                 return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
             }
         }
+
         [HttpPost]
         public JsonResult OnlineUsers_Count(ChatRoomCreationModel model)
         {
