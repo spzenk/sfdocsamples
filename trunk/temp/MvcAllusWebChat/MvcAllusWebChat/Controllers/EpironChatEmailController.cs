@@ -22,7 +22,7 @@ namespace WebChat.Controllers
             return View(wSentEmailModel);
         }
 
-        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pchatUserId, int pChatRoom, int pRoomId)
+        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pchatUserId,  int pRoomId)
         {
             try
           {
