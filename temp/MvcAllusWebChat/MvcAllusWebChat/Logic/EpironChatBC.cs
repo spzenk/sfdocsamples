@@ -100,12 +100,12 @@ namespace WebChat.Logic.BC
                 throw new Fwk.Exceptions.FunctionalException("El cliente que ingres esta siendo atendido en este momento");
             }
             else
-            { roomId = ChatRoomDAC.CreateChatRoom(chatConfigBE.ChatConfigId, (int)Common.Enumerations.ChatRoomStatus.Waiting); }
+            { roomId = ChatRoomDAC.CreateChatRoom(chatConfigBE.ChatConfigId, (int)Common.Enumerations.ChatRoomStatus.Waiting, @case); }
 
             //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
             //porque el etl no esta preparado para recibirlo
             //model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-            //EpironChatBC.InsertMessage(roomId, userId, model.InitialMessage, null);
+            EpironChatBC.InsertMessage(roomId, userId, url, null);
         }
         /// <summary>
         /// REaliza la creacion de chatroom nuevo. Adicionalmente verifica si existen chatrooms activos por el usuario y los cierra
@@ -127,7 +127,7 @@ namespace WebChat.Logic.BC
                 throw new Fwk.Exceptions.FunctionalException("El cliente que ingres esta siendo atendido en este momento");
             }
             else
-            { roomId = ChatRoomDAC.CreateChatRoom(chatConfigBE.ChatConfigId, (int)Common.Enumerations.ChatRoomStatus.Waiting); }
+            { roomId = ChatRoomDAC.CreateChatRoom(chatConfigBE.ChatConfigId, (int)Common.Enumerations.ChatRoomStatus.Waiting,String.Empty); }
 
             //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
             //porque el etl no esta preparado para recibirlo
@@ -165,6 +165,13 @@ namespace WebChat.Logic.BC
 
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="chatRoomId"></param>
+        /// <param name="recordId"></param>
+        /// <param name="chatRoomStatus"></param>
+        /// <returns></returns>
         internal static List<Message> RecieveComments(int chatRoomId, int recordId, out Enumerations.ChatRoomStatus chatRoomStatus)
         {
             chatRoomStatus = Enumerations.ChatRoomStatus.Active;

@@ -17,9 +17,10 @@ namespace WebChat.Logic
         /// Crea un chatroom 
         /// </summary>
         /// <param name="chatConfigId"></param>
-        /// <param name="statusId"></param>
+        /// <param name="statusId">Estado </param>
+        /// <param name="chatRoomExternalIdentifier">Parametro @case cuando la generacion del chatroom proviene de  una URL</param>
         /// <returns></returns>
-        internal static int CreateChatRoom(Int32 chatConfigId, Int32 statusId)
+        internal static int CreateChatRoom(Int32 chatConfigId, Int32 statusId, String chatRoomExternalIdentifier)
         {
             Database dataBase = null;
             DbCommand cmd = null;
@@ -33,7 +34,8 @@ namespace WebChat.Logic
                     dataBase.AddOutParameter(cmd, "ChatRoomId", System.Data.DbType.Int32, 4);
                     dataBase.AddInParameter(cmd, "ChatRoomStatusId", System.Data.DbType.Int32, statusId);
                     dataBase.AddInParameter(cmd, "ChatConfigId", System.Data.DbType.Int32, chatConfigId);
-
+                    if (!String.IsNullOrEmpty(chatRoomExternalIdentifier))
+                        dataBase.AddInParameter(cmd, "ChatRoomExternalIdentifier", System.Data.DbType.String, chatRoomExternalIdentifier);
                     dataBase.ExecuteNonQuery(cmd);
                     return (System.Int32)dataBase.GetParameterValue(cmd, "ChatRoomId");
                 }
@@ -48,7 +50,7 @@ namespace WebChat.Logic
         /// 
         /// </summary>
         /// <param name="roomid"></param>
-        /// <param name="status"></param>
+        /// <param name="status">Estado</param>
         /// <param name="recordId">Si es Null no lo envia al SP</param>
         internal static void Update(int chatRoomId, int statusId, int? recordId)
         {
@@ -80,7 +82,11 @@ namespace WebChat.Logic
         }
 
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
         internal static List<ActiveChatRoomBE> RetriveActiveChatRooms(int userId)
         {
 
