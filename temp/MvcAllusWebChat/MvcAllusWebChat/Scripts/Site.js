@@ -352,6 +352,12 @@ function OnFailure(ajaxContext) {
     else
         alertText.find('.error-text').text(ajaxContext.Message);
 }
+
+function OnFailureEmailOption(ajaxContext) {
+    var alertText = $('#alert-text-view');
+    alertText.show('slow');
+   $('#div-send-email-optional').show();
+}
 function OnFailureId(ajaxContext,alertId) {
     var alertText = $('#' + alertId);
     alertText.show('slow');

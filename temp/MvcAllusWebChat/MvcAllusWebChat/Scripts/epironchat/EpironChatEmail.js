@@ -16,7 +16,8 @@ function sendEmail() {
     emailBody = $('#txt-EmailBody').val();
     pGuid = 1;
     pchatUserId = 1;
-    var params = { cellPhone: cellphone, email: email, emailBody: emailBody, toTheClientFlag: true, pGuid: pGuid, pchatUserId: pchatUserId }
+    pRoomId = 1;
+    var params = { cellPhone: cellphone, email: email, emailBody: emailBody, toTheClientFlag: true, pGuid: pGuid, pchatUserId: pchatUserId, pRoomId:pRoomId }
 
     var obj = null;
 

@@ -174,6 +174,7 @@
     <Compile Include="Controllers\EpironChatDragFileController.cs" />
     <Compile Include="Controllers\EpironChatEmailController.cs" />
     <Compile Include="Controllers\EpironChatRelojController.cs" />
+    <Compile Include="Controllers\EpironChatSendChatByEmailController.cs" />
     <Compile Include="Controllers\EpironChatTestController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -761,6 +762,8 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\EpironChatTest\chat.cshtml" />
+    <Content Include="Views\EpironChatSendChatByEmail\Index.cshtml" />
+    <Content Include="Views\EpironChatSendChatByEmail\_CreateChatRoomView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">
