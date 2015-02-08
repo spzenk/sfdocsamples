@@ -52,15 +52,11 @@ namespace WebChat.Controllers
         public JsonResult OnlineUsers_Count(ChatRoomCreationModel model)
         {
             int count = -1;
-            
-
             try
             {
                 ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
                count = EpironChatDAC.OnlineUsers_Count(model.ChatConfigId);
-
-
-                return Json(new { Result = "OK", count = count});
+               return Json(new { Result = "OK", count = count});
             }
             catch (Exception ex)
             {

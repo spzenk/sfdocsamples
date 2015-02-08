@@ -119,6 +119,7 @@ function CreateChatRoom_CallBack(ajaxContext) {
     }
     
     if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
+
         OnFailureEmailOption(ajaxContext);
         setTimeout(function () {
             retryCreateChatRoom();

@@ -6,18 +6,33 @@
     }
 }
 
-
+var _recordId = -1;
 var funcGetRecordId;
 var funcretriveAllMessage;
+var _tel ;
+var _url ;
+var _case;
 
 $(function () {
-
+     _tel = $.urlParam('tel');
+     _url = $.urlParam('url');
+     _case = $.urlParam('case');
+     $('#btnOpenChat').on('click', function () {
+         Chat();
+     });
+    ////Si no hay operadores se reintenta medante llamada ajax directamente
+     if (_opCount == 0)
+     {
+         Chat();
+     }
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();
 
     $('#btnSendMessage').on('click', function () {
         SendMessage();
     });
+    
+   
 
     $('#btnExitChat').on('click', function () {
         clearTimeout(funcretriveAllMessage);
@@ -54,7 +69,6 @@ $(function () {
             //    error: ServiceFailed
             //});
             });
-
     
     $('#btnClose').on('click', function () {
         clearTimeout(funcGetRecordId);
@@ -67,11 +81,64 @@ $(function () {
     });
 
     $('#div_emoticons').html($.emoticons.toString());
-
-    GetRecordId();
+ 
     alert_text_info_container("Conectando con uno de nuestros representantes", true);
 
 });
+
+
+
+function Chat() {
+
+    var obj = {
+        tel: _tel,
+        url: _url,
+        case: _case,
+        isAjaxCall:true,
+        }
+
+    $.ajax({
+        url: "/EpironChat/chat/",
+        type: "GET",
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(obj),
+        success: function (result) {
+           
+
+            Chat_Count_CallBack(result);
+
+        },
+
+        error: ServiceFailed
+    });
+
+}
+
+function Chat_CallBack(ajaxContext) {
+    if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
+        ShowAlertMessage(ajaxContext.Message, 'Error en el servidor', 'error');
+        return;
+    }
+    if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
+        OnFailure(ajaxContext);
+        return;
+    }
+    if (ajaxContext.count == 0) {
+        funcGetRecordId = setTimeout(function () { Chat(); }, 4000);
+        return;
+    }
+    $('#alert-text-view').hide('slow');
+    $('#alert-text-info-container').hide('slow');
+
+
+    Showloading(false);
+    GetRecordId();
+    RetriveAllMessage();
+
+}
+
+
 
 function LeaveChatRoom() {
     var obj = {
@@ -79,7 +146,7 @@ function LeaveChatRoom() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatTest/LeaveChatRoom/",
+        url: "/EpironChat/LeaveChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -109,7 +176,7 @@ function SendMessage() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatTest/SendMessage/",
+        url: "/EpironChat/SendMessage/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -135,19 +202,13 @@ function GetRecordId() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatTest/GetRecordId/",
+        url: "/EpironChat/GetRecordId/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(obj),
         success: function (result) {
-            if (result.Result && result.Result == 'ERROR') {
-                ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
-                return;
-            }
-
             GetrecordId_CallBack(result);
-         
         },
 
         error: ServiceFailed
@@ -158,7 +219,7 @@ function GetRecordId() {
 function GetrecordId_CallBack(ajaxContext) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
-        OnFailure(ajaxContext);
+        ShowAlertMessage(ajaxContext.Message, 'Error en el servidor', 'error');
         return;
     }
     if (ajaxContext.recordId == null) {
@@ -168,7 +229,7 @@ function GetrecordId_CallBack(ajaxContext) {
 
     _recordId = ajaxContext.recordId;
 
-    $('#newModal').modal('hide');
+   
     $("#btnOpenChat").hide('slow');
     $('#alert-text-view').hide('slow');
     $('#alert-text-info-container').hide('slow');
@@ -187,7 +248,7 @@ function RetriveAllMessage() {
     }
 
     $.ajax({
-        url: "/EpironChatTest/RetriveMessages/",
+        url: "/EpironChat/RetriveMessages/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
