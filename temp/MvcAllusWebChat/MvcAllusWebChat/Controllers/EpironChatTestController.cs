@@ -44,10 +44,10 @@ namespace WebChat.Controllers
                 
                 EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId);
                 ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
-                model.ChatConfigId = 111111;
-                model.UserId = "55";
-                model.RecordId = "1321223411111";
-                model.RoomId = "534";
+                model.ChatConfigId = null;
+                model.UserId = userId;
+
+                model.RoomId = chatRoomId;
                 return View("chat",model);
                 //return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
             }

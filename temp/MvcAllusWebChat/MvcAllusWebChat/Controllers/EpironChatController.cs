@@ -34,24 +34,31 @@ namespace WebChat.Controllers
         /// <param name="@case">Es un número correlativo q AIVO [dueños de Sofia] nos envía también para q controlemos mejor sus envios y nuestras recepciones. </param>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult Chat(string tel, string url, string @case)
+        public ActionResult Chat(string tel, string url, string @case, Boolean? isAjaxCall)
         {
             int chatRoomId = -1;
             int userId = -1;
+            ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
             try
             {
+                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
+                model.OperatrCount = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
 
-
+                if (model.OperatrCount>0)
+                    EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId);
                 ///TODO: preguntar si ya hay un recodset creado para chatear..
 
-                EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId);
-                ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
-                model.ChatConfigId = 111111;
-                model.UserId = "55";
-                model.RecordId = "1321223411111";
-                model.RoomId = "534";
+                
+                model.ChatConfigId = chatConfigBE.ChatConfigGuid;
+                model.UserId = userId;
+                model.RoomId = chatRoomId;
+
+              
+                if (isAjaxCall.HasValue )
+                    return Json(new { Result = "OK", userId = userId, roomId = chatRoomId, count = model.OperatrCount }, JsonRequestBehavior.AllowGet);
+
+
                 return View("chat", model);
-                //return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
             }
             catch (Exception ex)
             {
@@ -59,25 +66,8 @@ namespace WebChat.Controllers
             }
         }
 
-        [HttpPost]
-        public JsonResult OnlineUsers_Count(ChatRoomCreationModel model)
-        {
-            int count = -1;
-            
+ 
 
-            try
-            {
-                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
-               count = EpironChatDAC.OnlineUsers_Count(model.ChatConfigId);
-
-
-                return Json(new { Result = "OK", count = count});
-            }
-            catch (Exception ex)
-            {
-                return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
-            }
-        }
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {

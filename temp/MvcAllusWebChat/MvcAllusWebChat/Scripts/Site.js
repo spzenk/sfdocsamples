@@ -306,11 +306,13 @@ function Set_alert_text(message) {
     alertText.show('slow');
     alertText.find('.error-text').text(message);
 }
+
 function Set_alert_text_info(message) {
     var alertText = $('#alert-text-view-info');
     alertText.show('slow');
     alertText.find('.info-text').text(message);
 }
+
 ///messagetype error,warning,info,help
 function ShowAlertMessage(text, title, mesagetype, smalltitle) {
     if (!smalltitle)
