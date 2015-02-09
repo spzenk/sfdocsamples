@@ -159,7 +159,7 @@ function LeaveChatRoom() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatTest/LeaveChatRoom/",
+        url: "/EpironChat/LeaveChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -189,7 +189,7 @@ function SendMessage() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatTest/SendMessage/",
+        url: "/EpironChat/SendMessage/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -215,7 +215,7 @@ function GetRecordId() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatTest/GetRecordId/",
+        url: "/EpironChat/GetRecordId/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -238,7 +238,7 @@ function GetRecordId() {
 function GetrecordId_CallBack(ajaxContext) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
-        OnFailure(ajaxContext);
+        ShowAlertMessage(ajaxContext.Message, 'Error en el servidor', 'error');
         return;
     }
     if (ajaxContext.recordId == null) {

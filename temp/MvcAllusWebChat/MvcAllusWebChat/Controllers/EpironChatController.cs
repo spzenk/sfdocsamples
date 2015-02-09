@@ -16,11 +16,23 @@ namespace WebChat.Controllers
 {
     public class EpironChatController : Controller
     {
-        //
-        // GET: /Rep/
+   
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
+           var chatConfigList=  ChatConfigDAC.RetriveAll();
 
+            List<SelectListItem> li = new List<SelectListItem>();
+            
+            foreach (var chatConfig in chatConfigList)
+            {
+                li.Add(new SelectListItem { Text = chatConfig.ChatConfigName, Value = chatConfig.ChatConfigGuid.ToString() });
+            }
+            ViewData["ChatConfigList"] = li;
             return View();
         }
 
@@ -76,8 +88,8 @@ namespace WebChat.Controllers
             int count = 0;
             try
             {
-                //ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
-                //count = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
+                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
+                count = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
                 
                 if (count == 0)
                 {

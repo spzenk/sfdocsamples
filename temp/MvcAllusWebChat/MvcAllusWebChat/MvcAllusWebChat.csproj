@@ -771,6 +771,9 @@
     <Content Include="Views\EpironChat\_CreateChatRoomViewForm.cshtml" />
     <Content Include="Views\EpironChat\_EmailFormView.cshtml" />
     <Content Include="Views\EpironChatSendChatByEmail\_EmailFormView.cshtml" />
+    <Content Include="Views\EpironChatTest\_CreateChatRoomViewForm.cshtml" />
+    <Content Include="Views\EpironChatTest\_info.cshtml" />
+    <Content Include="Views\EpironChatTest\_EmailFormView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">

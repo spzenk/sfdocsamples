@@ -17,14 +17,7 @@ $(function () {
      _tel = $.urlParam('tel');
      _url = $.urlParam('url');
      _case = $.urlParam('case');
-     $('#btnOpenChat').on('click', function () {
-         Chat();
-     });
-    ////Si no hay operadores se reintenta medante llamada ajax directamente
-     if (_opCount == 0)
-     {
-         Chat();
-     }
+
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();
 
@@ -70,6 +63,7 @@ $(function () {
             //});
             });
     
+    
     $('#btnClose').on('click', function () {
         clearTimeout(funcGetRecordId);
     });
@@ -82,31 +76,33 @@ $(function () {
 
     $('#div_emoticons').html($.emoticons.toString());
  
+   
     alert_text_info_container("Conectando con uno de nuestros representantes", true);
+
+
+    set_debug();
 
 });
 
 
-
 function Chat() {
 
-    var obj = {
-        tel: _tel,
-        url: _url,
-        case: _case,
-        isAjaxCall:true,
-        }
+   
 
     $.ajax({
         url: "/EpironChat/chat/",
         type: "GET",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
-        data: JSON.stringify(obj),
+        data: ({
+            tel: _tel,
+            url: _url,
+            case: _case,
+            isAjaxCall: true,
+        }),
         success: function (result) {
            
-
-            Chat_Count_CallBack(result);
+            Chat_CallBack(result);
 
         },
 
@@ -120,25 +116,36 @@ function Chat_CallBack(ajaxContext) {
         ShowAlertMessage(ajaxContext.Message, 'Error en el servidor', 'error');
         return;
     }
-    if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
-        OnFailure(ajaxContext);
-        return;
-    }
+    //if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
+    //    OnFailure(ajaxContext);
+    //    return;
+    //}
+
+    //reintenta crear chat
     if (ajaxContext.count == 0) {
         funcGetRecordId = setTimeout(function () { Chat(); }, 4000);
         return;
     }
-    $('#alert-text-view').hide('slow');
+
+    _userId = ajaxContext.userId;
+    _roomId = ajaxContext.roomId;
+    _opCount = ajaxContext.count;
+
     $('#alert-text-info-container').hide('slow');
 
-
-    Showloading(false);
+    set_debug();
     GetRecordId();
     RetriveAllMessage();
 
 }
 
+function set_debug() {
 
+    $('#userId').text(_userId);
+    $('#roomId').text(_roomId);
+    $('#count').text(_opCount);
+    $('#recordId').text(_recordId);
+}
 
 function LeaveChatRoom() {
     var obj = {
@@ -146,7 +153,7 @@ function LeaveChatRoom() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChat/LeaveChatRoom/",
+        url: "/EpironChatTest/LeaveChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -176,7 +183,7 @@ function SendMessage() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChat/SendMessage/",
+        url: "/EpironChatTest/SendMessage/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -202,12 +209,17 @@ function GetRecordId() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChat/GetRecordId/",
+        url: "/EpironChatTest/GetRecordId/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(obj),
         success: function (result) {
+            if (result.Result && result.Result == 'ERROR') {
+                ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                return;
+            }
+
             GetrecordId_CallBack(result);
         },
 
@@ -229,7 +241,7 @@ function GetrecordId_CallBack(ajaxContext) {
 
     _recordId = ajaxContext.recordId;
 
-   
+    $('#newModal').modal('hide');
     $("#btnOpenChat").hide('slow');
     $('#alert-text-view').hide('slow');
     $('#alert-text-info-container').hide('slow');
