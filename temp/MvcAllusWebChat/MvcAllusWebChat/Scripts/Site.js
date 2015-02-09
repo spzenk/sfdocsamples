@@ -306,6 +306,10 @@ function Set_alert_text(message) {
     alertText.show('slow');
     alertText.find('.error-text').text(message);
 }
+function Set_alert_link(link) {
+    var alertText = $('#alert-text-view');
+    alertText.find('#link').append(link);
+}
 
 function Set_alert_text_info(message) {
     var alertText = $('#alert-text-view-info');
