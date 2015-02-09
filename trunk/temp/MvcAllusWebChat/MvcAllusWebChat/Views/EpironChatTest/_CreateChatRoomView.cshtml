@@ -1,11 +1,11 @@
 ﻿@model WebChat.Common.Models.ChatRoomCreationModel
 
-@using (Ajax.BeginForm("CreateChatRoom", "EpironChatTest", new AjaxOptions()
+@using (Ajax.BeginForm("CreateChatRoom", "EpironChat", new AjaxOptions()
             {
                 LoadingElementId = "",
                 OnSuccess = "CreateChatRoom_CallBack",
                 OnBegin = "CreateChatRoomBefore_CallBack",
-                LoadingElementDuration=12,
+                LoadingElementDuration = 12,
                 OnFailure = "OnFailure"
             }
             ))
@@ -15,7 +15,7 @@
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 
-                <h4 class="modal-title">Crear nuevo chat test</h4>
+                <h4 class="modal-title">Crear nuevo chat</h4>
 
             </div>
 
@@ -40,7 +40,7 @@
                             @Html.ValidationSummary(true)
                         </div>
                         @Html.HiddenFor(model => model.ChatRoomID)
-                        
+
                         <label>Nombre</label>
                         <div class="input-group">
                             <span class="input-group-addon"></span>
@@ -54,27 +54,28 @@
                             @Html.ValidationMessageFor(model => model.Phone)
                         </div>
                         @*<label>Email</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"></span>
-                            @Html.TextBoxFor(model => model.ClientEmail, new { @class = "form-control", @placeholder = "Apellido", @style = "width:300px;" })
-                            @Html.ValidationMessageFor(model => model.ClientEmail)
-                        </div>*@
+                            <div class="input-group">
+                                <span class="input-group-addon"></span>
+                                @Html.TextBoxFor(model => model.ClientEmail, new { @class = "form-control", @placeholder = "Apellido", @style = "width:300px;" })
+                                @Html.ValidationMessageFor(model => model.ClientEmail)
+                            </div>*@
                         <br />
 
                         <label>Consulta</label>
                         <div class="input-group">
                             <span class="input-group-addon"></span>
                             @Html.TextAreaFor(model => model.InitialMessage, new { @class = "form-control", @placeholder = "Ingrese su consulta", @rows = 5, @cols = 80 })
-                      
+
                         </div>
                     </div>
                 </div>
             </div>
 
-        
+
             <div id="alert-text-view" class="alert alert-warning" style="display: none; margin: 5px">
                 <p><strong>Error en el servidor</strong> </p>
                 <p class="error-text"></p>
+                <div id="link"></div>
             </div>
 
             <div class="modal-footer">

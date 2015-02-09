@@ -77,6 +77,50 @@ namespace WebChat.Logic.DAC
             }
 
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static List<ChatConfigBE> RetriveAll()
+        {
+            Database dataBase = null;
+            DbCommand cmd = null;
+
+
+            ChatConfigList wChatConfigList = new ChatConfigList();
+            ChatConfigBE wChatConfig = null;
+
+
+            try
+            {
+                dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+                using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatConfig_s]"))
+                {
+
+                    using (IDataReader reader = dataBase.ExecuteReader(cmd))
+                    {
+                        while (reader.Read())
+                        {
+                            wChatConfig = new ChatConfigBE();
+                            wChatConfig.ChatConfigId = Convert.ToInt32(reader["ChatConfigId"]);
+                            wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
+                            wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
+                            wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
+                            wChatConfigList.Add(wChatConfig);
+
+                        }
+                    }
+                }
+                return wChatConfigList;
+
+            }
+            catch (Exception ex)
+            {
+                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            }
+
+        }
     }
 }
         
