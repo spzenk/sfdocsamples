@@ -73,7 +73,7 @@ namespace WebChat.Controllers
         {
             int userId = -1;
             int chatRoomId = -1;
-            int count = 11;
+            int count = 0;
             try
             {
                 //ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
