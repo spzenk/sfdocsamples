@@ -73,11 +73,11 @@ namespace WebChat.Controllers
         {
             int userId = -1;
             int chatRoomId = -1;
-            int count = -1;
+            int count = 11;
             try
             {
-                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
-                count = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
+                //ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
+                //count = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
                 
                 if (count == 0)
                 {

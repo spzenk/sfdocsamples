@@ -12,7 +12,7 @@ var funcGetRecordId;
 var funcretriveAllMessage;
 
 ///0:Primer momento 1:reintentando 2:cancelado
-var retryStatus = 0;
+var show_NO_OPERATOR = 0;
 $(function () {
    
     
@@ -112,23 +112,26 @@ function CreateChatRoom_CallBack(ajaxContext) {
         $('#alert-text-info-container').hide();
         return;
     }
-    if (retryStatus == 1) {
-        ///Si no hay operadores y es la primera vez que pregunta retryStatus=0
-        if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS' && retryStatus == 0) {
 
+
+    ///Si no hay operadores y es la primera vez que pregunta show_NO_OPERATOR=0
+        if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
+            
             Show_NO_OPERATOR();
             setTimeout(function () { retryCreateChatRoom(); }, 10000);
             //$('#alert-text-info-container').hide();
             return;
         }
-    }
+        
     _userId = ajaxContext.phoneId;
     _roomId = _ajaxContext.roomId;
     GetRecordId();
 }
 function Show_NO_OPERATOR() {
-    var msg ="En este momento no hay operadores disponibles. Envíenos su consulta <a href=\"#\" onclick=\"$('#emailForm').modal('show');\" >aquí</a>";
+    var msg ="En este momento no hay operadores disponibles.  ";
     Set_alert_text_info(msg);
+    Set_alert_link("Envíenos su consulta <a href=\"#\" onclick=\"$('#emailForm').modal('show');\" > aquí</a>");
+
 }
 function retryCreateChatRoom() {
     var obj = {
