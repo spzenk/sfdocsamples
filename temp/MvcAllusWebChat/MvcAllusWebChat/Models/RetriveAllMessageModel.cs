@@ -18,8 +18,10 @@ namespace WebChat.Common.Models
         public Int32 RecordId { get; set; }
         public Int32 RoomId { get; set; }
 
-       
 
+
+
+        
     }
      
 

@@ -86,7 +86,7 @@ namespace WebChat.Logic.BC
         /// <param name="model"></param>
         /// <param name="roomId"></param>
         /// <param name="userId"></param>
-        internal static void CreateChatRoom_FromUrl(string phone, string url, string @case, out int roomId, out int userId)
+        internal static void CreateChatRoom_FromUrl(string phone, string url, string @case, out int roomId, out int userId,out int messageId)
         {
             roomId = -1;
 
@@ -105,7 +105,7 @@ namespace WebChat.Logic.BC
             //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
             //porque el etl no esta preparado para recibirlo
             //model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-            EpironChatBC.InsertMessage(roomId, userId, url, null);
+           messageId = EpironChatBC.InsertMessage(roomId, userId, url, null);
         }
         /// <summary>
         /// REaliza la creacion de chatroom nuevo. Adicionalmente verifica si existen chatrooms activos por el usuario y los cierra
@@ -113,10 +113,10 @@ namespace WebChat.Logic.BC
         /// <param name="model"></param>
         /// <param name="roomId"></param>
         /// <param name="userId"></param>
-        internal static void CreateChatRoom(ChatRoomCreationModel model, out int roomId, out int userId)
+        internal static void CreateChatRoom(ChatRoomCreationModel model, out int roomId, out int userId, out int messageId)
         {
             roomId = -1;
-            
+            messageId = -1;
             //Busca el cliente relacionado al telefono
             userId = EpironChatBC.CheckPhoneId(model.Phone, model.ClientName, model.ClientEmail);
 
@@ -132,7 +132,7 @@ namespace WebChat.Logic.BC
             //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
             //porque el etl no esta preparado para recibirlo
             model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-            EpironChatBC.InsertMessage(roomId, userId, model.InitialMessage, null);
+            messageId= EpironChatBC.InsertMessage(roomId, userId, model.InitialMessage, null);
         }
 
         /// <summary>
