@@ -30,10 +30,10 @@ namespace WebChat.Controllers
 
             int userId = -1;
             int chtRoomId = -1;
-            
+            int firstMessageId = -1;
             try
             {
-                EpironChatBC.CreateChatRoom(model, out chtRoomId, out userId);
+                EpironChatBC.CreateChatRoom(model, out chtRoomId, out userId, out firstMessageId);
 
                 //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
                 //porque el etl no esta preparado para recibirlo
@@ -44,7 +44,7 @@ namespace WebChat.Controllers
                 TimeSpan timeDifference = DateTime.Now - serverCreationTime;
                 int differenceInSeconds = (int)timeDifference.TotalSeconds;
 
-                return Json(new { Result = "OK", userId = userId, chtRoomId = chtRoomId });
+                return Json(new { Result = "OK", userId = userId, chtRoomId = chtRoomId, messageId = firstMessageId });
             }
             catch (Exception ex)
             {

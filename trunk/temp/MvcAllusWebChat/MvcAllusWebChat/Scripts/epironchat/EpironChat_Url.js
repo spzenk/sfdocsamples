@@ -7,6 +7,7 @@
 }
 
 var _recordId = -1;
+var _firstMessageId = -1;
 var funcGetRecordId;
 var funcretriveAllMessage;
 var _tel;
@@ -136,6 +137,7 @@ function Chat_CallBack(ajaxContext) {
     _userId = ajaxContext.userId;
     _roomId = ajaxContext.roomId;
     _opCount = ajaxContext.count;
+    _firstMessageId = ajaxContext.messageId;
 
     $('#alert-text-info-container').hide('slow');
 
@@ -212,7 +214,8 @@ function GetRecordId() {
 
     var obj = {
         UserId: _userId,
-        RoomId: _roomId
+        RoomId: _roomId,
+        MessageId: _firstMessageId,
     }
     $.ajax({
         url: "/EpironChat/GetRecordId/",
@@ -263,7 +266,7 @@ function RetriveAllMessage() {
 
     var obj = {
         recordId: _recordId,
-        roomId: _roomId
+        roomId: _roomId,
     }
 
     $.ajax({

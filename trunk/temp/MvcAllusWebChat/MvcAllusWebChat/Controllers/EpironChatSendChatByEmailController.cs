@@ -36,10 +36,10 @@ namespace WebChat.Controllers
         {
             int userId = -1;
             int chatRoomId = -1;
-
+            int messageId = -1;
             try
             {
-                EpironChatBC.CreateChatRoom_FromUrl(phone ,url, @case, out chatRoomId, out userId);
+                EpironChatBC.CreateChatRoom_FromUrl(phone, url, @case, out chatRoomId, out userId, out messageId);
                 return View("Chat");
                 //return Json(new { Result = "OK", userId = userId, chatRoomId = chatRoomId });
             }
@@ -69,6 +69,7 @@ namespace WebChat.Controllers
             int userId = -1;
             int chatRoomId = -1;
             int count = -1;
+            int firstMessageId=-1;
             try
             {
                 ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
@@ -80,8 +81,8 @@ namespace WebChat.Controllers
  
                 }
 
-                EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId);
-                return Json(new { Result = "OK", userId = userId, roomId = chatRoomId });
+                EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId,out firstMessageId);
+                return Json(new { Result = "OK", userId = userId, roomId = chatRoomId, firstMessageId = firstMessageId });
             }
             catch (Exception ex)
             {
@@ -97,7 +98,7 @@ namespace WebChat.Controllers
             List<Message> result = null;
             try
             {
-                result = EpironChatBC.RecieveComments(retriveAllMessage.RoomId, retriveAllMessage.RecordId, out wChatRoomStatus);
+                result = EpironChatBC.RecieveComments(retriveAllMessage.RoomId, retriveAllMessage.RecordId,  out wChatRoomStatus);
 
                 //EpironChatBC.ChatRoom_UpdateTTL(retriveAllMessage.chatRoomId);
 

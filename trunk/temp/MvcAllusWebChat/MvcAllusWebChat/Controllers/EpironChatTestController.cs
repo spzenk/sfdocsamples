@@ -36,13 +36,14 @@ namespace WebChat.Controllers
         {
             int chatRoomId=-1;
             int userId = -1;
+            int messageId = -1;
             try
             {
                 
 
                 ///TODO: preguntar si ya hay un recodset creado para chatear..
                 
-                EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId);
+                EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId,out messageId);
                 ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
                 model.ChatConfigId = null;
                 model.UserId = userId;

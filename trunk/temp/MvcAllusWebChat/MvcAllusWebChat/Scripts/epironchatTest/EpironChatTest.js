@@ -9,10 +9,10 @@
 var _userId = -1;
 var _recordId = -1;
 var funcGetRecordId;
-var funcretriveAllMessage;
+var funcretriveAllMessage;	
+var NO_OPERATOR = 0;//0:Primer momento 1:reintentando 2:cancelado
+var USER_SEND_EMAIL = false // true =  usuario decide enviar email
 var selectedChatConfigId = null;
-///0:Primer momento 1:reintentando 2:cancelado
-var show_NO_OPERATOR = 0;
 $(function () {
    
 
@@ -52,6 +52,8 @@ $(function () {
 });
 
 function LeaveChatRoom() {
+    cleanVariables();
+
     var obj = {
         recordId: _recordId,
         chatRoomId: _roomId
@@ -113,13 +115,19 @@ function CreateChatRoom_CallBack(ajaxContext) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
         OnFailure(ajaxContext);
-        $('#alert-text-info-container').hide();
+        //$('#alert-text-info-container').hide();
         return;
     }
-    ///Si no hay operadores y es la primera vez que pregunta show_NO_OPERATOR=0
+
+
+    ///Si no hay operadores y es la primera vez que pregunta NO_OPERATOR=0
         if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
             
+            if (NO_OPERATOR == 0) {
             Show_NO_OPERATOR();
+                NO_OPERATOR = 1;
+            }
+            if (!USER_SEND_EMAIL)
             setTimeout(function () { retryCreateChatRoom(); }, 10000);
             //$('#alert-text-info-container').hide();
             return;
@@ -127,12 +135,15 @@ function CreateChatRoom_CallBack(ajaxContext) {
         
     _userId = ajaxContext.phoneId;
     _roomId = _ajaxContext.roomId;
+
+    alert_text_info_container("Aguardando por una sala", true);
     GetRecordId();
 }
 function Show_NO_OPERATOR() {
     var msg ="En este momento no hay operadores disponibles.  ";
-    Set_alert_text_info(msg);
-    Set_alert_link("Envíenos su consulta <a href=\"#\" onclick=\"$('#emailForm').modal('show');\" > aquí</a>");
+    var title = "Chat no disponible";
+    Set_alert_text_error(msg, title);
+    Set_alert_error_link("Envíenos su consulta <a href=\"#\" onclick=\"endEmailNoOperator();\" > aquí</a>");
 
 }
 function retryCreateChatRoom() {
@@ -328,4 +339,16 @@ function alert_text_info_container(msg, showImage) {
     $('#alert-text-info-container').show('slow');
     Showloading(showImage);
     Set_alert_text_info(msg);
+}
+
+function endEmailNoOperator() {
+    USER_SEND_EMAIL = true;
+    $('#txt-cellphone').text($('#txt-Phone').text()); //<-- escribo el telefono que usuario ingreso en el primer formulario
+    $('#txt-EmailBody').text($('#txt-InitialMessage').text()); //<-- escribo la consulta que usuario ingreso en el primer formulario
+    $('#emailForm').modal('show');//<-- muestro el formulario
+    $('#newModal').hide();
+}
+function cleanVariables() {
+    //En esta función limpio todas las variables necesarias al cerrar el fomulario
+    NO_OPERATOR = 0; //0:Primer momento 1:reintentando 2:cancelado
 }

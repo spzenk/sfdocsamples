@@ -292,7 +292,7 @@ function Showloading(show) {
     if (show) {
         //$('.loading').html('<img class="ajaxloader" src="@Url.Content("~/img/ajax-loader.gif")"/>');
         $('.ajaxloader').show();
-        $('#alert-text-view').hide('slow');
+        $('#alert-text-view1').hide('slow');
     }
     else {
         $('.ajaxloader').hide();
@@ -300,21 +300,19 @@ function Showloading(show) {
     }
 }
 
-
-function Set_alert_text(message) {
-    var alertText = $('#alert-text-view');
-    alertText.show('slow');
-    alertText.find('.error-text').text(message);
-}
-function Set_alert_link(link) {
-    var alertText = $('#alert-text-view');
-    alertText.find('#link').append(link);
-}
-
 function Set_alert_text_info(message) {
-    var alertText = $('#alert-text-view-info');
-    alertText.show('slow');
-    alertText.find('.info-text').text(message);
+    var content  = $('#alert-text-view-info');
+    content.find(".info-text").text(message);
+}
+
+function Set_alert_error_link(link) {
+    $('#link-email').html(link);
+}
+
+function Set_alert_text_error(message, title) {
+    $('#error-text-message').text(message);
+    $('#alert-text-error-tittle').text(title);
+    $('#alert-text-view1').show('slow');
 }
 
 ///messagetype error,warning,info,help
@@ -350,7 +348,7 @@ function ShowAlertMessage(text, title, mesagetype, smalltitle) {
 }
 
 function OnFailure(ajaxContext) {
-    var alertText = $('#alert-text-view');
+    var alertText = $('#alert-text-view1');
     alertText.show('slow');
 
     if (ajaxContext.responseText)
@@ -360,7 +358,7 @@ function OnFailure(ajaxContext) {
 }
 
 function OnFailureEmailOption(ajaxContext) {
-    var alertText = $('#alert-text-view');
+    var alertText = $('#alert-text-view1');
     alertText.show('slow');
    $('#div-send-email-optional').show();
 }

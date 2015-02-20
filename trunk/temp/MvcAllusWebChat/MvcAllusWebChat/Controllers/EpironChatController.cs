@@ -50,6 +50,7 @@ namespace WebChat.Controllers
         {
             int chatRoomId = -1;
             int userId = -1;
+            int messageId = -1;
             ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
             try
             {
@@ -57,7 +58,7 @@ namespace WebChat.Controllers
                 model.OperatrCount = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
 
                 if (model.OperatrCount>0)
-                    EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId);
+                    EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId, out messageId);
                 ///TODO: preguntar si ya hay un recodset creado para chatear..
 
                 
@@ -84,6 +85,7 @@ namespace WebChat.Controllers
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {
             int userId = -1;
+            int messageId = -1;
             int chatRoomId = -1;
             int count = 0;
             try
@@ -97,8 +99,8 @@ namespace WebChat.Controllers
  
                 }
 
-                EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId);
-                return Json(new { Result = "OK", userId = userId, roomId = chatRoomId });
+                EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId,out messageId);
+                return Json(new { Result = "OK", userId = userId, roomId = chatRoomId,messageId=messageId });
             }
             catch (Exception ex)
             {
@@ -114,7 +116,7 @@ namespace WebChat.Controllers
             List<Message> result = null;
             try
             {
-                result = EpironChatBC.RecieveComments(retriveAllMessage.RoomId, retriveAllMessage.RecordId, out wChatRoomStatus);
+                result = EpironChatBC.RecieveComments(retriveAllMessage.RoomId, retriveAllMessage.RecordId,out wChatRoomStatus);
 
                 //EpironChatBC.ChatRoom_UpdateTTL(retriveAllMessage.chatRoomId);
 
@@ -127,7 +129,7 @@ namespace WebChat.Controllers
         }
 
         [HttpPost]
-        public JsonResult GetRecordId(int userId,int roomId)
+        public JsonResult GetRecordId(int userId, int roomId, int messageId)
         {
             int? recordId = -1;
             int? chatRoomStatusFromEtl = null;

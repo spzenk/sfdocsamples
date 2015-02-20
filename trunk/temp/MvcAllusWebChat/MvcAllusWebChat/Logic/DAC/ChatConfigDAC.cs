@@ -60,6 +60,7 @@ namespace WebChat.Logic.DAC
                         {
                             wChatConfig = new ChatConfigBE();
                             wChatConfig.ChatConfigId = Convert.ToInt32(reader["ChatConfigId"]);
+                           
                             wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
                             wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
                             wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
@@ -68,6 +69,8 @@ namespace WebChat.Logic.DAC
                         }
                     }
                 }
+                if (chatConfigGuid.HasValue)
+                    wChatConfig.ChatConfigGuid = chatConfigGuid.Value;
                 return wChatConfig;
 
             }
@@ -104,6 +107,8 @@ namespace WebChat.Logic.DAC
                         {
                             wChatConfig = new ChatConfigBE();
                             wChatConfig.ChatConfigId = Convert.ToInt32(reader["ChatConfigId"]);
+
+                            wChatConfig.ChatConfigGuid = Guid.Parse(reader["ChatConfigGuid"].ToString());
                             wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
                             wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
                             wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
@@ -126,3 +131,4 @@ namespace WebChat.Logic.DAC
         
  
     
+

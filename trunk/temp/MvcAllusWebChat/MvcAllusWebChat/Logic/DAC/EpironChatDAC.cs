@@ -29,7 +29,7 @@ namespace WebChat.Logic
         /// <param name="puserId"></param>
         /// <param name="chatRoomStatusFromEtl">Estado del recodr id </param>
         /// <returns></returns>
-        internal static int? GetRecordId(int puserId, out int? chatRoomStatusFromEtl)
+        internal static int? GetRecordId(int messageId, out int? chatRoomStatusFromEtl)
         {
             chatRoomStatusFromEtl = null;
             Database database = null;
@@ -37,9 +37,9 @@ namespace WebChat.Logic
             try
             {
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
-                using (DbCommand cmd = database.GetStoredProcCommand("[SMS].[Record_s_bySourceuserId]"))
+                using (DbCommand cmd = database.GetStoredProcCommand("[chat].[Record_s_bySourceChatMessageId]"))
                 {
-                    database.AddInParameter(cmd, "userId", DbType.Int32, puserId);
+                    database.AddInParameter(cmd, "ChatMessageId", DbType.Int32, messageId);
                     using (IDataReader reader = database.ExecuteReader(cmd))
                     {
                         while (reader.Read())
@@ -80,7 +80,7 @@ namespace WebChat.Logic
             {
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
 
-                using (DbCommand cmd = database.GetStoredProcCommand("[SMS].[RecordCommentChat_s_ByRecordId]"))
+                using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[RecordCommentChat_s_ByRecordId]"))
                 {
                     database.AddInParameter(cmd, "RecordId", DbType.Int32, recordId);
 
