@@ -1,0 +1,141 @@
+﻿@model WebChat.Common.Models.SendMessageModel
+
+@{
+        //ViewBag.Title = "Gestion de aplicaciones";
+        //Layout = "~/Views/Shared/_Layout.cshtml";
+    
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modernizr")
+  
+
+}
+
+<script>
+_userId = @Html.Raw(Json.Encode(Model.UserId));
+ _recordId = @Html.Raw(Json.Encode(Model.RecordId));
+@* _firstMessageId = @Html.Raw(Json.Encode(Model.fi));*@
+    _roomId = @Html.Raw(Json.Encode(Model.RoomId));
+    </script>
+ <script src="~/Scripts/epironchatversion/epironchatversion.js"></script>
+<style>
+    .bubbleFriend
+    {
+        position: relative;
+        width: 60%;
+        height: 35px;
+        padding: 2px;
+        background: #FFF;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        left: 15px;
+        clear: both;
+        margin: 2px 0px 2px 0px;
+        min-height: 35px;
+    }
+
+        .bubbleFriend:after
+        {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 5px 15px 5px 0;
+            border-color: transparent #FFF;
+            display: block;
+            width: 0;
+            z-index: 1;
+            left: -14px;
+            top: 6px;
+        }
+
+
+    .bubbleOwn
+    {
+        position: relative;
+        width: 60%;
+        height: 35px;
+        padding: 2px;
+        background: #F5F6CE;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        float: right;
+        margin-right: 15px;
+        clear: both;
+        margin: 2px 15px 2px 0px;
+        min-height: 35px;
+    }
+
+        .bubbleOwn:after
+        {
+            content: '';
+            position: absolute;
+            border-style: solid;
+            border-width: 5px 0px 5px 15px;
+            border-color: transparent #F5F6CE;
+            display: block;
+            width: 0;
+            z-index: 1;
+            right: -14px;
+            top: 6px;
+        }
+
+    .panel-body
+    {
+      background-color: #31B7CB;
+    }
+</style>
+
+ 
+        <div id="ChatDialog" style="width: 100%; position: relative; border-bottom: 1px solid #BEBDBD;
+border-radius: 8px 8px 0px 0px;">
+            <div id="div-title-chat" style="background-color: #3C6;
+border-radius: 6px 6px 0px 0px;
+height: 4%;
+color: white;
+padding: 1%;
+                position: relative;
+                z-index:2">
+                Bienvenido @Html.LabelForModel(Model.UserName)! Gracias por comunicarte con Movistar
+            </div>
+
+                <div id="txtMessageList" style="height: 70%; width: 75%; background-color: #31B7CB; font-size: 12px; overflow: auto; float:left;">
+                </div>
+                <div  style="height: 70%; width: 25%; background-color: #06688C; font-size: 12px; overflow: hidden; display:inline-block;">
+                   <img src="~/img/baner_1.png" style="width: 80%; height: 40%; margin: 5% 10% 5%;" />
+                   <img src="~/img/banner_2.png" style="width: 80%; height: 40%; margin: 5% 10% 5%;"  />
+                </div>
+               
+
+             <textarea style="height: 10%; width: 70%; background-color: #31B7CB; font-size: 12px;  float:left; resize: none;">
+             </textarea>
+            <div style="height: 10%; width: 5%; background-color: #31B7CB; font-size: 12px;  float:left; ">
+                 <img src="~/img/cam1.png" style="margin: 0% 25%; width: 50%; cursor:pointer" />
+                 <img src="~/img/emo_smile.png" style="margin: 10% 25%; width: 50%; cursor:pointer" />
+            </div>
+                <div  style="height: 10%; width:  25%; background-color: #06688C; font-size: 12px; float: right;">
+                   <button type="button" id="btn-End"  style="cursor: pointer; border: none;background-color: #11F547; width: 55%; height: 44%; color: #FFF; font-size: 24px; margin: 2.25% 22.75% 3.25% 22.75%;">Finalizar</button>
+                </div>
+
+            <div class="btn-group" role="group">
+               
+            </div>
+
+
+            <div id="alert-text-view" class="alert alert-warning" style="display: none; margin: 5px">
+                <p><strong>Error en el servidor</strong> </p>
+                <p class="error-text"></p>
+            </div>
+           
+        </div>
+
+            <input type="button" id="btn-add-own" value="add owm comment" />
+            <input type="button" id="btn-add-external" value="add external comment" />
+
+       @Html.Partial("_EndChat")
+
+  
+

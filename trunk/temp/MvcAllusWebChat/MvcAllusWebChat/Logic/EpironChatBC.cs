@@ -45,7 +45,7 @@ namespace WebChat.Logic.BC
         {
             bool needUpdate = false;
             //String id = String.Concat(clientName, "$", phone);
-            ChatUserBE userBE = ChatUserDAC.GetByParams(null, phoneNumber);
+            ChatUserBE userBE = ChatUserDAC.GetByParams(phoneNumber);
 
 
             if (userBE != null)

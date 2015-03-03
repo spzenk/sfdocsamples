@@ -101,7 +101,7 @@ namespace WebChat.Logic.DAC
                     dataBase.AddInParameter(cmd, "ChatUserEmail", System.Data.DbType.String, pChatUser.ChatUserEmail);
 
 
-                    dataBase.AddInParameter(cmd, "ChatUserModifiedDate", System.Data.DbType.DateTime, pChatUser.ChatUserModifiedDate);
+                    //dataBase.AddInParameter(cmd, "ChatUserModifiedDate", System.Data.DbType.DateTime, pChatUser.ChatUserModifiedDate);
 
                     dataBase.ExecuteNonQuery(cmd);
                 }
@@ -123,7 +123,7 @@ namespace WebChat.Logic.DAC
         /// </summary>
         /// <param name="pChatConfigGuid">id configuración de la cuenta</param>
         /// <returns></returns>
-        public static ChatUserBE GetByParams(int? chatUserId, String chatUserPhone)
+        public static ChatUserBE GetByParams(String chatUserPhone)
         {
             ChatUserBE wChatUser = null;
             Database database = null;
@@ -133,8 +133,6 @@ namespace WebChat.Logic.DAC
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[ChatUser_g]"))
                 {
-                    if (chatUserId.HasValue)
-                        database.AddInParameter(cmd, "ChatUserId", DbType.Int32, chatUserId);
                     if (!String.IsNullOrEmpty(chatUserPhone))
                         database.AddInParameter(cmd, "ChatUserPhone", DbType.String, chatUserPhone);
 

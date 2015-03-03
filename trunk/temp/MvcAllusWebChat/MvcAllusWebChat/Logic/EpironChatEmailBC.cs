@@ -16,7 +16,7 @@ namespace WebChat.Logic.BC
 
         public static ChatUserBE GetChatUserByParams(int? pChatUserId, string pClientPhone)
         {
-            return ChatUserDAC.GetByParams(pChatUserId, pClientPhone);
+            return ChatUserDAC.GetByParams(pClientPhone);
         }
 
         public static bool InsertChatEmailMessage(ChatEmailMessageBE pChatEmailMessageBE)
