@@ -30,7 +30,7 @@ namespace WebChat.Controllers
             wSendMessageModel.RoomId = RoomId;
             wSendMessageModel.RecordId = RecordID;
             wSendMessageModel.UserName = UserName;
-            return View(wSendMessageModel);
+            return View("ChatSession",wSendMessageModel);
         }
 
         [HttpPost]
@@ -108,7 +108,10 @@ namespace WebChat.Controllers
                 return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
             }
         }
-
+        public ActionResult x()
+        {
+            return View();
+        }
         [HttpPost]
         public JsonResult RetriveMessages(RetriveAllMessage retriveAllMessage)
         {
