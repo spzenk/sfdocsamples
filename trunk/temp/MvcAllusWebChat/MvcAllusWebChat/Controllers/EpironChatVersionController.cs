@@ -22,7 +22,10 @@ namespace WebChat.Controllers
         {
             return View();
         }
-
+        public ActionResult x()
+        {
+            return View();
+        }
         public ActionResult ChatSession(int UserId, int RoomId, int MessageId,int RecordID, string UserName)
         {
             SendMessageModel wSendMessageModel = new SendMessageModel();
@@ -108,10 +111,7 @@ namespace WebChat.Controllers
                 return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
             }
         }
-        public ActionResult x()
-        {
-            return View();
-        }
+       
         [HttpPost]
         public JsonResult RetriveMessages(RetriveAllMessage retriveAllMessage)
         {
