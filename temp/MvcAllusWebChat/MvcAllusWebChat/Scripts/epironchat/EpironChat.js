@@ -16,6 +16,9 @@ var USER_SEND_EMAIL = false // true =  usuario decide enviar email
 var selectedChatConfigId = null;
 $(function () {
    
+    $('textarea').bind("enterKey", function (e) {
+        //do stuff here
+    });
     
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();

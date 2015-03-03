@@ -176,6 +176,7 @@
     <Compile Include="Controllers\EpironChatRelojController.cs" />
     <Compile Include="Controllers\EpironChatSendChatByEmailController.cs" />
     <Compile Include="Controllers\EpironChatTestController.cs" />
+    <Compile Include="Controllers\EpironChatVersionController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -612,6 +613,9 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\emoticons.js" />
+    <Content Include="Scripts\epironchatversion\epironchatversion.js" />
+    <Content Include="Scripts\epironchatversion\epironChatVersionEndChat.js" />
+    <Content Include="Scripts\epironchatversion\epironchatversioninitial.js" />
     <Content Include="Scripts\epironchat\EpironChat.js" />
     <Content Include="Scripts\epironchat\EpironChatDragFile.js" />
     <Content Include="Scripts\epironchat\EpironChatEmail.js" />
@@ -774,6 +778,11 @@
     <Content Include="Views\EpironChatTest\_CreateChatRoomViewForm.cshtml" />
     <Content Include="Views\EpironChatTest\_info.cshtml" />
     <Content Include="Views\EpironChatTest\_EmailFormView.cshtml" />
+    <Content Include="Views\EpironChatVersion\ChatSession.cshtml" />
+    <Content Include="Views\EpironChatVersion\Index.cshtml" />
+    <Content Include="Views\EpironChatVersion\_EndChat.cshtml" />
+    <Content Include="Views\EpironChatVersion\TestResponsiveBoostrap.cshtml" />
+    <Content Include="Views\Shared\_LayoutVersion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">
