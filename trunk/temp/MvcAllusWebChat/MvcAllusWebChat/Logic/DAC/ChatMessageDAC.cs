@@ -25,8 +25,8 @@ namespace WebChat.Logic.DAC
             Database dataBase = null;
             DbCommand cmd = null;
 
-            try
-            {
+            //try
+            //{
                 dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatMessage_i]"))
                 {
@@ -38,11 +38,11 @@ namespace WebChat.Logic.DAC
                     dataBase.ExecuteNonQuery(cmd);
                     return (System.Int32)dataBase.GetParameterValue(cmd, "ChatMessageId");
                 }
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
         }
 
     }
