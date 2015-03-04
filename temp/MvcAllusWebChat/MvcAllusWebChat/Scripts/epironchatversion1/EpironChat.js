@@ -5,7 +5,7 @@
 //        console.log('blocked');
 //    }
 //}
-
+var _LASTMESSAGETIME = null;
 var _userId = -1;
 var _recordId = -1;
 var _firstMessageId = -1;
@@ -15,19 +15,24 @@ var NO_OPERATOR = 0;//0:Primer momento 1:reintentando 2:cancelado
 var USER_SEND_EMAIL = false // true =  usuario decide enviar email
 var selectedChatConfigId = null;
 $(function () {
-   
-    $('textarea').bind("enterKey", function (e) {
-        //do stuff here
+
+    $('#txtMessageList').html("");
+    /*FUNCION MIGRADA DE CHATVERSION*/
+    $('#btn-End').on('click', function () {
+        $('#div-end-chat').css('display', "block");
     });
-    
+
+    $('#txt-message').on("keypress", function (e) {
+        if (e.keyCode == 13) {
+            SendMessage();
+        }
+
+    });
+
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();
     $('#chatDialog').hide();
-    
 
-    $('#btnSendMessage').on('click', function () {
-        SendMessage();
-    });
 
     $('#btnExitChat').on('click', function () {
         clearTimeout(funcretriveAllMessage);
@@ -43,11 +48,7 @@ $(function () {
     $('#btnOpenChat').on('click', function () {
         ResetControlsCreateChatRoom();
     });
-    $('#txtMessage').keyup(function (e) {
-        if (e.keyCode == 13) {
-            SendMessage();
-        }
-    });
+ 
     $('#div_emoticons').html($.emoticons.toString());				   
 
     $("#ChatConfigId").change(function () {
@@ -64,7 +65,7 @@ function LeaveChatRoom() {
         chatRoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChat/LeaveChatRoom/",
+        url: "/EpironChatVersion1/LeaveChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -85,16 +86,16 @@ function LeaveChatRoom() {
 }
 
 function SendMessage() {
-    if ($.trim($("#txtMessage").val()) === "")
+    if ($.trim($("#txt-message").val()) === "")
         return;
     var obj = {
-        Message: $("#txtMessage").val(),
+        Message: $("#txt-message").val(),
         RecordId: _recordId,
         UserId: _userId,
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChat/SendMessage/",
+        url: "/EpironChatVersion1/SendMessage/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -108,7 +109,7 @@ function SendMessage() {
 
         error: ServiceFailed
     });
-    $("#txtMessage").val('');
+    $("#txt-message").val('');
 }
 
 function CreateChatRoomBefore_CallBack() {
@@ -159,7 +160,7 @@ function retryCreateChatRoom() {
         ChatConfigId: selectedChatConfigId
     }
     $.ajax({
-        url: "/EpironChat/CreateChatRoom/",
+        url: "/EpironChatVersion1/CreateChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -180,7 +181,7 @@ function GetRecordId() {
         MessageId: _firstMessageId,
     }
     $.ajax({
-        url: "/EpironChat/GetRecordId/",
+        url: "/EpironChatVersion1/GetRecordId/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -212,15 +213,16 @@ function GetrecordId_CallBack(ajaxContext) {
     }
 
     _recordId = ajaxContext.recordId;
-    
+    $('#div-chatRoomView').show();
     $('#newModal').hide('slow');
-    $("#chatDialog").show('slow');
+    //$("#chatDialog").show('slow');
     $('#alert-text-view').hide('slow');
     $('#alert-text-info-container').hide('slow');
     
     Showloading(false);
     RetriveAllMessage();
     ResetControlsChat();
+    scrollToBotton();
 }
 
 function RetriveAllMessage() {
@@ -231,7 +233,7 @@ function RetriveAllMessage() {
     }
 
     $.ajax({
-        url: "/EpironChat/RetriveMessages/",
+        url: "/EpironChatVersion1/RetriveMessages/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -247,25 +249,47 @@ function RetriveAllMessage() {
             if (result.ChatRoomStatus == '2')
             { CloseChatRoom("Sala de chat cerrada por el cliente"); return; }
 
-            var container = $('#txtMessageList');
+            if (result.Data.length > 0) {
+                //if(_LASTMESSAGETIME !=null )
+                //{
+                //    if (JSON_TO_Date(result.Data[result.Data.length - 1].SendTime) <= _LASTMESSAGETIME)
+                //        return;
+                //    else {
+                //        //hay nuevos comentarios. Alertar.
+                //    }
+                //}
 
-            container.html("");
-            $(result.Data).each(function (i) {
-                var div = document.createElement("DIV");
-                var dateFormat = $.datepicker.formatDate('dd-mm-yy hh:mm:ss', JSON_TO_Date(this.SendTime));
-                $(div)
-                            .appendTo(container)
-                            .addClass((this.IsFriend ? "_tlkFriend" : "_tlkMe"))
-                            .end()
-                            .append("<span class=\"_talker\">" + (this.IsFriend ? this.Talker : "Yo:") + "</span>")
-                            //.append("<span>" + (this.IsFriend ? " dice  " : " dijo") + "</span>")
-                            .append("<span class=\"_time\">" + dateFormat + "</span>")
-                            .append("<span>: </span><BR /> ")
-                            .append("<span class=\"_msg\">" + this.MessageData + "</span> ");
+                var container = $('#txtMessageList');
+                var longDateFormat = 'dd/MM/yyyy HH:mm:ss';
 
-            });
+                container.html("");
 
-            container.scrollTop(container[0].scrollHeight - container.height());
+                $(result.Data).each(function (i) {
+
+                    var newMessage = formatMessage(this.MessageData);//formatea el texto agregando saltos de lineas
+                    var linesquantity = (newMessage.length / 300).toFixed(0) + 1;//cantidad de renglones necesarios.
+
+                    var div = document.createElement("DIV");
+                    var dateFormat = jQuery.format.date(JSON_TO_Date(this.SendTime), longDateFormat);
+                    //_LASTMESSAGETIME = JSON_TO_Date(this.SendTime); //guardo la fecha del ultimo mensage para luego saber si hubo uno nuevo
+                    //$.datepicker.formatDate('dd-mm-yy hh:mm:ss', JSON_TO_Date(this.SendTime));
+                    $(div)
+                                .appendTo(container)
+                                .addClass((this.IsFriend ? "bubbleFriend" : "bubbleOwn"))
+                                .end()
+                                .append("<span class=\"_talker\">" + (this.IsFriend ? this.Talker : "Yo:") + "</span>")
+                                //.append("<span>" + (this.IsFriend ? " dice  " : " dijo") + "</span>")
+                                .append("<span class=\"_time\">" + dateFormat + "</span>")
+                                .append("<span>: </span><BR /> ")
+                                .append("<span class=\"_msg\">" + newMessage + "</span> ")
+                        .css("height", linesquantity * 5 + "px");
+                    
+                    scrollToBotton();
+
+                });
+            }
+
+            //container.scrollTop(container[0].scrollHeight - container.height());
 
             funcretriveAllMessage = setTimeout(function () { RetriveAllMessage(); }, 1000);
 
@@ -274,7 +298,7 @@ function RetriveAllMessage() {
         error: ServiceFailed
     });
 
-
+   
 }
 
 function CloseChatRoom(message) {
@@ -357,4 +381,33 @@ function endEmailNoOperator() {
 function cleanVariables() {
     //En esta función limpio todas las variables necesarias al cerrar el fomulario
     NO_OPERATOR = 0; //0:Primer momento 1:reintentando 2:cancelado
+}
+
+
+/*FUNCION MIGRADA DE CHATVERSION*/
+function scrollToBotton() {
+    //lleva la vision del chat al ultimo item.
+    if (!$('txtMessageList').is(':focus')) { //<---valida que el usuario no este leyendo el chat
+        var wtf = $('#txtMessageList');
+        var height = wtf[0].scrollHeight;
+        wtf.scrollTop(height);
+    }
+
+}
+
+function formatMessage(message) {
+    //insertamos saltos de linea para no romper el stile de la burbuja
+    var newMessage = message.split("");
+    for (var i = 0 ; i >= message.lenght; i++) {
+        var lastEmptyPosition = 0; //<-- la posicion donde se encontro el ultimo espacio
+
+        if (newMessage[i] = '')
+            lastEmptyPosition = i;
+
+        if (i == 300) {
+            newMessage.splice(lastEmptyPosition, 1, ' </br> ');
+        }
+    }
+    return (newMessage.join('')); //<--- unimos todos los string con los saltos de linea
+
 }

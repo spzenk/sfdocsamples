@@ -23,8 +23,8 @@ namespace WebChat.Logic
             ChatMailSenderBE wChatMailSender = null;
             Database database = null;
             int? recordId = null;
-            try
-            {
+            //try
+            //{
                 database = DatabaseFactory.CreateDatabase("EpironChat_LogsConnectionString");
                 using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[ChatMailSender_s_ByChatConfigGuid]"))
                 {
@@ -62,11 +62,11 @@ namespace WebChat.Logic
                     }
                 }
                 return wChatMailSender;
-            }
-            catch (Exception ex)
-            {
-                throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), "EpironChatConnectionString");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), "EpironChatConnectionString");
+            //}
         }
 
 
@@ -82,8 +82,8 @@ namespace WebChat.Logic
             ChatUser wChatUser = new ChatUser();
             Database database = null;
             int newId = 0;
-            try
-            {
+            //try
+            //{
                 database = DatabaseFactory.CreateDatabase("EpironChat_LogsConnectionString");
                 using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[ChatEmailMessage_i]"))
                 {
@@ -103,11 +103,11 @@ namespace WebChat.Logic
                     else
                         return false;
                 }
-            }
-            catch (Exception ex)
-            {
-                throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), "EpironChatConnectionString");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), "EpironChatConnectionString");
+            //}
         }
     }
 }

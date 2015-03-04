@@ -41,8 +41,8 @@ namespace WebChat.Logic.DAC
             Database dataBase = null;
             DbCommand cmd = null;
 
-            try
-            {
+            //try
+            //{
                 dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatUser_i]"))
                 {
@@ -59,11 +59,11 @@ namespace WebChat.Logic.DAC
                     dataBase.ExecuteNonQuery(cmd);
                     pChatUser.ChatUserId = (System.Int32)dataBase.GetParameterValue(cmd, "ChatUserId");
                 }
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
 
         }
 
@@ -86,8 +86,8 @@ namespace WebChat.Logic.DAC
             Database dataBase = null;
             DbCommand cmd = null;
 
-            try
-            {
+            //try
+            //{
                 dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatUser_u]"))
                 {
@@ -105,11 +105,11 @@ namespace WebChat.Logic.DAC
 
                     dataBase.ExecuteNonQuery(cmd);
                 }
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
 
         }
 
@@ -128,8 +128,8 @@ namespace WebChat.Logic.DAC
             ChatUserBE wChatUser = null;
             Database database = null;
 
-            try
-            {
+            //try
+            //{
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[ChatUser_g]"))
                 {
@@ -156,11 +156,11 @@ namespace WebChat.Logic.DAC
                     }
                 }
                 return wChatUser;
-            }
-            catch (Exception ex)
-            {
-                throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), "EpironChatConnectionString");
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), "EpironChatConnectionString");
+            //}
         }
 
 

@@ -16,7 +16,7 @@ namespace WebChat
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{tk}",
-                defaults: new { controller = "EpironChatVersion", action = "Index", tk = UrlParameter.Optional }
+                defaults: new { controller = "EpironChat", action = "Index", tk = UrlParameter.Optional }
             );
 
             //routes.MapRoute(

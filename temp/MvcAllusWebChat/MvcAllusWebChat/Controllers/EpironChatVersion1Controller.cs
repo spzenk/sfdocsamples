@@ -14,20 +14,20 @@ using WebChat.Logic.DAC;
 
 namespace WebChat.Controllers
 {
-    public class EpironChatController : Controller
+    public class EpironChatVersion1Controller : Controller
     {
-   
-        
+
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         public ActionResult Index()
         {
-           var chatConfigList=  ChatConfigDAC.RetriveAll();
+            var chatConfigList = ChatConfigDAC.RetriveAll();
 
             List<SelectListItem> li = new List<SelectListItem>();
-            
+
             foreach (var chatConfig in chatConfigList)
             {
                 li.Add(new SelectListItem { Text = chatConfig.ChatConfigName, Value = chatConfig.ChatConfigGuid.ToString() });
@@ -37,7 +37,7 @@ namespace WebChat.Controllers
         }
 
         /// <summary>
-        ///  Respond a llamadas http://localhost:30250/EpironChatTest/chat/?tel=213&url=http://ar-movistar.agentbot.net/messages/?hash=33270-395607-87997_1404245636&case=49396
+        ///  Respond a llamadas http://localhost:30250/EpironChatVersion1/chat/?tel=213&url=http://ar-movistar.agentbot.net/messages/?hash=33270-395607-87997_1404245636&case=49396
         /// </summary>
         /// <param name="tel"> Es el parámetro numérico ingresado al comienzo de la charla con Sofia.</param>
         /// <param name="url">Es el link q nos permite visualizar la primera interacción del cliente con Sofia, previamente a la derivación al chat. 
@@ -56,19 +56,18 @@ namespace WebChat.Controllers
             {
                 ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
                 model.OperatrCount = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
-
-                if (model.OperatrCount>0)
+                if (model.OperatrCount > 0)
                     EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId, out messageId);
                 ///TODO: preguntar si ya hay un recodset creado para chatear..
 
-                
+
                 model.ChatConfigId = chatConfigBE.ChatConfigGuid;
                 model.UserId = userId;
                 model.RoomId = chatRoomId;
+                model.MessageId = messageId;
 
-              
-                if (isAjaxCall.HasValue )
-                    return Json(new { Result = "OK", userId = userId, roomId = chatRoomId, count = model.OperatrCount }, JsonRequestBehavior.AllowGet);
+                if (isAjaxCall.HasValue)
+                    return Json(new { Result = "OK", userId = userId, roomId = chatRoomId, count = model.OperatrCount, messageId = model.MessageId }, JsonRequestBehavior.AllowGet);
 
 
                 return View("chat", model);
@@ -79,7 +78,7 @@ namespace WebChat.Controllers
             }
         }
 
- 
+
 
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
@@ -92,15 +91,14 @@ namespace WebChat.Controllers
             {
                 ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
                 count = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
-                
                 if (count == 0)
                 {
                     return Json(new { Result = "NO-OPERATORS" });
- 
+
                 }
 
-                EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId,out messageId);
-                return Json(new { Result = "OK", userId = userId, roomId = chatRoomId,messageId=messageId });
+                EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId, out messageId);
+                return Json(new { Result = "OK", userId = userId, roomId = chatRoomId, messageId = messageId });
             }
             catch (Exception ex)
             {
@@ -111,12 +109,12 @@ namespace WebChat.Controllers
         [HttpPost]
         public JsonResult RetriveMessages(RetriveAllMessage retriveAllMessage)
         {
-            WebChat.Common.Enumerations.ChatRoomStatus wChatRoomStatus = Enumerations.ChatRoomStatus.Active; 
-           
+            WebChat.Common.Enumerations.ChatRoomStatus wChatRoomStatus = Enumerations.ChatRoomStatus.Active;
+
             List<Message> result = null;
             try
             {
-                result = EpironChatBC.RecieveComments(retriveAllMessage.RoomId, retriveAllMessage.RecordId,out wChatRoomStatus);
+                result = EpironChatBC.RecieveComments(retriveAllMessage.RoomId, retriveAllMessage.RecordId, out wChatRoomStatus);
 
                 //EpironChatBC.ChatRoom_UpdateTTL(retriveAllMessage.chatRoomId);
 
@@ -136,16 +134,15 @@ namespace WebChat.Controllers
             try
             {
                 recordId = EpironChatDAC.GetRecordId(messageId, out chatRoomStatusFromEtl);
-
                 if (recordId != null)
                     EpironChatBC.ChatRoom_UpdateStatus(userId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
-                
+
                 return Json(new { Result = "OK", recordId = recordId });
             }
             catch (Exception ex)
             {
-                
-                return Json(new { Result = "ERROR", Message =  Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
+
+                return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
             }
         }
 
@@ -154,13 +151,13 @@ namespace WebChat.Controllers
         {
             try
             {
-                EpironChatBC.InsertMessage(msg.RoomId,msg.UserId, msg.Message, msg.RecordId);
+                EpironChatBC.InsertMessage(msg.RoomId, msg.UserId, msg.Message, msg.RecordId);
 
                 return Json(new { Result = "OK" });
             }
             catch (Exception ex)
             {
-                return Json(new { Result = "ERROR",Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
+                return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
             }
         }
 

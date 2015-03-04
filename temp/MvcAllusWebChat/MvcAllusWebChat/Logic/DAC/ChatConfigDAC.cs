@@ -46,8 +46,8 @@ namespace WebChat.Logic.DAC
             ChatConfigBE wChatConfig = null;
 
 
-            try
-            {
+            //try
+            //{
                 dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatConfig_g]"))
                 {
@@ -73,11 +73,11 @@ namespace WebChat.Logic.DAC
                     wChatConfig.ChatConfigGuid = chatConfigGuid.Value;
                 return wChatConfig;
 
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
 
         }
 
@@ -95,8 +95,8 @@ namespace WebChat.Logic.DAC
             ChatConfigBE wChatConfig = null;
 
 
-            try
-            {
+            //try
+            //{
                 dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatConfig_s]"))
                 {
@@ -119,11 +119,11 @@ namespace WebChat.Logic.DAC
                 }
                 return wChatConfigList;
 
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
 
         }
     }

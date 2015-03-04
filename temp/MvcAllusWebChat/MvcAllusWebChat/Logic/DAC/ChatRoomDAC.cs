@@ -25,8 +25,8 @@ namespace WebChat.Logic
             Database dataBase = null;
             DbCommand cmd = null;
 
-            try
-            {
+            //try
+            //{
                 dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatRoom_i]"))
                 {
@@ -39,11 +39,11 @@ namespace WebChat.Logic
                     dataBase.ExecuteNonQuery(cmd);
                     return (System.Int32)dataBase.GetParameterValue(cmd, "ChatRoomId");
                 }
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
         }
 
         /// <summary>
@@ -58,8 +58,8 @@ namespace WebChat.Logic
             Database dataBase = null;
             DbCommand cmd = null;
 
-            try
-            {
+            //try
+            //{
                 dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatRoom_u]"))
                 {
@@ -74,11 +74,11 @@ namespace WebChat.Logic
                     dataBase.ExecuteNonQuery(cmd);
                 }
 
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
         }
 
 
@@ -94,8 +94,8 @@ namespace WebChat.Logic
             DbCommand cmd = null;
             ActiveChatRoomBE item = null;
             List<ActiveChatRoomBE> list = new List<ActiveChatRoomBE>();
-            try
-            {
+            //try
+            //{
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
                 using (cmd = database.GetStoredProcCommand("[Chat].[ActiveChatRoom_s_ByChatUserId]"))
                 {
@@ -114,11 +114,11 @@ namespace WebChat.Logic
                     }
                     return list;
                 }
-            }
-            catch (Exception ex)
-            {
-                throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
 
         }
 

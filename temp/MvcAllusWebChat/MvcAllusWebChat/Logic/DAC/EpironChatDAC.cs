@@ -34,8 +34,8 @@ namespace WebChat.Logic
             chatRoomStatusFromEtl = null;
             Database database = null;
             int? recordId = null;
-            try
-            {
+            //try
+            //{
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
                 using (DbCommand cmd = database.GetStoredProcCommand("[chat].[Record_s_bySourceChatMessageId]"))
                 {
@@ -51,11 +51,11 @@ namespace WebChat.Logic
                     }
                 }
                 return recordId;
-            }
-            catch (Exception ex)
-            {
-                throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), Common.Common.EpironChat_CnnStringName);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), Common.Common.EpironChat_CnnStringName);
+            //}
 
 
 
@@ -76,8 +76,8 @@ namespace WebChat.Logic
             chatRoomStatus = null;
 
 
-            try
-            {
+            //try
+            //{
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
 
                 using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[RecordCommentChat_s_ByRecordId]"))
@@ -118,13 +118,13 @@ namespace WebChat.Logic
                 }
 
                 return result;
-            }
+            //}
 
 
-            catch (Exception ex)
-            {
-                throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), Common.Common.EpironChat_CnnStringName);
-            }
+            //catch (Exception ex)
+            //{
+            //    throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), Common.Common.EpironChat_CnnStringName);
+            //}
 
         }
 
@@ -141,8 +141,8 @@ namespace WebChat.Logic
 
             int cantidadUsuarios = 0;
 
-            try
-            {
+            //try
+            //{
                 database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
 
                 using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[OnlineUsers_s_byChatConfigGuid]"))
@@ -154,13 +154,13 @@ namespace WebChat.Logic
                 }
 
                 return cantidadUsuarios;
-            }
+            //}
 
 
-            catch (Exception ex)
-            {
-                throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), Common.Common.EpironChat_CnnStringName);
-            }
+            //catch (Exception ex)
+            //{
+            //    throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), Common.Common.EpironChat_CnnStringName);
+            //}
 
         }
 

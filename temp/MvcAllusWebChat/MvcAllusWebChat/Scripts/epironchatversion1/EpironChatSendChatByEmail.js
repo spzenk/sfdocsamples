@@ -8,17 +8,19 @@
 
 var _userId = -1;
 var _recordId = -1;
-var _firstMessageId = -1;
 var funcGetRecordId;
 var funcretriveAllMessage;
-var NO_OPERATOR = 0;//0:Primer momento 1:reintentando 2:cancelado
-var USER_SEND_EMAIL = false // true =  usuario decide enviar email
-var selectedChatConfigId = null;
+
 $(function () {
-   
-    $('textarea').bind("enterKey", function (e) {
-        //do stuff here
+    $('#btnOpenChat2').hide();
+    $('#btnOpenChat2').on('click', function () {
+        CloseChatRoom("hola ");
     });
+    //$('#newModal').modal({
+    //    backdrop: 'static',
+    //    keyboard: true
+    //})
+    //DisableControlsCreateChatRoom();
     
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();
@@ -35,7 +37,6 @@ $(function () {
 
         LeaveChatRoom();
     });
-
     $('#btnClose').on('click', function () {
         clearTimeout(funcGetRecordId);
         ResetControlsCreateChatRoom();
@@ -48,20 +49,14 @@ $(function () {
             SendMessage();
         }
     });
-    $('#div_emoticons').html($.emoticons.toString());				   
 
-    $("#ChatConfigId").change(function () {
-        selectedChatConfigId = $("#ChatConfigId :selected").val();
-    });
-    selectedChatConfigId = $("#ChatConfigId :selected").val();
 });
 
 function LeaveChatRoom() {
-    cleanVariables();
-
     var obj = {
-        recordId: _recordId,
-        chatRoomId: _roomId
+
+        RecordId: _recordId,
+        ChatRoomId: _chatRoomId
     }
     $.ajax({
         url: "/EpironChat/LeaveChatRoom/",
@@ -90,8 +85,7 @@ function SendMessage() {
     var obj = {
         Message: $("#txtMessage").val(),
         RecordId: _recordId,
-        UserId: _userId,
-        RoomId: _roomId
+        UserId: _userId
     }
     $.ajax({
         url: "/EpironChat/SendMessage/",
@@ -120,64 +114,49 @@ function CreateChatRoom_CallBack(ajaxContext) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
         OnFailure(ajaxContext);
+        $('#alert-text-info-container').hide();
+        return;
+    }
+    
+    if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
+
+        OnFailureEmailOption(ajaxContext);
+        setTimeout(function () {
+            retryCreateChatRoom();
+        }, 10000); 
         //$('#alert-text-info-container').hide();
         return;
     }
 
+    _userId = ajaxContext.phoneId;
 
-    ///Si no hay operadores y es la primera vez que pregunta NO_OPERATOR=0
-        if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
-            
-            if (NO_OPERATOR == 0) {
-                Show_NO_OPERATOR();
-                NO_OPERATOR = 1;
-            }
-            if (!USER_SEND_EMAIL)
-            setTimeout(function () { retryCreateChatRoom(); }, 10000);
-            //$('#alert-text-info-container').hide();
-            return;
-        }
-        
-        _userId = ajaxContext.userId;
-    _roomId = ajaxContext.roomId;
-    _firstMessageId = ajaxContext.messageId;
-    alert_text_info_container("Aguardando por una sala", true);
-    GetRecordId();
+    GetRecordId(ajaxContext.chatRoomId);
 }
-function Show_NO_OPERATOR() {
-    var msg = "En este momento no hay operadores disponibles.  ";
-    var title = "Chat no disponible";
-    Set_alert_text_error(msg, title);
-    Set_alert_error_link("Envíenos su consulta <a href=\"#\" onclick=\"endEmailNoOperator();\" > aquí</a>");
 
-}
-function retryCreateChatRoom() {
+function retryCreateChatRoom()
+{
     var obj = {
-        ClientName: $('#ClientName').val(),
-        Phone: $('#Phone').val(),
-        InitialMessage: $('#InitialMessage').val(),
-        ChatConfigId: selectedChatConfigId
+        ChatConfigId: 0,
     }
     $.ajax({
-        url: "/EpironChat/CreateChatRoom/",
+        url: "/EpironChatSendChatByEmail/CreateChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(obj),
         success: function (result) {
             CreateChatRoom_CallBack(result);
+
         },
 
         error: ServiceFailed
     });
 }
 
-function GetRecordId() {
+function GetRecordId(chatRoomId) {
 
     var obj = {
-        UserId: _userId,
-        RoomId: _roomId,
-        MessageId: _firstMessageId,
+        chatRoomId: chatRoomId,
     }
     $.ajax({
         url: "/EpironChat/GetRecordId/",
@@ -191,7 +170,7 @@ function GetRecordId() {
                 return;
             }
 
-            GetrecordId_CallBack(result);
+            GetrecordId_CallBack(result, chatRoomId);
 
         },
 
@@ -200,24 +179,24 @@ function GetRecordId() {
 
 }
 
-function GetrecordId_CallBack(ajaxContext) {
+function GetrecordId_CallBack(ajaxContext, chatRoomId) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
         OnFailure(ajaxContext);
         return;
     }
     if (ajaxContext.recordId == null) {
-        funcGetRecordId = setTimeout(function () { GetRecordId(); }, 4000);
+        funcGetRecordId = setTimeout(function () { GetRecordId(chatRoomId); }, 4000);
         return;
     }
 
     _recordId = ajaxContext.recordId;
-    
-    $('#newModal').hide('slow');
-    $("#chatDialog").show('slow');
+    _chatRoomId = chatRoomId;
+    $('#newModal').modal('hide');
+    $("#btnOpenChat").hide('slow');
     $('#alert-text-view').hide('slow');
     $('#alert-text-info-container').hide('slow');
-    
+    $("#chatDialog").show('slow');
     Showloading(false);
     RetriveAllMessage();
     ResetControlsChat();
@@ -226,8 +205,8 @@ function GetrecordId_CallBack(ajaxContext) {
 function RetriveAllMessage() {
 
     var obj = {
-        RecordId: _recordId,
-        RoomId: _roomId,
+        recordId: _recordId,
+        chatRoomId: _chatRoomId
     }
 
     $.ajax({
@@ -267,7 +246,7 @@ function RetriveAllMessage() {
 
             container.scrollTop(container[0].scrollHeight - container.height());
 
-            funcretriveAllMessage = setTimeout(function () { RetriveAllMessage(); }, 1000);
+            funcretriveAllMessage = setTimeout(function () { RetriveAllMessage(); }, 2000);
 
         },
 
@@ -286,7 +265,7 @@ function CloseChatRoom(message) {
     $('#btnSendMessage').attr('disabled', 'true');
     $('#btnExitChat').attr('disabled', 'true');
     $('#txtMessage').attr('disabled', 'true');
-
+    $("#btnOpenChat").show('slow');
     var container = $('#txtMessageList');
 
     var today = new Date();
@@ -312,7 +291,6 @@ function DisableControlsCreateChatRoom() {
     $('#Phone').attr('disabled', 'true');
     $('#InitialMessage').attr('disabled', 'true');
     $('#btnCreateNew').attr('disabled', 'true');
-    $('#ChatConfigId').attr('disabled', 'true');
 
 
 
@@ -322,19 +300,17 @@ function ResetControlsChat() {
     $('#btnSendMessage').removeAttr('disabled');
     $('#txtMessage').removeAttr('disabled');
     $('#btnExitChat').removeAttr('disabled');
-    $('#ChatConfigId').removeAttr('disabled');
 }
 
 function ResetControlsCreateChatRoom() {
 
     _userId = -1;
     _recordId = -1;
-    selectedChatConfigId = null;
 
     $('#ClientName').removeAttr('disabled');
     $('#Phone').removeAttr('disabled');
     $('#InitialMessage').removeAttr('disabled');
-    $('#ChatConfigId').removeAttr('disabled');
+    $('#btnCreateNew').removeAttr('disabled');
 
     Showloading(false);
     $('#alert-text-view').hide('slow');
@@ -345,16 +321,4 @@ function alert_text_info_container(msg, showImage) {
     $('#alert-text-info-container').show('slow');
     Showloading(showImage);
     Set_alert_text_info(msg);
-}
-
-function endEmailNoOperator() {
-    USER_SEND_EMAIL = true;
-    $('#txt-cellphone').text($('#txt-Phone').text()); //<-- escribo el telefono que usuario ingreso en el primer formulario
-    $('#txt-EmailBody').text($('#txt-InitialMessage').text()); //<-- escribo la consulta que usuario ingreso en el primer formulario
-    $('#emailForm').modal('show');//<-- muestro el formulario
-    $('#newModal').hide();
-}
-function cleanVariables() {
-    //En esta función limpio todas las variables necesarias al cerrar el fomulario
-    NO_OPERATOR = 0; //0:Primer momento 1:reintentando 2:cancelado
 }

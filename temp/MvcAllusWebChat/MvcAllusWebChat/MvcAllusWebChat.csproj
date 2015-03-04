@@ -176,6 +176,7 @@
     <Compile Include="Controllers\EpironChatRelojController.cs" />
     <Compile Include="Controllers\EpironChatSendChatByEmailController.cs" />
     <Compile Include="Controllers\EpironChatTestController.cs" />
+    <Compile Include="Controllers\EpironChatVersion1Controller.cs" />
     <Compile Include="Controllers\EpironChatVersionController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -613,6 +614,13 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\emoticons.js" />
+    <Content Include="Scripts\epironchatversion1\EpironChat.js" />
+    <Content Include="Scripts\epironchatversion1\EpironChatDragFile.js" />
+    <Content Include="Scripts\epironchatversion1\EpironChatEmail.js" />
+    <Content Include="Scripts\epironchatversion1\EpironChatReloj.js" />
+    <Content Include="Scripts\epironchatversion1\EpironChatSendChatByEmail.js" />
+    <Content Include="Scripts\epironchatversion1\epironChatVersionEndChat.js" />
+    <Content Include="Scripts\epironchatversion1\EpironChat_Url.js" />
     <Content Include="Scripts\epironchatversion\epironchatversion.js" />
     <Content Include="Scripts\epironchatversion\epironChatVersionEndChat.js" />
     <Content Include="Scripts\epironchatversion\epironchatversioninitial.js" />
@@ -634,6 +642,7 @@
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-dateFormat.js" />
     <Content Include="Scripts\jquery-ui-1.11.0.js" />
     <Content Include="Scripts\jquery-ui-1.11.0.min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
@@ -783,6 +792,26 @@
     <Content Include="Views\EpironChatVersion\_EndChat.cshtml" />
     <Content Include="Views\EpironChatVersion\TestResponsiveBoostrap.cshtml" />
     <Content Include="Views\Shared\_LayoutVersion.cshtml" />
+    <Content Include="Views\EpironChatVersion\x.cshtml" />
+    <Content Include="Views\EpironChatVersion1\chat.cshtml" />
+    <Content Include="Views\EpironChatVersion1\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\EpironChatVersion1\_ChatRoomView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\EpironChatVersion1\_CreateChatRoomView.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\EpironChatVersion1\_CreateChatRoomViewForm.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\EpironChatVersion1\_EmailFormView.cshtml" />
+    <Content Include="Views\EpironChatVersion1\_EndChat.cshtml" />
+    <Content Include="Views\EpironChatVersion1\_info.cshtml" />
+    <Content Include="Views\Shared\_LayoutVersion1.cshtml">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">
