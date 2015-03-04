@@ -14,6 +14,8 @@ var _tel;
 var _url;
 var _case;
 var _LASTMESSAGETIME = null;
+var NO_OPERATOR = 0;//0:Primer momento 1:reintentando 2:cancelado
+var USER_SEND_EMAIL = false // true =  usuario decide enviar email
 
 $(function () {
     _tel = $.urlParam('tel');
@@ -35,12 +37,11 @@ $(function () {
     });
     //Si no hay operadores se reintenta medante llamada ajax directamente
     if (_opCount == 0) {
-         alert('Empiesa a ver si hay op');
         Chat();
     }
-    //else {
-    //    GetRecordId();
-    //}
+    else {
+        GetRecordId();
+    }
     $('#btnExitChat').on('click', function () {
         clearTimeout(funcretriveAllMessage);
         clearTimeout(funcGetRecordId);
@@ -102,7 +103,7 @@ $(function () {
 function Chat() {
 
     $.ajax({
-        url: "/EpironChat/chat/",
+        url: "/EpironChatVersion1/chat/",
         type: "GET",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -132,7 +133,7 @@ function Chat_CallBack(ajaxContext) {
 
 
     ///Si no hay operadores y es la primera vez que pregunta NO_OPERATOR=0
-    if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
+    if (ajaxContext.count == 0) {
 
         if (NO_OPERATOR == 0) {
             Show_NO_OPERATOR();
@@ -432,4 +433,12 @@ function alert_text_info_container(msg, showImage) {
     $('#alert-text-info-container').show('slow');
     Showloading(showImage);
     Set_alert_text_info(msg);
+}
+
+function Show_NO_OPERATOR() {
+    var msg = "En este momento no hay operadores disponibles.  ";
+    var title = "Chat no disponible";
+    Set_alert_text_error(msg, title);
+    Set_alert_error_link("Envíenos su consulta <a href=\"#\" onclick=\"endEmailNoOperator();\" > aquí</a>");
+
 }
