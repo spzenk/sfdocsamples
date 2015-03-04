@@ -29,11 +29,10 @@ $(function () {
         Chat();
     });
     //Si no hay operadores se reintenta medante llamada ajax directamente
-     if (_opCount == 0)
-     {
-         alert('Empiesa a ver si hay op');
-         Chat();
-     }
+    if (_opCount == 0) {
+        Chat();
+    }
+  
     $('#btnExitChat').on('click', function () {
         clearTimeout(funcretriveAllMessage);
         clearTimeout(funcGetRecordId);

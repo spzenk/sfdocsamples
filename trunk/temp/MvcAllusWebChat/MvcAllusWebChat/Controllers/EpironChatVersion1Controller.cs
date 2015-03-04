@@ -54,7 +54,7 @@ namespace WebChat.Controllers
             ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
             try
             {
-                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
+                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(Guid.Parse("cecb988e-b256-48bd-88d7-faeb4d6a32c0"));
                 model.OperatrCount = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
                 if (model.OperatrCount > 0)
                     EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId, out messageId);
