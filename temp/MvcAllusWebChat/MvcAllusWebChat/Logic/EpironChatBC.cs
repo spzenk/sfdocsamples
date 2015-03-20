@@ -152,7 +152,7 @@ namespace WebChat.Logic.BC
                 if (expitrationTime.CompareTo(DateTime.Now) <= 0)
                 {
                     item.Status = Common.Enumerations.ChatRoomStatus.ExpiredTimeout;
-                    ChatRoomDAC.Update(item.ChatRoomId, (int)item.Status, null);
+                    ChatRoomDAC.Update(item.ChatRoomId, null, (int)item.Status);
                 }
 
             }
@@ -180,7 +180,7 @@ namespace WebChat.Logic.BC
             if (chatRoomStatusFromEtl.HasValue)
                 if (Common.Common.ClosedStatus.Any(p => p.Equals(chatRoomStatusFromEtl.Value)))
                 {
-                    ChatRoomDAC.Update(chatRoomId,(int) WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator, null);
+                    ChatRoomDAC.Update(chatRoomId, null, (int)WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator);
                     chatRoomStatus = WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOperator;
                 }
 
@@ -189,7 +189,7 @@ namespace WebChat.Logic.BC
 
         internal static void LeaveChatRoom(int chatRoomId)
         {
-            ChatRoomDAC.Update(chatRoomId, (int)WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOwner, null);
+            ChatRoomDAC.Update(chatRoomId, null,(int)WebChat.Common.Enumerations.ChatRoomStatus.ClosedByOwner);
         }
         [Obsolete("todavia no se usa")]
         internal static void ChatRoom_UpdateTTL(int chatRoomId)

@@ -54,11 +54,11 @@ namespace WebChat.Controllers
             ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
             try
             {
-                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(Guid.Parse("cecb988e-b256-48bd-88d7-faeb4d6a32c0"));
+                ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
                 model.OperatrCount = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
                 if (model.OperatrCount > 0)
                     EpironChatBC.CreateChatRoom_FromUrl(tel, url, @case, out chatRoomId, out userId, out messageId);
-                ///TODO: preguntar si ya hay un recodset creado para chatear..
+                
 
 
                 model.ChatConfigId = chatConfigBE.ChatConfigGuid;
@@ -135,7 +135,7 @@ namespace WebChat.Controllers
             {
                 recordId = EpironChatDAC.GetRecordId(messageId, out chatRoomStatusFromEtl);
                 if (recordId != null)
-                    EpironChatBC.ChatRoom_UpdateStatus(userId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
+                    EpironChatBC.ChatRoom_UpdateStatus(roomId, recordId.Value, WebChat.Common.Enumerations.ChatRoomStatus.Active);
 
                 return Json(new { Result = "OK", recordId = recordId });
             }

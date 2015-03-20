@@ -7,22 +7,22 @@ var siteViewModel = null;
 $(function () {
 
     //Initialize the datepicker with the dateFormat option specified:
-    $.datepicker.regional[""].dateFormat = 'dd/mm/yy';
-    $.validator.addMethod('date',
-    function (value, element) {
-        if (this.optional(element)) {
-            return true;
-        }
-        var ok = true;
-        try {
-            $.datepicker.parseDate('dd/mm/yy', value);
-        }
-        catch (err) {
-            ok = false;
-        }
-        return ok;
-    });
-    Init_datepicker();
+    //$.datepicker.regional[""].dateFormat = 'dd/mm/yy';
+    //$.validator.addMethod('date',
+    //function (value, element) {
+    //    if (this.optional(element)) {
+    //        return true;
+    //    }
+    //    var ok = true;
+    //    try {
+    //        $.datepicker.parseDate('dd/mm/yy', value);
+    //    }
+    //    catch (err) {
+    //        ok = false;
+    //    }
+    //    return ok;
+    //});
+    //Init_datepicker();
     //$(".datefield").datepicker({
     //    dateFormat: 'dd/mm/yy',
     //    changeYear: true,
