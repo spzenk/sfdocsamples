@@ -26,12 +26,13 @@ namespace WebChat.Common
         public static string EpironChat_CnnString = string.Empty;
         
         static Boolean logOnFile = false;
-        
-        
-
-        
 
 
+
+        public static int RetriveMessage_Timer = 1000;
+        public static int CheckOperators_Timer = 2000;
+        public static int GetRecord_Timer = 2000;
+        
         public static ISymetriCypher ISymetriCypher;
         public static string SEED_K = "SESshxdRu3p4ik3IOxM6/qAWmmTYUw8N1ZGIh1Pgh2w=$pQgQvA49Cmwn8s7xRUxHmA==";//"sec.key";
         //[11:48:26 a.m.] yulygasp: si el campo contiene uno de estos valores:indica que esta cerrado
@@ -49,8 +50,12 @@ namespace WebChat.Common
             //Fwk.Security.Cryptography.FwkSymetricAlg s = new FwkSymetricAlg(SEED_K);
             //ISymetriCypher = s;// SymetricCypherFactory.Cypher();// SymetricCypherFactory.Get<RijndaelManaged>(SEED_K);
 
-            //if (System.Configuration.ConfigurationManager.AppSettings["logOnFile"] != null)
-            //    logOnFile = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["logOnFile"]);
+            if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "RetriveMessage_Timer") ))
+                RetriveMessage_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "RetriveMessage_Timer"));
+            if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "CheckOperators_Timer")))
+                CheckOperators_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "CheckOperators_Timer"));
+            if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "GetRecord_Timer")))
+                CheckOperators_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "GetRecord_Timer"));
         }
 
         public static bool IsEncrypted(System.Configuration.Configuration config)
@@ -316,6 +321,8 @@ namespace WebChat.Common
 
 
         }
+
+        
     }
     public class Enumerations
     {

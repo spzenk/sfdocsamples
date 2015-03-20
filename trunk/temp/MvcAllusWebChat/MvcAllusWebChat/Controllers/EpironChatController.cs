@@ -25,7 +25,7 @@ namespace WebChat.Controllers
         public ActionResult Index()
         {
            var chatConfigList=  ChatConfigDAC.RetriveAll();
-
+           
             List<SelectListItem> li = new List<SelectListItem>();
             
             foreach (var chatConfig in chatConfigList)

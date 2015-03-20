@@ -64,13 +64,13 @@ namespace WebChat.Logic.DAC
                             wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
                             wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
                             wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
-
+                            wChatConfig.ChatConfigGuid = Guid.Parse(reader["ChatConfigGuid"].ToString());
+                            
 
                         }
                     }
                 }
-                if (chatConfigGuid.HasValue)
-                    wChatConfig.ChatConfigGuid = chatConfigGuid.Value;
+                
                 return wChatConfig;
 
             //}

@@ -321,14 +321,14 @@ function RetriveAllMessage() {
             if (result.ChatRoomStatus == '2')
             { CloseChatRoom("Sala de chat cerrada por el cliente"); return; }
 
-            if (result.Data.length > 0) {
-                if (_LASTMESSAGETIME != null) {
-                    if (JSON_TO_Date(result.Data[result.Data.length - 1].SendTime) <= _LASTMESSAGETIME)
-                        return;
-                    else {
-                        //hay nuevos comentarios. Alertar.
-                    }
-                }
+            //if (result.Data.length > 0) {
+            //    if (_LASTMESSAGETIME != null) {
+            //        if (JSON_TO_Date(result.Data[result.Data.length - 1].SendTime) <= _LASTMESSAGETIME)
+            //            return;
+            //        else {
+            //            //hay nuevos comentarios. Alertar.
+            //        }
+            //    }
 
                 var container = $('#txtMessageList');
                 var longDateFormat = 'dd/MM/yyyy HH:mm:ss';
@@ -358,7 +358,7 @@ function RetriveAllMessage() {
                     scrollToBotton();
 
                 });
-            }
+            //}
 
             //container.scrollTop(container[0].scrollHeight - container.height());
 

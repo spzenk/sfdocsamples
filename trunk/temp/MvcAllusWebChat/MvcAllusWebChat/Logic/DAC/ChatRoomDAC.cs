@@ -52,7 +52,7 @@ namespace WebChat.Logic
         /// <param name="roomid"></param>
         /// <param name="status">Estado</param>
         /// <param name="recordId">Si es Null no lo envia al SP</param>
-        internal static void Update(int chatRoomId, int statusId, int? recordId)
+        internal static void Update(int chatRoomId, int? recordId,int statusId)
         {
 
             Database dataBase = null;

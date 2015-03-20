@@ -36,21 +36,21 @@ namespace WebChat.Logic
             int? recordId = null;
             //try
             //{
-                database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
-                using (DbCommand cmd = database.GetStoredProcCommand("[chat].[Record_s_bySourceChatMessageId]"))
+            database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
+            using (DbCommand cmd = database.GetStoredProcCommand("[chat].[Record_s_bySourceChatMessageId]"))
+            {
+                database.AddInParameter(cmd, "ChatMessageId", DbType.Int32, messageId);
+                using (IDataReader reader = database.ExecuteReader(cmd))
                 {
-                    database.AddInParameter(cmd, "ChatMessageId", DbType.Int32, messageId);
-                    using (IDataReader reader = database.ExecuteReader(cmd))
+                    while (reader.Read())
                     {
-                        while (reader.Read())
-                        {
-                            recordId = Convert.ToInt32(reader["recordId"]);
-                            if (reader["PCRecordActionResultType"] != DBNull.Value)
-                                chatRoomStatusFromEtl = Convert.ToInt32(reader["PCRecordActionResultType"]);
-                        }
+                        recordId = Convert.ToInt32(reader["recordId"]);
+                        if (reader["PCRecordActionResultType"] != DBNull.Value)
+                            chatRoomStatusFromEtl = Convert.ToInt32(reader["PCRecordActionResultType"]);
                     }
                 }
-                return recordId;
+            }
+            return recordId;
             //}
             //catch (Exception ex)
             //{
@@ -78,46 +78,46 @@ namespace WebChat.Logic
 
             //try
             //{
-                database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
+            database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
 
-                using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[RecordCommentChat_s_ByRecordId]"))
+            using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[RecordCommentChat_s_ByRecordId]"))
+            {
+                database.AddInParameter(cmd, "RecordId", DbType.Int32, recordId);
+
+
+                using (IDataReader reader = database.ExecuteReader(cmd))
                 {
-                    database.AddInParameter(cmd, "RecordId", DbType.Int32, recordId);
-
-
-                    using (IDataReader reader = database.ExecuteReader(cmd))
+                    while (reader.Read())
                     {
-                        while (reader.Read())
+                        item = new Message();
+                        if (chatRoomStatus.HasValue == false)
+                            if (reader["PCRecordActionResultType"] != DBNull.Value)
+                                chatRoomStatus = Convert.ToInt32(reader["PCRecordActionResultType"]);
+
+                        item.MessageData = reader["Comment"].ToString();
+
+                        //Los comentarios que tienen el campo rctModifiedByUserId = NULL, son los enviados por el cliente
+                        if (reader["commentid"] != DBNull.Value)
                         {
-                            item = new Message();
-                            if (chatRoomStatus.HasValue == false)
-                                if (reader["PCRecordActionResultType"] != DBNull.Value)
-                                    chatRoomStatus = Convert.ToInt32(reader["PCRecordActionResultType"]);
-
-                            item.MessageData = reader["Comment"].ToString();
-
-                            //Los comentarios que tienen el campo rctModifiedByUserId = NULL, son los enviados por el cliente
-                            if (reader["commentid"] != DBNull.Value)
-                            {
-                                item.IsFriend = true;
-                                item.Talker = reader["rctusername"].ToString();
-                            }
-                            else
-                            {
-                                item.IsFriend = false;
-
-                                //El nombre del rep es el campo rctUserName.
-                                //item.Talker = reader["rctUserName"].ToString();
-                            }
-
-                            item.SendTime = Convert.ToDateTime(reader["PostDate"]);
-                            result.Add(item);
-
+                            item.IsFriend = true;
+                            item.Talker = reader["rctusername"].ToString();
                         }
+                        else
+                        {
+                            item.IsFriend = false;
+
+                            //El nombre del rep es el campo rctUserName.
+                            //item.Talker = reader["rctUserName"].ToString();
+                        }
+
+                        item.SendTime = Convert.ToDateTime(reader["PostDate"]);
+                        result.Add(item);
+
                     }
                 }
+            }
 
-                return result;
+            return result;
             //}
 
 
@@ -135,33 +135,26 @@ namespace WebChat.Logic
         /// <returns></returns>
         internal static int OnlineUsers_Count(Guid? chatConfigGuid)
         {
-            List<Message> result = new List<Message>();
-
             Database database = null;
-
             int cantidadUsuarios = 0;
 
-            //try
-            //{
-                database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
+            database = DatabaseFactory.CreateDatabase(Common.Common.EpironChat_CnnStringName);
 
-                using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[OnlineUsers_s_byChatConfigGuid]"))
+            using (DbCommand cmd = database.GetStoredProcCommand("[Chat].[OnlineUsers_s_byChatConfigGuid]"))
+            {
+                database.AddInParameter(cmd, "ChatConfigGuid", DbType.Guid, chatConfigGuid);
+
+                using (IDataReader reader = database.ExecuteReader(cmd))
                 {
-                    database.AddInParameter(cmd, "ChatConfigGuid", DbType.Guid, chatConfigGuid);
-
-
-                    cantidadUsuarios =   database.ExecuteNonQuery(cmd);
+                    while (reader.Read())
+                    {
+                        cantidadUsuarios = Convert.ToInt32(reader["CantidadUsuarios"]);
+                    }
                 }
-
-                return cantidadUsuarios;
-            //}
-
-
-            //catch (Exception ex)
-            //{
-            //    throw SecPortalException.ProcessException(ex, typeof(EpironChatDAC), Common.Common.EpironChat_CnnStringName);
-            //}
-
+                cantidadUsuarios = database.ExecuteNonQuery(cmd);
+            }
+            return cantidadUsuarios;
+          
         }
 
 

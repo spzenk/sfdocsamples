@@ -11,6 +11,10 @@
     var _roomId     = @Html.Raw(Json.Encode(this.Model.RoomId));
     var _configId   = @Html.Raw(Json.Encode(this.Model.ChatConfigId));
     var _opCount    = @Html.Raw(Json.Encode(this.Model.OperatrCount));
+
+    var _RetriveMessage_Timer    = @Html.Raw(Json.Encode(WebChat.Common.Common.RetriveMessage_Timer));
+    var _CheckOperators_Timer    = @Html.Raw(Json.Encode(WebChat.Common.Common.CheckOperators_Timer));
+    var _GetRecord_Timer    = @Html.Raw(Json.Encode(WebChat.Common.Common.GetRecord_Timer));
 </script>
 <h2>chat</h2>
 

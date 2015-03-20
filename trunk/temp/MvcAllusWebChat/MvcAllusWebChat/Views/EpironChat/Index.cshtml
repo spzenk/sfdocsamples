@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@*<script type="text/javascript">
+<script type="text/javascript">
 
     //$(document).bind('keydown keyup', function (e) {
     //          if (e.which === 116) {
@@ -17,8 +17,10 @@
     //    //}
     //})
   
-
-</script>*@
+    var _RetriveMessage_Timer    = @Html.Raw(Json.Encode(WebChat.Common.Common.RetriveMessage_Timer));
+    var _CheckOperators_Timer    = @Html.Raw(Json.Encode(WebChat.Common.Common.CheckOperators_Timer));
+    var _GetRecord_Timer    = @Html.Raw(Json.Encode(WebChat.Common.Common.GetRecord_Timer));
+</script>
 <h2>chat</h2>
 <style>
     .ui-button-text-only .ui-button-text {
