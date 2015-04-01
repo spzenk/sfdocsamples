@@ -60,9 +60,11 @@ namespace Health.BE
                 }
                 
             }
-
-            Fwk.Security.Cryptography.FwkSymetricAlg s = new FwkSymetricAlg(SEED_K);
-            ISymetriCypher = s;// SymetricCypherFactory.Cypher();// SymetricCypherFactory.Get<RijndaelManaged>(SEED_K);
+            // SymetricCypherFactory.Cypher();// SymetricCypherFactory.Get<RijndaelManaged>(SEED_K);
+            SymetriCypher<AesManaged> s = new SymetriCypher<AesManaged>(SEED_K);
+            
+            
+            ISymetriCypher = s;
 
             if (System.Configuration.ConfigurationManager.AppSettings["logOnFile"] != null)
                 logOnFile = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings["logOnFile"]);

@@ -72,10 +72,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fwk.Bases">
-      <HintPath>..\..\..\libs\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Security">
-      <HintPath>..\..\..\libs\Fwk.Security.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Security.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -181,12 +181,6 @@
     <Compile Include="Scheduling\UpdateAppointmentStatusService.cs" />
     <Compile Include="Scheduling\UpdateResourceScheduling.cs" />
     <Compile Include="Scheduling\UpdateResourceSchedulingService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\Health.Ws\Metasvc.xml">
-      <Link>Metasvc.xml</Link>
-      <SubType>Designer</SubType>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Health.BE\Health.BE.csproj">
