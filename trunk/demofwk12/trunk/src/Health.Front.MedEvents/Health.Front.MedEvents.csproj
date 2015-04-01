@@ -73,11 +73,11 @@
     </Reference>
     <Reference Include="Fwk.Bases, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\libs\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Security, Version=12.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\libs\Fwk.Security.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Security.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

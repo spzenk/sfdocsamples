@@ -73,7 +73,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Fwk.Bases">
-      <HintPath>..\..\..\libs\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

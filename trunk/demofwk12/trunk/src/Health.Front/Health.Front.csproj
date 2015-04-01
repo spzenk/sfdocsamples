@@ -147,19 +147,19 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Fwk.Bases">
-      <HintPath>..\..\..\libs\Fwk.Bases.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Bases.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Bases.Connector">
-      <HintPath>..\..\..\libs\Fwk.Bases.Connector.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Bases.Connector.dll</HintPath>
     </Reference>
     <Reference Include="Fwk.Security">
-      <HintPath>..\..\..\libs\Fwk.Security.dll</HintPath>
+      <HintPath>..\..\libs\Fwk.Security.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
-      <HintPath>..\..\..\libs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
-      <HintPath>..\..\..\libs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+      <HintPath>..\..\libs\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualStudio.DebuggerVisualizers, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -392,6 +392,7 @@
     <EmbeddedResource Include="Scheduler\uc_ShiftsControls.resx">
       <DependentUpon>uc_ShiftsControls.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app_dispatcher.config" />
     <None Include="Properties\DataSources\Health.Back.BE.PMOFileList.datasource" />
     <Content Include="window-2.ico" />
     <Content Include="dat\cei.xml">
