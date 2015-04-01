@@ -2607,9 +2607,57 @@
         </member>
         <member name="T:Fwk.Blocking.IBlockingEngine">
             <summary>
-            
+            IBlockingEngine interfaz de motor de bnloqueo
             </summary>
             <Auhor>moviedo</Auhor>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Create(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pIBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.GetByParam(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.GetByParamCustom(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Remove(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="pGuid"></param>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Remove(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingId"></param>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.ExistsUser(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Exists(System.Guid,System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="pGUID"></param>
+            <param name="pBlockingId"></param>
+            <returns></returns>
         </member>
         <member name="M:Fwk.Blocking.BlockingEngineBase.#ctor">
             <summary>
@@ -2910,9 +2958,28 @@
             
             </summary>
         </member>
+        <member name="M:Fwk.Blocking.BlockingHelper.WriteLog(System.String,System.Diagnostics.EventLogEntryType)">
+            <summary>
+            
+            </summary>
+            <param name="pLog"></param>
+            <param name="pType"></param>
+        </member>
+        <member name="M:Fwk.Blocking.BlockingHelper.CheckAndReleaseBlocking(Fwk.Blocking.BlockingEngineBase,System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingEngineBase"></param>
+            <param name="pGUID"></param>
+        </member>
         <member name="T:Fwk.Blocking.FwkBlockingEngine">
             <summary>
             Marca de bloqueo para un registro de una tabla.-
+            </summary>
+        </member>
+        <member name="M:Fwk.Blocking.FwkBlockingEngine.#ctor">
+            <summary>
+            Constructor de <see cref="T:Fwk.Blocking.FwkBlockingEngine"/>
             </summary>
         </member>
         <member name="M:Fwk.Blocking.FwkBlockingEngine.GetCustomParametersToInsert(Fwk.Blocking.IBlockingMark)">
