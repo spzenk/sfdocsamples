@@ -44,22 +44,12 @@ namespace Health.BE
         static Common()
         {
             //SI NO HAY WRAPPERS CARGA DIRECTAMENTE 
-            if (WrapperFactory.ProviderSection.Providers.Count.Equals(0))
-            {
+            //if (WrapperFactory.ProviderSection.Providers.Count.Equals(0))
+            //{
                 CnnString = System.Configuration.ConfigurationManager.ConnectionStrings[CnnStringName].ConnectionString;
                 CnnString_Entities = System.Configuration.ConfigurationManager.ConnectionStrings["HealthEntities"].ConnectionString;
-            }
-            else
-            {
-                //SI HAY, CHEQUEA QUE SEA LOCAL
-                if (!WrapperFactory.ProviderSection.DefaultProvider.WrapperProviderType.Equals("LocalWrapper"))
-                {
-                    CnnString = System.Configuration.ConfigurationManager.ConnectionStrings[CnnStringName].ConnectionString;
-                    CnnString_Entities = System.Configuration.ConfigurationManager.ConnectionStrings["HealthEntities"].ConnectionString;
-                 
-                }
-                
-            }
+            //}
+           
             // SymetricCypherFactory.Cypher();// SymetricCypherFactory.Get<RijndaelManaged>(SEED_K);
             SymetriCypher<AesManaged> s = new SymetriCypher<AesManaged>(SEED_K);
             
