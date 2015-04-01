@@ -24,7 +24,7 @@ namespace Health.Svc
             //Lo primero es crear el inicio de sesion
             UserBC wUserBC = new UserBC(pServiceRequest.ContextInformation.AppId, pServiceRequest.SecurityProviderName);
             wUserBC.Create(pServiceRequest.BusinessData.User);
-            wRes.BusinessData.UserId = (Guid)pServiceRequest.BusinessData.User.ProviderId;
+            wRes.BusinessData.UserId = Guid.Parse(pServiceRequest.BusinessData.User.ProviderId.ToString());
  
             if (personaExiste)
             {

@@ -37,7 +37,7 @@ namespace Fwk.UI.Security.ServiceCalls
 {
     public class SecurityServiceCalls
     {
-        static ClientServiceBase _ClientServiceBase;
+       
         static UserList _UserList;
         public static string WrapperSecurityProvider { get; set; }
         
@@ -65,7 +65,7 @@ namespace Fwk.UI.Security.ServiceCalls
 
         static SecurityServiceCalls()
         {
-            _ClientServiceBase = new ClientServiceBase();
+     
 
             //_AllRolList = GetAllRoles(string.Empty);
             //_FwkAuthorizationRuleList = SearchAllRules();
@@ -96,7 +96,7 @@ namespace Fwk.UI.Security.ServiceCalls
             GetUserInfoByParamsReq req = new GetUserInfoByParamsReq();
             req.BusinessData.UserName = pName;
 
-            GetUserInfoByParamsRes res = _ClientServiceBase.ExecuteService<GetUserInfoByParamsReq, GetUserInfoByParamsRes>(WrapperSecurityProvider,req);
+            GetUserInfoByParamsRes res = req.ExecuteService<GetUserInfoByParamsReq, GetUserInfoByParamsRes>(WrapperSecurityProvider,req);
 
             if (res.Error != null)
                 throw Fwk.Exceptions.ExceptionHelper.ProcessException(res.Error);
@@ -119,7 +119,7 @@ namespace Fwk.UI.Security.ServiceCalls
             req.BusinessData.User = pUser;
             req.BusinessData.User.Roles = pRolList.GetArrayNames();
 
-            CreateUserRes res = _ClientServiceBase.ExecuteService<CreateUserReq, CreateUserRes>(WrapperSecurityProvider,req);
+            CreateUserRes res = req.ExecuteService<CreateUserReq, CreateUserRes>(WrapperSecurityProvider,req);
 
             if (res.Error != null)
                 throw Fwk.Exceptions.ExceptionHelper.ProcessException(res.Error);
@@ -294,7 +294,7 @@ namespace Fwk.UI.Security.ServiceCalls
             
             req.BusinessData.UserName = username;
             
-            ValidateUserExistRes res = _ClientServiceBase.ExecuteService<ValidateUserExistReq, ValidateUserExistRes>(WrapperSecurityProvider, req);
+            ValidateUserExistRes res = req.ExecuteService<ValidateUserExistReq, ValidateUserExistRes>(WrapperSecurityProvider, req);
 
             if (res.Error != null)
                 throw Fwk.Exceptions.ExceptionHelper.ProcessException(res.Error);
@@ -520,7 +520,7 @@ namespace Fwk.UI.Security.ServiceCalls
 
             SearchDomainsUrlsResponse res = new SearchDomainsUrlsResponse();
 
-            res = _ClientServiceBase.ExecuteService<SearchDomainsUrlsRequest, SearchDomainsUrlsResponse>(req);
+            res = req.ExecuteService<SearchDomainsUrlsRequest, SearchDomainsUrlsResponse>(req);
 
             if (res.Error != null)
                 throw Fwk.Exceptions.ExceptionHelper.ProcessException(res.Error);
