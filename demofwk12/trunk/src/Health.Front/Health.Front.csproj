@@ -297,6 +297,15 @@
     <Compile Include="Scheduler\uc_ShiftsControls.Designer.cs">
       <DependentUpon>uc_ShiftsControls.cs</DependentUpon>
     </Compile>
+    <Content Include="dat\cei10_combo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dat\m_patient.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="dat\pmo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="first-aid.ico" />
     <Compile Include="Patient\uc_PatientsGrid.cs">
       <SubType>UserControl</SubType>
@@ -394,6 +403,9 @@
     </EmbeddedResource>
     <None Include="app_dispatcher.config" />
     <None Include="Properties\DataSources\Health.Back.BE.PMOFileList.datasource" />
+    <Content Include="SimpleEventView.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="window-2.ico" />
     <Content Include="dat\cei.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

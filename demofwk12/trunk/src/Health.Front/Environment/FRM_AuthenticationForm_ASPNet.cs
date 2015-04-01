@@ -177,13 +177,13 @@ namespace Health.Front.Environment
                         MessageBox.Show("Selecione una institución donde iniciar sesión");
                         return false;
                     }
-
+                    Guid guid =  Guid.Parse(frmBase_TabForm.IndentityUserInfo.ProviderId.ToString());
                     //Validamos Profesional Vs HealthInstitution              
-                    AuthHealthInstitutionRes resAtuh = ServiceCalls.AuthHealthInstitution(HealthInst.HealthInstitutionId, null, (Guid)frmBase_TabForm.IndentityUserInfo.ProviderId);
+                    AuthHealthInstitutionRes resAtuh = ServiceCalls.AuthHealthInstitution(HealthInst.HealthInstitutionId, null, guid);
 
                     if (resAtuh.BusinessData.Authenticated)
                     {
-                        GetProfesionalRes resProf = ServiceCalls.GetProfesional(null, false,true, true, (Guid)frmBase_TabForm.IndentityUserInfo.ProviderId, HealthInst.HealthInstitutionId);
+                        GetProfesionalRes resProf = ServiceCalls.GetProfesional(null, false, true, true, guid, HealthInst.HealthInstitutionId);
                         ServiceCalls.CurrentProfesional = resProf.BusinessData.profesional;
                         ServiceCalls.CurrentHealthInstitution_Profesional = resProf.BusinessData.HealthInstitution_Profesional;
                         ServiceCalls.CurrentHealthInstitution = HealthInst;

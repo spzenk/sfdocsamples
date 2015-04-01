@@ -40,7 +40,8 @@ namespace Health.Front
             Application.CurrentCulture = new CultureInfo("es-AR");
 			ServiceCalls.OnControlerException += new EventHandler(Controller_OnControlerException);
             this.Text = string.Concat(Assembly.GetExecutingAssembly().GetName().ProcessorArchitecture, " version ", Assembly.GetExecutingAssembly().GetName().Version.ToString());
-			ServiceCalls.PopulateAsync();
+			
+            ServiceCalls.PopulateAsync();
 
         }
 
@@ -122,7 +123,7 @@ namespace Health.Front
                 storage.StorageObject = new ClientUserSettings();
                 storage.Save();
             }
-
+           
             LoadAuthenticationForm();
         }
 
@@ -284,7 +285,7 @@ namespace Health.Front
             {
                 storage.StorageObject.User = FormBase.Principal.Identity.Name;
                 storage.StorageObject.Password = wAuthForm.Password;
-                //GetProfesionalRes res = Controller.GetProfesional(null, false, false, (Guid)frmBase_TabForm.IndentityUserInfo.ProviderId);
+                //GetProfesionalRes res = Controller.GetProfesional(null, false, false, Guid.Parse(frmBase_TabForm.IndentityUserInfo.ProviderId.ToString()));
 
                 //Controller.CurrentProfesional = res.BusinessData.profesional;
 
