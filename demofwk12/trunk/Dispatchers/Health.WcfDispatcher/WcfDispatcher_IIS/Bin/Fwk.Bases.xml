@@ -2607,9 +2607,57 @@
         </member>
         <member name="T:Fwk.Blocking.IBlockingEngine">
             <summary>
-            
+            IBlockingEngine interfaz de motor de bnloqueo
             </summary>
             <Auhor>moviedo</Auhor>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Create(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pIBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.GetByParam(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.GetByParamCustom(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Remove(System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="pGuid"></param>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Remove(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingId"></param>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.ExistsUser(Fwk.Blocking.IBlockingMark)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingMark"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.Blocking.IBlockingEngine.Exists(System.Guid,System.Nullable{System.Int32})">
+            <summary>
+            
+            </summary>
+            <param name="pGUID"></param>
+            <param name="pBlockingId"></param>
+            <returns></returns>
         </member>
         <member name="M:Fwk.Blocking.BlockingEngineBase.#ctor">
             <summary>
@@ -2910,9 +2958,28 @@
             
             </summary>
         </member>
+        <member name="M:Fwk.Blocking.BlockingHelper.WriteLog(System.String,System.Diagnostics.EventLogEntryType)">
+            <summary>
+            
+            </summary>
+            <param name="pLog"></param>
+            <param name="pType"></param>
+        </member>
+        <member name="M:Fwk.Blocking.BlockingHelper.CheckAndReleaseBlocking(Fwk.Blocking.BlockingEngineBase,System.Guid)">
+            <summary>
+            
+            </summary>
+            <param name="pBlockingEngineBase"></param>
+            <param name="pGUID"></param>
+        </member>
         <member name="T:Fwk.Blocking.FwkBlockingEngine">
             <summary>
             Marca de bloqueo para un registro de una tabla.-
+            </summary>
+        </member>
+        <member name="M:Fwk.Blocking.FwkBlockingEngine.#ctor">
+            <summary>
+            Constructor de <see cref="T:Fwk.Blocking.FwkBlockingEngine"/>
             </summary>
         </member>
         <member name="M:Fwk.Blocking.FwkBlockingEngine.GetCustomParametersToInsert(Fwk.Blocking.IBlockingMark)">
@@ -3345,6 +3412,134 @@
             <returns></returns>
         </member>
         <member name="M:Fwk.BusinessFacades.SimpleFacade.CheckServiceAvailability">
+            <summary>
+            Chequea la disponibilidad del despachador de servicio
+            </summary>
+            <returns>Mensaje en caso de que el servicio no esté disponible</returns>
+        </member>
+        <member name="T:Fwk.BusinessFacades.StaticFacade">
+            <summary>
+            Fachada de servicio por defecto a utilizar por las aplicaciones.
+            </summary>
+            <remarks>Esta fachada realiza las siguientes tareas: 
+            
+            <list type="number">
+            <item>Audita la  ejecución del servicio.</item>
+            <item>Provee seguridad de acceso al servicio.</item>
+            <item>Verifica que el servicio está disponible para ser ejecutado.</item>
+            <item>Ejecuta el servicio a través de MSDTC en caso de ser necesario.</item>
+            </list>
+            </remarks>
+            <date>2008-04-07T00:00:00</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.ExecuteService(System.String,Fwk.Bases.IServiceContract)">
+            <summary>
+            Ejecuta un servicio de negocio.
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <param name="pRequest">Request con datos de entrada para la  ejecución del servicio.</param>
+            <returns>XML con el resultado de la  ejecución del servicio.</returns>
+            <date>2008-04-07T00:00:00</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.ExecuteService(System.String,System.String,System.String)">
+            <summary>
+            Ejecuta un servicio de negocio.
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <param name="serviceName">Nombre del servicio de negocio.</param> 
+            <param name="pXmlRequest">XML con datos de entrada para la  ejecución del servicio.</param>
+            <returns>XML con el resultado de la  ejecución del servicio.</returns>
+            <date>2008-04-07T00:00:00</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.ExecuteServiceJson(System.String,System.String,System.String,Fwk.Bases.Blocks.Fwk.BusinessFacades.HostContext)">
+            <summary>
+            Ejecuta un servicio de negocio.
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <param name="serviceName">Nombre del servicio de negocio.</param> 
+            <param name="jsonRequest">JSON con datos de entrada para la  ejecución del servicio.</param>
+            <returns>JSON con el resultado de la  ejecución del servicio.</returns>
+            <date>2008-04-07T00:00:00</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.GetCaheDataById(Fwk.Bases.IRequest,Fwk.Bases.ServiceConfiguration)">
+            <summary>
+            Obtiene la data de la cache. si no lo encuentra ejecuta el servicio y lo almacena en la cache para proximo busqueda
+            </summary>
+            <param name="pRequest"></param>
+            <param name="pServiceConfiguration"></param>
+            <returns>IServiceContract con el response</returns>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.GetServiceConfiguration(System.String,System.String)">
+            <summary>
+            Obtiene la configuracion de un servicio
+            </summary>
+            <param name="providerName">Nombre del proveedor de la metadata de szervicio</param>
+            <param name="serviceName">Nombre del servicio a obtener</param>
+            <returns>Informacion del servicio</returns>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.GetServicesList(System.String,System.Boolean)">
+            <summary>
+            lista los servicios configurados
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <param name="pViewXML">Permite ver como xml todos los servicios y sus datos.
+            Si se espesifuca false solo se vera una simple lista</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.SetServiceConfiguration(System.String,System.String,Fwk.Bases.ServiceConfiguration)">
+            <summary>
+            Actualiza la configuración de un servicio de negocio.
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <param name="serviceName"></param>
+            <param name="pServiceConfiguration">configuración del servicio de negocio.</param>
+            <date>2010-08-10T00:00:00</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.AddServiceConfiguration(System.String,Fwk.Bases.ServiceConfiguration)">
+            <summary>
+            Almacena la configuración de un nuevo servicio de negocio.
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <param name="pServiceConfiguration">configuración del servicio de negocio.</param>
+            <date>2008-04-13T00:00:00</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.DeleteServiceConfiguration(System.String,System.String)">
+            <summary>
+            Elimina la configuración de un servicio de negocio.
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <param name="serviceName">Nombre del servicio.</param>
+            <date>2008-04-13T00:00:00</date>
+            <author>moviedo</author>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.GetAllApplicationsId(System.String)">
+            <summary>
+            Obtiene una lista de todas las aplicaciones configuradas en el origen de datos configurado por el 
+            proveedor
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.GetProviderInfo(System.String)">
+            <summary>
+            Obtiene info del proveedor de metadata
+            </summary>
+            <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.RetriveDispatcherInfo">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Fwk.BusinessFacades.StaticFacade.CheckServiceAvailability">
             <summary>
             Chequea la disponibilidad del despachador de servicio
             </summary>
