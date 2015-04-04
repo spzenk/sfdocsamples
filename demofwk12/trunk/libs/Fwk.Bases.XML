@@ -476,7 +476,7 @@
         </member>
         <member name="P:Fwk.Bases.ServiceContractBase`1.IEntity">
             <summary>
-            
+            GetBusinessDataObject
             </summary>
         </member>
         <member name="T:Fwk.Bases.IRequest">
@@ -3333,6 +3333,7 @@
             <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
             <param name="serviceName">Nombre del servicio de negocio.</param> 
             <param name="jsonRequest">JSON con datos de entrada para la  ejecución del servicio.</param>
+            <param name="hostContext">Info del despachador de servicio</param>
             <returns>JSON con el resultado de la  ejecución del servicio.</returns>
             <date>2008-04-07T00:00:00</date>
             <author>moviedo</author>
@@ -3461,6 +3462,7 @@
             <param name="providerName">Nombre del proveedor de metadata de servicios.-</param>
             <param name="serviceName">Nombre del servicio de negocio.</param> 
             <param name="jsonRequest">JSON con datos de entrada para la  ejecución del servicio.</param>
+            <param name="hostContext">Info del despachador de servicio</param>
             <returns>JSON con el resultado de la  ejecución del servicio.</returns>
             <date>2008-04-07T00:00:00</date>
             <author>moviedo</author>
