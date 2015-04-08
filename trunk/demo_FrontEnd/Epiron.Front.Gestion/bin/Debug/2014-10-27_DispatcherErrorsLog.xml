@@ -1,0 +1,93 @@
+
+<Events>
+  <Event Date="2014-10-27T15:48:24.1738858-03:00" Machine="SANTANA" User="moviedo" Id="10417408-12eb-4d00-a984-d8a53d5ca930" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+..................................
+Error Interno:
+No se puede encontrar la cadena de conexión : epiron_dispatcher
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T15:48:24.5059048-03:00" Machine="SANTANA" User="moviedo" Id="6d3e6b66-f8cb-43e0-9e93-df7e18b17985" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T15:52:44.6797859-03:00" Machine="SANTANA" User="moviedo" Id="d377b847-510e-449b-b16c-66830a15ab93" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+..................................
+Error Interno:
+No se puede encontrar la cadena de conexión : epiron_dispatcher
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T15:52:45.0038045-03:00" Machine="SANTANA" User="moviedo" Id="069f65e9-4dae-42f1-ba57-970b497631c4" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T15:55:42.8849787-03:00" Machine="SANTANA" User="moviedo" Id="c95505cf-a4d5-4e0d-98b9-97c9c7716ff9" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+..................................
+Error Interno:
+No se puede encontrar la cadena de conexión : epiron_dispatcher
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T15:55:43.204997-03:00" Machine="SANTANA" User="moviedo" Id="94b8d894-ee5f-46c5-9326-1c2500f710cb" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T15:59:50.2311261-03:00" Machine="SANTANA" User="moviedo" Id="b40b3155-b7df-454b-8e69-7efa5840131c" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+..................................
+Error Interno:
+No se puede encontrar la cadena de conexión : epiron_dispatcher
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T15:59:50.5481442-03:00" Machine="SANTANA" User="moviedo" Id="cd69e89e-56e5-4134-b3f7-53bc59a13cef" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T16:25:24.1668622-03:00" Machine="SANTANA" User="moviedo" Id="fb9edcdd-8890-45ad-a00f-7af834d49227" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+..................................
+Error Interno:
+No se puede encontrar la cadena de conexión : epiron_dispatcher
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T16:25:24.4828803-03:00" Machine="SANTANA" User="moviedo" Id="2b3271bb-cdf0-4d08-93a5-f35fda8d4e15" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T16:51:41.6640899-03:00" Machine="SANTANA" User="moviedo" Id="1703dd5f-cc42-495c-bab8-3e6fa5946cb5" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+..................................
+Error Interno:
+No se puede encontrar la cadena de conexión : epiron_dispatcher
+]]></Message>
+  </Event>
+  <Event Date="2014-10-27T16:51:42.01611-03:00" Machine="SANTANA" User="moviedo" Id="b7ab87ec-27e2-4990-8b8a-a1ec5275ec49" LogType="Error" AppId="">
+    <EntityState>Unchanged</EntityState>
+    <Message><![CDATA[Se ha intentado levantar el despachador de servicios.Verifique que esten correctamente configurados en el .config los AppSettings.
+ServiceDispatcherName y ServiceDispatcherConnection
+]]></Message>
+  </Event>
+</Events>
