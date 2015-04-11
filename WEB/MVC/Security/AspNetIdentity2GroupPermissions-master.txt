@@ -10,3 +10,6 @@ The Group-Based Permissions project attempts to find a middle ground between the
  
 	Users are assigned to one or more Groups. 
 	Groups are granted set of permissions corresponding to the various authorizations required by group members to perform their function.
+
+Customizing-Users-and-Role
+http://typecastexception.com/post/2014/06/22/ASPNET-Identity-20-Customizing-Users-and-Roles.aspx
