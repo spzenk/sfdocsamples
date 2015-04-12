@@ -25,7 +25,9 @@ namespace IdentitySample.Models
 
             // Add any custom User properties/code here
         }
-
+        
+        [Display(Name = "Empresa")]
+        public string Company { get; set; }
 
         public async Task<ClaimsIdentity>
             GenerateUserIdentityAsync(ApplicationUserManager manager)
