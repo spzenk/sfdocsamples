@@ -29,7 +29,21 @@
             @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
         </div>
     </div>
-    <div class="form-group">
+     <div class="form-group">
+        <label class="col-md-2 control-label">
+            Select User Groups
+        </label>
+        <div class="col-md-10">
+            @foreach (var item in (SelectList)ViewBag.GroupsList)
+            {
+                <div>
+                    <input type="checkbox" name="selectedGroups" value="@item.Value" class="checkbox-inline" />
+                    @Html.Label(item.Text, new { @class = "control-label" })
+                </div>
+            }
+        </div>
+    </div>
+    @*<div class="form-group">
         <label class="col-md-2 control-label">
             Select User Role
         </label>
@@ -40,7 +54,7 @@
                 @Html.Label(item.Value, new { @class = "control-label" })
             }
         </div>
-    </div>
+    </div>*@
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" class="btn btn-default" value="Create" />
