@@ -82,13 +82,82 @@ namespace IdentitySample.Models
             return new ApplicationRoleManager(new ApplicationRoleStore(context.Get<ApplicationDbContext>()));
         }
     }
-
+    /// <summary>
+    /// 
+    /// </summary>
     public class EmailService : IIdentityMessageService
     {
+        public Task SendAsync_(IdentityMessage message)
+        {
+            // TODO: Ustilizar mecanismo propio del sistema bd,xml web.config etc
+            var credentialUserName = "yourAccount@outlook.com";
+            var sentFrom = "yourAccount@outlook.com";
+            var pwd = "yourApssword";
+
+            // Configure the client:
+            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp-mail.outlook.com");
+
+            client.Port = 587;
+            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+
+            // Creatte the credentials:
+            System.Net.NetworkCredential credentials =
+                new System.Net.NetworkCredential(credentialUserName, pwd);
+
+            client.EnableSsl = true;
+            client.Credentials = credentials;
+
+            // Create the message:
+            var mail = new System.Net.Mail.MailMessage(sentFrom, message.Destination);
+
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+
+            // Send:
+            return client.SendMailAsync(mail);
+        }
+
+        /// <summary>
+        /// There are numerous email services available, but Sendgrid is a popular choice in the .NET community. 
+        /// Sendgrid offers API support for multiple languages as well as an HTTP-based Web API. Additionally, Sendgrid offers direct integration with Windows Azure.
+        /// 
+        /// Create sendgrid accoun here: https://sendgrid.com/user/signup
+        /// 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         public Task SendAsync(IdentityMessage message)
         {
-            // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            // Credentials:
+            var sendGridUserName = "yourSendGridUserName";
+            var sentFrom = "whateverEmailAdressYouWant";
+            var sendGridPassword = "YourSendGridPassword";
+
+            // Configure the client:
+            var client =
+                new System.Net.Mail.SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
+
+            client.Port = 587;
+            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+
+            // Creatte the credentials:
+            System.Net.NetworkCredential credentials =
+                new System.Net.NetworkCredential(sendGridUserName, sendGridPassword);
+
+            client.EnableSsl = true;
+            client.Credentials = credentials;
+
+            // Create the message:
+            var mail =
+                new System.Net.Mail.MailMessage(sentFrom, message.Destination);
+
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+
+            // Send:
+            return client.SendMailAsync(mail);
         }
     }
 
@@ -116,7 +185,7 @@ namespace IdentitySample.Models
             var userManager = HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>();
             var roleManager = HttpContext.Current.GetOwinContext().Get<ApplicationRoleManager>();
             const string name = "admin@example.com";
-            const string password = "Admin@123456";
+            const string password = "admin@gmail.com";
             const string roleName = "Admin";
 
             //Create Role Admin if it does not exist
@@ -133,11 +202,21 @@ namespace IdentitySample.Models
                 result = userManager.SetLockoutEnabled(user.Id, false);
             }
 
+            //We want to create the same default user, but then also create a default group. 
+            //Then, we will create the default Admin role and assign it to the default group. Finally, we'll add the user to that group.
+            var groupManager = new ApplicationGroupManager();
+            var newGroup = new ApplicationGroup("SuperAdmins", "Full Access to All");
+
+            groupManager.CreateGroup(newGroup);
+            groupManager.SetUserGroups(user.Id, new string[] { newGroup.Id });
+            groupManager.SetGroupRoles(newGroup.Id, new string[] { role.Name });
+
+            //old code
             // Add user admin to Role Admin if not already added
-            var rolesForUser = userManager.GetRoles(user.Id);
-            if (!rolesForUser.Contains(role.Name)) {
-                var result = userManager.AddToRole(user.Id, role.Name);
-            }
+            //var rolesForUser = userManager.GetRoles(user.Id);
+            //if (!rolesForUser.Contains(role.Name)) {
+            //    var result = userManager.AddToRole(user.Id, role.Name);
+            //}
         }
     }
 
