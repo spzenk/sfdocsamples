@@ -24,8 +24,24 @@
     <hr />
     <p>No roles found for this user.</p>
 }
-
+<h4>List ofGroups this user belongs to:</h4>
+@if (ViewBag.GroupNames.Count == 0)
+{
+    <hr />
+    <p>No Groups found for this user.</p>
+}
+  
 <table class="table">
+    @foreach (var item in ViewBag.GroupNames)
+    {
+        <tr>
+            <td>
+                @item
+            </td>
+        </tr>
+    }
+</table>
+@*<table class="table">
 
     @foreach (var item in ViewBag.RoleNames)
     {
@@ -35,7 +51,7 @@
             </td>
         </tr>
     }
-</table>
+</table>*@
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
