@@ -150,6 +150,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Views\GroupsAdmin\Create.cshtml" />
+    <Content Include="Views\GroupsAdmin\Delete.cshtml" />
+    <Content Include="Views\GroupsAdmin\Details.cshtml" />
+    <Content Include="Views\GroupsAdmin\Edit.cshtml" />
+    <Content Include="Views\GroupsAdmin\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -226,6 +231,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GroupsAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
