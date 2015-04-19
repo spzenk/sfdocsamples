@@ -56,6 +56,21 @@ namespace IdentitySample.Classes
 
 
         }
+
+      
+             internal static String Build_ResetPassword(string contactName, string callbackUrl)
+        {
+
+
+            string path = HttpContext.Current.Server.MapPath("~/App_Data/Email_UserRegistration.htm");
+            string txt = Fwk.HelperFunctions.FileFunctions.OpenTextFile(path);
+            StringBuilder BODY = new StringBuilder(txt);
+            BODY.Replace("$contactName$", contactName);
+            BODY.Replace("callbackUrl", callbackUrl);
+
+            return BODY.ToString();
+
+        }
         internal static String Build_UserRegistration(string contactName, string callbackUrl)
         {
 
