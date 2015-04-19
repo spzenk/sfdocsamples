@@ -91,10 +91,6 @@ namespace IdentitySample.Models
         {
             // TODO: Ustilizar mecanismo propio del sistema bd,xml web.config etc
 
-          
-         
-            
-            
             // Send:
             return IdentitySample.Classes.Helper.SendMailAsynk(message.Subject, message.Body,String.Empty, message.Destination);
         }
