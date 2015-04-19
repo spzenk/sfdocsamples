@@ -157,8 +157,9 @@ namespace IdentitySample.Controllers
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     //TODO: Aqui debemos enviar un mail con el codigo y liuego el usuario alrevisar el correo hace clik en el callbackUrl
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking this link: <a href=\"" + callbackUrl + "\">link</a>");
-                    ViewBag.Link = callbackUrl;
+                    String body=IdentitySample.Classes.Helper.Build_UserRegistration(user.UserName, callbackUrl);
+                    await UserManager.SendEmailAsync(user.Id, "Confirmacion de cuenta", body);
+                    //ViewBag.Link = callbackUrl;
                     return View("DisplayEmail");
                 }
                 AddErrors(result);

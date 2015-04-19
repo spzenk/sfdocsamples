@@ -90,32 +90,13 @@ namespace IdentitySample.Models
         public Task SendAsync_(IdentityMessage message)
         {
             // TODO: Ustilizar mecanismo propio del sistema bd,xml web.config etc
-            var credentialUserName = "yourAccount@outlook.com";
-            var sentFrom = "yourAccount@outlook.com";
-            var pwd = "yourApssword";
 
-            // Configure the client:
-            System.Net.Mail.SmtpClient client = new System.Net.Mail.SmtpClient("smtp-mail.outlook.com");
-
-            client.Port = 587;
-            client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
-            client.UseDefaultCredentials = false;
-
-            // Creatte the credentials:
-            System.Net.NetworkCredential credentials =
-                new System.Net.NetworkCredential(credentialUserName, pwd);
-
-            client.EnableSsl = true;
-            client.Credentials = credentials;
-
-            // Create the message:
-            var mail = new System.Net.Mail.MailMessage(sentFrom, message.Destination);
-
-            mail.Subject = message.Subject;
-            mail.Body = message.Body;
-
+          
+         
+            
+            
             // Send:
-            return client.SendMailAsync(mail);
+            return IdentitySample.Classes.Helper.SendMailAsynk(message.Subject, message.Body,String.Empty, message.Destination);
         }
 
         /// <summary>
@@ -135,23 +116,20 @@ namespace IdentitySample.Models
             var sendGridPassword = "YourSendGridPassword";
 
             // Configure the client:
-            var client =
-                new System.Net.Mail.SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
+            var client = new System.Net.Mail.SmtpClient("smtp.sendgrid.net", Convert.ToInt32(587));
 
             client.Port = 587;
             client.DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network;
             client.UseDefaultCredentials = false;
 
             // Creatte the credentials:
-            System.Net.NetworkCredential credentials =
-                new System.Net.NetworkCredential(sendGridUserName, sendGridPassword);
+            System.Net.NetworkCredential credentials = new System.Net.NetworkCredential(sendGridUserName, sendGridPassword);
 
             client.EnableSsl = true;
             client.Credentials = credentials;
 
             // Create the message:
-            var mail =
-                new System.Net.Mail.MailMessage(sentFrom, message.Destination);
+            var mail = new System.Net.Mail.MailMessage(sentFrom, message.Destination);
 
             mail.Subject = message.Subject;
             mail.Body = message.Body;
@@ -159,6 +137,7 @@ namespace IdentitySample.Models
             // Send:
             return client.SendMailAsync(mail);
         }
+
     }
 
     public class SmsService : IIdentityMessageService
