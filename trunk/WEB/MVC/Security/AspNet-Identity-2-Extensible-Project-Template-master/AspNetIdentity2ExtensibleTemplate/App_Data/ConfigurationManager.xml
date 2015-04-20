@@ -13,7 +13,7 @@
 		  </Key>
       
         <Key name="enableSsl" encrypted="false">
-          <Value><![CDATA[false]]></Value>
+          <Value><![CDATA[true]]></Value>
         </Key>
        
         <Key name="password" encrypted="false">
