@@ -21,18 +21,27 @@ namespace IdentitySample.Models
         public ApplicationUserManager(IUserStore<ApplicationUser, string> store)
             : base(store)
         {
+            
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,
-            IOwinContext context)
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options,IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser, ApplicationRole, string, ApplicationUserLogin, ApplicationUserRole, ApplicationUserClaim>(context.Get<ApplicationDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser, 
+                                                        ApplicationRole, 
+                                                        string, 
+                                                        ApplicationUserLogin, 
+                                                        ApplicationUserRole, 
+                                                        ApplicationUserClaim>
+                                                        (context.Get<ApplicationDbContext>()));
+
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
             };
+      
+
             // Configure validation logic for passwords
             manager.PasswordValidator = new PasswordValidator
             {
@@ -46,16 +55,18 @@ namespace IdentitySample.Models
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
+           
             // Register two factor authentication providers. This application uses Phone and Emails as a step of receiving a code for verifying the user
             // You can write your own provider and plug in here.
             manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationUser>
             {
-                MessageFormat = "Your security code is: {0}"
+                MessageFormat = "Su codifo de seguridad es: {0}"
             });
+
             manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationUser>
             {
                 Subject = "SecurityCode",
-                BodyFormat = "Your security code is {0}"
+                BodyFormat = "Su codifo de seguridad es {0}"
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();
@@ -87,7 +98,7 @@ namespace IdentitySample.Models
     /// </summary>
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync_(IdentityMessage message)
+        public Task SendAsync(IdentityMessage message)
         {
             // TODO: Ustilizar mecanismo propio del sistema bd,xml web.config etc
 
@@ -104,7 +115,7 @@ namespace IdentitySample.Models
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        public Task SendAsync(IdentityMessage message)
+        public Task SendAsync_(IdentityMessage message)
         {
             // Credentials:
             var sendGridUserName = "yourSendGridUserName";

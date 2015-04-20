@@ -38,28 +38,41 @@ namespace IdentitySample.Controllers
                 _userManager = value;
             }
         }
+         [AllowAnonymous]
         public ActionResult check()
         {
             return View();
         }
-        
+         [AllowAnonymous]
+         public async Task<ActionResult> TestSendMail(RegisterViewModel model)
+         {
+             // Require that the user has already logged in via username/password or external login
+            
+             //var code = await UserManager.GenerateEmailConfirmationTokenAsync(model.Email);
+             var code ="CODIGO00000000000001";
+             var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = model.Email, code = code }, protocol: Request.Url.Scheme);
+
+             String body = IdentitySample.Classes.Helper.Build_UserRegistration(model.Email, callbackUrl);
+             await IdentitySample.Classes.Helper.SendMailAsynk("Confirmación de cuenta", body, String.Empty, model.Email);
+             //await UserManager.SendEmailAsync(model.Email, "Confirmación de cuenta", body);
+
+             return View("DisplayEmail");
+         }
+        //
+        // GET: /Account/ConfirmEmail
         [AllowAnonymous]
-        public async Task<ActionResult> TestSendMail(RegisterViewModel model)
+        public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            // Require that the user has already logged in via username/password or external login
-            if (!await SignInManager.HasBeenVerifiedAsync())
+            if (userId == null || code == null)
             {
                 return View("Error");
             }
-            var code = await UserManager.GenerateEmailConfirmationTokenAsync(model.Email);
-            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = model.Email, code = code }, protocol: Request.Url.Scheme);
-
-            String body = IdentitySample.Classes.Helper.Build_UserRegistration(model.Email, callbackUrl);
-
-            await UserManager.SendEmailAsync(model.Email, "Confirmación de cuenta", body);
-
-            return View("DisplayEmail");
+            var result = await UserManager.ConfirmEmailAsync(userId, code);
+            return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
+
+        
+       
         //
         // GET: /Account/Login
         [AllowAnonymous]
@@ -191,19 +204,7 @@ namespace IdentitySample.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/ConfirmEmail
-        [AllowAnonymous]
-        public async Task<ActionResult> ConfirmEmail(string userId, string code)
-        {
-            if (userId == null || code == null)
-            {
-                return View("Error");
-            }
-            var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
-        }
-
+       
         //
         // GET: /Account/ForgotPassword
         [AllowAnonymous]
