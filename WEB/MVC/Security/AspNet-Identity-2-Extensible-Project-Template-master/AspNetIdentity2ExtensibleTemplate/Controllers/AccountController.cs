@@ -38,7 +38,28 @@ namespace IdentitySample.Controllers
                 _userManager = value;
             }
         }
-  
+        public ActionResult check()
+        {
+            return View();
+        }
+        
+        [AllowAnonymous]
+        public async Task<ActionResult> TestSendMail(RegisterViewModel model)
+        {
+            // Require that the user has already logged in via username/password or external login
+            if (!await SignInManager.HasBeenVerifiedAsync())
+            {
+                return View("Error");
+            }
+            var code = await UserManager.GenerateEmailConfirmationTokenAsync(model.Email);
+            var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = model.Email, code = code }, protocol: Request.Url.Scheme);
+
+            String body = IdentitySample.Classes.Helper.Build_UserRegistration(model.Email, callbackUrl);
+
+            await UserManager.SendEmailAsync(model.Email, "Confirmación de cuenta", body);
+
+            return View("DisplayEmail");
+        }
         //
         // GET: /Account/Login
         [AllowAnonymous]
