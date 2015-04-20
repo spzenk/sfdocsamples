@@ -98,7 +98,7 @@ namespace IdentitySample.Classes
 
             String email = Fwk.Configuration.ConfigurationManager.GetProperty("MailSettings", "email");
             String username = Fwk.Configuration.ConfigurationManager.GetProperty("MailSettings", "username");
-            String pwd = Fwk.Configuration.ConfigurationManager.GetProperty("MailSettings", "username");
+            String pwd = Fwk.Configuration.ConfigurationManager.GetProperty("MailSettings", "password");
 
             if (String.IsNullOrEmpty(from))
             {
