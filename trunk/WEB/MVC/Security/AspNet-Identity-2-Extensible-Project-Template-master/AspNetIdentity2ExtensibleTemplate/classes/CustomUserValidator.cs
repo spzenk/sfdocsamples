@@ -12,7 +12,7 @@ namespace IdentitySample.classes
     /// <example>
     /// //Rest of code is removed for brevity
     ///Configure validation logic for usernames
-    ///appUserManager.UserValidator = new MyCustomUserValidator(appUserManager)
+    ///appUserManager.UserValidator = new CustomUserValidator(appUserManager)
     ///{
     ///    AllowOnlyAlphanumericUserNames = true,
     ///    RequireUniqueEmail = true
@@ -23,8 +23,10 @@ namespace IdentitySample.classes
     {
 
         //List<string> _allowedEmailDomains = new List<string> { "outlook.com", "hotmail.com", "gmail.com", "yahoo.com" };
+
         private readonly ApplicationUserManager _userManager;
-        public CustomUserValidator(ApplicationUserManager appUserManager)            : base(appUserManager)
+
+        public CustomUserValidator(ApplicationUserManager appUserManager) : base(appUserManager)
         {
             _userManager = appUserManager;
         }

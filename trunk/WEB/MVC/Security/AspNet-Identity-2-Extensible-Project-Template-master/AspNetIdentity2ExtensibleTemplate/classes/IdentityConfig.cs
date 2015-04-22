@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using IdentitySample.Models;
 
-namespace IdentitySample.Models
+namespace IdentitySample.classes
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 
@@ -34,8 +34,10 @@ namespace IdentitySample.Models
                                                         ApplicationUserClaim>
                                                         (context.Get<ApplicationDbContext>()));
 
+            
+
             // Configure validation logic for usernames
-            manager.UserValidator = new UserValidator<ApplicationUser>(manager)
+            manager.UserValidator = new IdentitySample.classes.CustomUserValidator(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -60,13 +62,13 @@ namespace IdentitySample.Models
             // You can write your own provider and plug in here.
             manager.RegisterTwoFactorProvider("PhoneCode", new PhoneNumberTokenProvider<ApplicationUser>
             {
-                MessageFormat = "Su codifo de seguridad es: {0}"
+                MessageFormat = "Su codigo de seguridad es: {0}"
             });
 
             manager.RegisterTwoFactorProvider("EmailCode", new EmailTokenProvider<ApplicationUser>
             {
                 Subject = "SecurityCode",
-                BodyFormat = "Su codifo de seguridad es {0}"
+                BodyFormat = "Su codigo de seguridad es {0}"
             });
             manager.EmailService = new EmailService();
             manager.SmsService = new SmsService();

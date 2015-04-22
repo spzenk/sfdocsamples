@@ -5,8 +5,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System;
+using IdentitySample.classes;
+using IdentitySample.Models;
 
-namespace IdentitySample.Models
+namespace IdentitySample.classes
 {
     // You will not likely need to customize there, but it is necessary/easier to create our own 
     // project-specific implementations, so here they are:
