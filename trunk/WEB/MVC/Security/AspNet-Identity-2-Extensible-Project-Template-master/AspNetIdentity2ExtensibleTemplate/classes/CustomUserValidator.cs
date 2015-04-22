@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -78,17 +79,55 @@ namespace IdentitySample.classes
     /// </summary>
     public class CustomPasswordValidator : PasswordValidator
     {
+        int minSpChar = 0;
+        public int MinEspesialCharactersChar
+        {
+            get { return minSpChar; }
+            set { minSpChar = value; }
+        }
         public override async Task<IdentityResult> ValidateAsync(string password)
         {
             IdentityResult result = await base.ValidateAsync(password);
+            var errors = result.Errors.ToList();
+            if (this.RequiredLength < password.Length)
+            {
+                errors.Add(String.Format("El password debe contener {0} o mas caracteres", this.RequiredLength.ToString()));
+            }
+            //if (this.RequireDigit )
+            //{
+            //    if(password.con)
+            //    errors.Add("El password debe incluir al menos 1 o mas numeros");
+            //}
+            //Check for Digits and Special Characters
+            if (minSpChar != 0)
+            {
+                int splCharCount = 0;
+                foreach (char c in password)
+                {
+                    if (Regex.IsMatch(c.ToString(), @"[!#$%&'()*+,-.:;<=>?@[\\\]{}^_`|~]")) splCharCount++;
+                }
 
+                if (splCharCount < minSpChar)
+                {
+                   errors.Add(String.Format("El password debe contener como mínimo {0} caracteres especiales", this.RequiredLength.ToString()));
+                }
+            }
+            if (password.Contains(" "))
+            {
+                errors.Add("El password no puede contener espacios en blanco");
+
+            }
             if (password.Contains("abcdef") || password.Contains("123456"))
             {
-                var errors = result.Errors.ToList();
-                errors.Add("Password can not contain sequence of chars");
-                result = new IdentityResult(errors);
+                errors.Add("El password no puede contener una secuencia de caracteres");
+
             }
-            return result;
+
+            return errors.Any()
+                        ? IdentityResult.Failed(errors.ToArray())
+                        : result;
+
+
         }
     }
     //public class CustomUserValidator<TUser> : IIdentityValidator<TUser>     where TUser : class, Microsoft.AspNet.Identity.IUser
