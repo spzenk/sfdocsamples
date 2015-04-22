@@ -5,8 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using System.Threading.Tasks;
+using IdentitySample.Models;
 
-namespace IdentitySample.Models
+namespace IdentitySample.classes
 {
     /// <summary>
     /// Para controlar la persistencia se usa esta clase 

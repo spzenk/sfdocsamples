@@ -277,10 +277,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="Models\Groups\ApplicationGroupManager.cs" />
-    <Compile Include="Models\Groups\ApplicationGroupStore.cs" />
+    <Compile Include="classes\ApplicationGroupManager.cs" />
+    <Compile Include="classes\ApplicationGroupStore.cs" />
     <Compile Include="Models\Groups\GroupModel.cs" />
-    <Compile Include="Models\Groups\GroupStoreBase.cs" />
+    <Compile Include="classes\GroupStoreBase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

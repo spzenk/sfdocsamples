@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using IdentitySample.Models;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace IdentitySample.Models
+namespace IdentitySample.classes
 {
     /// <summary>
     /// 
