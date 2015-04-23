@@ -30,6 +30,16 @@
       </Keys>
 
 	</Group>
-	
-  </Groups>
+	<Group name="Account">
+      <Keys>
+        <Key name="companyLink" encrypted="false">
+          <Value><![CDATA[www.mycompany.com.ar]]></Value>
+        </Key>
+      <Key name="companyName" encrypted="false">
+          <Value><![CDATA[www.mycompany.com.ar]]></Value>
+        </Key>
+    </Keys>
+
+	</Group>
+</Groups>
 </ConfigurationFile>

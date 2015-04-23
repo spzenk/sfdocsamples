@@ -232,11 +232,11 @@ namespace IdentitySample.Controllers
 
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                
-                String body = IdentitySample.Classes.Helper.Build_UserRegistration(user.UserName, callbackUrl);
 
-                await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking here: <a href=\"" + callbackUrl + "\">link</a>");
-                ViewBag.Link = callbackUrl;
+                String body = IdentitySample.Classes.Helper.Build_ForgotPassword(user.UserName, model.Email,callbackUrl);
+
+                await UserManager.SendEmailAsync(user.Id, "Reestablecimiento de contraseña", body);
+                
                 return View("ForgotPasswordConfirmation");
             }
 

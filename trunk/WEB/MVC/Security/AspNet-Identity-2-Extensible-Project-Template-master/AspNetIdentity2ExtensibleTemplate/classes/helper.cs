@@ -57,30 +57,63 @@ namespace IdentitySample.Classes
 
         }
 
-      
-             internal static String Build_ResetPassword(string contactName, string callbackUrl)
+
+        internal static String Build_ForgotPassword(string contactName, string email,string callbackUrl)
         {
 
-
-            string path = HttpContext.Current.Server.MapPath("~/App_Data/Email_UserRegistration.htm");
+            String companyName = Fwk.Configuration.ConfigurationManager.GetProperty("Account", "companyName");
+            String companyLink = Fwk.Configuration.ConfigurationManager.GetProperty("Account", "companyLink");
+            string path = HttpContext.Current.Server.MapPath("~/App_Data/Email_Forgot_Password.htm");
             string txt = Fwk.HelperFunctions.FileFunctions.OpenTextFile(path);
             StringBuilder BODY = new StringBuilder(txt);
             BODY.Replace("$contactName$", contactName);
-            BODY.Replace("callbackUrl", callbackUrl);
-
+            BODY.Replace("$email$", email);
+            BODY.Replace("$callbackUrl$", callbackUrl);
+            BODY.Replace("$companyLink$", companyLink);
+            BODY.Replace("$companyName$", companyName);
+            
+     
             return BODY.ToString();
 
         }
-        internal static String Build_UserRegistration(string contactName, string callbackUrl)
+
+      /// <summary>
+        /// envia un mail ChangePassword para q el usuario inmediatamente pueda cambiar la clave sin nececidad de 
+        /// saber que clave es la q se acaba de reesrtablecer
+      /// </summary>
+      /// <param name="contactName"></param>
+      /// <param name="callbackUrl"></param>
+      /// <returns></returns>
+       internal static String Build_ResetPassword(string contactName,string email, string callbackUrl)
         {
 
+            String companyName = Fwk.Configuration.ConfigurationManager.GetProperty("Account", "companyName");
+            String companyLink = Fwk.Configuration.ConfigurationManager.GetProperty("Account", "companyLink");
+            string path = HttpContext.Current.Server.MapPath("~/App_Data/Email_ChangePassword.htm");
+            string txt = Fwk.HelperFunctions.FileFunctions.OpenTextFile(path);
+            StringBuilder BODY = new StringBuilder(txt);
+            BODY.Replace("$contactName$", contactName);
+            BODY.Replace("$email$", email);
+            BODY.Replace("$callbackUrl$", callbackUrl);
+            BODY.Replace("$companyLink$", companyLink);
+            BODY.Replace("$companyName$", companyName);
+           
+            return BODY.ToString();
+
+        }
+
+        internal static String Build_UserRegistration(string contactName, string callbackUrl)
+        {
+            String companyName = Fwk.Configuration.ConfigurationManager.GetProperty("Account", "companyName");
+            String companyLink = Fwk.Configuration.ConfigurationManager.GetProperty("Account", "companyLink");
 
             string path = HttpContext.Current.Server.MapPath("~/App_Data/Email_UserRegistration.htm");
             string txt = Fwk.HelperFunctions.FileFunctions.OpenTextFile(path);
             StringBuilder BODY = new StringBuilder(txt);
             BODY.Replace("$contactName$", contactName);
-            BODY.Replace("callbackUrl", callbackUrl);
-
+            BODY.Replace("$callbackUrl$", callbackUrl);
+            BODY.Replace("$companyLink$", companyLink);
+            BODY.Replace("$companyName$", companyName);
             return BODY.ToString();
 
         }
