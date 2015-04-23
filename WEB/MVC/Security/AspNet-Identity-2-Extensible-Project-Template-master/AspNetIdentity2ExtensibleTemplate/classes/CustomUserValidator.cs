@@ -87,8 +87,9 @@ namespace IdentitySample.classes
         }
         public override async Task<IdentityResult> ValidateAsync(string password)
         {
-            IdentityResult result = await base.ValidateAsync(password);
-            var errors = result.Errors.ToList();
+            
+            //var errors = result.Errors.ToList();
+            var errors = new List<string>();
             if (this.RequiredLength < password.Length)
             {
                 errors.Add(String.Format("El password debe contener {0} o mas caracteres", this.RequiredLength.ToString()));
@@ -122,7 +123,7 @@ namespace IdentitySample.classes
                 errors.Add("El password no puede contener una secuencia de caracteres");
 
             }
-
+            IdentityResult result = await base.ValidateAsync(password);
             return errors.Any()
                         ? IdentityResult.Failed(errors.ToArray())
                         : result;
