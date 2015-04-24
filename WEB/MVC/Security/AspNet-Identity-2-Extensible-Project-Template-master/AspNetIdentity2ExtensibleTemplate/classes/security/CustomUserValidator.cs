@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace IdentitySample.classes
+namespace IdentitySample.Common
 {
     /// <summary>
     /// <example>

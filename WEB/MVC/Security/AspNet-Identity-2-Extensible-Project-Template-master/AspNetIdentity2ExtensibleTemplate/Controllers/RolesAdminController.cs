@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Collections.Generic;
-using IdentitySample.classes;
+using IdentitySample.Common;
 
 namespace IdentitySample.Controllers
 {

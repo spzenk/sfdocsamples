@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using IdentitySample.Models;
 
-namespace IdentitySample.classes
+namespace IdentitySample.Common
 {
     // Configure the application user manager used in this application. UserManager is defined in ASP.NET Identity and is used by the application.
 
@@ -37,7 +37,7 @@ namespace IdentitySample.classes
             
 
             // Configure validation logic for usernames
-            manager.UserValidator = new IdentitySample.classes.CustomUserValidator(manager)
+            manager.UserValidator = new IdentitySample.Common.CustomUserValidator(manager)
             {
                 AllowOnlyAlphanumericUserNames = false,
                 RequireUniqueEmail = true
@@ -105,7 +105,7 @@ namespace IdentitySample.classes
             // TODO: Ustilizar mecanismo propio del sistema bd,xml web.config etc
 
             // Send:
-            return IdentitySample.Classes.Helper.SendMailAsynk(message.Subject, message.Body,String.Empty, message.Destination);
+            return IdentitySample.Common.Helper.SendMailAsynk(message.Subject, message.Body,String.Empty, message.Destination);
         }
 
         /// <summary>

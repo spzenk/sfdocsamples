@@ -7,7 +7,7 @@ using System.Data.Entity;
 using System.Threading.Tasks;
 using IdentitySample.Models;
 
-namespace IdentitySample.classes
+namespace IdentitySample.Common
 {
     /// <summary>
     /// Para controlar la persistencia se usa esta clase 

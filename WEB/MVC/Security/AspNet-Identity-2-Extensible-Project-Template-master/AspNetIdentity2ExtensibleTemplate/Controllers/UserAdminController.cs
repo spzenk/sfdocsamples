@@ -10,7 +10,7 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using IdentitySample.classes;
+using IdentitySample.Common;
 
 namespace IdentitySample.Controllers
 {

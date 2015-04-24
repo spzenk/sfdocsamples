@@ -6,11 +6,31 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
-namespace IdentitySample.Classes
+namespace IdentitySample.Common
 {
     public class Helper
     {
+        public static string Controller()
+        {
+            var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+
+            if (routeValues.ContainsKey("controller"))
+                return (string)routeValues["controller"];
+
+            return string.Empty;
+        }
+
+        public static string Action()
+        {
+            var routeValues = HttpContext.Current.Request.RequestContext.RouteData.Values;
+
+            if (routeValues.ContainsKey("action"))
+                return (string)routeValues["action"];
+
+            return string.Empty;
+        }
 
         /// <summary>
         /// Envia mail de acuerdo a las direcciones configuradas.
@@ -164,5 +184,68 @@ namespace IdentitySample.Classes
             //}
             //catch (Exception) { }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userData"></param>
+        /// <returns></returns>
+        internal static string CustomGeneratePasswordResetToken(String userData)
+        {
+            byte[] time = BitConverter.GetBytes(DateTime.UtcNow.ToBinary());
+            byte[] key = Encoding.ASCII.GetBytes(userData);
+            string token = Convert.ToBase64String(time.Concat(key).ToArray());
+
+            return token;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="userData"></param>
+        /// <param name="token"></param>
+        /// <param name="expirationTime"></param>
+        /// <param name="expirationFormat"></param>
+        /// <returns></returns>
+        internal Boolean CustomValidateToken(String userData, String token, Int32 expirationTime, ExpirationFormat expirationFormat)
+        {
+            byte[] data = Convert.FromBase64String(token);
+            DateTime time = DateTime.FromBinary(BitConverter.ToInt64(data, 0));
+            String tokenUserData = BitConverter.ToString(data, 8);
+            DateTime dt = DateTime.UtcNow;
+            switch (expirationFormat)
+            {
+                case ExpirationFormat.MINUTES:
+                    {
+                        dt = dt.AddMinutes(-expirationTime);
+                        break;
+                    }
+                case ExpirationFormat.DAY:
+                    {
+                        dt = dt.AddMinutes(-expirationTime);
+                        break;
+                    }
+                case ExpirationFormat.SECONDS:
+                    {
+                        dt = dt.AddSeconds(-expirationTime);
+                        break;
+                    }
+                case ExpirationFormat.HOURS:
+                    {
+                        dt = dt.AddHours(-expirationTime);
+                        break;
+                    }
+            }
+            return (time < DateTime.UtcNow.AddMinutes(-expirationTime) || tokenUserData.CompareTo(userData) != 0);
+            
+        }
+        public enum ExpirationFormat
+        {
+            DAY ,
+            MINUTES,
+            SECONDS,
+            HOURS
+        }
+       
     }
 }

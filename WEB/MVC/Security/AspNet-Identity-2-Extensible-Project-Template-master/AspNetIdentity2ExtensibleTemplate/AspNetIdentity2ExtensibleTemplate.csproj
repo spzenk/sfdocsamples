@@ -262,11 +262,12 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="classes\ApplicationDbContext.cs" />
-    <Compile Include="classes\IdentityConfig.cs" />
+    <Compile Include="classes\CustomErrorHandler.cs" />
+    <Compile Include="classes\security\ApplicationDbContext.cs" />
+    <Compile Include="classes\security\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="classes\CustomUserValidator.cs" />
+    <Compile Include="classes\security\CustomUserValidator.cs" />
     <Compile Include="classes\helper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\GroupsAdminController.cs" />
@@ -279,10 +280,10 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdminViewModel.cs" />
-    <Compile Include="classes\ApplicationGroupManager.cs" />
-    <Compile Include="classes\ApplicationGroupStore.cs" />
+    <Compile Include="classes\security\ApplicationGroupManager.cs" />
+    <Compile Include="classes\security\ApplicationGroupStore.cs" />
     <Compile Include="Models\Groups\GroupModel.cs" />
-    <Compile Include="classes\GroupStoreBase.cs" />
+    <Compile Include="classes\security\GroupStoreBase.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

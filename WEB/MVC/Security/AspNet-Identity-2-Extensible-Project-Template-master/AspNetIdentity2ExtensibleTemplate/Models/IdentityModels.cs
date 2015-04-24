@@ -5,7 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System;
-using IdentitySample.classes;
+using IdentitySample.Common;
 
 namespace IdentitySample.Models
 {
