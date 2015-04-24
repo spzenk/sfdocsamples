@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using Fwk.Exceptions;
+using IdentitySample.Common;
+using System.Web.Mvc;
 
 namespace IdentitySample
 {
@@ -6,7 +8,16 @@ namespace IdentitySample
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new PortalHandleErrorAttribute
+            {
+                ExceptionType = typeof(System.Exception),
+                View = "Error"
+            });
+            filters.Add(new PortalHandleErrorAttribute
+            {
+                ExceptionType = typeof(TechnicalException),
+                View = "Error"
+            });
         }
     }
 }

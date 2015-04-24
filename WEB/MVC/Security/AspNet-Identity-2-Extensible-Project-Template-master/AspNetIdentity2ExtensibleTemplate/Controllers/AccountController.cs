@@ -109,8 +109,7 @@ namespace IdentitySample.Controllers
         {
             if (!ModelState.IsValid)
             {
-                PortalErrorInfo portalErrorInfo = PortalErrorInfo.CreateNew("El código de confirmación no es correcto o ah expirado.");
-                return View("Error", portalErrorInfo);
+                return View(model);
             }
 
             // This doen't count login failures towards lockout only two factor authentication
@@ -139,7 +138,9 @@ namespace IdentitySample.Controllers
             // Require that the user has already logged in via username/password or external login
             if (!await SignInManager.HasBeenVerifiedAsync())
             {
-                return View("Error");
+                PortalErrorInfo portalErrorInfo = PortalErrorInfo.CreateNew(" Require that the user has already logged in via username/password or external login");
+                return View("Error", portalErrorInfo);
+
             }
             var user = await UserManager.FindByIdAsync(await SignInManager.GetVerifiedUserIdAsync());
             if (user != null)
