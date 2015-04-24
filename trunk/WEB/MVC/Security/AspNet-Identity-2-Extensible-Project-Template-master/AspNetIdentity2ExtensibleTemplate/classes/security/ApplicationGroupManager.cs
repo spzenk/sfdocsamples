@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace IdentitySample.classes
+namespace IdentitySample.Common
 {
     /// <summary>
     /// 

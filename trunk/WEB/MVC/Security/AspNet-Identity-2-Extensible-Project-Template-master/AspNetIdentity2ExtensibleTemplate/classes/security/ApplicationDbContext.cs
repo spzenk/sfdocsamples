@@ -7,7 +7,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace IdentitySample.classes
+namespace IdentitySample.Common
 {
 
     // Must be expressed in terms of our custom types:

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity.EntityFramework;
-using IdentitySample.classes;
+using IdentitySample.Common;
 
 namespace IdentitySample.Controllers
 {
@@ -53,8 +53,8 @@ namespace IdentitySample.Controllers
              var code ="CODIGO00000000000001";
              var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = model.Email, code = code }, protocol: Request.Url.Scheme);
 
-             String body = IdentitySample.Classes.Helper.Build_UserRegistration(model.Email, callbackUrl);
-             await IdentitySample.Classes.Helper.SendMailAsynk("Confirmación de cuenta", body, String.Empty, model.Email);
+             String body = IdentitySample.Common.Helper.Build_UserRegistration(model.Email, callbackUrl);
+             await IdentitySample.Common.Helper.SendMailAsynk("Confirmación de cuenta", body, String.Empty, model.Email);
              //await UserManager.SendEmailAsync(model.Email, "Confirmación de cuenta", body);
 
              return View("DisplayEmail");
@@ -68,7 +68,13 @@ namespace IdentitySample.Controllers
             {
                 return View("Error");
             }
+           
             var result = await UserManager.ConfirmEmailAsync(userId, code);
+            if (!result.Succeeded)
+            {
+                PortalErrorInfo portalErrorInfo = PortalErrorInfo.CreateNew("El codigo de confirmacion no es correcto o ah expirado.");
+                return View("Error", portalErrorInfo);
+            }
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
@@ -103,7 +109,8 @@ namespace IdentitySample.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                PortalErrorInfo portalErrorInfo = PortalErrorInfo.CreateNew("El código de confirmación no es correcto o ah expirado.");
+                return View("Error", portalErrorInfo);
             }
 
             // This doen't count login failures towards lockout only two factor authentication
@@ -192,7 +199,7 @@ namespace IdentitySample.Controllers
                     var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-                    String body = IdentitySample.Classes.Helper.Build_UserRegistration(user.UserName, callbackUrl);
+                    String body = IdentitySample.Common.Helper.Build_UserRegistration(user.UserName, callbackUrl);
 
                     await UserManager.SendEmailAsync(user.Id, "Confirmación de cuenta", body);
 
@@ -229,14 +236,15 @@ namespace IdentitySample.Controllers
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
                 }
-
+                //TODO: Generacion de codigo para ressetpassword
                 var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
 
-                String body = IdentitySample.Classes.Helper.Build_ForgotPassword(user.UserName, model.Email,callbackUrl);
+                String body = IdentitySample.Common.Helper.Build_ForgotPassword(user.UserName, model.Email,callbackUrl);
 
                 await UserManager.SendEmailAsync(user.Id, "Reestablecimiento de contraseña", body);
-                
+                ViewData["email"] = model.Email;
+                ViewData["token"] = code;
                 return View("ForgotPasswordConfirmation");
             }
 
@@ -251,6 +259,11 @@ namespace IdentitySample.Controllers
         {
             return View();
         }
+        //[AllowAnonymous]
+        //public ActionResult ForgotPasswordConfirmation(string email, string token)
+        //{
+        //    return View();
+        //}
 
         //
         // GET: /Account/ResetPassword
@@ -276,7 +289,10 @@ namespace IdentitySample.Controllers
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
+            
             }
+
+            //TODO: Validacion del codigo generado
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {

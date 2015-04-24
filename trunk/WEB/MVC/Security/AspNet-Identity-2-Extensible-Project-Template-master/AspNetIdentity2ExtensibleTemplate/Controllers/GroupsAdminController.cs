@@ -1,4 +1,4 @@
-﻿using IdentitySample.classes;
+﻿using IdentitySample.Common;
 using IdentitySample.Models;
 using Microsoft.AspNet.Identity.Owin;
 using System.Data.Entity;

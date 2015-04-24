@@ -14,6 +14,11 @@ namespace IdentitySample
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+              name: "Defaulttoken",
+              url: "{controller}/{action}/{email}/{token}",
+              defaults: new { controller = "Account", action = "ForgotPasswordConfirmation" }
+          );
         }
     }
 }
