@@ -107,7 +107,7 @@ namespace IdentitySample.Common
       
 
         String _ErrorId;
-
+        String ErrorTitle{get;set;};
         public String ErrorId
         {
             get { return _ErrorId; }

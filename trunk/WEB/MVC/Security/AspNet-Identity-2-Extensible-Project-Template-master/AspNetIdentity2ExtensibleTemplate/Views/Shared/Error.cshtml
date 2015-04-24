@@ -18,51 +18,69 @@
         <img src="/content/img/warning25.png" alt="" style="float: left; height: 42px;
             width: 42px; margin-right: 10px" />
     </span>
-    <h2 class="ui-corner-all">
-        Error no esperado
-    </h2>
-    <br />
-    <h3>Mensage</h3>
-    <div style="padding: 10PX; width: 600px" class="ui-corner-all ui-state-highlight ">
-        @Model.Message
-    </div>
 
 
-    <div id="InnerEx" class="ui-corner-all" style="padding: 10PX; width: 600px">
-
-        <h3>Error interno</h3>
-        <div class="ui-state-error  ui-corner-all " style="margin: 10PX;">
-
-
-            @{
-                Exception innerEx = Model.Exception.InnerException;
-            }
-
-
-            @while (innerEx != null)
+    <div id="CreateChatDialog" class="panel panel-success">
+        <div class="panel-header">
+            <h4 class="modal-title">@Model.ErrorTitle</h4>
+        </div>
+        <div class="panel-body">
+                        <div id="alert alert-info">
+                            @Model.Message
+                        </div>
+            
+                        @if (Model.Exception.InnerException != null)
             {
-                <div>
-                    @innerEx.Message;
+                <div id="InnerEx" class="alert alert-info" style="">
+
+                    <h3>Error interno</h3>
+                    <div class="" style="margin: 10PX;">
+
+
+                        @{
+                Exception innerEx = Model.Exception.InnerException;
+                        }
+
+
+                        @while (innerEx != null)
+                        {
+                        <div>
+                            @innerEx.Message;
+                        </div>
+                            innerEx = innerEx.InnerException;
+                        }
+
+                    </div>
+                    <h3>
+                        Traza del error
+                    </h3>
+                    <div class="alert alert-info">
+                        <div>
+                            @Model.StackTrace
+
+                        </div>
+                    </div>
                 </div>
-                innerEx = innerEx.InnerException;
-            }
-
+                        }
+            
         </div>
-        <h3>
-            Traza del error
-        </h3>
-        <div class="ui-state-error  ui-corner-all">
-            <div>
 
-
-                @Model.StackTrace
-
-
-
-
-            </div>
+        <div id="alert-text-view1" class="alert alert-warning" style="display: none; margin: 5px">
+            <p id="alert-text-error-tittle" style="font-weight: bold;"> </p>
+            <p class="error-text" id="error-text-message"></p>
+            <div id="link-email"></div>
         </div>
+
+        <div class="panel-footer">
+            @*<button id="btnCreateNew" type="submit" class="btn btn-primary">Crear</button>
+            <button id="btnClose" type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>*@
+        </div>
+
     </div>
+
+   
+
+    
 </div>
 
 
