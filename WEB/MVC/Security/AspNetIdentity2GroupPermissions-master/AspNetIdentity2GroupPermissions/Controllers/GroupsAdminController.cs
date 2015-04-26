@@ -143,8 +143,7 @@ namespace IdentitySample.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(
-            [Bind(Include = "Id,Name,Description")] GroupViewModel model, params string[] selectedRoles)
+        public async Task<ActionResult> Edit([Bind(Include = "Id,Name,Description")] GroupViewModel model, params string[] selectedRoles)
         {
             var group = await this.GroupManager.FindByIdAsync(model.Id);
             if (group == null)

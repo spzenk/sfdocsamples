@@ -41,20 +41,20 @@ namespace IdentitySample.Controllers
             }
         }
 
-        // Add the Group Manager (NOTE: only access through the public
-        // Property, not by the instance variable!)
-        private ApplicationGroupManager _groupManager;
-        public ApplicationGroupManager GroupManager
-        {
-            get
+            // Add the Group Manager (NOTE: only access through the public
+            // Property, not by the instance variable!)
+            private ApplicationGroupManager _groupManager;
+            public ApplicationGroupManager GroupManager
             {
-                return _groupManager ?? new ApplicationGroupManager();
+                get
+                {
+                    return _groupManager ?? new ApplicationGroupManager();
+                }
+                private set
+                {
+                    _groupManager = value;
+                }
             }
-            private set
-            {
-                _groupManager = value;
-            }
-        }
 
         private ApplicationRoleManager _roleManager;
         public ApplicationRoleManager RoleManager
