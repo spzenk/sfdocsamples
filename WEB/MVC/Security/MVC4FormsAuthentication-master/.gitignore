@@ -1,9 +1,0 @@
-*.cache
-*.dll
-*.pdb
-*.txt
-*.suo
-*.xml
-*.vspscc
-/*/bin/Debug/*.dll
-/*/obj/*/*.*
