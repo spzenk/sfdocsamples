@@ -499,6 +499,17 @@ namespace IdentitySample.Controllers
                 }
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
+
+            //new 
+            //public System.Net.Http.HttpRequestMessage Request { get; set; }
+            //public Task<System.Net.Http.HttpResponseMessage> ExecuteAsync(System.Threading.CancellationToken cancellationToken)
+            //{
+            //    Request.GetOwinContext().Authentication.Challenge(LoginProvider);
+
+            //    System.Net.Http.HttpResponseMessage response = new System.Net.Http.HttpResponseMessage(HttpStatusCode.Unauthorized);
+            //    response.RequestMessage = Request;
+            //    return Task.FromResult(response);
+            //}
         }
         #endregion
     }

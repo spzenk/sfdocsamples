@@ -61,9 +61,11 @@ namespace IdentitySample
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(
-            //    clientId: "",
-            //    clientSecret: "");
+            //Security Note: Never store sensitive data in your source code. The account and credentials are added to the code above to keep the sample simple. See
+            //http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure
+            app.UseGoogleAuthentication(
+                clientId: "87786146525-6dci3s8umtd3t9emgofvaos24hn8qiuv.apps.googleusercontent.com",
+                clientSecret: "6X9jl23okttBoSqPXNguFzDz");
         }
     }
 }
