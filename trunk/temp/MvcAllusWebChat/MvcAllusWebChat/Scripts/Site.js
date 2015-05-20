@@ -555,7 +555,7 @@ function RetriveAllMessage() {
     }
 
     $.ajax({
-        url: "/EpironChatVersion1/RetriveMessages/",
+        url: "/Chat/RetriveMessages/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -716,7 +716,7 @@ function LeaveChatRoom(surveyPending) {
         roomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatVersion1/LeaveChatRoom/",
+        url: "/Chat/LeaveChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -742,7 +742,7 @@ function TimeOutChatRoom() {
         roomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatVersion1/TimeOutChatRoom/",
+        url: "/Chat/TimeOutChatRoom/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -766,7 +766,7 @@ function ClosedByRecordIdNotFound() {
         roomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatVersion1/ClosedByRecordIdNotFound/",
+        url: "/Chat/ClosedByRecordIdNotFound/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -794,7 +794,7 @@ function SendMessage() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatVersion1/SendMessage/",
+        url: "/Chat/SendMessage/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -959,7 +959,7 @@ function openSurvey() {
         RoomId: _roomId
     }
     $.ajax({
-        url: "/EpironChatVersion1/OpenSurvey/",
+        url: "/Chat/OpenSurvey/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",

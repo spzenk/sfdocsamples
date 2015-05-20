@@ -17,13 +17,13 @@ namespace WebChat
             //routes.MapRoute(
             //    name: "Default",
             //    url: "",
-            //    defaults: new { controller = "EpironChatVersion1", action = "index" }
+            //    defaults: new { controller = "Chat", action = "index" }
             //);
 
             routes.MapRoute(
               name: "chat",
               url: "{controller}/{action}/",
-              defaults: new { controller = "EpironChatVersion1", action = "Chatfrm" }
+              defaults: new { controller = "Chat", action = "Chatfrm" }
           );
         }
     }

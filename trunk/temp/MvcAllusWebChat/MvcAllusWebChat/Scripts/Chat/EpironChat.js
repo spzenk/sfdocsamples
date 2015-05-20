@@ -22,7 +22,7 @@ $(function () {
 
 
     //var myDropzone = new Dropzone("#txt-message", {
-    //    url: "/EpironChatVersion1/SaveUploadedFile",
+    //    url: "/Chat/SaveUploadedFile",
     //    autoProcessQueue: true,
     //    clickable: false,
     //    sending: function (file, xhr, formData) {
@@ -38,7 +38,7 @@ $(function () {
     $('#option-config').focus();
     
     var myDropzone = new Dropzone("#img-upload-file", {
-        url: "/EpironChatVersion1/SaveUploadedFile",
+        url: "/Chat/SaveUploadedFile",
         autoProcessQueue: true,
         clickable: false,
         sending: function (file, xhr, formData) {
@@ -219,7 +219,7 @@ function GetRecordId() {
         MessageId: _firstMessageId,
     }
     $.ajax({
-        url: "/EpironChatVersion1/GetRecordId/",
+        url: "/Chat/GetRecordId/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",

@@ -1,7 +1,7 @@
 ﻿@model WebChat.Common.Models.ChatRoomCreationModel
 
 
-@using (Ajax.BeginForm("CreateChatRoom", "EpironChatVersion1", new AjaxOptions()
+@using (Ajax.BeginForm("CreateChatRoom", "Chat", new AjaxOptions()
             {
                 LoadingElementId = "",
                 OnSuccess = "CreateChatRoom_CallBack",

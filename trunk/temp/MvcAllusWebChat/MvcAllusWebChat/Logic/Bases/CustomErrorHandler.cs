@@ -89,7 +89,7 @@ namespace WebChat.Common
     }
 
 
-      /// <summary>
+    /// <summary>
     /// 
     /// </summary>
     public class SecurityPortalErrorInfo : HandleErrorInfo, IBaseModel
@@ -99,11 +99,37 @@ namespace WebChat.Common
             : base(exception, controllerName, actionName)
         { }
         public String ErrorId { get; set; }
+        String _Message = string.Empty;
 
-
-        public void Fill(string baseModel)
+        public String Message
         {
-            throw new NotImplementedException();
+            get
+            {
+
+                if (this.Exception != null)
+                    return Exception.Message;
+                return _Message;
+            }
+            set { _Message = value; }
+        }
+
+        private String _StackTrace = string.Empty;
+
+        public String StackTrace
+        {
+            get
+            {
+                if (this.Exception != null)
+                    return Exception.StackTrace;
+                return _StackTrace;
+            }
+            set { _StackTrace = value; }
+        }
+
+        public void Fill(string message, string stackTrace )
+        {
+            _Message = message;
+            _StackTrace=stackTrace;
         }
 
 
@@ -122,6 +148,11 @@ namespace WebChat.Common
         }
 
 
+
+        public void Fill(string baseModel)
+        {
+            throw new NotImplementedException();
+        }
     }
 
 }
