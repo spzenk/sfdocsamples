@@ -13,6 +13,7 @@ using WebChat.Logic.BC;
 using WebChat.Logic.DAC;
 using WebChat.Logic.BE;
 using System.IO;
+using System.Web.Routing;
 namespace WebChat.Controllers
 {
     public class EpironChatVersion1Controller : Controller
@@ -63,10 +64,13 @@ namespace WebChat.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
+            
+
+
             ChatRoomGridModel wModel = new ChatRoomGridModel();
             try
             {
-               //Busco las configuraciones (salas) que llenan los combos
+                //Busco las configuraciones (salas) que llenan los combos
                 var chatConfigList = ChatConfigDAC.RetriveAll();
 
                 List<SelectListItem> li = new List<SelectListItem>();
@@ -84,19 +88,19 @@ namespace WebChat.Controllers
                 // Busco las appSettings
                 List<ApplicationSettingBE> wAppSettingsList = ApplicationSettingBC.SearchApplicationSetting();
                 wModel.RetriveMessage_Timer = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.RetriveMessage_Timer)).Value);
-                wModel.GetRecord_Timer = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_Timer)).Value) ;
+                wModel.GetRecord_Timer = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_Timer)).Value);
                 wModel.VersionWeb = wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.VersionWeb)).Value;
                 wModel.GetRecordIdTries = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecordIdTries)).Value);
-                wModel.ClientInactivityTimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.ClientInactivityTimeOut)).Value)/1000;
-                wModel.GetRecord_TimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_TimeOut)).Value)/1000 ;
+                wModel.ClientInactivityTimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.ClientInactivityTimeOut)).Value) / 1000;
+                wModel.GetRecord_TimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_TimeOut)).Value) / 1000;
                 wModel.GetRecord_TimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_TimeOut)).Value) / 1000;
                 wModel.MaxLength_Message = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.MaxLength_Message)).Value);
             }
             catch (Exception ex)
             {
                 Helper.Log(ex.Message);
-                    wModel.HaveException = true;
-                    return View(wModel);
+                wModel.HaveException = true;
+                return View(wModel);
             }
 
             return View(wModel);
@@ -205,6 +209,14 @@ namespace WebChat.Controllers
         [HttpGet]
         public ActionResult Chatfrm(string tel, string clientName, string email, string query)
         {
+            bool anyIsNull = string.IsNullOrEmpty(Request.QueryString["tel"]) ||
+                string.IsNullOrEmpty(Request.QueryString["clientName"]) ||
+                string.IsNullOrEmpty(Request.QueryString["email"]) ||
+                string.IsNullOrEmpty(Request.QueryString["query"]);
+
+            if (anyIsNull)
+               return RedirectToAction("Index");
+
             ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
 
              int chatRoomId = -1;
