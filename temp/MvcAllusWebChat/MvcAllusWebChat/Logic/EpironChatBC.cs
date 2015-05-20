@@ -159,10 +159,42 @@ namespace WebChat.Logic.BC
             //[08:55:38 a.m.]yulygasp:  se lo concatenemos al mensaje es que no podemos pasarlo en otro campo
             //porque el etl no esta preparado para recibirlo
             //model.InitialMessage = String.Concat(model.InitialMessage, "|", model.ClientName);
-            model.InitialMessage = String.Concat(model.InitialMessage);//<- el ETL no necesita más que se le pase el nombre
             messageId= EpironChatBC.InsertMessage(roomId, userId, model.InitialMessage, null);
         }
 
+        /// <summary>
+        /// Este se usa para casos donde el cliente (ej TP) tienbe su propio formulario de carga de dato y genera la URL . 
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="phone"></param>
+        /// <param name="initialMessage"></param>
+        /// <param name="roomId"></param>
+        /// <param name="userId"></param>
+        /// <author>moviedo</author>
+        internal static void CreateChatRoom(ChatRoomFromUrlModel model,
+            String phone,String  initialMessage,
+            out int roomId, out int userId, 
+            out int messageId, out bool userIsAlreadyUsed, 
+            out bool EmailAvailable)
+        {
+            roomId = -1;
+            messageId = -1;
+            //Busca el cliente relacionado al telefono
+            userId = EpironChatBC.CheckPhoneId(phone, model.ClientName, model.ClientEmail);
+
+            ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
+            userIsAlreadyUsed = GetChatRoom_IfNotExpired(userId, chatConfigBE);
+            EmailAvailable = chatConfigBE.EmailAvailable;
+            if (userIsAlreadyUsed)
+            {
+                return;
+            }
+
+            roomId = ChatRoomDAC.CreateChatRoom(chatConfigBE.ChatConfigId, (int)Common.Enumerations.ChatRoomStatus.Waiting, String.Empty, null);
+
+            messageId = EpironChatBC.InsertMessage(roomId, userId, initialMessage, null);
+        }
         /// <summary>
         /// Verificar chat activos del usuario.. Chaquea si expiraron y los actualiza en la bd
         /// </summary>
