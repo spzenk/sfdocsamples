@@ -20,7 +20,7 @@ namespace WebChat.Logic
         /// <param name="statusId">Estado </param>
         /// <param name="chatRoomExternalIdentifier">Parametro @case cuando la generacion del chatroom proviene de  una URL</param>
         /// <returns></returns>
-        internal static int CreateChatRoom(Int32 chatConfigId, Int32 statusId, String chatRoomExternalIdentifier)
+        internal static int CreateChatRoom(Int32 chatConfigId, Int32 statusId, String chatRoomExternalIdentifier, string chatRoomUrl )
         {
             Database dataBase = null;
             DbCommand cmd = null;
@@ -36,6 +36,9 @@ namespace WebChat.Logic
                     dataBase.AddInParameter(cmd, "ChatConfigId", System.Data.DbType.Int32, chatConfigId);
                     if (!String.IsNullOrEmpty(chatRoomExternalIdentifier))
                         dataBase.AddInParameter(cmd, "ChatRoomExternalIdentifier", System.Data.DbType.String, chatRoomExternalIdentifier);
+                    if (!string.IsNullOrEmpty(chatRoomUrl))
+                        dataBase.AddInParameter(cmd, "ChatRoomURL", System.Data.DbType.String, chatRoomUrl);
+
                     dataBase.ExecuteNonQuery(cmd);
                     return (System.Int32)dataBase.GetParameterValue(cmd, "ChatRoomId");
                 }
@@ -73,6 +76,37 @@ namespace WebChat.Logic
 
                     dataBase.ExecuteNonQuery(cmd);
                 }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
+            //}
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="pChatRoomId">ChatRoomId</param>
+        /// <param name="pGuid">Guid Identificador Creado para esta encuestas</param>
+        internal static void UpdateChatRoomSurveyRandomId(int pChatRoomId, string pGuid)
+        {
+
+            Database dataBase = null;
+            DbCommand cmd = null;
+
+            //try
+            //{
+            dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+            using (cmd = dataBase.GetStoredProcCommand("[Chat].[ChatRoom_u_RandomId]"))
+            {
+                /// ChatUserId
+                dataBase.AddInParameter(cmd, "ChatRoomId", System.Data.DbType.Int32, pChatRoomId);
+
+                dataBase.AddInParameter(cmd, "RandomId", System.Data.DbType.String, pGuid.ToString());
+
+                dataBase.ExecuteNonQuery(cmd);
+            }
 
             //}
             //catch (Exception ex)

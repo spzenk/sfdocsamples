@@ -18,7 +18,6 @@ using System.Text;
 using Microsoft.Practices.EnterpriseLibrary.Data;
 using System.Data.Common;
 using System.Data;
-
 using WebChat.Common.BE;
 
 
@@ -41,10 +40,7 @@ namespace WebChat.Logic.DAC
             Database dataBase = null;
             DbCommand cmd = null;
 
-
-            ChatConfigList wChatConfigList = new ChatConfigList();
             ChatConfigBE wChatConfig = null;
-
 
             //try
             //{
@@ -63,22 +59,28 @@ namespace WebChat.Logic.DAC
                            
                             wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
                             wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
-                            wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
+                            //wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
                             wChatConfig.ChatConfigGuid = Guid.Parse(reader["ChatConfigGuid"].ToString());
-                            
+                            wChatConfig.EmailAvailable = bool.Parse(reader["ChatSendEmail"].ToString());
 
+                            if (reader["ChatSurveyConfigText"] != DBNull.Value)
+                            wChatConfig.ChatSurveyConfigText = reader["ChatSurveyConfigText"].ToString();
+
+                            if (reader["ChatSurveyConfigURL"] != DBNull.Value)
+                            wChatConfig.ChatSurveyConfigURL = reader["ChatSurveyConfigURL"].ToString();
+
+                            if (reader["ChatSurveyConfigId"] != DBNull.Value)
+                            wChatConfig.ChatSurveyConfigId = int.Parse(reader["ChatSurveyConfigId"].ToString());
                         }
                     }
                 }
                 
                 return wChatConfig;
-
             //}
             //catch (Exception ex)
             //{
             //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
             //}
-
         }
 
         /// <summary>
@@ -111,7 +113,7 @@ namespace WebChat.Logic.DAC
                             wChatConfig.ChatConfigGuid = Guid.Parse(reader["ChatConfigGuid"].ToString());
                             wChatConfig.ChatConfigName = reader["ChatConfigName"].ToString();
                             wChatConfig.ChatConfigCreated = Convert.ToDateTime(reader["ChatConfigCreated"]);
-                            wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
+                            //wChatConfig.ChatConfigTimeOut = Convert.ToInt32(reader["ChatConfigTimeOut"]);
                             wChatConfigList.Add(wChatConfig);
 
                         }
@@ -125,6 +127,41 @@ namespace WebChat.Logic.DAC
             //    throw Fwk.Exceptions.ExceptionHelper.ProcessException(ex);
             //}
 
+        }
+
+        public static List<ApplicationSettingBE> SearchApplicationSettings()
+        {
+            Database dataBase = null;
+            DbCommand cmd = null;
+
+            ApplicationSettingBE wApplicationSettingBE = null;
+            List<ApplicationSettingBE> wAppSettingsList = new List<ApplicationSettingBE>();
+
+            dataBase = DatabaseFactory.CreateDatabase(Common.Common.EpironChatLogs_CnnStringName);
+            using (cmd = dataBase.GetStoredProcCommand("[dbo].[ApplicationSettings_s_ByParam]"))
+            {
+
+                using (IDataReader reader = dataBase.ExecuteReader(cmd))
+                {
+                    while (reader.Read())
+                    {
+                        wApplicationSettingBE = new ApplicationSettingBE();
+                        wApplicationSettingBE.SettingId = Convert.ToInt32(reader["SettingId"]);
+
+                        if(reader["Description"] != DBNull.Value)
+                        wApplicationSettingBE.Description = reader["Description"].ToString();
+
+                        if(reader["Value"] != DBNull.Value)
+                        wApplicationSettingBE.Value = reader["Value"].ToString();
+
+                        if(reader["PCApplicationSettings"] != DBNull.Value)
+                        wApplicationSettingBE.PCApplicationSettings =Convert.ToInt32( reader["PCApplicationSettings"].ToString());
+
+                        wAppSettingsList.Add(wApplicationSettingBE);
+                    }
+                }
+            }
+            return wAppSettingsList;
         }
     }
 }

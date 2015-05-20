@@ -1,123 +1,96 @@
-﻿@*@model WebChat.Common.Models.ChatRoomCreationModel
-*@
+﻿
 
-
- @*<script src="~/Scripts/epironchatversion/epironchatversion.js"></script>*@
-<style>
-    .bubbleFriend
-    {
-        position: relative;
-        width: 60%;
-        height: 35px;
-        padding: 2px;
-        background: #FFF;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        left: 15px;
-        clear: both;
-        margin: 2px 0px 2px 0px;
-        min-height: 35px;
-    }
-
-        .bubbleFriend:after
-        {
-            content: '';
-            position: absolute;
-            border-style: solid;
-            border-width: 5px 15px 5px 0;
-            border-color: transparent #FFF;
-            display: block;
-            width: 0;
-            z-index: 1;
-            left: -14px;
-            top: 6px;
-        }
-
-
-    .bubbleOwn
-    {
-        position: relative;
-        width: 60%;
-        height: 35px;
-        padding: 2px;
-        background: #F5F6CE;
-        -webkit-border-radius: 10px;
-        -moz-border-radius: 10px;
-        border-radius: 10px;
-        float: right;
-        margin-right: 15px;
-        clear: both;
-        margin: 2px 15px 2px 0px;
-        min-height: 35px;
-    }
-
-        .bubbleOwn:after
-        {
-            content: '';
-            position: absolute;
-            border-style: solid;
-            border-width: 5px 0px 5px 15px;
-            border-color: transparent #F5F6CE;
-            display: block;
-            width: 0;
-            z-index: 1;
-            right: -14px;
-            top: 6px;
-        }
-
-    .panel-body
-    {
-      background-color: #31B7CB;
-    }
-</style>
-
- 
-        <div id="ChatDialog" style="width: 100%; height:100%; position:absolute; border-bottom: 1px solid #BEBDBD;
-border-radius: 8px 8px 0px 0px;">
-            <div id="div-title-chat" style="background-color: #3C6;
-border-radius: 6px 6px 0px 0px;
-height: 4%;
-color: white;
-padding: 1%;
-                position: relative;
-                z-index:2">
-               @* Bienvenido @Html.LabelForModel(Model.ClientName)! Gracias por comunicarte con Movistar*@
-            </div>
-
-                <div id="txtMessageList" style="height: 70%; width: 75%; background-color: #31B7CB; font-size: 12px; overflow: auto; float:left;">
-                </div>
-                <div  style="height: 70%; width: 25%; background-color: #06688C; font-size: 12px; overflow: hidden; ">
-                   <img src="~/img/baner_1.png" style="width: 80%; height: 40%; margin: 5% 10% 5%;" />
-                   <img src="~/img/banner_2.png" style="width: 80%; height: 40%; margin: 5% 10% 5%;"  />
-                </div>
-               
-
-             <textarea id="txt-message" style="height: 10%; width: 70%; background-color: #E7F0F1; font-size: 12px;  float:left; resize: none;">
-             </textarea>
-            <div style="height: 10%; width: 5%; background-color: #31B7CB; font-size: 12px;  float:left; ">
-                 <img src="~/img/cam1.png" style="margin: 0% 25%; width: 50%; cursor:pointer" />
-                 <img src="~/img/emo_smile.png" style="margin: 10% 25%; width: 50%; cursor:pointer" />
-            </div>
-                <div  style="height: 10%; width:  25%; background-color: #06688C; font-size: 12px; float: right;">
-                   <button type="button" id="btn-End"  style="cursor: pointer; border: none;background-color: #11F547; width: 55%; height: 44%; color: #FFF; font-size: 24px; margin: 2.25% 22.75% 3.25% 22.75%;">Finalizar</button>
-                </div>
-
-            <div class="btn-group" role="group">
-               
-            </div>
-
-
-            <div id="alert-text-view" class="alert alert-warning" style="display: none; margin: 5px">
-                <p><strong>Error en el servidor</strong> </p>
-                <p class="error-text"></p>
-            </div>
-           
+ <div id="ChatDialog">
+                <div class="div-chat-header" style="background-color: #000; padding-top: 6px;"><img id="img-epiron" class="img-header chatheader" src="~/img/logo-epiron.png"/><img id="img-entorno" class="img-header chatheader" src="~/img/ico.png"/></div>
+     <div id="div-left-container" >
+         <span id="span-Epiron-User-Name" ></span>
+     <div id="txtMessageList"> 
+                            <div id="alert-text-view-info-ChatRoom" style="background-color: #000;">
+                                    <img id="ajaxloader1"  src="@Url.Content("~/img/ajax-loader.gif")" />
+                                    <div id="alert-text-view-info" class="alert-chat alert alert-warning" style="display: normal;">
+                                        <p style="text-align: center;" class="info-text"></p>
+                                    </div>
+                    </div>
+     </div>
+         <div id="OperatorWritingDiv" ></div>
+        <div style="border-top: 1px solid #A9A9A9;">
+             <img id="img-upload-file" alt="enviar archivo" src="~/img/ico-adjuntar.png"  />
+             <textarea id="txt-message" maxlength="300"></textarea>
+             <img id="img-emoticon" src="~/img/ico-emoticon.png" />
         </div>
+     </div>
+     <div id="div-right-container" style="background-image:url(../../img/fnd-form-ingreso.png);">
+         <img id="img-messagechat" src="~/img/icono-chat.png"/>
+         <span id="span-version-chat"></span>
+         <div id="div-end-session-menu" class="div-end-session-menu-no-email" >
+              <div class="div-attr"><span style="float: left;">Duración del chat: </span><input class="input-attr" type="text" id="txt" value="00:00" disabled></div>
+              <div class="div-attr" style="display:none;"><span style="float: left;">Conexion: </span><input class="input-attr" type="text" id="txtConex" value="00:00" disabled></div>   
+              <div class="div-attr" id="div-attr-send-email-label" style="display:none;"><span style="float: left;">Enviar Conversación? </span><input class="input-attr" type="checkbox" id="check-Send-Email" style="width:12px;"></div>
+              <div class="div-attr" id="div-attr-send-email-input" style="display:none;"><input style="width: 100%; color: #000" type="text" id="txtemailchat" placeholder="Email" maxlength="50"></div>
+        
+         </div>
+     </div>
+      <button id="btn-End" type="submit" class="btn btn-form" >FINALIZAR</button>
+         <div id="div-end-option" >
+            <p style="font-size:10px; color:white; text-align:center; " id="message-before-end">¿Desea terminar la sesión?</p>
+             <button id="btn-end-option-no" class="btn-form">No</button>
+             <button id="btn-end-option-yes" class="btn-form" >Sí</button>
+         </div>
+     <div id="div-options-lower"></div>
+     <div id="div-footer" style="display: none;"><span class="glyphicon glyphicon-exclamation-sign"></span>Respondiendo nuestras <a href="#" id="a-survey">encuentas</a> ayudas a mejorar el servicio</div>
+ </div>
 
-@*            <input type="button" id="btn-add-own" value="add owm comment" />
-            <input type="button" id="btn-add-external" value="add external comment" />*@
+          @*   <button id="b1" onclick="test1();" style="position: absolute;
+top: 550px;">1</button>
+             <button id="b2" onclick="test2();" style="position: absolute;
+top: 650px;">2</button>
 
-       @Html.Partial("_EndChat")
+<script>
+    var longDateFormat = 'HH:mm:ss';
+    var container = $('#txtMessageList');
+    function test1() {
+        var now = new Date();
+        var newMessage = "HOY TALLERES HAY QUE GANAR";// $("#txt-message").val();//formatea el texto agregando saltos de lineas
+
+        var div = document.createElement("DIV");
+        var dateFormat = jQuery.format.date(now, longDateFormat);
+
+        $(div)
+                    .appendTo(container)
+                    .addClass("bubbleOwn")
+                    .end()
+
+                    .append("<span class=\"_time\">" + dateFormat + "</span>")
+                    .append("<BR /> ")
+                    .append("<span class=\"_msg\">" +(newMessage) + "</span> ");
+
+        scrollToBotton();
+        $("#txt-message").val("");
+    }
+
+    function test2() {
+        var now = new Date();
+        var newMessage = "No PODEMOS PERDER"; // $("#txt-message").val();//formatea el texto agregando saltos de lineas
+
+        var div = document.createElement("DIV");
+        var dateFormat = jQuery.format.date(now, longDateFormat);
+
+        $(div)
+                    .appendTo(container)
+                    .addClass("bubbleThey")
+                    .end()
+
+                    .append("<span class=\"_time\">" + dateFormat + "</span>")
+                    .append("<BR /> ")
+                    .append("<span class=\"_msg\">" + (newMessage) + "</span> ");
+
+        scrollToBotton();
+        $("#txt-message").val("");
+    
+    }
+</script>*@
+<div id="div_emoticones"></div>
+
+
 
   

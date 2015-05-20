@@ -23,12 +23,13 @@ namespace WebChat.Logic
 
                 SmtpClient wSmtpClient = new SmtpClient(pChatMailSender.SMTPServer, pChatMailSender.SMTPPort);
 
-                //Configuraciones de la cuenta          
+                //Configuraciones de la cuenta 
+                wSmtpClient.UseDefaultCredentials = false;
                 wSmtpClient.Credentials = new System.Net.NetworkCredential(pChatMailSender.UserName, pChatMailSender.Password);
                 
                 wSmtpClient.Timeout = 300000;
                 wSmtpClient.EnableSsl = pChatMailSender.EnableSSL;
-                wSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                //wSmtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
                 
               
                 //Configuraciones del email 

@@ -40,8 +40,14 @@ namespace WebChat.Common.BE
 
            private System.Boolean _ChatConfigDefault;
 
-        
+           private System.Boolean _EmailAvailable;
 
+           private System.String _ChatSurveyConfigText;
+
+           private System.String _ChatSurveyConfigURL;
+
+           private System.Int32? _ChatSurveyConfigId;
+        
 
         #endregion
              
@@ -105,7 +111,27 @@ namespace WebChat.Common.BE
 	
 	#endregion
 
+    #region [EmailAvailable]
+    public System.Boolean EmailAvailable { get; set; }
 
+    #endregion
+
+    #region [ChatSurveyConfigText]
+    public System.String ChatSurveyConfigText { get; set; }
+
+    #endregion
+
+
+    #region [ChatSurveyConfigURL]
+    public System.String ChatSurveyConfigURL { get; set; }
+
+    #endregion
+
+    #region [ChatSurveyConfigId]
+    public System.Int32? ChatSurveyConfigId { get; set; }
+
+    #endregion
+        
 
         #endregion
  

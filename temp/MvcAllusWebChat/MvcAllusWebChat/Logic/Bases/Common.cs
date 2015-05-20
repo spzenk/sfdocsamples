@@ -12,6 +12,8 @@ using System.Net.Mail;
 using System.Drawing;
 using System.Drawing.Imaging;
 using Fwk.Bases;
+using WebChat.Logic.DAC;
+using WebChat.Common.BE;
 
 namespace WebChat.Common
 {
@@ -32,11 +34,18 @@ namespace WebChat.Common
         public static int RetriveMessage_Timer = 1000;
         public static int CheckOperators_Timer = 2000;
         public static int GetRecord_Timer = 2000;
-        
+        public static string VersionWeb = "1.0.0.0";
+        public static int GetRecordIdTries = 5;
+        public static int ClientInactivityTimeOut = 300;// 5 min
+        public static int GetRecord_TimeOut= 60;
+        public static int MaxLength_Message = 500; //cantidad máxima de carcteres por mensaje de chat
+
         public static ISymetriCypher ISymetriCypher;
         public static string SEED_K = "SESshxdRu3p4ik3IOxM6/qAWmmTYUw8N1ZGIh1Pgh2w=$pQgQvA49Cmwn8s7xRUxHmA==";//"sec.key";
         //[11:48:26 a.m.] yulygasp: si el campo contiene uno de estos valores:indica que esta cerrado
         public static Int32[] ClosedStatus = new Int32[] { 201, 202, 205, 206, 207, 212, 214 };
+
+        public static string Host_Referer = null;
 
         static Common()
         {
@@ -50,12 +59,47 @@ namespace WebChat.Common
             //Fwk.Security.Cryptography.FwkSymetricAlg s = new FwkSymetricAlg(SEED_K);
             //ISymetriCypher = s;// SymetricCypherFactory.Cypher();// SymetricCypherFactory.Get<RijndaelManaged>(SEED_K);
 
-            if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "RetriveMessage_Timer") ))
-                RetriveMessage_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "RetriveMessage_Timer"));
-            if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "CheckOperators_Timer")))
-                CheckOperators_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "CheckOperators_Timer"));
-            if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "GetRecord_Timer")))
-                CheckOperators_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "GetRecord_Timer"));
+          
+            try
+            {
+                //CONFIGURACIONES DE APPLICATIONSETTINGS [EPIMOVI-1377]
+                List<ApplicationSettingBE> wAppSettingsList = ChatConfigDAC.SearchApplicationSettings();
+                //RetriveMessage_Timer = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.RetriveMessage_Timer)).Value) /1000;
+                //GetRecord_Timer = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_Timer)).Value) / 1000;
+                //VersionWeb = wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.VersionWeb)).Value;
+                //GetRecordIdTries = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecordIdTries)).Value);
+                //ClientInactivityTimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.ClientInactivityTimeOut)).Value)/1000;
+                MaxLength_Message = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.MaxLength_Message)).Value);
+              
+                var varHostRefer = wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.Host_Referer));
+
+                if (varHostRefer==null || varHostRefer.Value  == string.Empty)
+                {
+                    Host_Referer = null;
+                }
+                else
+                {
+                    Host_Referer = varHostRefer.Value;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                Helper.Log(ex.Message);
+            }
+           
+
+            //if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "RetriveMessage_Timer") ))
+            //    RetriveMessage_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "RetriveMessage_Timer"));
+            //if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "CheckOperators_Timer")))
+            //    CheckOperators_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "CheckOperators_Timer"));
+            //if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "GetRecord_Timer")))
+            //    CheckOperators_Timer = Convert.ToInt32(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "GetRecord_Timer"));
+            ////VERSION DE LA WEB
+            //if (!String.IsNullOrEmpty(Fwk.Configuration.ConfigurationManager.GetProperty("Config", "VersionWeb")))
+            //    VersionWeb = Fwk.Configuration.ConfigurationManager.GetProperty("Config", "VersionWeb");
+            
         }
 
         public static bool IsEncrypted(System.Configuration.Configuration config)
@@ -319,7 +363,7 @@ namespace WebChat.Common
             }
 
 
-
+           
         }
 
         
@@ -333,11 +377,26 @@ namespace WebChat.Common
             ExpiredTimeout = 3,
             Waiting = 4,
             ClosedByOperator = 5,
+            ChatAbandoned = 7,
+            ClosedByRecordIdNotFound =8,
+            ClosedLoggedOutRep  = 10
         }
         public enum MenuTypeEmun
         {
             Leaft = 2,
             Submenu = 1
+        }
+
+        public enum ApplicationSettingId
+        {
+            RetriveMessage_Timer = 1,
+            GetRecord_Timer = 2,
+            VersionWeb = 3,
+            GetRecordIdTries  = 4,
+            ClientInactivityTimeOut = 5,
+            GetRecord_TimeOut =6,
+            MaxLength_Message = 7,
+            Host_Referer = 8
         }
     }
     

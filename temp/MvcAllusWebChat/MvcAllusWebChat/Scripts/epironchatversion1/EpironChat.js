@@ -1,180 +1,218 @@
-﻿//function onExit() {
-//    if (_userId == -1)
-//        return;
-//    if (confirm("Si preciona F5 va tener que reicniciar el chat con el operador. Desea reiciar?") == false) {
-//        console.log('blocked');
-//    }
-//}
-var _LASTMESSAGETIME = null;
+﻿var _LASTMESSAGETIME = null;
 var _userId = -1;
 var _recordId = -1;
 var _firstMessageId = -1;
+var _roomId =-1;
 var funcGetRecordId;
 var funcretriveAllMessage;
-var NO_OPERATOR = 0;//0:Primer momento 1:reintentando 2:cancelado
+var SHOWING_EMAIL_OPTION = 0;//0:Primer momento 1:reintentando 2:cancelado
 var USER_SEND_EMAIL = false // true =  usuario decide enviar email
-var selectedChatConfigId = null;
+//var GET_RECORDID_TRIES; //cantidad de veces que busco sala
+var selectedChatConfigId = null; //configuracion seleccionada
+var _userName = "";
+
+
+var fromTimeFirstCall = null;
+var timeToExpire = null;
+
+var GET_RECORDID_TRY_NUMBER = 0;
+
+
 $(function () {
 
-    $('#txtMessageList').html("");
-    /*FUNCION MIGRADA DE CHATVERSION*/
-    $('#btn-End').on('click', function () {
-        $('#div-end-chat').css('display', "block");
+
+    //var myDropzone = new Dropzone("#txt-message", {
+    //    url: "/EpironChatVersion1/SaveUploadedFile",
+    //    autoProcessQueue: true,
+    //    clickable: false,
+    //    sending: function (file, xhr, formData) {
+    //        formData.append("roomid", "0");
+    //    }
+    //});
+    if (_HaveException) {
+        Show_Exception();
+        DisableControlsCreateChatRoom();
+    }
+
+
+    $('#option-config').focus();
+    
+    var myDropzone = new Dropzone("#img-upload-file", {
+        url: "/EpironChatVersion1/SaveUploadedFile",
+        autoProcessQueue: true,
+        clickable: false,
+        sending: function (file, xhr, formData) {
+            formData.append("roomid", "0");
+        }
     });
 
     $('#txt-message').on("keypress", function (e) {
         if (e.keyCode == 13) {
-            SendMessage();
+            //SendMessage();
+            if (e.shiftKey) //<-- Consulto si oprimio shift
+                $('#txt-message').val($('#txt-message').val()+'\n');
+            else
+                SendMessage();
+        }
+    });
+
+    $(document).on("keypress", function (e) { //<-- para ocultar los emoticones cuando se aprieta scape
+        if (e.keyCode == 27) {
+            $("#div_emoticones").hide();
         }
 
     });
+
+    $(document).mouseup(function (e) { //<-- para ocultar los emoticones cuando se clickea en otro lado
+        var container = $("#div_emoticones");
+
+        if (!container.is(e.target)
+            && container.has(e.target).length === 0) {
+            container.hide();
+        }
+    });
+
+    $("#img-emoticon").on("click", function (e) {
+        $("#div_emoticones").show();
+    });
+
+    $("#div_emoticones").html($.emoticons.toString());//<-- carga los emoticones en el div
+
+    $(".emoticon").on("click", function () {
+        //Agrega el simbolo del emoticon al texto
+        var wText = $('#txt-message').val() + ' ' + $(this).html();
+        $('#txt-message').val(wText);
+        $('#txt-message').focus();
+        $("#div_emoticones").hide();
+    });
+
+    $('#txtMessageList').html("");
+  
+
+
 
     $('#alert-text-info-container').hide();
     $('#alert-text-view').hide();
     $('#chatDialog').hide();
 
 
-    $('#btnExitChat').on('click', function () {
-        clearTimeout(funcretriveAllMessage);
-        clearTimeout(funcGetRecordId);
+    $('#div_emoticons').html($.emoticons.toString());
 
-        LeaveChatRoom();
-    });
-
-    $('#btnClose').on('click', function () {
-        clearTimeout(funcGetRecordId);
-        ResetControlsCreateChatRoom();
-    });
-    $('#btnOpenChat').on('click', function () {
-        ResetControlsCreateChatRoom();
-    });
- 
-    $('#div_emoticons').html($.emoticons.toString());				   
 
     $("#ChatConfigId").change(function () {
         selectedChatConfigId = $("#ChatConfigId :selected").val();
     });
     selectedChatConfigId = $("#ChatConfigId :selected").val();
+
+
+    $("#txt-ClientName").on("focus", function () {
+        destroyToolTip($("#txt-ClientName") );
+    });
+
+    $("#txt-clientEmail").on("focus", function () {
+        destroyToolTip($("#txt-clientEmail"));
+    });
+
+    $("#txt-Phone").on("focus", function () {
+        destroyToolTip($("#txt-Phone"));
+    });
+
+    $("#txt-InitialMessage").on("focus", function () {
+        destroyToolTip($("#txt-InitialMessage"));
+    });
+
+    $("#txtemailchat").on("focus", function () {
+        destroyToolTip($("#txtemailchat"));
+    });
+    
+    if (!_IsConfigavailable) { // chequea si tenemos configuraciones disponibles
+        Show_No_Config();
+        DisableControlsCreateChatRoom();
+    }
+
 });
 
-function LeaveChatRoom() {
-    cleanVariables();
-
-    var obj = {
-        recordId: _recordId,
-        chatRoomId: _roomId
-    }
-    $.ajax({
-        url: "/EpironChatVersion1/LeaveChatRoom/",
-        type: "POST",
-        dataType: 'json',
-        contentType: "application/json;charset=utf-8",
-        data: JSON.stringify(obj),
-        success: function (result) {
-            if (result.Result && result.Result == 'ERROR') {
-                ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
-                return;
-            }
-            ShowAlertMessage(result.Message, 'Allus', 'info');
-
-            CloseChatRoom(result.Message);
-        },
-
-        error: ServiceFailed
-    });
-
-}
-
-function SendMessage() {
-    if ($.trim($("#txt-message").val()) === "")
-        return;
-    var obj = {
-        Message: $("#txt-message").val(),
-        RecordId: _recordId,
-        UserId: _userId,
-        RoomId: _roomId
-    }
-    $.ajax({
-        url: "/EpironChatVersion1/SendMessage/",
-        type: "POST",
-        dataType: 'json',
-        contentType: "application/json;charset=utf-8",
-        data: JSON.stringify(obj),
-        success: function (result) {
-            if (result.Result && result.Result == 'ERROR') {
-                ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
-                return;
-            }
-        },
-
-        error: ServiceFailed
-    });
-    $("#txt-message").val('');
-}
 
 function CreateChatRoomBefore_CallBack() {
+    if (!validateForm())
+        return false;
     DisableControlsCreateChatRoom();
     alert_text_info_container("Conectando con uno de nuestros representantes", true);
+  
 }
 
 function CreateChatRoom_CallBack(ajaxContext) {
 
     if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
-        OnFailure(ajaxContext);
-        //$('#alert-text-info-container').hide();
+        //OnFailure(ajaxContext);
         return;
     }
 
 
-    ///Si no hay operadores y es la primera vez que pregunta NO_OPERATOR=0
-        if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
-            
-            if (NO_OPERATOR == 0) {
-                Show_NO_OPERATOR();
-                NO_OPERATOR = 1;
-            }
-            if (!USER_SEND_EMAIL)
-            setTimeout(function () { retryCreateChatRoom(); }, 10000);
-            //$('#alert-text-info-container').hide();
-            return;
-        }
-        
-        _userId = ajaxContext.userId;
+    if (ajaxContext.Result && ajaxContext.Result == 'NO-OPERATORS') {
+        _emailAvailable = ajaxContext.EmailAvailable;
+        Show_Email_Option(1);
+        return;
+    }
+
+    if (ajaxContext.Result && ajaxContext.Result == 'USER-SIGNED') {
+        Show_User_Signed();
+        return;
+    }
+    _emailAvailable = ajaxContext.EmailAvailable;
+    _userId = ajaxContext.userId;
     _roomId = ajaxContext.roomId;
     _firstMessageId = ajaxContext.messageId;
+    _surveyText = ajaxContext.surveyText;
+    _isSurveyAvailable = ajaxContext.isSurveyAvailable;
+    _surveyUrl = ajaxContext.surveyUrl;
     alert_text_info_container("Aguardando por una sala", true);
     GetRecordId();
 }
-function Show_NO_OPERATOR() {
-    var msg = "En este momento no hay operadores disponibles.  ";
-    var title = "Chat no disponible";
-    Set_alert_text_error(msg, title);
-    Set_alert_error_link("Envíenos su consulta <a href=\"#\" onclick=\"endEmailNoOperator();\" > aquí</a>");
 
+
+
+function Show_User_Signed(option) {
+    $('.panel-header').addClass("panel-headerMax");
+    alert_text_info_containerHTML("El cliente ingresado<br> esta siendo atendido en este momento <br> Aguarde unos minutos <br> e intente conectarse nuevamente", false, true);
 }
-function retryCreateChatRoom() {
-    var obj = {
-        ClientName: $('#ClientName').val(),
-        Phone: $('#Phone').val(),
-        InitialMessage: $('#InitialMessage').val(),
-        ChatConfigId: selectedChatConfigId
-    }
-    $.ajax({
-        url: "/EpironChatVersion1/CreateChatRoom/",
-        type: "POST",
-        dataType: 'json',
-        contentType: "application/json;charset=utf-8",
-        data: JSON.stringify(obj),
-        success: function (result) {
-            CreateChatRoom_CallBack(result);
-        },
 
-        error: ServiceFailed
-    });
+function Show_GetRecord_TimeOut() {
+    alert_text_info_containerHTML("Se ha excedido el tiempo de espera de sala. <br> Por favor vuelva a intentarlo más tarde", false, true);
+}
+
+function Show_No_Config(option) {
+    alert_text_info_containerHTML("En este momento no disponemos de salas.", false, true);
+    Show_Email_Option(3);
+}
+
+function Show_Exception()
+{
+    alert_text_info_containerHTML("En este momento el chat no esta disponible.", false, true);
 }
 
 function GetRecordId() {
+    if (fromTimeFirstCall == null) {
+        //Seteo el tiempo maximo de espera por una sala
+        current = new Date();
+        fromTimeFirstCall = new Date(current);
+        fromTimeFirstCall.setSeconds(current.getSeconds() + GetRecord_TimeOut);
+    }
+    else {
+        if (fromTimeFirstCall < new Date()) {
+            ClosedByRecordIdNotFound();
+            //Se termino el tiempo de espera para buscar una sala.  
+            Show_GetRecord_TimeOut();
+            //Elimino todas las llamadas al servidor
+            clearTimeout(funcretriveAllMessage);
+            clearTimeout(funcGetRecordId);
+            stopTimerCount();
+            return;
+            //termina el ciclo
+        }
 
+    }
+   
     var obj = {
         UserId: _userId,
         RoomId: _roomId,
@@ -188,7 +226,7 @@ function GetRecordId() {
         data: JSON.stringify(obj),
         success: function (result) {
             if (result.Result && result.Result == 'ERROR') {
-                ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                //ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
                 return;
             }
 
@@ -201,213 +239,227 @@ function GetRecordId() {
 
 }
 
-function GetrecordId_CallBack(ajaxContext) {
-
-    if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
-        OnFailure(ajaxContext);
-        return;
-    }
-    if (ajaxContext.recordId == null) {
-        funcGetRecordId = setTimeout(function () { GetRecordId(); }, 4000);
-        return;
-    }
-
-    _recordId = ajaxContext.recordId;
-    $('#div-chatRoomView').show();
-    $('#newModal').hide('slow');
-    //$("#chatDialog").show('slow');
-    $('#alert-text-view').hide('slow');
-    $('#alert-text-info-container').hide('slow');
-    
-    Showloading(false);
-    RetriveAllMessage();
-    ResetControlsChat();
-    scrollToBotton();
-}
-
-function RetriveAllMessage() {
-
-    var obj = {
-        RecordId: _recordId,
-        RoomId: _roomId,
-    }
-
-    $.ajax({
-        url: "/EpironChatVersion1/RetriveMessages/",
-        type: "POST",
-        dataType: 'json',
-        contentType: "application/json;charset=utf-8",
-        data: JSON.stringify(obj),
-        success: function (result) {
-            if (result.Result && result.Result == 'ERROR') {
-                ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
-                return;
-            }
-            //ClosedByOperator
-            if (result.ChatRoomStatus == '5')
-            { CloseChatRoom("Sala de chat cerrada por el operador"); return; }
-            if (result.ChatRoomStatus == '2')
-            { CloseChatRoom("Sala de chat cerrada por el cliente"); return; }
-
-            if (result.Data.length > 0) {
-                //if(_LASTMESSAGETIME !=null )
-                //{
-                //    if (JSON_TO_Date(result.Data[result.Data.length - 1].SendTime) <= _LASTMESSAGETIME)
-                //        return;
-                //    else {
-                //        //hay nuevos comentarios. Alertar.
-                //    }
-                //}
-
-                var container = $('#txtMessageList');
-                var longDateFormat = 'dd/MM/yyyy HH:mm:ss';
-
-                container.html("");
-
-                $(result.Data).each(function (i) {
-
-                    var newMessage = formatMessage(this.MessageData);//formatea el texto agregando saltos de lineas
-                    var linesquantity = (newMessage.length / 300).toFixed(0) + 1;//cantidad de renglones necesarios.
-
-                    var div = document.createElement("DIV");
-                    var dateFormat = jQuery.format.date(JSON_TO_Date(this.SendTime), longDateFormat);
-                    //_LASTMESSAGETIME = JSON_TO_Date(this.SendTime); //guardo la fecha del ultimo mensage para luego saber si hubo uno nuevo
-                    //$.datepicker.formatDate('dd-mm-yy hh:mm:ss', JSON_TO_Date(this.SendTime));
-                    $(div)
-                                .appendTo(container)
-                                .addClass((this.IsFriend ? "bubbleFriend" : "bubbleOwn"))
-                                .end()
-                                .append("<span class=\"_talker\">" + (this.IsFriend ? this.Talker : "Yo:") + "</span>")
-                                //.append("<span>" + (this.IsFriend ? " dice  " : " dijo") + "</span>")
-                                .append("<span class=\"_time\">" + dateFormat + "</span>")
-                                .append("<span>: </span><BR /> ")
-                                .append("<span class=\"_msg\">" + newMessage + "</span> ")
-                        .css("height", linesquantity * 5 + "px");
-                    
-                    scrollToBotton();
-
-                });
-            }
-
-            //container.scrollTop(container[0].scrollHeight - container.height());
-
-            funcretriveAllMessage = setTimeout(function () { RetriveAllMessage(); }, 1000);
-
-        },
-
-        error: ServiceFailed
-    });
-
-   
-}
-
-function CloseChatRoom(message) {
-    clearTimeout(funcretriveAllMessage);
-    clearTimeout(funcGetRecordId);
-
-    ShowAlertMessage(message, 'Allus', 'info');
-
-    $('#btnSendMessage').attr('disabled', 'true');
-    $('#btnExitChat').attr('disabled', 'true');
-    $('#txtMessage').attr('disabled', 'true');
-
-    var container = $('#txtMessageList');
-
-    var today = new Date();
-    var div = document.createElement("DIV");
-    var dateFormat = $.datepicker.formatDate('dd-mm-yy hh:mm:ss', today);
-    $(div)
-                .appendTo(container)
-                .addClass("_tlkMe")
-                .end()
-                .append("<span class=\"_time\">" + dateFormat + "</span>")
-                //.append("<span>: </span><BR /> ")
-                .append("<span class=\"_msgClosed\">" + message + "</span> ");
-
-    _userId = -1;
-    _recordId = -1;
-
-}
-
-function DisableControlsCreateChatRoom() {
-    //$('button[type="submit"]').attr('disabled', 'true');
-
-    $('#ClientName').attr('disabled', 'true');
-    $('#Phone').attr('disabled', 'true');
-    $('#InitialMessage').attr('disabled', 'true');
-    $('#btnCreateNew').attr('disabled', 'true');
-    $('#ChatConfigId').attr('disabled', 'true');
-
-
-
-}
-
-function ResetControlsChat() {
-    $('#btnSendMessage').removeAttr('disabled');
-    $('#txtMessage').removeAttr('disabled');
-    $('#btnExitChat').removeAttr('disabled');
-    $('#ChatConfigId').removeAttr('disabled');
-}
-
-function ResetControlsCreateChatRoom() {
-
-    _userId = -1;
-    _recordId = -1;
-    selectedChatConfigId = null;
-
-    $('#ClientName').removeAttr('disabled');
-    $('#Phone').removeAttr('disabled');
-    $('#InitialMessage').removeAttr('disabled');
-    $('#ChatConfigId').removeAttr('disabled');
-
-    Showloading(false);
-    $('#alert-text-view').hide('slow');
-    $('#alert-text-info-container').hide('slow');
-
-}
-function alert_text_info_container(msg, showImage) {
-    $('#alert-text-info-container').show('slow');
-    Showloading(showImage);
-    Set_alert_text_info(msg);
-}
-
-function endEmailNoOperator() {
-    USER_SEND_EMAIL = true;
-    $('#txt-cellphone').text($('#txt-Phone').text()); //<-- escribo el telefono que usuario ingreso en el primer formulario
-    $('#txt-EmailBody').text($('#txt-InitialMessage').text()); //<-- escribo la consulta que usuario ingreso en el primer formulario
-    $('#emailForm').modal('show');//<-- muestro el formulario
-    $('#newModal').hide();
-}
-function cleanVariables() {
-    //En esta función limpio todas las variables necesarias al cerrar el fomulario
-    NO_OPERATOR = 0; //0:Primer momento 1:reintentando 2:cancelado
-}
-
-
-/*FUNCION MIGRADA DE CHATVERSION*/
-function scrollToBotton() {
-    //lleva la vision del chat al ultimo item.
-    if (!$('txtMessageList').is(':focus')) { //<---valida que el usuario no este leyendo el chat
-        var wtf = $('#txtMessageList');
-        var height = wtf[0].scrollHeight;
-        wtf.scrollTop(height);
-    }
-
-}
-
-function formatMessage(message) {
-    //insertamos saltos de linea para no romper el stile de la burbuja
-    var newMessage = message.split("");
-    for (var i = 0 ; i >= message.lenght; i++) {
-        var lastEmptyPosition = 0; //<-- la posicion donde se encontro el ultimo espacio
-
-        if (newMessage[i] = '')
-            lastEmptyPosition = i;
-
-        if (i == 300) {
-            newMessage.splice(lastEmptyPosition, 1, ' </br> ');
+    function GetrecordId_CallBack(ajaxContext) {
+        GET_RECORDID_TRY_NUMBER++;
+        if (ajaxContext.Result && ajaxContext.Result == 'ERROR') {
+            //OnFailure(ajaxContext);
+            return;
         }
-    }
-    return (newMessage.join('')); //<--- unimos todos los string con los saltos de linea
+        if (ajaxContext.recordId == null) {
+            if (GET_RECORDID_TRY_NUMBER > GET_RECORDID_TRIES ) {
+                Show_Email_Option(2);//Luego del 5to intento muestro la opción de email 
+            }
+            if (!USER_SEND_EMAIL)
+                funcGetRecordId = setTimeout(function () { GetRecordId(); }, _GetRecord_Timer);
 
-}
+            return;
+        }
+
+        ChatStart(ajaxContext);
+
+       
+
+    }
+
+    function ChatStart(ajaxContext) {
+        if (!_emailAvailable) { //si la app no esta configurada para mandar email. entonces quitamos la op de envio de charla
+            $('#div-attr-send-email-label').hide();
+            $('#div-attr-send-email-input').hide();
+        }
+
+
+        if (_MaxLength_Message > 0)
+            $("#txt-message").attr('maxlength', _MaxLength_Message); //<--seteo el tamaño máximo del mensaje
+
+        $('#txtemailchat').val($('#txt-clientEmail').val());
+        _userName = ajaxContext.userName;
+        _recordId = ajaxContext.recordId;
+        $('#div-chatRoomView').show();
+        $('#newModal').hide('slow');
+        $('#alert-text-view').hide('slow');
+        $('#alert-text-info-container').hide('slow');
+        timedCount(); //<--- comienza a correr el tiempo del contador
+        Showloading(false);
+        UpdateTimeToExpire(); //<--Calculo el tiempo en el que deberia expirar la session
+        RetriveAllMessage();
+        ResetControlsChat();
+        scrollToBotton();
+        clearTimeout(funcGetRecordId);
+
+        if (_emailAvailable) { //si el email esta configuracion, muestro las cajas para el envio
+            $('#div-attr-send-email-label').show();
+            $('#div-attr-send-email-input').show();
+            $('#div-end-session-menu').removeClass("div-end-session-menu-no-email").addClass("div-end-session-menu-with-email");
+        }
+
+        //Asigno el nombre del operador que respondio la llamada
+        $("#span-Epiron-User-Name").append(_userName);
+        $("#span-Epiron-User-Name").show();
+    }
+
+    function DisableControlsCreateChatRoom() {
+        //$('button[type="submit"]').attr('disabled', 'true');
+        $('#img-message').hide();
+        $('#span-version').hide();
+        $('#txt-ClientName').attr('disabled', 'true');
+        $('#txt-Phone').attr('disabled', 'true');
+        $('#txt-InitialMessage').attr('disabled', 'true');
+        $('#btnCreateNew').attr('disabled', 'true');
+        $('#ChatConfigId').attr('disabled', 'true');
+        $('#txt-clientEmail').attr('disabled', 'true');
+        $('#option-config').attr('disabled', 'true');
+    }
+
+    function ResetControlsChat() {
+        $('#btnSendMessage').removeAttr('disabled');
+        $('#txtMessage').removeAttr('disabled');
+        $('#btnExitChat').removeAttr('disabled');
+        $('#ChatConfigId').removeAttr('disabled');
+    }
+
+    function ResetControlsCreateChatRoom() {
+
+        _userId = -1;
+        _recordId = -1;
+        selectedChatConfigId = null;
+
+        $('#ClientName').removeAttr('disabled');
+        $('#Phone').removeAttr('disabled');
+        $('#InitialMessage').removeAttr('disabled');
+        $('#ChatConfigId').removeAttr('disabled');
+
+        Showloading(false);
+        $('#alert-text-view').hide('slow');
+        $('#alert-text-info-container').hide('slow');
+
+    }
+    function alert_text_info_container(msg, showImage) {
+        $('#alert-text-info-container').show('slow');
+        Showloading(showImage);
+        Set_alert_text_info(msg, true);
+    }
+
+    function alert_text_info_containerHTML(msg, showImage, replace) {
+        $('#alert-text-info-container').show('slow');
+        Showloading(showImage);
+        Set_alert_text_info(msg, replace);
+    }
+
+    function Set_alert_text_infoChatRoom(message, replace) {
+        var content = $('#alert-text-view-info-ChatRoom');
+        var content = content.find(".info-text")
+        if (replace) {
+            content.empty();
+        }
+
+        content.append(message);
+    }
+
+
+    function endEmailNoOperator() {
+        USER_SEND_EMAIL = true;
+        clearTimeout(funcretriveAllMessage);
+        clearTimeout(funcGetRecordId);
+        $('#txt-phoneEmail').val($('#txt-Phone').val()); //<-- escribo el telefono que usuario ingreso en el primer formulario
+        $('#txt-Email').val($('#txt-clientEmail').val());
+        $('#txt-InitialMessageEmail').val($('#txt-InitialMessage').val()); //<-- escribo la consulta que usuario ingreso en el primer formulario
+        $('#emailForm').modal('show');//<-- muestro el formulario
+        $('#newModal').hide();
+    }
+
+
+
+    /*FUNCION MIGRADA DE CHATVERSION*/
+    function scrollToBotton() {
+        //lleva la vision del chat al ultimo item.
+        if (!$('txtMessageList').is(':focus')) { //<---valida que el usuario no este leyendo el chat
+            var wtf = $('#txtMessageList');
+            var height = wtf[0].scrollHeight;
+            wtf.scrollTop(height);
+        }
+
+    }
+
+
+
+
+    //aquí esta el contador de tiempo en pausa
+    var sec = -1; var min = 0; var hour = 0; var t = 0;
+
+    function timedCount() {
+
+        sec++;
+        if (sec == 60) {
+            sec = 0;
+            min = parseInt(min) + 1;
+        }
+        else {
+            min = min;
+        }
+
+        if (min == 60) {
+            min = 0;
+            hour = hour + 1;
+
+        }
+        else {
+            hour = hour;
+        }
+
+        if (sec.toString().length == 1)
+        { sec = "0" + sec; }
+
+        if (min.toString().length == 1) {
+            min = "0" + min;
+        }
+
+        document.getElementById("txt").value = hour + ":" + min + ":" + sec;
+
+
+        t = window.setTimeout(function () { timedCount() }, 1000);
+    }
+
+    function stopTimerCount() {
+        window.clearTimeout(t);
+        sec = 0; min = 0; t = 0; hour = 0;
+
+    }
+
+
+
+    function IsEmail(email) {
+        var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+        return regex.test(email);
+    }
+
+    function validateForm() {
+    
+        var result = true;
+
+        //valido el nombre
+        if ($("#txt-ClientName").val().length == 0) {
+            showToolTip($("#txt-ClientName"),"Debe Ingresar su Nombre");
+            result = false;
+        } 
+
+        //valido el email
+        if (!IsEmail($('#txt-clientEmail').val())) {
+            showToolTip($('#txt-clientEmail'), "Verifique su Email");
+            result = false;
+        }
+
+        //valido el telefono
+        if ($("#txt-Phone").val().length == 0) {
+            showToolTip($("#txt-Phone"), "Debe Ingresar su Teléfono");
+            result = false;
+        }
+
+        //valido el mensaje inicial
+        if ($("#txt-InitialMessage").val().length == 0) {
+            showToolTip($("#txt-InitialMessage"), "Debe Ingresar su Consulta");
+            result = false;
+        }
+
+        return result;
+
+    }

@@ -1,90 +1,66 @@
 ﻿@model WebChat.Common.Models.ChatRoomCreationModel
 
+
 @using (Ajax.BeginForm("CreateChatRoom", "EpironChatVersion1", new AjaxOptions()
             {
                 LoadingElementId = "",
                 OnSuccess = "CreateChatRoom_CallBack",
                 OnBegin = "CreateChatRoomBefore_CallBack",
-                LoadingElementDuration=12,
-                OnFailure = "OnFailure"
+                LoadingElementDuration=12
+                //OnFailure = "OnFailure"
             }
             ))
 {
+   
+
     <div class="modal-dialog">
-        <div id="CreateChatDialog"   class="panel panel-success" >
+        <div id="CreateChatDialog" class="panel" >
             <div class="panel-header">
-                <h4 class="modal-title">Crear nuevo chat</h4>
-            </div>
-            <div class="panel-body">
-                    <div id="alert-text-info-container">
-                        <table>
-                            <tr>
-                                <td>
-                                    <img id="ajaxloader" style="height: 40px; width: 40px; float: left;" src="@Url.Content("~/img/ajax-loader.gif")" />
-                                </td>
-                                <td>
-                                    <div id="alert-text-view-info" class="alert alert-warning" style="display: normal; margin: 5px">
-                                        <p class="info-text"></p>
+                <div id="div-mark" style="border-bottom: 1px solid #EC5710;padding-bottom: 4px;"><img id="img-epiron" class="img-header" src="~/img/logo-epiron.png"/><img id="img-entorno" class="img-header" src="~/img/ico.png"/></div>
+                <img id="img-message" src="~/img/icono-chat.png"  style="margin-top: 20px;"/>
+                <span id="span-version"> </span>
+                   <div id="alert-text-info-container">
+                                    <img id="ajaxloader" src="@Url.Content("~/img/ajax-loader.gif")" />
+                                    <div id="alert-text-view-info" class="alert-chat alert alert-warning" style="display: normal;">
+                                        <p style="text-align: center;" class="info-text"></p>
                                     </div>
-                                </td>
-                            </tr>
-                        </table>
                     </div>
-                    <div class="span1">
-                        <div class="input-group">
-                            @Html.ValidationSummary(true)
-                        </div>
-                        @Html.HiddenFor(model => model.ChatRoomID)<label>ChatConfigList</label>
-                    <div class="input-group" style="margin-bottom: 0px">
-                        <span class="input-group-addon"></span>
-                        <div style="margin-top: 1px; margin-bottom: 5px">
-                            @Html.DropDownListFor(model => model.ChatConfigId, ViewData["ChatConfigList"] as List<SelectListItem>, new { @class = "form-control" })
-                         @*   <select id="cmb-chat-Config-id" class="form-control" stlye="300px">
-    <option>Mustard</option>
-    <option>Ketchup</option>
-    <option>Relish</option>
-  </select>*@
-                        </div>
-                    </div>
+            </div>
+            <div id="div-content">
 
-                        <label>Nombre</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"></span>
-                            @Html.TextBoxFor(model => model.ClientName, new { @class = "form-control", @placeholder = "Nombre", @style = "width:100%;",@id="txt-ClientName" })
-                            @Html.ValidationMessageFor(model => model.ClientName)
-                        </div>
-                        <label>Telefono</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"></span>
-                            @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @placeholder = "Ingrese un telefono", @style = "width:100%;", @id="txt-Phone" })
-                            @Html.ValidationMessageFor(model => model.Phone)
-                        </div>
-                        @*<label>Email</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"></span>
-                            @Html.TextBoxFor(model => model.ClientEmail, new { @class = "form-control", @placeholder = "Apellido", @style = "width:300px;" })
-                            @Html.ValidationMessageFor(model => model.ClientEmail)
-                        </div>*@
+                  @*      @Html.ValidationSummary(true)*@
+                        @Html.HiddenFor(model => model.ChatRoomID)
+             
+                <label>Sala de chat</label>
+
+                            @Html.DropDownListFor(model => model.ChatConfigId, ViewData["ChatConfigList"] as List<SelectListItem>, new { @class = "no-border form-control", @id="option-config" })
+                  
+                     <label>Email</label>
+                    @Html.TextBoxFor(model => model.ClientEmail, new { @class = "no-border form-control", @id="txt-clientEmail" })
+                           @* @Html.ValidationMessageFor(model => model.ClientName)*@
+                    
+                   <label>Nombre</label>
+                            @Html.TextBoxFor(model => model.ClientName, new { @class = "no-border form-control", @id="txt-ClientName" })
+                         @*   @Html.ValidationMessageFor(model => model.ClientName)*@
+                       @* </div>*@
+                        <label>Teléfono</label>
+
+                            @Html.TextBoxFor(model => model.Phone, new { @class = "no-border form-control", @id="txt-Phone" })
+                          @*  @Html.ValidationMessageFor(model => model.Phone)*@
+
                         <br />
-
                         <label>Consulta</label>
-                        <div class="input-group">
-                            <span class="input-group-addon"></span>
-                            @Html.TextAreaFor(model => model.InitialMessage, new { @class = "form-control", @placeholder = "Ingrese su consulta", @rows = 5, @cols = 80,@id="txt-InitialMessage" })
-
-                        </div>
-                    </div>
+                            @Html.TextAreaFor(model => model.InitialMessage, new { @class = "form-control", @rows = 5, @cols = 80,@id="txt-InitialMessage", @style= "resize:none; border: solid 1px #4B4B4B;"})
+                   <button id="btnCreateNew" type="submit" class="btn-form">Crear</button>  
+                <button id="btnClose" type="button" data-dismiss="modal" class="btn-form">Cerrar</button>
+               
+                  
             </div>
 
             <div id="alert-text-view1" class="alert alert-warning" style="display: none; margin: 5px">
                 <p id="alert-text-error-tittle" style="font-weight: bold;"> </p>
                 <p class="error-text" id="error-text-message"></p>
                 <div id="link-email"></div>
-            </div>
-
-            <div class="panel-footer">
-                <button id="btnCreateNew" type="submit" class="btn btn-primary">Crear</button>
-                <button id="btnClose" type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
             </div>
 
         </div>

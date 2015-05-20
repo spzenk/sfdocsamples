@@ -4,7 +4,67 @@ window.SecurityPortalApi = {};
 
 var httpHost = Getrootpath('');
 var siteViewModel = null;
+var _isClose = false;
+
 $(function () {
+
+
+    window.onbeforeunload = leaving;
+
+
+    $('#span-version').html(_version); //<--- version
+    $('#span-version-chat').html(_version); //<--- version
+
+
+    $('#btn-End').on('click', function () {
+        btn = $('#btn-End');
+        btn.addClass("hide").removeClass("show"); //<--- oculta el boton (versiones lower)
+        //btn.css("background-color", "rgb (44,90,160)");
+
+        //$('#div-end-session-menu').css("margin-top", "170px");
+
+        $('#div-end-option').show();
+
+
+            $('#message-before-end').html("¿Desea terminar la sesión?");
+            $('#btn-end-option-no').html("Cancelar");
+            $('#btn-end-option-yes').html("Salir");
+            $('#div-end-option').addClass('div-end-option-short');
+
+
+    });
+
+    $("#btn-end-option-no").on("click", function () {
+
+            $('#div-end-option').hide();
+
+            var btn = $('#btn-End');
+            btn.css("background-color", "rgb(42,127,255)");
+            btn.addClass("show").removeClass("hide"); //<--- oculta el boton (versiones lower)
+    });
+
+    $("#btn-end-option-yes").on("click", function () {
+        //$('#div-end-option').css('margin-top', '10px');
+        if (_isClose  && _isSurveyAvailable) { //<---el cliente aun no hizo la encuenta y respondio que si la quiere hacer
+            openSurvey(); //<--abrimos la encuesta
+            $("#div-end-option").hide();
+        }
+        else {
+            if (sendEmailChat()) {
+                //CloseChatRoom("Gracias por Comunicarse con nosotros");
+                LeaveChatRoom(_isSurveyAvailable);
+                $('#div-end-option').removeClass('div-end-option-short');
+                $('#message-before-end').html("¿Desea calificar nuestro servicio?");
+                $('#btn-end-option-no').html("No");
+                $('#btn-end-option-yes').html("Sí");
+                _isClose = true;
+
+            }
+
+        }
+
+    });
+
 
     //Initialize the datepicker with the dateFormat option specified:
     //$.datepicker.regional[""].dateFormat = 'dd/mm/yy';
@@ -66,10 +126,10 @@ $(function () {
     ////////////////////////////        using: function (position, feedback) {
     ////////////////////////////            $(this).css(position);
     ////////////////////////////            $("<div>")
-	////////////////////////////					.addClass("arrow")
-	////////////////////////////					.addClass(feedback.vertical)
-	////////////////////////////					.addClass(feedback.horizontal)
-	////////////////////////////					.appendTo(this);
+    ////////////////////////////					.addClass("arrow")
+    ////////////////////////////					.addClass(feedback.vertical)
+    ////////////////////////////					.addClass(feedback.horizontal)
+    ////////////////////////////					.appendTo(this);
     ////////////////////////////        }
     ////////////////////////////    }
     ////////////////////////////});
@@ -137,7 +197,7 @@ $(function () {
     $("span.field-validation-valid, span.field-validation-error").addClass('help-inline');
     $("div.control-group").has("span.field-validation-error").addClass('error');
     $("div.validation-summary-errors").has("li:visible").addClass("alert alert-block alert-error");
-   
+
 });
 jQuery.validator.setDefaults({
     highlight: function (element, errorClass, validClass) {
@@ -248,9 +308,8 @@ function ServiceFailed(xhr, status, p3, p4) {
 
 
 
-function Init_datepicker()
-{
-    
+function Init_datepicker() {
+
     $(function () {
 
         $(".datefield").datepicker({
@@ -263,7 +322,7 @@ function Init_datepicker()
         });
     });
 
-    
+
 }
 function Getrootpath(href) {
 
@@ -291,22 +350,37 @@ function Getrootpath(href) {
 function Showloading(show) {
     if (show) {
         //$('.loading').html('<img class="ajaxloader" src="@Url.Content("~/img/ajax-loader.gif")"/>');
-        $('.ajaxloader').show();
+        $('#ajaxloader').show();
         $('#alert-text-view1').hide('slow');
     }
     else {
-        $('.ajaxloader').hide();
+        $('#ajaxloader').hide();
         //$('.loading').empty();
     }
 }
 
-function Set_alert_text_info(message) {
-    var content  = $('#alert-text-view-info');
-    content.find(".info-text").text(message);
+
+function ShowloadingUrl(show) {
+    if (show) {
+        //$('.loading').html('<img class="ajaxloader" src="@Url.Content("~/img/ajax-loader.gif")"/>');
+        $('#ajaxloader1').show();
+        $('#alert-text-view1').hide('slow');
+    }
+    else {
+        $('#ajaxloader1').hide();
+        //$('.loading').empty();
+    }
 }
 
-function Set_alert_error_link(link) {
-    $('#link-email').html(link);
+
+function Set_alert_text_info(message, replace) {
+    var content = $('#alert-text-view-info');
+    var content = content.find(".info-text")
+    if (replace) {
+        content.empty();
+    }
+
+    content.append(message);
 }
 
 function Set_alert_text_error(message, title) {
@@ -320,7 +394,7 @@ function ShowAlertMessage(text, title, mesagetype, smalltitle) {
     if (!smalltitle)
         smalltitle = '';
     if (!title)
-        title = 'Allus';
+        title = 'Movistar';
     var _html = '<div class="media"> <a href="#" class="pull-left">';
     _html += '<img  id="message-alert-img" src="/img/indicator_error38.png" class="media-object img-rounded" alt=""></a>';
 
@@ -360,9 +434,9 @@ function OnFailure(ajaxContext) {
 function OnFailureEmailOption(ajaxContext) {
     var alertText = $('#alert-text-view1');
     alertText.show('slow');
-   $('#div-send-email-optional').show();
+    $('#div-send-email-optional').show();
 }
-function OnFailureId(ajaxContext,alertId) {
+function OnFailureId(ajaxContext, alertId) {
     var alertText = $('#' + alertId);
     alertText.show('slow');
 
@@ -382,8 +456,7 @@ function RefreshPage() {
     });
 }
 
-function SetPanel_CRUD(controlId,isEdit)
-{
+function SetPanel_CRUD(controlId, isEdit) {
     if (isEdit) {
         $('#' + controlId).addClass('panel-success');
         $('#' + controlId).removeClass('panel-warning');
@@ -391,7 +464,7 @@ function SetPanel_CRUD(controlId,isEdit)
     else {
         $('#' + controlId).addClass('panel-warning');
         $('#' + controlId).removeClass('panel-success');
-       
+
     }
 }
 
@@ -400,33 +473,33 @@ function RefrechGrid(controller) {
     $.ajax(
      {
          url: httpHost + "/" + controller + "/RetriveGrid/",
-        type: "POST",
-    dataType: 'html',
-    contentType: "application/json;charset=utf-8",
-    data: null,
-    success: function (result) {
-        $('#grid').html(result);
-    },
-    error: ServiceFailed
-});
+         type: "POST",
+         dataType: 'html',
+         contentType: "application/json;charset=utf-8",
+         data: null,
+         success: function (result) {
+             $('#grid').html(result);
+         },
+         error: ServiceFailed
+     });
 }
 
 function amply(img, divId) {
     var elem1 = $("#" + divId);
     var image = elem1.find('img');
-    
+
     //Amplia
     if (image.hasClass("news_divImag_190_210")) {
-    
+
         elem1.removeClass("news_divImag_190_210");
         elem1.addClass("news_divImag_500_570").fadeIn({ speed: 500, easing: "swing" }, "true");;
         image.removeClass("news_divImag_190_210");
         image.addClass("news_divImag_500_570").fadeIn({ speed: 1500, easing: "swing" }, "true");
-        
-      
+
+
     }
     else {//Reduce
-      
+
         elem1.removeClass("news_divImag_500_570");
         elem1.addClass("news_divImag_190_210").fadeIn({ speed: 500, easing: "swing" }, "true");;
         image.removeClass("news_divImag_500_570");
@@ -438,4 +511,476 @@ function amply(img, divId) {
 function JSON_TO_Date(value) {
 
     return new Date(parseInt(value.replace("/Date(", "").replace(")/", ""), 10));
+}
+
+
+function showToolTip(pElement, Plegend) {
+    pElement.tooltip({ title: Plegend, placement: 'right' });
+    pElement.tooltip('show');
+    pElement.css("border-color", "#D11");
+}
+
+
+function hideToolTip(pElement) {
+    pElement.tooltip('hide');
+}
+
+function destroyToolTip(pElement) {
+    pElement.css("border-color", "#4B4B4B");
+    pElement.tooltip('destroy')
+
+}
+
+function UpdateTimeToExpire() {
+    current = new Date();
+    timeToExpire = new Date(current);
+    timeToExpire.setSeconds(current.getSeconds() + ClientInactivityTimeOut);
+}
+
+function RetriveAllMessage() {
+
+
+
+    if (timeToExpire < new Date()) {
+        //Se supero el tiempo  máximo de inactividad  
+        TimeOutChatRoom();
+        return;
+        //termina el ciclo
+    }
+
+
+    var obj = {
+        RecordId: _recordId,
+        RoomId: _roomId,
+    }
+
+    $.ajax({
+        url: "/EpironChatVersion1/RetriveMessages/",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(obj),
+        success: function (result) {
+            if (result.Result && result.Result == 'ERROR') {
+                //ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                return;
+            }
+
+            UpdateOperatorName(result.pNameOperator);
+
+
+            //ClosedByOperator
+            if (result.ChatRoomStatus == '5')
+            { CloseChatRoom("Sala de chat cerrada por el operador. </br>Gracias por Comunicarse con nosotros"); return; }
+            if (result.ChatRoomStatus == '2')
+            { CloseChatRoom("Gracias por Comunicarse con nosotros"); return; }
+
+
+
+
+            if (result.Data.length > 0) {
+                if (_LASTMESSAGETIME != null) {
+                    if (JSON_TO_Date(result.Data[result.Data.length - 1].SendTime) <= _LASTMESSAGETIME) {
+                        if (_roomId != -1) {
+                            funcretriveAllMessage = setTimeout(function () { RetriveAllMessage(); }, _RetriveMessage_Timer);
+                            if (result.OperatorWriting) {
+                                $('#OperatorWritingDiv').html("El operador esta escribiendo ..");
+
+                            }
+                            else {
+                                $('#OperatorWritingDiv').empty();
+                            }
+                        }
+                        else {
+                            $('#OperatorWritingDiv').empty();
+                        }
+
+
+                        return;
+                    }
+
+                    else {
+                        UpdateTimeToExpire(); //<--han escrito algo, se incrementa el tiempo de timeOut
+                        //hay nuevos comentarios. Alertar.
+                    }
+                }
+
+                var container = $('#txtMessageList');
+                var longDateFormat = 'HH:mm:ss';
+
+                container.html("");
+
+                if (result.OperatorWriting) {
+                    $('#OperatorWritingDiv').html("El operador esta escribiendo ..");
+
+                }
+                else {
+                    $('#OperatorWritingDiv').empty();
+                }
+
+
+                $(result.Data).each(function (i) {
+
+                    var newMessage = this.MessageData.autoLink({ target: "_blank"});//formatea el texto agregando saltos de lineas
+                    var linesquantity = (newMessage.length / 300).toFixed(0) + 1;//cantidad de renglones necesarios.
+
+                    var div = document.createElement("DIV");
+                    var dateFormat = jQuery.format.date(JSON_TO_Date(this.SendTime), longDateFormat);
+                    _LASTMESSAGETIME = JSON_TO_Date(this.SendTime); //guardo la fecha del ultimo mensage para luego saber si hubo uno nuevo
+                    $(div)
+                                .appendTo(container)
+                                .addClass((this.IsFriend ? "bubbleOwn" : "bubbleThey"))
+                                .end()
+
+                                .append("<span class=\"_time\">" + dateFormat + "</span>")
+                                .append("<BR /> ")
+                                .append("<span class=\"_msg\">" + $.emoticons.replace(newMessage) + "</span> ");
+
+                    scrollToBotton();
+
+                });
+            }
+            else {
+                if (result.OperatorWriting) {
+                    $('#OperatorWritingDiv').html("El operador esta escribiendo ..");
+
+                }
+                else {
+                    $('#OperatorWritingDiv').empty();
+                }
+            }
+
+            //container.scrollTop(container[0].scrollHeight - container.height());
+
+            funcretriveAllMessage = setTimeout(function () { RetriveAllMessage(); }, _RetriveMessage_Timer);
+
+        },
+
+        error: ServiceFailed
+    });
+
+
+}
+
+function cleanVariablesDisableItems(surveyPending) {
+    //En esta función limpio todas las variables necesarias al cerrar el fomulario
+    USER_SEND_EMAIL = false;
+    $("#btn-End").prop("disabled", true);
+
+    $("#txt-message").prop("disabled", true);
+    $("#img-emoticon").prop("disabled", true);
+    $("#img-upload-file").hide();
+    $("#img-emoticon").hide();
+    $("#div-end-session-menu").hide();
+    Showloading(false);
+    if (!surveyPending) {
+        $("#div-end-option").hide();
+    }
+}
+
+
+
+function CloseChatRoom(message,surveyPending) {
+    clearTimeout(funcretriveAllMessage);
+    clearTimeout(funcGetRecordId);
+    stopTimerCount();
+    cleanVariablesDisableItems(surveyPending);
+
+    var container = $('#txtMessageList');
+
+    var today = new Date();
+    var div = document.createElement("DIV");
+    var dateFormat = jQuery.format.date(today, 'HH:mm:ss');
+    $(div)
+                .appendTo(container)
+                .addClass("bubbleOwn")
+                .end()
+                .append("<span class=\"_time\">" + dateFormat + "</span>")
+                //.append("<span>: </span><BR /> ")
+                .append("<span class=\"_msgClosed\">" + message + "</span> ");
+
+    if (!surveyPending) {
+        _userId = -1;
+        _recordId = -1;
+        _roomId = -1;
+    }
+    $('#OperatorWritingDiv').empty();
+    scrollToBotton();
+}
+
+function LeaveChatRoom(surveyPending) {
+
+
+    var obj = {
+        recordId: _recordId,
+        roomId: _roomId
+    }
+    $.ajax({
+        url: "/EpironChatVersion1/LeaveChatRoom/",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(obj),
+        success: function (result) {
+            if (result.Result && result.Result == 'ERROR') {
+                //ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                return;
+            }
+            CloseChatRoom(result.Message, surveyPending);
+        },
+
+        error: ServiceFailed
+    });
+
+}
+
+function TimeOutChatRoom() {
+
+
+    var obj = {
+        recordId: _recordId,
+        roomId: _roomId
+    }
+    $.ajax({
+        url: "/EpironChatVersion1/TimeOutChatRoom/",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(obj),
+        success: function (result) {
+            if (result.Result && result.Result == 'ERROR') {
+                //ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                return;
+            }
+            CloseChatRoom(result.Message);
+        },
+
+        error: ServiceFailed
+    });
+
+}
+
+function ClosedByRecordIdNotFound() {
+    var obj = {
+        recordId: _recordId,
+        roomId: _roomId
+    }
+    $.ajax({
+        url: "/EpironChatVersion1/ClosedByRecordIdNotFound/",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(obj),
+        success: function (result) {
+            if (result.Result && result.Result == 'ERROR') {
+                //ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                return;
+            }
+            //CloseChatRoom(result.Message);
+        },
+
+        error: ServiceFailed
+    });
+
+}
+
+function SendMessage() {
+    if ($.trim($("#txt-message").val()) === "")
+        return;
+    var obj = {
+        Message: $("#txt-message").val(),
+        RecordId: _recordId,
+        UserId: _userId,
+        RoomId: _roomId
+    }
+    $.ajax({
+        url: "/EpironChatVersion1/SendMessage/",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(obj),
+        success: function (result) {
+            if (result.Result && result.Result == 'ERROR') {
+                ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                return;
+            }
+        }
+    });
+    $("#txt-message").val('');
+}
+
+function sendEmailChat() {
+    if (!_emailAvailable)
+        return true; //<--- Si el envio de email no esta disponible retorno true;
+    if ($("#check-Send-Email").is(':checked')) {
+        email = $('#txtemailchat').val();
+        if (!IsEmail(email)) {
+            showToolTip($('#txtemailchat'), "Verifique su Email")
+            return false;
+        }
+
+        cellphone = "11111";
+
+        emailBody = $('#txtMessageList').html();
+        pGuid = selectedChatConfigId == "-1" ? "0" : selectedChatConfigId;
+        pRoomId = _roomId == "-1" ? "0" : _roomId;
+
+
+        var pIsNoOperator = 0;
+        if (pRoomId == "0")
+            pIsNoOperator = 1;
+
+        var params = { cellPhone: cellphone, email: email, emailBody: emailBody, toTheClientFlag: true, pGuid: pGuid, pRoomId: pRoomId, pIsNoOperator: pIsNoOperator }
+
+        var obj = null;
+
+
+        $.ajax({
+            url: "/EpironChatEmail/sendEmail/",
+            type: "POST",
+            dataType: 'json',
+            contentType: "application/json;charset=utf-8",
+            data: JSON.stringify(params),
+            success: function (result) {
+                if (result.Result && result.Result == 'ERROR') {
+                    //ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
+                    //return true;
+                }
+                if (result.Result && result.Result == 'OK') {
+                    //ShowAlertMessage(result.Message, 'Movistar', 'info');
+                    //Set_alert_text_infoChatRoom("Correo Enviado Correctamente", true)
+                    //return true;
+                }
+
+                return true;
+            },
+
+            error: ServiceFailed
+        });
+        return true;
+
+    }
+    else {
+        return true;
+    }
+
+}
+
+function formatMessage(message) {
+    var maxLetterByWord = screen.width > 481 ? 30 : 25;//determino la cantidad maxima de caracteres que puede tener una palabra segun el tamaño del dispositivo
+
+    //insertamos saltos de linea para no romper el style de la burbuja
+    var newMessage = message.split(" ");
+    for (var i = 0 ; i < newMessage.length; i++) {
+
+        if (newMessage[i].length > maxLetterByWord) {//supero el máximo de letras por palabra
+            var wordToCorrect = newMessage[i].split(""); //<-- separo la palabra en letras
+            var letterCounter = 0;
+            var multiplier = 1;
+            for (var x = 0; x < wordToCorrect.length; x++) {
+                letterCounter++
+                if (letterCounter >= maxLetterByWord) {
+                    wordToCorrect.splice(letterCounter * multiplier, 1, ' </br> ');
+                    letterCounter = 0;
+                    multiplier++;
+                }
+            }
+            newMessage[i] = wordToCorrect.join(''); //reemplazamos la palabra en el array
+        }
+        //var lastEmptyPosition = 0; //<-- la posicion donde se encontro el ultimo espacio
+
+        //if (newMessage[i] = '')
+        //    lastEmptyPosition = i;
+
+        //if (i == 300) {
+        //    newMessage.splice(lastEmptyPosition, 1, ' </br> ');
+        //}
+    }
+    return (newMessage.join('')); //<--- unimos todos los string con los saltos de linea
+
+}
+
+
+function Show_Email_Option(option) {
+
+    if (SHOWING_EMAIL_OPTION != 1) {
+        switch (option) {
+            case 1: //No se encontro Operador
+                alert_text_info_containerHTML("No contamos con Operadores Disponibles" + showEmailLink(), false, true); break;
+
+            case 2: //Demora en encontrar sala 
+                //$('.panel-header').addClass("panel-headerMax");
+                alert_text_info_containerHTML(showEmailLinkWaitting(), true, false); break;
+
+            case 3: //No Hay configuraciones
+                alert_text_info_containerHTML(showEmailLink(), false, false); break;
+        }
+        SHOWING_EMAIL_OPTION = 1 // se usa para saber si ya estamos mostrando la opción del menu.
+    }
+
+}
+
+function showEmailLink() {
+    if (_emailAvailable) {
+        return "</br> Envíanos tu consulta <a href=\"#\" onclick=\"endEmailNoOperator();\" > aquí</a>";
+    }
+    else {
+        return "";
+    }
+}
+
+function showEmailLinkWaitting() {
+    if (_emailAvailable) {
+        return "</br> Recuerda que puedes enviarnos tu consulta <a href=\"#\" onclick=\"endEmailNoOperator();\" > aquí</a>";
+    }
+    else {
+        return "";
+    }
+}
+
+
+
+
+
+function UpdateOperatorName(NewName) {
+    if (_userName != NewName) {
+        _userName = NewName;
+        $("#span-Epiron-User-Name").append(_userName);
+        $("#span-Epiron-User-Name").show();
+    }
+}
+
+
+
+function openSurvey() {
+
+    var obj = {
+        RecordId: _recordId,
+        RoomId: _roomId
+    }
+    $.ajax({
+        url: "/EpironChatVersion1/OpenSurvey/",
+        type: "POST",
+        dataType: 'json',
+        contentType: "application/json;charset=utf-8",
+        data: JSON.stringify(obj),
+        success: function (result) {
+
+            window.open(_surveyUrl + result.NewRandomGuid);
+        }
+    });
+}
+
+
+function leaving(e) {
+    if (!e) e = window.event;
+    //e.cancelBubble is supported by IE - this will kill the bubbling process.
+    e.cancelBubble = true;
+    e.returnValue = 'Estas abandonando la conversación.'; //This is displayed on the dialog
+
+    //e.stopPropagation works in Firefox.
+    if (e.stopPropagation) {
+        e.stopPropagation();
+        e.preventDefault();
+    }
 }
