@@ -202,70 +202,97 @@ namespace WebChat.Controllers
         [HttpGet]
         public ActionResult Chatfrm(string tel, string clientName, string email, string query)
         {
-            ChatRoomCreationModel model = new ChatRoomCreationModel();
+            ChatRoomFromUrlModel model = new ChatRoomFromUrlModel();
 
-            ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
-            if (chatConfigBE == null)
-            {
-              
-            }
-            model.Phone = tel;
+             int chatRoomId = -1;
+            int userId = -1;
+            int messageId = -1;
+            bool userIsAlreadyUsed = false; //<-- indica si el usuario ya tiene un chatroom activo
+            //model.Phone = tel;
             model.ClientName = clientName;
             model.ClientEmail = email;
-            model.InitialMessage = query;
-            model.ChatConfigId = chatConfigBE.ChatConfigGuid;
+            //model.InitialMessage = query;
+            bool emailAvailable = false; //<-- indica si el envio de emails esta disponible
+       
+            try
+            {
+                if (WebChat.Common.Common.Host_Referer != null)//<--pregunto si el parametro esta configurado
+                {
+                    if (HttpContext.Request.ServerVariables["HTTP_REFERER"]==null ||!HttpContext.Request.ServerVariables["HTTP_REFERER"].Contains(WebChat.Common.Common.Host_Referer))
+                    {
+                        Helper.Log("Ruta de acceso incorrecta, HTTP_REFERER distinto de" + WebChat.Common.Common.Host_Referer); //Registro que se ingreso por un lugar que no correspondería
+                        ChatRoomFromUrlModel mChatRoomFromUrlModel = new ChatRoomFromUrlModel();
+                        mChatRoomFromUrlModel.HaveException = true;
+                        return View("Chat", mChatRoomFromUrlModel); //abro el chat pero con excepcion, para detener todo.
+                    }
+                }
+            
+                    ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
+                    if (chatConfigBE == null)
+                    {
+                        model.IsConfigavailable = false; //<--No hay configuraciones, en el cliente se mostrara un mensaje
+                        return View("chat", model);
+                    }
+          
+                    model.OperatrCount = EpironChatDAC.OnlineUsers_Count(chatConfigBE.ChatConfigGuid);
+            
+
+                 if (model.OperatrCount > 0)
+                     EpironChatBC.CreateChatRoom_NoOperators(tel, null, string.Empty, query);
+
+                     EpironChatBC.CreateChatRoom(model,tel,query, out chatRoomId, out userId, out messageId, out userIsAlreadyUsed, out emailAvailable);
+
+                    model.ChatConfigId = chatConfigBE.ChatConfigGuid;
+                    model.UserId = userId;
+                    model.RoomId = chatRoomId;
+                    model.MessageId = messageId;
+                    model.userAlreadySigned = userIsAlreadyUsed;
+                    model.IsConfigavailable = true;
+                    model.EmailAvailable = chatConfigBE.EmailAvailable;
+                    //Survey
+                    model.SurveyAvailable = chatConfigBE.ChatSurveyConfigId != null;
+                    model.ChatSurveyConfigText = chatConfigBE.ChatSurveyConfigText;
+                    model.ChatSurveyConfigURL = chatConfigBE.ChatSurveyConfigURL;
+                    model.ChatSurveyConfigId = chatConfigBE.ChatSurveyConfigId;
+
+                    // Busco las appSettings
+                    List<ApplicationSettingBE> wAppSettingsList = ApplicationSettingBC.SearchApplicationSetting();
+                    model.RetriveMessage_Timer = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.RetriveMessage_Timer)).Value);
+                    model.GetRecord_Timer = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_Timer)).Value);
+                    model.VersionWeb = wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.VersionWeb)).Value;
+                    model.GetRecordIdTries = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecordIdTries)).Value);
+                    model.ClientInactivityTimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.ClientInactivityTimeOut)).Value) / 1000;
+                    model.GetRecord_TimeOut = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.GetRecord_TimeOut)).Value) / 1000;
+                    model.MaxLength_Message = int.Parse(wAppSettingsList.Find(x => x.SettingId.Equals((int)Enumerations.ApplicationSettingId.MaxLength_Message)).Value);
+
+                    //if (isAjaxCall.HasValue)
+                    //    return Json(new { Result = "OK", userId = userId, roomId = chatRoomId, count = model.OperatrCount, messageId = model.MessageId }, JsonRequestBehavior.AllowGet);
 
 
-            return CreateChatRoomFunction(model);
+                    return View("chat", model);
+              
+            }
+            catch (Exception ex)
+            {
+                Helper.Log(ex.Message);
+
+                //if (isAjaxCall.HasValue)
+                //{
+                //    return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
+                //}
+                //else
+                //{
+                    model.HaveException = true;
+                    return View("chat", model);
+                //}
+            }
+            
         }
 
         [HttpPost]
         public JsonResult CreateChatRoom(ChatRoomCreationModel model)
         {
-            return CreateChatRoomFunction( model);
-            //int userId = -1;
-            //int messageId = -1;
-            //int chatRoomId = -1;
-            //int count = 0;
-            //bool EmailAvailable = false; //<-- indica si el envio de emails esta disponible
-            //bool userIsAlreadyUsed = false; //<-- indica si el usuario ya tiene un chatroom activo
-            //bool isSurveyAvailable = false; //<-- indica si las encuestas estan disponibles
-            //string surveyText = null; 
-            //string surveyUrl = null;
-            //try 
-            //{
-            //    count = EpironChatDAC.OnlineUsers_Count(model.ChatConfigId);
-            //    ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(model.ChatConfigId);
-
-            //    isSurveyAvailable = chatConfigBE.ChatSurveyConfigId != null;
-            //    surveyText = chatConfigBE.ChatSurveyConfigText;
-            //    surveyUrl = chatConfigBE.ChatSurveyConfigURL;
-            //    if (count == 0)
-            //    {
-            //        EpironChatBC.CreateChatRoom_NoOperators(model.Phone,null, string.Empty, model.InitialMessage);
-            //        return Json(new { Result = "NO-OPERATORS", EmailAvailable =chatConfigBE.EmailAvailable });
-            //    }
-
-            //    EpironChatBC.CreateChatRoom(model, out chatRoomId, out userId, out messageId, out userIsAlreadyUsed, out EmailAvailable);
-
-            //    if (userIsAlreadyUsed)
-            //        return Json(new { Result = "USER-SIGNED" });
-
-
-            //    return Json(new { Result = "OK", userId = userId, roomId = chatRoomId, 
-            //                      messageId = messageId, EmailAvailable = EmailAvailable,
-            //                      surveyText = surveyText, isSurveyAvailable = isSurveyAvailable,
-            //                      surveyUrl = surveyUrl });
-            //}
-            //catch (Exception ex)
-            //{
-            //    Helper.Log(ex.Message);
-            //    return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
-            //}
-        }
-
-       private  JsonResult CreateChatRoomFunction(ChatRoomCreationModel model)
-        {
+           
             int userId = -1;
             int messageId = -1;
             int chatRoomId = -1;
@@ -313,6 +340,8 @@ namespace WebChat.Controllers
                 return Json(new { Result = "ERROR", Message = Fwk.Exceptions.ExceptionHelper.GetAllMessageException(ex) });
             }
         }
+
+
         [HttpPost]
         public JsonResult RetriveMessages(RetriveAllMessage retriveAllMessage)
         {
