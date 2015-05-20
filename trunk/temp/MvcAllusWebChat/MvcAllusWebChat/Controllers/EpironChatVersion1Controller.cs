@@ -192,7 +192,10 @@ namespace WebChat.Controllers
         }
 
         /// <summary>
-        /// http://localhost:30250/EpironChatVersion1/chat/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola chat de este mundo
+        ///http://localhost:30250/EpironChatVersion1/chafrm/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola%20chat%20de%20este%20mundo
+        /// http://localhost:30250/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola%20chat%20de%20este%20mundo
+        /// http://personalencuestas.com/chafrm/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola chat de este mundo
+        ///http://personalencuestas/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola chat de este mundo
         /// </summary>
         /// <param name="tel"></param>
         /// <param name="clientName"></param>
