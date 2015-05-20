@@ -172,7 +172,7 @@
       <DependentUpon>EpironChat.dbml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\EpironChatEmailController.cs" />
-    <Compile Include="Controllers\EpironChatVersion1Controller.cs" />
+    <Compile Include="Controllers\ChatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -305,9 +305,9 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\dropzone\dropzone.js" />
     <Content Include="Scripts\emoticons.js" />
-    <Content Include="Scripts\epironchatversion1\EpironChat.js" />
-    <Content Include="Scripts\epironchatversion1\EpironChatEmail.js" />
-    <Content Include="Scripts\epironchatversion1\EpironChat_Url.js" />
+    <Content Include="Scripts\Chat\EpironChat.js" />
+    <Content Include="Scripts\Chat\EpironChatEmail.js" />
+    <Content Include="Scripts\Chat\EpironChat_Url.js" />
     <Content Include="Scripts\html5shiv-printshiv.js" />
     <Content Include="Scripts\html5shiv-printshiv.min.js" />
     <Content Include="Scripts\html5shiv.js" />
@@ -357,23 +357,23 @@
     <Content Include="Views\Test\Page1.cshtml" />
     <Content Include="Views\Test\Page2.cshtml" />
     <Content Include="Views\Test\Emoticons.cshtml" />
-    <Content Include="Views\EpironChatVersion1\chat.cshtml" />
-    <Content Include="Views\EpironChatVersion1\Index.cshtml">
+    <Content Include="Views\Chat\chat.cshtml" />
+    <Content Include="Views\Chat\Index.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\EpironChatVersion1\_ChatRoomView.cshtml">
+    <Content Include="Views\Chat\_ChatRoomView.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\EpironChatVersion1\_CreateChatRoomViewForm.cshtml">
+    <Content Include="Views\Chat\_CreateChatRoomViewForm.cshtml">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Views\EpironChatVersion1\_EmailFormView.cshtml" />
-    <Content Include="Views\EpironChatVersion1\_info.cshtml" />
+    <Content Include="Views\Chat\_EmailFormView.cshtml" />
+    <Content Include="Views\Chat\_info.cshtml" />
     <Content Include="Views\Shared\_LayoutVersion1.cshtml">
       <SubType>Code</SubType>
     </Content>
     <Content Include="Views\Shared\SelectionTestChatEpiron.cshtml" />
-    <Content Include="Views\EpironChatVersion1\Default.cshtml" />
+    <Content Include="Views\Chat\Default.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\EpironChat_logs.dbml.layout">

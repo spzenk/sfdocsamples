@@ -23,7 +23,7 @@
     <br />
   <h3>Mensage</h3>
     <div style="padding: 10PX; width: 600px" class="ui-corner-all ui-state-highlight ">
-        @Model.Exception.Message
+        @Model.Message
     </div>
     
   
@@ -31,22 +31,33 @@
              
             <h3>Error interno</h3>
         <div class="ui-state-error  ui-corner-all " style="margin: 10PX;">
+
+           
             @{
                 Exception innerEx = Model.Exception.InnerException;
             }
-            @while (innerEx != null)
-            {
-                <div>
-                    @innerEx.Message;
-                </div>
-                innerEx = innerEx.InnerException;
-            }
+           
+            
+                @while (innerEx != null)
+                {
+                    <div>
+                        @innerEx.Message;
+                    </div>
+                    innerEx = innerEx.InnerException;
+                }
+            
         </div>
         <h3>
             Traza del error</h3>
         <div class="ui-state-error  ui-corner-all">
             <div>
-                @Model.Exception.StackTrace
+
+                
+                    @Model.StackTrace
+                
+
+                                             
+                
             </div>
         </div>
     </div>

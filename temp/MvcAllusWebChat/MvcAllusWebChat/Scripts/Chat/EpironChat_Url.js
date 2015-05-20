@@ -129,7 +129,7 @@ $(function () {
 function Chat() {
     //NO SE USA - HUGO 06/04/2015
     $.ajax({
-        url: "/EpironChatVersion1/chat/",
+        url: "/Chat/chat/",
         type: "GET",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",
@@ -200,7 +200,7 @@ function GetRecordId() {
         MessageId: _firstMessageId,
     }
     $.ajax({
-        url: "/EpironChatVersion1/GetRecordId/",
+        url: "/Chat/GetRecordId/",
         type: "POST",
         dataType: 'json',
         contentType: "application/json;charset=utf-8",

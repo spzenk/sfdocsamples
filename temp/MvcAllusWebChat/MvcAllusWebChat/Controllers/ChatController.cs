@@ -16,7 +16,7 @@ using System.IO;
 using System.Web.Routing;
 namespace WebChat.Controllers
 {
-    public class EpironChatVersion1Controller : Controller
+    public class ChatController : Controller
     {
 
         public ActionResult SelectionTestChatEpiron()
@@ -107,7 +107,7 @@ namespace WebChat.Controllers
         }
 
         /// <summary>
-        ///  Respond a llamadas http://localhost:30250/EpironChatVersion1/chat/?tel=213&url=http://ar-movistar.agentbot.net/messages/?hash=33270-395607-87997_1404245636&case=49396
+        ///  Respond a llamadas http://localhost:30250/Chat/chat/?tel=213&url=http://ar-movistar.agentbot.net/messages/?hash=33270-395607-87997_1404245636&case=49396
         /// </summary>
         /// <param name="tel"> Es el parámetro numérico ingresado al comienzo de la charla con Sofia.</param>
         /// <param name="url">Es el link q nos permite visualizar la primera interacción del cliente con Sofia, previamente a la derivación al chat. 
@@ -196,7 +196,7 @@ namespace WebChat.Controllers
         }
 
         /// <summary>
-        ///http://localhost:30250/EpironChatVersion1/chafrm/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola%20chat%20de%20este%20mundo
+        ///http://localhost:30250/Chat/chafrm/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola%20chat%20de%20este%20mundo
         /// http://localhost:30250/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola%20chat%20de%20este%20mundo
         /// http://personalencuestas.com/chafrm/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola chat de este mundo
         ///http://personalencuestas/?tel=03595-47845&clientName=RAMON&email=rMON.VALDEZ@TUTOPIA.COM&query=Hola chat de este mundo
