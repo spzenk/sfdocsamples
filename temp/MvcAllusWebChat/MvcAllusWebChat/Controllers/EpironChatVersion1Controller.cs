@@ -238,9 +238,9 @@ namespace WebChat.Controllers
             
 
                  if (model.OperatrCount > 0)
-                     EpironChatBC.CreateChatRoom_NoOperators(tel, null, string.Empty, query);
-
                      EpironChatBC.CreateChatRoom(model,tel,query, out chatRoomId, out userId, out messageId, out userIsAlreadyUsed, out emailAvailable);
+                 else
+                     EpironChatBC.CreateChatRoom_NoOperators(tel, null, string.Empty, query);
 
                     model.ChatConfigId = chatConfigBE.ChatConfigGuid;
                     model.UserId = userId;
