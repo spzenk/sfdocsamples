@@ -13,11 +13,11 @@ namespace WebChat
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "Default",
-            //    url: "{controller}/{action}/{tk}",
-            //    defaults: new { controller = "EpironChatVersion1", action = "SelectionTestChatEpiron", tk = UrlParameter.Optional }
-            //);
+            routes.MapRoute(
+                name: "Default",
+                url:"",
+                defaults: new { controller = "EpironChatVersion1", action = "index" }
+            );
 
             routes.MapRoute(
               name: "chat",
