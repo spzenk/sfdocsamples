@@ -7,6 +7,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebChat.Common;
 
 namespace WebChat
 {
@@ -24,6 +25,12 @@ namespace WebChat
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             DatabaseFactory.SetDatabaseProviderFactory(new DatabaseProviderFactory(), false);
+        }
+
+        protected void Application_Error(object sender, EventArgs e)
+        {
+            Exception objErr = Server.GetLastError().GetBaseException();
+            Helper.Log(objErr.Message);
         }
 
 

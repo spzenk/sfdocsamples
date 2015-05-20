@@ -94,6 +94,7 @@ namespace WebChat.Logic
                     database.AddInParameter(cmd, "Body", DbType.String, pChatEMailMessageBE.Body);
                     database.AddInParameter(cmd, "ErrorMessage", DbType.String, pChatEMailMessageBE.ErrorMessage);
                     database.AddInParameter(cmd, "Subject", DbType.String, pChatEMailMessageBE.Subject);
+                    database.AddInParameter(cmd, "ChatDescription", DbType.String, pChatEMailMessageBE.ChatDescription);
                     database.ExecuteNonQuery(cmd);
 
                     newId = (int)database.GetParameterValue(cmd, "ChatEmailMessageId");

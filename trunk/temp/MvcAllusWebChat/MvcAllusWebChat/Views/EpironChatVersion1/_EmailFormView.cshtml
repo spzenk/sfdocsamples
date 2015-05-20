@@ -1,44 +1,51 @@
-﻿@model WebChat.Common.Models.SentEmailModel
+﻿ <style>
 
-<div class="modal-dialog">
-    <div class="modal-content" style="width: 600px;
-height: 375px">
-        <div style="float: right;
-    position: relative;
-    margin-right: 15px;">
-           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        </div>
-            <div style="margin-left: 15px; margin-top: 20px; font-size: 25px;" class="row title">Envío Mensaje</div>
-        <div style="margin-left: 25px;margin-right: 25px;
-margin-top: 50px;
-font-size: 15px;">
+     .panel-header-email
+     {
+                     width:360px; 
+            height:100px;
+     }
+    </style>
+<script src="~/Scripts/epironchatversion1/EpironChatEmail.js"></script> @*<---Cambiar de lugar*@
+    <div class="modal-dialog">
+        <div id="CreateChatDialog" class="panel" style="width: 360px;" >
+            <div class="panel-header-email">
+             <div style="border-bottom: 1px solid #EC5710;padding-bottom: 4px;"><img id="img-epiron" class="img-header" src="~/img/logo-epiron.png"/><img id="img-entorno" class="img-header" src="~/img/ico.png"/></div>
+               <img id="img-message-email" src="~/img/sobre.png"  style=" margin-top: 20px;height: 59px; margin-left: 138px;"/>
+                @*<img id="img-message-ok" src="~/img/mail-ok.png"  style="display:none; margin-top: 20px;height: 59px; margin-left: 138px;"/>*@
+                <span id="span-version-email"></span>
+                   <div id="alert-text-info-container" style="clear: both;">
+                                    <div id="alert-text-view-info" class="alert-chat alert alert-warning" style="display: normal;">
+                                        <p style="text-align: center;" class="info-text"></p>
+                                    </div>
+                    </div>
+            </div>
+            <div id="div-content">
+
+               <div id="div-form-email"> 
+                     <label>Email</label>
+                            <input type="text" class = "no-border form-control" id="txt-Email" />
+                      
+                </div>
+                     
+                        <label>Telefono</label>
+                   <input type="text" class = "no-border form-control" id="txt-phoneEmail" /> 
+                        <br />
+                        <label>Consulta</label>
+                 <textarea class = "form-control" rows = 5 cols = 80 id="txt-InitialMessageEmail" style= "resize:none" ></textarea>
+
+                      <button id="btnSendEMail"  class="btn-form" onclick="sendEmail();">Enviar</button>
+                    <button id="btnCloseEmail" data-dismiss="modal" class="btn-form">Cerrar</button>
             
-        <div class="row" style="margin-bottom: 12px;">
-            <div class="col-xs-3"><span>Celular</span></div>
-            <div class="col-xs-9">
-               @Html.TextBoxFor(Model =>Model.UserPhone, new { @id="txt-cellphone", @class = "txtEmail", @style="width:100%" })
+                  
             </div>
-        </div>
-        <div class="row" style="margin-bottom: 12px;">
-            <div class="col-xs-3"><span>Email</span></div>
-            <div class="col-xs-9">
-                  @Html.TextBoxFor(Model =>Model.UserEmail, new {@id="txt-emailFrom", @class = "emailFrom", @style="width:100%" })
+
+            <div id="alert-text-view1" class="alert alert-warning" style="display: none; margin: 5px">
+                <p id="alert-text-error-tittle" style="font-weight: bold;"> </p>
+                <p class="error-text" id="error-text-message"></p>
+                <div id="link-email"></div>
             </div>
+
         </div>
-        <div class="row"style="margin-bottom: 12px;">
-            <div class="col-xs-3"><span>Mensaje</span></div>
-            <div class="col-xs-9">
-                @Html.TextAreaFor(Model =>Model.UserMessage, new {@id="txt-EmailBody", @rows="4", @cols="50", @class = "emailFrom", @style="width:100%" })
-        </div>
-        <div class="row" style="margin-top:122px">
-            <div class="col-xs-3"></div>
-            <div class="col-xs-4" style="margin-left:35px">
-                <input type="button" id="btnAccept" class="btn btn-success" value="Aceptar"  style="width:100%" />
-            </div>
-                <div class="col-xs-4">
-                <input type="button" id="btnCancel" class="btn btn-danger" value="Cancelar" style="width:100%" /></div>
-        </div>
-            </div>
-        </div>
-</div>
-</div>
+    </div>
+    

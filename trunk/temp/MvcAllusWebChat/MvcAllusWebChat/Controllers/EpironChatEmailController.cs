@@ -7,52 +7,106 @@ using WebChat.Common.BE;
 using WebChat.Logic;
 using WebChat.Logic.BC;
 using WebChat.Common.Models;
-
+using WebChat.Logic.DAC;
 namespace WebChat.Controllers
 {
     public class EpironChatEmailController : Controller
     {
-        //
-        // GET: /EpironChatEmail/
 
-        public ActionResult Index()
+        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pRoomId, int pIsNoOperator)
         {
-            SentEmailModel wSentEmailModel = new SentEmailModel();
-            wSentEmailModel.UserMessage = "las pizzas? donde están mis pizzas?";
-            return View(wSentEmailModel);
-        }
 
-        public ActionResult SendEmail(string cellPhone, string email, string emailBody, bool toTheClientFlag, string pGuid, int pchatUserId,  int pRoomId)
-        {
             try
-          {
-                Guid wGuid = new Guid("8F482C36-993F-4751-9299-E3E2BE1B8D68");
+            {
+                ChatMailSenderBE wChatMailSenderBE = null;
+                if (pGuid == "0")
+                {
+                    ChatConfigBE chatConfigBE = ChatConfigDAC.GetByParam(null);
+                    wChatMailSenderBE = EpironChatEmailBC.GetChatMailSenderByCongGuid(chatConfigBE.ChatConfigGuid);
+                }
+                else
+                {
+                    Guid wGuid = new Guid(pGuid);
+                    wChatMailSenderBE = EpironChatEmailBC.GetChatMailSenderByCongGuid(wGuid);
+                }
 
-                ChatMailSenderBE wChatMailSenderBE = EpironChatEmailBC.GetChatMailSenderByCongGuid(wGuid);
+                ChatUserBE wChatUserBE = new ChatUserBE();
+                wChatUserBE.ChatUserEmail = email; //<--usaremos el email que el usuario nos provee, aunque este tenga uno previo, no lo modificaremos en la base
 
-                int chatUserId = 1;
+                if (toTheClientFlag)
+                {
+                    string css = @"
+<style>.bubbleOwn
+    {
+        position: relative;
+        width: 60%;
+        /*height: 35px;*/
+        padding: 5px;
+        background-color: #71C837;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        left: 1px;
+        clear: both;
+       margin:6px 0px 1px 8px;
+        border: 1px solid #CCC;
+        /*min-height: 35px;*/
+    }
 
-                ChatUserBE wChatuserBE = EpironChatEmailBC.GetChatUserByParams(chatUserId, string.Empty);
+    .bubbleThey
+    {
+        position: relative;
+        width: 60%;
+        /*height: 35px;*/
+        padding: 2px;
+        background: white;
+        border: 1px solid #CCC;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        float: right;
+        margin-right: 1px;
+        clear: both;
+        margin:6px 8px 1px 0px;
+        /*min-height: 35px;*/
+    }
 
-                wChatuserBE.ChatUserEmail = email; //<--usaremos el email que el usuario nos provee, aunque este tenga uno previo, no lo modificaremos en la base
+._time {
+float: right;
+font-size: 10px;
+}
+</style>";
+                    emailBody = css + emailBody;
+                }
 
-                bool isSent = EmailHelper.SentEmail(emailBody, toTheClientFlag, wChatMailSenderBE, wChatuserBE);
+
+
+
+
+                bool isSent = EmailHelper.SentEmail(emailBody, toTheClientFlag, wChatMailSenderBE, wChatUserBE);
 
                 if (isSent)
                 {
                     //se registra en la base que se ha enviado un email
                     ChatEmailMessageBE wChatEmailMessageBE = new ChatEmailMessageBE();
+                    // pIsNoOperator <-- Indica si este email se envia tras no encontrar operadores disponibles
+                    wChatEmailMessageBE.ChatDescription = pIsNoOperator == 1 ? "SIN-OPERADORES" : null;
                     wChatEmailMessageBE.EmailFrom = wChatMailSenderBE.Email;
-                    wChatEmailMessageBE.ChatRoomId = pRoomId;
+                    if (pRoomId != 0)
+                        wChatEmailMessageBE.ChatRoomId = pRoomId;
+                    else
+                        wChatEmailMessageBE.ChatRoomId = null;
+
                     wChatEmailMessageBE.Body = emailBody;
                     if (toTheClientFlag)
                     {
                         wChatEmailMessageBE.Subject = "-Subject-";
-                        wChatEmailMessageBE.DeliveredTo = wChatuserBE.ChatUserEmail; 
+                        wChatEmailMessageBE.DeliveredTo = wChatUserBE.ChatUserEmail;
+                       
                     }
                     else
                     {
-                        wChatEmailMessageBE.Subject = wChatMailSenderBE.TagStartWith + wChatuserBE.ChatUserEmail + wChatMailSenderBE.TagEndWith;
+                        wChatEmailMessageBE.Subject = wChatMailSenderBE.TagStartWith + wChatUserBE.ChatUserEmail + wChatMailSenderBE.TagEndWith;
                         wChatEmailMessageBE.DeliveredTo = wChatMailSenderBE.Email;
                     }
 
@@ -61,7 +115,7 @@ namespace WebChat.Controllers
 
                     if (saved)
                     {
-                        return Json(new { Result = "OK" });
+                        return Json(new { Result = "OK", Message = "Correo enviado correctamente" });
                     }
                     else
                     {

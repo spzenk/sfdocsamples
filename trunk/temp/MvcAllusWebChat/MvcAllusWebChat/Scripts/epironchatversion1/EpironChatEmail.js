@@ -1,23 +1,29 @@
-﻿var casita = null;
+﻿
 $(function () {
-    $("#btnAccept").click(function () {
-        sendEmail();
-    });
+    //$("#btnSendEMail").click(function () {
+    //    //sendEmail();
+    //    //window.close();
+ 
+    //});
 
-    $("#btnCancel").click(function () {
-        $('#emailForm').modal('hide');
+    $("#btnCloseEmail").click(function () {
+        window.close();
     });
 });
 
 function sendEmail() {
 
-    cellphone = $('#txt-cellphone').val();
-    email = $('#txt-emailFrom').val();
-    emailBody = $('#txt-EmailBody').val();
-    pGuid = 1;
-    pchatUserId = 1;
-    pRoomId = 1;
-    var params = { cellPhone: cellphone, email: email, emailBody: emailBody, toTheClientFlag: true, pGuid: pGuid, pchatUserId: pchatUserId, pRoomId:pRoomId }
+    cellphone = $('#txt-Phone').val();
+    email = $('#txt-Email').val();
+    emailBody = $('#txt-InitialMessageEmail').val();
+    pGuid = selectedChatConfigId == "-1" ? "0" : selectedChatConfigId;
+    pRoomId =_roomId == "-1" ? "0" : _roomId;
+
+    var pIsNoOperator = 0;
+    if (pRoomId == "0")
+        pIsNoOperator = 1;
+
+    var params = { cellPhone: cellphone, email: email, emailBody: emailBody, toTheClientFlag: false, pGuid: pGuid, pRoomId: pRoomId, pIsNoOperator: pIsNoOperator }
 
     var obj = null;
 
@@ -32,11 +38,20 @@ function sendEmail() {
                 ShowAlertMessage(result.Message, 'Error en el servidor', 'error');
                 return;
             }
-           casite = result;
+            if (result.Result && result.Result == 'OK') {
+                $("#span-version-email").hide();
+                $("#img-message-email").attr("src", "../../img/mail-ok.png");
+                $(".panel-header-email").css("height", "135px");
+                $('#alert-text-info-container .info-text').append(result.Message);
+
+                $('#btnSendEMail').attr('disabled', 'true');
+
+            }
         },
 
         error: ServiceFailed
     });
 }
+
 
 

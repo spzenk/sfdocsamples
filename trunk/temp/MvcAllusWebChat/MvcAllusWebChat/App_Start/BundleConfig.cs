@@ -35,9 +35,9 @@ namespace WebChat
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
             bundles.Add(new ScriptBundle("~/bundles/modernizr").Include("~/Scripts/modernizr-*"));
 
-            bundles.Add(new StyleBundle("~/Content/site").Include(
-                    "~/Content/Site.css","~/Content/ChatRoom.css"
-                ));
+            //bundles.Add(new StyleBundle("~/Content/site").Include(
+            //        "~/Content/Site.css","~/Content/ChatRoom.css"
+            //    ));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                 "~/Scripts/site.js",

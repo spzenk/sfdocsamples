@@ -16,13 +16,14 @@ namespace WebChat.Common.BE
     public class ChatEmailMessageBE : Entity
     {
         public System.Int32 ChatEmailMessageId { get; set; }
-        public System.Int32 ChatRoomId { get; set; }
+        public System.Int32? ChatRoomId { get; set; }
         public System.String EmailFrom { get; set; }
         public System.String DeliveredTo { get; set; }
         public System.String Body { get; set; }
         public System.String ErrorMessage { get; set; }
         public System.String Subject { get; set; }
         public System.String EmailCreated { get; set; }
+        public System.String ChatDescription { get; set; }
     }
     
 
